@@ -282,3 +282,41 @@ Adaptivity and batching change only *scheduling*, never which URL/bytes are
 fetched. All Part 1/2 differential tests remain the load-bearing parity guarantee.
 Single-process asyncio (one event loop, one `HostGuard`, one gate integer) is used
 over a process pool to keep resume/log logic race-free (spec §3).
+
+## P3.5 Gate at file-pickup boundaries, not mid-file (deliberate divergence)
+
+The spec (§2) describes lowering `active_workers` as cancelling a worker's
+in-flight segments and re-queuing the file. adaptiSeq instead gates at the
+**file-pickup boundary**: an idle worker waits until its slot is active, then
+downloads one file to completion; lowering `active` stops workers from *starting*
+new files but lets in-flight files finish. Reason: cancelling and resuming
+mid-file is the one place corruption can creep in for no real throughput benefit,
+and a 2.2 MB file finishes in well under one probe window anyway. The controller
+still governs how many files download concurrently (the meaningful control); the
+throughput meter and trajectory are unchanged. Documented as a divergence from the
+fastbiodl pause/re-queue mechanic.
+
+## P3.6 Critical fix: per-host transport cache stored full URLs (also fixes Part 2)
+
+While wiring the batch pool, the per-host transport-verdict cache in
+`engine/seam.py` was found to cache the *effective URL* of the first file probed
+on a host, so every subsequent file on that host downloaded the **first file's
+bytes**. This corrupted paired-end runs (`_1`/`_2` share `ftp.sra.ebi.ac.uk`):
+both files received `_2`'s content at `_2`'s size. This affected the Part 2
+sequential seam too (the `SegmentedEngine` persists across a run's files). Fix:
+the cache stores only the transport *kind* (a host-level property); the effective
+URL is derived per file via `_eff_url(url, kind)`. Verified live: `SRR1553469`'s
+`_1` and `_2` are each byte-identical to `wget`. Regression test added
+(`test_transport_cache_derives_url_per_file`).
+
+## P3.7 Two-phase batch integration (SRA/ENA), GSA sequential
+
+`core.run` routes SRA/ENA downloads through the adaptive batch pool (phase A:
+parallel resolve + worker pool), then runs the unchanged per-accession Part 1 loop
+(phase B: integrity / convert / merge / logs) over the already-present files —
+`download_with_resume` recognises a complete file and does not re-fetch, so phase
+B is a no-op for batched files and only fills any the batch missed. GSA accessions
+and the classic engine use the sequential path unchanged (GSA's `download_gsa`
+keys "already downloaded" on `success.log`, which the batch does not write, so
+batching GSA cleanly would need a resolution change — deferred, documented).
+`-m` (metadata only) and `-a` (aspera) never use the batch path.

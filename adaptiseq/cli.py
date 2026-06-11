@@ -94,6 +94,23 @@ def build_parser() -> argparse.ArgumentParser:
                    dest="max_conns_per_host",
                    help="Global cap on concurrent connections to any one host "
                         "(default: 8).")
+    g.add_argument("-j", "--jobs", metavar="int", default="20",
+                   help="Max worker-pool size for batch download (default: 20). "
+                        "With --adaptive, the gradient optimizer chooses how many "
+                        "of these are active at once.")
+    g.add_argument("--adaptive", dest="adaptive", action="store_true", default=True,
+                   help="Enable the gradient adaptive concurrency controller "
+                        "(default: on).")
+    g.add_argument("--no-adaptive", dest="adaptive", action="store_false",
+                   help="Disable adaptivity: run all -j workers with no probing.")
+    g.add_argument("--probe-window", metavar="int", default="5", dest="probe_window",
+                   help="Adaptive optimizer probe window in seconds (default: 5).")
+    g.add_argument("--cc-penalty", metavar="float", default="1.01", dest="cc_penalty",
+                   help="Worker-cost penalty K in score=throughput/K**workers "
+                        "(default: 1.01).")
+    g.add_argument("--meta-jobs", metavar="int", default="3", dest="meta_jobs",
+                   help="Parallelism for metadata/URL resolution (default: 3), "
+                        "bounded by per-endpoint rate limits.")
     g.add_argument("-h", "--help", action="store_true",
                    help="Show the help information.")
     g.add_argument("-v", "--version", action="store_true",
@@ -220,6 +237,24 @@ def main(argv: Optional[List[str]] = None) -> int:
             f"--max-segments {parallel} (segment count), not axel connections"
         )
 
+    # Part 3 adaptive/batch knobs.
+    jobs = _posint("jobs", "-j", args.jobs, 20,
+                   'Please use a positive integer for the "-j" option')
+    probe_window = _posint("probe-window", "--probe-window", args.probe_window, 5,
+                           'Please use an integer >= 2 for the "--probe-window" option')
+    if probe_window < 2:
+        probe_window = 2
+    meta_jobs = _posint("meta-jobs", "--meta-jobs", args.meta_jobs, 3,
+                        'Please use a positive integer for the "--meta-jobs" option')
+    try:
+        cc_penalty = float(args.cc_penalty)
+        if cc_penalty < 1.0:
+            raise ValueError
+    except ValueError:
+        _emit_error(reporter, f"Invalid cc-penalty: {args.cc_penalty}",
+                    'Please use a float >= 1.0 for the "--cc-penalty" option')
+        return 1
+
     accessions = _read_input(args.input)
 
     # --- merge accession-type guards ---
@@ -271,6 +306,11 @@ def main(argv: Optional[List[str]] = None) -> int:
             segment_size=segment_size_mb * 1024 * 1024,
             max_segments=max_segments,
             max_conns_per_host=max_conns_per_host,
+            jobs=jobs,
+            adaptive=args.adaptive,
+            probe_window=probe_window,
+            cc_penalty=cc_penalty,
+            meta_jobs=meta_jobs,
         )
         workdir = resolve_output_dir(args.output)
     except AdaptiSeqError as exc:

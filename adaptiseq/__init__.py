@@ -181,6 +181,11 @@ def fetch(
     segment_size_mb: int = 512,
     max_segments: int = 8,
     max_conns_per_host: int = 8,
+    jobs: int = 20,
+    adaptive: bool = True,
+    probe_window: int = 5,
+    cc_penalty: float = 1.01,
+    meta_jobs: int = 3,
     reporter: Optional[Reporter] = None,
 ) -> FetchResult:
     """Download and verify ``accession``.
@@ -212,6 +217,11 @@ def fetch(
         segment_size=segment_size_mb * 1024 * 1024,
         max_segments=max_segments,
         max_conns_per_host=max_conns_per_host,
+        jobs=jobs,
+        adaptive=adaptive,
+        probe_window=probe_window,
+        cc_penalty=cc_penalty,
+        meta_jobs=meta_jobs,
     )
     workdir = resolve_output_dir(outdir)
     ctx = core.run(

@@ -139,38 +139,48 @@ class SegmentedEngine:
         if scheme in ("http", "https"):
             return ("http-seg", url)
 
-        # ftp:// under auto — decide per host and cache the verdict.
-        if host in self._verdict:
-            return self._verdict[host]
-        verdict = await self._probe_ftp_url(url, session)
-        self._verdict[host] = verdict
-        return verdict
+        # ftp:// under auto — decide per host and cache only the *kind* (NOT the
+        # effective URL, which must be derived per-file: caching a full URL would
+        # make every file on a host download the first file's bytes).
+        kind = self._verdict.get(host)
+        if kind is None:
+            kind = await self._probe_ftp_kind(url, session)
+            self._verdict[host] = kind
+        return (kind, self._eff_url(url, kind))
 
-    async def _probe_ftp_url(
+    @staticmethod
+    def _eff_url(url: str, kind: str) -> str:
+        """Map a transport kind to the effective URL for *this* file."""
+        if kind in ("http-seg", "http-single"):
+            return _to_https(url) if urlparse(url).scheme == "ftp" else url
+        return url  # ftp-seg / ftp-single / classic keep the original ftp url
+
+    async def _probe_ftp_kind(
         self, url: str, session: aiohttp.ClientSession
-    ) -> Tuple[str, str]:
-        """Section 5.1 decision order: HTTPS mirror > segmented FTP > single > classic."""
+    ) -> str:
+        """Section 5.1 decision order: HTTPS mirror > segmented FTP > single >
+        classic. Returns the transport *kind* only (host-level, URL-independent)."""
         https_url = _to_https(url)
         # 1. HTTPS mirror range-capable?
         probe = SegmentedDownloader(session, https_url, "/dev/null")
         size, supports = await probe.probe_range_support()
         if supports:
-            return ("http-seg", https_url)
+            return "http-seg"
 
         # 2. Native FTP with REST + concurrency?
         host, port, path = parse_ftp_url(url)
         ftp_size, rest_ok, conc_ok = await probe_ftp(host, port, path)
         if rest_ok and conc_ok:
-            return ("ftp-seg", url)
+            return "ftp-seg"
 
         # 3. Single-stream: prefer HTTPS if it served a size at all, else FTP.
         if size is not None:
-            return ("http-single", https_url)
+            return "http-single"
         if ftp_size:
-            return ("ftp-single", url)
+            return "ftp-single"
 
         # 4. Neither serves ranges/streams cleanly — fall back to classic.
-        return ("classic", url)
+        return "classic"
 
     def _log_transport(self, url: str, kind: str, eff_url: str) -> None:
         reasons = {

@@ -255,7 +255,16 @@ def run(
     workdir: Path = None,
 ) -> RunContext:
     """Run the full pipeline over a list of accessions. Returns the RunContext
-    (``ctx.failed`` indicates whether any Run ultimately failed)."""
+    (``ctx.failed`` indicates whether any Run ultimately failed).
+
+    Part 3: when the segmented engine is in use and we are actually downloading
+    (not ``-m``), the SRA/ENA download is routed through the adaptive batch pool
+    (parallel resolution + worker pool + gradient controller). Integrity,
+    conversion, merge, and logs are then applied by the unchanged per-accession
+    Part 1 loop over the already-downloaded files — so adaptivity changes only
+    scheduling, never which bytes are written. GSA accessions and the classic
+    engine use the sequential path unchanged.
+    """
     from .console import NullReporter
 
     workdir = Path(workdir) if workdir is not None else Path.cwd()
@@ -265,7 +274,51 @@ def run(
         workdir=workdir,
     )
     ctx.engine = get_engine(options, workdir, ctx.reporter)
+
+    use_batch = (
+        options.engine == "segmented"
+        and not options.metadata
+        and not options.aspera
+    )
+    if use_batch:
+        sra_accs = [a for a in accessions if not is_gsa(a)]
+        if sra_accs:
+            _batch_download_phase(ctx, sra_accs)
+
     for accession in accessions:
         ctx.retry_count = 1
         process_accession(ctx, accession)
     return ctx
+
+
+def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
+    """Phase A: parallel-resolve SRA/ENA accessions and adaptively batch-download
+    their files. Phase B (integrity/convert/merge/logs) is the normal per-accession
+    loop, which finds the files already present."""
+    import asyncio
+
+    from .batch import BatchDownloader, resolve_all
+
+    opts = ctx.options
+    reporter = ctx.reporter
+    tasks, unresolved = resolve_all(
+        sra_accs, opts, ctx.workdir, meta_jobs=opts.meta_jobs
+    )
+    for acc in unresolved:
+        reporter.error(
+            f"{green('Note')}: could not resolve {acc}; it will be retried "
+            "sequentially"
+        )
+    if not tasks:
+        return
+    reporter.info(
+        f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
+        f"{len(sra_accs)} accession(s) with up to {opts.jobs} workers "
+        f"({'adaptive' if opts.adaptive else 'fixed'} concurrency)"
+    )
+    bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
+    asyncio.run(bd.run(tasks))
+    controller = getattr(bd, "_controller", None)
+    if controller is not None and controller.trajectory:
+        traj = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in controller.trajectory)
+        reporter.info(f"{green('Note')}: adaptive worker trajectory: {traj}")

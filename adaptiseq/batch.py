@@ -30,7 +30,9 @@ from typing import Callable, List, Optional, Set, Tuple
 import aiohttp
 
 from . import metadata as _meta
-from . import resolve as _resolve
+# Import the resolver helpers from the submodule directly: the package attribute
+# `adaptiseq.resolve` is the public API *function*, which shadows the submodule.
+from .resolve import resolve_gsa_urls, resolve_sra_urls
 from .accession import is_gsa
 from .console import NullReporter, Reporter, green
 from .engine.gate import WorkerGate
@@ -175,24 +177,28 @@ class BatchDownloader:
     async def _worker(self, i, queue, session, gate, meter, guard, rate, failed):
         token = gate.token(i)
         while True:
+            # Gate at the file-pickup boundary (NOTES §P3.5): an idle worker waits
+            # here until its slot is active, then downloads one file to completion.
+            # We deliberately do NOT cancel an in-flight download when the gate
+            # lowers — interrupting + resuming mid-file risks corruption for no
+            # real benefit. The controller still governs how many files download
+            # at once; in-flight files simply finish.
+            if not token.should_continue():
+                await asyncio.sleep(0.15)
+                continue
             try:
                 task = queue.get_nowait()
             except asyncio.QueueEmpty:
-                # Nothing queued right now; yield (the queue may refill via re-queue).
                 await asyncio.sleep(0.1)
                 continue
             try:
                 # Skip files already recorded as downloaded (Part 1 semantics).
                 if in_success(self.workdir, Path(task.save_path).name):
                     continue
-                # Gate: idle until this worker slot is active.
-                while not token.should_continue():
-                    await asyncio.sleep(0.15)
                 try:
                     ok = await self.engine.fetch_async(
                         task.url, task.save_path, session=session,
-                        host_guard=guard, rate=rate, pause=token,
-                        on_bytes=meter.on_bytes,
+                        host_guard=guard, rate=rate, on_bytes=meter.on_bytes,
                     )
                 except asyncio.CancelledError:
                     raise
@@ -202,9 +208,6 @@ class BatchDownloader:
 
                 if ok:
                     log.info("downloaded %s", task.save_path)
-                elif not token.should_continue():
-                    # Gated off mid-flight -> pause/re-queue, not a failure.
-                    queue.put_nowait(task)
                 else:
                     task.retries += 1
                     if task.retries < 3:
@@ -238,20 +241,24 @@ def _resolve_one(accession: str, options: Options, workdir: Path) -> List[Downlo
     tasks: List[DownloadTask] = []
     try:
         if is_gsa(accession):
-            csv = _meta.get_gsa_metadata(ctx, accession)
+            csv = ctx.metadata_csv(accession)
+            if not (csv.exists() and csv.stat().st_size > 0):
+                csv = _meta.get_gsa_metadata(ctx, accession)
             lines = csv.read_text(errors="replace").splitlines()
             crrs = sorted({ln.split(",")[0] for ln in lines[1:] if ln.split(",")[0]})
             for crr in crrs:
-                for url in _resolve.resolve_gsa_urls(ctx, crr):
+                for url in resolve_gsa_urls(ctx, crr):
                     tasks.append(DownloadTask(url, url.rsplit("/", 1)[-1], accession))
         else:
-            tsv = _meta.get_sra_metadata(ctx, accession)
+            tsv = ctx.metadata_tsv(accession)
+            if not (tsv.exists() and tsv.stat().st_size > 0):
+                tsv = _meta.get_sra_metadata(ctx, accession)
             lines = tsv.read_text(errors="replace").splitlines()
             for ln in lines[1:]:
                 run = ln.split("\t")[0]
                 if not run:
                     continue
-                for url in _resolve.resolve_sra_urls(ctx, run):
+                for url in resolve_sra_urls(ctx, run):
                     tasks.append(DownloadTask(url, _save_name_for(url, run), accession))
     except Exception as e:
         log.error("resolution failed for %s: %s", accession, e)

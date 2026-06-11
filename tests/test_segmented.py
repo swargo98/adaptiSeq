@@ -278,6 +278,27 @@ def test_transport_explicit_overrides(tmp_path):
     assert url == "https://h/x.gz"
 
 
+def test_transport_cache_derives_url_per_file(tmp_path):
+    # Regression: the per-host transport cache must store only the *kind*, and
+    # derive the effective URL per file. Two files on the same host must map to
+    # two different https URLs, not the first file's cached URL.
+    eng = _engine(str(tmp_path))
+    eng._verdict["h"] = "http-seg"  # pretend the host was already probed
+    assert eng._eff_url("ftp://h/SRR_1.fastq.gz", "http-seg") == "https://h/SRR_1.fastq.gz"
+    assert eng._eff_url("ftp://h/SRR_2.fastq.gz", "http-seg") == "https://h/SRR_2.fastq.gz"
+
+    async def main():
+        async with aiohttp.ClientSession() as s:
+            k1, u1 = await eng._select_transport("ftp://h/a_1.fastq.gz", s)
+            k2, u2 = await eng._select_transport("ftp://h/a_2.fastq.gz", s)
+            return (k1, u1), (k2, u2)
+
+    (k1, u1), (k2, u2) = run(main())
+    assert k1 == k2 == "http-seg"
+    assert u1.endswith("a_1.fastq.gz") and u2.endswith("a_2.fastq.gz")
+    assert u1 != u2
+
+
 def test_transport_ftp_override(tmp_path):
     eng = _engine(str(tmp_path), protocol="ftp")
 
