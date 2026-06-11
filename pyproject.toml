@@ -19,6 +19,7 @@ keywords = ["bioinformatics", "sequencing", "SRA", "ENA", "GSA", "download"]
 dependencies = [
     "aiohttp>=3.8",
     "aioftp>=0.21",
+    "numpy>=1.21",
 ]
 
 [project.optional-dependencies]

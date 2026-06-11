@@ -4,18 +4,20 @@
 [`iseq`](https://github.com/BioOmics/iSeq) Bash tool for fetching public
 sequencing data and metadata from **GSA, SRA, ENA, DDBJ, and GEO**.
 
-> **Parts 1 and 2 are complete (Part 3 pending).**
+> **All three parts are complete.**
 > - **Part 1** is a *behaviour-preserving* port of `iseq` on the classic
 >   `wget`/`axel`/`ascp` path (no new engine, no speed claim).
 > - **Part 2** adds a **segmented, resumable HTTP(S)/FTP download engine** as a
 >   drop-in replacement at the single download seam, now the default
->   (`--engine segmented`), with fixed (non-adaptive) concurrency, a per-host
->   connection cap, a reactive circuit breaker, and HTTPS-first transport
->   selection. The engine changes only *how* bytes arrive, never *which* bytes:
->   resolution, metadata, integrity, logs, and merge are untouched and all Part 1
->   differential tests still pass on the segmented default.
-> - **Part 3** (pending) adds the gradient-adaptive concurrency controller,
->   batch/parallel download, parallel metadata resolution, and the benchmark.
+>   (`--engine segmented`), with fixed concurrency, a per-host connection cap, a
+>   reactive circuit breaker, and HTTPS-first transport selection.
+> - **Part 3** adds a **gradient adaptive concurrency controller**, **batch
+>   parallel download**, and **parallel metadata resolution** with per-endpoint
+>   rate limits, plus an honest [benchmark](BENCHMARK.md).
+>
+> The engine and scheduler change only *how* bytes arrive and *when* files are
+> scheduled, never *which* bytes: resolution, metadata, integrity, logs, and merge
+> are untouched and all Part 1 differential tests still pass.
 
 ## Why port a working Bash script? (design intent)
 
@@ -99,6 +101,11 @@ adaptiseq -i accession [options]
 | `--segment-size int` | Segmented engine: target segment size in MB (default 512). |
 | `--max-segments int` | Segmented engine: max connections per file (default 8). |
 | `--max-conns-per-host int` | Global cap on concurrent connections to any one host (default 8). |
+| `-j, --jobs int` | Max worker-pool size for batch download (default 20). With `--adaptive`, the controller picks how many are active at once. |
+| `--adaptive` / `--no-adaptive` | Enable/disable the gradient controller (default: on). `--no-adaptive` runs all `-j` workers with no probing. |
+| `--probe-window int` | Adaptive optimizer probe window in seconds (default 5). |
+| `--cc-penalty float` | Worker-cost penalty `K` in `score = throughput / K**workers` (default 1.01). |
+| `--meta-jobs int` | Parallelism for metadata/URL resolution (default 3), bounded by per-endpoint rate limits. |
 | `-h, --help` / `-v, --version` | Help / version (`adaptiSeq 0.1.0`). |
 
 `-p, --parallel N` is an alias for `--max-segments N` on the segmented engine (it
@@ -168,6 +175,50 @@ fetch("SRR1553469", outdir="data/", gzip=True,           # segmented by default
 fetch("SRR1553469", outdir="data/", engine="classic")     # Part 1 wget/axel path
 ```
 
+## Adaptive concurrency & batch download (Part 3)
+
+For an accession list (`-i file.txt`) — or any SRA/ENA run with multiple files —
+adaptiSeq resolves accessions in parallel and downloads files through a worker
+pool whose active size is tuned at runtime by a gradient controller.
+
+- **The optimizer controls *workers*, not connections.** It opens/closes worker
+  slots between 1 and `-j/--jobs`. Each active worker downloads one file and opens
+  that file's own size-derived segment connections (Part 2). Total connections in
+  flight is *emergent* and clipped by the per-host cap — the optimizer never sets
+  a connection count.
+
+- **The worker-cost penalty `K` (`--cc-penalty`, default 1.01).** The controller
+  scores a worker count `w` by `throughput / K**w` (not raw throughput), so it
+  prefers fewer workers unless extra ones pay for themselves. At `K = 1.01`,
+  adding a 20th worker must earn roughly `1.01**20 ≈ 1.22`, i.e. about a **22 %**
+  cumulative throughput premium over a single worker, to be preferred — a mild but
+  real bias toward restraint. Pure throughput maximization would peg workers at
+  `-j` and hammer the servers; the penalty prevents that.
+
+- **The per-host cap is the binding constraint at `-j 20`.** With `-j 20` and each
+  worker opening up to `--max-segments` connections, the naive total to one host
+  would be `20 × max_segments`. It is **not**: the always-on per-host cap
+  (`--max-conns-per-host`, default 8) clips it. For a single-host batch (e.g. an
+  all-ENA list hitting EBI), effective concurrency to that host is roughly
+  `max_conns_per_host / connections_per_file`, **not** 160 connections. The
+  optimizer chooses worker slots, the segmenter chooses per-file connections, and
+  the cap is the hard ceiling on what reaches the wire.
+
+- **Parallel resolution** (`--meta-jobs`, default 3) runs the full multi-database,
+  preference-ordered Part 1 resolver (ENA-first with SRA fallback; GSA; GEO
+  indirection) for many accessions at once, streaming resolved files into the
+  download queue so downloading overlaps resolution. Request rates are bounded by
+  **per-endpoint** limiters (ENA / NCBI / GSA), not by pool size; NCBI E-utilities
+  is throttled to 3 req/s without a key and 10 with one (`NCBI_API_KEY`,
+  `NCBI_EMAIL` read from the environment).
+
+`--no-adaptive` runs all `-j` workers with no probing. Per-file semantics
+(skip-if-in-`success.log`, MD5 check, retry up to 3, then `fail.log`, continue
+past failures, non-zero exit on any failure) are preserved. The controller's
+chosen worker trajectory is logged. See [BENCHMARK.md](BENCHMARK.md) for an honest
+speed comparison (aria2c is faster on raw throughput; adaptiSeq's edge is parity
+and the importable API, not raw speed).
+
 ## Output files
 
 For **SRA/ENA/DDBJ/GEO** accessions: `SRA files`, `${accession}.metadata.tsv`,
@@ -211,7 +262,11 @@ adaptiseq/
     ftp.py        # Part 2: native segmented FTP (REST/RETR via aioftp)
     seam.py       # Part 2: SegmentedEngine — transport selection + classic fallback
     ratelimit.py  # Part 2: token-bucket limiter, per-host cap, circuit breaker
-    optimize.py   # STUB -> Part 3 (adaptive controller)
+    optimize.py   # Part 3: gradient adaptive controller (ported from search.py)
+    throughput.py # Part 3: 1 Hz throughput meter
+    gate.py       # Part 3: worker gate (the integer the optimizer controls)
+  batch.py        # Part 3: batch pool + AdaptiveController + parallel resolution
+  ratelimits.py   # Part 3: per-endpoint resolution rate limiters (ENA/NCBI/GSA)
   convert.py      # fasterq-dump + pigz
   integrity.py    # vdb-validate + md5 checks (checkSRA/checkGSA)
   merge.py        # mergeSRArun / mergeGSArun ports

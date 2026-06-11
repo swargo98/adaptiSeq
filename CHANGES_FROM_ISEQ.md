@@ -88,12 +88,57 @@ segmentation needs — which is why `auto` prefers the ENA **HTTPS** mirror
 (`https://ftp.sra.ebi.ac.uk/...`, same host, range-capable). The native FTP path
 is exercised against hosts that do allow `REST` + concurrency.
 
-## What is *not* in Part 2 (coming in Part 3)
+## Part 3 — adaptive concurrency, batch download, parallel resolution
 
-- The gradient adaptive concurrency controller, batch parallel download, parallel
-  metadata resolution (`-j/--jobs`, `--meta-jobs`, `--adaptive/--no-adaptive`,
-  `--probe-window`, `--cc-penalty`), and the benchmark. Concurrency across files
-  in Part 2 is fixed/uncontrolled; these flags are intentionally **not** present.
+Part 3 adds scheduling intelligence on top of the segmented engine. It changes
+only *how many* files download at once and *when* they are scheduled — never which
+URL/bytes are fetched. All Part 1/2 differential tests still pass.
+
+- **Gradient adaptive concurrency controller** (`engine/optimize.py`, ported from
+  `search.py`): one controller per run tunes a single active-worker count between
+  1 and `-j/--jobs` from measured throughput, scoring `throughput / K**workers`
+  (the `--cc-penalty` `K`, default 1.01) so it prefers fewer workers unless extra
+  ones pay for themselves. On by default (`--adaptive`); `--no-adaptive` runs all
+  `-j` workers. The optimizer controls *workers*, never connections; the per-host
+  cap clips the emergent connection total. The §2.1 bookkeeping defects of
+  `search.py` are fixed (NOTES §P3.2), not ported.
+- **Batch parallel download**: a single-process asyncio worker pool (`-j/--jobs`,
+  default 20) over an accession list, preserving skip-if-in-`success.log`, MD5
+  check, retry up to 3, `fail.log`, continue-past-failure, and non-zero exit on any
+  failure.
+- **Parallel metadata/URL resolution** (`--meta-jobs`, default 3): fans out the
+  *Part 1* multi-database, preference-ordered resolver (ENA-first + SRA fallback;
+  GSA; GEO indirection) and streams resolved files into the download queue so
+  downloading overlaps resolution. Request rates are bounded by **per-endpoint**
+  limiters (ENA / NCBI / GSA), not pool size; NCBI E-utilities is held to 3 req/s
+  without a key, 10 with one (`NCBI_API_KEY`/`NCBI_EMAIL`).
+- **Benchmark** ([BENCHMARK.md](BENCHMARK.md)): a wall-clock comparison vs
+  `iseq -p 8`, `aria2c`, and adaptiSeq fixed-vs-adaptive. Reported honestly —
+  aria2c is faster on raw throughput; adaptiSeq's pitch is parity + the importable
+  API, not raw speed; the adaptive-vs-fixed comparison is inconclusive on a
+  sandbox-sized workload and is **not** claimed to help on real networks without a
+  production-sized benchmark.
+
+New flags: `-j/--jobs` (20), `--adaptive/--no-adaptive` (on), `--probe-window`
+(5), `--cc-penalty` (1.01), `--meta-jobs` (3).
+
+### Part 3 divergences / fixes (NOTES.md §P3)
+
+- The `search.py` optimizer's three bookkeeping defects are **fixed** (cache keyed
+  by worker count; explicit logged degenerate-gradient fallback; oldest-entry
+  eviction) — corrections, not iseq divergences, since iseq has no optimizer.
+- The worker gate is applied at **file-pickup boundaries**, not mid-file: lowering
+  the active count stops workers starting new files but lets in-flight files
+  finish, avoiding the corruption risk of cancel/resume for no real benefit.
+- A **critical correctness fix** (NOTES §P3.6) corrected the Part 2 per-host
+  transport cache, which stored the first file's URL and made every file on a host
+  download the first file's bytes (corrupting paired-end `_1`/`_2`).
+- The batch path covers SRA/ENA; GSA and the classic engine use the sequential
+  path; `-m`/`-a` never batch.
+
+## Version mapping (unchanged)
+
+adaptiSeq remains `adaptiSeq 0.1.0`.
 
 ## Version mapping
 

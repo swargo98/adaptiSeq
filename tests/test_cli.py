@@ -84,3 +84,30 @@ def test_help_lists_part2_flags():
     rc, out, err = _run("--help")
     for flag in ["--segment-size", "--max-segments", "--max-conns-per-host"]:
         assert flag in out, f"missing {flag} in --help"
+
+
+def test_help_lists_part3_flags():
+    rc, out, err = _run("--help")
+    for flag in ["--jobs", "--adaptive", "--no-adaptive", "--probe-window",
+                 "--cc-penalty", "--meta-jobs"]:
+        assert flag in out, f"missing {flag} in --help"
+    assert "default: 20" in out  # jobs
+
+
+def test_invalid_jobs_message():
+    rc, out, err = _run("-i", "SRR7706354", "-j", "0", "-m")
+    assert rc == 1
+    assert "Invalid jobs: 0" in (out + err)
+
+
+def test_invalid_cc_penalty_message():
+    rc, out, err = _run("-i", "SRR7706354", "--cc-penalty", "0.5", "-m")
+    assert rc == 1
+    assert "Invalid cc-penalty" in (out + err)
+
+
+def test_no_adaptive_accepted(tmp_path):
+    rc, out, err = _run("-i", "BADACCESSION", "--no-adaptive", "-m",
+                        "-o", str(tmp_path))
+    assert "Invalid" not in (out + err)
+    assert "not a valid" in (out + err)  # reached resolution, flag accepted
