@@ -224,3 +224,61 @@ P2-e. **Preflight refined to be transport-aware.** With the segmented engine,
   `HostGuard` cap + breaker state machine, transport-selection decision order.
 - **Not executed:** a full ~130 MB real ENA file (too large for the sandbox);
   native segmented FTP against EBI (EBI restricts `REST`, as noted).
+
+---
+
+# Part 3 — Adaptive concurrency, batch download, parallel resolution
+
+## P3.1 Decouple-and-fix plan (port of `search.py` + fastbiodl wiring)
+
+The optimizer controls the number of active **workers**, not connections (spec §0).
+Each active worker downloads one file and opens its own size-derived segment
+connections; the emergent connection total is clipped by the Part 2 per-host cap.
+The optimizer only opens/closes worker slots.
+
+Mapping fastbiodl's mp/tmpfs scaffolding to a single-process asyncio design:
+
+| fastbiodl (mp / globals) | adaptiSeq (single-process asyncio) |
+|---|---|
+| `download_process_status[i] = 1 if i < params[0] else 0` (shared array) | one mutable `WorkerGate.active` integer; worker `i` runs iff `i < active`. The Part 2 pause token is `gate.token(i)` whose `should_continue()` is `i < active`. |
+| pause → worker cancels in-flight segments, re-queues file | the segmented downloader already raises `CancelledError` when `should_continue()` is False and writes `.part.meta`; the worker re-queues the file. |
+| `report_network_throughput` deque + CSV + `elapsed>1000` heuristic | `ThroughputMeter`: 1 Hz sampler fed by the Part 2 byte-counter callback into a rolling Mbps deque. No CSV side effects, no 1000 s heuristic. |
+| `process_counters` (`mp.Value`) summed | one shared `on_bytes(n)` callback accumulating into the meter. |
+| `download_probing` (sets status, sleeps 1, averages window, `score=thrpt/K**w`, returns `-score`) | `probe(w)` in `engine/optimize.py`: `gate.active=w`, settle 1 s, average meter over the remaining `--probe-window-1` s, `score=thrpt/(K**w)`, return `int(round(-score))`; `exit_signal` when done. |
+| `run_download_optimizer` (initial window, then `gradient_opt_fast`, then keep probing) | `AdaptiveController.run()` coroutine: wait one window, run ported `gradient_opt_fast`, then hold final `w` until the queue drains. |
+| `base_optimizer` (skopt/scipy) | **not ported** (spec §1). Gradient path only; no skopt/scipy. |
+
+## P3.2 Optimizer bookkeeping fixes (spec §2.1 — corrections, not iseq divergences)
+
+`iseq` has no optimizer, so these are bug-fixes to the `search.py` algorithm, not
+behavioural divergences:
+
+1. **Cache keyed by worker count, not `abs(score)`.** Original
+   `cache[abs(values[-1])] = ccs[-1]` collides when two worker counts yield the
+   same |score|, corrupting `soft_limit = cache[max(cache.keys())]`. Fix: store
+   `cache[worker_count] = score` and derive the best-seen worker count by best
+   score, so `soft_limit` recovers the actual best worker count.
+2. **Explicit, logged gradient fallback.** Original silently falls back to
+   `gradient = 1` when `prev == 0`, which drives a full +step on a flat/zero probe.
+   Fix: detect the degenerate case, log it at WARNING, and use `gradient = 0` (no
+   move) rather than a silent unit step.
+3. **Deliberate eviction (oldest, not newest).** Original `cache.popitem(last=True)`
+   evicts the *freshest* observation. Fix: bound the cache and evict the
+   **oldest** entry (`popitem(last=False)`), keeping recent observations.
+
+## P3.3 Per-host cap is the binding constraint at `-j 20` (spec §2.2)
+
+With `-j 20` and each worker opening up to `--max-segments` connections, the naive
+emergent total to one host would be `20 × max_segments`. The always-on per-host cap
+(`--max-conns-per-host`, default 8) clips this: for a single-host batch (e.g. an
+all-ENA list hitting EBI), effective concurrency to that host is roughly
+`max_conns_per_host / connections_per_file`, **not** 20×8. The optimizer raises
+worker slots; the segmenter sets per-file connections; the cap is the hard wire
+ceiling. Documented in README so `-j 20` is not misread as "160 connections to EBI."
+
+## P3.4 Part 3 boundary
+
+Adaptivity and batching change only *scheduling*, never which URL/bytes are
+fetched. All Part 1/2 differential tests remain the load-bearing parity guarantee.
+Single-process asyncio (one event loop, one `HostGuard`, one gate integer) is used
+over a process pool to keep resume/log logic race-free (spec §3).
