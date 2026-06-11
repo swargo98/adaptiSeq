@@ -58,48 +58,66 @@ class SegmentedEngine:
 
     # --- the seam ---------------------------------------------------------------
     def fetch(self, url: str, save_path: str) -> bool:
-        return asyncio.run(self._fetch_async(url, save_path))
+        return asyncio.run(self._fetch_one(url, save_path))
 
     def fetch_aspera(self, link: str, db: str, save_path: Optional[str] = None) -> bool:
         # Aspera is unchanged in Part 2 — delegate straight to the classic ascp path.
         return self._classic.fetch_aspera(link, db, save_path)
 
-    # --- async core -------------------------------------------------------------
-    async def _fetch_async(self, url: str, save_path: str) -> bool:
+    async def _fetch_one(self, url: str, save_path: str) -> bool:
+        """Part 2 sequential seam: own session, guard, and rate per call."""
+        guard = HostGuard(self.options.max_conns_per_host)
+        rate = TokenBucket(self.options.speed * 1024 * 1024)
+        timeout = aiohttp.ClientTimeout(total=None, sock_connect=30, sock_read=120)
+        connector = aiohttp.TCPConnector(limit=0)
+        async with aiohttp.ClientSession(timeout=timeout, connector=connector) as session:
+            return await self.fetch_async(url, save_path, session=session,
+                                          host_guard=guard, rate=rate)
+
+    # --- async core (shared by Part 2 seam and Part 3 batch pool) ---------------
+    async def fetch_async(
+        self,
+        url: str,
+        save_path: str,
+        *,
+        session: aiohttp.ClientSession,
+        host_guard: Optional[HostGuard] = None,
+        rate: Optional[TokenBucket] = None,
+        pause: Optional[object] = None,
+        on_bytes: Optional[object] = None,
+    ) -> bool:
+        """Download one URL in the *current* event loop, with injected session,
+        per-host guard, rate limiter, pause token (the worker gate), and byte
+        counter (the throughput meter). This is what the Part 3 batch pool drives
+        with one shared guard/meter and a per-worker gate token."""
         dest = str(self.workdir / save_path)
         opts = self.options
-        guard = HostGuard(opts.max_conns_per_host)
-        rate = TokenBucket(opts.speed * 1024 * 1024)  # MB/s -> bytes/s
+        guard = host_guard or HostGuard(opts.max_conns_per_host)
+        if rate is None:
+            rate = TokenBucket(opts.speed * 1024 * 1024)
 
-        timeout = aiohttp.ClientTimeout(total=None, sock_connect=30, sock_read=120)
-        connector = aiohttp.TCPConnector(limit=0)  # per-host cap is enforced by HostGuard
-        async with aiohttp.ClientSession(timeout=timeout, connector=connector) as session:
-            kind, eff_url = await self._select_transport(url, session)
-            self._log_transport(url, kind, eff_url)
+        kind, eff_url = await self._select_transport(url, session)
+        self._log_transport(url, kind, eff_url)
 
-            if kind == "classic":
-                # Run the blocking classic engine without the original (ftp) url change.
-                return await asyncio.get_event_loop().run_in_executor(
-                    None, self._classic.fetch, url, save_path
-                )
-
-            if kind in ("http-seg", "http-single"):
-                d = SegmentedDownloader(
-                    session, eff_url, dest,
-                    segment_size=opts.segment_size,
-                    max_segments=1 if kind == "http-single" else opts.max_segments,
-                    host_guard=guard, rate=rate,
-                )
-                return await d.download()
-
-            # ftp-seg / ftp-single
-            d = FtpSegmentedDownloader(
-                eff_url, dest,
+        if kind == "classic":
+            return await asyncio.get_event_loop().run_in_executor(
+                None, self._classic.fetch, url, save_path
+            )
+        if kind in ("http-seg", "http-single"):
+            d = SegmentedDownloader(
+                session, eff_url, dest,
                 segment_size=opts.segment_size,
-                max_segments=1 if kind == "ftp-single" else opts.max_segments,
-                host_guard=guard, rate=rate,
+                max_segments=1 if kind == "http-single" else opts.max_segments,
+                host_guard=guard, rate=rate, pause=pause, on_bytes=on_bytes,
             )
             return await d.download()
+        d = FtpSegmentedDownloader(
+            eff_url, dest,
+            segment_size=opts.segment_size,
+            max_segments=1 if kind == "ftp-single" else opts.max_segments,
+            host_guard=guard, rate=rate, pause=pause, on_bytes=on_bytes,
+        )
+        return await d.download()
 
     async def _select_transport(
         self, url: str, session: aiohttp.ClientSession

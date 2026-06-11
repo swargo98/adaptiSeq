@@ -45,6 +45,13 @@ class Options:
     max_segments: int = 8                    # --max-segments (ceiling per file)
     max_conns_per_host: int = 8             # --max-conns-per-host (global per-host cap)
 
+    # Part 3 adaptive/batch knobs.
+    jobs: int = 20                  # -j/--jobs (worker-pool size)
+    adaptive: bool = True           # --adaptive/--no-adaptive
+    probe_window: int = 5           # --probe-window (seconds)
+    cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
+    meta_jobs: int = 3              # --meta-jobs (parallel resolution)
+
     def __post_init__(self) -> None:
         if self.merge in (0, "0", ""):
             self.merge = None
@@ -64,6 +71,14 @@ class Options:
             raise ValueError(f"Invalid max_segments: {self.max_segments}")
         if self.max_conns_per_host < 1:
             raise ValueError(f"Invalid max_conns_per_host: {self.max_conns_per_host}")
+        if self.jobs < 1:
+            raise ValueError(f"Invalid jobs: {self.jobs}")
+        if self.probe_window < 2:
+            raise ValueError(f"Invalid probe_window: {self.probe_window}")
+        if self.cc_penalty < 1.0:
+            raise ValueError(f"Invalid cc_penalty: {self.cc_penalty}")
+        if self.meta_jobs < 1:
+            raise ValueError(f"Invalid meta_jobs: {self.meta_jobs}")
 
 
 @dataclass

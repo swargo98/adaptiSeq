@@ -62,6 +62,79 @@ class _Handler(http.server.BaseHTTPRequestHandler):
                 srv.concurrent -= 1
 
 
+class _MultiHandler(http.server.BaseHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+    def do_GET(self):
+        srv = self.server
+        with srv.lock:
+            srv.concurrent += 1
+            srv.max_concurrent = max(srv.max_concurrent, srv.concurrent)
+        try:
+            if srv.delay:
+                time.sleep(srv.delay)
+            name = self.path.lstrip("/")
+            data = srv.files.get(name)
+            if data is None:
+                self.send_response(404)
+                self.end_headers()
+                return
+            rng = self.headers.get("Range")
+            if rng:
+                a, b = rng.split("=", 1)[1].split("-")
+                a = int(a)
+                b = int(b) if b else len(data) - 1
+                b = min(b, len(data) - 1)
+                body = data[a:b + 1]
+                self.send_response(206)
+                self.send_header("Content-Range", f"bytes {a}-{b}/{len(data)}")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+            else:
+                self.send_response(200)
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+        finally:
+            with srv.lock:
+                srv.concurrent -= 1
+
+
+class MultiFileRangeServer(socketserver.ThreadingTCPServer):
+    """Serves a dict of ``{name: bytes}`` with Range; unknown names -> 404."""
+
+    daemon_threads = True
+    allow_reuse_address = True
+
+    def handle_error(self, request, client_address):
+        return
+
+    def __init__(self, files: dict, *, delay: float = 0.0):
+        super().__init__(("127.0.0.1", 0), _MultiHandler)
+        self.files = files
+        self.delay = delay
+        self.lock = threading.Lock()
+        self.concurrent = 0
+        self.max_concurrent = 0
+
+    @property
+    def port(self) -> int:
+        return self.server_address[1]
+
+    def url(self, name: str) -> str:
+        return f"http://127.0.0.1:{self.port}/{name}"
+
+    def __enter__(self):
+        threading.Thread(target=self.serve_forever, daemon=True).start()
+        return self
+
+    def __exit__(self, *exc):
+        self.shutdown()
+        self.server_close()
+
+
 class RangeServer(socketserver.ThreadingTCPServer):
     """A threaded Range-capable static server over a fixed byte payload."""
 

@@ -23,6 +23,16 @@ def _run(cmd: List[str]) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, capture_output=True, text=True)
 
 
+def _throttle(url: str) -> None:
+    """Consult the per-endpoint resolution rate limiters (no-op unless active)."""
+    try:
+        from . import ratelimits
+
+        ratelimits.throttle(url)
+    except Exception:
+        pass
+
+
 def wget_to_file(
     url: str,
     out_path,
@@ -38,6 +48,7 @@ def wget_to_file(
     Returns wget's exit code (the caller decides what an empty file means, just
     as the Bash inspects the file afterwards rather than wget's status).
     """
+    _throttle(url)
     cmd = ["wget"]
     if cont:
         cmd.append("-c")
@@ -53,6 +64,7 @@ def wget_to_file(
 
 def wget_capture(url: str, *, user_agent: Optional[str] = None) -> str:
     """Equivalent of ``wget -qO- URL`` — return the body as text."""
+    _throttle(url)
     cmd = ["wget", "-qO-"]
     if user_agent:
         cmd.append(f"--user-agent={user_agent}")
