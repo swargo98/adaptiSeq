@@ -2,3 +2,25 @@ iSeq-main/
 fastbiodl_upgrade.py
 search.py
 utils.py
+
+# Python build / cache artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.eggs/
+
+# adaptiSeq runtime output (never commit downloaded data / logs)
+*.metadata.tsv
+*.metadata.csv
+*.metadata.xlsx
+success.log
+fail.log
+.has_failed.flag
+.asperaGSA.openssh
+*.md5sum.txt
+
+# but DO keep checked-in golden fixtures
+!tests/fixtures/**

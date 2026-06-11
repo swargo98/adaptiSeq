@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptiseq"
+version = "0.1.0"
+description = "adaptiSeq: a tested, importable Python port of the iseq sequencing-data downloader (Part 1: classic engine, behaviour-preserving)."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "adaptiSeq" }]
+keywords = ["bioinformatics", "sequencing", "SRA", "ENA", "GSA", "download"]
+
+# Part 1 deliberately adds no heavy runtime dependencies. Metadata bytes are
+# pulled by `wget` (shelled out, exactly as iseq does) to guarantee byte-for-byte
+# parity. `openpyxl` is only needed to *parse* GSA XLSX in the library API; the
+# XLSX file itself is fetched verbatim by wget, so it is an optional extra.
+dependencies = []
+
+[project.optional-dependencies]
+xlsx = ["openpyxl>=3.0"]
+test = ["pytest>=7.0", "openpyxl>=3.0"]
+
+[project.scripts]
+adaptiseq = "adaptiseq.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/swargo98/adaptiFetch"
+Upstream = "https://github.com/BioOmics/iSeq"
+
+[tool.setuptools.packages.find]
+include = ["adaptiseq*"]
+
+[tool.setuptools.package-data]
+adaptiseq = ["py.typed"]
