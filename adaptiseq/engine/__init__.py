@@ -10,4 +10,12 @@ the same seam; Part 3 adds the adaptive controller.
 
 from .classic import ClassicEngine, get_engine
 
-__all__ = ["ClassicEngine", "get_engine"]
+__all__ = ["ClassicEngine", "get_engine", "SegmentedEngine"]
+
+
+def __getattr__(name):  # lazy to avoid importing aiohttp unless needed
+    if name == "SegmentedEngine":
+        from .seam import SegmentedEngine
+
+        return SegmentedEngine
+    raise AttributeError(name)

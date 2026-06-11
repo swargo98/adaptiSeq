@@ -192,9 +192,15 @@ class ClassicEngine:
 
 
 def get_engine(options, workdir, reporter=None):
-    """Engine factory. Part 1 always returns the classic engine.
+    """Engine factory.
 
-    ``--engine segmented`` is handled at the CLI layer (it prints a fallback
-    message); by the time we get here the effective engine is ``classic``.
+    Part 2: ``--engine segmented`` (the default) returns the segmented engine,
+    which itself falls back to the classic ``wget``/``axel`` path per-download
+    when a host cannot serve ranges. ``--engine classic`` returns the Part 1
+    engine unchanged.
     """
+    if getattr(options, "engine", "segmented") == "segmented":
+        from .seam import SegmentedEngine  # local import to avoid a cycle
+
+        return SegmentedEngine(options, workdir, reporter)
     return ClassicEngine(options, workdir, reporter)

@@ -61,10 +61,26 @@ def test_merge_guard_rejects_run():
     assert "is a Run ID" in (out + err)
 
 
-def test_segmented_engine_falls_back(tmp_path):
-    # --engine segmented must not be available in Part 1; it should note + fall back
-    # to classic. We use -m so the run needs only wget (needs-based preflight).
+def test_segmented_engine_is_accepted(tmp_path):
+    # Part 2: segmented is the default and a real engine — the flag is accepted
+    # (a bad accession yields the normal accession error, proving no engine error
+    # and no "not available" message). -m needs only wget.
     rc, out, err = _run("-i", "BADACCESSION", "--engine", "segmented", "-m",
                         "-o", str(tmp_path))
     combined = out + err
-    assert "segmented engine is not yet available" in combined
+    assert "not yet available" not in combined
+    assert "Invalid engine" not in combined
+    assert "not a valid" in combined  # the accession error, i.e. engine flag was fine
+
+
+def test_invalid_engine_message(tmp_path):
+    rc, out, err = _run("-i", "SRR7706354", "--engine", "bogus", "-m",
+                        "-o", str(tmp_path))
+    assert rc == 1
+    assert "Invalid engine: bogus" in (out + err)
+
+
+def test_help_lists_part2_flags():
+    rc, out, err = _run("--help")
+    for flag in ["--segment-size", "--max-segments", "--max-conns-per-host"]:
+        assert flag in out, f"missing {flag} in --help"

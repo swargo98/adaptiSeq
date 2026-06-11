@@ -82,8 +82,18 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Suppress download progress bars.")
     g.add_argument("-o", "--output", metavar="text",
                    help="Output directory (created if missing; default: cwd).")
-    g.add_argument("--engine", metavar="[segmented|classic]", default="classic",
-                   help="Download engine (Part 1: only 'classic'; default classic).")
+    g.add_argument("--engine", metavar="[segmented|classic]", default="segmented",
+                   help="Download engine (default: segmented). 'classic' is the "
+                        "Part 1 wget/axel path; segmented falls back to it per-host "
+                        "when a host cannot serve ranges.")
+    g.add_argument("--segment-size", metavar="int", default="512", dest="segment_size",
+                   help="Segmented engine: target segment size in MB (default: 512).")
+    g.add_argument("--max-segments", metavar="int", default="8", dest="max_segments",
+                   help="Segmented engine: max connections per file (default: 8).")
+    g.add_argument("--max-conns-per-host", metavar="int", default="8",
+                   dest="max_conns_per_host",
+                   help="Global cap on concurrent connections to any one host "
+                        "(default: 8).")
     g.add_argument("-h", "--help", action="store_true",
                    help="Show the help information.")
     g.add_argument("-v", "--version", action="store_true",
@@ -144,17 +154,11 @@ def main(argv: Optional[List[str]] = None) -> int:
                     'Please provide the input by "-i" option')
         return 1
 
-    # --- engine handling (Part 1: only classic) ---
+    # --- engine handling (Part 2: segmented default, classic fallback) ---
     engine = args.engine.lower()
-    if engine == "segmented":
-        reporter.info(
-            f"{yellow_bold('Note')}: the segmented engine is not yet available in "
-            "this build (Part 1), falling back to the classic engine"
-        )
-        engine = "classic"
-    elif engine != "classic":
+    if engine not in ("classic", "segmented"):
         _emit_error(reporter, f"Invalid engine: {args.engine}",
-                    'Please use "classic" (Part 1) for the "--engine" option')
+                    'Please use "segmented" or "classic" for the "--engine" option')
         return 1
 
     # --- value validation, mirroring iseq messages ---
@@ -163,7 +167,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         database = _validate_choice(
             "database", "-d", args.database, ("ena", "sra"),
             '"ena" or "sra"', reporter)
-    protocol = "ftp"
+    # -r accepts ftp|https; when unspecified the engine auto-selects (HTTPS-first).
+    protocol = "auto"
     if args.protocol is not None:
         protocol = _validate_choice(
             "protocol", "-r", args.protocol, ("ftp", "https"),
@@ -195,6 +200,26 @@ def main(argv: Optional[List[str]] = None) -> int:
             "parallel", "-p", args.parallel, 0,
             'Please use a positive integer for the "-p" option')
 
+    # Part 2 segmented-engine knobs.
+    segment_size_mb = _posint(
+        "segment-size", "--segment-size", args.segment_size, 512,
+        'Please use a positive integer (MB) for the "--segment-size" option')
+    max_segments = _posint(
+        "max-segments", "--max-segments", args.max_segments, 8,
+        'Please use a positive integer for the "--max-segments" option')
+    max_conns_per_host = _posint(
+        "max-conns-per-host", "--max-conns-per-host", args.max_conns_per_host, 8,
+        'Please use a positive integer for the "--max-conns-per-host" option')
+
+    # -p, --parallel becomes an alias that sets --max-segments on the segmented
+    # engine (spec §7), keeping its original axel meaning on --engine classic.
+    if parallel > 0 and engine == "segmented":
+        max_segments = parallel
+        reporter.info(
+            f"{yellow_bold('Note')}: -p {parallel} on the segmented engine sets "
+            f"--max-segments {parallel} (segment count), not axel connections"
+        )
+
     accessions = _read_input(args.input)
 
     # --- merge accession-type guards ---
@@ -216,9 +241,12 @@ def main(argv: Optional[List[str]] = None) -> int:
                     'Please remove -a option or switch to the ENA database by "-d ena"')
         return 1
 
-    # --- preflight (needs-based; see NOTES.md divergence #4) ---
+    # --- preflight (needs-based; see NOTES.md divergence #4 / #P2.3) ---
     try:
-        _cli_preflight(args.metadata, args.fastq, merge, parallel)
+        _cli_preflight(
+            args.metadata, args.fastq, merge, parallel, engine,
+            args.aspera, args.gzip, args.skip_md5,
+        )
     except PreflightError as exc:
         reporter.error(render_preflight_error(exc))
         return 1
@@ -239,7 +267,10 @@ def main(argv: Optional[List[str]] = None) -> int:
             protocol=protocol,
             quiet=args.quiet,
             output=args.output,
-            engine="classic",
+            engine=engine,
+            segment_size=segment_size_mb * 1024 * 1024,
+            max_segments=max_segments,
+            max_conns_per_host=max_conns_per_host,
         )
         workdir = resolve_output_dir(args.output)
     except AdaptiSeqError as exc:
@@ -268,20 +299,38 @@ def main(argv: Optional[List[str]] = None) -> int:
     return 0
 
 
-def _cli_preflight(metadata_only: bool, fastq: bool, merge, parallel: int) -> None:
-    """Tool preflight. Metadata-only needs just wget; downloads need the full set."""
+def _cli_preflight(
+    metadata_only: bool,
+    fastq: bool,
+    merge,
+    parallel: int,
+    engine: str,
+    aspera: bool,
+    gzip: bool,
+    skip_md5: bool,
+) -> None:
+    """Needs-based tool preflight (NOTES.md divergence #4, refined in §P2.3).
+
+    The segmented engine fetches bytes itself (aiohttp/aioftp) and only needs
+    ``wget`` for its classic fallback, so ``axel`` is required only on
+    ``--engine classic`` with ``-p``. Integrity/convert tools are required only
+    when the run will actually use them.
+    """
     check_software("wget", "wget")
     if metadata_only:
         return
-    check_software("axel", "axel")
-    check_software("pigz", "pigz")
-    check_software("ascp", "aspera-cli=4.14.0")
-    check_software("md5sum", "coreutils")
-    check_software("srapath", "sra-tools>=2.11.0")
-    check_software("vdb-validate", "sra-tools")
+    # SRA integrity tools (skipped entirely with -k).
+    if not skip_md5:
+        check_software("md5sum", "coreutils")
+        check_software("srapath", "sra-tools>=2.11.0")
+        check_software("vdb-validate", "sra-tools")
+    if gzip:
+        check_software("pigz", "pigz")
+    if aspera:
+        check_software("ascp", "aspera-cli=4.14.0")
     if fastq or merge is not None:
         check_software("fasterq-dump", "sra-tools")
-    if parallel > 0:
+    if engine == "classic" and parallel > 0:
         check_software("axel", "axel")
 
 

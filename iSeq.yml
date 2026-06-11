@@ -1,11 +1,11 @@
-# Conda environment for adaptiSeq (Part 1).
+# Conda environment for adaptiSeq (Parts 1-2).
 #
 # Same external tools iseq requires (wget, axel, pigz, aspera-cli, sra-tools)
-# plus only the light Python additions Part 1 needs. Metadata bytes are pulled by
-# `wget` (shelled out, exactly as iseq does), so `requests` is NOT required.
+# plus only the light Python additions Parts 1-2 need. Metadata bytes are pulled
+# by `wget` (shelled out, exactly as iseq does), so `requests` is NOT required.
 #
-# Deliberately NOT added in Part 1: aiohttp, aioftp, numpy, skopt, scipy
-# (those belong to Parts 2 and 3).
+# Part 2 adds the async segmented HTTP(S)/FTP engine: aiohttp + aioftp.
+# Deliberately NOT added yet: numpy, skopt, scipy (those belong to Part 3).
 name: adaptiseq
 channels:
   - conda-forge
@@ -17,9 +17,11 @@ dependencies:
   - axel
   - aspera-cli ==4.14.0
   - sra-tools >=2.11.0
-  # light Python additions for Part 1
+  # light Python additions for Parts 1-2
   - python >=3.8
   - pip
+  - aiohttp >=3.8    # Part 2: segmented HTTP(S) engine
+  - aioftp >=0.21    # Part 2: native segmented FTP transport
   - openpyxl >=3.0   # optional: parse GSA XLSX in the library API
   - pytest >=7.0     # test suite
   - pip:

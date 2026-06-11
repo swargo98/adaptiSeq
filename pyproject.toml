@@ -12,11 +12,14 @@ license = { text = "MIT" }
 authors = [{ name = "adaptiSeq" }]
 keywords = ["bioinformatics", "sequencing", "SRA", "ENA", "GSA", "download"]
 
-# Part 1 deliberately adds no heavy runtime dependencies. Metadata bytes are
-# pulled by `wget` (shelled out, exactly as iseq does) to guarantee byte-for-byte
-# parity. `openpyxl` is only needed to *parse* GSA XLSX in the library API; the
-# XLSX file itself is fetched verbatim by wget, so it is an optional extra.
-dependencies = []
+# Metadata bytes are pulled by `wget` (shelled out, exactly as iseq does) for
+# byte-for-byte parity. Part 2 adds the async segmented HTTP(S)/FTP engine, which
+# requires aiohttp + aioftp at runtime. `openpyxl` parses GSA XLSX in the library
+# API (the XLSX file itself is fetched verbatim by wget) — an optional extra.
+dependencies = [
+    "aiohttp>=3.8",
+    "aioftp>=0.21",
+]
 
 [project.optional-dependencies]
 xlsx = ["openpyxl>=3.0"]

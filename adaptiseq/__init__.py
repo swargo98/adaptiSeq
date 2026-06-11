@@ -175,24 +175,24 @@ def fetch(
     aspera: bool = False,
     speed: int = 1000,
     skip_md5: bool = False,
-    protocol: str = "ftp",
+    protocol: str = "auto",
     quiet: bool = True,
-    engine: str = "classic",
+    engine: str = "segmented",
+    segment_size_mb: int = 512,
+    max_segments: int = 8,
+    max_conns_per_host: int = 8,
     reporter: Optional[Reporter] = None,
 ) -> FetchResult:
-    """Download and verify ``accession`` with the classic engine.
+    """Download and verify ``accession``.
 
-    Thin wrapper over :func:`adaptiseq.core.run`. Returns a :class:`FetchResult`
-    summarising success/fail IDs read back from ``success.log``/``fail.log``.
-    Does not print colour or exit; pass a :class:`Reporter` to capture progress.
+    Part 2 default engine is ``segmented`` (resumable HTTP(S)/FTP); pass
+    ``engine='classic'`` for the Part 1 ``wget``/``axel`` path. Thin wrapper over
+    :func:`adaptiseq.core.run`. Returns a :class:`FetchResult` summarising
+    success/fail IDs read back from ``success.log``/``fail.log``. Does not print
+    colour or exit; pass a :class:`Reporter` to capture progress.
     """
     if engine not in ("classic", "segmented"):
         raise EngineUnavailableError(f"Unknown engine: {engine}")
-    if engine == "segmented":
-        raise EngineUnavailableError(
-            "The segmented engine is not yet available in this build (Part 1).",
-            "Use engine='classic'; the segmented engine arrives in Part 2.",
-        )
 
     options = Options(
         metadata=metadata,
@@ -208,7 +208,10 @@ def fetch(
         protocol=protocol,
         quiet=quiet,
         output=outdir,
-        engine="classic",
+        engine=engine,
+        segment_size=segment_size_mb * 1024 * 1024,
+        max_segments=max_segments,
+        max_conns_per_host=max_conns_per_host,
     )
     workdir = resolve_output_dir(outdir)
     ctx = core.run(

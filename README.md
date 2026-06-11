@@ -4,12 +4,18 @@
 [`iseq`](https://github.com/BioOmics/iSeq) Bash tool for fetching public
 sequencing data and metadata from **GSA, SRA, ENA, DDBJ, and GEO**.
 
-> **This is Part 1 of 3.** Part 1 is a *behaviour-preserving* port on the classic
-> `wget`/`axel`/`ascp` download path. It adds **no** new download engine and makes
-> **no** speed claim — the bytes are still pulled by `wget`/`axel`, exactly as
-> `iseq` does. The segmented, resumable engine arrives in **Part 2**, and the
-> gradient-adaptive concurrency controller + batch/parallel download + benchmark
-> arrive in **Part 3**.
+> **Parts 1 and 2 are complete (Part 3 pending).**
+> - **Part 1** is a *behaviour-preserving* port of `iseq` on the classic
+>   `wget`/`axel`/`ascp` path (no new engine, no speed claim).
+> - **Part 2** adds a **segmented, resumable HTTP(S)/FTP download engine** as a
+>   drop-in replacement at the single download seam, now the default
+>   (`--engine segmented`), with fixed (non-adaptive) concurrency, a per-host
+>   connection cap, a reactive circuit breaker, and HTTPS-first transport
+>   selection. The engine changes only *how* bytes arrive, never *which* bytes:
+>   resolution, metadata, integrity, logs, and merge are untouched and all Part 1
+>   differential tests still pass on the segmented default.
+> - **Part 3** (pending) adds the gradient-adaptive concurrency controller,
+>   batch/parallel download, parallel metadata resolution, and the benchmark.
 
 ## Why port a working Bash script? (design intent)
 
@@ -86,11 +92,17 @@ adaptiseq -i accession [options]
 | `-a, --aspera` | Aspera via `ascp` (GSA/ENA; Huawei Cloud still wins for GSA). |
 | `-s, --speed int` | Speed cap in MB/s (default 1000). |
 | `-k, --skip-md5` | Skip the integrity check. |
-| `-r, --protocol [ftp\|https]` | ENA protocol (default ftp). |
+| `-r, --protocol [ftp\|https]` | ENA protocol. Unspecified = `auto` (HTTPS-first transport selection); `ftp`/`https` force it. |
 | `-Q, --quiet` | Suppress progress output. |
 | `-o, --output text` | Output directory (created if missing). |
-| `--engine [segmented\|classic]` | Download engine. **Part 1: only `classic`** (the default). `segmented` prints a notice and falls back to classic; it is implemented in Part 2. |
+| `--engine [segmented\|classic]` | Download engine (**default: `segmented`**). `classic` is the Part 1 `wget`/`axel` path; `segmented` falls back to it per-host when a host cannot serve ranges. |
+| `--segment-size int` | Segmented engine: target segment size in MB (default 512). |
+| `--max-segments int` | Segmented engine: max connections per file (default 8). |
+| `--max-conns-per-host int` | Global cap on concurrent connections to any one host (default 8). |
 | `-h, --help` / `-v, --version` | Help / version (`adaptiSeq 0.1.0`). |
+
+`-p, --parallel N` is an alias for `--max-segments N` on the segmented engine (it
+keeps its original `axel` connection-count meaning on `--engine classic`).
 
 Examples:
 
@@ -122,6 +134,39 @@ them and renders the matching coloured `Error` / `How to solve?` lines.
 > Note: `adaptiseq.resolve` (the package attribute) is the public *function*; the
 > internal `resolve.py` submodule is reached via `importlib.import_module` or the
 > aliased internal imports. See `NOTES.md`.
+
+## Segmented download engine (Part 2)
+
+The default engine downloads each file in multiple range-based segments and
+resumes interrupted transfers:
+
+- **Per-file concurrency from size:** `min(--max-segments, max(1, size //
+  --segment-size))` segment connections; the last segment takes the remainder.
+- **Strict `206` HTTP(S)** segments written at the right offset via `os.pwrite`,
+  with atomic `.part` + `.part.meta` resume (interrupt and rerun to continue, not
+  restart). Single-connection fallback for hosts without ranges.
+- **Native segmented FTP** (`REST`/`RETR`) for FTP hosts that allow it.
+- **Transport selection:** with `auto` (the default) the engine prefers the HTTPS
+  mirror, confirmed by a cheap per-host probe, then native segmented FTP, then
+  single-stream, then `--engine classic`. `-r https` / `-r ftp` force it. It never
+  writes a zero-byte or truncated file.
+- **Connection etiquette:** a global per-host connection cap
+  (`--max-conns-per-host`) and a reactive circuit breaker (back off a host that
+  returns 429/503 or refuses connections, then recover).
+- **Speed cap:** `-s/--speed` MB/s via a shared token-bucket limiter.
+
+> **EBI FTP note:** EBI restricts FTP `REST` and caps concurrent connections per
+> IP — the two things segmentation needs — so `auto` prefers the ENA **HTTPS**
+> mirror (`https://ftp.sra.ebi.ac.uk/...`, same host, range-capable). Verified
+> live: a small real ENA fastq fetched in multiple segments is byte-identical to
+> `wget`.
+
+```python
+from adaptiseq import fetch
+fetch("SRR1553469", outdir="data/", gzip=True,           # segmented by default
+      max_segments=8, max_conns_per_host=8, segment_size_mb=512)
+fetch("SRR1553469", outdir="data/", engine="classic")     # Part 1 wget/axel path
+```
 
 ## Output files
 
@@ -161,11 +206,12 @@ adaptiseq/
   metadata.py     # ENA filereport / SRA eutils+sra-db-be / GSA CSV+XLSX
   resolve.py      # per-run URL resolution (downloadSRA/downloadGSA ports)
   engine/
-    classic.py    # wget/axel + ascp (the only engine in Part 1; the fetch seam)
-    segmented.py  # STUB -> Part 2
-    ftp.py        # STUB -> Part 2
-    optimize.py   # STUB -> Part 3
-    ratelimit.py  # STUB -> Part 2
+    classic.py    # wget/axel + ascp (Part 1 engine; the fetch seam + fallback)
+    segmented.py  # Part 2: segmented HTTP(S) downloader (range, .part resume)
+    ftp.py        # Part 2: native segmented FTP (REST/RETR via aioftp)
+    seam.py       # Part 2: SegmentedEngine — transport selection + classic fallback
+    ratelimit.py  # Part 2: token-bucket limiter, per-host cap, circuit breaker
+    optimize.py   # STUB -> Part 3 (adaptive controller)
   convert.py      # fasterq-dump + pigz
   integrity.py    # vdb-validate + md5 checks (checkSRA/checkGSA)
   merge.py        # mergeSRArun / mergeGSArun ports

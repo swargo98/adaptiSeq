@@ -130,3 +130,97 @@ the reason.
    note for maintainers.
 
 (Append further entries here as they arise during implementation.)
+
+---
+
+# Part 2 — Segmented engine (fixed concurrency)
+
+## P2.1 Decoupling plan (`SegmentedDownloader`, fastbiodl_upgrade.py L63-777)
+
+The class reaches into module globals and multiprocessing state. Before porting
+it is made self-contained (spec §2). Mapping of every entanglement:
+
+| Original (global / mp) | Replacement (injected, self-contained) |
+|---|---|
+| `download_process_status[self.process_id]` pause check | **pause token**: `pause.should_continue() -> bool`. Part 2 wires a constant "always run" (`AlwaysRun`); Part 3 swaps in the gradient gate. |
+| `process_counter` (`mp.Value`) + `flush_counter` | **byte-counter callback** `on_bytes(n)`; default no-op. Part 2 uses it for a simple meter; Part 3 feeds the throughput meter. |
+| `active_connections` (`mp.Value`) | the **per-host connection cap** in `engine/ratelimit.py` (acquire before opening a segment, release on close). |
+| `available_space_bytes(download_dir)` in the hot loop; `reserve/release_disk_space` & friends | **single cheap free-space check** before a download starts (`shutil.disk_usage`), out of the hot loop. All reservation machinery discarded. |
+| `download_dir` module global | constructor arg `outdir`; `local_path` is absolute. |
+| `session` from caller | constructor arg (an `aiohttp.ClientSession`). |
+| speed limiting (external) | **token-bucket** in `engine/ratelimit.py`, shared across a file's segments, honouring `-s/--speed` MB/s. |
+| `converter.SRAConverter`, `config_fastbiodl`, `storage_config`, `get_nvme_device`, tmpfs, `ncbi_lookup`, `search.base_optimizer` | **not imported**. Conversion stays the explicit Part 1 `convert.py` step; URLs come from Part 1 `resolve.py`. |
+
+Result: `engine/segmented.py` depends only on `aiohttp`, the stdlib, and our own
+`engine/ratelimit.py`; `engine/ftp.py` adds `aioftp`. No `fastbiodl` globals, no
+`mp`, no tmpfs (spec acceptance #9).
+
+## P2.2 Boundary kept for Part 3
+
+Concurrency in Part 2 is **fixed**: each file opens
+`min(max_segments, max(1, size // segment_size))` segment connections, bounded by
+the per-host cap. No optimizer, no `-j/--jobs`, no `--adaptive*`. The pause token
+and byte-counter seams are the only hooks Part 3 will use.
+
+## P2.3 Part 2 divergences and decisions (with reasons)
+
+P2-a. **Default transport changed to `auto` (HTTPS-first); default protocol is no
+   longer `ftp`.** Part 1 defaulted `-r` to `ftp`. Part 2 introduces a third
+   protocol state, `auto` (the new default), so the segmented engine can prefer
+   the HTTPS mirror per spec §5.1. An explicit `-r ftp` or `-r https` still forces
+   the transport and is final. `--engine classic` treats `auto` as `ftp` (iseq's
+   original URL form), so classic behaviour is unchanged. The Part 1 resolution
+   tests pin an explicit protocol, so they are unaffected.
+
+P2-b. **Same-host HTTPS upgrade only (ENA); GSA cross-host mirror not auto-swapped.**
+   For an `ftp://H/path` URL under `auto`, the engine probes `https://H/path`
+   (same host, same file — a transport change, not a URL/database change, allowed
+   by §0). This is the clean ENA case (`ftp.sra.ebi.ac.uk` serves HTTPS on the
+   same host). For GSA, the dedicated HTTPS mirror is a *different* host
+   (`download.cncb.ac.cn` vs the `ftp://download.big.ac.cn` link), which would
+   require a resolution change; Part 2 does **not** swap to it. GSA `ftp://` links
+   therefore go: same-host-https probe → native segmented FTP → single → classic.
+   Documented limitation; revisit if GSA throughput needs it.
+
+P2-c. **Per-host cap / circuit-breaker state is per-fetch in Part 2.** The
+   `HostGuard` is instantiated inside each `fetch()`'s event loop (asyncio
+   primitives are loop-bound; Part 2 drives one `asyncio.run` per file through the
+   sync seam). Since Part 2 downloads files sequentially, only one file's segments
+   are ever in flight, so the per-file cap equals the across-run cap for the
+   binding case (one large file). Part 3's single-loop worker pool will own one
+   `HostGuard` for the whole run to coalesce the cap/breaker across files. The
+   class is already written for that.
+
+P2-d. **`-p/--parallel` is now an alias for `--max-segments`** on the segmented
+   engine (with a printed note), per spec §7; it keeps its original `axel`
+   meaning only on `--engine classic`.
+
+P2-e. **Preflight refined to be transport-aware.** With the segmented engine,
+   `axel` is no longer required (it is needed only by `--engine classic -p`), and
+   integrity/convert tools are demanded only when the run will use them. Strictly
+   more permissive; never rejects a run iseq would accept (extends divergence #4).
+
+## P2.4 Transport-probe verdicts observed (live, this sandbox)
+
+- `ftp.sra.ebi.ac.uk` (ENA): HTTPS mirror returns `206` with valid `Content-Range`
+  on `Range: bytes=0-0` → verdict **segmented HTTPS**. Confirmed live: a 2.2 MB
+  real fastq (`SRR1553469_1.fastq.gz`) downloaded in 4 ranged segments is
+  byte-identical (md5) to `wget`.
+- **Known EBI FTP constraint:** EBI restricts FTP `REST` and caps concurrent
+  connections per IP — exactly the two features segmentation needs — which is why
+  HTTPS-first is the right default for ENA. The native FTP path remains for hosts
+  that do allow `REST` + concurrency (verified against a local `aioftp` server).
+- Local `aioftp` server: `REST` + concurrency confirmed → **segmented FTP**,
+  byte-identical. (EBI itself was not exercised over native FTP segmentation.)
+
+## P2.5 Which paths were exercised live vs unit-only (honesty, spec §8)
+
+- **Live:** ENA HTTPS range probe + multi-segment download byte-identical to wget;
+  ENA metadata (Part 1 differential, still green on the segmented default).
+- **Local server (real code paths, deterministic):** segmented HTTP byte-identity,
+  mid-file resume, strict-206 → single-stream fallback, per-host cap, circuit
+  breaker recovery; native segmented FTP byte-identity + REST/concurrency probe.
+- **Unit only:** segment calculation, `.part.meta` bookkeeping, token bucket,
+  `HostGuard` cap + breaker state machine, transport-selection decision order.
+- **Not executed:** a full ~130 MB real ENA file (too large for the sandbox);
+  native segmented FTP against EBI (EBI restricts `REST`, as noted).

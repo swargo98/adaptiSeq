@@ -35,10 +35,15 @@ class Options:
     aspera: bool = False            # -a
     speed: int = 1000              # -s MB/s
     skip_md5: bool = False          # -k
-    protocol: str = "ftp"          # -r ftp|https
+    protocol: str = "auto"         # -r ftp|https|auto (Part 2: auto prefers HTTPS)
     quiet: bool = False             # -Q
     output: Optional[str] = None    # -o
-    engine: str = "classic"        # --engine classic|segmented (Part 1: classic)
+    engine: str = "segmented"      # --engine segmented|classic (Part 2: segmented default)
+
+    # Part 2 segmented-engine knobs.
+    segment_size: int = 512 * 1024 * 1024   # --segment-size (bytes; CLI takes MB)
+    max_segments: int = 8                    # --max-segments (ceiling per file)
+    max_conns_per_host: int = 8             # --max-conns-per-host (global per-host cap)
 
     def __post_init__(self) -> None:
         if self.merge in (0, "0", ""):
@@ -47,12 +52,18 @@ class Options:
             raise ValueError(f"Invalid merge: {self.merge}")
         if self.database not in ("auto", "ena", "sra"):
             raise ValueError(f"Invalid database: {self.database}")
-        if self.protocol not in ("ftp", "https"):
+        if self.protocol not in ("auto", "ftp", "https"):
             raise ValueError(f"Invalid protocol: {self.protocol}")
+        if self.engine not in ("classic", "segmented"):
+            raise ValueError(f"Invalid engine: {self.engine}")
         if self.parallel < 0:
             raise ValueError(f"Invalid parallel: {self.parallel}")
         if self.speed <= 0:
             raise ValueError(f"Invalid speed: {self.speed}")
+        if self.max_segments < 1:
+            raise ValueError(f"Invalid max_segments: {self.max_segments}")
+        if self.max_conns_per_host < 1:
+            raise ValueError(f"Invalid max_conns_per_host: {self.max_conns_per_host}")
 
 
 @dataclass

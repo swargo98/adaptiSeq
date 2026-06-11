@@ -37,16 +37,63 @@ download path (`wget`, `axel`, `ascp`):
 - Reserved CLI surface for later parts: `--engine [segmented|classic]` (Part 1
   implements only `classic`; `segmented` prints a notice and falls back).
 
-## What is *not* in Part 1 (coming later)
+## Part 2 — the segmented download engine (now the default)
 
-- **Part 2:** a segmented, resumable HTTP(S)/FTP download engine as a drop-in
-  replacement for the classic call site, with fixed concurrency
-  (`--segment-size`, `--max-segments`, `--max-conns-per-host`, etc.).
-- **Part 3:** the gradient adaptive concurrency controller, batch parallel
-  download, parallel metadata resolution (`-j/--jobs`, `--meta-jobs`,
-  `--adaptive/--no-adaptive`, `--probe-window`, `--cc-penalty`), and the benchmark.
+Part 2 replaces the classic `wget`/`axel` call site with a **segmented,
+resumable HTTP(S)/FTP engine** at the single Part 1 seam, and makes it the
+default (`--engine segmented`). The engine changes only *how* bytes arrive, never
+*which* bytes: URL resolution, database choice, metadata, integrity policy, logs,
+and merge are untouched, and all Part 1 differential tests still pass on the
+segmented default.
 
-These flags are intentionally **not** present in Part 1.
+What it adds:
+
+- **Range-segmented HTTP(S)** download: per-file connection count derived from
+  size (`min(--max-segments, max(1, size // --segment-size))`), concurrent ranged
+  GETs with strict `206` validation written via `os.pwrite`, atomic `.part` +
+  `.part.meta` resume, single-connection fallback, and per-segment retry with
+  exponential backoff. Verified live against ENA: a small real fastq downloaded
+  in multiple segments is byte-identical to `wget`.
+- **Native segmented FTP** (`REST`/`RETR` via `aioftp`) with the same `.part.meta`
+  resume and strict byte-count accounting.
+- **Transport selection (`--engine segmented`, protocol `auto`):** prefer the
+  HTTPS mirror, confirmed by a cheap per-host probe; fall back to native segmented
+  FTP, then single-stream, then `--engine classic`. An explicit `-r https` / `-r
+  ftp` overrides and is final. A corrupt or zero-byte file is never produced.
+- **Connection etiquette:** a global per-host connection cap
+  (`--max-conns-per-host`) plus a reactive circuit breaker (429/503/refused →
+  exponential global backoff + temporarily lowered cap, slow recovery).
+- **Engine-applied speed cap:** `-s/--speed` MB/s now via a token-bucket limiter
+  shared across a file's segments (still applied to `ascp`).
+
+New/changed flags: `--engine [segmented|classic]` (default segmented),
+`--segment-size` (MB, default 512), `--max-segments` (default 8),
+`--max-conns-per-host` (default 8). `-p/--parallel N` becomes an alias for
+`--max-segments N` on the segmented engine (keeps its `axel` meaning on classic).
+`-r/--protocol` gains an implicit `auto` default (HTTPS-first); explicit
+`ftp`/`https` still force the transport.
+
+### Transport selection rule (summary)
+
+1. `-r https` → HTTPS (upgrade a same-host `ftp://` link to `https://`).
+2. `-r ftp` → native segmented FTP.
+3. `auto` (default) for an `ftp://` link: same-host HTTPS range probe → segmented
+   HTTPS; else FTP `REST`+concurrency probe → segmented FTP; else single-stream;
+   else classic.
+
+### Known constraint: EBI FTP `REST`
+
+EBI restricts FTP `REST` and caps concurrent connections per IP — the two things
+segmentation needs — which is why `auto` prefers the ENA **HTTPS** mirror
+(`https://ftp.sra.ebi.ac.uk/...`, same host, range-capable). The native FTP path
+is exercised against hosts that do allow `REST` + concurrency.
+
+## What is *not* in Part 2 (coming in Part 3)
+
+- The gradient adaptive concurrency controller, batch parallel download, parallel
+  metadata resolution (`-j/--jobs`, `--meta-jobs`, `--adaptive/--no-adaptive`,
+  `--probe-window`, `--cc-penalty`), and the benchmark. Concurrency across files
+  in Part 2 is fixed/uncontrolled; these flags are intentionally **not** present.
 
 ## Version mapping
 
