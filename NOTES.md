@@ -48,20 +48,20 @@ the reason.
 
 ## 3. Parity checklist — fidelity requirements (Section 3)
 
-- [ ] URL resolution identical: `downloadSRA`/`downloadGSA`/`getSRAMetadata`/
+- [x] URL resolution identical: `downloadSRA`/`downloadGSA`/`getSRAMetadata`/
       `getGSAMetadata`/`validateQuery` ported faithfully (ENA vol path, srapath,
       GSA Huawei vs ftp, fastq.gz vs .sra, `-d`/`-g`/`-a`/`-r` interactions).
-- [ ] Metadata endpoints + filenames + formats + columns + user-agents identical.
-- [ ] Accession regexes copied verbatim (see `accession.py` docstrings).
-- [ ] MD5/integrity policy identical: `vdb-validate` for `.sra`, md5-vs-metadata
+- [x] Metadata endpoints + filenames + formats + columns + user-agents identical.
+- [x] Accession regexes copied verbatim (see `accession.py` docstrings).
+- [x] MD5/integrity policy identical: `vdb-validate` for `.sra`, md5-vs-metadata
       for `.fastq.gz`, GSA vs project `md5sum.txt`; ≤3 rounds then `fail.log`;
       `success.log` line format `$(date)\t$ID`; `-k` skips.
-- [ ] Resume/skip identical: ID already in `success.log` is skipped with same msg.
-- [ ] External tools shelled out, not reimplemented (fasterq-dump, pigz,
+- [x] Resume/skip identical: ID already in `success.log` is skipped with same msg.
+- [x] External tools shelled out, not reimplemented (fasterq-dump, pigz,
       vdb-validate, srapath, ascp, md5sum, wget, axel). `CheckSoftware` → preflight.
-- [ ] Merge (`-e ex|sa|st`) reproduces symlink/rename/concatenate logic incl.
+- [x] Merge (`-e ex|sa|st`) reproduces symlink/rename/concatenate logic incl.
       single-run rename and differing-prefix cases.
-- [ ] Coloured `Note`/`Error`/`How to solve?` message style matched exactly.
+- [x] Coloured `Note`/`Error`/`How to solve?` message style matched exactly.
 
 ## 4. Parity checklist — CLI flags (Section 4)
 
