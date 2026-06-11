@@ -120,4 +120,13 @@ the reason.
    the intended ``sed -i '/SaveName/d' success.log``. Cosmetic stdout only; the
    harness compares log contents, not these hints.
 
+7. **`adaptiseq.resolve` (the public function) shadows the `resolve.py`
+   submodule.** Section 6 mandates ``from adaptiseq import resolve`` to be the
+   URL-resolving *function*, while Section 5 names ``resolve.py`` as a module.
+   The public function wins at the package namespace; the submodule is internal
+   and reached by internal aliased imports (``from . import resolve as _resolve``)
+   or, in tests, via ``importlib.import_module("adaptiseq.resolve")``. Not a
+   behavioural divergence from iseq (which has no library API) — just a naming
+   note for maintainers.
+
 (Append further entries here as they arise during implementation.)

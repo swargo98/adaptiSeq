@@ -106,14 +106,13 @@ def _read_input(value: str) -> List[str]:
     return [value]
 
 
-def _validate_choice(name: str, value: str, allowed, reporter) -> str:
+def _validate_choice(label: str, flag: str, value: str, allowed, hints, reporter) -> str:
     low = value.lower()
     if low not in allowed:
         _emit_error(
             reporter,
-            f"Invalid {name}: {value}",
-            f'Please use {" or ".join(chr(34)+a+chr(34) for a in allowed)} for '
-            f'the "{name}" option',
+            f"Invalid {label}: {value}",
+            f'Please use {hints} for the "{flag}" option',
         )
         sys.exit(1)
     return low
@@ -161,28 +160,40 @@ def main(argv: Optional[List[str]] = None) -> int:
     # --- value validation, mirroring iseq messages ---
     database = "auto"
     if args.database is not None:
-        database = _validate_choice("-d", args.database, ("ena", "sra"), reporter)
+        database = _validate_choice(
+            "database", "-d", args.database, ("ena", "sra"),
+            '"ena" or "sra"', reporter)
     protocol = "ftp"
     if args.protocol is not None:
-        protocol = _validate_choice("-r", args.protocol, ("ftp", "https"), reporter)
+        protocol = _validate_choice(
+            "protocol", "-r", args.protocol, ("ftp", "https"),
+            '"ftp" or "https"', reporter)
     merge = None
     if args.merge is not None:
-        merge = _validate_choice("-e", args.merge, ("ex", "sa", "st"), reporter)
+        merge = _validate_choice(
+            "merge", "-e", args.merge, ("ex", "sa", "st"),
+            '"ex", "sa", or "st"', reporter)
 
-    def _posint(flag: str, value: str, default: int) -> int:
+    def _posint(label: str, flag: str, value: str, default: int, hint: str) -> int:
         if value is None:
             return default
         if not value.isdigit() or int(value) <= 0:
-            _emit_error(reporter, f"Invalid {flag}: {value}",
-                        f'Please use a positive integer for the "{flag}" option')
+            _emit_error(reporter, f"Invalid {label}: {value}", hint)
             sys.exit(1)
         return int(value)
 
-    threads = _posint("-t", args.threads, 8)
-    speed = _posint("-s", args.speed, 1000)
+    # iseq does not validate -t as a positive int (it passes it straight through);
+    # we coerce leniently, defaulting to 8 on a non-integer.
+    threads = int(args.threads) if str(args.threads).isdigit() else 8
+    speed = _posint(
+        "speed", "-s", args.speed, 1000,
+        'Please use a positive integer for the "-s" option, such as "-s 1000" '
+        "means 1000 MB/s")
     parallel = 0
     if args.parallel is not None:
-        parallel = _posint("-p", args.parallel, 0)
+        parallel = _posint(
+            "parallel", "-p", args.parallel, 0,
+            'Please use a positive integer for the "-p" option')
 
     accessions = _read_input(args.input)
 

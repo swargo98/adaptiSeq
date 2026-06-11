@@ -1,0 +1,35 @@
+{
+  "columns": [
+    "Run",
+    "Center",
+    "ReleaseDate",
+    "FileType",
+    "FileName",
+    "FileSize",
+    "Download_path",
+    "Experiment",
+    "Title",
+    "LibraryName",
+    "LibraryStrategy",
+    "LibrarySelection",
+    "LibrarySource",
+    "LibraryLayout",
+    "InsertSize",
+    "InsertDev",
+    "Platform",
+    "BioProject",
+    "BioSample",
+    "SampleType",
+    "TaxID",
+    "ScientificName",
+    "SampleName",
+    "Submission",
+    "Organization"
+  ],
+  "runs": [
+    "CRR311377"
+  ],
+  "filenames": [
+    "CRR311377.fq.gz"
+  ]
+}

@@ -34,3 +34,9 @@ include = ["adaptiseq*"]
 
 [tool.setuptools.package-data]
 adaptiseq = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+# Offline CI can set ADAPTISEQ_NO_NETWORK=1 to force live tests to skip; the
+# fixture-mode differential tests never skip and cover parity offline.
