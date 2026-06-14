@@ -173,14 +173,19 @@ class SegmentedEngine:
         if rest_ok and conc_ok:
             return "ftp-seg"
 
-        # 3. Single-stream: prefer HTTPS if it served a size at all, else FTP.
+        # 3. Single-stream, but still inside the async engine so the file stays in
+        #    the adaptive batch pool (multi-worker, one connection per file). Part 4:
+        #    auto transport NEVER falls back to classic — classic (wget/axel/aspera)
+        #    is opt-in only via `--engine classic`.
         if size is not None:
             return "http-single"
         if ftp_size:
             return "ftp-single"
 
-        # 4. Neither serves ranges/streams cleanly — fall back to classic.
-        return "classic"
+        # 4. Last resort: HTTPS single-stream. If even that cannot serve the file,
+        #    it is recorded as failed (fail.log) rather than silently dropping to a
+        #    different transport. Use `--engine classic` for hosts only wget can reach.
+        return "http-single"
 
     def _log_transport(self, url: str, kind: str, eff_url: str) -> None:
         reasons = {

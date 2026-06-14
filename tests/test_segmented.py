@@ -311,6 +311,40 @@ def test_transport_ftp_override(tmp_path):
     assert url == "ftp://h/x.gz"
 
 
+def test_auto_transport_never_falls_back_to_classic(tmp_path, monkeypatch):
+    # Part 4: when nothing supports ranges, auto must degrade to single-stream
+    # within the async engine, NEVER to classic (which is opt-in only).
+    import adaptiseq.engine.seam as seam_mod
+    from adaptiseq.engine import segmented as seg_mod
+
+    eng = _engine(str(tmp_path))  # protocol defaults to auto
+
+    async def no_ranges(self):
+        return (None, False)  # no size, no ranges
+
+    async def no_ftp(host, port, path):
+        return (None, False, False)  # no size, no REST, no concurrency
+
+    monkeypatch.setattr(seg_mod.SegmentedDownloader, "probe_range_support", no_ranges)
+    monkeypatch.setattr(seam_mod, "probe_ftp", no_ftp)
+
+    async def main():
+        async with aiohttp.ClientSession() as s:
+            return await eng._probe_ftp_kind("ftp://h/x.gz", s)
+
+    kind = run(main())
+    assert kind != "classic"
+    assert kind in ("http-single", "ftp-single")
+
+
+def test_default_options_are_segmented_and_adaptive():
+    from adaptiseq.options import Options
+    o = Options()
+    assert o.engine == "segmented"
+    assert o.adaptive is True
+    assert o.protocol == "auto"
+
+
 def test_self_contained_no_forbidden_imports():
     # Acceptance #9: the engine modules must be importable with only aiohttp,
     # aioftp, the stdlib, and our own code — no fastbiodl globals, multiprocessing,
