@@ -126,3 +126,45 @@ offer those features.
   to search; that was not measured here. We do not overstate it.
 - `iseq -p 8`'s timeout reflects axel's behaviour against EBI FTP on this run; a
   different network or moment might differ. We report what happened.
+
+---
+
+## Real Aspera (Part 6) — proper `ascp`, real ENA transfer
+
+Unlike Part 5 (which only ever ran a **no-op `ascp` stub** + synthetic curves), Part 6
+ran a **genuine IBM `ascp` 4.4.4** (from the IBM Aspera Transfer SDK) against the real
+ENA Aspera endpoint `fasp.sra.ebi.ac.uk:33001`. Provision with
+`bench/setup_real_ascp.sh`.
+
+**Key finding (ENA key migration, 2026-06):** ENA has migrated its `era-fasp` Aspera
+auth from the legacy **DSA** key (`asperaweb_id_dsa.openssh`, still shipped by
+Kingfisher and referenced in old iSeq docs) to an **RSA** key. The DSA key is now
+*rejected* by the server (`Permission denied (publickey)`); the working key is the
+RSA token-auth key — which is exactly the second path iSeq/adaptiSeq already probe
+(`$(dirname ascp)/../etc/aspera_tokenauth_id_rsa`), so **no package code change was
+needed**. Tools that hardcode only the DSA key now fail ENA Aspera.
+
+**Single-file sanity:** `SRR22904257.fastq.gz` (50,963 B) transferred via the exact
+command `fetch_aspera` builds (`ascp -QT -P 33001 -i <rsa-key> -l <s>M -k1 -d
+era-fasp@fasp.sra.ebi.ac.uk:<path> .`), md5 `bfa437e8…` matched.
+
+**Real adaptive batch (32 ENA `.fastq.gz`, 2.2 GB, PRJEB12345):** through adaptiSeq's
+`AsperaBatchDownloader` with the hysteresis controller (`-j 8 --adaptive
+--probe-window 4`). All 16 runs (32 files) md5-verified, exit 0. Measured worker
+trajectory:
+
+```
+1w @ 206 MB/s (eff 1.00),  2w @ 21 MB/s (eff 0.05)  -> settle at 1 worker
+```
+
+Adding a second concurrent `ascp` session collapsed aggregate efficiency to 5% — EBI
+throttles aggressive per-IP parallelism — so the additive-increase + efficiency-
+hysteresis controller **correctly backed off and held at a single session**. This is
+exactly the behaviour the controller was designed for, now validated on real `ascp` +
+real ENA (not a fake). It also means a naive fixed `-j 8` would have opened 8 sessions
+that EBI penalises; adaptive converged to the operating point EBI actually rewards.
+
+Caveat: the `DirGrowthMeter` samples directory growth, so the 206 vs 21 magnitudes
+carry sampling noise (which files were mid-flight at probe time); the *qualitative*
+result — efficiency collapse on the 2nd session → back-off — is robust and
+reproducible. GSA Aspera (Huawei-wins rule) was not re-run; ENA is the validated path.

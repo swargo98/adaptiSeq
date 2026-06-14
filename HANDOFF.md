@@ -152,9 +152,16 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
 1. **Adaptive vs fixed is within noise on small batches** — two runs flipped which
    won. No claim that adaptive beats fixed on short jobs; its payoff needs a long
    sustained run (not measurable in the sandbox).
-2. **Real ENA Aspera was never run** — no `aspera-cli` in the sandbox and EBI
-   restricts Aspera. The hysteresis controller, `DirGrowthMeter`, and pool are
-   tested with synthetic curves + a fake `ascp` only.
+2. ~~**Real ENA Aspera was never run**~~ **RESOLVED in Part 6.** A genuine IBM
+   `ascp` 4.4.4 (IBM Aspera Transfer SDK) now runs against real ENA
+   `fasp.sra.ebi.ac.uk:33001`: single-file md5-verified transfer + a 32-file /
+   2.2 GB adaptive batch (all md5 OK). Controller trajectory `1w@206→2w@21 (eff
+   0.05) → settle at 1` — it correctly backs off when EBI throttles the 2nd
+   session. **Finding:** ENA migrated DSA→RSA auth keys; the legacy
+   `asperaweb_id_dsa.openssh` is now rejected, but adaptiSeq's RSA fallback path
+   already covers it (no code change). Provision via `bench/setup_real_ascp.sh`;
+   details in `PART6_PLAN.md` + `BENCHMARK.md` "Real Aspera". GSA Aspera still
+   unrun. The no-op stub now lives at `~/.local/bin/ascp.stub`.
 3. **Medium/large benchmark lists (49–55 GB each)** were too big to download
    repeatedly; only the many-small-files "small" list was benchmarked.
 4. Full ~130 MB real ENA files and native segmented FTP against EBI were not run

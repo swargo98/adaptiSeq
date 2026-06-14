@@ -30,7 +30,7 @@ test = ["pytest>=7.0", "openpyxl>=3.0"]
 adaptiseq = "adaptiseq.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/swargo98/adaptiFetch"
+Homepage = "https://github.com/swargo98/adaptiSeq"
 Upstream = "https://github.com/BioOmics/iSeq"
 
 [tool.setuptools.packages.find]

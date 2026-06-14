@@ -25,3 +25,9 @@ fail.log
 # but DO keep checked-in golden fixtures
 !tests/fixtures/**
 bench/benchmark_run.log
+
+# sysbench (Part 7): regenerable benchmark output + downloaded data — keep code only
+sysbench/runs/
+
+# copyrighted reference papers (local only)
+papers/
