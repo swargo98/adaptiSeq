@@ -6,17 +6,18 @@ Per-second resource sampling of each tool's process tree, attributed to the four
 
 | tool | runs | wall s | bytes MB | formats |
 |---|---|---|---|---|
-| adaptiseq-classic | 2 | 3.3±0.2 | 179.0 | .fastq.gz |
-| sra-toolkit | 2 | 25.1±0.2 | 311.3 | .sra |
-| adaptiseq | 2 | 3.4±0.2 | 179.0 | .fastq.gz |
+| iseq | 1 | 3.5±0.0 | 164.6 | .fastq.gz |
+| sra-toolkit | 1 | 23.4±0.0 | 313.6 | .sra |
+| adaptiseq | 1 | 3.4±0.0 | 164.6 | .fastq.gz |
 
 ## Per-phase resource breakdown
 
 | tool | phase | secs | CPU% mean/peak | RSS MB mean/peak | read MB/s | write MB/s | net recv MB/s |
 |---|---|---|---|---|---|---|---|
-| adaptiseq-classic | data | 4 | 11/16 | 38/38 | 0.00 | 64.09 | 64.39 |
-| adaptiseq-classic | md5 | 2 | 8/13 | 43/48 | 0.00 | 49.69 | 49.71 |
-| sra-toolkit | metadata | 10 | 1/5 | 29/30 | 0.00 | 0.00 | 0.01 |
-| sra-toolkit | data | 39 | 14/72 | 31/31 | 0.00 | 15.88 | 16.03 |
-| adaptiseq | data | 4 | 25/63 | 64/66 | 0.00 | 89.12 | 89.69 |
-| adaptiseq | md5 | 2 | 1/1 | 71/74 | 0.00 | 0.01 | 0.06 |
+| iseq | data | 1 | 10/10 | 32/32 | 0.00 | 55.55 | 55.77 |
+| iseq | md5 | 2 | 8/16 | 29/35 | 0.00 | 54.02 | 54.22 |
+| sra-toolkit | metadata | 5 | 1/3 | 28/28 | 0.00 | 0.00 | 0.01 |
+| sra-toolkit | data | 17 | 13/27 | 30/30 | 0.00 | 18.25 | 18.37 |
+| sra-toolkit | md5 | 1 | 0/0 | 28/28 | 0.00 | 1.64 | 1.64 |
+| adaptiseq | data | 2 | 27/53 | 69/78 | 0.00 | 81.88 | 82.39 |
+| adaptiseq | md5 | 1 | 0/0 | 75/75 | 0.00 | 0.01 | 0.06 |

@@ -56,6 +56,12 @@ so wall-clock/CPU/IO stay comparable across tools that fetch different payloads
   tiny files the whole run fits in ~1 sample. Use mid/large accessions.
 - Phase boundaries are marked by each adapter. Tools that fuse phases (stream data
   while resolving) should mark `overlapped` rather than force a split.
+- **md5-phase isolation** uses a "re-run the tool over already-present files" trick.
+  adaptiSeq recognises complete files and only md5-checks (md5-phase write ≈ 0), but
+  **stock iSeq and `adaptiseq --engine classic` re-download** on the second pass, so
+  their md5-phase write rate reflects a re-fetch, not pure verification. This is
+  itself an informative difference (resume/skip behaviour); for a strict md5-only
+  number use the data-phase-with/without-`-k` delta instead.
 
 ## Tool status
 

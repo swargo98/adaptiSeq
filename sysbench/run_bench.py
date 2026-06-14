@@ -32,6 +32,7 @@ from .sampler import Sampler
 from .adapters.adaptiseq_adapter import AdaptiseqAdapter
 from .adapters.sratoolkit_adapter import SraToolkitAdapter
 from .adapters.pysradb_adapter import PysradbAdapter
+from .adapters.iseq_adapter import IseqAdapter
 
 ADAPTERS = {
     "adaptiseq": lambda: AdaptiseqAdapter(),
@@ -39,8 +40,9 @@ ADAPTERS = {
     "adaptiseq-segmented": lambda: AdaptiseqAdapter(engine_args=["--no-adaptive"]),
     "sra-toolkit": lambda: SraToolkitAdapter(),
     "pysradb": lambda: PysradbAdapter(),
+    "iseq": lambda: IseqAdapter(),
 }
-# iseq / edgeturbo adapters are added once those tools are provisioned (Part 7 plan).
+# edgeturbo adapter is added once that tool is provisioned (Part 7 plan).
 
 
 def _write_trace(path: Path, samples) -> None:
