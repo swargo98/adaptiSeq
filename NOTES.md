@@ -362,3 +362,41 @@ succeeds. Files are deleted between each method. To run stock iseq in the sandbo
 (which lacks aspera), a **no-op `ascp` stub** is placed on `PATH` purely to pass
 iseq's startup `CheckSoftware` gate; iseq's actual ENA path uses `wget`/`axel`, so
 the stub is never invoked and the comparison stays fair. Results in BENCHMARK.md.
+
+---
+
+# Part 5 — fair byte benchmark, live progress, adaptive Aspera
+
+## P5.1 Benchmark fairness by bytes + format
+Different fetchers may pull different formats/sizes, so the batch harness records
+**bytes, MB/s, and format** per method (not time alone). On the headline run all
+tools fetched the same 89 MB of `.fastq.gz`, so MB/s is a fair apples-to-apples
+metric. adaptiSeq leads; `iseq -p 8` (axel over EBI FTP) times out.
+
+## P5.2 Adaptive vs fixed is within noise on small batches (honest)
+Two runs flipped: run A `--adaptive` 16.9 s vs `--no-adaptive` 19.9 s; run B
+`--adaptive` 20.4 s vs `--no-adaptive` 15.9 s. On a ~16–20 s job the controller has
+only ~3 probe windows and its probing overhead can exceed its gain. We do **not**
+claim adaptive beats fixed on small batches; its payoff needs a long sustained run
+(not measurable in the sandbox). Robust across both runs: adaptiSeq beats iseq and
+Kingfisher.
+
+## P5.3 Adaptive Aspera — why a different controller
+`ascp` cannot pause/resume mid-file, so the gradient controller (pause + re-queue)
+is inapplicable. Aspera concurrency is gated only at file-pickup boundaries and
+tuned by **additive-increase + efficiency hysteresis** (`hysteresis_search`):
+baseline at 1 worker; each interval add one worker and keep it iff aggregate
+throughput ≥ `--aspera-efficiency × (workers × baseline)`, else drop and hold. This
+intentionally stops near the point where *cumulative* efficiency crosses the
+threshold (it can overshoot the marginal knee by one worker — a deliberate, bounded
+bias). Throughput is sampled from output-directory growth (`DirGrowthMeter`) since
+ascp writes bytes out-of-process.
+
+## P5.4 What was NOT exercised live (Aspera)
+No `aspera-cli` in the sandbox and EBI restricts Aspera, so **real ascp transfers
+were not run**. The controller logic, the directory meter, and the full pool are
+validated on synthetic throughput curves and with a fake `ascp` (a function that
+writes a file's bytes over time) end-to-end. The production `download_fn` is
+`ClassicEngine.fetch_aspera`; the ENA resolution reuses the Part 1 resolver
+(scheme stripped to the `host/path` form ascp expects). GSA Aspera (Huawei-wins)
+stays on the sequential path.

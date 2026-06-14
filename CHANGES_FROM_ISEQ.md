@@ -155,6 +155,21 @@ New flags: `-j/--jobs` (20), `--adaptive/--no-adaptive` (on), `--probe-window`
   edge on a many-files workload is *parallel URL resolution + adaptive batch
   download* against tools that resolve and download one run at a time.
 
+## Part 5 — byte-aware benchmark, live progress, adaptive Aspera
+
+- **Live file-level progress bar** during batch download (files done/total,
+  instantaneous last-1s throughput, active workers); silent under `-Q` / non-TTY.
+- **Adaptive parallel Aspera** (`-a`): since `ascp` can't pause/resume mid-file, a
+  file-boundary-gated `ascp` pool tuned by an **additive-increase + efficiency
+  hysteresis** controller (`--aspera-efficiency`, default 0.70) over an
+  output-directory-growth throughput meter. Tested on synthetic curves + a fake
+  `ascp`; real ENA Aspera not run in the sandbox.
+- **Byte-aware benchmark:** the harness now records bytes + MB/s + format per
+  method (tools may fetch different formats/sizes), confirming the batch comparison
+  is apples-to-apples; adaptiSeq beats iseq and Kingfisher on MB/s. The
+  adaptive-vs-fixed margin is within noise on small workloads and is reported as
+  such (see [BENCHMARK.md](BENCHMARK.md)).
+
 ## Version mapping (unchanged)
 
 adaptiSeq remains `adaptiSeq 0.1.0`.

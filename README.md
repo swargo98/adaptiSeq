@@ -106,7 +106,19 @@ adaptiseq -i accession [options]
 | `--probe-window int` | Adaptive optimizer probe window in seconds (default 5). |
 | `--cc-penalty float` | Worker-cost penalty `K` in `score = throughput / K**workers` (default 1.01). |
 | `--meta-jobs int` | Parallelism for metadata/URL resolution (default 3), bounded by per-endpoint rate limits. |
+| `--aspera-efficiency float` | Adaptive Aspera: keep an added `ascp` worker only if achieved throughput ≥ this fraction of `workers × single-worker baseline` (default 0.70). |
 | `-h, --help` / `-v, --version` | Help / version (`adaptiSeq 0.1.0`). |
+
+During a batch download (non-quiet, in a terminal) adaptiSeq shows a live
+file-level progress bar:
+
+```
+adaptiSeq  [=========>      ]  21/35 files | 38.4 Mbps | 8 workers
+```
+
+showing files completed/total, the **instantaneous** (last-1-second) throughput —
+the exact number the optimizer probes on — and the active worker count. It is
+silent under `-Q/--quiet` and when output is not a TTY.
 
 `-p, --parallel N` is an alias for `--max-segments N` on the segmented engine (it
 keeps its original `axel` connection-count meaning on `--engine classic`).
@@ -218,6 +230,24 @@ past failures, non-zero exit on any failure) are preserved. The controller's
 chosen worker trajectory is logged. See [BENCHMARK.md](BENCHMARK.md) for an honest
 speed comparison (aria2c is faster on raw throughput; adaptiSeq's edge is parity
 and the importable API, not raw speed).
+
+## Adaptive Aspera (`-a`)
+
+`ascp` transfers cannot be paused/resumed mid-file, so the gradient controller
+(which pauses and re-queues) does not apply. With `-a`, adaptiSeq runs a parallel
+`ascp` pool gated only at **file-pickup boundaries**, tuned by an **additive-increase
++ efficiency-hysteresis** controller:
+
+- measure per-worker throughput at one worker (the baseline);
+- each interval, tentatively add one worker; keep it only if aggregate throughput
+  reaches at least `--aspera-efficiency` (default **0.70**) of the theoretical
+  `workers × baseline`; otherwise drop that worker and hold (no flapping).
+
+Throughput for `ascp` (whose bytes are written out-of-process) is measured by
+sampling output-directory growth. The controller, the directory meter, and the
+pool are unit-tested on synthetic throughput curves and with a fake `ascp`
+end-to-end; **real ENA Aspera was not exercised** in development (no `aspera-cli`
+in the sandbox; EBI also restricts Aspera) — see `BENCHMARK.md`/`NOTES.md`.
 
 ## Output files
 

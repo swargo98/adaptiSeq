@@ -30,20 +30,39 @@ To run *stock* iseq in this sandbox (which has no Aspera), a no-op `ascp` stub i
 placed on `PATH` only to satisfy iseq's startup `CheckSoftware` gate; iseq's actual
 ENA path uses `wget`/`axel`, so the stub is never invoked — the comparison is fair.
 
-| Method | Wall time | Throughput | Files | Notes |
-|--------|----------:|-----------:|------:|-------|
-| `iseq` (stock, sequential wget) | 27.9 s | 25.6 Mbps | 35 | one run at a time |
-| `iseq -p 8` (axel) | **TIMEOUT (>200 s)** | — | 2 | axel stalled on EBI FTP |
-| `Kingfisher -m ena-ftp` | 22.1 s | 32.3 Mbps | 35 | one run at a time (aria2c) |
-| `adaptiseq --no-adaptive -j 20` | 19.9 s | 35.9 Mbps | 35 | fixed batch concurrency |
-| **`adaptiseq --adaptive -j 20`** | **16.9 s** | **42.3 Mbps** | 35 | adaptive batch (default) |
+**Fairness check via bytes + format (Part 5 item 1).** Wall time alone is unfair if
+tools fetch different formats/sizes, so we record **bytes downloaded**, **MB/s**,
+and the **format**. Here every tool fetched the **same 89 MB of `.fastq.gz`** (same
+35 files), so the comparison is apples-to-apples and MB/s is the fair metric.
 
-**adaptiSeq is the fastest**, on the batch workload it is built for:
+| Method | Wall time | Bytes | MB/s | Files | Format |
+|--------|----------:|------:|-----:|------:|--------|
+| `iseq` (stock, sequential wget) | 44.0 s | 89 MB | 2.03 | 35 | gz |
+| `iseq -p 8` (axel) | **TIMEOUT (>120 s)** | — | — | 1 | gz |
+| `Kingfisher -m ena-ftp` | 22.4 s | 89 MB | 3.99 | 35 | gz |
+| `adaptiseq --no-adaptive -j 20` | **15.9 s** | 89 MB | **5.62** | 35 | gz |
+| `adaptiseq --adaptive -j 20` | 20.4 s | 89 MB | 4.38 | 35 | gz |
 
-- **1.65× faster than stock iseq** (27.9 → 16.9 s),
-- **1.31× faster than Kingfisher** (22.1 → 16.9 s),
-- **1.18× faster than its own fixed-concurrency mode** (19.9 → 16.9 s) — the
-  adaptive controller pays for itself here, modestly.
+**adaptiSeq is the fastest** on the batch workload it is built for — both modes beat
+both dedicated tools by a wide margin (≈2.8× the MB/s of stock iseq, ≈1.1–1.4× of
+Kingfisher). `iseq -p 8` (axel over EBI FTP) timed out again.
+
+### Adaptive vs fixed is noisy on tiny workloads — reported honestly
+
+Across two runs the adaptive-vs-fixed result **flipped**:
+
+| Run | `--adaptive` | `--no-adaptive` | winner |
+|-----|-------------:|----------------:|--------|
+| A (Part 4) | 16.9 s | 19.9 s | adaptive |
+| B (Part 5) | 20.4 s | 15.9 s | fixed |
+
+On a ~16–20 s run there is room for only ~3 probe windows, and the controller's
+probing (it deliberately spends windows at 1 worker and at trial counts to measure
+gradients) can cost more than it gains. **We therefore do not claim the adaptive
+controller beats fixed concurrency on small batches** — it is within noise here.
+Its design payoff is a *long, sustained* multi-file run where the gradient has many
+windows to search; that regime was not measurable in this sandbox. What is robust
+across both runs: **adaptiSeq (either mode) decisively beats iseq and Kingfisher**.
 
 ### Why adaptiSeq wins here
 
