@@ -114,6 +114,8 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     args.out.mkdir(parents=True, exist_ok=True)
+    from . import envinfo
+    print(f"[bench] env -> {envinfo.write(args.out)}", flush=True)
     results: List[Dict] = []
     for rep in range(1, args.repeats + 1):
         order = list(args.tools)

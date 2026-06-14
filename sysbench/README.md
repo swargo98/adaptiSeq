@@ -22,6 +22,8 @@ sysbench/
   phases.py       # PhaseTimeline shared between adapter and sampler
   run_bench.py    # runner: per tool×accession×repeat under the sampler → raw traces
   report.py       # aggregate traces → per-phase table + RESULTS.md (stdlib only)
+  plot.py         # Fig-1D-style phase timelines + summary bars (matplotlib)
+  envinfo.py      # tool versions + hardware/OS → env.json (reproducibility)
   adapters/       # one per tool (adaptiseq, sra-toolkit, pysradb; iseq/edgeturbo TODO)
   runs/           # output: <tool>/<acc>/repN/{trace.csv,meta.json} + RESULTS.md
 ```
