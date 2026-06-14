@@ -70,8 +70,11 @@ so wall-clock/CPU/IO stay comparable across tools that fetch different payloads
 | adaptiseq (adaptive/classic/segmented) | ✅ | runs (fastq.gz via ENA) |
 | sra-toolkit (`prefetch` + `vdb-validate`) | ✅ | runs (.sra) |
 | pysradb | ✅ | metadata runs; `download` needs a **study** accession (run-level fails — reported honestly), no md5 phase |
-| iseq | ⬜ | needs stock `iseq` on PATH (+ real `ascp` from Part 6) |
-| edgeturbo | ⬜ | locate real distribution; if not installable in-sandbox, mark "not run" |
+| iseq | ✅ | runs (.fastq.gz); `iSeq-main/bin/iseq` symlinked onto PATH + real `ascp` |
+| edgeturbo | ⚠️ | **installed & runnable** (NGDC GSA accelerator v1.3.3); GSA-only, daemon-based, driven under a pty. Transport **stalls at 0% from this US host** (NGDC UDP-accelerated transport unreachable here — ENA Aspera to EBI works). Run from an NGDC-reachable network for real numbers. Provision: `bench/setup_edgeturbo.sh`. |
+
+EdgeTurbo takes a **GSA remote path** as its "accession", e.g.
+`python -m sysbench.run_bench --tools edgeturbo --accessions /gsa/CRA004720/CRR311238/CRR311238.fq.gz`.
 
 ## Validation
 

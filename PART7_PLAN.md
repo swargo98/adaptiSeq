@@ -64,9 +64,14 @@ One adapter per tool, each returning a list of `(phase, argv)` steps + a parser:
   metadata via `srapath`/`vdb-dump` or pysradb as a stand-in if needed.
 - **pysradb** — `pysradb metadata`/`pysradb download` (metadata + data); MISSING,
   `pip install pysradb`.
-- **edgeturbo** — MISSING; locate the real distribution (the iSeq paper's GSA/SRA
-  comparator). If it cannot be installed in-sandbox, mark it clearly as
-  "not run here" rather than faking it.
+- **edgeturbo** — ✅ located + installed (NGDC GSA accelerator v1.3.3, GSA-only,
+  daemon-based, driven under a pty). Provision: `bench/setup_edgeturbo.sh`.
+  **Transport stalls at 0% from the US sandbox** (NGDC accelerated UDP transport
+  unreachable here; ENA Aspera to EBI works) — adapter reports the stall honestly;
+  run from an NGDC-reachable network for real numbers. The iSeq paper uses edgeturbo
+  for **GSA** (it gave 11.30 MB/s there); confirmed via `papers/btae641.pdf` Fig. 1D,
+  whose phases (Send request / Fetch metadata / Fetch NGS data / MD5 check) and
+  metrics (%CPU, Memory, Average I/O) this harness reproduces.
 
 ### 4. Runner + reporting — `sysbench/run_bench.py`, `sysbench/report.py`
 - CLI: `python -m sysbench.run_bench --tools ... --accessions list.txt --repeats 3

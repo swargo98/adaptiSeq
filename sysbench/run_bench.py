@@ -33,6 +33,7 @@ from .adapters.adaptiseq_adapter import AdaptiseqAdapter
 from .adapters.sratoolkit_adapter import SraToolkitAdapter
 from .adapters.pysradb_adapter import PysradbAdapter
 from .adapters.iseq_adapter import IseqAdapter
+from .adapters.edgeturbo_adapter import EdgeturboAdapter
 
 ADAPTERS = {
     "adaptiseq": lambda: AdaptiseqAdapter(),
@@ -41,8 +42,10 @@ ADAPTERS = {
     "sra-toolkit": lambda: SraToolkitAdapter(),
     "pysradb": lambda: PysradbAdapter(),
     "iseq": lambda: IseqAdapter(),
+    # GSA-only; pass a /gsa/... path as the "accession". Transport stalls from
+    # non-NGDC-reachable hosts (see adapter docstring) — reported honestly.
+    "edgeturbo": lambda: EdgeturboAdapter(),
 }
-# edgeturbo adapter is added once that tool is provisioned (Part 7 plan).
 
 
 def _write_trace(path: Path, samples) -> None:
