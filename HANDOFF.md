@@ -7,8 +7,10 @@ docs as needed.
 - **Repo:** `/home/ubuntu/adaptiSeq` — git remote `origin`
   `https://github.com/swargo98/adaptiFetch.git`, branch `main`. **All work is
   committed and pushed.**
-- **Status:** Parts 1–5 complete. **131 passed, 1 skipped** (the 1 skip is a live
-  cross-check that needs stock `iseq` installed; it is intentional).
+- **Status:** Parts 1–5 complete; **Part 6** (real Aspera) and **Part 7**
+  (standalone system-benchmark harness) substantially done — see `PART6_PLAN.md` /
+  `PART7_PLAN.md` and the "Parts 6–7" section below. Package suite green offline.
+- **Remote renamed** to `https://github.com/swargo98/adaptiSeq.git` (was adaptiFetch).
 - **Version string:** `adaptiSeq 0.1.0`. Console entry point: `adaptiseq`.
 - **Python:** 3.10 in the sandbox; package targets >=3.8.
 
@@ -50,6 +52,30 @@ differential tests are the parity guarantee and still pass.
   bytes+MB/s+format. Live file-level progress bar. Adaptive parallel Aspera via an
   additive-increase + efficiency-hysteresis controller (`--aspera-efficiency`,
   default 0.70) — since `ascp` can't pause/resume mid-file.
+
+## Parts 6–7 (this session)
+
+- **Part 6 — real Aspera (proper `ascp`).** Replaced the no-op stub with a genuine
+  IBM `ascp` 4.4.4 (IBM Aspera Transfer SDK). Real ENA transfers: single-file
+  md5-verified + 32-file/2.2 GB adaptive batch. Controller trajectory
+  `1w@206→2w@21(eff0.05) → settle at 1` (EBI throttles a 2nd session; controller
+  backs off correctly). **Finding:** ENA migrated DSA→RSA Aspera keys; the legacy
+  DSA key is rejected, but adaptiSeq's RSA fallback path already covers it (no code
+  change). Provision: `bench/setup_real_ascp.sh`. Opt-in live test:
+  `ADAPTISEQ_LIVE_ASPERA=1 pytest tests/test_aspera_live.py`. Stub now at
+  `~/.local/bin/ascp.stub`.
+- **Part 7 — `sysbench/` (standalone, NOT in the package).** Reproduces the iSeq
+  paper Fig. 1D: 1 Hz process-tree sampler (CPU/RSS/disk-IO + system net) tagged to
+  the four phases request/metadata/data/md5; runner + report (per-phase table) +
+  plot (timelines + summary bars) + envinfo (versions/hardware). Adapters:
+  adaptiseq (adaptive/classic/segmented), sra-toolkit, pysradb, iseq — all run;
+  **edgeturbo** installed (NGDC GSA accelerator) but its UDP transport stalls at 0%
+  from this US host (run from an NGDC-reachable network). Provision tools:
+  `bench/setup_real_ascp.sh`, `bench/setup_edgeturbo.sh`; stock iseq is
+  `iSeq-main/bin/iseq` symlinked onto PATH. Sample artifacts: `sysbench/RESULTS.sample.md`
+  + `sysbench/sample_plots/`. Self-tests: `pytest sysbench/tests`.
+  **Not done:** real edgeturbo numbers (transport blocked here); pysradb `download`
+  fails here via SRAweb `EmptyDataError` (metadata works); GSA Aspera; multi-testbed.
 
 ## Architecture map (where things live)
 
