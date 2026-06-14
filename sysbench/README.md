@@ -35,7 +35,14 @@ python -m sysbench.run_bench \
     --accessions ERR16961540 SRR22904257 \
     --repeats 3 --shuffle --out sysbench/runs
 python -m sysbench.report --runs sysbench/runs   # writes sysbench/runs/RESULTS.md
+python -m sysbench.plot   --runs sysbench/runs   # writes sysbench/runs/plots/*.png
 ```
+
+`plot.py` reproduces the iSeq paper's **Fig. 1D** style: a per-second phase-banded
+timeline per run (request/metadata/data/md5 shaded, with net/disk/CPU/RSS overlaid)
+plus grouped summary bars (wall time, peak CPU, peak RSS, data-phase throughput).
+Sample artifacts from a real 4-tool run are in `sysbench/sample_plots/` +
+`sysbench/RESULTS.sample.md`.
 
 `--shuffle` randomizes method order per repeat (cache fairness). Files are deleted
 between runs. Each `meta.json` records bytes + format + exit codes + phase durations,
