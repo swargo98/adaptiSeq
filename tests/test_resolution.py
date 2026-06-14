@@ -45,6 +45,29 @@ def test_gzip_https_resolution(tmp_path):
     assert len(urls) == 2
 
 
+def test_three_file_run_resolves_all_fastq_parts(tmp_path):
+    # A PAIRED run with 3 fastq files (orphan/barcode + _1 + _2). iseq mishandles
+    # this; adaptiSeq must resolve ALL .fastq.gz parts so the md5 check passes.
+    base = "ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR2290426"
+    fastq_ftp = f"{base}/SRR2290426.fastq.gz;{base}/SRR2290426_1.fastq.gz;{base}/SRR2290426_2.fastq.gz"
+    tsv = tmp_path / "SRR2290426.metadata.tsv"
+    tsv.write_text(
+        "run_accession\tlibrary_layout\tfastq_ftp\n"
+        f"SRR2290426\tPAIRED\t{fastq_ftp}\n"
+    )
+    ctx = RunContext(
+        options=Options(gzip=True, database="ena", protocol="ftp"),
+        reporter=NullReporter(), workdir=tmp_path,
+    )
+    ctx.accession = "SRR2290426"
+    ctx.database = "ena"
+    urls = R.resolve_sra_urls(ctx, "SRR2290426")
+    assert len(urls) == 3
+    assert urls[0].endswith("SRR2290426.fastq.gz")
+    assert urls[1].endswith("_1.fastq.gz")
+    assert urls[2].endswith("_2.fastq.gz")
+
+
 def test_link_extraction_uniq_collapses_ftp_and_galaxy(tmp_path):
     # fastq_ftp and fastq_galaxy are identical; uniq must collapse them to one
     # token so paired data resolves to exactly two links, not four.

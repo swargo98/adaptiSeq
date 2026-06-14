@@ -96,13 +96,23 @@ def download_sra(ctx: RunContext, srr: str) -> None:
                 link2 = _first_containing(parts, "_2.fastq.gz")
                 _download_ena_fastq(ctx, link1)
                 _download_ena_fastq(ctx, link2)
-            else:
+            elif link_num == 1:
                 reporter.info(
                     f"{bright_yellow('Note')}: {srr} is paired-end data, "
                     "but has only one link"
                 )
                 link = _first_containing(parts, ".fastq.gz")
                 _download_ena_fastq(ctx, link)
+            else:
+                # 3+ links (e.g. orphan/barcode reads + _1 + _2). iseq mishandles
+                # this (greps all and feeds wget a multiline URL); adaptiSeq fetches
+                # every .fastq.gz part so the md5 check over all files passes.
+                reporter.info(
+                    f"{bright_yellow('Note')}: {srr} has {link_num} fastq links; "
+                    "downloading all .fastq.gz parts"
+                )
+                for link in [p for p in parts if ".fastq.gz" in p]:
+                    _download_ena_fastq(ctx, link)
         return
 
     # --- SRA file path ---
@@ -194,7 +204,10 @@ def resolve_sra_urls(ctx: RunContext, srr: str) -> List[str]:
                 scheme + _first_containing(parts, "_1.fastq.gz"),
                 scheme + _first_containing(parts, "_2.fastq.gz"),
             ]
-        return [scheme + _first_containing(parts, ".fastq.gz")]
+        if len(parts) == 1:
+            return [scheme + _first_containing(parts, ".fastq.gz")]
+        # 3+ links: fetch every .fastq.gz part (orphan/barcode + _1 + _2).
+        return [scheme + p for p in parts if ".fastq.gz" in p]
 
     if ctx.database == "sra" or not sra_link:
         link = _srapath(srr)
