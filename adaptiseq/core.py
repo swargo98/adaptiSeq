@@ -275,12 +275,13 @@ def run(
     )
     ctx.engine = get_engine(options, workdir, ctx.reporter)
 
-    use_batch = (
-        options.engine == "segmented"
-        and not options.metadata
-        and not options.aspera
-    )
-    if use_batch:
+    if options.aspera and not options.metadata:
+        # Part 5: parallel adaptive Aspera for ENA/SRA (GSA aspera, with its
+        # Huawei-wins rule, stays on the sequential path).
+        sra_accs = [a for a in accessions if not is_gsa(a)]
+        if sra_accs:
+            _aspera_download_phase(ctx, sra_accs)
+    elif options.engine == "segmented" and not options.metadata:
         sra_accs = [a for a in accessions if not is_gsa(a)]
         if sra_accs:
             _batch_download_phase(ctx, sra_accs)
@@ -289,6 +290,52 @@ def run(
         ctx.retry_count = 1
         process_accession(ctx, accession)
     return ctx
+
+
+def _strip_scheme(url: str) -> str:
+    for s in ("https://", "http://", "ftp://"):
+        if url.startswith(s):
+            return url[len(s):]
+    return url
+
+
+def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
+    """Phase A for ``-a``: parallel-resolve and download ENA/SRA files with the
+    adaptive Aspera pool (additive-increase + efficiency hysteresis). Phase B (the
+    per-accession loop) then verifies/converts/merges; ``ascp`` resume makes its
+    aspera re-touch of completed files a near no-op."""
+    import asyncio
+
+    from .aspera import AsperaBatchDownloader
+    from .batch import resolve_all
+
+    opts = ctx.options
+    reporter = ctx.reporter
+    tasks, unresolved = resolve_all(sra_accs, opts, ctx.workdir, meta_jobs=opts.meta_jobs)
+    for acc in unresolved:
+        reporter.error(f"{green('Note')}: could not resolve {acc} for aspera")
+    # Convert resolved URLs into ascp tasks (host/path form + db).
+    for t in tasks:
+        t.url = _strip_scheme(t.url)
+        t.aspera_db = "ENA"
+    if not tasks:
+        return
+    reporter.info(
+        f"{green('Note')}: Aspera batch downloading {len(tasks)} file(s) with up to "
+        f"{opts.jobs} workers "
+        f"({'adaptive hysteresis' if opts.adaptive else 'fixed'} concurrency)"
+    )
+
+    def download_fn(task):
+        return ctx.engine.fetch_aspera(task.url, task.aspera_db or "ENA")
+
+    bd = AsperaBatchDownloader(download_fn, opts, ctx.workdir, reporter)
+    asyncio.run(bd.run(tasks))
+    controller = getattr(bd, "_controller", None)
+    if controller is not None and controller.trajectory:
+        traj = ", ".join(f"{w}w@{t:.0f}Mbps(eff{e:.2f})"
+                         for w, t, e in controller.trajectory)
+        reporter.info(f"{green('Note')}: aspera worker trajectory: {traj}")
 
 
 def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:

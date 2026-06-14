@@ -111,6 +111,11 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("--meta-jobs", metavar="int", default="3", dest="meta_jobs",
                    help="Parallelism for metadata/URL resolution (default: 3), "
                         "bounded by per-endpoint rate limits.")
+    g.add_argument("--aspera-efficiency", metavar="float", default="0.70",
+                   dest="aspera_efficiency",
+                   help="Adaptive Aspera: keep an added worker only if achieved "
+                        "throughput >= this fraction of workers x single-worker "
+                        "baseline (default: 0.70).")
     g.add_argument("-h", "--help", action="store_true",
                    help="Show the help information.")
     g.add_argument("-v", "--version", action="store_true",
@@ -254,6 +259,14 @@ def main(argv: Optional[List[str]] = None) -> int:
         _emit_error(reporter, f"Invalid cc-penalty: {args.cc_penalty}",
                     'Please use a float >= 1.0 for the "--cc-penalty" option')
         return 1
+    try:
+        aspera_efficiency = float(args.aspera_efficiency)
+        if not (0.0 < aspera_efficiency <= 1.0):
+            raise ValueError
+    except ValueError:
+        _emit_error(reporter, f"Invalid aspera-efficiency: {args.aspera_efficiency}",
+                    'Please use a float in (0, 1] for the "--aspera-efficiency" option')
+        return 1
 
     accessions = _read_input(args.input)
 
@@ -311,6 +324,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             probe_window=probe_window,
             cc_penalty=cc_penalty,
             meta_jobs=meta_jobs,
+            aspera_efficiency=aspera_efficiency,
         )
         workdir = resolve_output_dir(args.output)
     except AdaptiSeqError as exc:

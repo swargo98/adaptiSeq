@@ -52,6 +52,7 @@ class DownloadTask:
     save_path: str       # relative to workdir
     accession: str
     retries: int = 0
+    aspera_db: Optional[str] = None   # "ENA"/"GSA" when this task is an ascp link
 
 
 # ============================== adaptive controller ===========================

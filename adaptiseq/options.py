@@ -51,6 +51,7 @@ class Options:
     probe_window: int = 5           # --probe-window (seconds)
     cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
     meta_jobs: int = 3              # --meta-jobs (parallel resolution)
+    aspera_efficiency: float = 0.70 # --aspera-efficiency (keep-worker threshold)
 
     def __post_init__(self) -> None:
         if self.merge in (0, "0", ""):
@@ -79,6 +80,8 @@ class Options:
             raise ValueError(f"Invalid cc_penalty: {self.cc_penalty}")
         if self.meta_jobs < 1:
             raise ValueError(f"Invalid meta_jobs: {self.meta_jobs}")
+        if not (0.0 < self.aspera_efficiency <= 1.0):
+            raise ValueError(f"Invalid aspera_efficiency: {self.aspera_efficiency}")
 
 
 @dataclass

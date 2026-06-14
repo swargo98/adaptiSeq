@@ -186,6 +186,7 @@ def fetch(
     probe_window: int = 5,
     cc_penalty: float = 1.01,
     meta_jobs: int = 3,
+    aspera_efficiency: float = 0.70,
     reporter: Optional[Reporter] = None,
 ) -> FetchResult:
     """Download and verify ``accession``.
@@ -222,6 +223,7 @@ def fetch(
         probe_window=probe_window,
         cc_penalty=cc_penalty,
         meta_jobs=meta_jobs,
+        aspera_efficiency=aspera_efficiency,
     )
     workdir = resolve_output_dir(outdir)
     ctx = core.run(
