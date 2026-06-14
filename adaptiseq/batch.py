@@ -140,6 +140,13 @@ class BatchDownloader:
         rate = TokenBucket(self.options.speed * 1024 * 1024)
         failed: Set[str] = set()
 
+        from .progress import ProgressBar
+
+        progress = ProgressBar(
+            total=len(tasks),
+            enabled=(None if not self.options.quiet else False),
+        )
+
         meter.start()
         controller = None
         ctrl_task = None
@@ -150,13 +157,15 @@ class BatchDownloader:
                 cc_penalty=self.options.cc_penalty,
             )
             ctrl_task = asyncio.ensure_future(controller.run())
+        repaint_task = asyncio.ensure_future(self._repaint(progress, meter, gate))
 
         timeout = aiohttp.ClientTimeout(total=None, sock_connect=30, sock_read=120)
         connector = aiohttp.TCPConnector(limit=0)
         async with aiohttp.ClientSession(timeout=timeout, connector=connector) as session:
             workers = [
                 asyncio.ensure_future(
-                    self._worker(i, queue, session, gate, meter, guard, rate, failed)
+                    self._worker(i, queue, session, gate, meter, guard, rate,
+                                 failed, progress)
                 )
                 for i in range(self.jobs)
             ]
@@ -165,6 +174,10 @@ class BatchDownloader:
                 w.cancel()
             await asyncio.gather(*workers, return_exceptions=True)
 
+        repaint_task.cancel()
+        await asyncio.gather(repaint_task, return_exceptions=True)
+        progress.draw(meter.last_sample(), gate.active)
+        progress.finish()
         if controller is not None:
             controller.stop()
             if ctrl_task is not None:
@@ -172,9 +185,20 @@ class BatchDownloader:
                 await asyncio.gather(ctrl_task, return_exceptions=True)
         await meter.stop()
         self._controller = controller  # exposed for tests / trajectory logging
+        self._progress = progress
         return failed
 
-    async def _worker(self, i, queue, session, gate, meter, guard, rate, failed):
+    async def _repaint(self, progress, meter, gate) -> None:
+        """Repaint the live progress bar ~2.5 Hz until cancelled."""
+        try:
+            while True:
+                progress.draw(meter.last_sample(), gate.active)
+                await asyncio.sleep(0.4)
+        except asyncio.CancelledError:
+            return
+
+    async def _worker(self, i, queue, session, gate, meter, guard, rate, failed,
+                      progress=None):
         token = gate.token(i)
         while True:
             # Gate at the file-pickup boundary (NOTES §P3.5): an idle worker waits
@@ -194,6 +218,8 @@ class BatchDownloader:
             try:
                 # Skip files already recorded as downloaded (Part 1 semantics).
                 if in_success(self.workdir, Path(task.save_path).name):
+                    if progress is not None:
+                        progress.inc()
                     continue
                 try:
                     ok = await self.engine.fetch_async(
@@ -207,6 +233,8 @@ class BatchDownloader:
                     ok = False
 
                 if ok:
+                    if progress is not None:
+                        progress.inc()
                     log.info("downloaded %s", task.save_path)
                 else:
                     task.retries += 1

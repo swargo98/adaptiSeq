@@ -67,5 +67,10 @@ class ThroughputMeter:
         s = list(self._samples)[-n:]
         return float(sum(s) / len(s)) if s else 0.0
 
+    def last_sample(self) -> float:
+        """The most recent 1-second throughput sample (Mbps) — the instantaneous
+        number the progress bar shows and the optimizer probes on. 0.0 if none."""
+        return self._samples[-1] if self._samples else 0.0
+
     def have_samples(self, n: int) -> bool:
         return len(self._samples) >= n
