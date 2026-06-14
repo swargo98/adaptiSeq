@@ -136,6 +136,25 @@ New flags: `-j/--jobs` (20), `--adaptive/--no-adaptive` (on), `--probe-window`
 - The batch path covers SRA/ENA; GSA and the classic engine use the sequential
   path; `-m`/`-a` never batch.
 
+## Part 4 — segmented+adaptive as the true default, batch-USP benchmark
+
+- **Default is `--engine segmented` + `--adaptive`, and auto transport never
+  falls back to classic.** When a host cannot serve ranges, the file degrades to
+  single-stream *within the adaptive batch pool* (still multi-worker across files,
+  one connection for that file) — it does **not** drop to `wget`/`axel`. The
+  classic engine is opt-in only via `--engine classic`. (Edge: a non-ENA/GSA
+  FTP-only host with no `REST` and no HTTPS mirror fails the file rather than
+  auto-using wget; choose `--engine classic` for such hosts.)
+- **3-file runs are handled (iseq is not).** Many real runs ship three fastq files
+  (orphan/barcode + `_1` + `_2`); iseq's `downloadSRA` mishandles them and fails
+  the download. adaptiSeq fetches every `.fastq.gz` part so the md5 check passes —
+  a correctness improvement over iseq, verified live (`SRR22904269`: 3 clean files
+  vs iseq exit 1).
+- **Benchmark vs dedicated SRA fetchers** (`iseq`, `iseq -p 8`, `Kingfisher`), the
+  real competitors for the batch USP — see [BENCHMARK.md](BENCHMARK.md). adaptiSeq's
+  edge on a many-files workload is *parallel URL resolution + adaptive batch
+  download* against tools that resolve and download one run at a time.
+
 ## Version mapping (unchanged)
 
 adaptiSeq remains `adaptiSeq 0.1.0`.

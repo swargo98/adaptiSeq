@@ -97,7 +97,7 @@ adaptiseq -i accession [options]
 | `-r, --protocol [ftp\|https]` | ENA protocol. Unspecified = `auto` (HTTPS-first transport selection); `ftp`/`https` force it. |
 | `-Q, --quiet` | Suppress progress output. |
 | `-o, --output text` | Output directory (created if missing). |
-| `--engine [segmented\|classic]` | Download engine (**default: `segmented`**). `classic` is the Part 1 `wget`/`axel` path; `segmented` falls back to it per-host when a host cannot serve ranges. |
+| `--engine [segmented\|classic]` | Download engine (**default: `segmented` + `--adaptive`**). When a host cannot serve ranges, segmented degrades to *single-stream within the adaptive pool* — it **never** auto-falls-back to classic. `classic` (`wget`/`axel`/`ascp`) is opt-in only, chosen here manually. |
 | `--segment-size int` | Segmented engine: target segment size in MB (default 512). |
 | `--max-segments int` | Segmented engine: max connections per file (default 8). |
 | `--max-conns-per-host int` | Global cap on concurrent connections to any one host (default 8). |

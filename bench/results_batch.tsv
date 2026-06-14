@@ -1,0 +1,6 @@
+method	seconds	MB	Mbps	files	status
+iseq	27.9	89	25.6	35	ok
+iseq -p 8	200.0	0	0.0	2	TIMEOUT
+kingfisher ena-ftp	22.1	89	32.3	35	ok
+adaptiseq --no-adaptive	19.9	89	35.9	35	ok
+adaptiseq --adaptive	16.9	89	42.3	35	ok

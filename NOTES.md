@@ -320,3 +320,45 @@ and the classic engine use the sequential path unchanged (GSA's `download_gsa`
 keys "already downloaded" on `success.log`, which the batch does not write, so
 batching GSA cleanly would need a resolution change — deferred, documented).
 `-m` (metadata only) and `-a` (aspera) never use the batch path.
+
+---
+
+# Part 4 — segmented+adaptive as the true default, and the batch-USP benchmark
+
+## P4.1 Default policy: never auto-fall-back to classic
+
+Per the user's direction, **segmented + adaptive is the default** and the auto
+transport selector **never** drops to the classic `wget`/`axel` engine. When a
+host cannot serve ranges, the file degrades to *single-stream within the async
+engine* (`http-single`/`ftp-single`), so it stays inside the adaptive batch pool —
+still multi-worker across files, just one connection for that file. The classic
+engine (`wget`/`axel`/`ascp`) is reachable **only** by explicitly choosing
+`--engine classic`. Rationale: "segmentation impossible" must not collapse
+cross-file concurrency to a single worker/single connection, and it must not
+silently change transport family. Edge case: a non-ENA/GSA FTP-only host with no
+`REST` and no HTTPS mirror will fail the file (recorded in `fail.log`) rather than
+auto-using `wget`; such hosts need `--engine classic` chosen manually. Documented.
+
+## P4.2 3-file runs: adaptiSeq is more robust than iseq
+
+Real PRJNA916347 runs frequently have **three** fastq files (an orphan/barcode
+`SRR.fastq.gz` plus `_1`/`_2`); ~40 of ~241 runs in that project are like this.
+iseq mishandles them: its `downloadSRA` "paired but one link" branch greps all
+three `.fastq.gz` matches and feeds `wget` a multiline URL, so the download fails
+(verified live: stock iseq exits 1 on `SRR22904269`). adaptiSeq now resolves and
+downloads **every** `.fastq.gz` part (in both `download_sra` and the batch
+`resolve_sra_urls`), so the md5 check over all files passes (verified: 3 clean
+files, `success.log` updated). This is a deliberate correctness improvement over
+iseq, not a parity divergence on the common 1-/2-file path.
+
+## P4.3 Benchmark method (batch USP)
+
+The competitor set is **dedicated SRA fetchers** (stock `iseq`, `iseq -p 8`,
+`Kingfisher -m ena-ftp`), not aria2c — adaptiSeq's edge is *parallel URL
+resolution + batch concurrent download*, which those tools do sequentially
+(one run resolved and downloaded at a time). Workload: a byte-bounded subset of
+the many-files small list (PRJNA916347), 1-/2-file runs only so every tool
+succeeds. Files are deleted between each method. To run stock iseq in the sandbox
+(which lacks aspera), a **no-op `ascp` stub** is placed on `PATH` purely to pass
+iseq's startup `CheckSoftware` gate; iseq's actual ENA path uses `wget`/`axel`, so
+the stub is never invoked and the comparison stays fair. Results in BENCHMARK.md.
