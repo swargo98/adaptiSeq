@@ -1,9 +1,12 @@
 """Adaptive Aspera: hysteresis controller, dir-growth meter, fake-ascp e2e.
 
-Real ENA Aspera is not available in the sandbox (no aspera-cli; EBI also restricts
-it), so the controller is tested rigorously on synthetic throughput curves and the
-whole pool is exercised end-to-end with a fake ``ascp`` (a function that writes a
-file's bytes over a short time). State clearly: real ascp transfers were not run.
+These offline tests exercise the controller on synthetic throughput curves and the
+whole pool end-to-end with a fake ``ascp`` (a function that writes a file's bytes
+over a short time) — they never need the network and always run.
+
+Real ENA Aspera *was* subsequently validated with a genuine IBM ``ascp`` (Part 6):
+see ``test_aspera_live.py`` (opt-in, ``ADAPTISEQ_LIVE_ASPERA=1``) and
+``BENCHMARK.md`` "Real Aspera" for the measured single-file + 32-file results.
 """
 
 import asyncio
