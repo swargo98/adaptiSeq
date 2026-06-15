@@ -223,5 +223,7 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
 ## Doc index
 
 `NOTES.md` (decisions/divergences, authoritative) · `CHANGES_FROM_ISEQ.md` ·
-`BENCHMARK.md` · `README.md` · `PART4_PLAN.md` · `PART5_PLAN.md` · the three
-`adaptiSeq_part*.md` specs · `iSeq-main/` (reference Bash + README, gitignored).
+`BENCHMARK.md` · `README.md` (iSeq-style overview) · `docs/` (Kingfisher-style
+user docs: `installation`, `usage/*`, `methods`, `examples`, `faq`) ·
+`PART4_PLAN.md` · `PART5_PLAN.md` · the three `adaptiSeq_part*.md` specs ·
+`iSeq-main/` (reference Bash + README, gitignored).
