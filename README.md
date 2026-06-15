@@ -39,7 +39,12 @@ accession-to-FASTQ workflow.
 ## Installation
 
 ```bash
+pip install adaptiseq           # once published to PyPI
+pip install adaptiseq[xlsx]     # + openpyxl, for parsing GSA project XLSX
+
+# from a checkout (development install):
 pip install -e .
+pip install -e '.[test]'        # + pytest, to run the suite
 ```
 
 Runtime Python dependencies: **`aiohttp`, `aioftp`, `numpy`** (`openpyxl` is an

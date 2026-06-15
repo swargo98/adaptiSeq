@@ -123,6 +123,21 @@ class RunContext:
         return self.path(f"{accession or self.accession}.metadata.csv")
 
 
+def load_accessions(value: str) -> list:
+    """Expand an ``-i`` value into a list of accessions.
+
+    A single accession passes through unchanged; a path to an existing file is
+    read one accession per line (blank lines dropped, trailing ``\\r`` stripped).
+    Shared by the CLI and the library ``fetch`` so both treat a file of
+    accessions identically (NOTES.md divergence #3).
+    """
+    path = Path(value)
+    if path.is_file():
+        text = path.read_text(errors="replace")
+        return [line.rstrip("\r") for line in text.splitlines() if line.strip() != ""]
+    return [value]
+
+
 def resolve_output_dir(output: Optional[str]) -> Path:
     """Mirror the ``-o`` handling: create if missing, must be writable, cd into it."""
     if output is None:

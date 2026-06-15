@@ -4,13 +4,39 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "adaptiseq"
-version = "0.1.0"
-description = "adaptiSeq: a tested, importable Python port of the iseq sequencing-data downloader (Part 1: classic engine, behaviour-preserving)."
+dynamic = ["version"]
+description = "Fast, importable downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO) with a segmented, resumable, self-tuning batch engine."
 readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "MIT" }
-authors = [{ name = "adaptiSeq" }]
-keywords = ["bioinformatics", "sequencing", "SRA", "ENA", "GSA", "download"]
+authors = [{ name = "swargo98" }]
+keywords = [
+    "bioinformatics",
+    "sequencing",
+    "SRA",
+    "ENA",
+    "GSA",
+    "DDBJ",
+    "GEO",
+    "download",
+    "fastq",
+    "aspera",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Typing :: Typed",
+]
 
 # Metadata bytes are pulled by `wget` (shelled out, exactly as iseq does) for
 # byte-for-byte parity. Part 2 adds the async segmented HTTP(S)/FTP engine, which
@@ -31,7 +57,12 @@ adaptiseq = "adaptiseq.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/swargo98/adaptiSeq"
+Repository = "https://github.com/swargo98/adaptiSeq"
+Issues = "https://github.com/swargo98/adaptiSeq/issues"
 Upstream = "https://github.com/BioOmics/iSeq"
+
+[tool.setuptools.dynamic]
+version = { attr = "adaptiseq.__version__" }
 
 [tool.setuptools.packages.find]
 include = ["adaptiseq*"]

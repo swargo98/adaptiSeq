@@ -38,7 +38,7 @@ from .errors import (
     PreflightError,
 )
 from .logs import FAIL_LOG, SUCCESS_LOG
-from .options import Options, RunContext, resolve_output_dir
+from .options import Options, RunContext, load_accessions, resolve_output_dir
 
 __version__ = "0.1.0"
 __all__ = [
@@ -191,8 +191,13 @@ def fetch(
 ) -> FetchResult:
     """Download and verify ``accession``.
 
-    Part 2 default engine is ``segmented`` (resumable HTTP(S)/FTP); pass
-    ``engine='classic'`` for the Part 1 ``wget``/``axel`` path. Thin wrapper over
+    ``accession`` may be a single accession or a path to a file listing one
+    accession per line (the same ``-i`` semantics as the CLI), in which case the
+    whole list is downloaded — through the adaptive batch pool when the segmented
+    engine is active.
+
+    The default engine is ``segmented`` (resumable HTTP(S)/FTP); pass
+    ``engine='classic'`` for the ``wget``/``axel`` path. Thin wrapper over
     :func:`adaptiseq.core.run`. Returns a :class:`FetchResult` summarising
     success/fail IDs read back from ``success.log``/``fail.log``. Does not print
     colour or exit; pass a :class:`Reporter` to capture progress.
@@ -226,8 +231,9 @@ def fetch(
         aspera_efficiency=aspera_efficiency,
     )
     workdir = resolve_output_dir(outdir)
+    accessions = load_accessions(accession)
     ctx = core.run(
-        [accession], options, reporter=reporter or NullReporter(), workdir=workdir
+        accessions, options, reporter=reporter or NullReporter(), workdir=workdir
     )
     return FetchResult(
         accession=accession,

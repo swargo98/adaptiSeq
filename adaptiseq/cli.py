@@ -22,11 +22,13 @@ from .console import (
     yellow_bold,
 )
 from .errors import AdaptiSeqError, PreflightError
-from .options import Options, resolve_output_dir
+from .options import Options, load_accessions, resolve_output_dir
 from .preflight import check_software, render_preflight_error
 from .routing import check_merge_guard
 
-VERSION = "adaptiSeq 0.1.0"
+from . import __version__
+
+VERSION = f"adaptiSeq {__version__}"
 
 USAGE = """\
 Usage:
@@ -131,11 +133,7 @@ def _emit_error(reporter: AnsiReporter, message: str, solution: Optional[str]) -
 
 def _read_input(value: str) -> List[str]:
     """Single accession vs file-of-accessions (NOTES.md divergence #3)."""
-    path = Path(value)
-    if path.is_file():
-        text = path.read_text(errors="replace")
-        return [line.rstrip("\r") for line in text.splitlines() if line.strip() != ""]
-    return [value]
+    return load_accessions(value)
 
 
 def _validate_choice(label: str, flag: str, value: str, allowed, hints, reporter) -> str:

@@ -1,0 +1,13 @@
+include LICENSE
+include README.md
+include pyproject.toml
+
+# Ship the full test tree (fixtures, conftest, local servers) so the sdist is
+# self-testable, not the half tree distutils' legacy test*.py auto-include leaves.
+graft tests
+
+# Never ship caches or compiled artifacts.
+global-exclude __pycache__
+global-exclude *.py[cod]
+prune tests/__pycache__
+prune tests/fixtures/**/__pycache__
