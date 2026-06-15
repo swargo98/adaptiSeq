@@ -14,7 +14,7 @@ from typing import List, Optional
 
 from .accession import _uniq_adjacent
 from .console import bright_yellow, green
-from .errors import DownloadError
+from .errors import DownloadError, PreflightError
 from .integrity import verify_gsa
 from .logs import in_success, mark_fail, mark_success
 from .net import USER_AGENT_MOZILLA, wget_capture, wget_spider_size
@@ -47,10 +47,17 @@ def _extract(tokens: List[str], pattern: "re.Pattern", exclude: Optional[str] = 
 
 
 def _srapath(srr: str) -> str:
-    try:
-        out = subprocess.run(["srapath", srr], capture_output=True, text=True).stdout
-    except FileNotFoundError:
-        return ""
+    # srapath is needed to resolve the SRA-fallback URL (any non-direct-ENA Run).
+    # If it is missing, raise the same clean "install sra-tools" guidance the
+    # upfront preflight would, rather than returning "" — which the caller would
+    # otherwise mislabel as "not available in all databases" (a confusing lie when
+    # the file may exist and only the tool is absent). Needs-based preflight does
+    # not require srapath for pure-ENA fastq.gz runs, so this is the right place
+    # to surface the dependency: only when the SRA path is actually taken.
+    from .preflight import check_software
+
+    check_software("srapath", "sra-tools>=2.11.0")
+    out = subprocess.run(["srapath", srr], capture_output=True, text=True).stdout
     return out.strip()
 
 

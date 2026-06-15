@@ -6,8 +6,5 @@ include pyproject.toml
 # self-testable, not the half tree distutils' legacy test*.py auto-include leaves.
 graft tests
 
-# Never ship caches or compiled artifacts.
-global-exclude __pycache__
+# Never ship compiled artifacts.
 global-exclude *.py[cod]
-prune tests/__pycache__
-prune tests/fixtures/**/__pycache__

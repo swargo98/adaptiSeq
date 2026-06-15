@@ -13,9 +13,10 @@ Three cooperating pieces:
 * :class:`AdaptiveController` — the gradient controller (``engine/optimize.py``)
   wired to the live throughput meter; it tunes the gate's active-worker count.
 * :func:`resolve_all` — parallel metadata/URL resolution (``--meta-jobs``) that
-  runs the *Part 1* multi-database, preference-ordered resolver and streams
-  resolved tasks into the download queue as they complete, throttled by
-  per-endpoint rate limiters.
+  runs the *Part 1* multi-database, preference-ordered resolver across the batch,
+  throttled by per-endpoint rate limiters. It exposes an ``on_task`` hook for
+  producer/consumer streaming, but the main path (``core._batch_download_phase``)
+  resolves the whole batch first and then hands the task list to the downloader.
 """
 
 from __future__ import annotations
@@ -305,8 +306,10 @@ def resolve_all(
     skip_in_success: bool = True,
 ) -> Tuple[List[DownloadTask], List[str]]:
     """Resolve many accessions in parallel (bounded by ``meta_jobs``), throttled by
-    per-endpoint rate limiters. Streams each resolved task to ``on_task`` as it
-    completes (overlap with downloading). Returns (all_tasks, unresolved)."""
+    per-endpoint rate limiters. Returns (all_tasks, unresolved). If ``on_task`` is
+    given, each resolved task is also passed to it as it completes, so a caller can
+    stream tasks into a downloader; the main batch path does not use this and
+    downloads only after the whole batch has resolved."""
     workdir = Path(workdir)
     all_tasks: List[DownloadTask] = []
     unresolved: List[str] = []

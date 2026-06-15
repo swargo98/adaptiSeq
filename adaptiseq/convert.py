@@ -53,6 +53,15 @@ def maybe_convert(ctx: RunContext, srr: str) -> None:
     if _has_any_fastq_gz(ctx, srr, srx):
         return
 
+    # We are about to actually convert a .sra file. fasterq-dump is only needed
+    # here — a -g run that got its bytes as direct ENA .fastq.gz never reaches
+    # this point (no .sra file), so needs-based preflight does not require it
+    # upfront. Surface a clean "install sra-tools" message instead of letting the
+    # subprocess raise a bare FileNotFoundError.
+    from .preflight import check_software
+
+    check_software("fasterq-dump", "sra-tools")
+
     reporter.info(
         f"{green('Note')}: Converting {srr} to fastq files using {opts.threads} threads"
     )

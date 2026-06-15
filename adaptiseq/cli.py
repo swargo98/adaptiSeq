@@ -79,15 +79,17 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("-k", "--skip-md5", action="store_true", dest="skip_md5",
                    help="Skip the md5 check for downloaded files.")
     g.add_argument("-r", "--protocol", metavar="[ftp|https]",
-                   help="ENA protocol selection (default: ftp).")
+                   help="ENA transport for the segmented engine (default: auto, "
+                        "HTTPS-first). Pass 'ftp' or 'https' to force one.")
     g.add_argument("-Q", "--quiet", action="store_true",
                    help="Suppress download progress bars.")
     g.add_argument("-o", "--output", metavar="text",
                    help="Output directory (created if missing; default: cwd).")
     g.add_argument("--engine", metavar="[segmented|classic]", default="segmented",
                    help="Download engine (default: segmented). 'classic' is the "
-                        "Part 1 wget/axel path; segmented falls back to it per-host "
-                        "when a host cannot serve ranges.")
+                        "opt-in wget/axel path; the segmented engine never falls "
+                        "back to classic -- a host that cannot serve ranges is "
+                        "downloaded single-stream inside the segmented engine.")
     g.add_argument("--segment-size", metavar="int", default="512", dest="segment_size",
                    help="Segmented engine: target segment size in MB (default: 512).")
     g.add_argument("--max-segments", metavar="int", default="8", dest="max_segments",

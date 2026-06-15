@@ -209,9 +209,16 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
 
 - Benchmark the medium/large (large-file) lists to test the segmented engine's
   per-file speedup and give the adaptive controller a long run to prove itself.
-- Real Aspera validation once `aspera-cli` + a key are available.
-- GSA aspera through the adaptive pool (currently sequential; Huawei-wins rule).
-- Package/publish (PyPI/bioconda); CI for the offline suite.
+- GSA aspera through the adaptive pool (currently sequential; Huawei-wins rule)
+  and live-endpoint validation (ENA Aspera is validated; GSA is not).
+- Publish to PyPI/bioconda. **Release prep done** (release-blocker pass): SPDX
+  license + `LICENSE`, classifiers/URLs, dynamic version, `MANIFEST.in`,
+  `__main__.py`, `CITATION.cff`, and a GitHub Actions CI workflow
+  (`.github/workflows/ci.yml`: offline pytest + sysbench + build + twine check +
+  wheel smoke). `python -m build` + `twine check` both pass.
+- True producer/consumer streaming of resolution→download (the `on_task` hook in
+  `batch.resolve_all` exists but the main path resolves the batch before
+  downloading; docs were corrected to stop claiming overlap).
 
 ## Doc index
 

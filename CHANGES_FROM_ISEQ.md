@@ -58,7 +58,8 @@ What it adds:
   resume and strict byte-count accounting.
 - **Transport selection (`--engine segmented`, protocol `auto`):** prefer the
   HTTPS mirror, confirmed by a cheap per-host probe; fall back to native segmented
-  FTP, then single-stream, then `--engine classic`. An explicit `-r https` / `-r
+  FTP, then to a single stream *inside the segmented engine*. It never falls back
+  to `--engine classic` — classic is opt-in only. An explicit `-r https` / `-r
   ftp` overrides and is final. A corrupt or zero-byte file is never produced.
 - **Connection etiquette:** a global per-host connection cap
   (`--max-conns-per-host`) plus a reactive circuit breaker (429/503/refused →
@@ -108,8 +109,8 @@ URL/bytes are fetched. All Part 1/2 differential tests still pass.
   failure.
 - **Parallel metadata/URL resolution** (`--meta-jobs`, default 3): fans out the
   *Part 1* multi-database, preference-ordered resolver (ENA-first + SRA fallback;
-  GSA; GEO indirection) and streams resolved files into the download queue so
-  downloading overlaps resolution. Request rates are bounded by **per-endpoint**
+  GSA; GEO indirection) so a batch resolves in parallel rather than serially before
+  the adaptive pool downloads the resolved files. Request rates are bounded by **per-endpoint**
   limiters (ENA / NCBI / GSA), not pool size; NCBI E-utilities is held to 3 req/s
   without a key, 10 with one (`NCBI_API_KEY`/`NCBI_EMAIL`).
 - **Benchmark** ([BENCHMARK.md](BENCHMARK.md)): a wall-clock comparison vs

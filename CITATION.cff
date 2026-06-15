@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use adaptiSeq in your research, please cite it using these metadata."
+title: "adaptiSeq: a self-tuning batch downloader for public sequencing data"
+abstract: >-
+  adaptiSeq is an importable Python tool for fetching public sequencing data and
+  metadata from GSA, SRA, ENA, DDBJ, and GEO. It extends the iseq downloader with
+  a segmented, resumable transfer engine, parallel metadata resolution, an adaptive
+  batch-concurrency controller, and adaptive parallel Aspera.
+type: software
+authors:
+  # TODO: replace with your real name and ORCID before a tagged release.
+  - name: "swargo98"
+repository-code: "https://github.com/swargo98/adaptiSeq"
+url: "https://github.com/swargo98/adaptiSeq"
+license: MIT
+version: "0.1.0"
+keywords:
+  - bioinformatics
+  - sequencing
+  - SRA
+  - ENA
+  - GSA
+  - download
+references:
+  - type: software
+    title: "iSeq"
+    notes: "Upstream Bash tool that adaptiSeq ports and extends."
+    repository-code: "https://github.com/BioOmics/iSeq"

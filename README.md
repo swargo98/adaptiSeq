@@ -23,8 +23,8 @@ at a time from the shell.
   paying for themselves — so you get good throughput without hand-tuning or
   hammering the server.
 - **Parallel metadata resolution.** Accession → URL resolution runs concurrently
-  across the databases, bounded by polite per-endpoint rate limits, and streams
-  resolved files into the download queue so transfer overlaps resolution.
+  across the databases (`--meta-jobs`), bounded by polite per-endpoint rate
+  limits, so a long accession list resolves in parallel rather than one at a time.
 - **Segmented, resumable transfers.** Each file is fetched in multiple byte-range
   connections with atomic `.part`/`.part.meta` resume; interrupt and rerun to
   continue, not restart.
@@ -168,8 +168,9 @@ trajectory is logged. See [BENCHMARK.md](BENCHMARK.md) for honest measurements.
 ### Parallel metadata resolution
 
 `--meta-jobs` (default 3) runs the multi-database, preference-ordered resolver
-(ENA-first with SRA fallback; GSA; GEO indirection) for many accessions at once and
-streams resolved files into the download queue, so downloading overlaps resolution.
+(ENA-first with SRA fallback; GSA; GEO indirection) for many accessions at once, so
+a batch resolves in parallel instead of serially before the adaptive pool downloads
+the resolved files.
 Request rates are bounded by **per-endpoint** limiters (ENA / NCBI / GSA), not by
 pool size; NCBI E-utilities is throttled to 3 req/s without a key and 10 with one
 (`NCBI_API_KEY` / `NCBI_EMAIL` from the environment).
@@ -190,7 +191,12 @@ Validated against the **real ENA Aspera** endpoint with a genuine IBM `ascp`:
 single-file and multi-file batches transfer and pass md5, and the controller
 correctly converges (e.g. it backs off to a single session when the endpoint
 throttles a second concurrent `ascp`). See [BENCHMARK.md](BENCHMARK.md) for the
-measured trajectory. Aspera is **opt-in** (`-a`) and supports **ENA/GSA only**.
+measured trajectory.
+
+Aspera is **opt-in** (`-a`). The **ENA** path is the adaptive, validated one above.
+**GSA** Aspera is supported on a **sequential, best-effort** basis (the
+Huawei-wins routing rule is inherited from `iseq` and runs outside the adaptive
+pool); it has not yet been validated against the live GSA endpoint here.
 
 ## Supported accessions, databases, and output
 
