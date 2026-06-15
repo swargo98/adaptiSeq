@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="180" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
+  <title id="title">adaptiSeq inverse logo</title>
+  <desc id="desc">The adaptiSeq wordmark in light colors for dark backgrounds, paired with the adaptive DNA and segmented transfer mark.</desc>
+  <defs>
+    <linearGradient id="pathA" x1="34" y1="24" x2="126" y2="136" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="0.52" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+    <linearGradient id="pathB" x1="126" y1="24" x2="34" y2="136" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.56" stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#84cc16"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="20" y1="18" x2="140" y2="142" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f2937"/>
+      <stop offset="1" stop-color="#07151f"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(22 10)">
+    <rect x="16" y="16" width="128" height="128" rx="28" fill="url(#tile)" stroke="#12384a" stroke-width="1.5"/>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M47 34C112 34 48 126 113 126" stroke="url(#pathA)" stroke-width="10"/>
+      <path d="M113 34C48 34 112 126 47 126" stroke="url(#pathB)" stroke-width="10"/>
+      <g stroke="#dbeafe" stroke-width="4.2" opacity="0.9">
+        <path d="M55 42H105"/>
+        <path d="M62 58H98"/>
+        <path d="M70 74H90"/>
+        <path d="M70 86H90"/>
+        <path d="M62 102H98"/>
+        <path d="M55 118H105"/>
+      </g>
+      <path d="M92 108H121M111 98l10 10-10 10" stroke="#fbbf24" stroke-width="7"/>
+    </g>
+    <g>
+      <circle cx="47" cy="34" r="4.8" fill="#67e8f9"/>
+      <circle cx="113" cy="34" r="4.8" fill="#38bdf8"/>
+      <circle cx="47" cy="126" r="4.8" fill="#84cc16"/>
+      <circle cx="113" cy="126" r="4.8" fill="#0f766e"/>
+    </g>
+  </g>
+  <g transform="translate(204 62)">
+    <text x="0" y="0" fill="#f8fafc" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="64" font-weight="700" letter-spacing="0">adapti<tspan fill="#5eead4">Seq</tspan></text>
+    <text x="3" y="38" fill="#cbd5e1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="500" letter-spacing="0">segmented | adaptive | verified sequencing downloads</text>
+    <g transform="translate(390 20)">
+      <rect x="0" y="0" width="28" height="8" rx="4" fill="#67e8f9"/>
+      <rect x="36" y="0" width="28" height="8" rx="4" fill="#2dd4bf"/>
+      <rect x="72" y="0" width="28" height="8" rx="4" fill="#84cc16"/>
+      <path d="M111 4h35m-10-10 10 10-10 10" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+</svg>
