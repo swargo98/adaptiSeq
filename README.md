@@ -1,81 +1,87 @@
 # adaptiSeq
 
-**adaptiSeq** is a tested, importable Python reimplementation of the
-[`iseq`](https://github.com/BioOmics/iSeq) Bash tool for fetching public
-sequencing data and metadata from **GSA, SRA, ENA, DDBJ, and GEO**.
+**adaptiSeq** is a fast, importable Python tool for fetching public sequencing data
+and metadata from **GSA, SRA, ENA, DDBJ, and GEO**. It takes any of the standard
+accession types — Project / Study / BioSample / Sample / Experiment / Run, plus
+GEO `GSE`/`GSM` — resolves them across databases, downloads the sequence files with a
+**segmented, resumable, self-tuning engine**, verifies integrity, and (optionally)
+converts and merges FASTQ.
 
-> **All three parts are complete.**
-> - **Part 1** is a *behaviour-preserving* port of `iseq` on the classic
->   `wget`/`axel`/`ascp` path (no new engine, no speed claim).
-> - **Part 2** adds a **segmented, resumable HTTP(S)/FTP download engine** as a
->   drop-in replacement at the single download seam, now the default
->   (`--engine segmented`), with fixed concurrency, a per-host connection cap, a
->   reactive circuit breaker, and HTTPS-first transport selection.
-> - **Part 3** adds a **gradient adaptive concurrency controller**, **batch
->   parallel download**, and **parallel metadata resolution** with per-endpoint
->   rate limits, plus an honest [benchmark](BENCHMARK.md).
->
-> The engine and scheduler change only *how* bytes arrive and *when* files are
-> scheduled, never *which* bytes: resolution, metadata, integrity, logs, and merge
-> are untouched and all Part 1 differential tests still pass.
+It is built for the workload that real pipelines actually have: **lists of
+accessions**, downloaded in parallel, from a script or notebook — not one accession
+at a time from the shell.
 
-## Why port a working Bash script? (design intent)
+## What makes it different
 
-The load-bearing justification for Part 1 is **maintainability and an importable
-library API**, *not* performance. The original `iseq` is a single 1,100-line Bash
-script: it cannot be unit-tested, imported, or reused from a Python pipeline, and
-its URL-resolution / retry / merge logic is entangled with shell control flow.
-adaptiSeq fixes that:
+- **A real Python API.** `fetch`, `resolve`, and `get_metadata` return values and
+  raise typed exceptions — no `sys.exit`, no colour codes, no shelling out. You can
+  resolve URLs, pull metadata, or download from inside your own Python code.
+- **Batch parallel download.** Give it a file of accessions (or any run with several
+  files) and it downloads through an asyncio worker pool instead of sequentially.
+- **Adaptive worker count.** A runtime controller tunes *how many* downloads run at
+  once by measuring achieved throughput and backing off when extra workers stop
+  paying for themselves — so you get good throughput without hand-tuning or
+  hammering the server.
+- **Parallel metadata resolution.** Accession → URL resolution runs concurrently
+  across the databases, bounded by polite per-endpoint rate limits, and streams
+  resolved files into the download queue so transfer overlaps resolution.
+- **Segmented, resumable transfers.** Each file is fetched in multiple byte-range
+  connections with atomic `.part`/`.part.meta` resume; interrupt and rerun to
+  continue, not restart.
+- **Adaptive parallel Aspera.** With `-a`, downloads go through a parallel `ascp`
+  pool whose concurrency is tuned by an efficiency-hysteresis controller.
 
-- a real package with focused modules and a clean **engine seam** (the single
-  place bytes are fetched), so Parts 2 and 3 can swap the download engine without
-  touching resolution, integrity, logging, or merge;
-- a small, documented, **importable API** (`fetch`, `resolve`, `get_metadata`)
-  that returns values and raises typed exceptions — no `sys.exit`, no colour
-  codes — so downstream Python can use adaptiSeq without shelling out;
-- a **differential test harness** with golden fixtures that proves parity with
-  `iseq` rather than asserting it.
-
-Part 1 deliberately makes **no speed claim**. Speed is the concern of Parts 2–3,
-and even there it is to be *proven*, not asserted.
-
-## Parity with `iseq`
-
-adaptiSeq accepts the same accessions, resolves the same download URLs, fetches
-the same metadata from the same endpoints into the same files, downloads with the
-same classic tools, verifies integrity with the same policy, writes the same
-`success.log`/`fail.log`, and performs the same FASTQ conversion and merge. A user
-who replaces `iseq` with `adaptiseq` in Part 1 should observe no difference except
-the program name and version string.
-
-Metadata files are byte-for-byte identical because adaptiSeq fetches them with the
-same `wget` invocations `iseq` uses. The handful of *deliberate* divergences (help
-works without the full tool set, retry counter resets per Run, a corrected Bash
-`$$` quirk, etc.) are each documented with their rationale in
-[`NOTES.md`](NOTES.md) and summarised in
-[`CHANGES_FROM_ISEQ.md`](CHANGES_FROM_ISEQ.md).
+The first four are the core of the project and are not offered by the common
+single-shot downloaders. Everything else (integrity policy, FASTQ conversion/merge,
+multi-database routing) is there so adaptiSeq is a complete drop-in for an
+accession-to-FASTQ workflow.
 
 ## Installation
 
-From source (editable):
-
 ```bash
 pip install -e .
 ```
 
-Or build the conda environment with the external tools and Python deps:
+Runtime Python dependencies: **`aiohttp`, `aioftp`, `numpy`** (`openpyxl` is an
+optional extra, `[xlsx]`, for parsing GSA project XLSX in the Python API). External
+command-line tools used at run time: `wget` (metadata/discovery), `sra-tools`
+(`srapath`, `fasterq-dump`, `vdb-validate`), `pigz`, `md5sum`, and — only for `-a` —
+a real IBM `ascp`. `axel` is used by the opt-in classic engine.
+
+## Quick start
+
+Command line:
 
 ```bash
-conda env create -f iSeq-main/iSeq.yml   # provides wget, axel, pigz, aspera-cli, sra-tools, python
-pip install -e .
+adaptiseq -i SRR7706354 -m              # metadata only -> SRR7706354.metadata.tsv
+adaptiseq -i SRR7706354 -g              # download direct .fastq.gz where available
+adaptiseq -i accessions.txt -g          # batch: mixed SRA/GSA/ENA list, in parallel
+adaptiseq -i SRX003906 -g -e ex         # merge an Experiment's runs
+adaptiseq -i CRR311377                  # GSA run -> .metadata.csv + CRA*.xlsx + data
 ```
 
-Part 1 adds only light Python dependencies (none required at runtime; `openpyxl`
-is an optional extra for parsing GSA XLSX in the library API). The external tools
-(`wget`, `axel`, `pigz`, `ascp`, `sra-tools`, `md5sum`) are the same ones `iseq`
-requires.
+Python:
 
-## Command-line usage
+```python
+from adaptiseq import fetch, resolve, get_metadata
+
+records = get_metadata("SRR7706354")                 # parsed metadata rows (list[dict])
+urls    = resolve("SRR7706354", database="ena")      # resolved download URLs (no download)
+result  = fetch("accessions.txt", outdir="data/",    # batch download + verify
+                gzip=True, jobs=20, adaptive=True)
+print(result.success_ids, result.fail_ids, result.failed)
+```
+
+The API functions never call `sys.exit` and never print colour codes; they raise the
+typed exceptions in `adaptiseq.errors` (`InvalidAccessionError`, `MetadataError`,
+`DownloadError`, `IntegrityError`, `MergeError`, `PreflightError`,
+`EngineUnavailableError`, all subclassing `AdaptiSeqError`). `FetchResult` carries
+`accession`, `outdir`, `failed` (bool), `success_ids`, and `fail_ids`.
+
+> Note: `adaptiseq.resolve` (the package attribute) is the public *function*; the
+> internal `resolve.py` submodule is reached via `importlib.import_module`.
+
+## Command-line reference
 
 ```
 adaptiseq -i accession [options]
@@ -83,235 +89,189 @@ adaptiseq -i accession [options]
 
 | Flag | Meaning |
 |------|---------|
-| `-i, --input [text\|file]` | Single accession or a file with one accession per line. |
+| `-i, --input [text\|file]` | Single accession, or a file with one accession per line (batch). |
 | `-m, --metadata` | Fetch metadata only; no sequence download. |
 | `-g, --gzip` | Prefer direct `.fastq.gz`; fall back to `.sra` then convert. |
 | `-q, --fastq` | Convert `.sra` to FASTQ with `fasterq-dump`. |
 | `-t, --threads int` | Threads for `fasterq-dump`/`pigz` (default 8). |
 | `-e, --merge [ex\|sa\|st]` | Merge at Experiment / Sample / Study level. |
 | `-d, --database [ena\|sra]` | Force database (default: auto-detect). |
-| `-p, --parallel int` | `axel` connection count. |
-| `-a, --aspera` | Aspera via `ascp` (GSA/ENA; Huawei Cloud still wins for GSA). |
+| `-a, --aspera` | Download via a parallel `ascp` pool (ENA/GSA only). |
 | `-s, --speed int` | Speed cap in MB/s (default 1000). |
 | `-k, --skip-md5` | Skip the integrity check. |
-| `-r, --protocol [ftp\|https]` | ENA protocol. Unspecified = `auto` (HTTPS-first transport selection); `ftp`/`https` force it. |
+| `-r, --protocol [ftp\|https]` | ENA protocol. Default `auto` = HTTPS-first transport selection. |
 | `-Q, --quiet` | Suppress progress output. |
 | `-o, --output text` | Output directory (created if missing). |
-| `--engine [segmented\|classic]` | Download engine (**default: `segmented` + `--adaptive`**). When a host cannot serve ranges, segmented degrades to *single-stream within the adaptive pool* — it **never** auto-falls-back to classic. `classic` (`wget`/`axel`/`ascp`) is opt-in only, chosen here manually. |
+| `--engine [segmented\|classic]` | Download engine. **Default `segmented`.** `classic` (`wget`/`axel`/`ascp`) is opt-in. |
+| `-j, --jobs int` | Max batch worker-pool size (default 20). With `--adaptive`, the controller picks how many are active. |
+| `--adaptive` / `--no-adaptive` | Adaptive worker-count control (default: on). `--no-adaptive` runs all `-j` workers with no probing. |
+| `--probe-window int` | Adaptive probe window in seconds (default 5). |
+| `--cc-penalty float` | Worker-cost penalty `K` in `score = throughput / K**workers` (default 1.01). |
+| `--meta-jobs int` | Parallelism for metadata/URL resolution (default 3), bounded by per-endpoint rate limits. |
+| `-p, --parallel int` | On `segmented`, alias for `--max-segments`; on `classic`, the `axel` connection count. |
 | `--segment-size int` | Segmented engine: target segment size in MB (default 512). |
 | `--max-segments int` | Segmented engine: max connections per file (default 8). |
 | `--max-conns-per-host int` | Global cap on concurrent connections to any one host (default 8). |
-| `-j, --jobs int` | Max worker-pool size for batch download (default 20). With `--adaptive`, the controller picks how many are active at once. |
-| `--adaptive` / `--no-adaptive` | Enable/disable the gradient controller (default: on). `--no-adaptive` runs all `-j` workers with no probing. |
-| `--probe-window int` | Adaptive optimizer probe window in seconds (default 5). |
-| `--cc-penalty float` | Worker-cost penalty `K` in `score = throughput / K**workers` (default 1.01). |
-| `--meta-jobs int` | Parallelism for metadata/URL resolution (default 3), bounded by per-endpoint rate limits. |
-| `--aspera-efficiency float` | Adaptive Aspera: keep an added `ascp` worker only if achieved throughput ≥ this fraction of `workers × single-worker baseline` (default 0.70). |
+| `--aspera-efficiency float` | Keep an added `ascp` worker only if throughput ≥ this fraction of `workers × single-worker baseline` (default 0.70). |
 | `-h, --help` / `-v, --version` | Help / version (`adaptiSeq 0.1.0`). |
 
-During a batch download (non-quiet, in a terminal) adaptiSeq shows a live
-file-level progress bar:
+During a non-quiet batch download in a terminal, adaptiSeq shows a live file-level
+progress bar with files done/total, the instantaneous (last-second) throughput the
+controller probes on, and the active worker count. It is silent under `-Q` and when
+output is not a TTY.
 
-```
-adaptiSeq  [=========>      ]  21/35 files | 38.4 Mbps | 8 workers
-```
+## The download engine
 
-showing files completed/total, the **instantaneous** (last-1-second) throughput —
-the exact number the optimizer probes on — and the active worker count. It is
-silent under `-Q/--quiet` and when output is not a TTY.
-
-`-p, --parallel N` is an alias for `--max-segments N` on the segmented engine (it
-keeps its original `axel` connection-count meaning on `--engine classic`).
-
-Examples:
-
-```bash
-adaptiseq -i SRR7706354 -m              # metadata only -> SRR7706354.metadata.tsv
-adaptiseq -i CRR311377                  # GSA run -> .metadata.csv + CRA*.metadata.xlsx + data
-adaptiseq -i accessions.txt -g          # mixed SRA/GSA list, direct fastq.gz where possible
-adaptiseq -i SRX003906 -g -e ex         # merge an Experiment's runs
-```
-
-## Library API
-
-```python
-from adaptiseq import fetch, resolve, get_metadata
-
-records = get_metadata("SRR7706354")               # parsed metadata rows (list of dicts)
-urls    = resolve("SRR7706354", database="ena")    # resolved download URLs
-result  = fetch("SRR7706354", outdir="data/",      # download + verify
-                gzip=True)
-print(result.success_ids, result.fail_ids, result.failed)
-```
-
-These functions never call `sys.exit` and never print colour codes. They raise the
-typed exceptions in `adaptiseq.errors` (`InvalidAccessionError`, `MetadataError`,
-`DownloadError`, `IntegrityError`, `MergeError`, `PreflightError`,
-`EngineUnavailableError`). The CLI (`adaptiseq.cli`) is a thin wrapper that catches
-them and renders the matching coloured `Error` / `How to solve?` lines.
-
-> Note: `adaptiseq.resolve` (the package attribute) is the public *function*; the
-> internal `resolve.py` submodule is reached via `importlib.import_module` or the
-> aliased internal imports. See `NOTES.md`.
-
-## Segmented download engine (Part 2)
-
-The default engine downloads each file in multiple range-based segments and
-resumes interrupted transfers:
+By default adaptiSeq downloads each file in multiple byte-range segments and resumes
+interrupted transfers:
 
 - **Per-file concurrency from size:** `min(--max-segments, max(1, size //
-  --segment-size))` segment connections; the last segment takes the remainder.
-- **Strict `206` HTTP(S)** segments written at the right offset via `os.pwrite`,
-  with atomic `.part` + `.part.meta` resume (interrupt and rerun to continue, not
-  restart). Single-connection fallback for hosts without ranges.
-- **Native segmented FTP** (`REST`/`RETR`) for FTP hosts that allow it.
-- **Transport selection:** with `auto` (the default) the engine prefers the HTTPS
-  mirror, confirmed by a cheap per-host probe, then native segmented FTP, then
-  single-stream, then `--engine classic`. `-r https` / `-r ftp` force it. It never
-  writes a zero-byte or truncated file.
+  --segment-size))` connections; strict HTTP `206`, written at the correct offset
+  via `os.pwrite`, with atomic `.part` + `.part.meta` resume. Hosts that cannot serve
+  ranges degrade to a single stream — never a truncated or zero-byte file.
+- **Native segmented FTP** (`REST`/`RETR`) where the host allows it.
+- **Transport selection (`auto`, default):** prefer the range-capable **HTTPS**
+  mirror (confirmed by a cheap per-host probe), then native segmented FTP, then a
+  single stream. `-r https` / `-r ftp` force the choice. The default path never
+  auto-falls-back to the classic engine; `--engine classic` is a manual opt-in.
 - **Connection etiquette:** a global per-host connection cap
-  (`--max-conns-per-host`) and a reactive circuit breaker (back off a host that
-  returns 429/503 or refuses connections, then recover).
+  (`--max-conns-per-host`) and a reactive circuit breaker that backs off a host
+  returning `429`/`503` or refusing connections, then recovers.
 - **Speed cap:** `-s/--speed` MB/s via a shared token-bucket limiter.
 
-> **EBI FTP note:** EBI restricts FTP `REST` and caps concurrent connections per
-> IP — the two things segmentation needs — so `auto` prefers the ENA **HTTPS**
-> mirror (`https://ftp.sra.ebi.ac.uk/...`, same host, range-capable). Verified
-> live: a small real ENA fastq fetched in multiple segments is byte-identical to
-> `wget`.
+### Adaptive batch download
 
-```python
-from adaptiseq import fetch
-fetch("SRR1553469", outdir="data/", gzip=True,           # segmented by default
-      max_segments=8, max_conns_per_host=8, segment_size_mb=512)
-fetch("SRR1553469", outdir="data/", engine="classic")     # Part 1 wget/axel path
-```
+For an accession list — or any run with multiple files — accessions are resolved in
+parallel and files download through a worker pool whose **active** size is tuned at
+runtime:
 
-## Adaptive concurrency & batch download (Part 3)
+- **The controller manages *workers*, not raw connections.** It opens/closes worker
+  slots between 1 and `-j/--jobs`; each active worker downloads one file with that
+  file's own size-derived segments. Total connections in flight is emergent and
+  clipped by the per-host cap.
+- **Worker-cost penalty `K` (`--cc-penalty`, default 1.01).** The controller scores a
+  worker count `w` by `throughput / K**w`, biasing toward fewer workers unless extra
+  ones genuinely pay off — pure throughput maximization would peg workers at `-j` and
+  hammer the server.
+- **`--no-adaptive`** runs all `-j` workers with no probing.
 
-For an accession list (`-i file.txt`) — or any SRA/ENA run with multiple files —
-adaptiSeq resolves accessions in parallel and downloads files through a worker
-pool whose active size is tuned at runtime by a gradient controller.
+Per-file semantics are preserved end to end: skip if already in `success.log`, MD5
+(or `vdb-validate`) check, retry up to 3 times then record in `fail.log`, continue
+past failures, non-zero exit on any failure. The controller's chosen worker
+trajectory is logged. See [BENCHMARK.md](BENCHMARK.md) for honest measurements.
 
-- **The optimizer controls *workers*, not connections.** It opens/closes worker
-  slots between 1 and `-j/--jobs`. Each active worker downloads one file and opens
-  that file's own size-derived segment connections (Part 2). Total connections in
-  flight is *emergent* and clipped by the per-host cap — the optimizer never sets
-  a connection count.
+### Parallel metadata resolution
 
-- **The worker-cost penalty `K` (`--cc-penalty`, default 1.01).** The controller
-  scores a worker count `w` by `throughput / K**w` (not raw throughput), so it
-  prefers fewer workers unless extra ones pay for themselves. At `K = 1.01`,
-  adding a 20th worker must earn roughly `1.01**20 ≈ 1.22`, i.e. about a **22 %**
-  cumulative throughput premium over a single worker, to be preferred — a mild but
-  real bias toward restraint. Pure throughput maximization would peg workers at
-  `-j` and hammer the servers; the penalty prevents that.
-
-- **The per-host cap is the binding constraint at `-j 20`.** With `-j 20` and each
-  worker opening up to `--max-segments` connections, the naive total to one host
-  would be `20 × max_segments`. It is **not**: the always-on per-host cap
-  (`--max-conns-per-host`, default 8) clips it. For a single-host batch (e.g. an
-  all-ENA list hitting EBI), effective concurrency to that host is roughly
-  `max_conns_per_host / connections_per_file`, **not** 160 connections. The
-  optimizer chooses worker slots, the segmenter chooses per-file connections, and
-  the cap is the hard ceiling on what reaches the wire.
-
-- **Parallel resolution** (`--meta-jobs`, default 3) runs the full multi-database,
-  preference-ordered Part 1 resolver (ENA-first with SRA fallback; GSA; GEO
-  indirection) for many accessions at once, streaming resolved files into the
-  download queue so downloading overlaps resolution. Request rates are bounded by
-  **per-endpoint** limiters (ENA / NCBI / GSA), not by pool size; NCBI E-utilities
-  is throttled to 3 req/s without a key and 10 with one (`NCBI_API_KEY`,
-  `NCBI_EMAIL` read from the environment).
-
-`--no-adaptive` runs all `-j` workers with no probing. Per-file semantics
-(skip-if-in-`success.log`, MD5 check, retry up to 3, then `fail.log`, continue
-past failures, non-zero exit on any failure) are preserved. The controller's
-chosen worker trajectory is logged. See [BENCHMARK.md](BENCHMARK.md) for an honest
-speed comparison (aria2c is faster on raw throughput; adaptiSeq's edge is parity
-and the importable API, not raw speed).
+`--meta-jobs` (default 3) runs the multi-database, preference-ordered resolver
+(ENA-first with SRA fallback; GSA; GEO indirection) for many accessions at once and
+streams resolved files into the download queue, so downloading overlaps resolution.
+Request rates are bounded by **per-endpoint** limiters (ENA / NCBI / GSA), not by
+pool size; NCBI E-utilities is throttled to 3 req/s without a key and 10 with one
+(`NCBI_API_KEY` / `NCBI_EMAIL` from the environment).
 
 ## Adaptive Aspera (`-a`)
 
-`ascp` transfers cannot be paused/resumed mid-file, so the gradient controller
-(which pauses and re-queues) does not apply. With `-a`, adaptiSeq runs a parallel
-`ascp` pool gated only at **file-pickup boundaries**, tuned by an **additive-increase
-+ efficiency-hysteresis** controller:
+`ascp` transfers cannot be paused/resumed mid-file, so the batch controller (which
+pauses and re-queues) does not apply. With `-a`, adaptiSeq runs a parallel `ascp`
+pool gated at **file-pickup boundaries**, tuned by an **additive-increase +
+efficiency-hysteresis** controller: measure per-worker throughput at one worker
+(baseline); each interval tentatively add a worker and keep it only if aggregate
+throughput reaches at least `--aspera-efficiency` (default 0.70) of
+`workers × baseline`, otherwise drop it and hold (no flapping). Throughput for
+`ascp` (whose bytes are written out-of-process) is measured by sampling
+output-directory growth.
 
-- measure per-worker throughput at one worker (the baseline);
-- each interval, tentatively add one worker; keep it only if aggregate throughput
-  reaches at least `--aspera-efficiency` (default **0.70**) of the theoretical
-  `workers × baseline`; otherwise drop that worker and hold (no flapping).
+Validated against the **real ENA Aspera** endpoint with a genuine IBM `ascp`:
+single-file and multi-file batches transfer and pass md5, and the controller
+correctly converges (e.g. it backs off to a single session when the endpoint
+throttles a second concurrent `ascp`). See [BENCHMARK.md](BENCHMARK.md) for the
+measured trajectory. Aspera is **opt-in** (`-a`) and supports **ENA/GSA only**.
 
-Throughput for `ascp` (whose bytes are written out-of-process) is measured by
-sampling output-directory growth. The controller, the directory meter, and the
-pool are unit-tested on synthetic throughput curves and with a fake `ascp`
-end-to-end; **real ENA Aspera was not exercised** in development (no `aspera-cli`
-in the sandbox; EBI also restricts Aspera) — see `BENCHMARK.md`/`NOTES.md`.
+## Supported accessions, databases, and output
 
-## Output files
+Accepts Project (`PRJEB`/`PRJNA`/`PRJDB`/`PRJC`), Study (`ERP`/`DRP`/`SRP`/`CRA`),
+BioSample (`SAMD`/`SAME`/`SAMN`/`SAMC`), Sample (`ERS`/`DRS`/`SRS`), Experiment
+(`ERX`/`DRX`/`SRX`/`CRX`), Run (`ERR`/`DRR`/`SRR`/`CRR`), and GEO (`GSE`/`GSM`)
+identifiers across **GSA, SRA, ENA, DDBJ, and GEO**.
 
-For **SRA/ENA/DDBJ/GEO** accessions: `SRA files`, `${accession}.metadata.tsv`,
-`success.log`, `fail.log`. For **GSA** accessions: `GSA files` (mostly `.gz`),
-`${accession}.metadata.csv`, `${CRA}.metadata.xlsx`, `success.log`, `fail.log`.
+Output, per accession:
+- **SRA/ENA/DDBJ/GEO:** sequence files, `${accession}.metadata.tsv`, `success.log`,
+  `fail.log`.
+- **GSA:** sequence files (mostly `.gz`), `${accession}.metadata.csv`,
+  `${CRA}.metadata.xlsx`, `success.log`, `fail.log`.
+
+## Known limitations
+
+- **GSA / NGDC from outside China.** GSA data is hosted by NGDC (CNCB, Beijing).
+  Plain HTTPS/FTP works but can be **slow and intermittent** across the border
+  (observed ~0.3 MB/s with dropped connections from a US host). NGDC's
+  **UDP-accelerated transport** — both its `edgeturbo` client and GSA Aspera — does
+  not establish from such hosts (the accelerator's UDP session stalls at 0%). On
+  GSA, adaptiSeq therefore uses ordinary HTTPS/FTP; run from a network with good
+  NGDC connectivity for high-speed GSA transfers. (ENA Aspera, by contrast, works.)
+- **Raw single-file speed vs. a tuned generic downloader.** adaptiSeq's edge is the
+  batch + adaptive + metadata-integrated workflow and the Python API, not beating a
+  hand-tuned `aria2c -x16` on one large file. See [BENCHMARK.md](BENCHMARK.md).
+- **Adaptive payoff needs a sustained run.** On tiny batches the adaptive controller
+  has too few probe windows to matter; its benefit shows on longer multi-file jobs.
 
 ## Testing
 
 ```bash
 pip install -e ".[test]"
-pytest                       # fixture-mode parity + unit tests (offline) + live tests
-ADAPTISEQ_NO_NETWORK=1 pytest # force offline; live/canary tests skip, fixtures still run
+pytest                          # unit + parity (offline) + live tests
+ADAPTISEQ_NO_NETWORK=1 pytest   # force offline; live/canary tests skip
 ```
 
-Two differential modes (Section 8.1 of the build spec):
-
-- **Fixture mode (default, never skips):** diffs adaptiSeq's parsing/resolution
-  against frozen golden summaries under `tests/fixtures/`. This is what guards CI,
-  where `iseq` and/or the network may be absent.
-- **Live mode (skips gracefully):** fetches metadata live and compares the stable
-  Run/md5 sets to the golden; when `iseq` is installed it also runs stock
-  `iseq -m` and `adaptiseq -m` into two directories and diffs the metadata files.
-
-An **API-drift canary** (`tests/test_api_drift.py`) checks one stable accession per
-database; when it fails, the message says an upstream API moved — not that
-adaptiSeq is broken.
+Offline parity tests diff parsing/resolution against frozen golden fixtures
+(`tests/fixtures/`) and never skip, so they guard CI without network access; live
+tests fetch real metadata/data and skip gracefully when offline. An API-drift canary
+(`tests/test_api_drift.py`) flags when an upstream API moves rather than blaming
+adaptiSeq. Real-Aspera and other network-heavy checks are opt-in (e.g.
+`ADAPTISEQ_LIVE_ASPERA=1 pytest tests/test_aspera_live.py`).
 
 ## Project layout
 
 ```
 adaptiseq/
-  __init__.py     # public API: fetch / resolve / get_metadata
-  cli.py          # argparse, dispatch, version/help mirroring iseq
-  accession.py    # validateQuery port: regexes + GEO resolution
-  routing.py      # GSA vs SRA/ENA routing; -e merge guards
-  metadata.py     # ENA filereport / SRA eutils+sra-db-be / GSA CSV+XLSX
-  resolve.py      # per-run URL resolution (downloadSRA/downloadGSA ports)
+  __init__.py     # public API: fetch / resolve / get_metadata + FetchResult
+  cli.py          # argparse + dispatch
+  accession.py    # accession validation regexes + GEO resolution
+  routing.py      # GSA vs SRA/ENA routing; merge guards
+  metadata.py     # ENA filereport / SRA eutils / GSA CSV+XLSX
+  resolve.py      # per-run URL resolution
   engine/
-    classic.py    # wget/axel + ascp (Part 1 engine; the fetch seam + fallback)
-    segmented.py  # Part 2: segmented HTTP(S) downloader (range, .part resume)
-    ftp.py        # Part 2: native segmented FTP (REST/RETR via aioftp)
-    seam.py       # Part 2: SegmentedEngine — transport selection + classic fallback
-    ratelimit.py  # Part 2: token-bucket limiter, per-host cap, circuit breaker
-    optimize.py   # Part 3: gradient adaptive controller (ported from search.py)
-    throughput.py # Part 3: 1 Hz throughput meter
-    gate.py       # Part 3: worker gate (the integer the optimizer controls)
-  batch.py        # Part 3: batch pool + AdaptiveController + parallel resolution
-  ratelimits.py   # Part 3: per-endpoint resolution rate limiters (ENA/NCBI/GSA)
+    segmented.py  # segmented HTTP(S) downloader (range, .part resume)
+    ftp.py        # native segmented FTP (REST/RETR via aioftp)
+    seam.py       # transport selection (the single fetch seam)
+    classic.py    # opt-in wget/axel + ascp engine
+    ratelimit.py  # token-bucket limiter, per-host cap, circuit breaker
+    optimize.py   # adaptive worker-count controller
+    throughput.py # throughput / directory-growth meters
+    gate.py       # worker gate
+  batch.py        # batch pool + adaptive controller + parallel resolution
+  aspera.py       # adaptive parallel ascp pool (hysteresis controller)
+  ratelimits.py   # per-endpoint resolution rate limiters (ENA/NCBI/GSA)
   convert.py      # fasterq-dump + pigz
-  integrity.py    # vdb-validate + md5 checks (checkSRA/checkGSA)
-  merge.py        # mergeSRArun / mergeGSArun ports
-  preflight.py    # CheckSoftware port
-  logs.py         # success.log / fail.log helpers
-  console.py      # exact ANSI message style + Reporter abstraction
+  integrity.py    # vdb-validate + md5 checks
+  merge.py        # FASTQ merge
+  preflight.py    # external-tool checks
+  logs.py         # success.log / fail.log
+  console.py      # message style + Reporter
   net.py          # wget wrappers (metadata/discovery I/O)
-  options.py      # Options / RunContext (replaces shell globals)
+  options.py      # Options / RunContext
   errors.py       # typed exceptions
-  core.py         # per-accession process loop
+  core.py         # per-accession + batch process loop
 ```
 
-## License
+A standalone publication benchmark (per-second CPU/memory/I/O across the four
+download phases for several tools) lives in `sysbench/` and is **not** part of the
+installable package.
 
-MIT (same as `iseq`). adaptiSeq is a derivative reimplementation of
-[BioOmics/iSeq](https://github.com/BioOmics/iSeq); please also cite the original:
-Chao *et al.*, *iSeq: An integrated tool to fetch public sequencing data*,
-Bioinformatics, 2024.
+## License & attribution
+
+MIT. adaptiSeq's accession-to-FASTQ behaviour is compatible with
+[BioOmics/iSeq](https://github.com/BioOmics/iSeq); if you use it in published work,
+please also cite the original iSeq paper (Chao *et al.*, *Bioinformatics*, 2024).
+Compatibility notes and deliberate divergences are documented in
+[`NOTES.md`](NOTES.md) and [`CHANGES_FROM_ISEQ.md`](CHANGES_FROM_ISEQ.md).
