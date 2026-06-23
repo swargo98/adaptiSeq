@@ -8,6 +8,8 @@ downloads, and self-tuning throughput.
 - `logo-inverse.svg` is the horizontal logo for dark backgrounds.
 - `logo-mark.svg` is the icon-only mark for favicons, social avatars, and compact
   UI placements.
+- `logo.png` is the generated high-resolution horizontal logo.
+- `logo-mark.png` is the generated high-resolution icon mark.
 
 Core colors:
 
