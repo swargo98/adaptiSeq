@@ -33,6 +33,7 @@ resolution and project-level resolution).
 | Parallel metadata batch | **accessions_medium_PRJNA353374.txt** (all 12) | metadata only | SRA/ENA |
 | Raw `.sra` (default) | SRR1553469 | 4.5 MB | NCBI SRA |
 | Gzip FASTQ (`-g`) | SRR1553469 (paired) | 4.5 MB | ENA |
+| 3-file run (orphan + `_1` + `_2`) | SRR22904350 | ~32 KB | ENA |
 | SRA→FASTQ (`-q`, `-q -g`) | SRR1553469 | 4.5 MB | ENA/SRA |
 | Transport (`-r https`/`-r ftp`, `-d sra`) | SRR1553469, ERR1726497 | tiny | ENA/SRA |
 | Engine + knobs (segmented/classic, `-p`, `--segment-size`, `--max-*`) | ERR1726497 | tiny | ENA |
@@ -224,24 +225,26 @@ Exit code is `0` only if there are **no FAILs**.
 | 1 | `--version`, `--help` |
 | 2 | `-m` metadata for **GSA/SRA/ENA/DDBJ/GEO**, the **6 accession formats**, + **project** resolution |
 | 3 | Raw `.sra` download (default engine) — *non-batch* |
-| 4 | `-g` direct gzip FASTQ |
+| 4 | `-g` direct gzip FASTQ; **3-file run** (orphan/barcode + `_1` + `_2`, the type iseq mishandles) |
 | 5 | `-q` SRA→FASTQ and `-q -g` convert-then-gzip |
-| 6 | `-r https`, `-r ftp`, `-d sra` (transport / source selection) |
+| 6 | `-r https`, `-r ftp`, `-d sra` (transport / source selection); **HTTPS-first auto** transport selection |
 | 6b | `--engine segmented` + `--segment-size`/`--max-segments`/`--max-conns-per-host`; `--engine classic`; classic `-p` (axel) |
 | 7 | `-j` / `--adaptive` / `--no-adaptive` / `--meta-jobs` (**batch**) + `--probe-window`/`--cc-penalty` and trajectory log |
 | 8 | Resume / skip done; `.part` partial-transfer resume (*full tier*) |
 | 9 | `-s` speed cap, `-k` skip-md5, `-Q` quiet |
-| 10 | `-e ex` merge per Experiment (*full tier*); `-e sa`/`-e st` accession-type guards |
-| 11 | `-a` Aspera ENA adaptive pool, GEO + GSA sequence downloads (*full tier / `ASPERA=1`*) |
+| 10 | `-e ex` merge per Experiment (*full tier*); positive `-e sa` Sample merge (*full tier*); `-e sa`/`-e st` accession-type guards |
+| 11 | `-a` ENA Aspera adaptive pool, GEO + GSA sequence downloads, best-effort GSA Aspera (*full tier / `ASPERA=1`*) |
 | 12 | Python API: `get_metadata`, `resolve`, `fetch`; all `FetchResult` fields; keyword-flag passthrough; `Reporter` capture; silent stdout/stderr; `py.typed`; typed-exception hierarchy |
 | 13 | Error handling: non-zero exits, actionable `Error`/`How to solve?` messages, batch-continues-past-failure semantics |
 
 ### Deterministic coverage (offline `pytest`)
 
-A few documented behaviours **cannot be forced reliably against the live public
-databases** — you can't make ENA serve a corrupt byte stream on demand. These are
-covered deterministically by the repo's offline test suite (synthetic fixtures +
-local servers), which you can run on the same Colab box:
+Some documented behaviours **cannot be forced honestly against the live public
+databases** — you can't make ENA serve a corrupt byte stream, drop range support,
+or start throttling you on demand. Faking those means injecting a mock
+server/URL, which is precisely what the repo's offline suite already does
+(synthetic fixtures + local servers). Run it on the same Colab box rather than
+trying to reproduce these live:
 
 ```bash
 %%bash
@@ -250,14 +253,22 @@ pip install -q '.[test]'          # pytest + openpyxl
 python -m pytest -q
 ```
 
-| Claim | Offline test |
+| Claim (why it can't be live-forced) | Offline test |
 | --- | --- |
-| md5 mismatch → retry up to 3 rounds → `fail.log` → corrupt-file deletion | `tests/test_logs_integrity.py` |
-| 3-file run (orphan/barcode + `_1` + `_2`) resolution | `tests/test_resolution.py` |
-| Merge `ex`/`sa`/`st` **byte parity** vs iseq | `tests/test_merge.py`, `tests/test_routing.py` |
-| Gradient adaptive controller trajectory | `tests/test_optimize.py`, `tests/test_batch.py` |
+| md5 mismatch → retry up to 3 rounds → `fail.log` → corrupt-file deletion → `vdb-validate` failure *(can't corrupt a healthy mirror)* | `tests/test_logs_integrity.py` |
+| Single-stream fallback / per-host circuit breaker (429/503 backoff) *(can't make ENA drop ranges or throttle politely)* | `tests/test_segmented.py`, `tests/test_ftp_segmented.py` |
+| Per-endpoint rate-limit behaviour *(internal timing)* | `tests/test_batch.py` |
+| Merge `ex`/`sa`/`st` **byte parity** vs iseq *(exact-bytes comparison)* | `tests/test_merge.py`, `tests/test_routing.py` |
+| Gradient adaptive controller trajectory *(needs sustained load)* | `tests/test_optimize.py`, `tests/test_batch.py` |
 | Adaptive Aspera hysteresis controller (fake `ascp`) | `tests/test_aspera.py` |
 | Byte-for-byte resolution/metadata parity vs iseq | `tests/test_differential.py`, `tests/test_metadata_parse.py` |
+
+What the live script now *does* prove directly (previously only indirect): the
+**3-file** orphan/barcode download (§4.3, `SRR22904350` ~32 KB), **HTTPS-first
+auto** transport selection (§6.4, asserts the `HTTPS mirror is range-capable`
+engine note), a positive **`-e sa` Sample merge** (§10.4), and **best-effort GSA
+Aspera** (§11.4, SKIP if the endpoint/key/UDP is unavailable — the docs note this
+path is not yet validated live).
 
 The single-cell `I1/R1/R2/R3` decomposition is a property of `fasterq-dump` on a
 10x run; to see it live, run `adaptiseq -i <a-10x-SRR> -q` against a known
@@ -275,6 +286,7 @@ adaptiseq -i CRR311377  -m                         # GSA metadata (.csv + .xlsx)
 adaptiseq -i GSM7417667 -m                         # GEO -> SRA
 adaptiseq -i PRJNA353374 -m                         # project (all 12 runs)
 adaptiseq -i SRR1553469                            # raw .sra
+adaptiseq -i SRR22904350 -g                         # 3-file run (orphan + _1 + _2)
 adaptiseq -i SRR1553469 -g                         # gzip FASTQ
 adaptiseq -i SRR1553469 -q -t 4                    # SRA -> FASTQ
 adaptiseq -i SRR1553469 -g -r https                # force HTTPS
@@ -284,6 +296,7 @@ adaptiseq -i bench/inputs/colab_batch_mixed.txt -g # batch (adaptive)
 adaptiseq -i bench/inputs/colab_batch_mixed.txt -g -j 2 --no-adaptive
 adaptiseq -i bench/inputs/colab_aspera_ena.txt -a -g --aspera-efficiency 0.8
 adaptiseq -i SRX003906 -g -e ex                    # merge experiment (~1 GB)
+adaptiseq -i SAMN02951979 -g -e sa                  # merge a 2-run sample
 adaptiseq -i GSM7417667 -g                          # GEO sequence download
 adaptiseq -i CRR311377                              # GSA sequence download
 ```

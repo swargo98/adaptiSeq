@@ -122,6 +122,12 @@ adaptiseq -i SRR1553469 -g -o "$d" -Q >"$d/log.txt" 2>&1
 assert "4.1 paired *_1/_2.fastq.gz present" $?
 grep -q "SRR1553469" "$d/success.log" 2>/dev/null; assert "4.2 success.log records the run" $?
 
+# 4b. 3-file run: orphan/barcode + _1 + _2 (the run type iseq mishandles)
+d="$WORK/threefile"; rm -rf "$d"; mkdir -p "$d"
+adaptiseq -i SRR22904350 -g -o "$d" -Q >"$d/log.txt" 2>&1
+n=$(find "$d" -name 'SRR22904350*.fastq.gz' | wc -l | tr -d ' ')
+if [[ "$n" -ge 3 ]]; then assert "4.3 3-file run downloads all 3 parts ($n)" 0; else assert "4.3 3-file run downloads all 3 parts ($n)" 1; fi
+
 # =============================================================================
 # 5. SRA -> FASTQ conversion (-q, -q -g)
 # =============================================================================
@@ -152,6 +158,11 @@ d="$WORK/force_sra"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i SRR1553469 -d sra -o "$d" -Q >"$d/log.txt" 2>&1
 { [[ -s "$d/SRR1553469" ]] || find "$d" -name '*.sra' | grep -q .; }
 assert "6.3 forced SRA database (-d sra)" $?
+# 6.4 auto transport (default -r): the engine upgrades the ftp:// link to a
+# range-capable HTTPS mirror and logs the decision (suppressed by -Q, so omit it).
+d="$WORK/httpsfirst"; rm -rf "$d"; mkdir -p "$d"
+adaptiseq -i ERR1726497 -g -o "$d" >"$d/log.txt" 2>&1
+grep -q "HTTPS mirror is range-capable" "$d/log.txt"; assert "6.4 HTTPS-first auto transport selection" $?
 
 # =============================================================================
 # 6b. Engine selection + segmented/classic knobs
@@ -247,8 +258,18 @@ elif [[ "$TIER" != "full" ]]; then
 else
   record_skip "10.1 -e ex merge — fasterq-dump missing"
 fi
+# positive -e sa: merge a 2-run Sample into one pair (st uses the same code path
+# but studies are large, so st stays guard-only + offline byte-parity).
+if [[ "$TIER" == "full" ]] && have fasterq-dump; then
+  d="$WORK/merge_sa"; rm -rf "$d"; mkdir -p "$d"
+  adaptiseq -i SAMN02951979 -g -e sa -o "$d" -Q >"$d/log.txt" 2>&1
+  { find "$d" -name 'SAMN02951979_1.fastq.gz' | grep -q . && find "$d" -name 'SAMN02951979_2.fastq.gz' | grep -q .; }
+  assert "10.4 -e sa merges a 2-run Sample (SAMN02951979)" $?
+else
+  record_skip "10.4 -e sa positive merge — TIER=full only (~175 MB)"
+fi
 # byte-parity of ex/sa/st merge is covered by the offline pytest suite; here we
-# only confirm the accession-type guards (sa/st cannot apply to a Run ID).
+# also confirm the accession-type guards (sa/st cannot apply to a Run ID).
 if adaptiseq -i SRR1553469 -g -e sa >/dev/null 2>&1; then assert "10.2 -e sa rejects a Run ID" 1; else assert "10.2 -e sa rejects a Run ID" 0; fi
 if adaptiseq -i SRR1553469 -g -e st >/dev/null 2>&1; then assert "10.3 -e st rejects a Run ID" 1; else assert "10.3 -e st rejects a Run ID" 0; fi
 
@@ -285,9 +306,24 @@ if [[ "$TIER" == "full" ]]; then
     echo "    (tail of GSA log)"; tail -n 8 "$d/log.txt" | sed 's/^/    /'
     record_skip "11.3 GSA sequence download — GSA/Huawei endpoint unreachable from Colab?"
   fi
+  # GSA Aspera (-a): best-effort. The docs note this path is NOT yet validated
+  # against the live GSA endpoint, so a PASS is genuinely new info; a SKIP (key
+  # download / China endpoint / UDP) is expected, never a hard failure.
+  if [[ "$ASPERA" == "1" ]] && have ascp; then
+    d="$WORK/gsa_aspera"; rm -rf "$d"; mkdir -p "$d"
+    adaptiseq -i CRR311377 -a -o "$d" -Q >"$d/log.txt" 2>&1; rc=$?
+    if [[ "$rc" -eq 0 ]] && find "$d" -type f \( -name '*.gz' -o -name '*.bz2' -o -name '*.bam' \) | grep -q .; then
+      record_pass "11.4 GSA aspera download (CRR311377)"
+    else
+      record_skip "11.4 GSA aspera — endpoint/key/UDP unavailable (docs: not yet validated live)"
+    fi
+  else
+    record_skip "11.4 GSA aspera — needs ASPERA=1 + ascp"
+  fi
 else
   record_skip "11.2 GEO sequence download — TIER=full only"
   record_skip "11.3 GSA sequence download — TIER=full only"
+  record_skip "11.4 GSA aspera download — TIER=full only"
 fi
 
 # =============================================================================
