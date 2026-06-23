@@ -20,9 +20,11 @@ def _run(*args):
 
 
 def test_version_exact_string():
+    from adaptiseq import __version__
+
     rc, out, err = _run("--version")
     assert rc == 0
-    assert out.strip() == "adaptiSeq 0.1.0"
+    assert out.strip() == f"adaptiSeq {__version__}"
 
 
 def test_help_lists_every_flag_with_defaults():

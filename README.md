@@ -34,6 +34,12 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
 
 ## Update Notes
 
+### 0.1.2
+- **Fix**: the notebook event-loop handling from 0.1.1 now also works when
+  `nest_asyncio` is active (it previously hung/erered on batch downloads). The
+  API detects a re-entrant loop and drives the coroutine on it directly; plain
+  Jupyter still uses a worker thread. Works with or without `nest_asyncio`.
+
 ### 0.1.1
 - **Fix**: the Python API (`fetch`/`resolve`) now works inside a running asyncio
   event loop (Jupyter / Google Colab / IPython), where it previously raised

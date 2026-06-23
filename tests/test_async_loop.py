@@ -31,3 +31,21 @@ def test_run_sync_inside_running_loop() -> None:
         return run_sync(_answer())
 
     assert asyncio.run(driver()) == 42
+
+
+def test_run_sync_drives_reentrant_loop_directly(monkeypatch) -> None:
+    # When the running loop is marked re-entrant by nest_asyncio, run_sync must
+    # call loop.run_until_complete directly (a worker thread would deadlock).
+    calls = {}
+
+    class FakeReentrantLoop:
+        _nest_patched = True
+
+        def run_until_complete(self, coro):
+            coro.close()  # we only assert the routing; don't actually run it
+            calls["used"] = True
+            return 99
+
+    monkeypatch.setattr(asyncio, "get_running_loop", lambda: FakeReentrantLoop())
+    assert run_sync(_answer()) == 99
+    assert calls.get("used") is True
