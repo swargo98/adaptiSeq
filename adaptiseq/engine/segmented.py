@@ -410,10 +410,26 @@ class SegmentedDownloader:
 
         if not remaining_segments:
             if os.path.exists(self.part_path):
-                os.rename(self.part_path, self.local_path)
+                os.replace(self.part_path, self.local_path)
+                if os.path.exists(self.meta_path):
+                    os.remove(self.meta_path)
+                return True, False, 0
+            if os.path.exists(self.local_path):
+                # already finalized on a prior run; the metadata was just stale
+                if os.path.exists(self.meta_path):
+                    os.remove(self.meta_path)
+                return True, False, 0
+            # metadata claims completion but neither .part nor the final file
+            # exists: it is stale/inconsistent. Discard it and fail cleanly so the
+            # batch retry re-downloads from scratch (instead of raising rename's
+            # FileNotFoundError).
+            log.warning(
+                "Stale resume metadata for %s (.part missing); will re-download",
+                os.path.basename(self.local_path),
+            )
             if os.path.exists(self.meta_path):
                 os.remove(self.meta_path)
-            return True, False, 0
+            return False, False, 0
 
         remaining_bytes = sum((e - s + 1) for _, s, e in remaining_segments)
         self._ensure_free_space(remaining_bytes)
@@ -451,11 +467,23 @@ class SegmentedDownloader:
             if len(completed) == len(segments):
                 os.close(fd)
                 fd = None
-                os.rename(self.part_path, self.local_path)
+                if os.path.exists(self.part_path):
+                    os.replace(self.part_path, self.local_path)
+                    if os.path.exists(self.meta_path):
+                        os.remove(self.meta_path)
+                    log.info("Completed %s", os.path.basename(self.local_path))
+                    return True, False, num_connections
+                # All segments report complete but the .part file is gone —
+                # inconsistent on-disk state. Fail cleanly (drop stale metadata)
+                # so the batch retry re-downloads, rather than raising rename's
+                # FileNotFoundError.
+                log.error(
+                    "%s: segments complete but .part missing; will retry",
+                    os.path.basename(self.local_path),
+                )
                 if os.path.exists(self.meta_path):
                     os.remove(self.meta_path)
-                log.info("Completed %s", os.path.basename(self.local_path))
-                return True, False, num_connections
+                return False, False, num_connections
 
             self.write_metadata(file_size, segments, completed, latest)
             if errors:

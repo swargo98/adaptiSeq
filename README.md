@@ -34,6 +34,11 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
 
 ## Update Notes
 
+### 0.1.3
+- **Fix**: a segmented download whose `.part` file is missing at finalize (e.g.
+  every segment's connection was refused) now fails cleanly and retries, instead
+  of raising a confusing `FileNotFoundError` from an unguarded `.part` rename.
+
 ### 0.1.2
 - **Fix**: the notebook event-loop handling from 0.1.1 now also works when
   `nest_asyncio` is active (it previously hung/erered on batch downloads). The

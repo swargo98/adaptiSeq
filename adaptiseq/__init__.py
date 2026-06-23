@@ -40,7 +40,7 @@ from .errors import (
 from .logs import FAIL_LOG, SUCCESS_LOG
 from .options import Options, RunContext, load_accessions, resolve_output_dir
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __all__ = [
     "fetch",
     "resolve",
