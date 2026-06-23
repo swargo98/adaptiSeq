@@ -34,6 +34,12 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
 
 ## Update Notes
 
+### 0.1.1
+- **Fix**: the Python API (`fetch`/`resolve`) now works inside a running asyncio
+  event loop (Jupyter / Google Colab / IPython), where it previously raised
+  `asyncio.run() cannot be called from a running event loop`. The CLI was
+  unaffected.
+
 ### 0.1.0 (initial release)
 - First public release: faithful iSeq port + segmented engine + adaptive batch
   pool + parallel metadata resolution + adaptive Aspera + Python API.

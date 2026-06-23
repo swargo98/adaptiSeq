@@ -58,7 +58,9 @@ class SegmentedEngine:
 
     # --- the seam ---------------------------------------------------------------
     def fetch(self, url: str, save_path: str) -> bool:
-        return asyncio.run(self._fetch_one(url, save_path))
+        from .._async import run_sync
+
+        return run_sync(self._fetch_one(url, save_path))
 
     def fetch_aspera(self, link: str, db: str, save_path: Optional[str] = None) -> bool:
         # Aspera is unchanged in Part 2 — delegate straight to the classic ascp path.

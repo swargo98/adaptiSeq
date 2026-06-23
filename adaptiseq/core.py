@@ -15,6 +15,7 @@ from typing import List
 
 from . import metadata as meta
 from . import resolve, integrity, convert, merge
+from ._async import run_sync
 from .accession import is_gsa
 from .console import green
 from .errors import AdaptiSeqError
@@ -330,7 +331,7 @@ def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         return ctx.engine.fetch_aspera(task.url, task.aspera_db or "ENA")
 
     bd = AsperaBatchDownloader(download_fn, opts, ctx.workdir, reporter)
-    asyncio.run(bd.run(tasks))
+    run_sync(bd.run(tasks))
     controller = getattr(bd, "_controller", None)
     if controller is not None and controller.trajectory:
         traj = ", ".join(f"{w}w@{t:.0f}Mbps(eff{e:.2f})"
@@ -364,7 +365,7 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         f"({'adaptive' if opts.adaptive else 'fixed'} concurrency)"
     )
     bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
-    asyncio.run(bd.run(tasks))
+    run_sync(bd.run(tasks))
     controller = getattr(bd, "_controller", None)
     if controller is not None and controller.trajectory:
         traj = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in controller.trajectory)
