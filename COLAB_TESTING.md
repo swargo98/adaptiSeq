@@ -28,14 +28,19 @@ resolution and project-level resolution).
 | Feature under test | Accession(s) | Size | Source |
 | --- | --- | --- | --- |
 | Metadata only (`-m`) | SRR1553469, ERR1726497, DRR291041, GSM7417667, CRR311377 | tiny | SRA / ENA / DDBJ / GEO / GSA |
+| Accession-format matrix (`-m`) | PRJDB2759 (Project), DRP000611 (Study), SAMN02951979 (BioSample), DRS001566 (Sample), SRX674132 (Experiment), SRR1553469 (Run) | metadata only | SRA/DDBJ |
 | Project resolution | **PRJNA353374** (the medium list's project) | metadata only | SRA |
 | Parallel metadata batch | **accessions_medium_PRJNA353374.txt** (all 12) | metadata only | SRA/ENA |
 | Raw `.sra` (default) | SRR1553469 | 4.5 MB | NCBI SRA |
 | Gzip FASTQ (`-g`) | SRR1553469 (paired) | 4.5 MB | ENA |
 | SRA→FASTQ (`-q`, `-q -g`) | SRR1553469 | 4.5 MB | ENA/SRA |
 | Transport (`-r https`/`-r ftp`, `-d sra`) | SRR1553469, ERR1726497 | tiny | ENA/SRA |
-| Batch (mixed DBs) | `bench/inputs/colab_batch_mixed.txt` | ~30 MB | SRA+ENA+DDBJ |
+| Engine + knobs (segmented/classic, `-p`, `--segment-size`, `--max-*`) | ERR1726497 | tiny | ENA |
+| Batch (mixed DBs) + adaptive knobs | `bench/inputs/colab_batch_mixed.txt` | ~30 MB | SRA+ENA+DDBJ |
+| Partial `.part` resume (**full tier**) | SRR7706354 | ~260 MB | ENA |
 | Merge (`-e ex`, **full tier**) | SRX003906 (5 runs) | ~1 GB | ENA |
+| GEO sequence download (**full tier**) | GSM7417667 | varies | GEO→SRA |
+| GSA sequence download (**full tier**) | CRR311377 | varies | GSA |
 | Aspera (`-a`, **full tier**) | `bench/inputs/colab_aspera_ena.txt` | ~17 MB | ENA |
 | Python API | SRR1553469 + mixed list | tiny | — |
 
@@ -217,18 +222,47 @@ Exit code is `0` only if there are **no FAILs**.
 | § in script | README / docs feature |
 | --- | --- |
 | 1 | `--version`, `--help` |
-| 2 | `-m` metadata for **GSA/SRA/ENA/DDBJ/GEO** + **project** resolution |
+| 2 | `-m` metadata for **GSA/SRA/ENA/DDBJ/GEO**, the **6 accession formats**, + **project** resolution |
 | 3 | Raw `.sra` download (default engine) — *non-batch* |
 | 4 | `-g` direct gzip FASTQ |
 | 5 | `-q` SRA→FASTQ and `-q -g` convert-then-gzip |
 | 6 | `-r https`, `-r ftp`, `-d sra` (transport / source selection) |
-| 7 | `-j` / `--adaptive` / `--no-adaptive` / `--meta-jobs` (**batch**) |
-| 8 | Resume / skip already-completed runs |
+| 6b | `--engine segmented` + `--segment-size`/`--max-segments`/`--max-conns-per-host`; `--engine classic`; classic `-p` (axel) |
+| 7 | `-j` / `--adaptive` / `--no-adaptive` / `--meta-jobs` (**batch**) + `--probe-window`/`--cc-penalty` and trajectory log |
+| 8 | Resume / skip done; `.part` partial-transfer resume (*full tier*) |
 | 9 | `-s` speed cap, `-k` skip-md5, `-Q` quiet |
-| 10 | `-e ex` merge per Experiment (*full tier*) |
-| 11 | `-a` Aspera, ENA adaptive pool (*full tier / `ASPERA=1`*) |
-| 12 | Python API: `get_metadata`, `resolve`, `fetch`, typed exceptions |
-| 13 | Error handling / preflight (expected non-zero exits) |
+| 10 | `-e ex` merge per Experiment (*full tier*); `-e sa`/`-e st` accession-type guards |
+| 11 | `-a` Aspera ENA adaptive pool, GEO + GSA sequence downloads (*full tier / `ASPERA=1`*) |
+| 12 | Python API: `get_metadata`, `resolve`, `fetch`; all `FetchResult` fields; keyword-flag passthrough; `Reporter` capture; silent stdout/stderr; `py.typed`; typed-exception hierarchy |
+| 13 | Error handling: non-zero exits, actionable `Error`/`How to solve?` messages, batch-continues-past-failure semantics |
+
+### Deterministic coverage (offline `pytest`)
+
+A few documented behaviours **cannot be forced reliably against the live public
+databases** — you can't make ENA serve a corrupt byte stream on demand. These are
+covered deterministically by the repo's offline test suite (synthetic fixtures +
+local servers), which you can run on the same Colab box:
+
+```bash
+%%bash
+cd adaptiSeq
+pip install -q '.[test]'          # pytest + openpyxl
+python -m pytest -q
+```
+
+| Claim | Offline test |
+| --- | --- |
+| md5 mismatch → retry up to 3 rounds → `fail.log` → corrupt-file deletion | `tests/test_logs_integrity.py` |
+| 3-file run (orphan/barcode + `_1` + `_2`) resolution | `tests/test_resolution.py` |
+| Merge `ex`/`sa`/`st` **byte parity** vs iseq | `tests/test_merge.py`, `tests/test_routing.py` |
+| Gradient adaptive controller trajectory | `tests/test_optimize.py`, `tests/test_batch.py` |
+| Adaptive Aspera hysteresis controller (fake `ascp`) | `tests/test_aspera.py` |
+| Byte-for-byte resolution/metadata parity vs iseq | `tests/test_differential.py`, `tests/test_metadata_parse.py` |
+
+The single-cell `I1/R1/R2/R3` decomposition is a property of `fasterq-dump` on a
+10x run; to see it live, run `adaptiseq -i <a-10x-SRR> -q` against a known
+single-cell accession (these are typically multi-GB, so they're left out of the
+scripted run).
 
 ---
 
@@ -244,10 +278,14 @@ adaptiseq -i SRR1553469                            # raw .sra
 adaptiseq -i SRR1553469 -g                         # gzip FASTQ
 adaptiseq -i SRR1553469 -q -t 4                    # SRA -> FASTQ
 adaptiseq -i SRR1553469 -g -r https                # force HTTPS
+adaptiseq -i ERR1726497 -g --engine classic        # classic wget engine
+adaptiseq -i ERR1726497 -g --engine segmented --segment-size 1 --max-segments 4
 adaptiseq -i bench/inputs/colab_batch_mixed.txt -g # batch (adaptive)
 adaptiseq -i bench/inputs/colab_batch_mixed.txt -g -j 2 --no-adaptive
 adaptiseq -i bench/inputs/colab_aspera_ena.txt -a -g --aspera-efficiency 0.8
 adaptiseq -i SRX003906 -g -e ex                    # merge experiment (~1 GB)
+adaptiseq -i GSM7417667 -g                          # GEO sequence download
+adaptiseq -i CRR311377                              # GSA sequence download
 ```
 
 ```python
