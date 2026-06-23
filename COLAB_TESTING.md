@@ -225,9 +225,43 @@ ALL GREEN
 - **SKIP** — a tool was missing (e.g. no `ascp`) or the tier excludes it; not a
   failure.
 - **FAIL** — investigate; per-test logs are under the printed `Artifacts under:`
-  directory (each test writes its own `log.txt`).
+  directory (each test writes its own `log.txt`), and batch failures print the
+  relevant log tail inline.
 
 Exit code is `0` only if there are **no FAILs**.
+
+### Clearing the SKIPs
+
+On the apt+pip path you'll typically see four skips. To turn them into real runs:
+
+```bash
+%%bash
+# 6b.3 classic -p needs axel:
+apt-get -qq install -y axel
+```
+
+```bash
+%%bash
+# 11.1 + 11.4 Aspera need a real IBM ascp (only via conda/bioconda):
+pip install -q condacolab && python -c "import condacolab; condacolab.install()"
+# ...kernel restarts; then in a new cell:
+mamba install -y -c conda-forge -c bioconda aspera-cli   # provides ascp + its key
+```
+
+> Even with `ascp` installed, **11.1/11.4 may still SKIP on Colab** — FASP uses
+> **UDP 33001**, which Colab often blocks. That's the network, not adaptiSeq, and
+> it's reported as SKIP (never FAIL).
+
+**7.4 (adaptive trajectory)** isn't a tool gate — the controller only records a
+multi-point trajectory when a batch spans several probe windows, and the tiny
+test batch finishes in one. To surface it, slow a batch so it lasts long enough:
+
+```bash
+%%bash
+cd adaptiSeq
+adaptiseq -i bench/inputs/colab_batch_mixed.txt -g -s 1 --probe-window 2 -o /tmp/traj \
+  | grep "adaptive worker trajectory"      # e.g. "1w@8Mbps, 2w@15Mbps"
+```
 
 ---
 
