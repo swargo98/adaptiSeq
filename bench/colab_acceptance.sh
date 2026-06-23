@@ -28,7 +28,10 @@ set -u
 
 TIER="${TIER:-quick}"
 WORK="${WORK:-$(pwd)/adaptiseq_accept}"
-REPO="${REPO:-$(pwd)}"
+# REPO defaults to the repo root *derived from this script's own location*
+# (this file lives at <repo>/bench/colab_acceptance.sh), so the input lists are
+# found no matter what directory you launch the script from.
+REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 if [[ "$TIER" == "full" ]]; then ASPERA="${ASPERA:-1}"; else ASPERA="${ASPERA:-0}"; fi
 
 MEDIUM_LIST="$REPO/bench/inputs/accessions_medium_PRJNA353374.txt"
@@ -48,8 +51,17 @@ record_pass(){ PASS=$((PASS+1)); RESULTS+=("${c_green}PASS${c_off}  $1"); printf
 record_fail(){ FAIL=$((FAIL+1)); RESULTS+=("${c_red}FAIL${c_off}  $1"); printf '%sFAIL%s  %s\n' "$c_red" "$c_off" "$1"; }
 record_skip(){ SKIP=$((SKIP+1)); RESULTS+=("${c_yel}SKIP${c_off}  $1"); printf '%sSKIP%s  %s\n' "$c_yel" "$c_off" "$1"; }
 
-# assert "<name>" <rc>   (rc==0 -> PASS else FAIL)
-assert(){ if [[ "$2" -eq 0 ]]; then record_pass "$1"; else record_fail "$1"; fi; }
+# assert "<name>" <rc> [logfile]
+#   rc==0 -> PASS; else FAIL and, if a logfile is given, print its tail so the
+#   cause is visible right under the failing line.
+assert(){
+  if [[ "$2" -eq 0 ]]; then record_pass "$1"; else
+    record_fail "$1"
+    if [[ -n "${3:-}" && -f "$3" ]]; then
+      echo "      ${c_red}↳ ${3} (tail):${c_off}"; tail -n 12 "$3" 2>/dev/null | sed 's/^/        /'
+    fi
+  fi
+}
 have(){ command -v "$1" >/dev/null 2>&1; }
 
 # ---- environment ------------------------------------------------------------
@@ -60,6 +72,16 @@ for t in wget md5sum srapath fasterq-dump vdb-validate pigz axel ascp; do
   else printf '  %-14s %smissing%s\n' "$t" "$c_yel" "$c_off"; fi
 done
 echo "TIER=$TIER  ASPERA=$ASPERA  WORK=$WORK"
+echo "REPO=$REPO"
+# Fail loudly NOW if the batch input lists are not where we expect them — a wrong
+# REPO would otherwise show up as mysterious "0 runs" batch failures later.
+for f in "$MEDIUM_LIST" "$MIXED_LIST" "$ASPERA_LIST"; do
+  if [[ ! -f "$f" ]]; then
+    echo "${c_red}ERROR${c_off}: input list not found: $f"
+    echo "Set REPO=/path/to/adaptiSeq (the repo root), or run the script from there. Aborting."
+    exit 2
+  fi
+done
 
 # =============================================================================
 # 1. CLI smoke
@@ -190,23 +212,23 @@ banner "7. Batch download (mixed SRA/ENA/DDBJ list)"
 d="$WORK/batch_adaptive"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i "$MIXED_LIST" -g -o "$d" -Q >"$d/log.txt" 2>&1
 n=$(grep -c . "$d/success.log" 2>/dev/null || echo 0)
-if [[ "$n" -ge 3 ]]; then assert "7.1 adaptive batch: 3 runs ($n)" 0; else assert "7.1 adaptive batch: 3 runs ($n)" 1; fi
+if [[ "$n" -ge 3 ]]; then assert "7.1 adaptive batch: 3 runs ($n)" 0; else assert "7.1 adaptive batch: 3 runs ($n)" 1 "$d/log.txt"; fi
 d="$WORK/batch_fixed"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i "$MIXED_LIST" -g -j 2 --no-adaptive -o "$d" -Q >"$d/log.txt" 2>&1
 n=$(grep -c . "$d/success.log" 2>/dev/null || echo 0)
-if [[ "$n" -ge 3 ]]; then assert "7.2 fixed pool (-j 2 --no-adaptive): 3 runs ($n)" 0; else assert "7.2 fixed pool (-j 2 --no-adaptive): 3 runs ($n)" 1; fi
+if [[ "$n" -ge 3 ]]; then assert "7.2 fixed pool (-j 2 --no-adaptive): 3 runs ($n)" 0; else assert "7.2 fixed pool (-j 2 --no-adaptive): 3 runs ($n)" 1 "$d/log.txt"; fi
 # adaptive tuning knobs are accepted and the batch completes (trajectory only
 # logs on long runs, so we don't hard-assert the line on a tiny batch)
 d="$WORK/batch_knobs"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i "$MIXED_LIST" -g --probe-window 2 --cc-penalty 1.02 -o "$d" -Q >"$d/log.txt" 2>&1
 n=$(grep -c . "$d/success.log" 2>/dev/null || echo 0)
-if [[ "$n" -ge 3 ]]; then assert "7.3 adaptive knobs (--probe-window/--cc-penalty)" 0; else assert "7.3 adaptive knobs (--probe-window/--cc-penalty)" 1; fi
+if [[ "$n" -ge 3 ]]; then assert "7.3 adaptive knobs (--probe-window/--cc-penalty)" 0; else assert "7.3 adaptive knobs (--probe-window/--cc-penalty)" 1 "$d/log.txt"; fi
 if grep -q "adaptive worker trajectory" "$d/log.txt"; then record_pass "7.4 adaptive trajectory logged"; else record_skip "7.4 adaptive trajectory — none logged (batch too short)"; fi
 # parallel metadata resolution over the full 12-run medium list (cheap)
 d="$WORK/batch_meta"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i "$MEDIUM_LIST" -m --meta-jobs 5 -o "$d" -Q >"$d/log.txt" 2>&1
 n=$(find "$d" -name '*.metadata.tsv' | wc -l | tr -d ' ')
-if [[ "$n" -ge 12 ]]; then assert "7.5 parallel metadata (--meta-jobs 5): 12 tsv ($n)" 0; else assert "7.5 parallel metadata (--meta-jobs 5): 12 tsv ($n)" 1; fi
+if [[ "$n" -ge 12 ]]; then assert "7.5 parallel metadata (--meta-jobs 5): 12 tsv ($n)" 0; else assert "7.5 parallel metadata (--meta-jobs 5): 12 tsv ($n)" 1 "$d/log.txt"; fi
 
 # =============================================================================
 # 8. Resume / skip

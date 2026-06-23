@@ -117,16 +117,29 @@ cells (top to bottom). `!` runs a shell command; `%%bash` runs a whole cell.
 
 ### B1. Install adaptiSeq from TestPyPI
 
-TestPyPI does **not** mirror normal dependencies (aiohttp, aioftp, numpy,
-openpyxl), so you **must** add real PyPI as an extra index — otherwise pip can't
-resolve the deps:
+TestPyPI does **not** host the normal dependencies (`aioftp`, `numpy`, …), so a
+plain `--index-url https://test.pypi.org/simple/` install **fails** with e.g.
+`No matching distribution found for aioftp>=0.21`. Install the dependencies from
+real PyPI **first**, then pull only adaptiSeq from TestPyPI with `--no-deps`:
 
 ```python
-!pip install \
-  --index-url https://test.pypi.org/simple/ \
-  --extra-index-url https://pypi.org/simple/ \
-  "adaptiseq[xlsx]"
+# 1) deps from real PyPI    2) adaptiSeq itself from TestPyPI, no dep resolution
+!pip install "aiohttp>=3.8" "aioftp>=0.21" "numpy>=1.21" "openpyxl>=3.0"
+!pip install --no-deps --index-url https://test.pypi.org/simple/ adaptiseq
 !adaptiseq --version
+```
+
+> **Why `--no-deps`?** It stops pip from trying to satisfy adaptiSeq's
+> dependencies against the test index (where they don't exist). The deps are
+> already installed by the line above.
+
+The single-command `--extra-index-url` form also works, **but only if it's all on
+one line** — a multi-line `\` continuation often breaks when pasted into a Colab
+`!` cell, leaving pip with just the test index (that's the usual cause of the
+`aioftp` error):
+
+```python
+!pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ "adaptiseq[xlsx]"
 ```
 
 > If you used a temporary name in A3, install that name instead (e.g.
