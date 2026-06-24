@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE)
-[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyPI](https://img.shields.io/pypi/v/adaptiseq.svg)](https://pypi.org/project/adaptiseq/)
 [![CI](https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml/badge.svg)](https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml)
 
@@ -56,7 +56,7 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
   pool + parallel metadata resolution + adaptive Aspera + Python API.
 - Validated against the **real ENA Aspera** endpoint with a genuine IBM `ascp`.
 - Offline test suite (parity, engine, batch, adaptive) green; CI on Python
-  3.8–3.12.
+  3.10–3.12.
 
 <details>
 <summary>Design highlights vs iSeq</summary>

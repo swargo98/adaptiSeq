@@ -45,7 +45,11 @@ def test_srapath_missing_raises_preflight(monkeypatch):
 def test_srapath_present_resolves_normally(monkeypatch):
     # When srapath exists, _srapath must not raise from the preflight guard; it
     # returns whatever the tool prints (empty string here, since the accession is
-    # bogus) without inventing a PreflightError.
+    # bogus) without inventing a PreflightError. Force the preflight `which` to
+    # report srapath as present so the test does not depend on the host having
+    # sra-tools installed (CI runners do not).
+    monkeypatch.setattr("adaptiseq.preflight.shutil.which",
+                        lambda name, *a, **k: "/usr/bin/srapath")
     monkeypatch.setattr(R.subprocess, "run",
                         lambda *a, **k: type("P", (), {"stdout": "https://x/y\n"})())
     assert R._srapath("SRR000001") == "https://x/y"

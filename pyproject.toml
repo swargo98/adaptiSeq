@@ -7,7 +7,7 @@ name = "adaptiseq"
 dynamic = ["version"]
 description = "Fast, importable downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO) with a segmented, resumable, self-tuning batch engine."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "swargo98" }]
@@ -29,8 +29,6 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     "Operating System :: MacOS",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",

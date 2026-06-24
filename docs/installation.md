@@ -1,6 +1,6 @@
 # Installation
 
-adaptiSeq is a Python package (Python **≥ 3.8**) plus a small set of external
+adaptiSeq is a Python package (Python **≥ 3.10**) plus a small set of external
 command-line tools it shells out to (the same ones `iseq` uses).
 
 ## 1. Install with pip (recommended)
