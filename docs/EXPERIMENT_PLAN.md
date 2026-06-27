@@ -20,14 +20,19 @@ and reviewers of a "yet another downloader" paper will ask for them:
 |---|--------------|---------------------|--------------------|
 | C1 | **Adaptive download engine** (gradient worker-count controller for HTTP; additive-increase + efficiency-hysteresis controller for Aspera) | `engine/optimize.py`, `batch.py:AdaptiveController`, `aspera.py:HysteresisController` — closed-loop control tuned to live throughput; backs off under server throttling | E4, E5 |
 | C2 | **Python interface** (importable `fetch`/`resolve`/`get_metadata`, typed exceptions, no `sys.exit`/colour) | `__init__.py`, `core.py` — iSeq is a Bash script with **no** library API | E6 |
-| C3 | **Batch download** (parallel multi-accession resolution + adaptive worker pool, overlapping resolve & transfer) | `batch.py:resolve_all` + `BatchDownloader`; iSeq/Kingfisher resolve & download **one run at a time** | E3 (headline) |
+| C3 | **Batch download** (parallel multi-accession resolution + adaptive worker pool, overlapping resolve & transfer) | `batch.py:resolve_all` + `BatchDownloader`; iSeq/Kingfisher resolve & download **one run at a time** | E3 (headline), E10 |
+| C3b ⟵ *sub of C3* | **Parallel, rate-limited metadata resolution** — `--meta-jobs` concurrent multi-DB resolution whose request rate is **decoupled from pool size** by per-endpoint limiters (ENA/GSA/NCBI; NCBI 3 rps, 10 with key) | `batch.py:resolve_all`, `ratelimits.py:EndpointLimiters`/`set_active`, consulted in `net.py` | E10 |
 | **C4** ⟵ *add* | **Segmented, resumable, multi-connection engine** (HTTPS-first range GETs, atomic `.part`/`.part.meta` resume, native segmented FTP, never-truncate single-stream fallback) | `engine/segmented.py` — iSeq shells out to `wget`/`axel`, no in-process resume map | E2, E7 |
 | **C5** ⟵ *add* | **Reliability / good-citizen robustness** (per-host circuit breaker on 429/503, ENA RSA-key path, completes 3-file runs iSeq drops, differential-tested byte-parity with iSeq) | `engine/ratelimit.py:HostGuard`, `ratelimits.py`, BENCHMARK.md robustness findings | E7 |
 
 > **Framing advice.** Lead the abstract with C3 (batch) + C1 (adaptive) as the
 > novelty, C4 as the mechanism that makes them safe (resumable, never-corrupt),
 > C2 as the reusability story (the thing that lets adaptiSeq be a *library* inside
-> pipelines, not just a CLI), and C5 as the reliability evidence. Do **not** claim
+> pipelines, not just a CLI), and C5 as the reliability evidence. Present **C3b
+> (parallel rate-limited resolution)** as a named *mechanism inside* C3, not a
+> standalone headline — it has no meaning for a single accession; its novelty is
+> being *concurrent yet etiquette-compliant* (won't get the user's IP throttled),
+> which is what iSeq's serial resolver can't offer at batch scale. Do **not** claim
 > raw single-file throughput supremacy — aria2c beats us there and BENCHMARK.md is
 > honest about it. Our claim is *end-to-end* (resolve→download→verify→merge) over
 > *many* accessions, *safely*, *as a library*.
@@ -47,32 +52,64 @@ and reviewers of a "yet another downloader" paper will ask for them:
 | E7 | Reliability & resumability | Fig 1 + Suppl. S1 | success% over N runs, resume correctness | Table 3 |
 | E8 | Resource profile (time/mem/CPU/IO) | Fig 1D | peak RSS, %CPU, avg I/O | Fig 6 |
 | E9 | Scalability / strong-scaling on HPC | new | throughput vs `-j`, `--meta-jobs`, N | Fig 7 |
+| E10 | Parallel metadata resolution & rate-limit etiquette | extends Fig 1D "fetch metadata" | accessions/s, req/s per endpoint | Fig 8 + Table 4 |
 
 Minimum for a credible Applications Note: **E1, E3, E4, E8, E7**. The rest
 strengthen specific contributions and are worth doing given "do not underdo."
 
 ---
 
-## 2. Datasets (real accessions, tiered)
+## 2. Datasets (real accessions, tiered — **verified against the ENA portal API, 2026-06**)
 
-Reuse the prepared lists in `bench/inputs/` and add cross-database coverage. Fix
-the exact accession lists in a `datasets/` dir committed to the repo (iSeq lists
-its accessions in Data Availability — do the same for reproducibility).
+The small lists in `bench/inputs/` are fine for a CI smoke test but **too small to
+headline a paper** — iSeq benchmarked at the terabase scale (3000 GSA + 3000 SRA
+files, ~7 Tbp + ~5 Tbp). The tiers below scale to match, are **real and size-
+verified**, and deliberately **retain the three BioProjects from the FastBioDL/
+arXiv:2508.05511 study** (PRJNA762469, PRJNA540705, PRJNA400087) so adaptiSeq can be
+compared against your own prior tool for continuity. Commit the exact lists to a
+`datasets/` dir (iSeq publishes its accessions in Data Availability — do the same).
 
-| Tier | Purpose | Source list / example | Profile |
-|------|---------|----------------------|---------|
-| **D0 single** | E2 engine micro-bench | one ENA run, one SRA-only run, one GSA run, each at ~50 MB / ~2 GB / ~20 GB | controls file size |
-| **D1 small/overhead-dominated** | E3 headline (batching wins here) | `bench/inputs/accessions_small_PRJNA916347.txt` (16S amplicon, many 1–2 file runs, ~89 MB subset; full ~241 runs) | many small files |
-| **D2 medium/byte-dominated** | E3, E4 | `accessions_medium_PRJNA353374.txt` (~GB-scale runs) | balanced |
-| **D3 large** | E4 (long adaptive runs), E9 | `accessions_large_PRJNA251383.txt` (tens of GB) | byte-bound, long-running |
-| **D4 cross-database** | E1, E7 generality | ENA-mirrored, **SRA-only (no ENA mirror, forces `.sra`+fasterq-dump)**, **GSA (CRA/CRR)**, **GEO (GSE→SRX)** — reuse iSeq's own SRX3662754, SRX1663467, SRX917377, CRX095512 for a head-to-head on their turf | exercises every resolver branch |
-| **D5 reliability corpus** | E7 | 1,000–3,000 runs (subset of a large BioProject), like iSeq's 3000+3000 | scale & robustness |
+> Run counts/sizes below were pulled live from
+> `https://www.ebi.ac.uk/ena/portal/api/filereport?accession=<P>&result=read_run&fields=run_accession,fastq_bytes`.
+> Re-pull on Expanse before the runs (public DBs grow); the script is one line.
 
-**Pick D3/D4 so at least one regime forces each download path:** ENA HTTPS mirror,
-segmented FTP, SRA `.sra`→fasterq-dump conversion, GSA/Huawei-Cloud, and Aspera.
-Confirm with `adaptiseq resolve <acc>` (the library `resolve()`), which prints the
-URLs without downloading — log these so the paper can state which channel each tool
-used (fairness, §8).
+| Tier | BioProject | Verified scale (ENA) | Profile | Used by |
+|------|-----------|----------------------|---------|---------|
+| **D0 single-file** | pick 1 run each from D1/D2/D3 | ~24 MB / ~1.7 GB / ~11 GB | controls file size | E2 |
+| **D1 small / overhead-dominated** | **PRJNA916347** | 243 runs, **321 files, 7.6 GB, avg 24 MB/file** | many tiny files — batching's home turf; ~40 runs ship 3 fastq (iSeq drops these) | E3a, E7e |
+| **D2 medium / byte-balanced** | **PRJNA762469** (Breast RNA-seq, *FastBioDL*) | 60 runs, **120 files, 206 GB, avg 1.7 GB/file** | balanced; head-to-head vs your prior tool | E3b, E4, E8 |
+| **D3 large per-file** | **PRJNA540705** (HiFi-WGS, *FastBioDL*) | 6 runs, **69 GB, avg 11.6 GB/file** | huge single files → many adaptive probe windows | **E4 (long-run)**, E2-large |
+| **D3b large / TB-scale** | **PRJEB1787** (Tara Oceans metagenomes) | 249 runs, **495 files, 4.3 TB, avg 8.7 GB/file** | TB-scale byte-bound; matches iSeq's terabase scale | **E9 scaling**, E7a |
+| **D3c large (alt)** | PRJNA251383 | 168 runs, **1.08 TB, avg 3.2 GB/file** | already in `bench/inputs/`; mid-large | E9, E4 |
+| **D4 cross-database** | ENA-mirrored + **SRA-only** + **GSA** + **GEO** | see below | exercises every resolver branch | E1, E7, E10 |
+| **D5 reliability corpus** | **PRJEB6403** (~iSeq scale) or subset **PRJEB31736** | **3,307 runs** / 1000G high-cov **37,090 runs** (subset to 3k) | success%/integrity at iSeq scale | **E7a** |
+
+**Amplicon micro-tier (FastBioDL continuity / cheap CI):** PRJNA400087 (43 libraries,
+1.9 GB, 13–66 MB/file) — useful as a fast overhead-dominated check alongside D1.
+
+**D4 cross-database picks (exercise each resolver branch — verify before use):**
+- **ENA HTTPS + segmented FTP:** any D1–D3 run (all have `fastq_ftp`).
+- **SRA-only (no ENA mirror → forces `.sra` + fasterq-dump):** choose a project where
+  the ENA `filereport` returns **empty `fastq_ftp`** (older NCBI submissions, e.g.
+  many runs under **PRJNA48479**, 11,245 runs). Confirm per-run with `resolve()`.
+- **GSA (CRA/CRR, Huawei-Cloud path):** reuse iSeq's own **CRX917377 / CRX095512**
+  for a direct head-to-head, and add one **large CRA project** (query the GSA API
+  `getRunInfo`/`getRunInfoByCra` for size — not on the ENA portal). Flag: GSA sizes
+  must be verified via NGDC, not ENA.
+- **GEO (GSE → SRX):** one **GSE** that maps to SRA (e.g. iSeq used SRX-level
+  accessions) to exercise the GEO→SRA resolution branch.
+- **iSeq's own runs for a turf comparison:** SRX3662754 (SE), SRX1663467 (PE),
+  SRX917377, CRX095512 — run adaptiSeq vs iSeq on the exact accessions iSeq reported.
+
+**Coverage rule:** ensure the chosen set forces every download path at least once —
+ENA HTTPS mirror, segmented FTP, SRA `.sra`→fasterq-dump, GSA/Huawei-Cloud, Aspera.
+Log `adaptiseq resolve <acc>` (library `resolve()`, no download) for each so the
+paper can state which channel every tool actually used (fairness, §8).
+
+**Storage budget (plan Lustre scratch accordingly):** a single full pass of
+D1+D2+D3+D3b is ~4.6 TB; the D5 reliability corpus at 3k runs is multi-TB. Stage per
+tier, md5-verify, then purge before the next tier — don't try to hold all tiers at
+once. For E9 on D3b (4.3 TB) reserve scratch quota in advance.
 
 ---
 
@@ -288,6 +325,43 @@ on a 48-core node) didn't.
 
 ---
 
+## 11b. E10 — Parallel metadata resolution & rate-limit etiquette (Fig 8 + Table 4) — C3b
+
+Isolates the resolution half of batch download from byte transfer, and proves the
+"concurrent **but** well-behaved" design. This is also the experiment where the
+*metadata* tools (**pysradb, ffq**) are legitimate head-to-head rivals (comparing
+them on byte transfer would be apples-to-oranges).
+
+**E10a — Resolution throughput (download stripped out).** Resolve N ∈ {100, 500,
+2000} accessions with *no* download (`-m` / library `resolve()`), measure
+accessions/sec and total resolution wall time. Sweep `--meta-jobs ∈ {1,3,8,16}`.
+Competitors: iSeq (serial), pysradb, ffq, Kingfisher. Use a mixed ENA/SRA/GSA list
+(D4-style) so the multi-DB preference chain (ENA→SRA fallback→GSA→GEO) is exercised.
+
+**E10b — Overlap value.** For a real batch (D2), report resolution-phase wall time
+as a **fraction of total** with `--meta-jobs 1` vs `8`, and end-to-end time with
+resolution overlapping transfer vs forced-serial. Quantifies exactly what batching
+hides — the per-run RTT iSeq pays serially.
+
+**E10c — Etiquette / decoupling proof (the key panel).** Instrument
+`ratelimits.RateLimiter.acquire` (or count requests in `net.py`) to record
+**requests/sec to each endpoint** (ENA/GSA/NCBI) while sweeping `--meta-jobs`.
+Show the rate stays **flat at the per-endpoint cap** (NCBI ≤ 3 rps without key,
+≤ 10 with `NCBI_API_KEY`) even as `--meta-jobs` rises — i.e. concurrency is
+decoupled from request rate, so adaptiSeq won't trip server throttles or get the
+user's IP blocked. Contrast: a naive thread-per-accession resolver (or
+`--meta-jobs` with the limiter disabled) blows past 3 rps → the failure mode this
+design prevents. Run both the NCBI-key and no-key cases.
+
+**Metrics:** accessions/sec, resolution wall time, resolution-fraction-of-total,
+peak req/s per endpoint vs the documented cap, # throttle/429 responses received.
+
+**Plots:** Fig 8a accessions/sec vs `--meta-jobs` (lines per tool); Fig 8b
+req/s-to-NCBI vs `--meta-jobs` (adaptiSeq flat at cap vs naive linear); Table 4
+resolution wall time for N=2000 across tools.
+
+---
+
 ## 12. Methodology & fairness (write this as a Methods subsection)
 
 Borrow iSeq's controlled-conditions discipline and the existing BENCHMARK.md rigor:
@@ -367,6 +441,8 @@ Borrow iSeq's controlled-conditions discipline and the existing BENCHMARK.md rig
 - **Fig 5** — Aspera hysteresis trajectory & back-off (E5).
 - **Fig 6** — resource profile traces + task-time bar (E8, the iSeq-1D analogue).
 - **Fig 7** — strong-scaling vs `-j`/`--meta-jobs`, link saturation (E9).
+- **Fig 8 + Table 4** — resolution accessions/s vs `--meta-jobs`; req/s-per-endpoint
+  etiquette (flat at cap vs naive); N=2000 resolution time across tools (E10).
 - **Table 2** — Python API LOC/composability vs scripting iSeq (E6).
 - **Table 3** — reliability: large-corpus success/integrity + resume correctness
   (E7).
