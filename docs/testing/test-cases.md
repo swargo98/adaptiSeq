@@ -225,7 +225,13 @@ adaptiseq -i SRR1178105 -q -t 2 -o tmp/feature-tests/tc14
 ```
 
 Expected: requires `srapath`, `fasterq-dump`, `vdb-validate`, and `pigz`; mark
-Blocked if those tools are missing.
+Blocked if those tools are missing. The run should download the SRA file, md5
+validate it, convert it with `fasterq-dump`, and write paired FASTQ files. During
+download, file progress and segment meter lines can appear before the first
+`adaptive probe`; this is expected because progress display, segment logging, and
+adaptive probing use separate intervals. Default display intervals are centralized
+in `adaptiseq/options.py`: file progress every 2 seconds and segment meter lines
+every 10 seconds.
 
 ### TC-15: Merge by Experiment
 
