@@ -1,5 +1,5 @@
 from adaptiseq.console import ListReporter
-from adaptiseq.engine.classic import ClassicEngine
+from adaptiseq.engine.classic import ClassicEngine, find_ena_aspera_key
 from adaptiseq.options import Options
 
 
@@ -53,3 +53,32 @@ def test_quiet_axel_discards_output_and_suppresses_notes(tmp_path, monkeypatch):
     assert calls[0][1] is not None
     assert calls[0][2] is not None
     assert reporter.infos == []
+
+
+def test_find_ena_aspera_key_when_ascp_and_key_share_conda_etc_dir(tmp_path, monkeypatch):
+    aspera_dir = tmp_path / "env" / "etc" / "aspera"
+    aspera_dir.mkdir(parents=True)
+    ascp = aspera_dir / "ascp"
+    key = aspera_dir / "aspera_bypass_rsa.pem"
+    ascp.write_text("")
+    key.write_text("key")
+
+    monkeypatch.setattr("adaptiseq.engine.classic._which", lambda name: str(ascp))
+
+    assert find_ena_aspera_key() == key
+
+
+def test_find_ena_aspera_key_when_ascp_is_in_conda_bin(tmp_path, monkeypatch):
+    env = tmp_path / "env"
+    bin_dir = env / "bin"
+    aspera_dir = env / "etc" / "aspera"
+    bin_dir.mkdir(parents=True)
+    aspera_dir.mkdir(parents=True)
+    ascp = bin_dir / "ascp"
+    key = aspera_dir / "aspera_bypass_rsa.pem"
+    ascp.write_text("")
+    key.write_text("key")
+
+    monkeypatch.setattr("adaptiseq.engine.classic._which", lambda name: str(ascp))
+
+    assert find_ena_aspera_key() == key
