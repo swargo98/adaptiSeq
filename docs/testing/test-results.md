@@ -1,6 +1,6 @@
 # adaptiSeq Test Results Report
 
-Last updated: 2026-06-28 12:13 CDT
+Last updated: 2026-06-28 12:17 CDT
 
 This is the living execution report for [`test-cases.md`](test-cases.md). Update
 it after each test run. The spreadsheet version is maintained in
@@ -19,11 +19,11 @@ LibreOffice.
 
 | Status | Count |
 | --- | ---: |
-| Passed | 22 |
+| Passed | 23 |
 | Failed | 0 |
 | Blocked | 0 |
 | Partial | 0 |
-| Not Run | 6 |
+| Not Run | 5 |
 
 ## Environment Notes
 
@@ -61,7 +61,7 @@ LibreOffice.
 | TC-14 | SRA to FASTQ Conversion | Passed | 2026-06-28 | Conda `adaptiseq` | `adaptiseq -i SRR1178105 -q -t 2 -o tmp/feature-tests/tc14` completed successfully. Downloaded `SRR1178105` at 291,744,155 bytes, verified md5, converted with `fasterq-dump -t 2`, and wrote paired FASTQ files. Each FASTQ has 10,044,848 lines, matching 2,511,212 reads per mate. | `tmp/feature-tests/tc14/success.log` contains `SRR1178105`; `SRR1178105_1.fastq` and `SRR1178105_2.fastq` are each 698,694,944 bytes; no `fail.log` exists. Logging behavior is expected: file progress repaints frequently, segment meters log independently, and `adaptive probe` logs only after the probe window measurement. |
 | TC-15 | Merge by Experiment | Not Run |  |  |  | Network/download dependent. |
 | TC-16 | Merge Guard Negative Case | Passed | 2026-06-28 | Conda `adaptiseq` | `adaptiseq -i SRR7706354 -e ex -o tmp/feature-tests/tc16` exited with the expected guard error: `SRR7706354 is a Run ID, can not use -e option`, followed by the expected solution text. | No download artifacts were created, which is expected because validation stops before download. |
-| TC-17 | Skip MD5 | Not Run |  |  |  | Expected explicit md5 skip message. |
+| TC-17 | Skip MD5 | Passed | 2026-06-28 | Conda `adaptiseq` | `adaptiseq -i SRR22904257 -g -r https -k --engine segmented -o tmp/feature-tests/tc17` completed successfully and printed `Skip md5 check for SRR22904257, as -k option is used`. | `SRR22904257.fastq.gz` is 50,963 bytes and metadata is present. No `fail.log` exists. `success.log` is empty because this mode skips verification rather than recording an md5-verified success. |
 | TC-18 | ENA Aspera | Not Run |  |  |  | Requires real IBM `ascp`; mark `Blocked` if unavailable. |
 | TC-19 | GSA Aspera / Huawei Preference | Not Run |  |  |  | Requires GSA endpoint availability and possibly real `ascp`. |
 | TC-20 | Python API Fetch | Not Run |  |  |  | Run the Python API `fetch()` snippet from `test-cases.md`. |
