@@ -78,6 +78,34 @@ def test_ftp_segmented_byte_identical(tmp_path):
     assert not (outdir / "file.bin.part.meta").exists()
 
 
+def test_ftp_segmented_emits_segment_events(tmp_path):
+    src = tmp_path / "src"
+    src.mkdir()
+    data = os.urandom(3 * 1024 * 1024 + 9)
+    (src / "file.bin").write_bytes(data)
+    outdir = tmp_path / "out"
+    outdir.mkdir()
+    events = []
+
+    async def body(port):
+        url = f"ftp://127.0.0.1:{port}/file.bin"
+        d = FtpSegmentedDownloader(
+            url, str(outdir / "file.bin"),
+            segment_size=1024 * 1024, max_segments=3,
+            min_file_size_for_segmentation=1024 * 1024,
+            host_guard=HostGuard(8),
+            on_segments=lambda event, state: events.append((event, state)),
+        )
+        return await d.download()
+
+    ok = asyncio.run(_with_server(str(src), body))
+    assert ok is True
+    assert events[0][0] == "planned"
+    assert events[0][1]["segments"]
+    assert events[-1][0] == "complete"
+    assert len(events[-1][1]["segments"]) == 3
+
+
 def test_ftp_single_segment_accounting(tmp_path):
     # max_segments=1 -> single REST/RETR; still byte-identical (no concurrency).
     src = tmp_path / "src"

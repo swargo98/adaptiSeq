@@ -19,7 +19,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from ..console import green_bold, red_bold, Reporter, NullReporter
+from ..console import green, green_bold, red_bold, Reporter, NullReporter
 from ..errors import PreflightError
 from ..net import USER_AGENT_MOZILLA, wget_to_file
 
@@ -114,7 +114,26 @@ class ClassicEngine:
             ]
             if quiet:
                 return self._run(cmd, discard=True) == 0
-            return self._run(cmd) == 0
+            self.reporter.info(
+                f"{green('Note')}: Classic engine using axel parallel download "
+                f"with {opts.parallel} connection(s) (-n {opts.parallel}), "
+                f"resume enabled (-c), speed cap {opts.speed} MB/s, output {save_path}"
+            )
+            self.reporter.info(
+                f"{green('Note')}: Axel may reuse connection numbers while retrying "
+                "byte ranges; final md5 validation determines file integrity"
+            )
+            rc = self._run(cmd)
+            if rc == 0:
+                self.reporter.info(
+                    f"{green('Note')}: Axel process completed for {save_path}; "
+                    "starting integrity validation"
+                )
+                return True
+            self.reporter.error(
+                f"{red_bold('Error')}: Axel exited with code {rc} for {save_path}"
+            )
+            return False
 
         # wget path
         if quiet:

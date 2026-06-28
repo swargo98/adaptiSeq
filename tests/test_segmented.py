@@ -14,6 +14,7 @@ import time
 import aiohttp
 import pytest
 
+from adaptiseq.console import ListReporter
 from adaptiseq.engine import segmented as S
 from adaptiseq.engine.ratelimit import HostGuard, TokenBucket, host_of
 from adaptiseq.engine.seam import SegmentedEngine, _to_https
@@ -161,11 +162,11 @@ def test_circuit_breaker_trips_and_recovers():
 
 # ============================== end-to-end (local server) ====================
 
-def _engine(outdir, **opts):
+def _engine(outdir, reporter=None, **opts):
     base = dict(engine="segmented", segment_size=1 * 1024 * 1024, max_segments=8,
                 max_conns_per_host=8, quiet=True)
     base.update(opts)
-    return SegmentedEngine(Options(**base), outdir)
+    return SegmentedEngine(Options(**base), outdir, reporter)
 
 
 def test_segmented_http_byte_identical(tmp_path):
@@ -178,6 +179,27 @@ def test_segmented_http_byte_identical(tmp_path):
     assert md5(out) == md5(data)
     assert not (tmp_path / "file.bin.part").exists()
     assert not (tmp_path / "file.bin.part.meta").exists()
+
+
+def test_segmented_http_reports_segment_plan_and_completion(tmp_path):
+    data = os.urandom(6 * 1024 * 1024 + 123)
+    reporter = ListReporter()
+    with RangeServer(data) as srv:
+        eng = _engine(
+            str(tmp_path),
+            reporter=reporter,
+            quiet=False,
+            max_segments=3,
+            segment_size=1024 * 1024,
+        )
+        ok = eng.fetch(srv.url(), "file.bin")
+
+    assert ok is True
+    joined = "\n".join(reporter.infos)
+    assert "Segment plan for file.bin: segmented HTTPS, 3 segment(s)" in joined
+    assert "active connection(s)" in joined
+    assert "Segment meter for file.bin: 3/3 complete | active 0 | 100.0%" in joined
+    assert "s1=100%" in joined
 
 
 def test_segmented_strict_206_falls_back_to_single_on_200(tmp_path):

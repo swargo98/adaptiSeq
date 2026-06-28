@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Callable, List, Optional, Set, Tuple
 
@@ -109,18 +110,37 @@ class HysteresisController:
         return self.meter.recent_average(max(1, self.probe_window - 1))
 
     async def run(self) -> None:
-        loop = asyncio.get_event_loop()
         await asyncio.sleep(self.probe_window)        # initial settle
 
-        def measure(w: int) -> float:
+        async def measure(w: int) -> float:
             if self.done:
                 return 0.0
-            fut = asyncio.run_coroutine_threadsafe(self._measure(w), loop)
-            return fut.result()
+            return await self._measure(w)
 
-        active, traj = await loop.run_in_executor(
-            None, lambda: hysteresis_search(self.gate.jobs, measure, self.efficiency)
-        )
+        base_t = await measure(1)
+        baseline = base_t if base_t > 0 else 0.0
+        traj: List[Tuple[int, float, float]] = [(1, base_t, 1.0)]
+        active = 1
+
+        while active < self.gate.jobs and not self.done:
+            cand = active + 1
+            t = await measure(cand)
+            if self.done:
+                break
+
+            if baseline <= 0:
+                baseline = (t / cand) if cand else 0.0
+                eff = 1.0 if t > 0 else 0.0
+            else:
+                theoretical = cand * baseline
+                eff = (t / theoretical) if theoretical > 0 else 0.0
+
+            traj.append((cand, t, round(eff, 3)))
+            if eff >= self.efficiency:
+                active = cand
+            else:
+                break
+
         self.trajectory = traj
         self.gate.set_active(active)
         log.info("aspera controller settled at %d workers (efficiency>=%.2f)",
@@ -156,8 +176,11 @@ class AsperaBatchDownloader:
             queue.put_nowait(t)
 
         meter = DirGrowthMeter(self.workdir)
-        active0 = self.jobs if not self.adaptive else 1
-        gate = WorkerGate(self.jobs, active=active0)
+        worker_slots = min(self.jobs, len(tasks))
+        active0 = worker_slots if not self.adaptive else 1
+        gate = WorkerGate(worker_slots, active=active0)
+        executor = ThreadPoolExecutor(max_workers=worker_slots)
+        self._executor = executor
         failed: Set[str] = set()
         progress = ProgressBar(
             total=len(tasks),
@@ -177,33 +200,65 @@ class AsperaBatchDownloader:
             ctrl_task = asyncio.ensure_future(controller.run())
         repaint = asyncio.ensure_future(self._repaint(progress, meter, gate))
 
-        workers = [
-            asyncio.ensure_future(self._worker(i, queue, gate, failed, progress))
-            for i in range(self.jobs)
-        ]
-        await queue.join()
-        for w in workers:
-            w.cancel()
-        await asyncio.gather(*workers, return_exceptions=True)
+        try:
+            workers = [
+                asyncio.ensure_future(self._worker(i, queue, gate, failed, progress))
+                for i in range(worker_slots)
+            ]
+            await queue.join()
+            for w in workers:
+                w.cancel()
+            await asyncio.gather(*workers, return_exceptions=True)
 
-        repaint.cancel()
-        await asyncio.gather(repaint, return_exceptions=True)
-        progress.draw(meter.last_sample(), gate.active)
-        progress.finish()
-        if controller is not None:
-            controller.stop()
-            if ctrl_task is not None:
-                ctrl_task.cancel()
-                await asyncio.gather(ctrl_task, return_exceptions=True)
-        await meter.stop()
-        self._controller = controller
-        self._progress = progress
-        return failed
+            repaint.cancel()
+            await asyncio.gather(repaint, return_exceptions=True)
+            progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
+            progress.finish()
+            if controller is not None:
+                controller.stop()
+                if ctrl_task is not None:
+                    ctrl_task.cancel()
+                    await asyncio.gather(ctrl_task, return_exceptions=True)
+            await meter.stop()
+            self._controller = controller
+            self._progress = progress
+            self._gate = gate
+            self._worker_slots = worker_slots
+            self._initial_active = active0
+            return failed
+        finally:
+            executor.shutdown(wait=True, cancel_futures=True)
+            self._executor = None
+
+    @staticmethod
+    def _remaining_files(progress) -> int:
+        return max(0, progress.total - progress.done)
+
+    @classmethod
+    def _visible_workers(cls, progress, gate) -> int:
+        remaining = cls._remaining_files(progress)
+        if remaining == 0:
+            return 0
+        return min(gate.active, remaining)
+
+    @classmethod
+    def _cap_gate_to_remaining(cls, progress, gate) -> None:
+        remaining = cls._remaining_files(progress)
+        if remaining > 0 and gate.active > remaining:
+            gate.set_active(remaining)
+
+    def _already_successful(self, task: DownloadTask) -> bool:
+        save_name = Path(task.save_path).name
+        return (
+            in_success(self.workdir, task.accession)
+            or in_success(self.workdir, save_name)
+        )
 
     async def _repaint(self, progress, meter, gate) -> None:
         try:
             while True:
-                progress.draw(meter.last_sample(), gate.active)
+                self._cap_gate_to_remaining(progress, gate)
+                progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
                 await asyncio.sleep(0.4)
         except asyncio.CancelledError:
             return
@@ -221,12 +276,15 @@ class AsperaBatchDownloader:
                 await asyncio.sleep(0.1)
                 continue
             try:
-                if in_success(self.workdir, Path(task.save_path).name):
+                if self._already_successful(task):
                     progress.inc()
+                    self._cap_gate_to_remaining(progress, gate)
                     continue
                 try:
                     # ascp is a blocking subprocess — run it off the event loop.
-                    ok = await loop.run_in_executor(None, self.download_fn, task)
+                    ok = await loop.run_in_executor(
+                        self._executor, self.download_fn, task
+                    )
                 except asyncio.CancelledError:
                     raise
                 except Exception as e:
@@ -234,6 +292,7 @@ class AsperaBatchDownloader:
                     ok = False
                 if ok:
                     progress.inc()
+                    self._cap_gate_to_remaining(progress, gate)
                 else:
                     task.retries += 1
                     if task.retries < 3:

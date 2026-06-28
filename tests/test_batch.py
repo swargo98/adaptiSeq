@@ -9,15 +9,29 @@ import pytest
 
 from adaptiseq import ratelimits
 from adaptiseq.batch import AdaptiveController, BatchDownloader, DownloadTask
+from adaptiseq.console import ListReporter
+from adaptiseq.core import _batch_download_phase
 from adaptiseq.engine.gate import WorkerGate
 from adaptiseq.engine.seam import SegmentedEngine
 from adaptiseq.engine.throughput import ThroughputMeter
-from adaptiseq.options import Options
+from adaptiseq.options import Options, RunContext
 from tests.servers import MultiFileRangeServer
 
 
 def md5(b):
     return hashlib.md5(b).hexdigest()
+
+
+class FakeEngine:
+    def __init__(self):
+        self.calls = []
+
+    async def fetch_async(self, url, save_path, **kwargs):
+        self.calls.append((url, save_path))
+        on_bytes = kwargs.get("on_bytes")
+        if on_bytes is not None:
+            on_bytes(1024)
+        return True
 
 
 def _engine(outdir, **opts):
@@ -71,6 +85,91 @@ def test_batch_skips_already_in_success_log(tmp_path):
     assert (tmp_path / "g1.bin").exists()
 
 
+def test_batch_skips_when_accession_is_in_success_log(tmp_path):
+    (tmp_path / "success.log").write_text("date\tSRR1\n")
+    engine = FakeEngine()
+    opts = Options(engine="segmented", quiet=True, adaptive=False, jobs=4)
+    bd = BatchDownloader(engine, opts, str(tmp_path))
+    tasks = [
+        DownloadTask(
+            "https://example.test/SRR1.fastq.gz",
+            "SRR1.fastq.gz",
+            "SRR1",
+        )
+    ]
+
+    failed = asyncio.run(bd.run(tasks))
+
+    assert failed == set()
+    assert engine.calls == []
+    assert bd._progress.done == 1
+
+
+def test_single_file_adaptive_batch_uses_one_worker(tmp_path):
+    opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20,
+                   probe_window=2)
+    bd = BatchDownloader(FakeEngine(), opts, str(tmp_path))
+    tasks = [DownloadTask("https://example.test/f0.fastq.gz", "f0.fastq.gz", "ACC")]
+
+    failed = asyncio.run(bd.run(tasks))
+
+    assert failed == set()
+    assert bd._worker_slots == 1
+    assert bd._initial_active == 1
+    assert bd._gate.jobs == 1
+    assert bd._gate.active == 1
+
+
+def test_worker_pool_is_capped_to_task_count(tmp_path):
+    opts = Options(engine="segmented", quiet=True, adaptive=False, jobs=20)
+    bd = BatchDownloader(FakeEngine(), opts, str(tmp_path))
+    tasks = [
+        DownloadTask(f"https://example.test/f{i}.fastq.gz", f"f{i}.fastq.gz", "ACC")
+        for i in range(3)
+    ]
+
+    failed = asyncio.run(bd.run(tasks))
+
+    assert failed == set()
+    assert bd._worker_slots == 3
+    assert bd._initial_active == 3
+    assert bd._gate.jobs == 3
+
+
+def test_batch_start_notice_reports_effective_worker_cap(monkeypatch, tmp_path):
+    from adaptiseq import batch as batch_mod
+
+    task = DownloadTask(
+        "https://example.test/SRR1.fastq.gz",
+        "SRR1.fastq.gz",
+        "SRR1",
+    )
+
+    class FakeBatchDownloader:
+        def __init__(self, engine, options, workdir, reporter=None):
+            self._controller = None
+
+        async def run(self, tasks):
+            return set()
+
+    monkeypatch.setattr(
+        batch_mod,
+        "resolve_all",
+        lambda accessions, opts, workdir, meta_jobs: ([task], []),
+    )
+    monkeypatch.setattr(batch_mod, "BatchDownloader", FakeBatchDownloader)
+    reporter = ListReporter()
+    opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20)
+    ctx = RunContext(options=opts, reporter=reporter, workdir=tmp_path)
+    ctx.engine = FakeEngine()
+
+    _batch_download_phase(ctx, ["SRR1"])
+
+    output = "\n".join(reporter.infos)
+    assert "with up to 1 worker(s) (configured max 20)" in output
+    assert "up to 20 workers" not in output
+
+
 def test_adaptive_controller_adjusts_gate_and_records_trajectory(tmp_path):
     # Drive the controller against a meter we feed manually; assert it sets the
     # gate active count and records a trajectory (observable, acceptance #2).
@@ -99,6 +198,42 @@ def test_adaptive_controller_adjusts_gate_and_records_trajectory(tmp_path):
     trajectory, active = asyncio.run(main())
     assert len(trajectory) >= 1          # probed at least once
     assert all(1 <= w <= 8 for w, _ in trajectory)
+
+
+def test_adaptive_controller_logs_probes_and_bounded_summary(tmp_path):
+    async def main():
+        gate = WorkerGate(jobs=3, active=1)
+        meter = ThroughputMeter(interval=0.05)
+        reporter = ListReporter()
+        meter.start()
+        ctrl = AdaptiveController(
+            gate, meter, probe_window=2, cc_penalty=1.01,
+            reporter=reporter, quiet=False, history_limit=2,
+        )
+
+        async def feed():
+            for _ in range(70):
+                meter.on_bytes(int(gate.active * 300 * 1024))
+                await asyncio.sleep(0.05)
+
+        feeder = asyncio.ensure_future(feed())
+        runner = asyncio.ensure_future(ctrl.run())
+        await asyncio.sleep(6)
+        ctrl.stop()
+        runner.cancel()
+        feeder.cancel()
+        await asyncio.gather(runner, feeder, return_exceptions=True)
+        await meter.stop()
+        return reporter.infos, ctrl.summary(), ctrl.probe_count, ctrl.trajectory
+
+    infos, summary, probe_count, recent = asyncio.run(main())
+    output = "\n".join(infos)
+    assert "adaptive probe 1: active file workers=" in output
+    assert "measured throughput=" in output
+    assert "allowed file workers=" in output
+    assert "adaptive worker summary:" in summary
+    assert f"{probe_count} probe(s)" in summary
+    assert len(recent) <= 2
 
 
 def test_rate_limiter_enforces_rps():
