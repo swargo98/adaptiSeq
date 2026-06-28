@@ -360,11 +360,17 @@ def test_auto_transport_never_falls_back_to_classic(tmp_path, monkeypatch):
 
 
 def test_default_options_are_segmented_and_adaptive():
-    from adaptiseq.options import Options
+    from adaptiseq.options import (
+        DEFAULT_PROGRESS_INTERVAL,
+        DEFAULT_SEGMENT_LOG_INTERVAL,
+        Options,
+    )
     o = Options()
     assert o.engine == "segmented"
     assert o.adaptive is True
     assert o.protocol == "auto"
+    assert o.progress_interval == DEFAULT_PROGRESS_INTERVAL
+    assert o.segment_log_interval == DEFAULT_SEGMENT_LOG_INTERVAL
 
 
 def test_self_contained_no_forbidden_imports():

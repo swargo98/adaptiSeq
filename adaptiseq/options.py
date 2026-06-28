@@ -20,6 +20,10 @@ from typing import Optional
 
 from .console import NullReporter, Reporter
 
+DEFAULT_PROBE_WINDOW = 10
+DEFAULT_PROGRESS_INTERVAL = 2.0
+DEFAULT_SEGMENT_LOG_INTERVAL = 10.0
+
 
 @dataclass
 class Options:
@@ -48,10 +52,12 @@ class Options:
     # Part 3 adaptive/batch knobs.
     jobs: int = 20                  # -j/--jobs (worker-pool size)
     adaptive: bool = True           # --adaptive/--no-adaptive
-    probe_window: int = 5           # --probe-window (seconds)
+    probe_window: int = DEFAULT_PROBE_WINDOW  # --probe-window (seconds)
     cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
     meta_jobs: int = 3              # --meta-jobs (parallel resolution)
     aspera_efficiency: float = 0.70 # --aspera-efficiency (keep-worker threshold)
+    progress_interval: float = DEFAULT_PROGRESS_INTERVAL
+    segment_log_interval: float = DEFAULT_SEGMENT_LOG_INTERVAL
 
     def __post_init__(self) -> None:
         if self.merge in (0, "0", ""):
@@ -82,6 +88,12 @@ class Options:
             raise ValueError(f"Invalid meta_jobs: {self.meta_jobs}")
         if not (0.0 < self.aspera_efficiency <= 1.0):
             raise ValueError(f"Invalid aspera_efficiency: {self.aspera_efficiency}")
+        if self.progress_interval <= 0:
+            raise ValueError(f"Invalid progress_interval: {self.progress_interval}")
+        if self.segment_log_interval <= 0:
+            raise ValueError(
+                f"Invalid segment_log_interval: {self.segment_log_interval}"
+            )
 
 
 @dataclass

@@ -59,6 +59,7 @@ print(result.success_ids, result.fail_ids)
 `fastq`, `threads`, `merge`, `database`, `aspera`, `speed`, `skip_md5`, `protocol`,
 `quiet`, `engine`, `segment_size_mb`, `max_segments`, `max_conns_per_host`, `jobs`,
 `adaptive`, `probe_window`, `cc_penalty`, `meta_jobs`, `aspera_efficiency`), plus
+the display cadence options `progress_interval` and `segment_log_interval`, and
 an optional `reporter` to capture progress.
 
 ## Typed exceptions

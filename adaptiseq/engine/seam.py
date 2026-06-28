@@ -135,7 +135,10 @@ class SegmentedEngine:
             "ftp-single": "single-stream FTP",
         }
         return SegmentProgressLogger(
-            self.reporter, save_path, labels.get(kind, kind)
+            self.reporter,
+            save_path,
+            labels.get(kind, kind),
+            interval=self.options.segment_log_interval,
         )
 
     async def _select_transport(

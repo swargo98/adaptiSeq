@@ -38,6 +38,11 @@ from .errors import (
     PreflightError,
 )
 from .logs import FAIL_LOG, SUCCESS_LOG
+from .options import (
+    DEFAULT_PROBE_WINDOW,
+    DEFAULT_PROGRESS_INTERVAL,
+    DEFAULT_SEGMENT_LOG_INTERVAL,
+)
 from .options import Options, RunContext, load_accessions, resolve_output_dir
 
 __version__ = "0.1.3"
@@ -183,10 +188,12 @@ def fetch(
     max_conns_per_host: int = 8,
     jobs: int = 20,
     adaptive: bool = True,
-    probe_window: int = 5,
+    probe_window: int = DEFAULT_PROBE_WINDOW,
     cc_penalty: float = 1.01,
     meta_jobs: int = 3,
     aspera_efficiency: float = 0.70,
+    progress_interval: float = DEFAULT_PROGRESS_INTERVAL,
+    segment_log_interval: float = DEFAULT_SEGMENT_LOG_INTERVAL,
     reporter: Optional[Reporter] = None,
 ) -> FetchResult:
     """Download and verify ``accession``.
@@ -229,6 +236,8 @@ def fetch(
         cc_penalty=cc_penalty,
         meta_jobs=meta_jobs,
         aspera_efficiency=aspera_efficiency,
+        progress_interval=progress_interval,
+        segment_log_interval=segment_log_interval,
     )
     workdir = resolve_output_dir(outdir)
     accessions = load_accessions(accession)

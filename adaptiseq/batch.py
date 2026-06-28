@@ -41,7 +41,7 @@ from .engine.optimize import EXIT_SIGNAL, gradient_opt_fast
 from .engine.ratelimit import HostGuard, TokenBucket
 from .engine.throughput import ThroughputMeter
 from .logs import in_success
-from .options import Options, RunContext
+from .options import DEFAULT_PROBE_WINDOW, Options, RunContext
 from .ratelimits import EndpointLimiters, set_active
 
 log = logging.getLogger("adaptiseq.batch")
@@ -62,7 +62,7 @@ class AdaptiveController:
     """Drives ``gate.active`` from the gradient optimizer over the live meter."""
 
     def __init__(self, gate: WorkerGate, meter: ThroughputMeter, *,
-                 probe_window: int = 5, cc_penalty: float = 1.01,
+                 probe_window: int = DEFAULT_PROBE_WINDOW, cc_penalty: float = 1.01,
                  max_workers: Optional[Callable[[], int]] = None,
                  reporter: Optional[Reporter] = None,
                  quiet: bool = False,
@@ -279,12 +279,13 @@ class BatchDownloader:
         )
 
     async def _repaint(self, progress, meter, gate) -> None:
-        """Repaint the live progress bar ~2.5 Hz until cancelled."""
+        """Repaint the live progress bar until cancelled."""
+        interval = max(0.1, float(self.options.progress_interval))
         try:
             while True:
                 self._cap_gate_to_remaining(progress, gate)
                 progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
-                await asyncio.sleep(0.4)
+                await asyncio.sleep(interval)
         except asyncio.CancelledError:
             return
 

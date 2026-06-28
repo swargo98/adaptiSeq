@@ -22,7 +22,12 @@ from .console import (
     yellow_bold,
 )
 from .errors import AdaptiSeqError, PreflightError
-from .options import Options, load_accessions, resolve_output_dir
+from .options import (
+    DEFAULT_PROBE_WINDOW,
+    Options,
+    load_accessions,
+    resolve_output_dir,
+)
 from .preflight import check_software, render_preflight_error
 from .routing import check_merge_guard
 
@@ -107,8 +112,10 @@ def build_parser() -> argparse.ArgumentParser:
                         "(default: on).")
     g.add_argument("--no-adaptive", dest="adaptive", action="store_false",
                    help="Disable adaptivity: run all -j workers with no probing.")
-    g.add_argument("--probe-window", metavar="int", default="5", dest="probe_window",
-                   help="Adaptive optimizer probe window in seconds (default: 5).")
+    g.add_argument("--probe-window", metavar="int", default=str(DEFAULT_PROBE_WINDOW),
+                   dest="probe_window",
+                   help="Adaptive optimizer probe window in seconds "
+                        f"(default: {DEFAULT_PROBE_WINDOW}).")
     g.add_argument("--cc-penalty", metavar="float", default="1.01", dest="cc_penalty",
                    help="Worker-cost penalty K in score=throughput/K**workers "
                         "(default: 1.01).")
@@ -245,7 +252,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     # Part 3 adaptive/batch knobs.
     jobs = _posint("jobs", "-j", args.jobs, 20,
                    'Please use a positive integer for the "-j" option')
-    probe_window = _posint("probe-window", "--probe-window", args.probe_window, 5,
+    probe_window = _posint(
+        "probe-window", "--probe-window", args.probe_window, DEFAULT_PROBE_WINDOW,
                            'Please use an integer >= 2 for the "--probe-window" option')
     if probe_window < 2:
         probe_window = 2

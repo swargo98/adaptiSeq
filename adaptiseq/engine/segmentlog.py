@@ -11,6 +11,7 @@ import time
 from typing import Dict, List, Tuple
 
 from ..console import green
+from ..options import DEFAULT_SEGMENT_LOG_INTERVAL
 
 
 def _human_bytes(n: int) -> str:
@@ -27,7 +28,13 @@ def _human_bytes(n: int) -> str:
 class SegmentProgressLogger:
     """Throttled reporter callback for downloader segment snapshots."""
 
-    def __init__(self, reporter, save_path: str, transport: str, interval: float = 5.0):
+    def __init__(
+        self,
+        reporter,
+        save_path: str,
+        transport: str,
+        interval: float = DEFAULT_SEGMENT_LOG_INTERVAL,
+    ):
         self.reporter = reporter
         self.save_name = os.path.basename(save_path)
         self.transport = transport

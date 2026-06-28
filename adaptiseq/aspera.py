@@ -31,6 +31,7 @@ from .console import NullReporter, Reporter, green
 from .engine.gate import WorkerGate
 from .engine.throughput import DirGrowthMeter
 from .logs import in_success
+from .options import DEFAULT_PROBE_WINDOW
 
 log = logging.getLogger("adaptiseq.aspera")
 
@@ -92,7 +93,7 @@ def hysteresis_search(
 class HysteresisController:
     """Drives ``gate.active`` for ascp via :func:`hysteresis_search` over a meter."""
 
-    def __init__(self, gate: WorkerGate, meter, *, probe_window: int = 5,
+    def __init__(self, gate: WorkerGate, meter, *, probe_window: int = DEFAULT_PROBE_WINDOW,
                  efficiency: float = 0.70):
         self.gate = gate
         self.meter = meter
@@ -255,11 +256,12 @@ class AsperaBatchDownloader:
         )
 
     async def _repaint(self, progress, meter, gate) -> None:
+        interval = max(0.1, float(self.options.progress_interval))
         try:
             while True:
                 self._cap_gate_to_remaining(progress, gate)
                 progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
-                await asyncio.sleep(0.4)
+                await asyncio.sleep(interval)
         except asyncio.CancelledError:
             return
 
