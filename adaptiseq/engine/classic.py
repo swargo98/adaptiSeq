@@ -87,6 +87,23 @@ def ena_aspera_key_candidates() -> tuple:
     return _ena_aspera_key_candidates(ascp)
 
 
+def ena_aspera_link(link: str) -> str:
+    """Normalize ENA metadata links into the authenticated ascp target form."""
+    value = link.strip()
+    for scheme in ("fasp://", "ftp://", "https://", "http://"):
+        if value.startswith(scheme):
+            value = value[len(scheme):]
+            break
+    if value.startswith("era-fasp@"):
+        return value
+    if value.startswith("fasp.sra.ebi.ac.uk:"):
+        return "era-fasp@" + value
+    if value.startswith("ftp.sra.ebi.ac.uk/"):
+        path = value[len("ftp.sra.ebi.ac.uk/"):]
+        return "era-fasp@fasp.sra.ebi.ac.uk:/" + path
+    return value
+
+
 def _which(name: str) -> Optional[str]:
     import shutil
 
@@ -172,9 +189,7 @@ class ClassicEngine:
                     f"Aspera key file not found in the path: {candidates}",
                     "Please copy the Aspera key file in the above path and rename it",
                 )
-            aspera_link = link.replace(
-                "ftp.sra.ebi.ac.uk/", "era-fasp@fasp.sra.ebi.ac.uk:"
-            )
+            aspera_link = ena_aspera_link(link)
             key_file = str(key)
         elif db == "GSA":
             key_file = self._ensure_gsa_key()

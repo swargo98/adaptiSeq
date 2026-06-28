@@ -1,5 +1,5 @@
 from adaptiseq.console import ListReporter
-from adaptiseq.engine.classic import ClassicEngine, find_ena_aspera_key
+from adaptiseq.engine.classic import ClassicEngine, ena_aspera_link, find_ena_aspera_key
 from adaptiseq.options import Options
 
 
@@ -82,3 +82,48 @@ def test_find_ena_aspera_key_when_ascp_is_in_conda_bin(tmp_path, monkeypatch):
     monkeypatch.setattr("adaptiseq.engine.classic._which", lambda name: str(ascp))
 
     assert find_ena_aspera_key() == key
+
+
+def test_ena_aspera_link_normalizes_ena_fastq_aspera_metadata_form():
+    assert (
+        ena_aspera_link("fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz")
+        == "era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz"
+    )
+
+
+def test_ena_aspera_link_normalizes_ena_ftp_metadata_form():
+    assert (
+        ena_aspera_link("ftp.sra.ebi.ac.uk/vol1/fastq/SRR/a.fastq.gz")
+        == "era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz"
+    )
+
+
+def test_ena_aspera_link_keeps_authenticated_target_form():
+    assert (
+        ena_aspera_link("era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz")
+        == "era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz"
+    )
+
+
+def test_fetch_aspera_uses_authenticated_ena_target(tmp_path, monkeypatch):
+    calls = []
+    key = tmp_path / "aspera_bypass_rsa.pem"
+    key.write_text("key")
+
+    def fake_run(cmd, cwd=None, stdout=None, stderr=None):
+        calls.append(cmd)
+
+        class Result:
+            returncode = 0
+
+        return Result()
+
+    monkeypatch.setattr("adaptiseq.engine.classic.find_ena_aspera_key", lambda: key)
+    monkeypatch.setattr("adaptiseq.engine.classic.subprocess.run", fake_run)
+    engine = ClassicEngine(Options(aspera=True), tmp_path)
+
+    assert engine.fetch_aspera(
+        "fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz", "ENA"
+    )
+
+    assert "era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR/a.fastq.gz" in calls[0]

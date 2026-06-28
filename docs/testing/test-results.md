@@ -1,6 +1,6 @@
 # adaptiSeq Test Results Report
 
-Last updated: 2026-06-28 12:17 CDT
+Last updated: 2026-06-28 15:12 CDT
 
 This is the living execution report for [`test-cases.md`](test-cases.md). Update
 it after each test run. The spreadsheet version is maintained in
@@ -22,8 +22,8 @@ LibreOffice.
 | Passed | 23 |
 | Failed | 0 |
 | Blocked | 0 |
-| Partial | 0 |
-| Not Run | 5 |
+| Partial | 1 |
+| Not Run | 4 |
 
 ## Environment Notes
 
@@ -62,7 +62,7 @@ LibreOffice.
 | TC-15 | Merge by Experiment | Not Run |  |  |  | Network/download dependent. |
 | TC-16 | Merge Guard Negative Case | Passed | 2026-06-28 | Conda `adaptiseq` | `adaptiseq -i SRR7706354 -e ex -o tmp/feature-tests/tc16` exited with the expected guard error: `SRR7706354 is a Run ID, can not use -e option`, followed by the expected solution text. | No download artifacts were created, which is expected because validation stops before download. |
 | TC-17 | Skip MD5 | Passed | 2026-06-28 | Conda `adaptiseq` | `adaptiseq -i SRR22904257 -g -r https -k --engine segmented -o tmp/feature-tests/tc17` completed successfully and printed `Skip md5 check for SRR22904257, as -k option is used`. | `SRR22904257.fastq.gz` is 50,963 bytes and metadata is present. No `fail.log` exists. `success.log` is empty because this mode skips verification rather than recording an md5-verified success. |
-| TC-18 | ENA Aspera | Not Run |  |  |  | Requires real IBM `ascp`; mark `Blocked` if unavailable. |
+| TC-18 | ENA Aspera | Partial | 2026-06-28 | Conda `adaptiseq` | Live run reached real `ascp` but failed with `failed to authenticate`; no FASTQ was downloaded and `fail.log` recorded `SRR22904257`. Root cause was ENA `fastq_aspera` metadata in `fasp.sra.ebi.ac.uk:/...` form being passed without the required `era-fasp@` user. | Code now normalizes ENA Aspera links to `era-fasp@fasp.sra.ebi.ac.uk:/...` and focused tests pass. Rerun TC-18 from this revision to confirm live transfer. |
 | TC-19 | GSA Aspera / Huawei Preference | Not Run |  |  |  | Requires GSA endpoint availability and possibly real `ascp`. |
 | TC-20 | Python API Fetch | Not Run |  |  |  | Run the Python API `fetch()` snippet from `test-cases.md`. |
 | TC-21 | Build and Package Smoke | Not Run |  |  |  | Run build, twine check, and wheel smoke install. |
