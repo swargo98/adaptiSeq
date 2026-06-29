@@ -297,3 +297,94 @@ python -m twine check dist/*
 
 Expected: source distribution and wheel build successfully and pass metadata
 checks.
+
+## Additional Live Cases — iSeq Parity Gaps (TC-22 … TC-28)
+
+These cover scenarios `iseq` documents
+([Examples.md](https://github.com/BioOmics/iSeq/blob/main/docs/Examples.md)) that
+were previously only exercised by the offline/parity suite, or not at all.
+Accessions were chosen small where possible; sizes are noted. GEO resolution was
+confirmed working (GSE→BioProject, GSM→BioSample) before these were added.
+
+### TC-22: GEO Series Resolution (GSE)
+
+```bash
+adaptiseq -i GSE122139 -m -o tmp/feature-tests/tc22
+```
+
+Expected: prints `Note: GSE122139 belongs to PRJNA503819`, then writes
+`GSE122139.metadata.tsv` (metadata only). Validates GEO Series → BioProject
+resolution. The GEO lookup is a single un-retried `wget`; if it errors with
+`is not valid GEO Series accession`, rerun once (transient NCBI response).
+
+### TC-23: GEO Sample Download (GSM)
+
+```bash
+adaptiseq -i GSM7417667 -g -r https -o tmp/feature-tests/tc23
+```
+
+Expected: prints `Note: GSM7417667 belongs to SAMN35350598`, resolves to run
+`SRR24721990` (PAIRED, ~141 MB), downloads `SRR24721990_1.fastq.gz` +
+`SRR24721990_2.fastq.gz`, md5-verified, recorded in `success.log`; no `fail.log`.
+Validates GEO Sample → BioSample resolution and an actual GEO download. (Same
+single-`wget` GEO-lookup caveat as TC-22.)
+
+### TC-24: GSA Sequence-Data Download (non-Aspera)
+
+```bash
+adaptiseq -i CRR311377 -g -o tmp/feature-tests/tc24
+```
+
+Expected: downloads the GSA run (`Database: GSA`) over the GSA ftp/https mirror,
+md5-checked against the GSA `md5sum.txt`, recorded in `success.log`. Fills the GSA
+sequence-data download path (previously only GSA metadata was live-tested, in
+TC-03).
+
+Note — **Huawei-Cloud priority is not currently exercisable**: the GSA browse
+pages for `CRR343031`, `CRR311377`, and `CRA000553` expose no `huaweicloud` link,
+so the "HUAWEI Cloud will be used first, even if -a is used" branch
+(`adaptiseq/resolve.py::download_gsa`) does not trigger on these accessions.
+Testing it requires a GSA accession whose browse page lists a `huaweicloud`
+mirror.
+
+### TC-25: Merge by Sample (`-e sa`, GSA)
+
+```bash
+adaptiseq -i SAMC017083 -g -e sa -o tmp/feature-tests/tc25
+```
+
+Expected: GSA BioSample with 2 runs (`CRR022335`, `CRR022336`); both download and
+are merged per Sample. Mirrors iSeq's `iseq -i SAMC017083 -e sa` example.
+
+### TC-26: Merge by Study (`-e st`, GSA)
+
+```bash
+adaptiseq -i PRJCA000613 -g -e st -o tmp/feature-tests/tc26
+```
+
+Expected: GSA Project/Study with 2 runs (`CRR022335`, `CRR022336`); both download
+and are merged per Study. Mirrors iSeq's `iseq -i PRJCA000613 -e st` example, and
+also exercises Project-level fan-out to runs.
+
+### TC-27: DDBJ Run Download
+
+```bash
+adaptiseq -i DRR421224 -g -r https -o tmp/feature-tests/tc27
+```
+
+Expected: downloads the DDBJ run `DRR421224` (SINGLE, ~782 MB,
+`DRR421224.fastq.gz`) via the ENA mirror, md5-verified, recorded in `success.log`.
+Validates the DDBJ accession path live (previously offline/parity only).
+
+### TC-28: Project/Study Live Download (DDBJ Project)
+
+```bash
+adaptiseq -i PRJDB14838 -g -r https -o tmp/feature-tests/tc28
+```
+
+Expected: the DDBJ Project resolves to its 6 runs (~4 GB total; includes
+`DRR421224`) and all download through the batch pool, each md5-verified, recorded
+in `success.log`. Validates higher-level (Project) accession fan-out live. Size
+~4 GB — substitute a smaller Project/Study if preferred. (A small SRA/ENA Project
+was not readily available; the SRA/ENA Project/Study path remains covered by the
+offline resolution/parity tests.)
