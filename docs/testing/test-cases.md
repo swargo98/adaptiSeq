@@ -281,7 +281,7 @@ Expected: validates GSA endpoint selection; mark Blocked if required endpoint or
 python - <<'PY'
 from adaptiseq import fetch
 
-ctx = fetch(["SRR22904257"], gzip=True, protocol="https", output="tmp/feature-tests/tc20")
+ctx = fetch("SRR22904257", gzip=True, protocol="https", outdir="tmp/feature-tests/tc20")
 assert not ctx.failed
 PY
 ```
