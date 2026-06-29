@@ -1,6 +1,6 @@
 # adaptiSeq Test Results Report
 
-Last updated: 2026-06-28 16:30 CDT
+Last updated: 2026-06-28 21:45 CDT
 
 This is the living execution report for [`test-cases.md`](test-cases.md). Update
 it after each test run. The spreadsheet version is maintained in
@@ -19,11 +19,16 @@ LibreOffice.
 
 | Status | Count |
 | --- | ---: |
-| Passed | 26 |
+| Passed | 33 |
 | Failed | 0 |
 | Blocked | 2 |
 | Partial | 0 |
 | Not Run | 0 |
+
+TC-22 … TC-28 were added to close iSeq-parity gaps (GEO, GSA data download,
+merge `sa`/`st`, DDBJ, Project/Study) and have **all passed** manually. The only
+non-passing cases remain the two Aspera blockers (TC-18 ENA, TC-19 GSA), both
+external. GEO (GSE + GSM) is now covered live.
 
 ## Environment Notes
 
@@ -66,6 +71,13 @@ LibreOffice.
 | TC-19 | GSA Aspera / Huawei Preference | Blocked | 2026-06-28 | Conda `adaptiseq` | adaptiSeq fetched GSA metadata (`CRR343031.metadata.csv` + `CRA005440.metadata.xlsx`), wrote the GSA aspera key (`.asperaGSA.openssh`), resolved CRR343031 to its two paired files (`CRR343031_f1.fq.gz` 1.67 G + `CRR343031_r2.fq.gz` 1.73 G), and ran `ascp` (`-P 33001 … aspera01@download.cncb.ac.cn`). **Intermittent, partial success**: in a manual rerun `f1` transferred fully (1712 MB, md5-verified, ~97 Mb/s, on its 3rd attempt) but `r2` failed all 3 retry rounds → `fail.log`, emitting `ascp: Failed to open TCP connection for SSH` and once `Client unable to connect to server (check UDP port and firewall)`. | **Not an adaptiSeq defect** — `f1` completing a full md5-verified transfer proves the endpoint, key, `ascp` command, and GSA routing are all correct (so this is not auth or command construction; contrast TC-18, which reached ENA and failed auth). **Probable cause**: the GSA Aspera host `download.cncb.ac.cn` (NGDC, Beijing) is reached over a long-haul international path, and Aspera/FASP needs *both* a TCP/SSH control channel and a UDP data channel on port 33001 — on this path both intermittently fail. `Failed to open TCP connection for SSH` = the TCP control handshake timed out / was dropped; `check UDP port and firewall` = the UDP data flow was blocked or too lossy. Most likely packet loss on the international route, an institutional firewall filtering/rate-limiting outbound TCP+UDP 33001, or per-IP connection limits on the server. Mitigations: re-run (only `r2` retries; `f1` is skipped via `success.log`), or drop `-a` to use the GSA https/ftp path (no UDP). The Huawei-first branch (`adaptiseq/resolve.py`) was not exercised because CRR343031 has no huaweicloud links. Artifacts under `tmp/feature-tests/tc19/`. |
 | TC-20 | Python API Fetch | Passed | 2026-06-28 | Conda `adaptiseq` | `fetch("SRR22904257", gzip=True, protocol="https", outdir="tmp/feature-tests/tc20")` returned `FetchResult(failed=False, success_ids=['SRR22904257'], fail_ids=[])` without calling `sys.exit` or printing colour, and wrote `SRR22904257.fastq.gz` (50,963 bytes) + metadata + an md5-verified `success.log`. | `tmp/feature-tests/tc20/`. **Doc bug found & fixed**: the original `test-cases.md` snippet passed `output=` (raises `TypeError`; the kwarg is `outdir=`) and a list accession (`load_accessions` does `Path(value)`, so it needs a `str`). The verbatim snippet raised `TypeError: fetch() got an unexpected keyword argument 'output'`; the corrected call (now in `test-cases.md`) passes. |
 | TC-21 | Build and Package Smoke | Passed | 2026-06-28 | isolated venv (Python 3.13) | `python -m build` (build 1.5.0) built `adaptiseq-0.1.3.tar.gz` (107,367 B) and `adaptiseq-0.1.3-py3-none-any.whl` (88,372 B); `twine check dist/*` (twine 6.2.0) PASSED for both; clean-venv wheel smoke ran `adaptiseq --version`, `python -m adaptiseq --version`, and `import adaptiseq` — all report `0.1.3`. | Build/twine ran in a throwaway venv because the Conda env lacks `build`; `dist/` and `build/` were removed afterward (neither is gitignored). |
+| TC-22 | GEO Series Resolution (GSE) | Passed | 2026-06-28 | Conda `adaptiseq` | `adaptiseq -i GSE122139 -m` printed `Note: GSE122139 belongs to PRJNA503819` and wrote `GSE122139.metadata.tsv` (metadata only); resolved on the first attempt (no transient GEO error). | `tmp/feature-tests/tc22/GSE122139.metadata.tsv`. Validates GEO Series → BioProject resolution. |
+| TC-23 | GEO Sample Download (GSM) | Passed | 2026-06-28 | Conda `adaptiseq` | `GSM7417667` resolved to `SAMN35350598` → run `SRR24721990` (PAIRED); both files downloaded via segmented HTTPS and md5-verified — `SRR24721990_1.fastq.gz` (65.75 MB) + `SRR24721990_2.fastq.gz` (68.38 MB); `SRR24721990 download and md5 check successful`, recorded in `success.log`. | `tmp/feature-tests/tc23/`; no `fail.log`. Validates GEO Sample → BioSample resolution + actual GEO download. |
+| TC-24 | GSA Sequence-Data Download | Passed | 2026-06-28 | Conda `adaptiseq` | `CRR311377` (GSA, belongs to CRA004720) downloaded `CRR311377.fq.gz` (483 MB), `Database: GSA / Mode: ftp`; since `download.big.ac.cn` supports REST+concurrency it used the **native segmented FTP** engine; md5-verified, recorded in `success.log`. | `tmp/feature-tests/tc24/`. Fills the GSA sequence-data download path (TC-03 was metadata only). **Huawei-priority branch still not exercised** — the CRA004720/CRR311377 browse page lists no `huaweicloud` link. |
+| TC-25 | Merge by Sample (`-e sa`, GSA) | Passed | 2026-06-28 | Conda `adaptiseq` | `SAMC017083` → CRA000553; 2 runs `CRR022335.fastq.gz` (579 MB) + `CRR022336.fastq.gz` (437 MB) downloaded via native **segmented FTP** (`download.big.ac.cn` REST+concurrency), both md5-verified and in `success.log`; then `All Runs have been downloaded, start to merge them` → merged into `SAMC017083.fastq.gz`. | `tmp/feature-tests/tc25/`. GSA merge-by-Sample works (`merge_gsa_run`); mirrors iSeq's `SAMC017083 -e sa`. |
+| TC-26 | Merge by Study (`-e st`, GSA) | Passed | 2026-06-28 | Conda `adaptiseq` | `PRJCA000613` → CRA000553; same 2 runs `CRR022335` (579 MB) + `CRR022336` (437 MB) via segmented FTP, both md5-verified; merged into `PRJCA000613.fastq.gz`. | `tmp/feature-tests/tc26/`. GSA merge-by-Study + Project-level fan-out works; mirrors iSeq's `PRJCA000613 -e st`. |
+| TC-27 | DDBJ Run Download | Passed | 2026-06-28 | Conda `adaptiseq` | DDBJ run `DRR421224` downloaded via segmented HTTPS (`ftp.sra.ebi.ac.uk`, ~746 MB, `Database: ENA / Mode: https`), md5-verified, recorded in `success.log`. Single-file run: 14 adaptive probes, controller held at 1 worker (best 74 Mbps). | `tmp/feature-tests/tc27/`. Validates the DDBJ accession path live (DDBJ run served via the ENA mirror; previously offline/parity only). |
+| TC-28 | Project/Study Live Download | Passed | 2026-06-28 | Conda `adaptiseq` | DDBJ Project `PRJDB14838` resolved to 6 runs (`DRR421222`–`DRR421227`, ~3.7 GB); all downloaded concurrently through the adaptive batch pool via segmented HTTPS (`Database: ENA / Mode: https`) and md5-verified, all 6 in `success.log`. Adaptive controller ran 34 probes, scaling 1→3 active workers (best 148 Mbps). | `tmp/feature-tests/tc28/`. Validates higher-level (Project) accession fan-out + the adaptive batch pool on a real multi-file project. DDBJ runs served via the ENA mirror; SRA/ENA Project path remains additionally covered offline. |
 
 ## Update Procedure
 
