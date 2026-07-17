@@ -146,6 +146,36 @@ def test_aspera_pool_with_fake_ascp(tmp_path):
         assert (tmp_path / n).stat().st_size == sz
 
 
+def test_aspera_pool_worker_slots_capped_to_task_count(tmp_path):
+    def fake_ascp(task: DownloadTask) -> bool:
+        (tmp_path / task.save_path).write_bytes(b"ok")
+        return True
+
+    opts = Options(aspera=True, adaptive=False, jobs=20, quiet=True)
+    tasks = [
+        DownloadTask(f"fasp://h/a{i}.gz", f"a{i}.gz", "ACC", aspera_db="ENA")
+        for i in range(3)
+    ]
+    bd = AsperaBatchDownloader(fake_ascp, opts, tmp_path)
+
+    failed = asyncio.run(bd.run(tasks))
+
+    assert failed == set()
+    assert bd._worker_slots == 3
+    assert bd._initial_active == 3
+    assert bd._gate.jobs == 3
+
+
+def test_aspera_pool_gate_is_lowered_as_remaining_files_drain():
+    class _P:
+        total, done = 8, 6
+
+    gate = WorkerGate(jobs=8, active=8)
+    AsperaBatchDownloader._cap_gate_to_remaining(_P(), gate)
+    assert gate.active == 2
+    assert AsperaBatchDownloader._visible_workers(_P(), gate) == 2
+
+
 def test_aspera_pool_retries_then_fails(tmp_path):
     def always_fail(task):
         return False

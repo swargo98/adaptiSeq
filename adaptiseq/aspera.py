@@ -156,8 +156,10 @@ class AsperaBatchDownloader:
             queue.put_nowait(t)
 
         meter = DirGrowthMeter(self.workdir)
-        active0 = self.jobs if not self.adaptive else 1
-        gate = WorkerGate(self.jobs, active=active0)
+        # -j is a ceiling, not a target: never size the pool above the work available.
+        worker_slots = min(self.jobs, len(tasks))
+        active0 = worker_slots if not self.adaptive else 1
+        gate = WorkerGate(worker_slots, active=active0)
         failed: Set[str] = set()
         progress = ProgressBar(
             total=len(tasks),
@@ -179,7 +181,7 @@ class AsperaBatchDownloader:
 
         workers = [
             asyncio.ensure_future(self._worker(i, queue, gate, failed, progress))
-            for i in range(self.jobs)
+            for i in range(worker_slots)
         ]
         await queue.join()
         for w in workers:
@@ -188,7 +190,7 @@ class AsperaBatchDownloader:
 
         repaint.cancel()
         await asyncio.gather(repaint, return_exceptions=True)
-        progress.draw(meter.last_sample(), gate.active)
+        progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
         progress.finish()
         if controller is not None:
             controller.stop()
@@ -198,12 +200,36 @@ class AsperaBatchDownloader:
         await meter.stop()
         self._controller = controller
         self._progress = progress
+        self._gate = gate
+        self._worker_slots = worker_slots
+        self._initial_active = active0
         return failed
+
+    @staticmethod
+    def _remaining_files(progress) -> int:
+        """Files not yet accounted for (downloaded, skipped, or given up on)."""
+        return max(0, progress.total - progress.done)
+
+    @classmethod
+    def _visible_workers(cls, progress, gate) -> int:
+        """Worker count to display: never more than the files still outstanding."""
+        remaining = cls._remaining_files(progress)
+        if remaining == 0:
+            return 0
+        return min(gate.active, remaining)
+
+    @classmethod
+    def _cap_gate_to_remaining(cls, progress, gate) -> None:
+        """Lower the gate as the tail drains, so idle slots stop being counted."""
+        remaining = cls._remaining_files(progress)
+        if remaining > 0 and gate.active > remaining:
+            gate.set_active(remaining)
 
     async def _repaint(self, progress, meter, gate) -> None:
         try:
             while True:
-                progress.draw(meter.last_sample(), gate.active)
+                self._cap_gate_to_remaining(progress, gate)
+                progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
                 await asyncio.sleep(0.4)
         except asyncio.CancelledError:
             return
@@ -223,6 +249,7 @@ class AsperaBatchDownloader:
             try:
                 if in_success(self.workdir, Path(task.save_path).name):
                     progress.inc()
+                    self._cap_gate_to_remaining(progress, gate)
                     continue
                 try:
                     # ascp is a blocking subprocess — run it off the event loop.
@@ -234,6 +261,7 @@ class AsperaBatchDownloader:
                     ok = False
                 if ok:
                     progress.inc()
+                    self._cap_gate_to_remaining(progress, gate)
                 else:
                     task.retries += 1
                     if task.retries < 3:

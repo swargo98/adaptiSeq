@@ -62,22 +62,40 @@ class AdaptiveController:
     """Drives ``gate.active`` from the gradient optimizer over the live meter."""
 
     def __init__(self, gate: WorkerGate, meter: ThroughputMeter, *,
-                 probe_window: int = 5, cc_penalty: float = 1.01):
+                 probe_window: int = 5, cc_penalty: float = 1.01,
+                 max_workers: Optional[Callable[[], int]] = None):
         self.gate = gate
         self.meter = meter
         self.probe_window = max(2, int(probe_window))
         self.cc_penalty = float(cc_penalty)
+        # Live cap (files still outstanding); probing above it just measures idle
+        # workers. None = cap at gate.jobs only.
+        self.max_workers = max_workers
         self.done = False
         self.trajectory: List[Tuple[int, float]] = []  # (workers, mbps) per probe
+
+    def _worker_cap(self) -> int:
+        cap = self.gate.jobs
+        if self.max_workers is not None:
+            cap = min(cap, max(1, int(self.max_workers())))
+        return max(1, int(cap))
+
+    def _cap_workers(self, w: int) -> int:
+        return max(1, min(int(w), self._worker_cap()))
 
     async def _probe(self, w: int) -> float:
         if self.done:
             return EXIT_SIGNAL
+        w = self._cap_workers(w)
         self.gate.set_active(w)
         await asyncio.sleep(1.0)               # let the change settle
         await asyncio.sleep(self.probe_window - 1.0)
         if self.done:
             return EXIT_SIGNAL
+        # Files may have completed during the window; re-cap so the score is
+        # attributed to a worker count that was actually usable.
+        w = self._cap_workers(w)
+        self.gate.set_active(w)
         need = max(1, self.probe_window - 1)
         thrpt = self.meter.recent_average(need)
         score = thrpt / (self.cc_penalty ** w) if self.cc_penalty else thrpt
@@ -134,10 +152,13 @@ class BatchDownloader:
             queue.put_nowait(t)
 
         meter = ThroughputMeter()
-        # Non-adaptive: all -j workers active. Adaptive: start at 2 (pre-activate),
+        # Never size the pool above the work available: -j is a ceiling, not a
+        # target. A 2-file run must not claim 20 workers.
+        worker_slots = min(self.jobs, len(tasks))
+        # Non-adaptive: all useful workers active. Adaptive: start at 2 (pre-activate),
         # the controller then tunes from there.
-        active0 = self.jobs if not self.adaptive else min(2, self.jobs)
-        gate = WorkerGate(self.jobs, active=active0)
+        active0 = worker_slots if not self.adaptive else min(2, worker_slots)
+        gate = WorkerGate(worker_slots, active=active0)
         guard = HostGuard(self.options.max_conns_per_host)
         rate = TokenBucket(self.options.speed * 1024 * 1024)
         failed: Set[str] = set()
@@ -157,6 +178,7 @@ class BatchDownloader:
                 gate, meter,
                 probe_window=self.options.probe_window,
                 cc_penalty=self.options.cc_penalty,
+                max_workers=lambda: self._remaining_files(progress),
             )
             ctrl_task = asyncio.ensure_future(controller.run())
         repaint_task = asyncio.ensure_future(self._repaint(progress, meter, gate))
@@ -169,7 +191,7 @@ class BatchDownloader:
                     self._worker(i, queue, session, gate, meter, guard, rate,
                                  failed, progress)
                 )
-                for i in range(self.jobs)
+                for i in range(worker_slots)
             ]
             await queue.join()
             for w in workers:
@@ -178,7 +200,7 @@ class BatchDownloader:
 
         repaint_task.cancel()
         await asyncio.gather(repaint_task, return_exceptions=True)
-        progress.draw(meter.last_sample(), gate.active)
+        progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
         progress.finish()
         if controller is not None:
             controller.stop()
@@ -188,13 +210,37 @@ class BatchDownloader:
         await meter.stop()
         self._controller = controller  # exposed for tests / trajectory logging
         self._progress = progress
+        self._gate = gate
+        self._worker_slots = worker_slots
+        self._initial_active = active0
         return failed
+
+    @staticmethod
+    def _remaining_files(progress) -> int:
+        """Files not yet accounted for (downloaded, skipped, or given up on)."""
+        return max(0, progress.total - progress.done)
+
+    @classmethod
+    def _visible_workers(cls, progress, gate) -> int:
+        """Worker count to display: never more than the files still outstanding."""
+        remaining = cls._remaining_files(progress)
+        if remaining == 0:
+            return 0
+        return min(gate.active, remaining)
+
+    @classmethod
+    def _cap_gate_to_remaining(cls, progress, gate) -> None:
+        """Lower the gate as the tail drains, so idle slots stop being counted."""
+        remaining = cls._remaining_files(progress)
+        if remaining > 0 and gate.active > remaining:
+            gate.set_active(remaining)
 
     async def _repaint(self, progress, meter, gate) -> None:
         """Repaint the live progress bar ~2.5 Hz until cancelled."""
         try:
             while True:
-                progress.draw(meter.last_sample(), gate.active)
+                self._cap_gate_to_remaining(progress, gate)
+                progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
                 await asyncio.sleep(0.4)
         except asyncio.CancelledError:
             return
@@ -222,6 +268,7 @@ class BatchDownloader:
                 if in_success(self.workdir, Path(task.save_path).name):
                     if progress is not None:
                         progress.inc()
+                        self._cap_gate_to_remaining(progress, gate)
                     continue
                 try:
                     ok = await self.engine.fetch_async(
@@ -237,6 +284,7 @@ class BatchDownloader:
                 if ok:
                     if progress is not None:
                         progress.inc()
+                        self._cap_gate_to_remaining(progress, gate)
                     log.info("downloaded %s", task.save_path)
                 else:
                     task.retries += 1

@@ -9,10 +9,12 @@ import pytest
 
 from adaptiseq import ratelimits
 from adaptiseq.batch import AdaptiveController, BatchDownloader, DownloadTask
+from adaptiseq.console import ListReporter
+from adaptiseq.core import _batch_download_phase, _worker_cap_label
 from adaptiseq.engine.gate import WorkerGate
 from adaptiseq.engine.seam import SegmentedEngine
 from adaptiseq.engine.throughput import ThroughputMeter
-from adaptiseq.options import Options
+from adaptiseq.options import Options, RunContext
 from tests.servers import MultiFileRangeServer
 
 
@@ -20,11 +22,162 @@ def md5(b):
     return hashlib.md5(b).hexdigest()
 
 
+class FakeEngine:
+    """Records fetches and succeeds immediately — keeps pool-sizing tests offline."""
+
+    def __init__(self):
+        self.calls = []
+
+    async def fetch_async(self, url, save_path, **kwargs):
+        self.calls.append((url, save_path))
+        on_bytes = kwargs.get("on_bytes")
+        if on_bytes is not None:
+            on_bytes(1024)
+        return True
+
+
+class _FakeProgress:
+    def __init__(self, total, done):
+        self.total = total
+        self.done = done
+
+
 def _engine(outdir, **opts):
     base = dict(engine="segmented", segment_size=1 * 1024 * 1024, max_segments=4,
                 max_conns_per_host=8, quiet=True, adaptive=False, jobs=4)
     base.update(opts)
     return SegmentedEngine(Options(**base), outdir)
+
+
+def test_worker_pool_is_capped_to_task_count(tmp_path):
+    # -j 20 with 3 files must build 3 workers, not 20.
+    opts = Options(engine="segmented", quiet=True, adaptive=False, jobs=20)
+    bd = BatchDownloader(FakeEngine(), opts, str(tmp_path))
+    tasks = [
+        DownloadTask(f"https://example.test/f{i}.fastq.gz", f"f{i}.fastq.gz", "ACC")
+        for i in range(3)
+    ]
+
+    failed = asyncio.run(bd.run(tasks))
+
+    assert failed == set()
+    assert bd._worker_slots == 3
+    assert bd._initial_active == 3
+    assert bd._gate.jobs == 3
+
+
+def test_single_file_batch_uses_one_worker(tmp_path):
+    opts = Options(engine="segmented", quiet=True, adaptive=False, jobs=20)
+    bd = BatchDownloader(FakeEngine(), opts, str(tmp_path))
+    tasks = [DownloadTask("https://example.test/f0.fastq.gz", "f0.fastq.gz", "ACC")]
+
+    asyncio.run(bd.run(tasks))
+
+    assert bd._worker_slots == 1
+    assert bd._gate.jobs == 1
+    assert bd._gate.active == 1
+
+
+def test_single_file_adaptive_batch_does_not_preactivate_two_workers(tmp_path):
+    # Adaptive normally pre-activates 2; with one file that would show a worker
+    # that cannot exist.
+    opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20,
+                   probe_window=2)
+    bd = BatchDownloader(FakeEngine(), opts, str(tmp_path))
+    tasks = [DownloadTask("https://example.test/f0.fastq.gz", "f0.fastq.gz", "ACC")]
+
+    asyncio.run(bd.run(tasks))
+
+    assert bd._worker_slots == 1
+    assert bd._initial_active == 1
+    assert bd._gate.jobs == 1
+
+
+def test_jobs_below_task_count_still_caps_at_jobs(tmp_path):
+    # The cap is min(jobs, tasks) — -j must still be honoured as the ceiling.
+    opts = Options(engine="segmented", quiet=True, adaptive=False, jobs=2)
+    bd = BatchDownloader(FakeEngine(), opts, str(tmp_path))
+    tasks = [
+        DownloadTask(f"https://example.test/f{i}.fastq.gz", f"f{i}.fastq.gz", "ACC")
+        for i in range(6)
+    ]
+
+    failed = asyncio.run(bd.run(tasks))
+
+    assert failed == set()
+    assert bd._worker_slots == 2
+    assert bd._gate.jobs == 2
+
+
+def test_gate_is_lowered_as_remaining_files_drain():
+    gate = WorkerGate(jobs=8, active=8)
+    BatchDownloader._cap_gate_to_remaining(_FakeProgress(total=8, done=6), gate)
+    assert gate.active == 2
+
+
+def test_gate_is_not_raised_by_capping():
+    gate = WorkerGate(jobs=8, active=2)
+    BatchDownloader._cap_gate_to_remaining(_FakeProgress(total=8, done=0), gate)
+    assert gate.active == 2
+
+
+def test_visible_workers_never_exceeds_remaining_and_is_zero_when_done():
+    gate = WorkerGate(jobs=8, active=8)
+    assert BatchDownloader._visible_workers(_FakeProgress(8, 6), gate) == 2
+    assert BatchDownloader._visible_workers(_FakeProgress(8, 8), gate) == 0
+
+
+def test_adaptive_controller_probe_is_capped_to_remaining_files():
+    async def main():
+        gate = WorkerGate(jobs=8, active=1)
+        meter = ThroughputMeter(interval=0.05)
+        meter.start()
+        # Only 2 files outstanding: probing 8 workers must not open 8 slots.
+        ctrl = AdaptiveController(gate, meter, probe_window=2, cc_penalty=1.01,
+                                 max_workers=lambda: 2)
+        await ctrl._probe(8)
+        await meter.stop()
+        return gate.active, ctrl.trajectory
+
+    active, trajectory = asyncio.run(main())
+
+    assert active == 2
+    assert trajectory[0][0] == 2  # scored as 2 workers, not 8
+
+
+def test_worker_cap_label_mentions_configured_max_only_when_capped():
+    assert _worker_cap_label(20, 1) == "1 worker(s) (configured max 20)"
+    assert _worker_cap_label(20, 3) == "3 worker(s) (configured max 20)"
+    assert _worker_cap_label(2, 6) == "2 worker(s)"
+
+
+def test_batch_start_notice_reports_effective_worker_cap(monkeypatch, tmp_path):
+    from adaptiseq import core as core_mod
+
+    task = DownloadTask("https://example.test/SRR1.fastq.gz", "SRR1.fastq.gz", "SRR1")
+
+    class FakeBatchDownloader:
+        def __init__(self, engine, options, workdir, reporter=None):
+            self._controller = None
+
+        async def run(self, tasks):
+            return set()
+
+    monkeypatch.setattr(
+        "adaptiseq.batch.resolve_all",
+        lambda accessions, opts, workdir, meta_jobs: ([task], []),
+    )
+    monkeypatch.setattr("adaptiseq.batch.BatchDownloader", FakeBatchDownloader)
+    reporter = ListReporter()
+    opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20)
+    ctx = RunContext(options=opts, reporter=reporter, workdir=tmp_path)
+    ctx.engine = FakeEngine()
+
+    core_mod._batch_download_phase(ctx, ["SRR1"])
+
+    output = "\n".join(reporter.infos)
+    assert "with up to 1 worker(s) (configured max 20)" in output
+    assert "up to 20 workers" not in output
 
 
 def test_batch_downloads_all_and_continues_past_failure(tmp_path):

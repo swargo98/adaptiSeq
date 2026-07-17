@@ -300,6 +300,15 @@ def _strip_scheme(url: str) -> str:
     return url
 
 
+def _worker_cap_label(jobs: int, n_tasks: int) -> str:
+    """Describe the worker pool the run will actually build, since -j is only a
+    ceiling and the pool is capped at one worker per file."""
+    effective = min(jobs, n_tasks)
+    if effective == jobs:
+        return f"{effective} worker(s)"
+    return f"{effective} worker(s) (configured max {jobs})"
+
+
 def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
     """Phase A for ``-a``: parallel-resolve and download ENA/SRA files with the
     adaptive Aspera pool (additive-increase + efficiency hysteresis). Phase B (the
@@ -323,7 +332,7 @@ def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         return
     reporter.info(
         f"{green('Note')}: Aspera batch downloading {len(tasks)} file(s) with up to "
-        f"{opts.jobs} workers "
+        f"{_worker_cap_label(opts.jobs, len(tasks))} "
         f"({'adaptive hysteresis' if opts.adaptive else 'fixed'} concurrency)"
     )
 
@@ -361,7 +370,8 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         return
     reporter.info(
         f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
-        f"{len(sra_accs)} accession(s) with up to {opts.jobs} workers "
+        f"{len(sra_accs)} accession(s) with up to "
+        f"{_worker_cap_label(opts.jobs, len(tasks))} "
         f"({'adaptive' if opts.adaptive else 'fixed'} concurrency)"
     )
     bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
