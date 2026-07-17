@@ -51,8 +51,9 @@ run() {
   mbps=$(awk -v b=$b -v s=$sec 'BEGIN{printf "%.2f", (s>0)?(b/1e6/s):0}')
   local status="ok"; [ $rc -eq 124 ] && status="TIMEOUT"; [ $rc -ne 0 ] && [ $rc -ne 124 ] && status="rc=$rc"
   echo -e "${name}\t${sec}\t$(awk -v b=$b 'BEGIN{printf "%.0f", b/1e6}')\t${mbps}\t${f}\t${fmt}\t${status}" | tee -a "$RESULTS" >&2
-  # capture adaptive trajectory if present
-  grep -h "trajectory" "$dir/.log" 2>/dev/null | tail -1 >&2 || true
+  # capture the adaptive controller's end-of-run Note if present (named
+  # "trajectory" before the probe history became bounded, "summary" after)
+  grep -h "trajectory\|worker summary" "$dir/.log" 2>/dev/null | tail -1 >&2 || true
   rm -rf "$dir"
 }
 

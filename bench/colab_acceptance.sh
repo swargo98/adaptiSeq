@@ -223,7 +223,7 @@ d="$WORK/batch_knobs"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i "$MIXED_LIST" -g --probe-window 2 --cc-penalty 1.02 -o "$d" -Q >"$d/log.txt" 2>&1
 n=$(grep -c . "$d/success.log" 2>/dev/null || echo 0)
 if [[ "$n" -ge 3 ]]; then assert "7.3 adaptive knobs (--probe-window/--cc-penalty)" 0; else assert "7.3 adaptive knobs (--probe-window/--cc-penalty)" 1 "$d/log.txt"; fi
-if grep -q "adaptive worker trajectory" "$d/log.txt"; then record_pass "7.4 adaptive trajectory logged"; else record_skip "7.4 adaptive trajectory — none logged (batch too short)"; fi
+if grep -q "adaptive worker trajectory\|adaptive worker summary" "$d/log.txt"; then record_pass "7.4 adaptive trajectory logged"; else record_skip "7.4 adaptive trajectory — none logged (batch too short)"; fi
 # parallel metadata resolution over the full 12-run medium list (cheap)
 d="$WORK/batch_meta"; rm -rf "$d"; mkdir -p "$d"
 adaptiseq -i "$MEDIUM_LIST" -m --meta-jobs 5 -o "$d" -Q >"$d/log.txt" 2>&1

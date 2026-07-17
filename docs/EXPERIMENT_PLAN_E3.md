@@ -123,6 +123,12 @@ aria2c can't resolve accessions and is excluded, mentioned once in text):
 **adaptiSeq arms:** `--no-adaptive -j {8,20,40}` and `--adaptive -j {20,40}`,
 all at `--meta-jobs 8`.
 
+> ⚠️ **`-j` is a ceiling, not a target.** The pool is `min(-j, files)`, so on
+> panels with fewer files than `-j` these arms collapse into each other — on **3b**
+> (16 files) `-j 20` and `-j 40` are the *same* configuration. This has always been
+> true behaviourally; it is now explicit. See §7b for the per-panel table. The
+> arms remain distinct on the headline panels 3a/3r (201/321 files).
+
 **The sweeps are one-variable, not a grid.** An earlier draft crossed
 `--meta-jobs` × `-j` × `--max-conns-per-host` into 17 arms (~600 GB for one
 panel) — cost without interpretability, since a grid over knobs that interact
@@ -139,8 +145,11 @@ with the variable under test and never binds — it cannot silently become the t
 being measured (§7b). `--meta-jobs` is fixed at 8 throughout.
 
 **3d's ceiling is set by the workload, not ambition:** D0 has **8 files**, so
-`-j 8` is one worker per file and `-j 16` measures the *saturation point*. Larger
-`-j` would only re-measure "there are only 8 files".
+`-j 8` is one worker per file and larger `-j` would only re-measure "there are
+only 8 files". Since the pool cap landed this is now literal: **`-j 16` builds 8
+workers and is the same configuration as `-j 8`**. Report 3d as `-j ∈ {4,8}` plus
+the adaptive arm, and treat the `-j 16` row as a *confirmation that the cap
+binds*, not as a third point on a scaling curve.
 
 **3s deliberately runs on D3_seg, not D0** — see §7b: on D0's 1.1–2.0 GB files,
 `--max-segments` 4/8/16 all collapse to the same 2–3 segments and the sweep would
@@ -270,15 +279,54 @@ holds one file and each file is split into
 | 3b (D2) | ~1.6 GB | **3** |
 | E4/E2 (D3) | ~11.5 GB | **8** (hits `max_segments`) |
 
-Measured on a 3-file list: `-j 8`, `-j 20` and `-j 40` all reported
-`workers = 8/20/40` while the wire carried **3** connections — `gate.active` is
-the *permitted pool size*, not files in flight. Reporting either number alone
-would be misleading, so E3 records **both**:
+> ### ✅ FIXED — the worker pool used to claim workers it could never use
+>
+> **Was:** the pool was sized at `-j` regardless of how many files existed, so on
+> a 3-file list `-j 8`, `-j 20` and `-j 40` all reported `workers = 8/20/40`
+> while the wire carried **3** connections. `gate.active` was the *permitted pool
+> size*, not files in flight, and the surplus workers were idle coroutines.
+>
+> **Fix** (`batch.py`, `aspera.py`): the pool is now `min(-j, len(tasks))`, the
+> gate lowers as the tail drains, and the adaptive controller's probes are capped
+> to files still outstanding. `-j` is a ceiling, not a target.
+>
+> **Verified** on `SMOKE_D1` (3 files) against live ENA, `--no-adaptive -j 20`:
+>
+> | Build | `workers_max` | `workers_med` |
+> |---|---|---|
+> | before (23be241) | **20** | 20 |
+> | **after** | **3** | 2 |
+>
+> **Download behaviour is unchanged** — the surplus workers never held a file, so
+> wall time, bytes and `conc_*` are unaffected and Fig 3's headline numbers do not
+> move. What changes is that `workers_*` is now *true*.
+>
+> ⚠️ **Consequence for arms on small panels — some are now provably identical.**
+> Because the pool is capped by file count, arms differing only in `-j` above the
+> file count collapse to the same configuration. They always *behaved* the same
+> (the extra workers were idle); now they are the same by construction and should
+> be reported as one arm, not two:
+>
+> | Panel | Files (batch tasks) | Arms that collapse |
+> |---|---|---|
+> | 3a / 3r | 201 / 321 | none — `-j 8/20/40` all distinct ✅ |
+> | **3b** | **16** | `fixed-j20 ≡ fixed-j40` and `adaptive-j20 ≡ adaptive-j40` (both → 16) |
+> | **3c** | **≤ 20** (12 ENA + 6 SRA-only; 2 GSA route separately) | `-j 40` certainly collapses; `-j 20` collapses too unless tasks land at exactly 20. Not verified locally — the SRA-only branch needs `sra-tools`, absent on the dev box. **Read `workers_max` off the first 3c rep to pin it.** |
+> | **3d** | **8** | `-j 16 ≡ -j 8` (→ 8); the sweep is effectively `-j ∈ {4,8}` |
+> | **3s** | **2** | all three arms run 2 workers (`-j 4` → 2); the panel varies only `--max-segments`, which is its point |
+>
+> For the adaptive arms this also *narrows the search space*: `gradient_opt_fast`
+> explores `1..gate.jobs`, so on 3b it now searches `1..16` instead of `1..40`.
+> That is a real (and desirable) behaviour change — it no longer spends probe
+> windows measuring worker counts that cannot receive a file — but it means **3b's
+> adaptive arms are not comparable to a pre-fix run**. Re-run, don't mix.
+
+Reporting either number alone would be misleading, so E3 records **both**:
 
 | Channel | What it measures | Where | Covers |
 |---|---|---|---|
 | **External** — `sample_concurrency.py` | **Connections on the wire**: ESTABLISHED TCP sockets held by the arm's process tree at 5 Hz (`E3_CONC_HZ`), per remote host | `logs/conc_*.tsv` → `conc_med/p95/max/per_host_max` | **Every arm** |
-| **Internal** — `aseq_run.py` | **Workers**: `gate.active` at ~2.5 Hz, continuous, fixed *and* adaptive arms | `logs/workers_*.tsv` → `workers_med/max` | adaptiSeq |
+| **Internal** — `aseq_run.py` | **Workers**: `min(gate.active, files outstanding)` at ~2.5 Hz, continuous, fixed *and* adaptive arms | `logs/workers_*.tsv` → `workers_med/max` | adaptiSeq |
 | **Internal** — controller log | Per-probe `(workers, Mbps)` decisions | `logs/trajectories.tsv` | adaptiSeq `--adaptive` |
 
 Cross-tool comparison must use **connections** (`conc_*`) — that is the same
@@ -372,8 +420,10 @@ own default. 3d therefore sweeps `--max-conns-per-host ∈ {2,4,8,16,32}` at fix
   from 2 Hz because a ~22 MB iseq `wget` lives ~1 s); sub-tick connections are
   invisible.
 - Concurrency is bounded by **available work**: on a 3-file list all of
-  `-j 8/20/40` correctly read `conc_max=3`. Only panels with more files than
-  workers (3a: 201) separate the arms.
+  `-j 8/20/40` correctly read `conc_max=3` — and, since the pool cap landed,
+  `workers_max=3` too, so the two channels now agree instead of the internal one
+  over-reporting. Only panels with more files than workers (3a: 201) separate the
+  arms.
 
 The external channel matters most: it is the *same measurement for every tool*,
 so arms are finally comparable on **what they do to the server**, not only on how
@@ -418,6 +468,15 @@ claim them.
 success %, format segregation, dropped-run accounting, and `fig3_<panel>.png`.
 The adaptive **worker trajectory** is scraped into `logs/trajectories.tsv` for
 reuse by E4.
+
+> **Note — the end-of-run controller Note was renamed.** The probe history is now
+> bounded (it used to retain every probe for the whole run just to print one
+> line), so the Note reports aggregates rather than the full list and is named
+> `adaptive worker summary:` — `N probe(s); best X Mbps at W worker(s); last …;
+> recent: …`. The per-probe `adaptive probe:` INFO lines that `trajectories.tsv`
+> actually plots are **unchanged**. `e3_lib.sh` matches both spellings, so old and
+> new logs parse; a scraper matching only `worker trajectory` silently drops the
+> summary line while still catching the probe lines — verify greps, don't assume.
 
 **Figure 3 (paper):**
 - **3a** box plot, MB/s per arm (headline).

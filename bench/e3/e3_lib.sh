@@ -135,7 +135,10 @@ run_arm() {
     # probe). Complements the sampler's external view of what actually reached
     # the wire; the pair is what E4's Fig 4 plots. Needs the INFO-logging wrapper
     # (aseq_run.py) -- the bare CLI emits only the end-of-run summary line.
-    grep -h "worker trajectory\|adaptive probe" "$logf" 2>/dev/null \
+    # "worker summary" is the current end-of-run Note; "worker trajectory" was
+    # its name before the probe history became bounded -- match both so logs
+    # from either build parse.
+    grep -h "worker trajectory\|worker summary\|adaptive probe" "$logf" 2>/dev/null \
         | sed "s|^|${arm}\trep${rep}\t|" >> "$E3_LOGS/trajectories.tsv" || true
 
     echo "    -> ${wall}s  ${mbps} MB/s  runs=${runs_complete}/${runs_expected}  fmt=${format}  conc=${conc_med}/${conc_max} w=${workers_med}/${workers_max}  ${status}" >&2
