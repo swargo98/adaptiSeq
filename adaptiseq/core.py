@@ -114,6 +114,22 @@ def _process_gsa(ctx: RunContext, accession: str) -> None:
 
 # ================================ SRA branch ====================================
 
+def _run_files_present(ctx: RunContext, srr: str) -> bool:
+    """True when this run's expected files are already on disk, so Phase B can
+    verify them in place instead of re-resolving and re-fetching over the network.
+
+    The gzip/ENA path saves ``SRR[_n].fastq.gz`` parts, so the bare-``SRR`` file
+    check only ever matched the ``.sra`` path — leaving batch-prefetched fastq
+    runs to pay a full per-accession network resolution they did not need.
+    """
+    opts = ctx.options
+    gzip_mode = opts.gzip and not opts.fastq and ctx.database != "sra"
+    if gzip_mode:
+        files = integrity._gzip_fastq_files(ctx, srr)
+        return bool(files) and all(ctx.path(f).is_file() for f in files)
+    return ctx.path(srr).is_file()
+
+
 def _process_sra(ctx: RunContext, accession: str) -> None:
     reporter = ctx.reporter
     opts = ctx.options
@@ -152,7 +168,10 @@ def _process_sra(ctx: RunContext, accession: str) -> None:
                 "check success.log for details. If you want to download it again, "
                 f"please remove it from success.log (sed -i '/{srr}/d' success.log)"
             )
-        elif ctx.path(srr).is_file():
+        elif _run_files_present(ctx, srr):
+            # Files already on disk — e.g. pre-fetched by the parallel batch phase,
+            # or a resumed run. Verify (md5) without re-resolving/re-downloading;
+            # check_sra's retry closure still re-downloads if a present file is bad.
             if not opts.skip_md5:
                 integrity.check_sra(ctx, srr, lambda s=srr: resolve.download_sra(ctx, s))
             else:
