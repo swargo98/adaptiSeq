@@ -8,6 +8,9 @@
 # exports the env so the paper can ship an exact reproduction recipe (§12.4).
 
 set -euo pipefail
+# Anaconda's conda.sh dereferences $PS1, which is unbound in a non-interactive
+# shell -- fatal under `set -u`. e3_expanse.sbatch guards the same way.
+export PS1="${PS1:-}"
 
 ENV_NAME="${ENV_NAME:-adaptiseq_e3}"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
