@@ -43,7 +43,8 @@ list and its md5 manifest into `datasets/`):
 | **3r** robustness | `D1_full_PRJNA916347` | **241 runs, 321 files, 7.59 GB** | Includes the **40 runs that ship 3 fastq files** — the ones stock iSeq drops. |
 | **3b** honesty | `D2_subset_PRJNA762469` | **8 runs, 16 files, 25.88 GB**, ~1.6 GB/file | Byte-dominated: per-run overhead shrinks, batching should reach ≥ parity, not 2.8×. |
 | **3c** routing | `D4_mixed` | **20 accessions**: 12 ENA + 6 SRA-only + 2 GSA | Forces every resolver branch in one list. |
-| **3d** scaling | `D0_sweep_PRJNA762469` | **4 runs, 8 files, 11.86 GB** | `-j` and `--meta-jobs` sweeps → feeds E9. |
+| **3d** worker sweep | `D0_sweep_PRJNA762469` | **4 runs, 8 files, 11.86 GB**, ~1.5 GB/file | `-j ∈ {4,8,16}` — *one* variable → feeds E9. |
+| **3s** segment sweep | `D3_seg_PRJNA540705` | **2 runs, 2 files, 23.07 GB**, ~11.5 GB/file | `--max-segments ∈ {4,8,16}` (connections per worker). |
 
 **Three deviations from the parent plan, and why:**
 
@@ -120,10 +121,31 @@ aria2c can't resolve accessions and is excluded, mentioned once in text):
 | `fetchngs` | `nextflow run nf-core/fetchngs` | Optional (`ENABLE_FETCHNGS=1`); needs Nextflow+Singularity. |
 
 **adaptiSeq arms:** `--no-adaptive -j {8,20,40}` and `--adaptive -j {20,40}`,
-all at `--meta-jobs 8`. Panel 3d additionally sweeps `--meta-jobs ∈ {1,3,8,16}`,
-`-j ∈ {1,2,4,8,16,32,64}`, and `--max-conns-per-host ∈ {2,4,8,16,32}` at fixed
-`-j 32` — the cap is now the only standing bound on per-host concurrency, so its
-throughput/etiquette trade-off is itself a result (see §7b).
+all at `--meta-jobs 8`.
+
+**The sweeps are one-variable, not a grid.** An earlier draft crossed
+`--meta-jobs` × `-j` × `--max-conns-per-host` into 17 arms (~600 GB for one
+panel) — cost without interpretability, since a grid over knobs that interact
+cannot attribute a difference to any single one. Each sweep now moves exactly one
+knob and holds the rest at the value the other panels use:
+
+| Panel | Variable | Held fixed | Arms |
+|---|---|---|---|
+| **3d** | `-j ∈ {4,8,16}` (+ `--adaptive -j 16`) | `--meta-jobs 8`, cap auto | 4 |
+| **3s** | `--max-segments ∈ {4,8,16}` | `-j 4`, `--meta-jobs 8`, cap auto | 3 |
+
+`--max-conns-per-host` is left at **auto** (`= jobs × max_segments`) so it scales
+with the variable under test and never binds — it cannot silently become the thing
+being measured (§7b). `--meta-jobs` is fixed at 8 throughout.
+
+**3d's ceiling is set by the workload, not ambition:** D0 has **8 files**, so
+`-j 8` is one worker per file and `-j 16` measures the *saturation point*. Larger
+`-j` would only re-measure "there are only 8 files".
+
+**3s deliberately runs on D3_seg, not D0** — see §7b: on D0's 1.1–2.0 GB files,
+`--max-segments` 4/8/16 all collapse to the same 2–3 segments and the sweep would
+be a flat line that looks like a finding. D3_seg's 11.5 GB files offer 22
+segments, so 4/8/16 genuinely differ.
 
 **Every arm is asked for gzip FASTQ from ENA (`-g`), and md5 checking is left ON
 for every tool that offers it.** We deliberately do **not** pass adaptiSeq's `-k`
@@ -192,7 +214,8 @@ Per rep, transfer = Σ arms × dataset size. With ~9 arms:
 | 3r | ~68 GB | 3 | ~205 GB | 6 h | as 3a |
 | 3b | ~233 GB | 5 | ~1.2 TB | 16 h | genuinely byte-bound |
 | 3c | ~4 GB | 5 | ~20 GB | 4 h | `fasterq-dump` CPU on the SRA-only runs |
-| 3d | ~142 GB | 3 | ~427 GB | 10 h | `-j 1` arm is slow by construction |
+| 3d | ~47 GB (4 arms) | 3 | ~142 GB | 6 h | `-j 4` arm; bounded by 8 files |
+| 3s | ~69 GB (3 arms) | 3 | ~208 GB | 6 h | genuinely byte-bound (11.5 GB files) |
 
 Sequential arms are the cost driver, and that *is the result*: iSeq paying 201
 resolution RTTs in series is precisely what batching removes. Per-arm timeouts
@@ -461,7 +484,7 @@ node can't reach EBI/NCBI, every number would be a proxy artefact, so it exits.
 | `bench/e3/sample_concurrency.py` | Instantaneous concurrency (established sockets) — every arm |
 | `bench/e3/aseq_run.py` | adaptiSeq CLI + controller INFO logging (internal gate trajectory) |
 | `bench/e3/e3_lib.sh` | `run_arm` — time, trace, verify, record, purge |
-| `bench/e3/run_e3.sh` | Arm table, panels, per-rep reshuffle |
+| `bench/e3/run_e3.sh` | Arm table, panels (3a/3r/3b/3c/3d/3s/smoke), per-rep reshuffle |
 | `bench/e3/e3_expanse.sbatch` | Slurm job: gates, versions, link probe, run, aggregate |
 | `bench/e3/submit_e3.sh` | Submission (single or chained) |
 | `bench/e3/setup_env.sh` | Conda env + version pinning |

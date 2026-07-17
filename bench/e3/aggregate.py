@@ -29,7 +29,8 @@ PANEL_TITLES = {
     "3r": "3r  Robustness (D1_full: 241 runs incl. 40 three-file runs)",
     "3b": "3b  Byte-dominated (D2_subset: 8 runs, 25.9 GB, ~1.6 GB/file)",
     "3c": "3c  Cross-database (D4_mixed: ENA + SRA-only + GSA)",
-    "3d": "3d  Concurrency sweep (D0_sweep: 4 runs, 11.9 GB)",
+    "3d": "3d  Worker sweep -j {4,8,16} (D0_sweep: 8 files, 11.9 GB)",
+    "3s": "3s  Connections-per-worker --max-segments {4,8,16} (D3_seg: 2 x 11.5 GB)",
 }
 
 

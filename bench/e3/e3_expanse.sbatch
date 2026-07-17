@@ -106,7 +106,7 @@ echo "repo        : $REPO_DIR"
 echo "python      : $E3_PYTHON  ($(python3 --version 2>&1))"
 echo "payload     : $E3_WORK   ($(df -h "$NVME_DIR" | awk 'NR==2{print $4}') free)"
 echo "results     : $RUN_OUT"
-echo "panels      : ${PANELS:-3a 3r 3b 3c 3d}"
+echo "panels      : ${PANELS:-3a 3r 3b 3c 3d 3s}"
 
 # ─── GATE 1: outbound egress (EXPERIMENT_PLAN §16.1 -- gate everything) ────
 echo; echo "=== egress check ==="
@@ -176,7 +176,7 @@ echo; echo "=== link ceiling probe (single + 8-stream, ENA) ==="
 # ─── Run ───────────────────────────────────────────────────────────────────
 echo; echo "=== running panels ==="
 status=0
-PANELS="${PANELS:-3a 3r 3b 3c 3d}" bash "$REPO_DIR/bench/e3/run_e3.sh" all || status=$?
+PANELS="${PANELS:-3a 3r 3b 3c 3d 3s}" bash "$REPO_DIR/bench/e3/run_e3.sh" all || status=$?
 
 # ─── Aggregate ─────────────────────────────────────────────────────────────
 echo; echo "=== aggregating ==="

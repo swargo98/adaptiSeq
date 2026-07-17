@@ -142,6 +142,14 @@ def main() -> int:
     d3.sort(key=lambda r: r.acc)
     write(outdir, "D3_full_PRJNA540705", d3, "large-file arm (3b-large / feeds E4a)")
 
+    # 2 runs, ~11.5 GB each -- the ONLY tier where --max-segments actually varies.
+    # segments = min(max_segments, size // segment_size); at the 512 MB default a
+    # 11.5 GB file offers 22, so --max-segments 4/8/16 really give 4/8/16. On D0
+    # (1.1-2.0 GB files) the same sweep is inert: every setting yields 2-3.
+    d3_seg = d3[:2]
+    write(outdir, "D3_seg_PRJNA540705", d3_seg,
+          "connections-per-worker sweep (3s): --max-segments 4/8/16")
+
     # ---- D4: cross-database mixed -------------------------------------------
     # Exercises every resolver branch in one list. Sizes are deliberately small:
     # this panel tests ROUTING CORRECTNESS + resolution, not raw bandwidth.

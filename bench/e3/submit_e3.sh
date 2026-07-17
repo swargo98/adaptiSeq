@@ -17,10 +17,10 @@
 set -euo pipefail
 E3_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SBATCH_FILE="$E3_DIR/e3_expanse.sbatch"
-PANELS="${PANELS:-3a 3r 3b 3c 3d}"
+PANELS="${PANELS:-3a 3r 3b 3c 3d 3s}"
 
 # Per-panel walltimes, sized from the transfer budget in docs/EXPERIMENT_PLAN_E3.md §6.
-declare -A WALL=( [3a]="12:00:00" [3r]="06:00:00" [3b]="16:00:00" [3c]="04:00:00" [3d]="10:00:00" )
+declare -A WALL=( [3a]="12:00:00" [3r]="06:00:00" [3b]="16:00:00" [3c]="04:00:00" [3d]="06:00:00" [3s]="06:00:00" )
 
 if [[ "${1:-}" != "--split" ]]; then
     echo "Submitting a single job for panels: $PANELS"

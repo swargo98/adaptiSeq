@@ -6,7 +6,8 @@
 #   3r  robustness          (D1_full, 241 runs / 7.6 GB)   -- runs-completed; iseq drops the 3-file runs
 #   3b  byte-dominated      (D2_subset, 8 runs / 25.9 GB)  -- honesty panel
 #   3c  cross-database      (D4_mixed, 20 accessions)      -- ENA + SRA-only + GSA routing
-#   3d  concurrency sweep   (D0_sweep, 4 runs / 11.9 GB)   -- -j and --meta-jobs (feeds E9)
+#   3d  worker sweep        (D0_sweep, 8 files / 11.9 GB)  -- -j {4,8,16} only (feeds E9)
+#   3s  segment sweep       (D3_seg, 2 files / 23 GB)      -- --max-segments {4,8,16}
 #
 # Usage:  bash bench/e3/run_e3.sh <panel> [reps]
 #         PANELS="3a 3b" bash bench/e3/run_e3.sh all
@@ -98,30 +99,41 @@ build_arms() {
     [[ "$ENABLE_FETCHNGS" == "1" ]] && ARMS+=("$FETCHNGS_ARM")
 }
 
-# ---- meta-jobs / -j sweep arms (panel 3d, adaptiSeq only) -------------------
+# ---- 3d: worker-count sweep (adaptiSeq only) --------------------------------
 #
-# The -j sweep was confounded until the per-host cap was fixed: max_conns_per_host
-# defaulted to a fixed 8 (process-wide), so -j 16/32/64 all measured the same 8
-# connections and the "scaling" curve would have been an artefact of our own
-# default. It now defaults to auto (= jobs * max_segments), so -j genuinely moves
-# concurrency. The explicit cap sweep is kept: it is the clean way to locate E9's
-# knee, and it is now the ONLY thing that bounds per-host concurrency, so its
-# throughput/etiquette trade-off is itself a result.
+# ONE variable: -j. Everything else stays at the value the other panels use, so a
+# difference between these arms can only be the worker count. This is deliberately
+# NOT a grid -- meta-jobs and --max-conns-per-host are held fixed (the latter is
+# auto = jobs x max_segments, so it scales with -j and never binds).
+#
+# D0 is 8 files, so -j 8 is one worker per file and -j 16 is deliberately past the
+# work available: it measures the saturation point, not a bigger number. Going
+# beyond 16 would only re-measure "there are only 8 files".
 build_sweep_arms() {
     ARMS=()
-    for mj in 1 3 8 16; do
-        ARMS+=("adaptiseq-mj${mj}|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 20 --meta-jobs ${mj} -Q -o .")
-    done
-    # -j sweep at the DEFAULT cap: expected to saturate once the cap binds.
-    # That saturation is a reportable result, not a failed arm.
-    for j in 1 2 4 8 16 32 64; do
+    for j in 4 8 16; do
         ARMS+=("adaptiseq-j${j}|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j ${j} --meta-jobs 8 -Q -o .")
     done
-    # Cap sweep at fixed -j 32: isolates the per-host cap as the real knob.
-    for cap in 2 4 8 16 32; do
-        ARMS+=("adaptiseq-j32-cap${cap}|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 32 --max-conns-per-host ${cap} --meta-jobs 8 -Q -o .")
+    # Adaptive at the same ceiling: does the controller find the fixed optimum?
+    ARMS+=("adaptiseq-adaptive-j16|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
+}
+
+# ---- 3s: connections-per-worker sweep (--max-segments) ----------------------
+#
+# Runs on D3_seg (2 files x ~11.5 GB), NOT D0. segments/file =
+# min(max_segments, size // segment_size): an 11.5 GB file offers 22 at the 512 MB
+# default, so 4/8/16 genuinely give 4/8/16 connections per worker. On D0's
+# 1.1-2.0 GB files every setting collapses to 2-3 segments and the sweep would be
+# a flat line dressed up as a result.
+#
+# -j 4 with 2 files => 2 workers, so total connections = 2 x max_segments. Since
+# the per-host cap is auto (jobs x max_segments), it never binds here -- this
+# isolates per-worker segmentation as the only variable.
+build_seg_arms() {
+    ARMS=()
+    for ms in 4 8 16; do
+        ARMS+=("adaptiseq-seg${ms}|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 4 --max-segments ${ms} --meta-jobs 8 -Q -o .")
     done
-    ARMS+=("adaptiseq-adaptive-j64|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 64 --meta-jobs 8 -Q -o .")
 }
 
 # ---- panel runner -----------------------------------------------------------
@@ -164,12 +176,13 @@ case "$PANEL" in
   3b)  build_arms;       run_panel 3b "D2_subset_PRJNA762469" "${REPS_ARG:-5}"  "${E3_TIMEOUT_3B:-7200}" ;;
   3c)  build_arms;       run_panel 3c "D4_mixed"              "${REPS_ARG:-5}"  "${E3_TIMEOUT_3C:-3600}" ;;
   3d)  build_sweep_arms; run_panel 3d "D0_sweep_PRJNA762469"  "${REPS_ARG:-3}"  "${E3_TIMEOUT_3D:-5400}" ;;
+  3s)  build_seg_arms;   run_panel 3s "D3_seg_PRJNA540705"    "${REPS_ARG:-3}"  "${E3_TIMEOUT_3S:-5400}" ;;
   all)
-      for p in ${PANELS:-3a 3r 3b 3c 3d}; do
+      for p in ${PANELS:-3a 3r 3b 3c 3d 3s}; do
           bash "$E3_DIR/run_e3.sh" "$p" "$REPS_ARG"
       done
       ;;
-  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|all)" >&2; exit 2 ;;
+  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|all)" >&2; exit 2 ;;
 esac
 
 echo >&2
