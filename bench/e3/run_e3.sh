@@ -100,13 +100,13 @@ build_arms() {
 
 # ---- meta-jobs / -j sweep arms (panel 3d, adaptiSeq only) -------------------
 #
-# CONFOUND (measured, not theoretical): raising -j alone cannot raise download
-# concurrency past --max-conns-per-host, because HostGuard is a process-wide cap
-# acquired before every segment connection. On D0/D2 (~1.6 GB files -> 3 segments
-# each) the default cap of 8 binds at ~3 in-flight files, so -j 16/32/64 would
-# all measure the SAME thing and the "scaling" curve would be an artefact of our
-# own default. So the sweep varies the cap alongside -j, and the cap sweep is
-# what actually locates the knee E9 is after.
+# The -j sweep was confounded until the per-host cap was fixed: max_conns_per_host
+# defaulted to a fixed 8 (process-wide), so -j 16/32/64 all measured the same 8
+# connections and the "scaling" curve would have been an artefact of our own
+# default. It now defaults to auto (= jobs * max_segments), so -j genuinely moves
+# concurrency. The explicit cap sweep is kept: it is the clean way to locate E9's
+# knee, and it is now the ONLY thing that bounds per-host concurrency, so its
+# throughput/etiquette trade-off is itself a result.
 build_sweep_arms() {
     ARMS=()
     for mj in 1 3 8 16; do

@@ -57,6 +57,43 @@ def test_batch_respects_jobs_and_cap(tmp_path):
         assert srv.max_concurrent <= 3
 
 
+def test_auto_cap_does_not_truncate_intended_concurrency(tmp_path):
+    """Regression: the per-host cap must not silently truncate the design.
+
+    ``max_conns_per_host`` used to default to a fixed 8. ``HostGuard`` is
+    process-wide and shared by every worker, so N in-flight files x k segments
+    could never exceed 8 connections in total -- one 8-segment file consumed the
+    entire budget and ``-j`` went inert for large files. The intended plan is one
+    worker per file, each opening up to ``max_segments`` connections, so auto
+    (``0``) derives ``jobs * max_segments`` and the plan becomes reachable.
+
+    Files are 8 MB (above the engine's 5 MB min_file_size_for_segmentation) so
+    segmentation actually engages: 8 MB / 1 MB segments -> capped at
+    max_segments=4 -> 4 files x 4 segments = 16 intended connections.
+    """
+    files = {f"g{i}.bin": os.urandom(8 * 1024 * 1024) for i in range(4)}
+    with MultiFileRangeServer(files, delay=0.05) as srv:
+        opts = Options(engine="segmented", segment_size=1024 * 1024, max_segments=4,
+                       quiet=True, adaptive=False, jobs=4)  # max_conns_per_host: auto
+        assert opts.max_conns_per_host == 16, "auto cap should be jobs * max_segments"
+        eng = SegmentedEngine(opts, str(tmp_path))
+        tasks = [DownloadTask(srv.url(n), n, "ACC") for n in files]
+        failed = asyncio.run(BatchDownloader(eng, opts, str(tmp_path)).run(tasks))
+        assert not failed
+        # The old fixed default of 8 made this impossible by construction.
+        assert srv.max_concurrent > 8, (
+            f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+        )
+    for n, data in files.items():
+        assert md5((tmp_path / n).read_bytes()) == md5(data), f"{n} corrupted"
+
+
+def test_explicit_cap_still_overrides_auto(tmp_path):
+    """An explicit --max-conns-per-host must still be honoured (and enforced)."""
+    opts = Options(engine="segmented", max_conns_per_host=5, jobs=20, max_segments=8)
+    assert opts.max_conns_per_host == 5, "explicit value must win over auto"
+
+
 def test_batch_skips_already_in_success_log(tmp_path):
     (tmp_path / "success.log").write_text("date\tg0.bin\n")
     files = {"g0.bin": os.urandom(1024 * 1024), "g1.bin": os.urandom(1024 * 1024)}

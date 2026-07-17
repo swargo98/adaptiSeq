@@ -43,7 +43,11 @@ class Options:
     # Part 2 segmented-engine knobs.
     segment_size: int = 512 * 1024 * 1024   # --segment-size (bytes; CLI takes MB)
     max_segments: int = 8                    # --max-segments (ceiling per file)
-    max_conns_per_host: int = 8             # --max-conns-per-host (global per-host cap)
+    # --max-conns-per-host: the per-host *safety* cap (the circuit breaker lowers
+    # it on 429/503). ``0`` == auto: derive it from the concurrency the design
+    # actually asks for, so it bounds misbehaviour without silently truncating the
+    # intended plan. See __post_init__.
+    max_conns_per_host: int = 0
 
     # Part 3 adaptive/batch knobs.
     jobs: int = 20                  # -j/--jobs (worker-pool size)
@@ -70,10 +74,20 @@ class Options:
             raise ValueError(f"Invalid speed: {self.speed}")
         if self.max_segments < 1:
             raise ValueError(f"Invalid max_segments: {self.max_segments}")
-        if self.max_conns_per_host < 1:
-            raise ValueError(f"Invalid max_conns_per_host: {self.max_conns_per_host}")
         if self.jobs < 1:
             raise ValueError(f"Invalid jobs: {self.jobs}")
+        # ``0`` == auto. The design is: one worker per in-flight file, each file
+        # split into ``min(max_segments, max(1, size // segment_size))``
+        # connections -- so the ceiling the user asked for is jobs * max_segments.
+        # A fixed default (formerly 8) is a *process-wide* cap shared by every
+        # worker, so with 8 segments/file it let exactly ONE large file transfer
+        # at a time and made -j inert. Deriving it keeps HostGuard's real job --
+        # bounding runaway/backing off on 429/503 -- without capping the plan
+        # below what was requested. An explicit value is always honoured.
+        if self.max_conns_per_host == 0:
+            self.max_conns_per_host = self.jobs * self.max_segments
+        if self.max_conns_per_host < 1:
+            raise ValueError(f"Invalid max_conns_per_host: {self.max_conns_per_host}")
         if self.probe_window < 2:
             raise ValueError(f"Invalid probe_window: {self.probe_window}")
         if self.cc_penalty < 1.0:

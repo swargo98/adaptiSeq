@@ -121,9 +121,9 @@ aria2c can't resolve accessions and is excluded, mentioned once in text):
 
 **adaptiSeq arms:** `--no-adaptive -j {8,20,40}` and `--adaptive -j {20,40}`,
 all at `--meta-jobs 8`. Panel 3d additionally sweeps `--meta-jobs ∈ {1,3,8,16}`,
-`-j ∈ {1,2,4,8,16,32,64}`, and — because `-j` alone saturates against the
-process-wide per-host cap — `--max-conns-per-host ∈ {2,4,8,16,32}` at fixed
-`-j 32` (see §7b).
+`-j ∈ {1,2,4,8,16,32,64}`, and `--max-conns-per-host ∈ {2,4,8,16,32}` at fixed
+`-j 32` — the cap is now the only standing bound on per-host concurrency, so its
+throughput/etiquette trade-off is itself a result (see §7b).
 
 **Every arm is asked for gzip FASTQ from ENA (`-g`), and md5 checking is left ON
 for every tool that offers it.** We deliberately do **not** pass adaptiSeq's `-k`
@@ -264,46 +264,53 @@ sockets, and it is what the *server* experiences. **Workers** (`workers_*`) are
 adaptiSeq-internal and are what E4's Fig 4 plots, since workers are what the
 controller actually tunes.
 
-> ### 🔴🔴 The engine does not implement the intended concurrency design
+> ### ✅ FIXED — the per-host cap used to truncate the intended design
 >
 > **Intended** (author's spec): each worker owns one file and opens up to
 > `max_segments` connections for it, so *N* in-flight files ⇒ `Σ segments(file)`
-> connections — 10 × 10 GB files ⇒ **80** connections; 10 × 10 MB files ⇒ **10**.
+> connections — 10 × 10 GB ⇒ **80**; 10 × 10 MB ⇒ **10**.
 >
-> **Actual:** `HostGuard` (`batch.py:141`, one instance shared by every worker) is
-> a **process-wide semaphore per host**, `cap = --max-conns-per-host` (**default
-> 8**). Every segment connection must `acquire()` a slot. Since all ENA files come
-> from **one host**, the cap is global and truncates the intended product.
+> **Was:** `max_conns_per_host` defaulted to a fixed **8**, and `HostGuard`
+> (`batch.py:141`) is a **process-wide semaphore per host** shared by every worker.
+> All ENA files come from one host, so the cap was global and truncated the
+> product. With 8 segments/file, **one file consumed the entire budget** and `-j`
+> went inert — which would have silently gutted E4/D3, the long-run workload used
+> to argue the controller tunes worker count.
 >
-> **Measured** (2 × ~380 MB, `--segment-size 64` ⇒ 6 segments/file, `-j 4`; spec
-> says 12 connections):
+> **Fix** (`options.py`): `max_conns_per_host = 0` now means **auto → `jobs *
+> max_segments`**, so the cap never sits below what the design asks for. An
+> explicit value still wins, and `HostGuard` keeps its real job — the 429/503
+> circuit breaker that lowers the cap reactively.
 >
-> | `--max-conns-per-host` | Observed peak connections |
+> **Verified** (2 × ~380 MB, `--segment-size 64` ⇒ 6 segments/file, `-j 4`; spec
+> = 12 connections), measured against live ENA:
+>
+> | Build | Peak connections |
 > |---|---|
-> | **8 (default)** | **8** — pinned at the cap (p95 = 8) |
-> | 64 | **11** (≈ the intended 12) |
+> | before (fixed default 8) | **8** — pinned at cap (p95 = 8) |
+> | before, `--max-conns-per-host 64` | 11 (≈12) — proving the cap was the binder |
+> | **after (auto cap, default)** | **11 (≈12)** ✅ |
 >
-> The design is reachable, but **the default silently prevents it**.
+> Integrity re-checked, not assumed: a 404 MB file over 6 segments md5-verified
+> byte-exact against ENA (`404,110,842 B`, `5e6565d3…`). Full suite green; pinned
+> by `test_auto_cap_does_not_truncate_intended_concurrency`, which was confirmed
+> to **fail** against the old default.
 >
-> **The consequence that matters most — it lands on E4/D3.** With 10 GB files
-> (`10GB // 512MB = 19 → min(8,19) = 8` segments each) **one file consumes the
-> entire default cap of 8**. Workers 2…N block in `HostGuard.acquire()` holding
-> zero connections, so the pool degenerates to **~one file at a time and `-j`
-> becomes inert** — exactly the D3 long-run workload E4 uses to argue the adaptive
-> controller tunes worker count. *(Arithmetic consequence of cap=8 vs 8
-> segments/file; the 8-vs-12 truncation above is measured directly.)*
+> ⚠️ **Etiquette consequence — worth a decision.** At shipped defaults
+> (`-j 20`, `max_segments 8`) the auto cap is **160**. On large-file workloads the
+> engine may now open up to 160 sockets to a single archive host. The cap no longer
+> acts as a standing bound (it equals the theoretical maximum by construction) —
+> `HostGuard` only bites *reactively*, once a host returns 429/503. Combined with
+> the ungated probe (below), adaptiSeq's politeness toward ENA is now essentially
+> reactive, not proactive. That is fine as a design choice but it must not be
+> described as a per-host guarantee in the C5 claim. Consider shipping a lower
+> explicit default for the CLI, or capping auto at some ceiling.
 >
 > **Also note `segment_size = 512 MB`:** segmentation needs `size ≥ 2×512 MB` to
 > yield >1 segment, so on D1 **every file is single-segment — even the 404 MB
 > one**. The segmented engine is effectively inactive on panel 3a; adaptiSeq's win
 > there is batching + parallel resolution (as BENCHMARK.md always said), not
 > segmentation.
->
-> **Decide before running E3:** if the cap is meant as the safety bound, the
-> intended design is unreachable at defaults and `-j`/`max_segments` are largely
-> decorative for large files; if the product is meant, the cap default needs
-> raising. Either way E3 must not describe `-j` as controlling concurrency
-> without the caveat.
 >
 > **🔴 Second, independent bug — `probe_range_support()` bypasses the
 > per-host cap.** Both download paths wrap their request in
