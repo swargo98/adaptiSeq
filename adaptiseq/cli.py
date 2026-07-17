@@ -99,10 +99,13 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Segmented engine: target segment size in MB (default: 512).")
     g.add_argument("--max-segments", metavar="int", default="8", dest="max_segments",
                    help="Segmented engine: max connections per file (default: 8).")
-    g.add_argument("--max-conns-per-host", metavar="int", default="8",
+    g.add_argument("--max-conns-per-host", metavar="int", default=None,
                    dest="max_conns_per_host",
-                   help="Global cap on concurrent connections to any one host "
-                        "(default: 8).")
+                   help="Per-host safety cap on concurrent connections "
+                        "(default: auto = -j x --max-segments, i.e. it does not "
+                        "truncate the requested concurrency; the circuit breaker "
+                        "still lowers it on 429/503). Set a lower value to be "
+                        "gentler on a host.")
     g.add_argument("-j", "--jobs", metavar="int", default="20",
                    help="Max worker-pool size for batch download (default: 20). "
                         "With --adaptive, the gradient optimizer chooses how many "
@@ -236,8 +239,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     max_segments = _posint(
         "max-segments", "--max-segments", args.max_segments, 8,
         'Please use a positive integer for the "--max-segments" option')
+    # 0 -> Options derives jobs * max_segments (auto).
     max_conns_per_host = _posint(
-        "max-conns-per-host", "--max-conns-per-host", args.max_conns_per_host, 8,
+        "max-conns-per-host", "--max-conns-per-host", args.max_conns_per_host, 0,
         'Please use a positive integer for the "--max-conns-per-host" option')
 
     # -p, --parallel becomes an alias that sets --max-segments on the segmented

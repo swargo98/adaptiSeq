@@ -185,7 +185,7 @@ def fetch(
     engine: str = "segmented",
     segment_size_mb: int = 512,
     max_segments: int = 8,
-    max_conns_per_host: int = 8,
+    max_conns_per_host: int = 0,   # 0 = auto (jobs * max_segments)
     jobs: int = 20,
     adaptive: bool = True,
     probe_window: int = DEFAULT_PROBE_WINDOW,
