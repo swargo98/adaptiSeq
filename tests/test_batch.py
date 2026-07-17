@@ -145,6 +145,79 @@ def test_adaptive_controller_probe_is_capped_to_remaining_files():
     assert trajectory[0][0] == 2  # scored as 2 workers, not 8
 
 
+def test_controller_history_is_bounded_but_aggregates_cover_whole_run():
+    gate = WorkerGate(jobs=8, active=1)
+    ctrl = AdaptiveController(gate, ThroughputMeter(), history_limit=3)
+    for w, thrpt in [(1, 100.0), (2, 400.0), (3, 250.0), (4, 200.0), (5, 150.0)]:
+        ctrl._record_probe(w, thrpt)
+
+    assert len(ctrl.trajectory) == 3               # bounded
+    assert ctrl.trajectory == [(3, 250.0), (4, 200.0), (5, 150.0)]  # most recent
+    assert ctrl.probe_count == 5                   # full count survives
+    assert ctrl.best_probe == (2, 400.0)           # best survives eviction
+    assert ctrl.last_probe == (5, 150.0)
+
+
+def test_controller_history_does_not_grow_without_bound():
+    ctrl = AdaptiveController(WorkerGate(jobs=8), ThroughputMeter())
+    for i in range(500):
+        ctrl._record_probe(1 + i % 4, float(i))
+
+    assert len(ctrl.trajectory) <= ctrl.history_limit
+    assert ctrl.probe_count == 500
+
+
+def test_controller_summary_is_empty_before_any_probe():
+    ctrl = AdaptiveController(WorkerGate(jobs=8), ThroughputMeter())
+    assert ctrl.summary() == ""
+
+
+def test_controller_summary_reports_count_best_and_last():
+    ctrl = AdaptiveController(WorkerGate(jobs=8), ThroughputMeter(), history_limit=2)
+    ctrl._record_probe(1, 100.0)
+    ctrl._record_probe(2, 400.0)
+    ctrl._record_probe(3, 250.0)
+
+    summary = ctrl.summary()
+
+    assert "3 probe(s)" in summary
+    assert "best 400 Mbps at 2 worker(s)" in summary
+    assert "last 250 Mbps at 3 worker(s)" in summary
+    assert "recent: 2w@400Mbps, 3w@250Mbps" in summary
+
+
+def test_batch_phase_reports_summary_not_unbounded_trajectory(monkeypatch, tmp_path):
+    from adaptiseq import core as core_mod
+
+    task = DownloadTask("https://example.test/SRR1.fastq.gz", "SRR1.fastq.gz", "SRR1")
+
+    class FakeBatchDownloader:
+        def __init__(self, engine, options, workdir, reporter=None):
+            ctrl = AdaptiveController(WorkerGate(jobs=4), ThroughputMeter())
+            ctrl._record_probe(1, 100.0)
+            ctrl._record_probe(2, 400.0)
+            self._controller = ctrl
+
+        async def run(self, tasks):
+            return set()
+
+    monkeypatch.setattr(
+        "adaptiseq.batch.resolve_all",
+        lambda accessions, opts, workdir, meta_jobs: ([task], []),
+    )
+    monkeypatch.setattr("adaptiseq.batch.BatchDownloader", FakeBatchDownloader)
+    reporter = ListReporter()
+    opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20)
+    ctx = RunContext(options=opts, reporter=reporter, workdir=tmp_path)
+    ctx.engine = FakeEngine()
+
+    core_mod._batch_download_phase(ctx, ["SRR1"])
+
+    output = "\n".join(reporter.infos)
+    assert "adaptive worker summary: 2 probe(s)" in output
+    assert "best 400 Mbps at 2 worker(s)" in output
+
+
 def test_worker_cap_label_mentions_configured_max_only_when_capped():
     assert _worker_cap_label(20, 1) == "1 worker(s) (configured max 20)"
     assert _worker_cap_label(20, 3) == "3 worker(s) (configured max 20)"

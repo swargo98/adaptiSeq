@@ -63,7 +63,8 @@ class AdaptiveController:
 
     def __init__(self, gate: WorkerGate, meter: ThroughputMeter, *,
                  probe_window: int = 5, cc_penalty: float = 1.01,
-                 max_workers: Optional[Callable[[], int]] = None):
+                 max_workers: Optional[Callable[[], int]] = None,
+                 history_limit: int = 12):
         self.gate = gate
         self.meter = meter
         self.probe_window = max(2, int(probe_window))
@@ -71,8 +72,15 @@ class AdaptiveController:
         # Live cap (files still outstanding); probing above it just measures idle
         # workers. None = cap at gate.jobs only.
         self.max_workers = max_workers
+        self.history_limit = max(1, int(history_limit))
         self.done = False
-        self.trajectory: List[Tuple[int, float]] = []  # (workers, mbps) per probe
+        # Recent probes only. A long run probes indefinitely, so retaining every
+        # sample just to print one line at the end grows without bound; the
+        # aggregates below carry the whole-run picture instead.
+        self.trajectory: List[Tuple[int, float]] = []  # recent (workers, mbps)
+        self.probe_count = 0
+        self.best_probe: Optional[Tuple[int, float]] = None
+        self.last_probe: Optional[Tuple[int, float]] = None
 
     def _worker_cap(self) -> int:
         cap = self.gate.jobs
@@ -100,10 +108,34 @@ class AdaptiveController:
         thrpt = self.meter.recent_average(need)
         score = thrpt / (self.cc_penalty ** w) if self.cc_penalty else thrpt
         value = int(round(-score))
-        self.trajectory.append((w, round(thrpt, 2)))
+        self._record_probe(w, thrpt)
         log.info("adaptive probe: workers=%d throughput=%.1fMbps score=%d",
                  w, thrpt, value)
         return value
+
+    def _record_probe(self, workers: int, throughput: float) -> None:
+        probe = (workers, round(throughput, 2))
+        self.probe_count += 1
+        self.last_probe = probe
+        if self.best_probe is None or probe[1] > self.best_probe[1]:
+            self.best_probe = probe
+        self.trajectory.append(probe)
+        if len(self.trajectory) > self.history_limit:
+            del self.trajectory[0]
+
+    def summary(self) -> str:
+        """One-line whole-run picture; empty when the controller never probed."""
+        if self.probe_count == 0:
+            return ""
+        best_w, best_t = self.best_probe or (0, 0.0)
+        last_w, last_t = self.last_probe or (0, 0.0)
+        recent = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in self.trajectory)
+        return (
+            f"{self.probe_count} probe(s); "
+            f"best {best_t:.0f} Mbps at {best_w} worker(s); "
+            f"last {last_t:.0f} Mbps at {last_w} worker(s); "
+            f"recent: {recent}"
+        )
 
     async def run(self) -> None:
         loop = asyncio.get_event_loop()

@@ -60,6 +60,10 @@ class Sampler:
         self.interval = float(interval)
         self.samples: List[Sample] = []
         self._stop = threading.Event()
+        # Set once the IO/net baselines are primed. start() waits on it so a
+        # caller cannot begin its workload before the sampler has a reference
+        # point — bytes moved before priming are invisible to the first rate.
+        self._ready = threading.Event()
         self._thread: Optional[threading.Thread] = None
         self._t0 = 0.0
         # Cache Process objects across ticks: cpu_percent(interval=None) is stateful
@@ -126,13 +130,18 @@ class Sampler:
                 p.cpu_percent(interval=None)
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 pass
-        last_io = self._io_sum(self._tree())
-        last_net = psutil.net_io_counters()
-        last_t = time.monotonic()
+        try:
+            last_io = self._io_sum(self._tree())
+            last_net = psutil.net_io_counters()
+            last_t = time.monotonic()
+        except BaseException:
+            self._ready.set()   # never leave start() blocked on a dead thread
+            raise
 
         # Track peak cumulative IO so a child exiting between ticks doesn't make
         # the running total go backwards (rates are clamped to >= 0).
         peak_read, peak_write = last_io
+        self._ready.set()
 
         while not self._stop.wait(self.interval):
             now = time.monotonic()
@@ -159,8 +168,12 @@ class Sampler:
 
     def start(self):
         self._t0 = time.monotonic()
+        self._ready.clear()
         self._thread = threading.Thread(target=self._run, daemon=True)
         self._thread.start()
+        # Block until baselines exist (bounded, so a priming failure can't hang
+        # the caller). Without this the workload can race ahead of the sampler.
+        self._ready.wait(timeout=max(1.0, self.interval * 3))
         return self
 
     def stop(self):

@@ -47,31 +47,47 @@ def _wget_supports_show_progress() -> bool:
     return (major, minor) >= (1, 16)
 
 
+def _ena_aspera_key_candidates(ascp: str) -> tuple:
+    """Key locations to try, in order, for an ``ascp`` at this path."""
+    base = Path(ascp).resolve().parent
+    candidates = [
+        # IBM Aspera Connect: ascp in bin/, keys under ../etc.
+        base / ".." / "etc" / "aspera" / "aspera_bypass_rsa.pem",
+        base / ".." / "etc" / "aspera_tokenauth_id_rsa",
+        # Conda aspera-cli can place ascp and its keys in the same directory.
+        base / "aspera_bypass_rsa.pem",
+        base / "aspera_tokenauth_id_rsa",
+        # Manually installed keys.
+        Path.home() / ".aspera" / "aspera_bypass_rsa.pem",
+        Path.home() / ".aspera" / "aspera_tokenauth_id_rsa",
+    ]
+    unique = []
+    seen = set()
+    for candidate in candidates:
+        key = str(candidate)
+        if key not in seen:
+            seen.add(key)
+            unique.append(candidate)
+    return tuple(unique)
+
+
 def find_ena_aspera_key() -> Optional[Path]:
     """Locate the ENA ascp key relative to the ``ascp`` binary (executeAspera)."""
     ascp = _which("ascp")
     if ascp is None:
         return None
-    base = Path(ascp).resolve().parent
-    candidates = [
-        base / ".." / "etc" / "aspera" / "aspera_bypass_rsa.pem",
-        base / ".." / "etc" / "aspera_tokenauth_id_rsa",
-    ]
-    for c in candidates:
-        if c.is_file():
-            return c
+    for candidate in _ena_aspera_key_candidates(ascp):
+        if candidate.is_file():
+            return candidate
     return None
 
 
 def ena_aspera_key_candidates() -> tuple:
+    """Every path :func:`find_ena_aspera_key` tries; ``()`` when ascp is absent."""
     ascp = _which("ascp")
     if ascp is None:
-        return (None, None)
-    base = Path(ascp).resolve().parent
-    return (
-        base / ".." / "etc" / "aspera" / "aspera_bypass_rsa.pem",
-        base / ".." / "etc" / "aspera_tokenauth_id_rsa",
-    )
+        return ()
+    return _ena_aspera_key_candidates(ascp)
 
 
 def _which(name: str) -> Optional[str]:
@@ -135,9 +151,11 @@ class ClassicEngine:
         if db == "ENA":
             key = find_ena_aspera_key()
             if key is None:
-                c1, c2 = ena_aspera_key_candidates()
+                candidates = " OR ".join(
+                    str(c) for c in ena_aspera_key_candidates()
+                ) or "<ascp not found on PATH>"
                 raise PreflightError(
-                    f"Aspera key file not found in the path: {c1} OR {c2}",
+                    f"Aspera key file not found in the path: {candidates}",
                     "Please copy the Aspera key file in the above path and rename it",
                 )
             aspera_link = link.replace(

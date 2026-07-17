@@ -377,6 +377,7 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
     bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
     run_sync(bd.run(tasks))
     controller = getattr(bd, "_controller", None)
-    if controller is not None and controller.trajectory:
-        traj = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in controller.trajectory)
-        reporter.info(f"{green('Note')}: adaptive worker trajectory: {traj}")
+    if controller is not None:
+        summary = controller.summary()
+        if summary:
+            reporter.info(f"{green('Note')}: adaptive worker summary: {summary}")
