@@ -19,7 +19,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from ..console import green_bold, red_bold, Reporter, NullReporter
+from ..console import green, green_bold, red_bold, Reporter, NullReporter
 from ..errors import PreflightError
 from ..net import USER_AGENT_MOZILLA, wget_to_file
 
@@ -47,31 +47,61 @@ def _wget_supports_show_progress() -> bool:
     return (major, minor) >= (1, 16)
 
 
+def _ena_aspera_key_candidates(ascp: str) -> tuple:
+    base = Path(ascp).resolve().parent
+    candidates = [
+        # Conda aspera-cli can place ascp and keys together in env/etc/aspera.
+        base / "aspera_bypass_rsa.pem",
+        base / "aspera_tokenauth_id_rsa",
+        # IBM Aspera Connect usually puts ascp in bin and keys under ../etc.
+        base / ".." / "etc" / "aspera" / "aspera_bypass_rsa.pem",
+        base / ".." / "etc" / "aspera_tokenauth_id_rsa",
+        Path.home() / ".aspera" / "aspera_bypass_rsa.pem",
+        Path.home() / ".aspera" / "aspera_tokenauth_id_rsa",
+    ]
+    unique = []
+    seen = set()
+    for candidate in candidates:
+        key = str(candidate)
+        if key not in seen:
+            seen.add(key)
+            unique.append(candidate)
+    return tuple(unique)
+
+
 def find_ena_aspera_key() -> Optional[Path]:
     """Locate the ENA ascp key relative to the ``ascp`` binary (executeAspera)."""
     ascp = _which("ascp")
     if ascp is None:
         return None
-    base = Path(ascp).resolve().parent
-    candidates = [
-        base / ".." / "etc" / "aspera" / "aspera_bypass_rsa.pem",
-        base / ".." / "etc" / "aspera_tokenauth_id_rsa",
-    ]
-    for c in candidates:
-        if c.is_file():
-            return c
+    for candidate in _ena_aspera_key_candidates(ascp):
+        if candidate.is_file():
+            return candidate.resolve()
     return None
 
 
 def ena_aspera_key_candidates() -> tuple:
     ascp = _which("ascp")
     if ascp is None:
-        return (None, None)
-    base = Path(ascp).resolve().parent
-    return (
-        base / ".." / "etc" / "aspera" / "aspera_bypass_rsa.pem",
-        base / ".." / "etc" / "aspera_tokenauth_id_rsa",
-    )
+        return ()
+    return _ena_aspera_key_candidates(ascp)
+
+
+def ena_aspera_link(link: str) -> str:
+    """Normalize ENA metadata links into the authenticated ascp target form."""
+    value = link.strip()
+    for scheme in ("fasp://", "ftp://", "https://", "http://"):
+        if value.startswith(scheme):
+            value = value[len(scheme):]
+            break
+    if value.startswith("era-fasp@"):
+        return value
+    if value.startswith("fasp.sra.ebi.ac.uk:"):
+        return "era-fasp@" + value
+    if value.startswith("ftp.sra.ebi.ac.uk/"):
+        path = value[len("ftp.sra.ebi.ac.uk/"):]
+        return "era-fasp@fasp.sra.ebi.ac.uk:/" + path
+    return value
 
 
 def _which(name: str) -> Optional[str]:
@@ -114,7 +144,26 @@ class ClassicEngine:
             ]
             if quiet:
                 return self._run(cmd, discard=True) == 0
-            return self._run(cmd) == 0
+            self.reporter.info(
+                f"{green('Note')}: Classic engine using axel parallel download "
+                f"with {opts.parallel} connection(s) (-n {opts.parallel}), "
+                f"resume enabled (-c), speed cap {opts.speed} MB/s, output {save_path}"
+            )
+            self.reporter.info(
+                f"{green('Note')}: Axel may reuse connection numbers while retrying "
+                "byte ranges; final md5 validation determines file integrity"
+            )
+            rc = self._run(cmd)
+            if rc == 0:
+                self.reporter.info(
+                    f"{green('Note')}: Axel process completed for {save_path}; "
+                    "starting integrity validation"
+                )
+                return True
+            self.reporter.error(
+                f"{red_bold('Error')}: Axel exited with code {rc} for {save_path}"
+            )
+            return False
 
         # wget path
         if quiet:
@@ -135,14 +184,12 @@ class ClassicEngine:
         if db == "ENA":
             key = find_ena_aspera_key()
             if key is None:
-                c1, c2 = ena_aspera_key_candidates()
+                candidates = " OR ".join(str(c) for c in ena_aspera_key_candidates())
                 raise PreflightError(
-                    f"Aspera key file not found in the path: {c1} OR {c2}",
+                    f"Aspera key file not found in the path: {candidates}",
                     "Please copy the Aspera key file in the above path and rename it",
                 )
-            aspera_link = link.replace(
-                "ftp.sra.ebi.ac.uk/", "era-fasp@fasp.sra.ebi.ac.uk:"
-            )
+            aspera_link = ena_aspera_link(link)
             key_file = str(key)
         elif db == "GSA":
             key_file = self._ensure_gsa_key()

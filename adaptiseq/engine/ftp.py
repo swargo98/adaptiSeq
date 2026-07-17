@@ -132,6 +132,7 @@ class FtpSegmentedDownloader:
         host_guard: Optional[HostGuard] = None,
         rate: Optional[TokenBucket] = None,
         free_space_margin: int = 0,
+        on_segments: Optional[Callable[[str, Dict], None]] = None,
     ):
         self.url = url
         self.host, self.port, self.path = parse_ftp_url(url)
@@ -147,6 +148,34 @@ class FtpSegmentedDownloader:
         self.host_guard = host_guard or HostGuard()
         self.rate = rate
         self.free_space_margin = max(0, int(free_space_margin))
+        self.on_segments = on_segments
+        self._file_size = 0
+        self._segments: List[Tuple[int, int]] = []
+
+    def _emit_segments(
+        self,
+        event: str,
+        *,
+        file_size: int,
+        segments: List[Tuple[int, int]],
+        completed: Set[int],
+        progress_offsets: Dict[int, int],
+    ) -> None:
+        if self.on_segments is None:
+            return
+        try:
+            self.on_segments(
+                event,
+                {
+                    "event": event,
+                    "file_size": file_size,
+                    "segments": list(segments),
+                    "completed": set(completed),
+                    "progress_offsets": dict(progress_offsets),
+                },
+            )
+        except Exception as e:
+            log.debug("segment progress callback failed for %s: %s", self.local_path, e)
 
     def calculate_segments(self, file_size: int) -> List[Tuple[int, int]]:
         return calculate_segments(
@@ -183,6 +212,13 @@ class FtpSegmentedDownloader:
                                 os.pwrite(fd, take, offset)
                                 offset += len(take)
                                 progress[seg_id] = offset
+                                self._emit_segments(
+                                    "progress",
+                                    file_size=self._file_size,
+                                    segments=self._segments,
+                                    completed=set(),
+                                    progress_offsets=progress,
+                                )
                                 self.on_bytes(len(take))
                                 if offset > end:
                                     break
@@ -235,6 +271,8 @@ class FtpSegmentedDownloader:
             return True
 
         segments = self.calculate_segments(file_size)
+        self._file_size = file_size
+        self._segments = segments
         meta = read_part_meta(self.meta_path)
         completed: Set[int] = set()
         partial: Dict[int, int] = {}
@@ -268,6 +306,13 @@ class FtpSegmentedDownloader:
         )
         os.makedirs(os.path.dirname(self.part_path) or ".", exist_ok=True)
         progress: Dict[int, int] = {i: s for i, s, _ in remaining}
+        self._emit_segments(
+            "planned",
+            file_size=file_size,
+            segments=segments,
+            completed=completed,
+            progress_offsets=progress,
+        )
 
         fd = None
         try:
@@ -298,16 +343,46 @@ class FtpSegmentedDownloader:
                 # final size check (no Content-Range to trust)
                 if os.path.getsize(self.local_path) != file_size:
                     log.error("FTP final size mismatch for %s", self.local_path)
+                    self._emit_segments(
+                        "failed",
+                        file_size=file_size,
+                        segments=segments,
+                        completed=completed,
+                        progress_offsets={
+                            i: e + 1 for i, (_s, e) in enumerate(segments)
+                        },
+                    )
                     return False
                 log.info("Completed (ftp) %s", os.path.basename(self.local_path))
+                self._emit_segments(
+                    "complete",
+                    file_size=file_size,
+                    segments=segments,
+                    completed=completed,
+                    progress_offsets={i: e + 1 for i, (_s, e) in enumerate(segments)},
+                )
                 return True
             write_part_meta(self.meta_path, file_size, segments, completed, latest)
+            self._emit_segments(
+                "failed",
+                file_size=file_size,
+                segments=segments,
+                completed=completed,
+                progress_offsets=latest,
+            )
             return False
         except Exception as e:
             log.error("FTP download failed for %s: %s", self.url, e)
             try:
                 latest = {}
                 write_part_meta(self.meta_path, file_size, segments, completed, latest)
+                self._emit_segments(
+                    "failed",
+                    file_size=file_size,
+                    segments=segments,
+                    completed=completed,
+                    progress_offsets=latest,
+                )
             except Exception:
                 pass
             return False

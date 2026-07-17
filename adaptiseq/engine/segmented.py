@@ -161,6 +161,7 @@ class SegmentedDownloader:
         host_guard: Optional[HostGuard] = None,
         rate: Optional[TokenBucket] = None,
         free_space_margin: int = 0,
+        on_segments: Optional[Callable[[str, Dict], None]] = None,
     ):
         self.session = session
         self.url = url
@@ -175,10 +176,36 @@ class SegmentedDownloader:
         self.on_bytes = on_bytes or _noop_counter
         self.host_guard = host_guard or HostGuard()
         self.rate = rate
+        self.on_segments = on_segments
         self.host = host_of(url)
         self.free_space_margin = max(0, int(free_space_margin))
         self.total_size = 0
         self.segments: List[Tuple[int, int]] = []
+
+    def _emit_segments(
+        self,
+        event: str,
+        *,
+        file_size: int,
+        segments: List[Tuple[int, int]],
+        completed: Set[int],
+        progress_offsets: Dict[int, int],
+    ) -> None:
+        if self.on_segments is None:
+            return
+        try:
+            self.on_segments(
+                event,
+                {
+                    "event": event,
+                    "file_size": file_size,
+                    "segments": list(segments),
+                    "completed": set(completed),
+                    "progress_offsets": dict(progress_offsets),
+                },
+            )
+        except Exception as e:
+            log.debug("segment progress callback failed for %s: %s", self.local_path, e)
 
     # ------------------------------ metadata -----------------------------------
 
@@ -294,6 +321,13 @@ class SegmentedDownloader:
                             current_offset += n
                             bytes_written += n
                             progress_offsets[segment_id] = current_offset
+                            self._emit_segments(
+                                "progress",
+                                file_size=self.total_size,
+                                segments=self.segments,
+                                completed=set(),
+                                progress_offsets=progress_offsets,
+                            )
                             self.on_bytes(n)
 
                 bytes_received = current_offset - req_start
@@ -376,6 +410,8 @@ class SegmentedDownloader:
                 return await self.download_single_connection(supports_ranges=False)
 
         segments = self.calculate_segments(file_size)
+        self.total_size = file_size
+        self.segments = segments
 
         metadata = self.read_metadata()
         completed: Set[int] = set()
@@ -437,6 +473,13 @@ class SegmentedDownloader:
         os.makedirs(os.path.dirname(self.part_path) or ".", exist_ok=True)
         num_connections = len(remaining_segments)
         progress_offsets: Dict[int, int] = {i: s for i, s, _ in remaining_segments}
+        self._emit_segments(
+            "planned",
+            file_size=file_size,
+            segments=segments,
+            completed=completed,
+            progress_offsets=progress_offsets,
+        )
 
         fd = None
         try:
@@ -462,6 +505,13 @@ class SegmentedDownloader:
 
             if paused:
                 self.write_metadata(file_size, segments, completed, latest)
+                self._emit_segments(
+                    "paused",
+                    file_size=file_size,
+                    segments=segments,
+                    completed=completed,
+                    progress_offsets=latest,
+                )
                 return False, True, num_connections
 
             if len(completed) == len(segments):
@@ -472,6 +522,15 @@ class SegmentedDownloader:
                     if os.path.exists(self.meta_path):
                         os.remove(self.meta_path)
                     log.info("Completed %s", os.path.basename(self.local_path))
+                    self._emit_segments(
+                        "complete",
+                        file_size=file_size,
+                        segments=segments,
+                        completed=completed,
+                        progress_offsets={
+                            i: e + 1 for i, (_s, e) in enumerate(segments)
+                        },
+                    )
                     return True, False, num_connections
                 # All segments report complete but the .part file is gone —
                 # inconsistent on-disk state. Fail cleanly (drop stale metadata)
@@ -491,14 +550,35 @@ class SegmentedDownloader:
                     "Segment errors for %s: %s",
                     os.path.basename(self.local_path), errors[0],
                 )
+            self._emit_segments(
+                "failed",
+                file_size=file_size,
+                segments=segments,
+                completed=completed,
+                progress_offsets=latest,
+            )
             return False, False, num_connections
         except asyncio.CancelledError:
             latest = self._partials(remaining_segments, progress_offsets, completed)
             self.write_metadata(file_size, segments, completed, latest)
+            self._emit_segments(
+                "paused",
+                file_size=file_size,
+                segments=segments,
+                completed=completed,
+                progress_offsets=latest,
+            )
             return False, True, num_connections
         except Exception as e:
             latest = self._partials(remaining_segments, progress_offsets, completed)
             self.write_metadata(file_size, segments, completed, latest)
+            self._emit_segments(
+                "failed",
+                file_size=file_size,
+                segments=segments,
+                completed=completed,
+                progress_offsets=latest,
+            )
             log.error("Failed %s: %s", os.path.basename(self.local_path), e)
             return False, False, num_connections
         finally:
@@ -558,6 +638,22 @@ class SegmentedDownloader:
 
                         fd = None
                         current_offset = initial_offset
+                        content_length = int(resp.headers.get("Content-Length") or 0)
+                        total_size = (
+                            initial_offset + content_length
+                            if content_length else expected_remaining_bytes or 0
+                        )
+                        single_segments = (
+                            [(0, total_size - 1)] if total_size > 0 else [(0, 0)]
+                        )
+                        single_progress = {0: current_offset}
+                        self._emit_segments(
+                            "planned",
+                            file_size=total_size,
+                            segments=single_segments,
+                            completed=set(),
+                            progress_offsets=single_progress,
+                        )
                         try:
                             fd = os.open(self.part_path, os.O_CREAT | os.O_RDWR)
                             os.lseek(fd, initial_offset, os.SEEK_SET)
@@ -568,11 +664,26 @@ class SegmentedDownloader:
                                     await self.rate.acquire(len(chunk))
                                 os.write(fd, chunk)
                                 current_offset += len(chunk)
+                                single_progress[0] = current_offset
+                                self._emit_segments(
+                                    "progress",
+                                    file_size=total_size,
+                                    segments=single_segments,
+                                    completed=set(),
+                                    progress_offsets=single_progress,
+                                )
                                 self.on_bytes(len(chunk))
                             os.close(fd)
                             fd = None
                             os.rename(self.part_path, self.local_path)
                             log.info("Completed %s", os.path.basename(self.local_path))
+                            self._emit_segments(
+                                "complete",
+                                file_size=total_size,
+                                segments=single_segments,
+                                completed={0},
+                                progress_offsets={0: single_segments[0][1] + 1},
+                            )
                             return True, False, 1
                         finally:
                             if fd is not None:

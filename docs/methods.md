@@ -43,6 +43,8 @@ URL cache made every file on a host download the first file's bytes).
 ## Concurrency & etiquette
 
 - **Per-file:** up to `--max-segments` byte-range connections.
+- **Segment visibility:** segmented HTTPS/FTP runs log a per-file segment plan
+  and segment meter; the batch progress bar still reports file workers.
 - **Per-host:** a global cap (`--max-conns-per-host`) plus a reactive circuit
   breaker (429/503/refused → exponential global backoff + temporarily lowered
   cap, slow recovery).

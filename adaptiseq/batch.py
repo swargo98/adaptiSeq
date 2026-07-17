@@ -41,7 +41,7 @@ from .engine.optimize import EXIT_SIGNAL, gradient_opt_fast
 from .engine.ratelimit import HostGuard, TokenBucket
 from .engine.throughput import ThroughputMeter
 from .logs import in_success
-from .options import Options, RunContext
+from .options import DEFAULT_PROBE_WINDOW, Options, RunContext
 from .ratelimits import EndpointLimiters, set_active
 
 log = logging.getLogger("adaptiseq.batch")
@@ -62,30 +62,87 @@ class AdaptiveController:
     """Drives ``gate.active`` from the gradient optimizer over the live meter."""
 
     def __init__(self, gate: WorkerGate, meter: ThroughputMeter, *,
-                 probe_window: int = 5, cc_penalty: float = 1.01):
+                 probe_window: int = DEFAULT_PROBE_WINDOW, cc_penalty: float = 1.01,
+                 max_workers: Optional[Callable[[], int]] = None,
+                 reporter: Optional[Reporter] = None,
+                 quiet: bool = False,
+                 history_limit: int = 12):
         self.gate = gate
         self.meter = meter
         self.probe_window = max(2, int(probe_window))
         self.cc_penalty = float(cc_penalty)
+        self.max_workers = max_workers
+        self.reporter = reporter or NullReporter()
+        self.quiet = quiet
+        self.history_limit = max(1, int(history_limit))
         self.done = False
-        self.trajectory: List[Tuple[int, float]] = []  # (workers, mbps) per probe
+        # Bounded recent probe history only; large downloads should not retain
+        # thousands of probe samples just to print one huge line at the end.
+        self.trajectory: List[Tuple[int, float]] = []  # recent (workers, mbps)
+        self.probe_count = 0
+        self.best_probe: Optional[Tuple[int, float]] = None
+        self.last_probe: Optional[Tuple[int, float]] = None
+
+    def _cap_workers(self, w: int) -> int:
+        cap = self._current_worker_cap()
+        return max(1, min(int(w), cap))
+
+    def _current_worker_cap(self) -> int:
+        cap = self.gate.jobs
+        if self.max_workers is not None:
+            cap = min(cap, max(1, int(self.max_workers())))
+        return max(1, int(cap))
 
     async def _probe(self, w: int) -> float:
         if self.done:
             return EXIT_SIGNAL
+        w = self._cap_workers(w)
         self.gate.set_active(w)
         await asyncio.sleep(1.0)               # let the change settle
         await asyncio.sleep(self.probe_window - 1.0)
         if self.done:
             return EXIT_SIGNAL
+        w = self._cap_workers(w)
+        self.gate.set_active(w)
         need = max(1, self.probe_window - 1)
         thrpt = self.meter.recent_average(need)
         score = thrpt / (self.cc_penalty ** w) if self.cc_penalty else thrpt
         value = int(round(-score))
-        self.trajectory.append((w, round(thrpt, 2)))
+        self._record_probe(w, thrpt)
         log.info("adaptive probe: workers=%d throughput=%.1fMbps score=%d",
                  w, thrpt, value)
         return value
+
+    def _record_probe(self, workers: int, throughput: float) -> None:
+        rounded = round(throughput, 2)
+        probe = (workers, rounded)
+        self.probe_count += 1
+        self.last_probe = probe
+        if self.best_probe is None or rounded > self.best_probe[1]:
+            self.best_probe = probe
+        self.trajectory.append(probe)
+        if len(self.trajectory) > self.history_limit:
+            del self.trajectory[0]
+        if not self.quiet:
+            self.reporter.info(
+                f"{green('Note')}: adaptive probe {self.probe_count}: "
+                f"active file workers={workers}, measured throughput={throughput:.1f} Mbps "
+                f"over {max(1, self.probe_window - 1)}s, "
+                f"allowed file workers={self._current_worker_cap()}"
+            )
+
+    def summary(self) -> str:
+        if self.probe_count == 0:
+            return ""
+        best_w, best_t = self.best_probe or (0, 0.0)
+        last_w, last_t = self.last_probe or (0, 0.0)
+        recent = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in self.trajectory)
+        return (
+            f"{green('Note')}: adaptive worker summary: {self.probe_count} probe(s); "
+            f"best {best_t:.0f} Mbps at {best_w} worker(s); "
+            f"last {last_t:.0f} Mbps at {last_w} worker(s); "
+            f"recent probes: {recent}"
+        )
 
     async def run(self) -> None:
         loop = asyncio.get_event_loop()
@@ -134,10 +191,11 @@ class BatchDownloader:
             queue.put_nowait(t)
 
         meter = ThroughputMeter()
-        # Non-adaptive: all -j workers active. Adaptive: start at 2 (pre-activate),
-        # the controller then tunes from there.
-        active0 = self.jobs if not self.adaptive else min(2, self.jobs)
-        gate = WorkerGate(self.jobs, active=active0)
+        worker_slots = min(self.jobs, len(tasks))
+        # Non-adaptive: all useful workers active. Adaptive starts at 1 for a
+        # single-file batch and 2 otherwise; the controller then tunes from there.
+        active0 = worker_slots if not self.adaptive else (1 if worker_slots == 1 else 2)
+        gate = WorkerGate(worker_slots, active=active0)
         guard = HostGuard(self.options.max_conns_per_host)
         rate = TokenBucket(self.options.speed * 1024 * 1024)
         failed: Set[str] = set()
@@ -157,6 +215,9 @@ class BatchDownloader:
                 gate, meter,
                 probe_window=self.options.probe_window,
                 cc_penalty=self.options.cc_penalty,
+                max_workers=lambda: self._remaining_files(progress),
+                reporter=self.reporter,
+                quiet=self.options.quiet,
             )
             ctrl_task = asyncio.ensure_future(controller.run())
         repaint_task = asyncio.ensure_future(self._repaint(progress, meter, gate))
@@ -169,7 +230,7 @@ class BatchDownloader:
                     self._worker(i, queue, session, gate, meter, guard, rate,
                                  failed, progress)
                 )
-                for i in range(self.jobs)
+                for i in range(worker_slots)
             ]
             await queue.join()
             for w in workers:
@@ -178,7 +239,7 @@ class BatchDownloader:
 
         repaint_task.cancel()
         await asyncio.gather(repaint_task, return_exceptions=True)
-        progress.draw(meter.last_sample(), gate.active)
+        progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
         progress.finish()
         if controller is not None:
             controller.stop()
@@ -188,14 +249,43 @@ class BatchDownloader:
         await meter.stop()
         self._controller = controller  # exposed for tests / trajectory logging
         self._progress = progress
+        self._gate = gate
+        self._worker_slots = worker_slots
+        self._initial_active = active0
         return failed
 
+    @staticmethod
+    def _remaining_files(progress) -> int:
+        return max(0, progress.total - progress.done)
+
+    @classmethod
+    def _visible_workers(cls, progress, gate) -> int:
+        remaining = cls._remaining_files(progress)
+        if remaining == 0:
+            return 0
+        return min(gate.active, remaining)
+
+    @classmethod
+    def _cap_gate_to_remaining(cls, progress, gate) -> None:
+        remaining = cls._remaining_files(progress)
+        if remaining > 0 and gate.active > remaining:
+            gate.set_active(remaining)
+
+    def _already_successful(self, task: DownloadTask) -> bool:
+        save_name = Path(task.save_path).name
+        return (
+            in_success(self.workdir, task.accession)
+            or in_success(self.workdir, save_name)
+        )
+
     async def _repaint(self, progress, meter, gate) -> None:
-        """Repaint the live progress bar ~2.5 Hz until cancelled."""
+        """Repaint the live progress bar until cancelled."""
+        interval = max(0.1, float(self.options.progress_interval))
         try:
             while True:
-                progress.draw(meter.last_sample(), gate.active)
-                await asyncio.sleep(0.4)
+                self._cap_gate_to_remaining(progress, gate)
+                progress.draw(meter.last_sample(), self._visible_workers(progress, gate))
+                await asyncio.sleep(interval)
         except asyncio.CancelledError:
             return
 
@@ -219,9 +309,10 @@ class BatchDownloader:
                 continue
             try:
                 # Skip files already recorded as downloaded (Part 1 semantics).
-                if in_success(self.workdir, Path(task.save_path).name):
+                if self._already_successful(task):
                     if progress is not None:
                         progress.inc()
+                        self._cap_gate_to_remaining(progress, gate)
                     continue
                 try:
                     ok = await self.engine.fetch_async(
@@ -237,6 +328,7 @@ class BatchDownloader:
                 if ok:
                     if progress is not None:
                         progress.inc()
+                        self._cap_gate_to_remaining(progress, gate)
                     log.info("downloaded %s", task.save_path)
                 else:
                     task.retries += 1

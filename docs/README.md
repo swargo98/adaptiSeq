@@ -34,6 +34,8 @@ script, notebook, or the shell.
 - [Method details](methods.md) — the transports and engines, and how one is chosen
 - [Examples](examples.md) — worked, copy-pasteable commands
 - [FAQ](faq.md) — common errors and how to solve them
+- [Feature test cases](testing/test-cases.md) — manual/offline validation cases
+- [Test results report](testing/test-results.md) — living execution report
 - [Benchmark](../BENCHMARK.md) — honest measurements vs iseq and Kingfisher
 
 ## The three things adaptiSeq does

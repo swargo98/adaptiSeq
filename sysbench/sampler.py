@@ -60,6 +60,7 @@ class Sampler:
         self.interval = float(interval)
         self.samples: List[Sample] = []
         self._stop = threading.Event()
+        self._ready = threading.Event()
         self._thread: Optional[threading.Thread] = None
         self._t0 = 0.0
         # Cache Process objects across ticks: cpu_percent(interval=None) is stateful
@@ -129,6 +130,15 @@ class Sampler:
         last_io = self._io_sum(self._tree())
         last_net = psutil.net_io_counters()
         last_t = time.monotonic()
+        procs = self._tree()
+        cpu, rss, n = self._cpu_rss(procs)
+        phase = self.timeline.current() if self.timeline else "all"
+        self.samples.append(Sample(
+            t=last_t - self._t0, phase=phase, cpu_pct=cpu, rss_mb=rss / 1e6,
+            read_mbps=0.0, write_mbps=0.0,
+            net_recv_mbps=0.0, net_sent_mbps=0.0, nprocs=n,
+        ))
+        self._ready.set()
 
         # Track peak cumulative IO so a child exiting between ticks doesn't make
         # the running total go backwards (rates are clamped to >= 0).
@@ -159,8 +169,10 @@ class Sampler:
 
     def start(self):
         self._t0 = time.monotonic()
+        self._ready.clear()
         self._thread = threading.Thread(target=self._run, daemon=True)
         self._thread.start()
+        self._ready.wait(timeout=max(1.0, self.interval * 3))
         return self
 
     def stop(self):

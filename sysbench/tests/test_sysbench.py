@@ -24,20 +24,36 @@ def test_cpu_busy_child_reads_full_core():
     assert max((r.cpu_pct for r in rows), default=0) > 70  # ~100 for one core
 
 
-def test_write_bytes_integrates_to_total():
+def test_write_bytes_integrates_to_total(tmp_path):
     # trailing sleep keeps the child alive across sampling ticks (real downloaders
     # persist through the data phase; a child that exits mid-tick loses its IO).
-    script = ("import os, time\nf=open('/tmp/_sb_pytest.bin','wb')\n"
-              "for i in range(40): f.write(os.urandom(1000000)); f.flush(); "
-              "os.fsync(f.fileno())\n"
-              "time.sleep(1.5); os.remove('/tmp/_sb_pytest.bin')")
-    p = subprocess.Popen([sys.executable, "-c", script])
+    # Linux reports process ``write_bytes`` as physical storage IO, not logical
+    # bytes written, so tmpfs/overlay/cached filesystems can undercount the 40 MB
+    # workload. The harness-level invariant is that the sampler sees substantial
+    # write activity in the expected order of magnitude.
+    trigger = tmp_path / "go"
+    data = tmp_path / "payload.bin"
+    script = (
+        "import os, sys, time\n"
+        "trigger, data = sys.argv[1], sys.argv[2]\n"
+        "while not os.path.exists(trigger): time.sleep(0.01)\n"
+        "f=open(data,'wb')\n"
+        "for i in range(40): f.write(os.urandom(1000000)); f.flush(); "
+        "os.fsync(f.fileno())\n"
+        "time.sleep(1.5); os.remove(data)"
+    )
+    p = subprocess.Popen([sys.executable, "-c", script, str(trigger), str(data)])
     s = Sampler(p.pid, PhaseTimeline(), interval=0.4).start()
+    trigger.touch()
     p.wait()
     time.sleep(0.3)
     rows = s.stop()
-    written = sum(r.write_mbps * 0.4 for r in rows)
-    assert 25 < written < 60  # ~40 MB, with sampling slack
+    written = 0.0
+    prev_t = 0.0
+    for row in rows:
+        written += row.write_mbps * max(0.0, row.t - prev_t)
+        prev_t = row.t
+    assert 10 < written < 80  # ~40 MB logical, physical IO can undercount
 
 
 def test_phase_tagging_follows_marks():

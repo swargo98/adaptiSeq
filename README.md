@@ -169,13 +169,17 @@ Optional options:
   --max-conns-per-host int      Global cap on connections to one host (default: 8).
   -j, --jobs      int           Max worker-pool size for batch download (default: 20).
   --adaptive / --no-adaptive    Gradient adaptive-concurrency controller (default: on).
-  --probe-window  int           Adaptive probe window in seconds (default: 5).
+  --probe-window  int           Adaptive probe window in seconds (default: 10).
   --cc-penalty    float         Worker-cost penalty K (default: 1.01).
   --meta-jobs     int           Parallelism for metadata/URL resolution (default: 3).
   --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (0.70).
   -h, --help                    Show the help information.
   -v, --version                 Show the program version.
 ```
+
+Display cadence defaults live in `adaptiseq/options.py`: the file-level progress
+bar repaints every 2 seconds, and segmented HTTP/FTP meter lines print every 10
+seconds. These do not change the adaptive probe window.
 
 ### 1. `-i`, `--input`
 

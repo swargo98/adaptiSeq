@@ -57,10 +57,22 @@ Tuning knobs:
 
 | Flag | Meaning | Default |
 | ---- | ------- | ------- |
-| `--probe-window` | seconds per probe before re-measuring | 5 |
+| `--probe-window` | seconds per probe before re-measuring | 10 |
 | `--cc-penalty` | worker-cost penalty `K` in `score = throughput / K**workers` | 1.01 |
 
-The chosen trajectory (e.g. `1w@…→2w@…`) is logged at the end of the run.
+Display cadence defaults are centralized in `adaptiseq/options.py`: file-level
+progress repaints every 2 seconds, and segmented HTTP/FTP meter lines print every
+10 seconds. These are log-display intervals, not adaptive tuning intervals.
+
+Adaptive probes are logged during the run, for example:
+
+```text
+Note: adaptive probe 3: active file workers=2, measured throughput=145.2 Mbps over 4s, allowed file workers=2
+```
+
+At completion, adaptiSeq prints a compact summary with total probe count, best
+probe, last probe, and only the most recent probe history. It does not retain or
+print the full long-run trajectory.
 
 > **Honesty note**
 > On small batches, adaptive vs fixed is within measurement noise — the payoff is

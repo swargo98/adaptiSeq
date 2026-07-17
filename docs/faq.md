@@ -45,7 +45,9 @@ export NCBI_EMAIL=you@example.com    # optional
 
 - Ensure a **real IBM `ascp`** is on `PATH` (a no-op stub passes startup checks
   but transfers nothing).
-- Ensure a key file exists (adaptiSeq searches the conda env and `~/.aspera`).
+- Ensure a key file exists. adaptiSeq searches common Conda/IBM layouts,
+  including `env/etc/aspera/aspera_bypass_rsa.pem`, `env/etc/aspera_tokenauth_id_rsa`,
+  and `~/.aspera`.
 - ENA migrated DSA→RSA Aspera keys; the legacy `asperaweb_id_dsa.openssh` is
   rejected. adaptiSeq's RSA fallback covers this automatically.
 

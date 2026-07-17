@@ -321,9 +321,13 @@ def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         t.aspera_db = "ENA"
     if not tasks:
         return
+    effective_jobs = min(opts.jobs, len(tasks))
+    worker_limit = f"{effective_jobs} worker(s)"
+    if effective_jobs != opts.jobs:
+        worker_limit += f" (configured max {opts.jobs})"
     reporter.info(
         f"{green('Note')}: Aspera batch downloading {len(tasks)} file(s) with up to "
-        f"{opts.jobs} workers "
+        f"{worker_limit} "
         f"({'adaptive hysteresis' if opts.adaptive else 'fixed'} concurrency)"
     )
 
@@ -359,14 +363,19 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         )
     if not tasks:
         return
+    effective_jobs = min(opts.jobs, len(tasks))
+    worker_limit = f"{effective_jobs} worker(s)"
+    if effective_jobs != opts.jobs:
+        worker_limit += f" (configured max {opts.jobs})"
     reporter.info(
         f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
-        f"{len(sra_accs)} accession(s) with up to {opts.jobs} workers "
+        f"{len(sra_accs)} accession(s) with up to {worker_limit} "
         f"({'adaptive' if opts.adaptive else 'fixed'} concurrency)"
     )
     bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
     run_sync(bd.run(tasks))
     controller = getattr(bd, "_controller", None)
-    if controller is not None and controller.trajectory:
-        traj = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in controller.trajectory)
-        reporter.info(f"{green('Note')}: adaptive worker trajectory: {traj}")
+    if controller is not None:
+        summary = controller.summary()
+        if summary:
+            reporter.info(summary)

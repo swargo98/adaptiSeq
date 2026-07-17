@@ -23,6 +23,7 @@ dependencies:
   - aioftp >=0.21    # Part 2: native segmented FTP transport
   - numpy >=1.21     # Part 3: gradient adaptive controller
   - openpyxl >=3.0   # optional: parse GSA XLSX in the library API
+  - psutil >=5.9     # sysbench sampler + tests
   - pytest >=7.0     # test suite
   - pip:
       - -e .

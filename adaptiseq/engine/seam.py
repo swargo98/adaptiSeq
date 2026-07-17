@@ -28,6 +28,7 @@ from ..console import green
 from .classic import ClassicEngine
 from .ftp import FtpSegmentedDownloader, parse_ftp_url, probe_ftp
 from .ratelimit import HostGuard, TokenBucket
+from .segmentlog import SegmentProgressLogger
 from .segmented import SegmentedDownloader
 
 log = logging.getLogger("adaptiseq.engine.seam")
@@ -100,6 +101,7 @@ class SegmentedEngine:
 
         kind, eff_url = await self._select_transport(url, session)
         self._log_transport(url, kind, eff_url)
+        segment_logger = self._segment_logger(save_path, kind)
 
         if kind == "classic":
             return await asyncio.get_event_loop().run_in_executor(
@@ -111,6 +113,7 @@ class SegmentedEngine:
                 segment_size=opts.segment_size,
                 max_segments=1 if kind == "http-single" else opts.max_segments,
                 host_guard=guard, rate=rate, pause=pause, on_bytes=on_bytes,
+                on_segments=segment_logger,
             )
             return await d.download()
         d = FtpSegmentedDownloader(
@@ -118,8 +121,25 @@ class SegmentedEngine:
             segment_size=opts.segment_size,
             max_segments=1 if kind == "ftp-single" else opts.max_segments,
             host_guard=guard, rate=rate, pause=pause, on_bytes=on_bytes,
+            on_segments=segment_logger,
         )
         return await d.download()
+
+    def _segment_logger(self, save_path: str, kind: str):
+        if self.options.quiet or kind == "classic":
+            return None
+        labels = {
+            "http-seg": "segmented HTTPS",
+            "http-single": "single-stream HTTPS",
+            "ftp-seg": "segmented FTP",
+            "ftp-single": "single-stream FTP",
+        }
+        return SegmentProgressLogger(
+            self.reporter,
+            save_path,
+            labels.get(kind, kind),
+            interval=self.options.segment_log_interval,
+        )
 
     async def _select_transport(
         self, url: str, session: aiohttp.ClientSession
