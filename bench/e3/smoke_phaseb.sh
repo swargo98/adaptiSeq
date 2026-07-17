@@ -53,11 +53,27 @@ echo "  arm exit  : $rc   wall: ${elapsed}s"
 
 fail=0
 
+# --- CHECK 0: the arm actually ran and produced files -------------------------
+# Everything else is meaningless if the download crashed, so gate on this first
+# and surface the arm's own error inline (no hunting for a temp log).
+n_files=$(find "$WORK" -maxdepth 1 -name '*.fastq.gz' | wc -l)
+echo "=== CHECK 0: arm ran and downloaded files ==="
+echo "  exit=$rc  files_on_disk=$n_files"
+if [[ "$rc" -ne 0 || "$n_files" -eq 0 ]]; then
+    echo "  FAIL — arm did not complete; last 30 lines of its log:"
+    echo "  ----------------------------------------------------------------"
+    tail -n 30 "$LOG" | sed 's/^/  | /'
+    echo "  ----------------------------------------------------------------"
+    echo "=== SMOKE FAILED (arm crashed) — full log: $LOG ==="
+    exit 1
+fi
+
 # --- CHECK 1: Phase B did NOT re-resolve present files -------------------------
 # `_download_ena_fastq` (the sequential Phase B download path) is the only thing
 # that emits a "File size:" line. On a clean run where the batch phase already
 # fetched everything, the fixed Phase B verifies in place -> zero such lines.
-reresolves=$(grep -c 'File size:' "$LOG" 2>/dev/null || echo 0)
+# (grep -c always prints a count; tolerate its exit-1 on zero matches.)
+reresolves=$(grep -c 'File size:' "$LOG" 2>/dev/null); reresolves=${reresolves:-0}
 echo "=== CHECK 1: Phase B re-resolutions (want 0) ==="
 echo "  'File size:' lines in Phase B : $reresolves"
 if [[ "$reresolves" -eq 0 ]]; then
