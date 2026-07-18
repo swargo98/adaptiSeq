@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -138,6 +139,13 @@ class AdaptiveController:
         )
 
     async def run(self) -> None:
+        mode = os.environ.get("ASEQ_ADAPTIVE_MODE", "legacy").lower()
+        if mode in ("climb", "ladder", "ee"):
+            await self._run_explore_exploit()
+        else:
+            await self._run_legacy()
+
+    async def _run_legacy(self) -> None:
         loop = asyncio.get_event_loop()
         # One window of settle before the first probe (mirrors run_download_optimizer).
         await asyncio.sleep(self.probe_window)
@@ -154,6 +162,129 @@ class AdaptiveController:
         await loop.run_in_executor(
             None, lambda: gradient_opt_fast(self.gate.jobs, black_box, log)
         )
+
+    # ------------------------------------------------------------------
+    # Explore-then-exploit controller (ASEQ_ADAPTIVE_MODE=climb).
+    #
+    # The legacy gradient optimizer probes a 4 s window forever and never
+    # commits, so on a bursty link it wanders and parks at low worker counts.
+    # This controller instead (1) climbs a geometric ladder of worker counts,
+    # each measured over a longer averaged window, to locate the knee; then
+    # (2) COMMITS to the best and holds; then (3) periodically re-probes, and
+    # re-explores only if throughput has clearly degraded (throttling / the
+    # file tail). No knob is chosen manually -- the knee is discovered.
+    # ------------------------------------------------------------------
+    def _cfg(self, name: str, default: float) -> float:
+        try:
+            return float(os.environ.get(name, default))
+        except (TypeError, ValueError):
+            return float(default)
+
+    async def _measure(self, w: int, window: float, settle: float) -> float:
+        """Set the pool to ``w`` workers, let it settle, return smoothed Mbps."""
+        if self.done:
+            return -1.0
+        w = self._cap_workers(w)
+        self.gate.set_active(w)
+        await asyncio.sleep(settle)
+        if self.done:
+            return -1.0
+        await asyncio.sleep(window)
+        if self.done:
+            return -1.0
+        w = self._cap_workers(w)
+        n = max(1, int(round(window)))
+        thrpt = self.meter.recent_average(n)
+        self._record_probe(w, thrpt)
+        # Same log line the legacy path emits, so trajectories.tsv still parses.
+        log.info("adaptive probe: workers=%d throughput=%.1fMbps score=%d",
+                 w, thrpt, int(round(-thrpt)))
+        return thrpt
+
+    async def _run_explore_exploit(self) -> None:
+        window = self._cfg("ASEQ_PROBE_WINDOW", self.probe_window)
+        settle = self._cfg("ASEQ_CLIMB_SETTLE", 1.5)
+        thresh = self._cfg("ASEQ_CLIMB_THRESHOLD", 0.10)   # frac gain that justifies MORE workers
+        reprobe_s = self._cfg("ASEQ_EXPLOIT_REPROBE_S", 20.0)
+        redo = self._cfg("ASEQ_EXPLOIT_REDO", 0.35)        # sustained frac drop => re-explore
+
+        await asyncio.sleep(window)  # let the meter fill
+
+        async def explore() -> int:
+            """Top-down search for the knee.
+
+            Start at the cap (all available workers) and step *down* only while
+            fewer workers is CLEARLY better (frac gain > thresh) -- i.e. only when
+            the high count is being throttled. On an un-throttled byte-bound
+            workload the cap wins immediately (2 probes) with no bottom-up crawl;
+            on a throttled many-small-file workload it walks down to the knee.
+            """
+            cap = self._worker_cap()
+            best_w = cap
+            best_t = await self._measure(cap, window, settle)
+            w = cap
+            while w > 1 and not self.done:
+                lower = max(1, w // 2)
+                if lower == w:
+                    break
+                t = await self._measure(lower, window, settle)
+                if t > best_t * (1.0 + thresh):
+                    # Fewer workers is clearly better -> the knee is below here.
+                    best_w, best_t, w = lower, t, lower
+                    continue
+                if t > best_t:
+                    best_w, best_t = lower, t   # mild improvement, record but stop
+                break
+            return best_w
+
+        while not self.done:
+            best_w = await explore()
+            if self.done:
+                break
+            # --- commit / exploit: hold best_w, watch the meter PASSIVELY ---
+            self.gate.set_active(self._cap_workers(best_w))
+            log.info("adaptive commit: workers=%d", best_w)
+            # The explore-time throughput is a transient (fresh connections burst),
+            # so it is NOT a valid steady-state baseline. Establish the baseline
+            # from the FIRST passive exploit reading instead, then only re-explore
+            # on a SUSTAINED drop below it (throttling / a route change) -- never on
+            # the naturally-falling tail.
+            committed = 0.0
+            low_checks = 0
+            re_explore = False
+            while not self.done and not re_explore:
+                slept = 0.0
+                while slept < reprobe_s and not self.done:
+                    await asyncio.sleep(min(2.0, reprobe_s - slept))
+                    slept += 2.0
+                if self.done:
+                    break
+                cap = self._worker_cap()
+                if cap < best_w:
+                    # Tail draining: follow the cap down, never re-explore on it,
+                    # and re-baseline once the level changes.
+                    best_w = max(1, cap)
+                    self.gate.set_active(best_w)
+                    committed = 0.0
+                    low_checks = 0
+                    continue
+                # Passive read -- do NOT change the worker count to measure.
+                t = self.meter.recent_average(max(1, int(window)))
+                self._record_probe(best_w, t)
+                if committed <= 0.0:
+                    committed = t           # steady-state baseline
+                    continue
+                if t < committed * (1.0 - redo):
+                    low_checks += 1
+                    if low_checks >= 2:      # sustained, not a single dip
+                        log.info("adaptive re-explore: %.1f < %.1f*%.2f (sustained)",
+                                 t, committed, 1.0 - redo)
+                        re_explore = True
+                else:
+                    low_checks = 0
+                    # EWMA, not max(): a transient burst must not inflate the
+                    # baseline and turn normal steady throughput into a "drop".
+                    committed = 0.8 * committed + 0.2 * t
 
     def stop(self) -> None:
         self.done = True
