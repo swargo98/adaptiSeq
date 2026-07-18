@@ -91,6 +91,12 @@ declare -a ARMS_FULL=(
   "adaptiseq-fixed-j40|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 40 --meta-jobs 8 -Q -o ."
   "adaptiseq-adaptive-j20|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 20 --meta-jobs 8 -Q -o ."
   "adaptiseq-adaptive-j40|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 40 --meta-jobs 8 -Q -o ."
+  # NEW: explore-then-exploit adaptive controller (docs/ADAPTIVE_CONTROLLER.md).
+  # Same CLI as the adaptive arms; the controller variant is selected by the
+  # ASEQ_ADAPTIVE_MODE=climb env var (aseq_run.py inherits it). The legacy
+  # adaptive arms above are kept unchanged for comparison.
+  "adaptiseq-climb-j20|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 20 --meta-jobs 8 -Q -o ."
+  "adaptiseq-climb-j40|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 40 --meta-jobs 8 -Q -o ."
 )
 FETCHNGS_ARM="fetchngs|fetchngs|nextflow run nf-core/fetchngs -r 1.12.0 --input \$IDS_CSV --outdir . -profile singularity --download_method ftp -ansi-log false"
 
@@ -116,6 +122,8 @@ build_sweep_arms() {
     done
     # Adaptive at the same ceiling: does the controller find the fixed optimum?
     ARMS+=("adaptiseq-adaptive-j16|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
+    # NEW: explore-then-exploit controller at the same ceiling.
+    ARMS+=("adaptiseq-climb-j16|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
 }
 
 # ---- 3s: connections-per-worker sweep (--max-segments) ----------------------
@@ -171,7 +179,7 @@ case "$PANEL" in
   # files. Run this FIRST on Expanse; a broken competitor invocation costs 2
   # minutes here instead of 12 hours inside panel 3a.
   smoke) build_arms;     run_panel smoke "SMOKE_D1"           "${REPS_ARG:-1}"  "${E3_TIMEOUT_SMOKE:-300}" ;;
-  3a)  build_arms;       run_panel 3a "D1_fair_PRJNA916347"   "${REPS_ARG:-10}" "${E3_TIMEOUT_3A:-3600}" ;;
+  3a)  build_arms;       run_panel 3a "D1_fair_PRJNA916347"   "${REPS_ARG:-5}"  "${E3_TIMEOUT_3A:-3600}" ;;
   3r)  build_arms;       run_panel 3r "D1_full_PRJNA916347"   "${REPS_ARG:-3}"  "${E3_TIMEOUT_3R:-5400}" ;;
   3b)  build_arms;       run_panel 3b "D2_subset_PRJNA762469" "${REPS_ARG:-5}"  "${E3_TIMEOUT_3B:-7200}" ;;
   3c)  build_arms;       run_panel 3c "D4_mixed"              "${REPS_ARG:-5}"  "${E3_TIMEOUT_3C:-3600}" ;;
