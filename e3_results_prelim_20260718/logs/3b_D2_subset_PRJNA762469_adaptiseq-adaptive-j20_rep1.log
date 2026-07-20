@@ -1,0 +1,172 @@
+[32mNote[0m: batch downloading 16 file(s) across 8 accession(s) with up to 16 worker(s) (configured max 20) (adaptive concurrency)
+08:02:04.938 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:04.976 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:14.374 adaptiseq.batch: adaptive probe: workers=1 throughput=930.9Mbps score=-922
+08:02:19.375 adaptiseq.batch: adaptive probe: workers=2 throughput=692.3Mbps score=-679
+08:02:24.376 adaptiseq.batch: adaptive probe: workers=1 throughput=522.0Mbps score=-517
+08:02:29.377 adaptiseq.batch: adaptive probe: workers=2 throughput=410.7Mbps score=-403
+08:02:34.379 adaptiseq.batch: adaptive probe: workers=1 throughput=246.1Mbps score=-244
+08:02:39.380 adaptiseq.batch: adaptive probe: workers=2 throughput=262.9Mbps score=-258
+08:02:39.395 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:44.381 adaptiseq.batch: adaptive probe: workers=3 throughput=593.6Mbps score=-576
+08:02:44.511 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:44.512 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:44.512 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:44.512 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:49.383 adaptiseq.batch: adaptive probe: workers=7 throughput=1794.8Mbps score=-1674
+08:02:49.525 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:49.525 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:49.526 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:54.389 adaptiseq.batch: adaptive probe: workers=10 throughput=2052.7Mbps score=-1858
+08:02:54.534 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:55.768 adaptiseq.batch: downloaded SRR15852404_1.fastq.gz
+08:02:55.769 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:02:59.393 adaptiseq.batch: adaptive probe: workers=11 throughput=2452.9Mbps score=-2199
+08:03:04.395 adaptiseq.batch: adaptive probe: workers=11 throughput=1944.3Mbps score=-1743
+08:03:09.398 adaptiseq.batch: adaptive probe: workers=9 throughput=1565.7Mbps score=-1432
+08:03:14.400 adaptiseq.batch: adaptive probe: workers=10 throughput=1540.1Mbps score=-1394
+08:03:18.219 adaptiseq.batch: downloaded SRR15852404_2.fastq.gz
+08:03:18.219 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:03:19.402 adaptiseq.batch: adaptive probe: workers=9 throughput=1252.3Mbps score=-1145
+08:03:24.581 adaptiseq.batch: adaptive probe: workers=11 throughput=1531.8Mbps score=-1373
+08:03:24.642 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:03:29.582 adaptiseq.batch: adaptive probe: workers=12 throughput=1444.1Mbps score=-1282
+08:03:34.585 adaptiseq.batch: adaptive probe: workers=11 throughput=994.4Mbps score=-891
+08:03:34.736 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:03:34.737 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+08:03:39.591 adaptiseq.batch: adaptive probe: workers=14 throughput=1392.3Mbps score=-1211
+08:03:44.594 adaptiseq.batch: adaptive probe: workers=14 throughput=1450.7Mbps score=-1262
+08:03:48.929 adaptiseq.batch: downloaded SRR15852407_1.fastq.gz
+08:03:49.595 adaptiseq.batch: adaptive probe: workers=13 throughput=950.5Mbps score=-835
+08:03:54.596 adaptiseq.batch: adaptive probe: workers=7 throughput=955.6Mbps score=-891
+08:03:59.654 adaptiseq.batch: adaptive probe: workers=6 throughput=992.1Mbps score=-935
+08:04:04.657 adaptiseq.batch: adaptive probe: workers=5 throughput=1289.9Mbps score=-1227
+08:04:05.503 adaptiseq.batch: downloaded SRR15852406_2.fastq.gz
+08:04:09.660 adaptiseq.batch: adaptive probe: workers=3 throughput=1448.1Mbps score=-1405
+08:04:11.657 adaptiseq.batch: downloaded SRR15852415_2.fastq.gz
+08:04:14.664 adaptiseq.batch: adaptive probe: workers=2 throughput=1300.1Mbps score=-1274
+08:04:19.666 adaptiseq.batch: adaptive probe: workers=3 throughput=1332.0Mbps score=-1293
+08:04:24.668 adaptiseq.batch: adaptive probe: workers=4 throughput=1286.2Mbps score=-1236
+08:04:26.513 adaptiseq.batch: downloaded SRR15852407_2.fastq.gz
+08:04:29.679 adaptiseq.batch: adaptive probe: workers=3 throughput=1206.0Mbps score=-1171
+08:04:29.770 adaptiseq.batch: downloaded SRR15852400_1.fastq.gz
+08:04:34.179 adaptiseq.batch: downloaded SRR15852411_2.fastq.gz
+08:04:34.681 adaptiseq.batch: adaptive probe: workers=4 throughput=1027.1Mbps score=-987
+08:04:34.724 adaptiseq.batch: downloaded SRR15852415_1.fastq.gz
+08:04:39.689 adaptiseq.batch: adaptive probe: workers=3 throughput=907.2Mbps score=-881
+08:04:44.690 adaptiseq.batch: adaptive probe: workers=4 throughput=399.7Mbps score=-384
+08:04:48.153 adaptiseq.batch: downloaded SRR15852425_2.fastq.gz
+08:04:49.691 adaptiseq.batch: adaptive probe: workers=2 throughput=385.3Mbps score=-378
+08:04:54.692 adaptiseq.batch: adaptive probe: workers=3 throughput=310.4Mbps score=-301
+08:04:59.693 adaptiseq.batch: adaptive probe: workers=2 throughput=252.9Mbps score=-248
+08:05:01.060 adaptiseq.batch: downloaded SRR15852400_2.fastq.gz
+08:05:04.695 adaptiseq.batch: adaptive probe: workers=3 throughput=237.6Mbps score=-231
+08:05:09.696 adaptiseq.batch: adaptive probe: workers=2 throughput=236.2Mbps score=-232
+08:05:14.699 adaptiseq.batch: adaptive probe: workers=1 throughput=94.3Mbps score=-93
+08:05:17.834 adaptiseq.batch: downloaded SRR15852425_1.fastq.gz
+08:05:19.701 adaptiseq.batch: adaptive probe: workers=2 throughput=179.0Mbps score=-175
+08:05:24.702 adaptiseq.batch: adaptive probe: workers=4 throughput=88.8Mbps score=-85
+08:05:28.204 adaptiseq.batch: downloaded SRR15852411_1.fastq.gz
+08:05:29.705 adaptiseq.batch: adaptive probe: workers=3 throughput=103.5Mbps score=-100
+08:05:30.473 adaptiseq.batch: downloaded SRR15852406_1.fastq.gz
+08:05:34.708 adaptiseq.batch: adaptive probe: workers=2 throughput=83.3Mbps score=-82
+08:05:39.710 adaptiseq.batch: adaptive probe: workers=2 throughput=8.6Mbps score=-8
+08:05:44.712 adaptiseq.batch: adaptive probe: workers=1 throughput=177.2Mbps score=-175
+08:05:49.713 adaptiseq.batch: adaptive probe: workers=1 throughput=139.2Mbps score=-138
+08:05:54.714 adaptiseq.batch: downloaded SRR15852430_1.fastq.gz
+08:05:54.714 adaptiseq.batch: adaptive probe: workers=1 throughput=101.7Mbps score=-101
+08:05:59.716 adaptiseq.batch: adaptive probe: workers=1 throughput=14.5Mbps score=-14
+08:06:04.719 adaptiseq.batch: adaptive probe: workers=1 throughput=49.0Mbps score=-49
+08:06:09.721 adaptiseq.batch: adaptive probe: workers=1 throughput=45.5Mbps score=-45
+08:06:14.722 adaptiseq.batch: adaptive probe: workers=1 throughput=51.5Mbps score=-51
+08:06:19.724 adaptiseq.batch: adaptive probe: workers=1 throughput=43.4Mbps score=-43
+08:06:24.725 adaptiseq.batch: adaptive probe: workers=1 throughput=5.5Mbps score=-5
+08:06:29.727 adaptiseq.batch: adaptive probe: workers=1 throughput=41.9Mbps score=-42
+08:06:34.729 adaptiseq.batch: adaptive probe: workers=1 throughput=41.1Mbps score=-41
+08:06:39.730 adaptiseq.batch: adaptive probe: workers=1 throughput=18.5Mbps score=-18
+08:06:44.733 adaptiseq.batch: adaptive probe: workers=1 throughput=40.4Mbps score=-40
+08:06:49.735 adaptiseq.batch: adaptive probe: workers=1 throughput=43.2Mbps score=-43
+08:06:54.739 adaptiseq.batch: adaptive probe: workers=1 throughput=30.7Mbps score=-30
+08:06:59.741 adaptiseq.batch: adaptive probe: workers=1 throughput=32.4Mbps score=-32
+08:07:04.745 adaptiseq.batch: adaptive probe: workers=1 throughput=23.4Mbps score=-23
+08:07:09.746 adaptiseq.batch: adaptive probe: workers=1 throughput=27.5Mbps score=-27
+08:07:14.748 adaptiseq.batch: adaptive probe: workers=1 throughput=34.4Mbps score=-34
+08:07:19.750 adaptiseq.batch: adaptive probe: workers=1 throughput=33.1Mbps score=-33
+08:07:24.752 adaptiseq.batch: adaptive probe: workers=1 throughput=23.0Mbps score=-23
+08:07:29.754 adaptiseq.batch: adaptive probe: workers=1 throughput=13.4Mbps score=-13
+08:07:34.756 adaptiseq.batch: adaptive probe: workers=1 throughput=16.0Mbps score=-16
+08:07:39.758 adaptiseq.batch: adaptive probe: workers=1 throughput=18.0Mbps score=-18
+08:07:44.761 adaptiseq.batch: adaptive probe: workers=1 throughput=32.4Mbps score=-32
+08:07:49.764 adaptiseq.batch: adaptive probe: workers=1 throughput=33.4Mbps score=-33
+08:07:54.765 adaptiseq.batch: adaptive probe: workers=1 throughput=25.9Mbps score=-26
+08:07:59.767 adaptiseq.batch: adaptive probe: workers=1 throughput=38.7Mbps score=-38
+08:08:04.769 adaptiseq.batch: adaptive probe: workers=1 throughput=58.6Mbps score=-58
+08:08:09.770 adaptiseq.batch: adaptive probe: workers=1 throughput=39.4Mbps score=-39
+08:08:14.772 adaptiseq.batch: adaptive probe: workers=1 throughput=8.1Mbps score=-8
+08:08:19.775 adaptiseq.batch: adaptive probe: workers=1 throughput=26.3Mbps score=-26
+08:08:24.776 adaptiseq.batch: adaptive probe: workers=1 throughput=17.3Mbps score=-17
+08:08:29.778 adaptiseq.batch: adaptive probe: workers=1 throughput=29.6Mbps score=-29
+08:08:34.780 adaptiseq.batch: adaptive probe: workers=1 throughput=9.7Mbps score=-10
+08:08:39.782 adaptiseq.batch: adaptive probe: workers=1 throughput=20.6Mbps score=-20
+08:08:44.783 adaptiseq.batch: adaptive probe: workers=1 throughput=14.5Mbps score=-14
+08:08:49.785 adaptiseq.batch: adaptive probe: workers=1 throughput=38.4Mbps score=-38
+08:08:54.787 adaptiseq.batch: adaptive probe: workers=1 throughput=2.6Mbps score=-3
+08:08:59.788 adaptiseq.batch: adaptive probe: workers=1 throughput=43.6Mbps score=-43
+08:09:04.789 adaptiseq.batch: adaptive probe: workers=1 throughput=83.6Mbps score=-83
+08:09:09.791 adaptiseq.batch: adaptive probe: workers=1 throughput=109.9Mbps score=-109
+08:09:14.793 adaptiseq.batch: adaptive probe: workers=1 throughput=33.7Mbps score=-33
+08:09:19.795 adaptiseq.batch: adaptive probe: workers=1 throughput=45.5Mbps score=-45
+08:09:24.796 adaptiseq.batch: adaptive probe: workers=1 throughput=99.5Mbps score=-99
+08:09:29.798 adaptiseq.batch: adaptive probe: workers=1 throughput=63.5Mbps score=-63
+08:09:34.800 adaptiseq.batch: adaptive probe: workers=1 throughput=55.6Mbps score=-55
+08:09:39.802 adaptiseq.batch: adaptive probe: workers=1 throughput=50.5Mbps score=-50
+08:09:44.805 adaptiseq.batch: adaptive probe: workers=1 throughput=0.0Mbps score=0
+08:09:49.806 adaptiseq.batch: adaptive probe: workers=1 throughput=56.9Mbps score=-56
+08:09:49.806 adaptiseq.batch: Degenerate probe (prev score == 0); holding worker count steady.
+08:09:54.808 adaptiseq.batch: adaptive probe: workers=1 throughput=0.0Mbps score=0
+08:09:59.809 adaptiseq.batch: adaptive probe: workers=1 throughput=57.0Mbps score=-56
+08:09:59.809 adaptiseq.batch: Degenerate probe (prev score == 0); holding worker count steady.
+08:10:04.810 adaptiseq.batch: adaptive probe: workers=1 throughput=70.7Mbps score=-70
+08:10:09.811 adaptiseq.batch: adaptive probe: workers=1 throughput=86.3Mbps score=-85
+08:10:13.619 adaptiseq.batch: downloaded SRR15852430_2.fastq.gz
+[32mNote[0m: adaptive worker summary: 96 probe(s); best 2453 Mbps at 11 worker(s); last 86 Mbps at 1 worker(s); recent: 1w@34Mbps, 1w@45Mbps, 1w@100Mbps, 1w@63Mbps, 1w@56Mbps, 1w@50Mbps, 1w@0Mbps, 1w@57Mbps, 1w@0Mbps, 1w@57Mbps, 1w@71Mbps, 1w@86Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================

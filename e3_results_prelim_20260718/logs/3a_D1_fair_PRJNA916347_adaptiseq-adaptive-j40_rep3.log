@@ -1,0 +1,1481 @@
+[32mNote[0m: batch downloading 201 file(s) across 201 accession(s) with up to 40 worker(s) (adaptive concurrency)
+02:10:33.500 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:33.504 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:33.815 adaptiseq.batch: downloaded SRR22904253.fastq.gz
+02:10:33.815 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:33.816 adaptiseq.batch: downloaded SRR22904254.fastq.gz
+02:10:33.816 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.078 adaptiseq.batch: downloaded SRR22904256.fastq.gz
+02:10:34.078 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.085 adaptiseq.batch: downloaded SRR22904255.fastq.gz
+02:10:34.085 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.355 adaptiseq.batch: downloaded SRR22904258.fastq.gz
+02:10:34.355 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.570 adaptiseq.batch: downloaded SRR22904257.fastq.gz
+02:10:34.570 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.639 adaptiseq.batch: downloaded SRR22904259.fastq.gz
+02:10:34.640 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.841 adaptiseq.batch: downloaded SRR22904260.fastq.gz
+02:10:34.842 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:34.912 adaptiseq.batch: downloaded SRR22904261.fastq.gz
+02:10:34.913 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:35.107 adaptiseq.batch: downloaded SRR22904262.fastq.gz
+02:10:35.107 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:35.188 adaptiseq.batch: downloaded SRR22904263.fastq.gz
+02:10:35.188 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:35.386 adaptiseq.batch: downloaded SRR22904264.fastq.gz
+02:10:35.386 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:35.453 adaptiseq.batch: downloaded SRR22904265.fastq.gz
+02:10:35.453 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:35.665 adaptiseq.batch: downloaded SRR22904266.fastq.gz
+02:10:35.665 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:35.730 adaptiseq.batch: downloaded SRR22904267.fastq.gz
+02:10:35.730 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:43.105 adaptiseq.batch: adaptive probe: workers=1 throughput=76.1Mbps score=-75
+02:10:48.106 adaptiseq.batch: adaptive probe: workers=2 throughput=76.9Mbps score=-75
+02:10:52.172 adaptiseq.batch: downloaded SRR22904268.fastq.gz
+02:10:52.172 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:10:53.108 adaptiseq.batch: adaptive probe: workers=2 throughput=60.5Mbps score=-59
+02:10:58.110 adaptiseq.batch: adaptive probe: workers=1 throughput=32.2Mbps score=-32
+02:11:03.111 adaptiseq.batch: adaptive probe: workers=2 throughput=23.4Mbps score=-23
+02:11:08.113 adaptiseq.batch: adaptive probe: workers=1 throughput=19.0Mbps score=-19
+02:11:13.115 adaptiseq.batch: adaptive probe: workers=2 throughput=19.1Mbps score=-19
+02:11:18.117 adaptiseq.batch: adaptive probe: workers=2 throughput=29.5Mbps score=-29
+02:11:18.155 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:23.118 adaptiseq.batch: adaptive probe: workers=3 throughput=116.6Mbps score=-113
+02:11:23.120 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:23.123 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:23.123 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:23.124 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:23.124 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:28.121 adaptiseq.batch: adaptive probe: workers=8 throughput=452.3Mbps score=-418
+02:11:30.661 adaptiseq.batch: downloaded SRR22904280.fastq.gz
+02:11:30.661 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:32.451 adaptiseq.batch: downloaded SRR22904277.fastq.gz
+02:11:32.451 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:33.122 adaptiseq.batch: adaptive probe: workers=8 throughput=841.1Mbps score=-777
+02:11:33.202 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:33.202 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:33.203 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:33.203 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:33.204 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:33.790 adaptiseq.batch: downloaded SRR22904279.fastq.gz
+02:11:33.790 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:34.066 adaptiseq.batch: downloaded SRR22904300.fastq.gz
+02:11:34.066 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:34.386 adaptiseq.batch: downloaded SRR22904301.fastq.gz
+02:11:34.386 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:34.663 adaptiseq.batch: downloaded SRR22904302.fastq.gz
+02:11:34.663 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:34.953 adaptiseq.batch: downloaded SRR22904303.fastq.gz
+02:11:34.953 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:35.531 adaptiseq.batch: downloaded SRR22904304.fastq.gz
+02:11:35.531 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:35.811 adaptiseq.batch: downloaded SRR22904305.fastq.gz
+02:11:35.811 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:36.063 adaptiseq.batch: downloaded SRR22904306.fastq.gz
+02:11:36.063 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:36.330 adaptiseq.batch: downloaded SRR22904308.fastq.gz
+02:11:36.330 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:36.607 adaptiseq.batch: downloaded SRR22904309.fastq.gz
+02:11:36.607 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:36.901 adaptiseq.batch: downloaded SRR22904310.fastq.gz
+02:11:36.901 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:37.173 adaptiseq.batch: downloaded SRR22904311.fastq.gz
+02:11:37.173 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:37.441 adaptiseq.batch: downloaded SRR22904312.fastq.gz
+02:11:37.441 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:37.750 adaptiseq.batch: downloaded SRR22904314.fastq.gz
+02:11:37.750 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.011 adaptiseq.batch: downloaded SRR22904315.fastq.gz
+02:11:38.011 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.124 adaptiseq.batch: adaptive probe: workers=13 throughput=1068.6Mbps score=-939
+02:11:38.168 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.282 adaptiseq.batch: downloaded SRR22904316.fastq.gz
+02:11:38.282 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.594 adaptiseq.batch: downloaded SRR22904319.fastq.gz
+02:11:38.594 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.738 adaptiseq.batch: downloaded SRR22904317.fastq.gz
+02:11:38.738 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.852 adaptiseq.batch: downloaded SRR22904320.fastq.gz
+02:11:38.852 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:38.997 adaptiseq.batch: downloaded SRR22904321.fastq.gz
+02:11:38.997 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:39.099 adaptiseq.batch: downloaded SRR22904322.fastq.gz
+02:11:39.099 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:39.345 adaptiseq.batch: downloaded SRR22904323.fastq.gz
+02:11:39.345 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:39.347 adaptiseq.batch: downloaded SRR22904324.fastq.gz
+02:11:39.347 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:39.609 adaptiseq.batch: downloaded SRR22904325.fastq.gz
+02:11:39.609 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:40.565 adaptiseq.batch: downloaded SRR22904329.fastq.gz
+02:11:40.565 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:40.844 adaptiseq.batch: downloaded SRR22904332.fastq.gz
+02:11:40.845 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:40.858 adaptiseq.batch: downloaded SRR22904327.fastq.gz
+02:11:40.858 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.106 adaptiseq.batch: downloaded SRR22904334.fastq.gz
+02:11:41.107 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.119 adaptiseq.batch: downloaded SRR22904333.fastq.gz
+02:11:41.119 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.309 adaptiseq.batch: downloaded SRR22904287.fastq.gz
+02:11:41.309 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.369 adaptiseq.batch: downloaded SRR22904335.fastq.gz
+02:11:41.369 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.399 adaptiseq.batch: downloaded SRR22904336.fastq.gz
+02:11:41.399 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.585 adaptiseq.batch: downloaded SRR22904337.fastq.gz
+02:11:41.586 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.623 adaptiseq.batch: downloaded SRR22904338.fastq.gz
+02:11:41.624 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.666 adaptiseq.batch: downloaded SRR22904339.fastq.gz
+02:11:41.666 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.834 adaptiseq.batch: downloaded SRR22904342.fastq.gz
+02:11:41.834 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.901 adaptiseq.batch: downloaded SRR22904343.fastq.gz
+02:11:41.901 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:41.923 adaptiseq.batch: downloaded SRR22904345.fastq.gz
+02:11:41.924 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.115 adaptiseq.batch: downloaded SRR22904346.fastq.gz
+02:11:42.115 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.168 adaptiseq.batch: downloaded SRR22904347.fastq.gz
+02:11:42.168 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.169 adaptiseq.batch: downloaded SRR22904348.fastq.gz
+02:11:42.169 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.419 adaptiseq.batch: downloaded SRR22904349.fastq.gz
+02:11:42.420 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.422 adaptiseq.batch: downloaded SRR22904351.fastq.gz
+02:11:42.422 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.440 adaptiseq.batch: downloaded SRR22904353.fastq.gz
+02:11:42.440 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.685 adaptiseq.batch: downloaded SRR22904354.fastq.gz
+02:11:42.685 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.689 adaptiseq.batch: downloaded SRR22904355.fastq.gz
+02:11:42.689 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.708 adaptiseq.batch: downloaded SRR22904356.fastq.gz
+02:11:42.709 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.882 adaptiseq.batch: downloaded SRR22904297.fastq.gz
+02:11:42.882 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.946 adaptiseq.batch: downloaded SRR22904359.fastq.gz
+02:11:42.946 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:42.984 adaptiseq.batch: downloaded SRR22904360.fastq.gz
+02:11:42.984 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.115 adaptiseq.batch: downloaded SRR22904358.fastq.gz
+02:11:43.115 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.126 adaptiseq.batch: adaptive probe: workers=14 throughput=478.0Mbps score=-416
+02:11:43.154 adaptiseq.batch: downloaded SRR22904361.fastq.gz
+02:11:43.218 adaptiseq.batch: downloaded SRR22904362.fastq.gz
+02:11:43.219 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.221 adaptiseq.batch: downloaded SRR22904365.fastq.gz
+02:11:43.366 adaptiseq.batch: downloaded SRR22904366.fastq.gz
+02:11:43.366 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.475 adaptiseq.batch: downloaded SRR22904368.fastq.gz
+02:11:43.475 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.634 adaptiseq.batch: downloaded SRR22904369.fastq.gz
+02:11:43.634 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.726 adaptiseq.batch: downloaded SRR22904370.fastq.gz
+02:11:43.726 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.891 adaptiseq.batch: downloaded SRR22904371.fastq.gz
+02:11:43.891 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:43.975 adaptiseq.batch: downloaded SRR22904372.fastq.gz
+02:11:43.975 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.119 adaptiseq.batch: downloaded SRR22904373.fastq.gz
+02:11:44.119 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.372 adaptiseq.batch: downloaded SRR22904375.fastq.gz
+02:11:44.373 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.401 adaptiseq.batch: downloaded SRR22904374.fastq.gz
+02:11:44.401 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.625 adaptiseq.batch: downloaded SRR22904376.fastq.gz
+02:11:44.626 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.666 adaptiseq.batch: downloaded SRR22904377.fastq.gz
+02:11:44.666 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.868 adaptiseq.batch: downloaded SRR22904378.fastq.gz
+02:11:44.868 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:44.898 adaptiseq.batch: downloaded SRR22904379.fastq.gz
+02:11:44.898 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.122 adaptiseq.batch: downloaded SRR22904380.fastq.gz
+02:11:45.122 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.163 adaptiseq.batch: downloaded SRR22904381.fastq.gz
+02:11:45.164 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.368 adaptiseq.batch: downloaded SRR22904382.fastq.gz
+02:11:45.368 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.421 adaptiseq.batch: downloaded SRR22904383.fastq.gz
+02:11:45.421 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.617 adaptiseq.batch: downloaded SRR22904384.fastq.gz
+02:11:45.617 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.666 adaptiseq.batch: downloaded SRR22904386.fastq.gz
+02:11:45.666 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.870 adaptiseq.batch: downloaded SRR22904387.fastq.gz
+02:11:45.870 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:45.915 adaptiseq.batch: downloaded SRR22904388.fastq.gz
+02:11:45.915 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.126 adaptiseq.batch: downloaded SRR22904389.fastq.gz
+02:11:46.127 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.165 adaptiseq.batch: downloaded SRR22904390.fastq.gz
+02:11:46.165 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.372 adaptiseq.batch: downloaded SRR22904391.fastq.gz
+02:11:46.372 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.400 adaptiseq.batch: downloaded SRR22904392.fastq.gz
+02:11:46.400 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.626 adaptiseq.batch: downloaded SRR22904393.fastq.gz
+02:11:46.626 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.650 adaptiseq.batch: downloaded SRR22904394.fastq.gz
+02:11:46.650 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.890 adaptiseq.batch: downloaded SRR22904396.fastq.gz
+02:11:46.890 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:46.891 adaptiseq.batch: downloaded SRR22904395.fastq.gz
+02:11:46.891 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.125 adaptiseq.batch: downloaded SRR22904398.fastq.gz
+02:11:47.125 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.144 adaptiseq.batch: downloaded SRR22904397.fastq.gz
+02:11:47.144 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.379 adaptiseq.batch: downloaded SRR22904399.fastq.gz
+02:11:47.379 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.386 adaptiseq.batch: downloaded SRR22904400.fastq.gz
+02:11:47.386 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.652 adaptiseq.batch: downloaded SRR22904403.fastq.gz
+02:11:47.652 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.909 adaptiseq.batch: downloaded SRR22904404.fastq.gz
+02:11:47.909 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:47.935 adaptiseq.batch: downloaded SRR22904401.fastq.gz
+02:11:47.935 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.128 adaptiseq.batch: adaptive probe: workers=9 throughput=298.5Mbps score=-273
+02:11:48.194 adaptiseq.batch: downloaded SRR22904406.fastq.gz
+02:11:48.194 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.219 adaptiseq.batch: downloaded SRR22904405.fastq.gz
+02:11:48.219 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.426 adaptiseq.batch: downloaded SRR22904407.fastq.gz
+02:11:48.426 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.469 adaptiseq.batch: downloaded SRR22904408.fastq.gz
+02:11:48.470 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.707 adaptiseq.batch: downloaded SRR22904410.fastq.gz
+02:11:48.707 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.846 adaptiseq.batch: downloaded SRR22904409.fastq.gz
+02:11:48.846 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:48.963 adaptiseq.batch: downloaded SRR22904411.fastq.gz
+02:11:48.963 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.102 adaptiseq.batch: downloaded SRR22904412.fastq.gz
+02:11:49.103 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.202 adaptiseq.batch: downloaded SRR22904414.fastq.gz
+02:11:49.202 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.348 adaptiseq.batch: downloaded SRR22904415.fastq.gz
+02:11:49.349 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.448 adaptiseq.batch: downloaded SRR22904416.fastq.gz
+02:11:49.449 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.619 adaptiseq.batch: downloaded SRR22904417.fastq.gz
+02:11:49.619 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.704 adaptiseq.batch: downloaded SRR22904418.fastq.gz
+02:11:49.704 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.869 adaptiseq.batch: downloaded SRR22904419.fastq.gz
+02:11:49.870 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:49.960 adaptiseq.batch: downloaded SRR22904420.fastq.gz
+02:11:49.960 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:50.147 adaptiseq.batch: downloaded SRR22904421.fastq.gz
+02:11:50.147 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:50.205 adaptiseq.batch: downloaded SRR22904422.fastq.gz
+02:11:50.205 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:50.417 adaptiseq.batch: downloaded SRR22904423.fastq.gz
+02:11:50.417 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:50.664 adaptiseq.batch: downloaded SRR22904425.fastq.gz
+02:11:50.665 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:50.925 adaptiseq.batch: downloaded SRR22904426.fastq.gz
+02:11:50.925 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:51.200 adaptiseq.batch: downloaded SRR22904427.fastq.gz
+02:11:51.200 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:51.281 adaptiseq.batch: downloaded SRR22904424.fastq.gz
+02:11:51.281 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:11:53.129 adaptiseq.batch: adaptive probe: workers=10 throughput=198.6Mbps score=-180
+02:11:58.130 adaptiseq.batch: adaptive probe: workers=7 throughput=319.7Mbps score=-298
+02:12:03.132 adaptiseq.batch: adaptive probe: workers=5 throughput=217.9Mbps score=-207
+02:12:08.133 adaptiseq.batch: adaptive probe: workers=6 throughput=172.6Mbps score=-163
+02:12:13.135 adaptiseq.batch: adaptive probe: workers=5 throughput=135.1Mbps score=-129
+02:12:17.565 adaptiseq.batch: downloaded SRR22904293.fastq.gz
+02:12:18.136 adaptiseq.batch: adaptive probe: workers=6 throughput=166.7Mbps score=-157
+02:12:23.139 adaptiseq.batch: adaptive probe: workers=7 throughput=160.2Mbps score=-149
+02:12:28.140 adaptiseq.batch: adaptive probe: workers=6 throughput=126.8Mbps score=-119
+02:12:33.142 adaptiseq.batch: adaptive probe: workers=7 throughput=89.8Mbps score=-84
+02:12:37.279 adaptiseq.batch: downloaded SRR22904428.fastq.gz
+02:12:38.144 adaptiseq.batch: adaptive probe: workers=5 throughput=101.5Mbps score=-97
+02:12:42.898 adaptiseq.batch: downloaded SRR22904299.fastq.gz
+02:12:43.146 adaptiseq.batch: adaptive probe: workers=4 throughput=123.1Mbps score=-118
+02:12:45.104 adaptiseq.batch: downloaded SRR22904282.fastq.gz
+02:12:48.146 adaptiseq.batch: adaptive probe: workers=3 throughput=94.8Mbps score=-92
+02:12:53.149 adaptiseq.batch: adaptive probe: workers=4 throughput=80.5Mbps score=-77
+02:12:58.150 adaptiseq.batch: adaptive probe: workers=3 throughput=76.0Mbps score=-74
+02:12:58.507 adaptiseq.batch: downloaded SRR22904292.fastq.gz
+02:13:00.613 adaptiseq.batch: downloaded SRR22904290.fastq.gz
+02:13:00.613 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:03.151 adaptiseq.batch: adaptive probe: workers=4 throughput=71.2Mbps score=-68
+02:13:04.746 adaptiseq.batch: downloaded SRR22904281.fastq.gz
+02:13:08.153 adaptiseq.batch: adaptive probe: workers=3 throughput=56.6Mbps score=-55
+02:13:13.155 adaptiseq.batch: adaptive probe: workers=4 throughput=48.1Mbps score=-46
+02:13:18.156 adaptiseq.batch: adaptive probe: workers=3 throughput=58.7Mbps score=-57
+02:13:23.157 adaptiseq.batch: adaptive probe: workers=2 throughput=110.1Mbps score=-108
+02:13:28.159 adaptiseq.batch: adaptive probe: workers=1 throughput=127.4Mbps score=-126
+02:13:33.161 adaptiseq.batch: adaptive probe: workers=1 throughput=110.1Mbps score=-109
+02:13:38.163 adaptiseq.batch: adaptive probe: workers=1 throughput=74.1Mbps score=-73
+02:13:43.163 adaptiseq.batch: adaptive probe: workers=1 throughput=77.2Mbps score=-76
+02:13:45.539 adaptiseq.batch: downloaded SRR22904271.fastq.gz
+02:13:45.539 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:45.783 adaptiseq.batch: downloaded SRR22904432.fastq.gz
+02:13:45.783 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:46.029 adaptiseq.batch: downloaded SRR22904433.fastq.gz
+02:13:46.029 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:46.339 adaptiseq.batch: downloaded SRR22904434.fastq.gz
+02:13:46.339 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:46.608 adaptiseq.batch: downloaded SRR22904436.fastq.gz
+02:13:46.608 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:46.848 adaptiseq.batch: downloaded SRR22904437.fastq.gz
+02:13:46.848 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:47.087 adaptiseq.batch: downloaded SRR22904438.fastq.gz
+02:13:47.087 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:47.332 adaptiseq.batch: downloaded SRR22904439.fastq.gz
+02:13:47.332 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:47.569 adaptiseq.batch: downloaded SRR22904440.fastq.gz
+02:13:47.569 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:47.803 adaptiseq.batch: downloaded SRR22904441.fastq.gz
+02:13:47.803 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:48.068 adaptiseq.batch: downloaded SRR22904442.fastq.gz
+02:13:48.068 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:48.164 adaptiseq.batch: adaptive probe: workers=2 throughput=84.2Mbps score=-83
+02:13:48.320 adaptiseq.batch: downloaded SRR22904443.fastq.gz
+02:13:48.320 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:48.566 adaptiseq.batch: downloaded SRR22904444.fastq.gz
+02:13:48.566 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:48.808 adaptiseq.batch: downloaded SRR22904445.fastq.gz
+02:13:48.808 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:50.910 adaptiseq.batch: downloaded SRR22904447.fastq.gz
+02:13:50.910 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:51.156 adaptiseq.batch: downloaded SRR22904448.fastq.gz
+02:13:51.156 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:51.406 adaptiseq.batch: downloaded SRR22904449.fastq.gz
+02:13:51.406 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:51.678 adaptiseq.batch: downloaded SRR22904450.fastq.gz
+02:13:51.678 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:51.867 adaptiseq.batch: downloaded SRR22904278.fastq.gz
+02:13:51.910 adaptiseq.batch: downloaded SRR22904451.fastq.gz
+02:13:51.910 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:52.168 adaptiseq.batch: downloaded SRR22904452.fastq.gz
+02:13:52.168 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:52.421 adaptiseq.batch: downloaded SRR22904453.fastq.gz
+02:13:52.421 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:52.670 adaptiseq.batch: downloaded SRR22904454.fastq.gz
+02:13:52.670 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:52.927 adaptiseq.batch: downloaded SRR22904455.fastq.gz
+02:13:52.927 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:53.165 adaptiseq.batch: adaptive probe: workers=3 throughput=80.4Mbps score=-78
+02:13:53.213 adaptiseq.batch: downloaded SRR22904456.fastq.gz
+02:13:53.213 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:53.455 adaptiseq.batch: downloaded SRR22904457.fastq.gz
+02:13:53.455 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:53.708 adaptiseq.batch: downloaded SRR22904459.fastq.gz
+02:13:53.708 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:53.942 adaptiseq.batch: downloaded SRR22904461.fastq.gz
+02:13:53.942 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:54.198 adaptiseq.batch: downloaded SRR22904462.fastq.gz
+02:13:54.198 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:54.455 adaptiseq.batch: downloaded SRR22904463.fastq.gz
+02:13:54.455 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:54.710 adaptiseq.batch: downloaded SRR22904464.fastq.gz
+02:13:54.710 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:54.960 adaptiseq.batch: downloaded SRR22904465.fastq.gz
+02:13:54.960 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:55.206 adaptiseq.batch: downloaded SRR22904466.fastq.gz
+02:13:55.206 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:55.457 adaptiseq.batch: downloaded SRR22904467.fastq.gz
+02:13:55.457 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:55.689 adaptiseq.batch: downloaded SRR22904468.fastq.gz
+02:13:55.689 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:55.922 adaptiseq.batch: downloaded SRR22904469.fastq.gz
+02:13:55.922 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:56.164 adaptiseq.batch: downloaded SRR22904470.fastq.gz
+02:13:56.165 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:58.166 adaptiseq.batch: adaptive probe: workers=2 throughput=57.9Mbps score=-57
+02:13:59.219 adaptiseq.batch: downloaded SRR22904471.fastq.gz
+02:13:59.220 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:59.477 adaptiseq.batch: downloaded SRR22904472.fastq.gz
+02:13:59.477 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:13:59.754 adaptiseq.batch: downloaded SRR22904473.fastq.gz
+02:13:59.754 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:00.017 adaptiseq.batch: downloaded SRR22904474.fastq.gz
+02:14:00.018 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:00.283 adaptiseq.batch: downloaded SRR22904475.fastq.gz
+02:14:00.283 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:00.560 adaptiseq.batch: downloaded SRR22904476.fastq.gz
+02:14:00.560 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:00.853 adaptiseq.batch: downloaded SRR22904477.fastq.gz
+02:14:00.853 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:01.128 adaptiseq.batch: downloaded SRR22904478.fastq.gz
+02:14:01.128 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:01.408 adaptiseq.batch: downloaded SRR22904479.fastq.gz
+02:14:01.408 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:01.679 adaptiseq.batch: downloaded SRR22904480.fastq.gz
+02:14:01.679 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:01.947 adaptiseq.batch: downloaded SRR22904481.fastq.gz
+02:14:01.947 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:02.204 adaptiseq.batch: downloaded SRR22904483.fastq.gz
+02:14:02.204 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:02.465 adaptiseq.batch: downloaded SRR22904484.fastq.gz
+02:14:02.466 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:02.732 adaptiseq.batch: downloaded SRR22904485.fastq.gz
+02:14:02.732 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:03.013 adaptiseq.batch: downloaded SRR22904486.fastq.gz
+02:14:03.013 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:03.167 adaptiseq.batch: adaptive probe: workers=3 throughput=42.6Mbps score=-41
+02:14:03.289 adaptiseq.batch: downloaded SRR22904487.fastq.gz
+02:14:03.289 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:03.548 adaptiseq.batch: downloaded SRR22904488.fastq.gz
+02:14:03.548 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:03.821 adaptiseq.batch: downloaded SRR22904489.fastq.gz
+02:14:03.821 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:04.089 adaptiseq.batch: downloaded SRR22904490.fastq.gz
+02:14:04.089 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:04.360 adaptiseq.batch: downloaded SRR22904491.fastq.gz
+02:14:04.360 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:04.624 adaptiseq.batch: downloaded SRR22904492.fastq.gz
+02:14:04.624 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:06.435 adaptiseq.batch: downloaded SRR22904494.fastq.gz
+02:14:06.435 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+02:14:08.169 adaptiseq.batch: adaptive probe: workers=2 throughput=59.3Mbps score=-58
+02:14:12.271 adaptiseq.batch: downloaded SRR22904275.fastq.gz
+02:14:13.169 adaptiseq.batch: adaptive probe: workers=1 throughput=64.5Mbps score=-64
+02:14:17.996 adaptiseq.batch: downloaded SRR22904495.fastq.gz
+02:14:18.170 adaptiseq.batch: adaptive probe: workers=1 throughput=43.5Mbps score=-43
+02:14:21.206 adaptiseq.batch: downloaded SRR22904430.fastq.gz
+02:14:23.172 adaptiseq.batch: adaptive probe: workers=1 throughput=21.7Mbps score=-22
+02:14:28.174 adaptiseq.batch: adaptive probe: workers=1 throughput=14.1Mbps score=-14
+02:14:33.176 adaptiseq.batch: adaptive probe: workers=1 throughput=15.1Mbps score=-15
+02:14:38.178 adaptiseq.batch: adaptive probe: workers=2 throughput=15.8Mbps score=-16
+02:14:43.180 adaptiseq.batch: adaptive probe: workers=2 throughput=27.0Mbps score=-26
+02:14:48.182 adaptiseq.batch: adaptive probe: workers=2 throughput=24.0Mbps score=-24
+02:14:53.183 adaptiseq.batch: adaptive probe: workers=2 throughput=20.8Mbps score=-20
+02:14:54.404 adaptiseq.batch: downloaded SRR22904429.fastq.gz
+02:14:58.185 adaptiseq.batch: adaptive probe: workers=1 throughput=12.4Mbps score=-12
+02:15:03.187 adaptiseq.batch: adaptive probe: workers=1 throughput=8.2Mbps score=-8
+02:15:08.189 adaptiseq.batch: adaptive probe: workers=1 throughput=16.2Mbps score=-16
+02:15:13.190 adaptiseq.batch: adaptive probe: workers=1 throughput=12.0Mbps score=-12
+02:15:18.191 adaptiseq.batch: adaptive probe: workers=1 throughput=5.8Mbps score=-6
+02:15:23.193 adaptiseq.batch: adaptive probe: workers=1 throughput=6.2Mbps score=-6
+02:15:28.194 adaptiseq.batch: adaptive probe: workers=1 throughput=7.5Mbps score=-7
+02:15:33.195 adaptiseq.batch: adaptive probe: workers=1 throughput=9.0Mbps score=-9
+02:15:33.900 adaptiseq.batch: downloaded SRR22904291.fastq.gz
+[32mNote[0m: adaptive worker summary: 59 probe(s); best 1069 Mbps at 13 worker(s); last 9 Mbps at 1 worker(s); recent: 2w@16Mbps, 2w@27Mbps, 2w@24Mbps, 2w@21Mbps, 1w@12Mbps, 1w@8Mbps, 1w@16Mbps, 1w@12Mbps, 1w@6Mbps, 1w@6Mbps, 1w@7Mbps, 1w@9Mbps
+[32mNote[0m: SRR22904253.metadata.tsv exists, skip downloading metadata for SRR22904253
+      SRR22904253.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904253.metadata.tsv
+[92mSRR22904253 download and md5 check successful, save SRR22904253 in success.log[0m
+=======================SRR22904253 download finished=======================
+[32mNote[0m: SRR22904254.metadata.tsv exists, skip downloading metadata for SRR22904254
+      SRR22904254.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904254.metadata.tsv
+[92mSRR22904254 download and md5 check successful, save SRR22904254 in success.log[0m
+=======================SRR22904254 download finished=======================
+[32mNote[0m: SRR22904255.metadata.tsv exists, skip downloading metadata for SRR22904255
+      SRR22904255.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904255.metadata.tsv
+[92mSRR22904255 download and md5 check successful, save SRR22904255 in success.log[0m
+=======================SRR22904255 download finished=======================
+[32mNote[0m: SRR22904256.metadata.tsv exists, skip downloading metadata for SRR22904256
+      SRR22904256.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904256.metadata.tsv
+[92mSRR22904256 download and md5 check successful, save SRR22904256 in success.log[0m
+=======================SRR22904256 download finished=======================
+[32mNote[0m: SRR22904257.metadata.tsv exists, skip downloading metadata for SRR22904257
+      SRR22904257.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904257.metadata.tsv
+[92mSRR22904257 download and md5 check successful, save SRR22904257 in success.log[0m
+=======================SRR22904257 download finished=======================
+[32mNote[0m: SRR22904258.metadata.tsv exists, skip downloading metadata for SRR22904258
+      SRR22904258.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904258.metadata.tsv
+[92mSRR22904258 download and md5 check successful, save SRR22904258 in success.log[0m
+=======================SRR22904258 download finished=======================
+[32mNote[0m: SRR22904259.metadata.tsv exists, skip downloading metadata for SRR22904259
+      SRR22904259.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904259.metadata.tsv
+[92mSRR22904259 download and md5 check successful, save SRR22904259 in success.log[0m
+=======================SRR22904259 download finished=======================
+[32mNote[0m: SRR22904260.metadata.tsv exists, skip downloading metadata for SRR22904260
+      SRR22904260.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904260.metadata.tsv
+[92mSRR22904260 download and md5 check successful, save SRR22904260 in success.log[0m
+=======================SRR22904260 download finished=======================
+[32mNote[0m: SRR22904261.metadata.tsv exists, skip downloading metadata for SRR22904261
+      SRR22904261.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904261.metadata.tsv
+[92mSRR22904261 download and md5 check successful, save SRR22904261 in success.log[0m
+=======================SRR22904261 download finished=======================
+[32mNote[0m: SRR22904262.metadata.tsv exists, skip downloading metadata for SRR22904262
+      SRR22904262.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904262.metadata.tsv
+[92mSRR22904262 download and md5 check successful, save SRR22904262 in success.log[0m
+=======================SRR22904262 download finished=======================
+[32mNote[0m: SRR22904263.metadata.tsv exists, skip downloading metadata for SRR22904263
+      SRR22904263.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904263.metadata.tsv
+[92mSRR22904263 download and md5 check successful, save SRR22904263 in success.log[0m
+=======================SRR22904263 download finished=======================
+[32mNote[0m: SRR22904264.metadata.tsv exists, skip downloading metadata for SRR22904264
+      SRR22904264.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904264.metadata.tsv
+[92mSRR22904264 download and md5 check successful, save SRR22904264 in success.log[0m
+=======================SRR22904264 download finished=======================
+[32mNote[0m: SRR22904265.metadata.tsv exists, skip downloading metadata for SRR22904265
+      SRR22904265.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904265.metadata.tsv
+[92mSRR22904265 download and md5 check successful, save SRR22904265 in success.log[0m
+=======================SRR22904265 download finished=======================
+[32mNote[0m: SRR22904266.metadata.tsv exists, skip downloading metadata for SRR22904266
+      SRR22904266.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904266.metadata.tsv
+[92mSRR22904266 download and md5 check successful, save SRR22904266 in success.log[0m
+=======================SRR22904266 download finished=======================
+[32mNote[0m: SRR22904267.metadata.tsv exists, skip downloading metadata for SRR22904267
+      SRR22904267.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904267.metadata.tsv
+[92mSRR22904267 download and md5 check successful, save SRR22904267 in success.log[0m
+=======================SRR22904267 download finished=======================
+[32mNote[0m: SRR22904268.metadata.tsv exists, skip downloading metadata for SRR22904268
+      SRR22904268.fastq.gz 0.02G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904268.metadata.tsv
+[92mSRR22904268 download and md5 check successful, save SRR22904268 in success.log[0m
+=======================SRR22904268 download finished=======================
+[32mNote[0m: SRR22904271.metadata.tsv exists, skip downloading metadata for SRR22904271
+      SRR22904271.fastq.gz 0.34G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904271.metadata.tsv
+[92mSRR22904271 download and md5 check successful, save SRR22904271 in success.log[0m
+=======================SRR22904271 download finished=======================
+[32mNote[0m: SRR22904275.metadata.tsv exists, skip downloading metadata for SRR22904275
+      SRR22904275.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904275.metadata.tsv
+[92mSRR22904275 download and md5 check successful, save SRR22904275 in success.log[0m
+=======================SRR22904275 download finished=======================
+[32mNote[0m: SRR22904277.metadata.tsv exists, skip downloading metadata for SRR22904277
+      SRR22904277.fastq.gz 0.15G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904277.metadata.tsv
+[92mSRR22904277 download and md5 check successful, save SRR22904277 in success.log[0m
+=======================SRR22904277 download finished=======================
+[32mNote[0m: SRR22904278.metadata.tsv exists, skip downloading metadata for SRR22904278
+      SRR22904278.fastq.gz 0.38G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904278.metadata.tsv
+[92mSRR22904278 download and md5 check successful, save SRR22904278 in success.log[0m
+=======================SRR22904278 download finished=======================
+[32mNote[0m: SRR22904279.metadata.tsv exists, skip downloading metadata for SRR22904279
+      SRR22904279.fastq.gz 0.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904279.metadata.tsv
+[92mSRR22904279 download and md5 check successful, save SRR22904279 in success.log[0m
+=======================SRR22904279 download finished=======================
+[32mNote[0m: SRR22904280.metadata.tsv exists, skip downloading metadata for SRR22904280
+      SRR22904280.fastq.gz 0.15G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904280.metadata.tsv
+[92mSRR22904280 download and md5 check successful, save SRR22904280 in success.log[0m
+=======================SRR22904280 download finished=======================
+[32mNote[0m: SRR22904281.metadata.tsv exists, skip downloading metadata for SRR22904281
+      SRR22904281.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904281.metadata.tsv
+[92mSRR22904281 download and md5 check successful, save SRR22904281 in success.log[0m
+=======================SRR22904281 download finished=======================
+[32mNote[0m: SRR22904282.metadata.tsv exists, skip downloading metadata for SRR22904282
+      SRR22904282.fastq.gz 0.22G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904282.metadata.tsv
+[92mSRR22904282 download and md5 check successful, save SRR22904282 in success.log[0m
+=======================SRR22904282 download finished=======================
+[32mNote[0m: SRR22904287.metadata.tsv exists, skip downloading metadata for SRR22904287
+      SRR22904287.fastq.gz 0.14G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904287.metadata.tsv
+[92mSRR22904287 download and md5 check successful, save SRR22904287 in success.log[0m
+=======================SRR22904287 download finished=======================
+[32mNote[0m: SRR22904290.metadata.tsv exists, skip downloading metadata for SRR22904290
+      SRR22904290.fastq.gz 0.14G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904290.metadata.tsv
+[92mSRR22904290 download and md5 check successful, save SRR22904290 in success.log[0m
+=======================SRR22904290 download finished=======================
+[32mNote[0m: SRR22904291.metadata.tsv exists, skip downloading metadata for SRR22904291
+      SRR22904291.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904291.metadata.tsv
+[92mSRR22904291 download and md5 check successful, save SRR22904291 in success.log[0m
+=======================SRR22904291 download finished=======================
+[32mNote[0m: SRR22904292.metadata.tsv exists, skip downloading metadata for SRR22904292
+      SRR22904292.fastq.gz 0.20G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904292.metadata.tsv
+[92mSRR22904292 download and md5 check successful, save SRR22904292 in success.log[0m
+=======================SRR22904292 download finished=======================
+[32mNote[0m: SRR22904293.metadata.tsv exists, skip downloading metadata for SRR22904293
+      SRR22904293.fastq.gz 0.14G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904293.metadata.tsv
+[92mSRR22904293 download and md5 check successful, save SRR22904293 in success.log[0m
+=======================SRR22904293 download finished=======================
+[32mNote[0m: SRR22904297.metadata.tsv exists, skip downloading metadata for SRR22904297
+      SRR22904297.fastq.gz 0.14G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904297.metadata.tsv
+[92mSRR22904297 download and md5 check successful, save SRR22904297 in success.log[0m
+=======================SRR22904297 download finished=======================
+[32mNote[0m: SRR22904299.metadata.tsv exists, skip downloading metadata for SRR22904299
+      SRR22904299.fastq.gz 0.20G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904299.metadata.tsv
+[92mSRR22904299 download and md5 check successful, save SRR22904299 in success.log[0m
+=======================SRR22904299 download finished=======================
+[32mNote[0m: SRR22904300.metadata.tsv exists, skip downloading metadata for SRR22904300
+      SRR22904300.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904300.metadata.tsv
+[92mSRR22904300 download and md5 check successful, save SRR22904300 in success.log[0m
+=======================SRR22904300 download finished=======================
+[32mNote[0m: SRR22904301.metadata.tsv exists, skip downloading metadata for SRR22904301
+      SRR22904301.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904301.metadata.tsv
+[92mSRR22904301 download and md5 check successful, save SRR22904301 in success.log[0m
+=======================SRR22904301 download finished=======================
+[32mNote[0m: SRR22904302.metadata.tsv exists, skip downloading metadata for SRR22904302
+      SRR22904302.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904302.metadata.tsv
+[92mSRR22904302 download and md5 check successful, save SRR22904302 in success.log[0m
+=======================SRR22904302 download finished=======================
+[32mNote[0m: SRR22904303.metadata.tsv exists, skip downloading metadata for SRR22904303
+      SRR22904303.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904303.metadata.tsv
+[92mSRR22904303 download and md5 check successful, save SRR22904303 in success.log[0m
+=======================SRR22904303 download finished=======================
+[32mNote[0m: SRR22904304.metadata.tsv exists, skip downloading metadata for SRR22904304
+      SRR22904304.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904304.metadata.tsv
+[92mSRR22904304 download and md5 check successful, save SRR22904304 in success.log[0m
+=======================SRR22904304 download finished=======================
+[32mNote[0m: SRR22904305.metadata.tsv exists, skip downloading metadata for SRR22904305
+      SRR22904305.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904305.metadata.tsv
+[92mSRR22904305 download and md5 check successful, save SRR22904305 in success.log[0m
+=======================SRR22904305 download finished=======================
+[32mNote[0m: SRR22904306.metadata.tsv exists, skip downloading metadata for SRR22904306
+      SRR22904306.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904306.metadata.tsv
+[92mSRR22904306 download and md5 check successful, save SRR22904306 in success.log[0m
+=======================SRR22904306 download finished=======================
+[32mNote[0m: SRR22904308.metadata.tsv exists, skip downloading metadata for SRR22904308
+      SRR22904308.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904308.metadata.tsv
+[92mSRR22904308 download and md5 check successful, save SRR22904308 in success.log[0m
+=======================SRR22904308 download finished=======================
+[32mNote[0m: SRR22904309.metadata.tsv exists, skip downloading metadata for SRR22904309
+      SRR22904309.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904309.metadata.tsv
+[92mSRR22904309 download and md5 check successful, save SRR22904309 in success.log[0m
+=======================SRR22904309 download finished=======================
+[32mNote[0m: SRR22904310.metadata.tsv exists, skip downloading metadata for SRR22904310
+      SRR22904310.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904310.metadata.tsv
+[92mSRR22904310 download and md5 check successful, save SRR22904310 in success.log[0m
+=======================SRR22904310 download finished=======================
+[32mNote[0m: SRR22904311.metadata.tsv exists, skip downloading metadata for SRR22904311
+      SRR22904311.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904311.metadata.tsv
+[92mSRR22904311 download and md5 check successful, save SRR22904311 in success.log[0m
+=======================SRR22904311 download finished=======================
+[32mNote[0m: SRR22904312.metadata.tsv exists, skip downloading metadata for SRR22904312
+      SRR22904312.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904312.metadata.tsv
+[92mSRR22904312 download and md5 check successful, save SRR22904312 in success.log[0m
+=======================SRR22904312 download finished=======================
+[32mNote[0m: SRR22904314.metadata.tsv exists, skip downloading metadata for SRR22904314
+      SRR22904314.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904314.metadata.tsv
+[92mSRR22904314 download and md5 check successful, save SRR22904314 in success.log[0m
+=======================SRR22904314 download finished=======================
+[32mNote[0m: SRR22904315.metadata.tsv exists, skip downloading metadata for SRR22904315
+      SRR22904315.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904315.metadata.tsv
+[92mSRR22904315 download and md5 check successful, save SRR22904315 in success.log[0m
+=======================SRR22904315 download finished=======================
+[32mNote[0m: SRR22904316.metadata.tsv exists, skip downloading metadata for SRR22904316
+      SRR22904316.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904316.metadata.tsv
+[92mSRR22904316 download and md5 check successful, save SRR22904316 in success.log[0m
+=======================SRR22904316 download finished=======================
+[32mNote[0m: SRR22904317.metadata.tsv exists, skip downloading metadata for SRR22904317
+      SRR22904317.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904317.metadata.tsv
+[92mSRR22904317 download and md5 check successful, save SRR22904317 in success.log[0m
+=======================SRR22904317 download finished=======================
+[32mNote[0m: SRR22904319.metadata.tsv exists, skip downloading metadata for SRR22904319
+      SRR22904319.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904319.metadata.tsv
+[92mSRR22904319 download and md5 check successful, save SRR22904319 in success.log[0m
+=======================SRR22904319 download finished=======================
+[32mNote[0m: SRR22904320.metadata.tsv exists, skip downloading metadata for SRR22904320
+      SRR22904320.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904320.metadata.tsv
+[92mSRR22904320 download and md5 check successful, save SRR22904320 in success.log[0m
+=======================SRR22904320 download finished=======================
+[32mNote[0m: SRR22904321.metadata.tsv exists, skip downloading metadata for SRR22904321
+      SRR22904321.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904321.metadata.tsv
+[92mSRR22904321 download and md5 check successful, save SRR22904321 in success.log[0m
+=======================SRR22904321 download finished=======================
+[32mNote[0m: SRR22904322.metadata.tsv exists, skip downloading metadata for SRR22904322
+      SRR22904322.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904322.metadata.tsv
+[92mSRR22904322 download and md5 check successful, save SRR22904322 in success.log[0m
+=======================SRR22904322 download finished=======================
+[32mNote[0m: SRR22904323.metadata.tsv exists, skip downloading metadata for SRR22904323
+      SRR22904323.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904323.metadata.tsv
+[92mSRR22904323 download and md5 check successful, save SRR22904323 in success.log[0m
+=======================SRR22904323 download finished=======================
+[32mNote[0m: SRR22904324.metadata.tsv exists, skip downloading metadata for SRR22904324
+      SRR22904324.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904324.metadata.tsv
+[92mSRR22904324 download and md5 check successful, save SRR22904324 in success.log[0m
+=======================SRR22904324 download finished=======================
+[32mNote[0m: SRR22904325.metadata.tsv exists, skip downloading metadata for SRR22904325
+      SRR22904325.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904325.metadata.tsv
+[92mSRR22904325 download and md5 check successful, save SRR22904325 in success.log[0m
+=======================SRR22904325 download finished=======================
+[32mNote[0m: SRR22904327.metadata.tsv exists, skip downloading metadata for SRR22904327
+      SRR22904327.fastq.gz 0.02G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904327.metadata.tsv
+[92mSRR22904327 download and md5 check successful, save SRR22904327 in success.log[0m
+=======================SRR22904327 download finished=======================
+[32mNote[0m: SRR22904329.metadata.tsv exists, skip downloading metadata for SRR22904329
+      SRR22904329.fastq.gz 0.01G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904329.metadata.tsv
+[92mSRR22904329 download and md5 check successful, save SRR22904329 in success.log[0m
+=======================SRR22904329 download finished=======================
+[32mNote[0m: SRR22904332.metadata.tsv exists, skip downloading metadata for SRR22904332
+      SRR22904332.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904332.metadata.tsv
+[92mSRR22904332 download and md5 check successful, save SRR22904332 in success.log[0m
+=======================SRR22904332 download finished=======================
+[32mNote[0m: SRR22904333.metadata.tsv exists, skip downloading metadata for SRR22904333
+      SRR22904333.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904333.metadata.tsv
+[92mSRR22904333 download and md5 check successful, save SRR22904333 in success.log[0m
+=======================SRR22904333 download finished=======================
+[32mNote[0m: SRR22904334.metadata.tsv exists, skip downloading metadata for SRR22904334
+      SRR22904334.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904334.metadata.tsv
+[92mSRR22904334 download and md5 check successful, save SRR22904334 in success.log[0m
+=======================SRR22904334 download finished=======================
+[32mNote[0m: SRR22904335.metadata.tsv exists, skip downloading metadata for SRR22904335
+      SRR22904335.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904335.metadata.tsv
+[92mSRR22904335 download and md5 check successful, save SRR22904335 in success.log[0m
+=======================SRR22904335 download finished=======================
+[32mNote[0m: SRR22904336.metadata.tsv exists, skip downloading metadata for SRR22904336
+      SRR22904336.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904336.metadata.tsv
+[92mSRR22904336 download and md5 check successful, save SRR22904336 in success.log[0m
+=======================SRR22904336 download finished=======================
+[32mNote[0m: SRR22904337.metadata.tsv exists, skip downloading metadata for SRR22904337
+      SRR22904337.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904337.metadata.tsv
+[92mSRR22904337 download and md5 check successful, save SRR22904337 in success.log[0m
+=======================SRR22904337 download finished=======================
+[32mNote[0m: SRR22904338.metadata.tsv exists, skip downloading metadata for SRR22904338
+      SRR22904338.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904338.metadata.tsv
+[92mSRR22904338 download and md5 check successful, save SRR22904338 in success.log[0m
+=======================SRR22904338 download finished=======================
+[32mNote[0m: SRR22904339.metadata.tsv exists, skip downloading metadata for SRR22904339
+      SRR22904339.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904339.metadata.tsv
+[92mSRR22904339 download and md5 check successful, save SRR22904339 in success.log[0m
+=======================SRR22904339 download finished=======================
+[32mNote[0m: SRR22904342.metadata.tsv exists, skip downloading metadata for SRR22904342
+      SRR22904342.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904342.metadata.tsv
+[92mSRR22904342 download and md5 check successful, save SRR22904342 in success.log[0m
+=======================SRR22904342 download finished=======================
+[32mNote[0m: SRR22904343.metadata.tsv exists, skip downloading metadata for SRR22904343
+      SRR22904343.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904343.metadata.tsv
+[92mSRR22904343 download and md5 check successful, save SRR22904343 in success.log[0m
+=======================SRR22904343 download finished=======================
+[32mNote[0m: SRR22904345.metadata.tsv exists, skip downloading metadata for SRR22904345
+      SRR22904345.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904345.metadata.tsv
+[92mSRR22904345 download and md5 check successful, save SRR22904345 in success.log[0m
+=======================SRR22904345 download finished=======================
+[32mNote[0m: SRR22904346.metadata.tsv exists, skip downloading metadata for SRR22904346
+      SRR22904346.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904346.metadata.tsv
+[92mSRR22904346 download and md5 check successful, save SRR22904346 in success.log[0m
+=======================SRR22904346 download finished=======================
+[32mNote[0m: SRR22904347.metadata.tsv exists, skip downloading metadata for SRR22904347
+      SRR22904347.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904347.metadata.tsv
+[92mSRR22904347 download and md5 check successful, save SRR22904347 in success.log[0m
+=======================SRR22904347 download finished=======================
+[32mNote[0m: SRR22904348.metadata.tsv exists, skip downloading metadata for SRR22904348
+      SRR22904348.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904348.metadata.tsv
+[92mSRR22904348 download and md5 check successful, save SRR22904348 in success.log[0m
+=======================SRR22904348 download finished=======================
+[32mNote[0m: SRR22904349.metadata.tsv exists, skip downloading metadata for SRR22904349
+      SRR22904349.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904349.metadata.tsv
+[92mSRR22904349 download and md5 check successful, save SRR22904349 in success.log[0m
+=======================SRR22904349 download finished=======================
+[32mNote[0m: SRR22904351.metadata.tsv exists, skip downloading metadata for SRR22904351
+      SRR22904351.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904351.metadata.tsv
+[92mSRR22904351 download and md5 check successful, save SRR22904351 in success.log[0m
+=======================SRR22904351 download finished=======================
+[32mNote[0m: SRR22904353.metadata.tsv exists, skip downloading metadata for SRR22904353
+      SRR22904353.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904353.metadata.tsv
+[92mSRR22904353 download and md5 check successful, save SRR22904353 in success.log[0m
+=======================SRR22904353 download finished=======================
+[32mNote[0m: SRR22904354.metadata.tsv exists, skip downloading metadata for SRR22904354
+      SRR22904354.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904354.metadata.tsv
+[92mSRR22904354 download and md5 check successful, save SRR22904354 in success.log[0m
+=======================SRR22904354 download finished=======================
+[32mNote[0m: SRR22904355.metadata.tsv exists, skip downloading metadata for SRR22904355
+      SRR22904355.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904355.metadata.tsv
+[92mSRR22904355 download and md5 check successful, save SRR22904355 in success.log[0m
+=======================SRR22904355 download finished=======================
+[32mNote[0m: SRR22904356.metadata.tsv exists, skip downloading metadata for SRR22904356
+      SRR22904356.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904356.metadata.tsv
+[92mSRR22904356 download and md5 check successful, save SRR22904356 in success.log[0m
+=======================SRR22904356 download finished=======================
+[32mNote[0m: SRR22904358.metadata.tsv exists, skip downloading metadata for SRR22904358
+      SRR22904358.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904358.metadata.tsv
+[92mSRR22904358 download and md5 check successful, save SRR22904358 in success.log[0m
+=======================SRR22904358 download finished=======================
+[32mNote[0m: SRR22904359.metadata.tsv exists, skip downloading metadata for SRR22904359
+      SRR22904359.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904359.metadata.tsv
+[92mSRR22904359 download and md5 check successful, save SRR22904359 in success.log[0m
+=======================SRR22904359 download finished=======================
+[32mNote[0m: SRR22904360.metadata.tsv exists, skip downloading metadata for SRR22904360
+      SRR22904360.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904360.metadata.tsv
+[92mSRR22904360 download and md5 check successful, save SRR22904360 in success.log[0m
+=======================SRR22904360 download finished=======================
+[32mNote[0m: SRR22904361.metadata.tsv exists, skip downloading metadata for SRR22904361
+      SRR22904361.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904361.metadata.tsv
+[92mSRR22904361 download and md5 check successful, save SRR22904361 in success.log[0m
+=======================SRR22904361 download finished=======================
+[32mNote[0m: SRR22904362.metadata.tsv exists, skip downloading metadata for SRR22904362
+      SRR22904362.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904362.metadata.tsv
+[92mSRR22904362 download and md5 check successful, save SRR22904362 in success.log[0m
+=======================SRR22904362 download finished=======================
+[32mNote[0m: SRR22904365.metadata.tsv exists, skip downloading metadata for SRR22904365
+      SRR22904365.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904365.metadata.tsv
+[92mSRR22904365 download and md5 check successful, save SRR22904365 in success.log[0m
+=======================SRR22904365 download finished=======================
+[32mNote[0m: SRR22904366.metadata.tsv exists, skip downloading metadata for SRR22904366
+      SRR22904366.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904366.metadata.tsv
+[92mSRR22904366 download and md5 check successful, save SRR22904366 in success.log[0m
+=======================SRR22904366 download finished=======================
+[32mNote[0m: SRR22904368.metadata.tsv exists, skip downloading metadata for SRR22904368
+      SRR22904368.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904368.metadata.tsv
+[92mSRR22904368 download and md5 check successful, save SRR22904368 in success.log[0m
+=======================SRR22904368 download finished=======================
+[32mNote[0m: SRR22904369.metadata.tsv exists, skip downloading metadata for SRR22904369
+      SRR22904369.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904369.metadata.tsv
+[92mSRR22904369 download and md5 check successful, save SRR22904369 in success.log[0m
+=======================SRR22904369 download finished=======================
+[32mNote[0m: SRR22904370.metadata.tsv exists, skip downloading metadata for SRR22904370
+      SRR22904370.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904370.metadata.tsv
+[92mSRR22904370 download and md5 check successful, save SRR22904370 in success.log[0m
+=======================SRR22904370 download finished=======================
+[32mNote[0m: SRR22904371.metadata.tsv exists, skip downloading metadata for SRR22904371
+      SRR22904371.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904371.metadata.tsv
+[92mSRR22904371 download and md5 check successful, save SRR22904371 in success.log[0m
+=======================SRR22904371 download finished=======================
+[32mNote[0m: SRR22904372.metadata.tsv exists, skip downloading metadata for SRR22904372
+      SRR22904372.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904372.metadata.tsv
+[92mSRR22904372 download and md5 check successful, save SRR22904372 in success.log[0m
+=======================SRR22904372 download finished=======================
+[32mNote[0m: SRR22904373.metadata.tsv exists, skip downloading metadata for SRR22904373
+      SRR22904373.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904373.metadata.tsv
+[92mSRR22904373 download and md5 check successful, save SRR22904373 in success.log[0m
+=======================SRR22904373 download finished=======================
+[32mNote[0m: SRR22904374.metadata.tsv exists, skip downloading metadata for SRR22904374
+      SRR22904374.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904374.metadata.tsv
+[92mSRR22904374 download and md5 check successful, save SRR22904374 in success.log[0m
+=======================SRR22904374 download finished=======================
+[32mNote[0m: SRR22904375.metadata.tsv exists, skip downloading metadata for SRR22904375
+      SRR22904375.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904375.metadata.tsv
+[92mSRR22904375 download and md5 check successful, save SRR22904375 in success.log[0m
+=======================SRR22904375 download finished=======================
+[32mNote[0m: SRR22904376.metadata.tsv exists, skip downloading metadata for SRR22904376
+      SRR22904376.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904376.metadata.tsv
+[92mSRR22904376 download and md5 check successful, save SRR22904376 in success.log[0m
+=======================SRR22904376 download finished=======================
+[32mNote[0m: SRR22904377.metadata.tsv exists, skip downloading metadata for SRR22904377
+      SRR22904377.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904377.metadata.tsv
+[92mSRR22904377 download and md5 check successful, save SRR22904377 in success.log[0m
+=======================SRR22904377 download finished=======================
+[32mNote[0m: SRR22904378.metadata.tsv exists, skip downloading metadata for SRR22904378
+      SRR22904378.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904378.metadata.tsv
+[92mSRR22904378 download and md5 check successful, save SRR22904378 in success.log[0m
+=======================SRR22904378 download finished=======================
+[32mNote[0m: SRR22904379.metadata.tsv exists, skip downloading metadata for SRR22904379
+      SRR22904379.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904379.metadata.tsv
+[92mSRR22904379 download and md5 check successful, save SRR22904379 in success.log[0m
+=======================SRR22904379 download finished=======================
+[32mNote[0m: SRR22904380.metadata.tsv exists, skip downloading metadata for SRR22904380
+      SRR22904380.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904380.metadata.tsv
+[92mSRR22904380 download and md5 check successful, save SRR22904380 in success.log[0m
+=======================SRR22904380 download finished=======================
+[32mNote[0m: SRR22904381.metadata.tsv exists, skip downloading metadata for SRR22904381
+      SRR22904381.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904381.metadata.tsv
+[92mSRR22904381 download and md5 check successful, save SRR22904381 in success.log[0m
+=======================SRR22904381 download finished=======================
+[32mNote[0m: SRR22904382.metadata.tsv exists, skip downloading metadata for SRR22904382
+      SRR22904382.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904382.metadata.tsv
+[92mSRR22904382 download and md5 check successful, save SRR22904382 in success.log[0m
+=======================SRR22904382 download finished=======================
+[32mNote[0m: SRR22904383.metadata.tsv exists, skip downloading metadata for SRR22904383
+      SRR22904383.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904383.metadata.tsv
+[92mSRR22904383 download and md5 check successful, save SRR22904383 in success.log[0m
+=======================SRR22904383 download finished=======================
+[32mNote[0m: SRR22904384.metadata.tsv exists, skip downloading metadata for SRR22904384
+      SRR22904384.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904384.metadata.tsv
+[92mSRR22904384 download and md5 check successful, save SRR22904384 in success.log[0m
+=======================SRR22904384 download finished=======================
+[32mNote[0m: SRR22904386.metadata.tsv exists, skip downloading metadata for SRR22904386
+      SRR22904386.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904386.metadata.tsv
+[92mSRR22904386 download and md5 check successful, save SRR22904386 in success.log[0m
+=======================SRR22904386 download finished=======================
+[32mNote[0m: SRR22904387.metadata.tsv exists, skip downloading metadata for SRR22904387
+      SRR22904387.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904387.metadata.tsv
+[92mSRR22904387 download and md5 check successful, save SRR22904387 in success.log[0m
+=======================SRR22904387 download finished=======================
+[32mNote[0m: SRR22904388.metadata.tsv exists, skip downloading metadata for SRR22904388
+      SRR22904388.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904388.metadata.tsv
+[92mSRR22904388 download and md5 check successful, save SRR22904388 in success.log[0m
+=======================SRR22904388 download finished=======================
+[32mNote[0m: SRR22904389.metadata.tsv exists, skip downloading metadata for SRR22904389
+      SRR22904389.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904389.metadata.tsv
+[92mSRR22904389 download and md5 check successful, save SRR22904389 in success.log[0m
+=======================SRR22904389 download finished=======================
+[32mNote[0m: SRR22904390.metadata.tsv exists, skip downloading metadata for SRR22904390
+      SRR22904390.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904390.metadata.tsv
+[92mSRR22904390 download and md5 check successful, save SRR22904390 in success.log[0m
+=======================SRR22904390 download finished=======================
+[32mNote[0m: SRR22904391.metadata.tsv exists, skip downloading metadata for SRR22904391
+      SRR22904391.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904391.metadata.tsv
+[92mSRR22904391 download and md5 check successful, save SRR22904391 in success.log[0m
+=======================SRR22904391 download finished=======================
+[32mNote[0m: SRR22904392.metadata.tsv exists, skip downloading metadata for SRR22904392
+      SRR22904392.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904392.metadata.tsv
+[92mSRR22904392 download and md5 check successful, save SRR22904392 in success.log[0m
+=======================SRR22904392 download finished=======================
+[32mNote[0m: SRR22904393.metadata.tsv exists, skip downloading metadata for SRR22904393
+      SRR22904393.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904393.metadata.tsv
+[92mSRR22904393 download and md5 check successful, save SRR22904393 in success.log[0m
+=======================SRR22904393 download finished=======================
+[32mNote[0m: SRR22904394.metadata.tsv exists, skip downloading metadata for SRR22904394
+      SRR22904394.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904394.metadata.tsv
+[92mSRR22904394 download and md5 check successful, save SRR22904394 in success.log[0m
+=======================SRR22904394 download finished=======================
+[32mNote[0m: SRR22904395.metadata.tsv exists, skip downloading metadata for SRR22904395
+      SRR22904395.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904395.metadata.tsv
+[92mSRR22904395 download and md5 check successful, save SRR22904395 in success.log[0m
+=======================SRR22904395 download finished=======================
+[32mNote[0m: SRR22904396.metadata.tsv exists, skip downloading metadata for SRR22904396
+      SRR22904396.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904396.metadata.tsv
+[92mSRR22904396 download and md5 check successful, save SRR22904396 in success.log[0m
+=======================SRR22904396 download finished=======================
+[32mNote[0m: SRR22904397.metadata.tsv exists, skip downloading metadata for SRR22904397
+      SRR22904397.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904397.metadata.tsv
+[92mSRR22904397 download and md5 check successful, save SRR22904397 in success.log[0m
+=======================SRR22904397 download finished=======================
+[32mNote[0m: SRR22904398.metadata.tsv exists, skip downloading metadata for SRR22904398
+      SRR22904398.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904398.metadata.tsv
+[92mSRR22904398 download and md5 check successful, save SRR22904398 in success.log[0m
+=======================SRR22904398 download finished=======================
+[32mNote[0m: SRR22904399.metadata.tsv exists, skip downloading metadata for SRR22904399
+      SRR22904399.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904399.metadata.tsv
+[92mSRR22904399 download and md5 check successful, save SRR22904399 in success.log[0m
+=======================SRR22904399 download finished=======================
+[32mNote[0m: SRR22904400.metadata.tsv exists, skip downloading metadata for SRR22904400
+      SRR22904400.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904400.metadata.tsv
+[92mSRR22904400 download and md5 check successful, save SRR22904400 in success.log[0m
+=======================SRR22904400 download finished=======================
+[32mNote[0m: SRR22904401.metadata.tsv exists, skip downloading metadata for SRR22904401
+      SRR22904401.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904401.metadata.tsv
+[91mMD5 mismatch for:[0m SRR22904401.fastq.gz
+[93mNote[0m: SRR22904401 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.00G	Database: ENA	Mode: ftp
+02:15:41.959 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[91mMD5 mismatch for:[0m SRR22904401.fastq.gz
+[93mNote[0m: SRR22904401 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.00G	Database: ENA	Mode: ftp
+02:15:44.093 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[91mMD5 mismatch for:[0m SRR22904401.fastq.gz
+[91mSRR22904401 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904401 download finished=======================
+[32mNote[0m: SRR22904403.metadata.tsv exists, skip downloading metadata for SRR22904403
+      SRR22904403.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904403.metadata.tsv
+[92mSRR22904403 download and md5 check successful, save SRR22904403 in success.log[0m
+=======================SRR22904403 download finished=======================
+[32mNote[0m: SRR22904404.metadata.tsv exists, skip downloading metadata for SRR22904404
+      SRR22904404.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904404.metadata.tsv
+[92mSRR22904404 download and md5 check successful, save SRR22904404 in success.log[0m
+=======================SRR22904404 download finished=======================
+[32mNote[0m: SRR22904405.metadata.tsv exists, skip downloading metadata for SRR22904405
+      SRR22904405.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904405.metadata.tsv
+[92mSRR22904405 download and md5 check successful, save SRR22904405 in success.log[0m
+=======================SRR22904405 download finished=======================
+[32mNote[0m: SRR22904406.metadata.tsv exists, skip downloading metadata for SRR22904406
+      SRR22904406.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904406.metadata.tsv
+[92mSRR22904406 download and md5 check successful, save SRR22904406 in success.log[0m
+=======================SRR22904406 download finished=======================
+[32mNote[0m: SRR22904407.metadata.tsv exists, skip downloading metadata for SRR22904407
+      SRR22904407.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904407.metadata.tsv
+[92mSRR22904407 download and md5 check successful, save SRR22904407 in success.log[0m
+=======================SRR22904407 download finished=======================
+[32mNote[0m: SRR22904408.metadata.tsv exists, skip downloading metadata for SRR22904408
+      SRR22904408.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904408.metadata.tsv
+[92mSRR22904408 download and md5 check successful, save SRR22904408 in success.log[0m
+=======================SRR22904408 download finished=======================
+[32mNote[0m: SRR22904409.metadata.tsv exists, skip downloading metadata for SRR22904409
+      SRR22904409.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904409.metadata.tsv
+[92mSRR22904409 download and md5 check successful, save SRR22904409 in success.log[0m
+=======================SRR22904409 download finished=======================
+[32mNote[0m: SRR22904410.metadata.tsv exists, skip downloading metadata for SRR22904410
+      SRR22904410.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904410.metadata.tsv
+[92mSRR22904410 download and md5 check successful, save SRR22904410 in success.log[0m
+=======================SRR22904410 download finished=======================
+[32mNote[0m: SRR22904411.metadata.tsv exists, skip downloading metadata for SRR22904411
+      SRR22904411.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904411.metadata.tsv
+[92mSRR22904411 download and md5 check successful, save SRR22904411 in success.log[0m
+=======================SRR22904411 download finished=======================
+[32mNote[0m: SRR22904412.metadata.tsv exists, skip downloading metadata for SRR22904412
+      SRR22904412.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904412.metadata.tsv
+[92mSRR22904412 download and md5 check successful, save SRR22904412 in success.log[0m
+=======================SRR22904412 download finished=======================
+[32mNote[0m: SRR22904414.metadata.tsv exists, skip downloading metadata for SRR22904414
+      SRR22904414.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904414.metadata.tsv
+[92mSRR22904414 download and md5 check successful, save SRR22904414 in success.log[0m
+=======================SRR22904414 download finished=======================
+[32mNote[0m: SRR22904415.metadata.tsv exists, skip downloading metadata for SRR22904415
+      SRR22904415.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904415.metadata.tsv
+[92mSRR22904415 download and md5 check successful, save SRR22904415 in success.log[0m
+=======================SRR22904415 download finished=======================
+[32mNote[0m: SRR22904416.metadata.tsv exists, skip downloading metadata for SRR22904416
+      SRR22904416.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904416.metadata.tsv
+[92mSRR22904416 download and md5 check successful, save SRR22904416 in success.log[0m
+=======================SRR22904416 download finished=======================
+[32mNote[0m: SRR22904417.metadata.tsv exists, skip downloading metadata for SRR22904417
+      SRR22904417.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904417.metadata.tsv
+[92mSRR22904417 download and md5 check successful, save SRR22904417 in success.log[0m
+=======================SRR22904417 download finished=======================
+[32mNote[0m: SRR22904418.metadata.tsv exists, skip downloading metadata for SRR22904418
+      SRR22904418.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904418.metadata.tsv
+[92mSRR22904418 download and md5 check successful, save SRR22904418 in success.log[0m
+=======================SRR22904418 download finished=======================
+[32mNote[0m: SRR22904419.metadata.tsv exists, skip downloading metadata for SRR22904419
+      SRR22904419.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904419.metadata.tsv
+[92mSRR22904419 download and md5 check successful, save SRR22904419 in success.log[0m
+=======================SRR22904419 download finished=======================
+[32mNote[0m: SRR22904420.metadata.tsv exists, skip downloading metadata for SRR22904420
+      SRR22904420.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904420.metadata.tsv
+[92mSRR22904420 download and md5 check successful, save SRR22904420 in success.log[0m
+=======================SRR22904420 download finished=======================
+[32mNote[0m: SRR22904421.metadata.tsv exists, skip downloading metadata for SRR22904421
+      SRR22904421.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904421.metadata.tsv
+[92mSRR22904421 download and md5 check successful, save SRR22904421 in success.log[0m
+=======================SRR22904421 download finished=======================
+[32mNote[0m: SRR22904422.metadata.tsv exists, skip downloading metadata for SRR22904422
+      SRR22904422.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904422.metadata.tsv
+[92mSRR22904422 download and md5 check successful, save SRR22904422 in success.log[0m
+=======================SRR22904422 download finished=======================
+[32mNote[0m: SRR22904423.metadata.tsv exists, skip downloading metadata for SRR22904423
+      SRR22904423.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904423.metadata.tsv
+[92mSRR22904423 download and md5 check successful, save SRR22904423 in success.log[0m
+=======================SRR22904423 download finished=======================
+[32mNote[0m: SRR22904424.metadata.tsv exists, skip downloading metadata for SRR22904424
+      SRR22904424.fastq.gz 0.01G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904424.metadata.tsv
+[92mSRR22904424 download and md5 check successful, save SRR22904424 in success.log[0m
+=======================SRR22904424 download finished=======================
+[32mNote[0m: SRR22904425.metadata.tsv exists, skip downloading metadata for SRR22904425
+      SRR22904425.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904425.metadata.tsv
+[92mSRR22904425 download and md5 check successful, save SRR22904425 in success.log[0m
+=======================SRR22904425 download finished=======================
+[32mNote[0m: SRR22904426.metadata.tsv exists, skip downloading metadata for SRR22904426
+      SRR22904426.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904426.metadata.tsv
+[92mSRR22904426 download and md5 check successful, save SRR22904426 in success.log[0m
+=======================SRR22904426 download finished=======================
+[32mNote[0m: SRR22904427.metadata.tsv exists, skip downloading metadata for SRR22904427
+      SRR22904427.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904427.metadata.tsv
+[92mSRR22904427 download and md5 check successful, save SRR22904427 in success.log[0m
+=======================SRR22904427 download finished=======================
+[32mNote[0m: SRR22904428.metadata.tsv exists, skip downloading metadata for SRR22904428
+      SRR22904428.fastq.gz 0.14G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904428.metadata.tsv
+[92mSRR22904428 download and md5 check successful, save SRR22904428 in success.log[0m
+=======================SRR22904428 download finished=======================
+[32mNote[0m: SRR22904429.metadata.tsv exists, skip downloading metadata for SRR22904429
+      SRR22904429.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904429.metadata.tsv
+[92mSRR22904429 download and md5 check successful, save SRR22904429 in success.log[0m
+=======================SRR22904429 download finished=======================
+[32mNote[0m: SRR22904430.metadata.tsv exists, skip downloading metadata for SRR22904430
+      SRR22904430.fastq.gz 0.20G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904430.metadata.tsv
+[92mSRR22904430 download and md5 check successful, save SRR22904430 in success.log[0m
+=======================SRR22904430 download finished=======================
+[32mNote[0m: SRR22904432.metadata.tsv exists, skip downloading metadata for SRR22904432
+      SRR22904432.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904432.metadata.tsv
+[92mSRR22904432 download and md5 check successful, save SRR22904432 in success.log[0m
+=======================SRR22904432 download finished=======================
+[32mNote[0m: SRR22904433.metadata.tsv exists, skip downloading metadata for SRR22904433
+      SRR22904433.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904433.metadata.tsv
+[92mSRR22904433 download and md5 check successful, save SRR22904433 in success.log[0m
+=======================SRR22904433 download finished=======================
+[32mNote[0m: SRR22904434.metadata.tsv exists, skip downloading metadata for SRR22904434
+      SRR22904434.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904434.metadata.tsv
+[92mSRR22904434 download and md5 check successful, save SRR22904434 in success.log[0m
+=======================SRR22904434 download finished=======================
+[32mNote[0m: SRR22904436.metadata.tsv exists, skip downloading metadata for SRR22904436
+      SRR22904436.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904436.metadata.tsv
+[92mSRR22904436 download and md5 check successful, save SRR22904436 in success.log[0m
+=======================SRR22904436 download finished=======================
+[32mNote[0m: SRR22904437.metadata.tsv exists, skip downloading metadata for SRR22904437
+      SRR22904437.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904437.metadata.tsv
+[92mSRR22904437 download and md5 check successful, save SRR22904437 in success.log[0m
+=======================SRR22904437 download finished=======================
+[32mNote[0m: SRR22904438.metadata.tsv exists, skip downloading metadata for SRR22904438
+      SRR22904438.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904438.metadata.tsv
+[92mSRR22904438 download and md5 check successful, save SRR22904438 in success.log[0m
+=======================SRR22904438 download finished=======================
+[32mNote[0m: SRR22904439.metadata.tsv exists, skip downloading metadata for SRR22904439
+      SRR22904439.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904439.metadata.tsv
+[92mSRR22904439 download and md5 check successful, save SRR22904439 in success.log[0m
+=======================SRR22904439 download finished=======================
+[32mNote[0m: SRR22904440.metadata.tsv exists, skip downloading metadata for SRR22904440
+      SRR22904440.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904440.metadata.tsv
+[92mSRR22904440 download and md5 check successful, save SRR22904440 in success.log[0m
+=======================SRR22904440 download finished=======================
+[32mNote[0m: SRR22904441.metadata.tsv exists, skip downloading metadata for SRR22904441
+      SRR22904441.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904441.metadata.tsv
+[92mSRR22904441 download and md5 check successful, save SRR22904441 in success.log[0m
+=======================SRR22904441 download finished=======================
+[32mNote[0m: SRR22904442.metadata.tsv exists, skip downloading metadata for SRR22904442
+      SRR22904442.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904442.metadata.tsv
+[92mSRR22904442 download and md5 check successful, save SRR22904442 in success.log[0m
+=======================SRR22904442 download finished=======================
+[32mNote[0m: SRR22904443.metadata.tsv exists, skip downloading metadata for SRR22904443
+      SRR22904443.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904443.metadata.tsv
+[92mSRR22904443 download and md5 check successful, save SRR22904443 in success.log[0m
+=======================SRR22904443 download finished=======================
+[32mNote[0m: SRR22904444.metadata.tsv exists, skip downloading metadata for SRR22904444
+      SRR22904444.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904444.metadata.tsv
+[92mSRR22904444 download and md5 check successful, save SRR22904444 in success.log[0m
+=======================SRR22904444 download finished=======================
+[32mNote[0m: SRR22904445.metadata.tsv exists, skip downloading metadata for SRR22904445
+      SRR22904445.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904445.metadata.tsv
+[92mSRR22904445 download and md5 check successful, save SRR22904445 in success.log[0m
+=======================SRR22904445 download finished=======================
+[32mNote[0m: SRR22904447.metadata.tsv exists, skip downloading metadata for SRR22904447
+      SRR22904447.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904447.metadata.tsv
+[92mSRR22904447 download and md5 check successful, save SRR22904447 in success.log[0m
+=======================SRR22904447 download finished=======================
+[32mNote[0m: SRR22904448.metadata.tsv exists, skip downloading metadata for SRR22904448
+      SRR22904448.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904448.metadata.tsv
+[92mSRR22904448 download and md5 check successful, save SRR22904448 in success.log[0m
+=======================SRR22904448 download finished=======================
+[32mNote[0m: SRR22904449.metadata.tsv exists, skip downloading metadata for SRR22904449
+      SRR22904449.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904449.metadata.tsv
+[92mSRR22904449 download and md5 check successful, save SRR22904449 in success.log[0m
+=======================SRR22904449 download finished=======================
+[32mNote[0m: SRR22904450.metadata.tsv exists, skip downloading metadata for SRR22904450
+      SRR22904450.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904450.metadata.tsv
+[92mSRR22904450 download and md5 check successful, save SRR22904450 in success.log[0m
+=======================SRR22904450 download finished=======================
+[32mNote[0m: SRR22904451.metadata.tsv exists, skip downloading metadata for SRR22904451
+      SRR22904451.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904451.metadata.tsv
+[92mSRR22904451 download and md5 check successful, save SRR22904451 in success.log[0m
+=======================SRR22904451 download finished=======================
+[32mNote[0m: SRR22904452.metadata.tsv exists, skip downloading metadata for SRR22904452
+      SRR22904452.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904452.metadata.tsv
+[92mSRR22904452 download and md5 check successful, save SRR22904452 in success.log[0m
+=======================SRR22904452 download finished=======================
+[32mNote[0m: SRR22904453.metadata.tsv exists, skip downloading metadata for SRR22904453
+      SRR22904453.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904453.metadata.tsv
+[92mSRR22904453 download and md5 check successful, save SRR22904453 in success.log[0m
+=======================SRR22904453 download finished=======================
+[32mNote[0m: SRR22904454.metadata.tsv exists, skip downloading metadata for SRR22904454
+      SRR22904454.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904454.metadata.tsv
+[92mSRR22904454 download and md5 check successful, save SRR22904454 in success.log[0m
+=======================SRR22904454 download finished=======================
+[32mNote[0m: SRR22904455.metadata.tsv exists, skip downloading metadata for SRR22904455
+      SRR22904455.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904455.metadata.tsv
+[92mSRR22904455 download and md5 check successful, save SRR22904455 in success.log[0m
+=======================SRR22904455 download finished=======================
+[32mNote[0m: SRR22904456.metadata.tsv exists, skip downloading metadata for SRR22904456
+      SRR22904456.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904456.metadata.tsv
+[92mSRR22904456 download and md5 check successful, save SRR22904456 in success.log[0m
+=======================SRR22904456 download finished=======================
+[32mNote[0m: SRR22904457.metadata.tsv exists, skip downloading metadata for SRR22904457
+      SRR22904457.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904457.metadata.tsv
+[92mSRR22904457 download and md5 check successful, save SRR22904457 in success.log[0m
+=======================SRR22904457 download finished=======================
+[32mNote[0m: SRR22904459.metadata.tsv exists, skip downloading metadata for SRR22904459
+      SRR22904459.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904459.metadata.tsv
+[92mSRR22904459 download and md5 check successful, save SRR22904459 in success.log[0m
+=======================SRR22904459 download finished=======================
+[32mNote[0m: SRR22904461.metadata.tsv exists, skip downloading metadata for SRR22904461
+      SRR22904461.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904461.metadata.tsv
+[92mSRR22904461 download and md5 check successful, save SRR22904461 in success.log[0m
+=======================SRR22904461 download finished=======================
+[32mNote[0m: SRR22904462.metadata.tsv exists, skip downloading metadata for SRR22904462
+      SRR22904462.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904462.metadata.tsv
+[92mSRR22904462 download and md5 check successful, save SRR22904462 in success.log[0m
+=======================SRR22904462 download finished=======================
+[32mNote[0m: SRR22904463.metadata.tsv exists, skip downloading metadata for SRR22904463
+      SRR22904463.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904463.metadata.tsv
+[92mSRR22904463 download and md5 check successful, save SRR22904463 in success.log[0m
+=======================SRR22904463 download finished=======================
+[32mNote[0m: SRR22904464.metadata.tsv exists, skip downloading metadata for SRR22904464
+      SRR22904464.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904464.metadata.tsv
+[92mSRR22904464 download and md5 check successful, save SRR22904464 in success.log[0m
+=======================SRR22904464 download finished=======================
+[32mNote[0m: SRR22904465.metadata.tsv exists, skip downloading metadata for SRR22904465
+      SRR22904465.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904465.metadata.tsv
+[92mSRR22904465 download and md5 check successful, save SRR22904465 in success.log[0m
+=======================SRR22904465 download finished=======================
+[32mNote[0m: SRR22904466.metadata.tsv exists, skip downloading metadata for SRR22904466
+      SRR22904466.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904466.metadata.tsv
+[92mSRR22904466 download and md5 check successful, save SRR22904466 in success.log[0m
+=======================SRR22904466 download finished=======================
+[32mNote[0m: SRR22904467.metadata.tsv exists, skip downloading metadata for SRR22904467
+      SRR22904467.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904467.metadata.tsv
+[92mSRR22904467 download and md5 check successful, save SRR22904467 in success.log[0m
+=======================SRR22904467 download finished=======================
+[32mNote[0m: SRR22904468.metadata.tsv exists, skip downloading metadata for SRR22904468
+      SRR22904468.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904468.metadata.tsv
+[92mSRR22904468 download and md5 check successful, save SRR22904468 in success.log[0m
+=======================SRR22904468 download finished=======================
+[32mNote[0m: SRR22904469.metadata.tsv exists, skip downloading metadata for SRR22904469
+      SRR22904469.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904469.metadata.tsv
+[92mSRR22904469 download and md5 check successful, save SRR22904469 in success.log[0m
+=======================SRR22904469 download finished=======================
+[32mNote[0m: SRR22904470.metadata.tsv exists, skip downloading metadata for SRR22904470
+      SRR22904470.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904470.metadata.tsv
+[92mSRR22904470 download and md5 check successful, save SRR22904470 in success.log[0m
+=======================SRR22904470 download finished=======================
+[32mNote[0m: SRR22904471.metadata.tsv exists, skip downloading metadata for SRR22904471
+      SRR22904471.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904471.metadata.tsv
+[92mSRR22904471 download and md5 check successful, save SRR22904471 in success.log[0m
+=======================SRR22904471 download finished=======================
+[32mNote[0m: SRR22904472.metadata.tsv exists, skip downloading metadata for SRR22904472
+      SRR22904472.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904472.metadata.tsv
+[92mSRR22904472 download and md5 check successful, save SRR22904472 in success.log[0m
+=======================SRR22904472 download finished=======================
+[32mNote[0m: SRR22904473.metadata.tsv exists, skip downloading metadata for SRR22904473
+      SRR22904473.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904473.metadata.tsv
+[92mSRR22904473 download and md5 check successful, save SRR22904473 in success.log[0m
+=======================SRR22904473 download finished=======================
+[32mNote[0m: SRR22904474.metadata.tsv exists, skip downloading metadata for SRR22904474
+      SRR22904474.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904474.metadata.tsv
+[92mSRR22904474 download and md5 check successful, save SRR22904474 in success.log[0m
+=======================SRR22904474 download finished=======================
+[32mNote[0m: SRR22904475.metadata.tsv exists, skip downloading metadata for SRR22904475
+      SRR22904475.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904475.metadata.tsv
+[92mSRR22904475 download and md5 check successful, save SRR22904475 in success.log[0m
+=======================SRR22904475 download finished=======================
+[32mNote[0m: SRR22904476.metadata.tsv exists, skip downloading metadata for SRR22904476
+      SRR22904476.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904476.metadata.tsv
+[92mSRR22904476 download and md5 check successful, save SRR22904476 in success.log[0m
+=======================SRR22904476 download finished=======================
+[32mNote[0m: SRR22904477.metadata.tsv exists, skip downloading metadata for SRR22904477
+      SRR22904477.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904477.metadata.tsv
+[92mSRR22904477 download and md5 check successful, save SRR22904477 in success.log[0m
+=======================SRR22904477 download finished=======================
+[32mNote[0m: SRR22904478.metadata.tsv exists, skip downloading metadata for SRR22904478
+      SRR22904478.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904478.metadata.tsv
+[92mSRR22904478 download and md5 check successful, save SRR22904478 in success.log[0m
+=======================SRR22904478 download finished=======================
+[32mNote[0m: SRR22904479.metadata.tsv exists, skip downloading metadata for SRR22904479
+      SRR22904479.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904479.metadata.tsv
+[92mSRR22904479 download and md5 check successful, save SRR22904479 in success.log[0m
+=======================SRR22904479 download finished=======================
+[32mNote[0m: SRR22904480.metadata.tsv exists, skip downloading metadata for SRR22904480
+      SRR22904480.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904480.metadata.tsv
+[92mSRR22904480 download and md5 check successful, save SRR22904480 in success.log[0m
+=======================SRR22904480 download finished=======================
+[32mNote[0m: SRR22904481.metadata.tsv exists, skip downloading metadata for SRR22904481
+      SRR22904481.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904481.metadata.tsv
+[92mSRR22904481 download and md5 check successful, save SRR22904481 in success.log[0m
+=======================SRR22904481 download finished=======================
+[32mNote[0m: SRR22904483.metadata.tsv exists, skip downloading metadata for SRR22904483
+      SRR22904483.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904483.metadata.tsv
+[92mSRR22904483 download and md5 check successful, save SRR22904483 in success.log[0m
+=======================SRR22904483 download finished=======================
+[32mNote[0m: SRR22904484.metadata.tsv exists, skip downloading metadata for SRR22904484
+      SRR22904484.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904484.metadata.tsv
+[92mSRR22904484 download and md5 check successful, save SRR22904484 in success.log[0m
+=======================SRR22904484 download finished=======================
+[32mNote[0m: SRR22904485.metadata.tsv exists, skip downloading metadata for SRR22904485
+      SRR22904485.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904485.metadata.tsv
+[92mSRR22904485 download and md5 check successful, save SRR22904485 in success.log[0m
+=======================SRR22904485 download finished=======================
+[32mNote[0m: SRR22904486.metadata.tsv exists, skip downloading metadata for SRR22904486
+      SRR22904486.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904486.metadata.tsv
+[92mSRR22904486 download and md5 check successful, save SRR22904486 in success.log[0m
+=======================SRR22904486 download finished=======================
+[32mNote[0m: SRR22904487.metadata.tsv exists, skip downloading metadata for SRR22904487
+      SRR22904487.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904487.metadata.tsv
+[92mSRR22904487 download and md5 check successful, save SRR22904487 in success.log[0m
+=======================SRR22904487 download finished=======================
+[32mNote[0m: SRR22904488.metadata.tsv exists, skip downloading metadata for SRR22904488
+      SRR22904488.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904488.metadata.tsv
+[92mSRR22904488 download and md5 check successful, save SRR22904488 in success.log[0m
+=======================SRR22904488 download finished=======================
+[32mNote[0m: SRR22904489.metadata.tsv exists, skip downloading metadata for SRR22904489
+      SRR22904489.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904489.metadata.tsv
+[92mSRR22904489 download and md5 check successful, save SRR22904489 in success.log[0m
+=======================SRR22904489 download finished=======================
+[32mNote[0m: SRR22904490.metadata.tsv exists, skip downloading metadata for SRR22904490
+      SRR22904490.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904490.metadata.tsv
+[92mSRR22904490 download and md5 check successful, save SRR22904490 in success.log[0m
+=======================SRR22904490 download finished=======================
+[32mNote[0m: SRR22904491.metadata.tsv exists, skip downloading metadata for SRR22904491
+      SRR22904491.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904491.metadata.tsv
+[92mSRR22904491 download and md5 check successful, save SRR22904491 in success.log[0m
+=======================SRR22904491 download finished=======================
+[32mNote[0m: SRR22904492.metadata.tsv exists, skip downloading metadata for SRR22904492
+      SRR22904492.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904492.metadata.tsv
+[92mSRR22904492 download and md5 check successful, save SRR22904492 in success.log[0m
+=======================SRR22904492 download finished=======================
+[32mNote[0m: SRR22904494.metadata.tsv exists, skip downloading metadata for SRR22904494
+      SRR22904494.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904494.metadata.tsv
+[92mSRR22904494 download and md5 check successful, save SRR22904494 in success.log[0m
+=======================SRR22904494 download finished=======================
+[32mNote[0m: SRR22904495.metadata.tsv exists, skip downloading metadata for SRR22904495
+      SRR22904495.fastq.gz 0.02G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904495.metadata.tsv[1;31mError[0m: Download failures detected. Please check [4mfail.log[0m for details.
+[1;33mNote:[0m You can re-run the script to retry failed items.
+
+[92mSRR22904495 download and md5 check successful, save SRR22904495 in success.log[0m
+=======================SRR22904495 download finished=======================

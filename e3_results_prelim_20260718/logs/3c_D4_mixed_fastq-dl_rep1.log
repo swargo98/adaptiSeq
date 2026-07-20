@@ -1,0 +1,226 @@
+2026-07-18 03:33:55 INFO     Query: SRR22904259                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904259...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904259.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:33:57 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904259.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:33:58 INFO     Query: SRR22904292                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904292...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904292.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:10 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904292.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:11 INFO     Query: SRR22904353                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904353...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904353.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:12 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904353.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:13 INFO     Query: SRR22904368                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904368...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904368.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:15 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904368.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:16 INFO     Query: SRR22904389                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904389...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904389.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:18 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904389.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:19 INFO     Query: SRR22904391                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904391...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904391.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:20 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904391.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:21 INFO     Query: SRR22904396                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904396...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904396.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:23 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904396.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:24 INFO     Query: SRR22904447                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904447...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904447.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:26 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904447.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:27 INFO     Query: SRR22904461                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904461...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904461.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:29 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904461.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:30 INFO     Query: SRR22904467                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904467...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904467.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:31 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904467.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:32 INFO     Query: SRR22904470                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904470...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904470.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:34 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904470.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:35 INFO     Query: SRR22904480                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904480...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d ena.py:202
+                             l_rep1/SRR22904480.fastq.gz FTP download           
+                             attempt 1                                          
+2026-07-18 03:34:37 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fastq-d           
+                             l_rep1/SRR22904480.fastq.gz                        
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:38 INFO     Query: SRR1031060                   download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR1031060...        download.py:402
+                    INFO     SRR1031060 not found on ENA,        download.py:586
+                             retrying from SRA                                  
+2026-07-18 03:34:41 INFO     Downloaded FASTQs for SRR1031060         sra.py:157
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:43 INFO     Query: SRR1031066                   download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR1031066...        download.py:402
+                    INFO     SRR1031066 not found on ENA,        download.py:586
+                             retrying from SRA                                  
+2026-07-18 03:34:52 INFO     Downloaded FASTQs for SRR1031066         sra.py:157
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:34:53 INFO     Query: SRR1031074                   download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR1031074...        download.py:402
+                    INFO     SRR1031074 not found on ENA,        download.py:586
+                             retrying from SRA                                  
+2026-07-18 03:35:01 INFO     Downloaded FASTQs for SRR1031074         sra.py:157
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:35:02 INFO     Query: SRR1031080                   download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR1031080...        download.py:402
+                    INFO     SRR1031080 not found on ENA,        download.py:586
+                             retrying from SRA                                  
+2026-07-18 03:35:09 INFO     Downloaded FASTQs for SRR1031080         sra.py:157
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:35:10 INFO     Query: SRR1031090                   download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR1031090...        download.py:402
+                    INFO     SRR1031090 not found on ENA,        download.py:586
+                             retrying from SRA                                  
+2026-07-18 03:35:16 INFO     Downloaded FASTQs for SRR1031090         sra.py:157
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:35:17 INFO     Query: SRR1031101                   download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR1031101...        download.py:402
+                    INFO     SRR1031101 not found on ENA,        download.py:586
+                             retrying from SRA                                  
+2026-07-18 03:35:21 INFO     Downloaded FASTQs for SRR1031101         sra.py:157
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/3c_D4_mixed_fa                
+                             stq-dl_rep1/fastq-run-info.tsv                     
+2026-07-18 03:35:21 ERROR    CRX095512 is not a Study, Sample,   download.py:307
+                             Experiment, or Run accession. See                  
+                             https://ena-docs.readthedocs.io/en/                
+                             latest/submit/general-guide/accessi                
+                             ons.html for valid options                         
+2026-07-18 03:35:22 ERROR    CRX917377 is not a Study, Sample,   download.py:307
+                             Experiment, or Run accession. See                  
+                             https://ena-docs.readthedocs.io/en/                
+                             latest/submit/general-guide/accessi                
+                             ons.html for valid options                         

@@ -1,0 +1,242 @@
+[32mNote[0m: batch downloading 18 file(s) across 18 accession(s) with up to 18 worker(s) (configured max 40) (adaptive concurrency)
+05:06:12.261 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:12.558 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:12.572 adaptiseq.batch: downloaded SRR22904259.fastq.gz
+05:06:12.572 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:12.854 adaptiseq.batch: downloaded SRR22904353.fastq.gz
+05:06:12.855 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:13.105 adaptiseq.batch: downloaded SRR22904368.fastq.gz
+05:06:13.105 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:13.348 adaptiseq.batch: downloaded SRR22904389.fastq.gz
+05:06:13.348 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:13.592 adaptiseq.batch: downloaded SRR22904391.fastq.gz
+05:06:13.592 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:13.826 adaptiseq.batch: downloaded SRR22904396.fastq.gz
+05:06:13.826 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:14.794 adaptiseq.batch: downloaded SRR22904447.fastq.gz
+05:06:14.794 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:15.031 adaptiseq.batch: downloaded SRR22904461.fastq.gz
+05:06:15.031 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:15.270 adaptiseq.batch: downloaded SRR22904467.fastq.gz
+05:06:15.271 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:15.509 adaptiseq.batch: downloaded SRR22904470.fastq.gz
+05:06:15.509 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:06:15.746 adaptiseq.batch: downloaded SRR22904480.fastq.gz
+05:06:15.746 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+05:06:18.691 adaptiseq.batch: downloaded SRR22904292.fastq.gz
+05:06:20.481 adaptiseq.batch: downloaded SRR1031060
+05:06:20.482 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+05:06:21.891 adaptiseq.batch: adaptive probe: workers=1 throughput=494.1Mbps score=-489
+05:06:22.005 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+05:06:26.893 adaptiseq.batch: adaptive probe: workers=2 throughput=700.4Mbps score=-687
+05:06:26.939 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+05:06:31.894 adaptiseq.batch: adaptive probe: workers=3 throughput=1101.2Mbps score=-1069
+05:06:31.906 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+05:06:31.906 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+05:06:32.587 adaptiseq.batch: downloaded SRR1031066
+05:06:36.069 adaptiseq.batch: downloaded SRR1031101
+05:06:36.424 adaptiseq.batch: downloaded SRR1031074
+05:06:36.897 adaptiseq.batch: adaptive probe: workers=2 throughput=1557.9Mbps score=-1527
+05:06:38.382 adaptiseq.batch: downloaded SRR1031080
+05:06:41.009 adaptiseq.batch: downloaded SRR1031090
+[32mNote[0m: adaptive worker summary: 4 probe(s); best 1558 Mbps at 2 worker(s); last 1558 Mbps at 2 worker(s); recent: 1w@494Mbps, 2w@700Mbps, 3w@1101Mbps, 2w@1558Mbps
+[32mNote[0m: SRR22904259.metadata.tsv exists, skip downloading metadata for SRR22904259
+      SRR22904259.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904259.metadata.tsv
+[92mSRR22904259 download and md5 check successful, save SRR22904259 in success.log[0m
+=======================SRR22904259 download finished=======================
+[32mNote[0m: SRR22904292.metadata.tsv exists, skip downloading metadata for SRR22904292
+      SRR22904292.fastq.gz 0.20G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904292.metadata.tsv
+[92mSRR22904292 download and md5 check successful, save SRR22904292 in success.log[0m
+=======================SRR22904292 download finished=======================
+[32mNote[0m: SRR22904353.metadata.tsv exists, skip downloading metadata for SRR22904353
+      SRR22904353.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904353.metadata.tsv
+[92mSRR22904353 download and md5 check successful, save SRR22904353 in success.log[0m
+=======================SRR22904353 download finished=======================
+[32mNote[0m: SRR22904368.metadata.tsv exists, skip downloading metadata for SRR22904368
+      SRR22904368.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904368.metadata.tsv
+[92mSRR22904368 download and md5 check successful, save SRR22904368 in success.log[0m
+=======================SRR22904368 download finished=======================
+[32mNote[0m: SRR22904389.metadata.tsv exists, skip downloading metadata for SRR22904389
+      SRR22904389.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904389.metadata.tsv
+[92mSRR22904389 download and md5 check successful, save SRR22904389 in success.log[0m
+=======================SRR22904389 download finished=======================
+[32mNote[0m: SRR22904391.metadata.tsv exists, skip downloading metadata for SRR22904391
+      SRR22904391.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904391.metadata.tsv
+[92mSRR22904391 download and md5 check successful, save SRR22904391 in success.log[0m
+=======================SRR22904391 download finished=======================
+[32mNote[0m: SRR22904396.metadata.tsv exists, skip downloading metadata for SRR22904396
+      SRR22904396.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904396.metadata.tsv
+[92mSRR22904396 download and md5 check successful, save SRR22904396 in success.log[0m
+=======================SRR22904396 download finished=======================
+[32mNote[0m: SRR22904447.metadata.tsv exists, skip downloading metadata for SRR22904447
+      SRR22904447.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904447.metadata.tsv
+[92mSRR22904447 download and md5 check successful, save SRR22904447 in success.log[0m
+=======================SRR22904447 download finished=======================
+[32mNote[0m: SRR22904461.metadata.tsv exists, skip downloading metadata for SRR22904461
+      SRR22904461.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904461.metadata.tsv
+[92mSRR22904461 download and md5 check successful, save SRR22904461 in success.log[0m
+=======================SRR22904461 download finished=======================
+[32mNote[0m: SRR22904467.metadata.tsv exists, skip downloading metadata for SRR22904467
+      SRR22904467.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904467.metadata.tsv
+[92mSRR22904467 download and md5 check successful, save SRR22904467 in success.log[0m
+=======================SRR22904467 download finished=======================
+[32mNote[0m: SRR22904470.metadata.tsv exists, skip downloading metadata for SRR22904470
+      SRR22904470.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904470.metadata.tsv
+[92mSRR22904470 download and md5 check successful, save SRR22904470 in success.log[0m
+=======================SRR22904470 download finished=======================
+[32mNote[0m: SRR22904480.metadata.tsv exists, skip downloading metadata for SRR22904480
+      SRR22904480.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904480.metadata.tsv
+[92mSRR22904480 download and md5 check successful, save SRR22904480 in success.log[0m
+=======================SRR22904480 download finished=======================
+[32mNote[0m: SRR1031060.metadata.tsv exists, skip downloading metadata for SRR1031060
+      SRR1031060	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR1031060.metadata.tsv
+[93mNote[0m: SRR1031060 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.19G	Database: SRA	Mode: https
+05:06:42.655 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031060
+[93mNote[0m: SRR1031060 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.19G	Database: SRA	Mode: https
+05:06:43.936 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031060
+[93mNote[0m: SRR1031060 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.19G	Database: SRA	Mode: https
+05:06:45.714 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031060
+[91mSRR1031060 failed: no FASTQ files after retry, saving to fail.log[0m
+[32mNote[0m: Converting SRR1031060 to fastq files using 8 threads
+[32mNote[0m: Compressing SRR1031060_1.fastq to SRR1031060_1.fastq.gz using 8 threads, may take a while
+[32mNote[0m: Compressing SRR1031060_2.fastq to SRR1031060_2.fastq.gz using 8 threads, may take a while
+========================SRR1031060 download finished========================
+[32mNote[0m: SRR1031066.metadata.tsv exists, skip downloading metadata for SRR1031066
+      SRR1031066	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR1031066.metadata.tsv
+[93mNote[0m: SRR1031066 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.51G	Database: SRA	Mode: https
+05:06:57.842 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031066
+[93mNote[0m: SRR1031066 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.51G	Database: SRA	Mode: https
+05:06:59.401 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031066
+[93mNote[0m: SRR1031066 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.51G	Database: SRA	Mode: https
+05:07:01.528 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031066
+[91mSRR1031066 failed: no FASTQ files after retry, saving to fail.log[0m
+[32mNote[0m: Converting SRR1031066 to fastq files using 8 threads
+[32mNote[0m: Compressing SRR1031066_1.fastq to SRR1031066_1.fastq.gz using 8 threads, may take a while
+[32mNote[0m: Compressing SRR1031066_2.fastq to SRR1031066_2.fastq.gz using 8 threads, may take a while
+========================SRR1031066 download finished========================
+[32mNote[0m: SRR1031074.metadata.tsv exists, skip downloading metadata for SRR1031074
+      SRR1031074	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR1031074.metadata.tsv
+[93mNote[0m: SRR1031074 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.63G	Database: SRA	Mode: https
+05:07:27.000 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031074
+[93mNote[0m: SRR1031074 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.63G	Database: SRA	Mode: https
+05:07:28.132 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031074
+[93mNote[0m: SRR1031074 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.63G	Database: SRA	Mode: https
+05:07:28.981 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031074
+[91mSRR1031074 failed: no FASTQ files after retry, saving to fail.log[0m
+[32mNote[0m: Converting SRR1031074 to fastq files using 8 threads
+[32mNote[0m: Compressing SRR1031074_1.fastq to SRR1031074_1.fastq.gz using 8 threads, may take a while
+[32mNote[0m: Compressing SRR1031074_2.fastq to SRR1031074_2.fastq.gz using 8 threads, may take a while
+========================SRR1031074 download finished========================
+[32mNote[0m: SRR1031080.metadata.tsv exists, skip downloading metadata for SRR1031080
+      SRR1031080	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR1031080.metadata.tsv
+[93mNote[0m: SRR1031080 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.51G	Database: SRA	Mode: https
+05:08:13.403 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031080
+[93mNote[0m: SRR1031080 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.51G	Database: SRA	Mode: https
+05:08:14.345 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031080
+[93mNote[0m: SRR1031080 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.51G	Database: SRA	Mode: https
+05:08:15.240 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031080
+[91mSRR1031080 failed: no FASTQ files after retry, saving to fail.log[0m
+[32mNote[0m: Converting SRR1031080 to fastq files using 8 threads
+[32mNote[0m: Compressing SRR1031080_1.fastq to SRR1031080_1.fastq.gz using 8 threads, may take a while
+[32mNote[0m: Compressing SRR1031080_2.fastq to SRR1031080_2.fastq.gz using 8 threads, may take a while
+========================SRR1031080 download finished========================
+[32mNote[0m: SRR1031090.metadata.tsv exists, skip downloading metadata for SRR1031090
+      SRR1031090	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR1031090.metadata.tsv
+[93mNote[0m: SRR1031090 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.41G	Database: SRA	Mode: https
+05:08:53.059 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031090
+[93mNote[0m: SRR1031090 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.41G	Database: SRA	Mode: https
+05:08:53.996 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031090
+[93mNote[0m: SRR1031090 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.41G	Database: SRA	Mode: https
+05:08:54.821 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031090
+[91mSRR1031090 failed: no FASTQ files after retry, saving to fail.log[0m
+[32mNote[0m: Converting SRR1031090 to fastq files using 8 threads
+[32mNote[0m: Compressing SRR1031090_1.fastq to SRR1031090_1.fastq.gz using 8 threads, may take a while
+[32mNote[0m: Compressing SRR1031090_2.fastq to SRR1031090_2.fastq.gz using 8 threads, may take a while
+========================SRR1031090 download finished========================
+[32mNote[0m: SRR1031101.metadata.tsv exists, skip downloading metadata for SRR1031101
+      SRR1031101	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR1031101.metadata.tsv
+[93mNote[0m: SRR1031101 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.18G	Database: SRA	Mode: https
+05:09:23.565 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031101
+[93mNote[0m: SRR1031101 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.18G	Database: SRA	Mode: https
+05:09:24.518 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031101
+[93mNote[0m: SRR1031101 FASTQ file is also not available in the ENA database, switch to download SRA file
+File size: 0.18G	Database: SRA	Mode: https
+05:09:25.394 adaptiseq.engine.seam: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: No FASTQ files found for SRR1031101
+[91mSRR1031101 failed: no FASTQ files after retry, saving to fail.log[0m
+[32mNote[0m: Converting SRR1031101 to fastq files using 8 threads
+[32mNote[0m: Compressing SRR1031101_1.fastq to SRR1031101_1.fastq.gz using 8 threads, may take a while
+[32mNote[0m: Compressing SRR1031101_2.fastq to SRR1031101_2.fastq.gz using 8 threads, may take a while
+========================SRR1031101 download finished========================
+[32mNote[0m: CRX095512 belongs to CRA002399, CRA002399.metadata.xlsx will also be downloaded
+      CRR120307.fastq.gz 1.99G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRX095512.metadata.csv
+File size: 1.99G	Database: GSA	Mode: ftp
+05:10:07.751 adaptiseq.engine.seam: Transport for download.big.ac.cn: FTP supports REST + concurrency; segmented FTP
+05:11:24.700 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+05:12:14.278 adaptiseq.engine.ftp: FTP segment 1 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+05:12:15.279 adaptiseq.engine.ftp: Completed (ftp) CRR120307.fastq.gz
+[92mCRR120307.fastq.gz download and md5 check successful, save CRR120307.fastq.gz in success.log[0m
+========================CRX095512 download finished========================
+[32mNote[0m: CRX917377 belongs to CRA014342, CRA014342.metadata.xlsx will also be downloaded
+      CRR1007729.fq.gz 0.54G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRX917377.metadata.csv
+File size: 0.54G	Database: GSA	Mode: ftp
+05:12:40.558 adaptiseq.engine.seam: Transport for download.big.ac.cn: FTP supports REST + concurrency; segmented FTP
+05:13:32.257 adaptiseq.engine.ftp: Completed (ftp) CRR1007729.fq.gz
+[1;31mError[0m: Download failures detected. Please check [4mfail.log[0m for details.
+[1;33mNote:[0m You can re-run the script to retry failed items.
+[92mCRR1007729.fq.gz download and md5 check successful, save CRR1007729.fq.gz in success.log[0m
+========================CRX917377 download finished========================

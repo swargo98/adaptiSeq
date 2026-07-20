@@ -1,0 +1,39 @@
+2026-07-17 20:18:29 INFO     Query: SRR22904390                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904390...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/smoke_SMOKE_D1_fast ena.py:202
+                             q-dl_rep1/SRR22904390.fastq.gz FTP                 
+                             download attempt 1                                 
+2026-07-17 20:18:31 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/smoke_SMOKE_D1_fast           
+                             q-dl_rep1/SRR22904390.fastq.gz                     
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/smoke_SMOKE_D1                
+                             _fastq-dl_rep1/fastq-run-info.tsv                  
+2026-07-17 20:18:32 INFO     Query: SRR22904370                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904370...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/smoke_SMOKE_D1_fast ena.py:202
+                             q-dl_rep1/SRR22904370.fastq.gz FTP                 
+                             download attempt 1                                 
+2026-07-17 20:18:33 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/smoke_SMOKE_D1_fast           
+                             q-dl_rep1/SRR22904370.fastq.gz                     
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/smoke_SMOKE_D1                
+                             _fastq-dl_rep1/fastq-run-info.tsv                  
+2026-07-17 20:18:34 INFO     Query: SRR22904387                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904387...       download.py:402
+                    INFO     /mnt/nvme0n1/e3_work/smoke_SMOKE_D1_fast ena.py:202
+                             q-dl_rep1/SRR22904387.fastq.gz FTP                 
+                             download attempt 1                                 
+2026-07-17 20:18:35 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/e3_work/smoke_SMOKE_D1_fast           
+                             q-dl_rep1/SRR22904387.fastq.gz                     
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/e3_work/smoke_SMOKE_D1                
+                             _fastq-dl_rep1/fastq-run-info.tsv                  
