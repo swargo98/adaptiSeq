@@ -43,8 +43,18 @@ PATH = "/payload.bin"
 def make_body(size: int, seed: int) -> bytes:
     rng = random.Random(seed)
     # randbytes is deterministic under the seed and ~1000x faster than a
-    # getrandbits loop, which matters for the 64-256 MB test payloads.
-    return rng.randbytes(size)
+    # getrandbits loop. But CPython's randbytes(n) calls getrandbits(n*8), and on
+    # Python 3.10 n*8 >= 2**31 (i.e. size >= 256 MiB) raises OverflowError. Generate
+    # in <256 MiB chunks so the 256 MB circuit-breaker payload works too, while
+    # staying byte-for-byte deterministic under the seed.
+    chunk = 32 * 1024 * 1024
+    parts = []
+    remaining = size
+    while remaining > 0:
+        n = min(chunk, remaining)
+        parts.append(rng.randbytes(n))
+        remaining -= n
+    return b"".join(parts)
 
 
 class Origin(ThreadingHTTPServer):

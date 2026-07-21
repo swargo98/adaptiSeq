@@ -27,6 +27,10 @@ export E8_OUT="${E8_OUT:-$REPO_DIR/e8_results}"
 export E8_MD5_JOBS="${E8_MD5_JOBS:-8}"
 export DATASETS="${DATASETS:-$REPO_DIR/datasets}"
 export E8_HZ="${E8_HZ:-2}"
+# kingfisher 0.5.0 calls `prefetch -o FILE`, deprecated in sra-tools >=3.x (exit 3).
+# This env var re-enables the option so the kingfisher SRA arm works. Harmless to
+# every other tool. (Found on Fabric with sra-tools 3.4.1 + kingfisher 0.5.0.)
+export NCBI_VDB_PREFETCH_USES_OUTPUT_TO_FILE="${NCBI_VDB_PREFETCH_USES_OUTPUT_TO_FILE:-1}"
 # The SRA-only run for 8-SRA. NOT manifest-scored (SRA sizes are not in ENA).
 # VERIFY it is ~0.5-2 GB before the run (see plan §2) and override on the day.
 export E8_SRA_ACC="${E8_SRA_ACC:-SRR1031060}"
