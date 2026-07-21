@@ -1,0 +1,26 @@
+[32mNote[0m: batch downloading 1 file(s) across 1 accession(s) with up to 1 worker(s) (adaptive concurrency)
+04:25:03.120 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+04:25:03.433 adaptiseq.batch: downloaded SRR22904390.fastq.gz
+[32mNote[0m: SRR22904390.metadata.tsv exists, skip downloading metadata for SRR22904390
+      SRR22904390.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904390.metadata.tsv
+[92mSRR22904390 download and md5 check successful, save SRR22904390 in success.log[0m
+=======================SRR22904390 download finished=======================
+[32mNote[0m: batch downloading 1 file(s) across 1 accession(s) with up to 1 worker(s) (adaptive concurrency)
+04:25:04.013 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+04:25:04.118 adaptiseq.batch: downloaded SRR22904390.fastq.gz
+[32mNote[0m: SRR22904390.metadata.tsv exists, skip downloading metadata for SRR22904390
+      SRR22904390.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904390.metadata.tsv
+[91mMD5 mismatch for:[0m SRR22904390.fastq.gz
+[93mNote[0m: SRR22904390 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.00G	Database: ENA	Mode: ftp
+04:25:05.754 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[91mMD5 mismatch for:[0m SRR22904390.fastq.gz
+[93mNote[0m: SRR22904390 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.00G	Database: ENA	Mode: ftp
+04:25:08.066 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[92mSRR22904390 download and md5 check successful, save SRR22904390 in success.log[0m
+=======================SRR22904390 download finished=======================

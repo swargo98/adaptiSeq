@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/adaptiSeq/bench/e7/e7_origin.py", line 197, in <module>
+    sys.exit(main())
+  File "/home/ubuntu/adaptiSeq/bench/e7/e7_origin.py", line 170, in main
+    body = make_body(args.size, args.seed)
+  File "/home/ubuntu/adaptiSeq/bench/e7/e7_origin.py", line 47, in make_body
+    return rng.randbytes(size)
+  File "/usr/lib/python3.10/random.py", line 287, in randbytes
+    return self.getrandbits(n * 8).to_bytes(n, 'little')
+OverflowError: Python int too large to convert to C int
+Traceback (most recent call last):
+  File "/home/ubuntu/adaptiSeq/bench/e7/engine_probe.py", line 195, in <module>
+    sys.exit(main())
+  File "/home/ubuntu/adaptiSeq/bench/e7/engine_probe.py", line 180, in main
+    proc, info = start_origin(args.python, args.origin, mode, size, **extra)
+  File "/home/ubuntu/adaptiSeq/bench/e7/engine_probe.py", line 62, in start_origin
+    raise RuntimeError("origin failed to start")
+RuntimeError: origin failed to start

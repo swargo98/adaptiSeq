@@ -1,0 +1,9 @@
+subexp	check	mode	passed	detail	rep	host	stamp
+E7c-d	never_truncate	norange	PASS	size=67108864/67108864 md5=match	1	Node-FIU	2026-07-21T04:24:52+00:00
+E7c-d	short_read	truncate	PASS	not finalised (ok=False ); .part left, no corrupt final	1	Node-FIU	2026-07-21T04:24:56+00:00
+E7c-d	never_truncate	norange	PASS	size=67108864/67108864 md5=match	2	Node-FIU	2026-07-21T04:24:57+00:00
+E7c-d	short_read	truncate	PASS	not finalised (ok=False ); .part left, no corrupt final	2	Node-FIU	2026-07-21T04:25:01+00:00
+E7c-d	corruption	live-ena	PASS	corrupt byte detected; re-downloaded to valid md5	1	Node-FIU	2026-07-21T04:25:08+00:00
+E7c-d	circuit_breaker	live-ena-fabric	PASS	live pushbacks=42 completed_runs=200	1	Node-FIU	2026-07-21T04:31:10+00:00
+E7c-d	circuit_breaker	throttle	PASS	trips=4 cap_range=5..8 backoff=[1.0, 2.0, 4.0, 8.0] completed=yes ()	1	Node-FIU	2026-07-21T05:01:22+00:00
+E7c-d	circuit_breaker	throttle	PASS	trips=4 cap_range=5..8 backoff=[1.0, 2.0, 4.0, 8.0] completed=yes ()	2	Node-FIU	2026-07-21T05:01:25+00:00
