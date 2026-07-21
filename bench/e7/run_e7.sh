@@ -104,7 +104,11 @@ run_7e() {
 # Build a single-run list+manifest from D3_seg (one ~11.5 GB file) so the judge
 # scores exactly the file under test, then kill/restart at 3 fractions per tool.
 make_single_run() {
-    local base="$DATASETS/D3_seg_PRJNA540705"
+    # Default is D3_seg (~11.5 GB). E7_RESUME_DATASET overrides it with a smaller
+    # single-file run when the link is slow/variable (the .part resume-offset test
+    # is file-size-independent; a 404 MB run killed at 25/50/75% still leaves a
+    # 100-300 MB partial, which proves resume-from-offset just as well).
+    local base="$DATASETS/${E7_RESUME_DATASET:-D3_seg_PRJNA540705}"
     local run; run=$(head -1 "$base.txt")
     SINGLE_LIST="$E7_WORK/single_run.txt"
     SINGLE_MAN="$E7_WORK/single_run.manifest"

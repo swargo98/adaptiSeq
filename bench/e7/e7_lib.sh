@@ -64,9 +64,15 @@ run_corpus_arm() {
 
     # Retry rounds + fail.log entries: both adaptiSeq and iseq write these. Count
     # re-download rounds from the log, and fail.log lines from the arm's dir.
+    # NB: `grep -c ... || echo 0` is wrong -- grep -c already prints "0" on zero
+    # matches AND exits 1, so the `|| echo 0` appends a SECOND "0", embedding a
+    # newline in the field and splitting the TSV row. grep -c always prints exactly
+    # one number; keep only that (drop any stray newline) and default empty to 0.
     local retries fail_n
-    retries=$(grep -ci "re-download\|retry\|retrying\|round [0-9]" "$logf" 2>/dev/null || echo 0)
-    fail_n=$(find "$dir" -maxdepth 3 -name 'fail.log' -exec cat {} \; 2>/dev/null | grep -c . || echo 0)
+    retries=$(grep -ci "re-download\|retry\|retrying\|round [0-9]" "$logf" 2>/dev/null | head -1)
+    retries=${retries:-0}
+    fail_n=$(find "$dir" -maxdepth 3 -name 'fail.log' -exec cat {} \; 2>/dev/null | grep -c . | head -1)
+    fail_n=${fail_n:-0}
 
     printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
         "$subexp" "$dataset" "$arm" "$tool" "$rep" "$wall" "$rc" "$status" \
