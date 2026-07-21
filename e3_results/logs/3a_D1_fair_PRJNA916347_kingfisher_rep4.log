@@ -1,0 +1,2454 @@
+2026/07/19 04:34:33 AM INFO: Kingfisher v0.5.0
+2026/07/19 04:34:33 AM INFO: Attempting download method ena-ftp for run SRR22904253 ..
+2026/07/19 04:34:33 AM INFO: Querying ENA for FTP paths for SRR22904253..
+2026/07/19 04:34:33 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/053/SRR22904253/SRR22904253.fastq.gz ..
+
+07/19 04:34:33 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#a8193d 0B/0B CN:1 DL:0B]
+[#a8193d 16KiB/16KiB(100%) CN:1]
+
+07/19 04:34:35 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904253.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+a8193d|OK  |    29KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904253.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:35 AM INFO: MD5sum OK for SRR22904253.fastq.gz
+2026/07/19 04:34:35 AM INFO: Verifying gzip file ./SRR22904253.fastq.gz ..
+2026/07/19 04:34:35 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:35 AM INFO: Output files: ./SRR22904253.fastq.gz
+2026/07/19 04:34:35 AM INFO: Attempting download method ena-ftp for run SRR22904254 ..
+2026/07/19 04:34:35 AM INFO: Querying ENA for FTP paths for SRR22904254..
+2026/07/19 04:34:36 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/054/SRR22904254/SRR22904254.fastq.gz ..
+
+07/19 04:34:36 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#c77c24 0B/0B CN:1 DL:0B]
+
+07/19 04:34:38 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904254.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c77c24|OK  |    70KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904254.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:38 AM INFO: MD5sum OK for SRR22904254.fastq.gz
+2026/07/19 04:34:38 AM INFO: Verifying gzip file ./SRR22904254.fastq.gz ..
+2026/07/19 04:34:38 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:38 AM INFO: Output files: ./SRR22904254.fastq.gz
+2026/07/19 04:34:38 AM INFO: Attempting download method ena-ftp for run SRR22904255 ..
+2026/07/19 04:34:38 AM INFO: Querying ENA for FTP paths for SRR22904255..
+2026/07/19 04:34:38 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/055/SRR22904255/SRR22904255.fastq.gz ..
+
+07/19 04:34:38 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#c8407c 0B/0B CN:1 DL:0B]
+
+07/19 04:34:40 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904255.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c8407c|OK  |    42KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904255.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:40 AM INFO: MD5sum OK for SRR22904255.fastq.gz
+2026/07/19 04:34:40 AM INFO: Verifying gzip file ./SRR22904255.fastq.gz ..
+2026/07/19 04:34:40 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:40 AM INFO: Output files: ./SRR22904255.fastq.gz
+2026/07/19 04:34:40 AM INFO: Attempting download method ena-ftp for run SRR22904256 ..
+2026/07/19 04:34:40 AM INFO: Querying ENA for FTP paths for SRR22904256..
+2026/07/19 04:34:41 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/056/SRR22904256/SRR22904256.fastq.gz ..
+
+07/19 04:34:41 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#97c55e 0B/0B CN:1 DL:0B]
+
+07/19 04:34:43 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904256.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+97c55e|OK  |    38KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904256.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:43 AM INFO: MD5sum OK for SRR22904256.fastq.gz
+2026/07/19 04:34:43 AM INFO: Verifying gzip file ./SRR22904256.fastq.gz ..
+2026/07/19 04:34:43 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:43 AM INFO: Output files: ./SRR22904256.fastq.gz
+2026/07/19 04:34:43 AM INFO: Attempting download method ena-ftp for run SRR22904257 ..
+2026/07/19 04:34:43 AM INFO: Querying ENA for FTP paths for SRR22904257..
+2026/07/19 04:34:43 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/057/SRR22904257/SRR22904257.fastq.gz ..
+
+07/19 04:34:43 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#bffe9d 0B/0B CN:1 DL:0B]
+[#bffe9d 49KiB/49KiB(100%) CN:1]
+
+07/19 04:34:45 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904257.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+bffe9d|OK  |    72KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904257.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:45 AM INFO: MD5sum OK for SRR22904257.fastq.gz
+2026/07/19 04:34:45 AM INFO: Verifying gzip file ./SRR22904257.fastq.gz ..
+2026/07/19 04:34:45 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:45 AM INFO: Output files: ./SRR22904257.fastq.gz
+2026/07/19 04:34:45 AM INFO: Attempting download method ena-ftp for run SRR22904258 ..
+2026/07/19 04:34:45 AM INFO: Querying ENA for FTP paths for SRR22904258..
+2026/07/19 04:34:46 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/058/SRR22904258/SRR22904258.fastq.gz ..
+
+07/19 04:34:46 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4027b9 0B/0B CN:1 DL:0B]
+
+07/19 04:34:48 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904258.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4027b9|OK  |    58KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904258.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:48 AM INFO: MD5sum OK for SRR22904258.fastq.gz
+2026/07/19 04:34:48 AM INFO: Verifying gzip file ./SRR22904258.fastq.gz ..
+2026/07/19 04:34:48 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:48 AM INFO: Output files: ./SRR22904258.fastq.gz
+2026/07/19 04:34:48 AM INFO: Attempting download method ena-ftp for run SRR22904259 ..
+2026/07/19 04:34:48 AM INFO: Querying ENA for FTP paths for SRR22904259..
+2026/07/19 04:34:49 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/059/SRR22904259/SRR22904259.fastq.gz ..
+
+07/19 04:34:49 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#e51444 0B/0B CN:1 DL:0B]
+
+07/19 04:34:51 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904259.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+e51444|OK  |    45KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904259.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:51 AM INFO: MD5sum OK for SRR22904259.fastq.gz
+2026/07/19 04:34:51 AM INFO: Verifying gzip file ./SRR22904259.fastq.gz ..
+2026/07/19 04:34:51 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:51 AM INFO: Output files: ./SRR22904259.fastq.gz
+2026/07/19 04:34:51 AM INFO: Attempting download method ena-ftp for run SRR22904260 ..
+2026/07/19 04:34:51 AM INFO: Querying ENA for FTP paths for SRR22904260..
+2026/07/19 04:34:51 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/060/SRR22904260/SRR22904260.fastq.gz ..
+
+07/19 04:34:51 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#43a4c1 0B/0B CN:1 DL:0B]
+
+07/19 04:34:53 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904260.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+43a4c1|OK  |    79KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904260.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:53 AM INFO: MD5sum OK for SRR22904260.fastq.gz
+2026/07/19 04:34:53 AM INFO: Verifying gzip file ./SRR22904260.fastq.gz ..
+2026/07/19 04:34:53 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:53 AM INFO: Output files: ./SRR22904260.fastq.gz
+2026/07/19 04:34:53 AM INFO: Attempting download method ena-ftp for run SRR22904261 ..
+2026/07/19 04:34:53 AM INFO: Querying ENA for FTP paths for SRR22904261..
+2026/07/19 04:34:54 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/061/SRR22904261/SRR22904261.fastq.gz ..
+
+07/19 04:34:54 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#842e93 0B/0B CN:1 DL:0B]
+
+07/19 04:34:56 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904261.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+842e93|OK  |    58KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904261.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:56 AM INFO: MD5sum OK for SRR22904261.fastq.gz
+2026/07/19 04:34:56 AM INFO: Verifying gzip file ./SRR22904261.fastq.gz ..
+2026/07/19 04:34:56 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:56 AM INFO: Output files: ./SRR22904261.fastq.gz
+2026/07/19 04:34:56 AM INFO: Attempting download method ena-ftp for run SRR22904262 ..
+2026/07/19 04:34:56 AM INFO: Querying ENA for FTP paths for SRR22904262..
+2026/07/19 04:34:56 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/062/SRR22904262/SRR22904262.fastq.gz ..
+
+07/19 04:34:56 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#3a1c9d 0B/0B CN:1 DL:0B]
+
+07/19 04:34:58 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904262.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3a1c9d|OK  |    39KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904262.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:34:58 AM INFO: MD5sum OK for SRR22904262.fastq.gz
+2026/07/19 04:34:58 AM INFO: Verifying gzip file ./SRR22904262.fastq.gz ..
+2026/07/19 04:34:58 AM INFO: Method ena-ftp worked.
+2026/07/19 04:34:58 AM INFO: Output files: ./SRR22904262.fastq.gz
+2026/07/19 04:34:58 AM INFO: Attempting download method ena-ftp for run SRR22904263 ..
+2026/07/19 04:34:58 AM INFO: Querying ENA for FTP paths for SRR22904263..
+2026/07/19 04:34:59 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904263/SRR22904263.fastq.gz ..
+
+07/19 04:34:59 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#971a7f 0B/0B CN:1 DL:0B]
+
+07/19 04:35:01 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904263.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+971a7f|OK  |    53KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904263.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:01 AM INFO: MD5sum OK for SRR22904263.fastq.gz
+2026/07/19 04:35:01 AM INFO: Verifying gzip file ./SRR22904263.fastq.gz ..
+2026/07/19 04:35:01 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:01 AM INFO: Output files: ./SRR22904263.fastq.gz
+2026/07/19 04:35:01 AM INFO: Attempting download method ena-ftp for run SRR22904264 ..
+2026/07/19 04:35:01 AM INFO: Querying ENA for FTP paths for SRR22904264..
+2026/07/19 04:35:01 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904264/SRR22904264.fastq.gz ..
+
+07/19 04:35:01 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f36b87 0B/0B CN:1 DL:0B]
+[#f36b87 53KiB/53KiB(100%) CN:1]
+
+07/19 04:35:03 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904264.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f36b87|OK  |    80KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904264.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:03 AM INFO: MD5sum OK for SRR22904264.fastq.gz
+2026/07/19 04:35:03 AM INFO: Verifying gzip file ./SRR22904264.fastq.gz ..
+2026/07/19 04:35:03 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:03 AM INFO: Output files: ./SRR22904264.fastq.gz
+2026/07/19 04:35:03 AM INFO: Attempting download method ena-ftp for run SRR22904265 ..
+2026/07/19 04:35:03 AM INFO: Querying ENA for FTP paths for SRR22904265..
+2026/07/19 04:35:04 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/065/SRR22904265/SRR22904265.fastq.gz ..
+
+07/19 04:35:04 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#8826b0 0B/0B CN:1 DL:0B]
+
+07/19 04:35:06 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904265.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8826b0|OK  |    53KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904265.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:06 AM INFO: MD5sum OK for SRR22904265.fastq.gz
+2026/07/19 04:35:06 AM INFO: Verifying gzip file ./SRR22904265.fastq.gz ..
+2026/07/19 04:35:06 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:06 AM INFO: Output files: ./SRR22904265.fastq.gz
+2026/07/19 04:35:06 AM INFO: Attempting download method ena-ftp for run SRR22904266 ..
+2026/07/19 04:35:06 AM INFO: Querying ENA for FTP paths for SRR22904266..
+2026/07/19 04:35:06 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/066/SRR22904266/SRR22904266.fastq.gz ..
+
+07/19 04:35:06 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#144f38 0B/0B CN:1 DL:0B]
+[#144f38 24KiB/24KiB(100%) CN:1]
+
+07/19 04:35:08 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904266.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+144f38|OK  |    42KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904266.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:08 AM INFO: MD5sum OK for SRR22904266.fastq.gz
+2026/07/19 04:35:08 AM INFO: Verifying gzip file ./SRR22904266.fastq.gz ..
+2026/07/19 04:35:09 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:09 AM INFO: Output files: ./SRR22904266.fastq.gz
+2026/07/19 04:35:09 AM INFO: Attempting download method ena-ftp for run SRR22904267 ..
+2026/07/19 04:35:09 AM INFO: Querying ENA for FTP paths for SRR22904267..
+2026/07/19 04:35:09 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/067/SRR22904267/SRR22904267.fastq.gz ..
+
+07/19 04:35:09 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#c67543 0B/0B CN:1 DL:0B]
+
+07/19 04:35:11 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904267.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c67543|OK  |    61KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904267.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:11 AM INFO: MD5sum OK for SRR22904267.fastq.gz
+2026/07/19 04:35:11 AM INFO: Verifying gzip file ./SRR22904267.fastq.gz ..
+2026/07/19 04:35:11 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:11 AM INFO: Output files: ./SRR22904267.fastq.gz
+2026/07/19 04:35:11 AM INFO: Attempting download method ena-ftp for run SRR22904268 ..
+2026/07/19 04:35:11 AM INFO: Querying ENA for FTP paths for SRR22904268..
+2026/07/19 04:35:12 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904268/SRR22904268.fastq.gz ..
+
+07/19 04:35:12 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#2ddd74 0B/0B CN:1 DL:0B]
+[#2ddd74 32KiB/16MiB(0%) CN:1 DL:205KiB ETA:1m22s]
+[#2ddd74 16MiB/16MiB(100%) CN:1]
+
+07/19 04:35:15 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904268.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+2ddd74|OK  |   9.3MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904268.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:15 AM INFO: MD5sum OK for SRR22904268.fastq.gz
+2026/07/19 04:35:15 AM INFO: Verifying gzip file ./SRR22904268.fastq.gz ..
+2026/07/19 04:35:15 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:15 AM INFO: Output files: ./SRR22904268.fastq.gz
+2026/07/19 04:35:15 AM INFO: Attempting download method ena-ftp for run SRR22904271 ..
+2026/07/19 04:35:15 AM INFO: Querying ENA for FTP paths for SRR22904271..
+2026/07/19 04:35:16 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904271/SRR22904271.fastq.gz ..
+
+07/19 04:35:16 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f25134 0B/0B CN:1 DL:0B]
+[#f25134 0B/346MiB(0%) CN:5 DL:0B]
+[#f25134 1.1MiB/346MiB(0%) CN:5 DL:1.5MiB ETA:3m43s]
+[#f25134 51MiB/346MiB(14%) CN:5 DL:29MiB ETA:10s]
+[#f25134 163MiB/346MiB(47%) CN:5 DL:60MiB ETA:3s]
+[#f25134 324MiB/346MiB(93%) CN:2 DL:86MiB]
+
+07/19 04:35:23 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904271.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f25134|OK  |    67MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904271.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:24 AM INFO: MD5sum OK for SRR22904271.fastq.gz
+2026/07/19 04:35:24 AM INFO: Verifying gzip file ./SRR22904271.fastq.gz ..
+2026/07/19 04:35:28 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:28 AM INFO: Output files: ./SRR22904271.fastq.gz
+2026/07/19 04:35:28 AM INFO: Attempting download method ena-ftp for run SRR22904275 ..
+2026/07/19 04:35:28 AM INFO: Querying ENA for FTP paths for SRR22904275..
+2026/07/19 04:35:29 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/075/SRR22904275/SRR22904275.fastq.gz ..
+
+07/19 04:35:29 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#710534 0B/0B CN:1 DL:0B]
+[#710534 160KiB/334MiB(0%) CN:5 DL:447KiB ETA:12m45s]
+[#710534 26MiB/334MiB(7%) CN:5 DL:19MiB ETA:16s]
+[#710534 53MiB/334MiB(15%) CN:5 DL:22MiB ETA:12s]
+[#710534 172MiB/334MiB(51%) CN:5 DL:51MiB ETA:3s]
+[#710534 280MiB/334MiB(83%) CN:4 DL:64MiB]
+
+07/19 04:35:36 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904275.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+710534|OK  |    60MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904275.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:37 AM INFO: MD5sum OK for SRR22904275.fastq.gz
+2026/07/19 04:35:37 AM INFO: Verifying gzip file ./SRR22904275.fastq.gz ..
+2026/07/19 04:35:42 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:42 AM INFO: Output files: ./SRR22904275.fastq.gz
+2026/07/19 04:35:42 AM INFO: Attempting download method ena-ftp for run SRR22904277 ..
+2026/07/19 04:35:42 AM INFO: Querying ENA for FTP paths for SRR22904277..
+2026/07/19 04:35:43 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/077/SRR22904277/SRR22904277.fastq.gz ..
+
+07/19 04:35:43 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#0caf1c 0B/0B CN:1 DL:0B]
+[#0caf1c 192KiB/155MiB(0%) CN:4 DL:559KiB ETA:4m44s]
+[#0caf1c 23MiB/155MiB(15%) CN:4 DL:17MiB ETA:7s]
+[#0caf1c 54MiB/155MiB(35%) CN:3 DL:23MiB ETA:4s]
+[#0caf1c 152MiB/155MiB(97%) CN:1 DL:45MiB]
+
+07/19 04:35:48 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904277.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0caf1c|OK  |    39MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904277.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:35:48 AM INFO: MD5sum OK for SRR22904277.fastq.gz
+2026/07/19 04:35:48 AM INFO: Verifying gzip file ./SRR22904277.fastq.gz ..
+2026/07/19 04:35:50 AM INFO: Method ena-ftp worked.
+2026/07/19 04:35:50 AM INFO: Output files: ./SRR22904277.fastq.gz
+2026/07/19 04:35:50 AM INFO: Attempting download method ena-ftp for run SRR22904278 ..
+2026/07/19 04:35:50 AM INFO: Querying ENA for FTP paths for SRR22904278..
+2026/07/19 04:35:51 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/078/SRR22904278/SRR22904278.fastq.gz ..
+
+07/19 04:35:51 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f118eb 0B/0B CN:1 DL:0B]
+[#f118eb 128KiB/385MiB(0%) CN:5 DL:379KiB ETA:17m18s]
+[#f118eb 22MiB/385MiB(5%) CN:5 DL:17MiB ETA:21s]
+[#f118eb 58MiB/385MiB(15%) CN:5 DL:24MiB ETA:13s]
+[#f118eb 177MiB/385MiB(46%) CN:5 DL:53MiB ETA:3s]
+[#f118eb 278MiB/385MiB(72%) CN:5 DL:64MiB ETA:1s]
+[#f118eb 348MiB/385MiB(90%) CN:3 DL:65MiB]
+[#f118eb 366MiB/385MiB(95%) CN:1 DL:58MiB]
+
+07/19 04:36:00 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904278.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f118eb|OK  |    53MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904278.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:36:01 AM INFO: MD5sum OK for SRR22904278.fastq.gz
+2026/07/19 04:36:01 AM INFO: Verifying gzip file ./SRR22904278.fastq.gz ..
+2026/07/19 04:36:07 AM INFO: Method ena-ftp worked.
+2026/07/19 04:36:07 AM INFO: Output files: ./SRR22904278.fastq.gz
+2026/07/19 04:36:07 AM INFO: Attempting download method ena-ftp for run SRR22904279 ..
+2026/07/19 04:36:07 AM INFO: Querying ENA for FTP paths for SRR22904279..
+2026/07/19 04:36:07 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/079/SRR22904279/SRR22904279.fastq.gz ..
+
+07/19 04:36:07 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#9111cf 0B/0B CN:1 DL:0B]
+[#9111cf 80KiB/187MiB(0%) CN:5 DL:292KiB ETA:10m55s]
+[#9111cf 23MiB/187MiB(12%) CN:5 DL:17MiB ETA:9s]
+[#9111cf 49MiB/187MiB(26%) CN:5 DL:21MiB ETA:6s]
+[#9111cf 126MiB/187MiB(67%) CN:4 DL:37MiB ETA:1s]
+
+07/19 04:36:13 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904279.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+9111cf|OK  |    42MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904279.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:36:14 AM INFO: MD5sum OK for SRR22904279.fastq.gz
+2026/07/19 04:36:14 AM INFO: Verifying gzip file ./SRR22904279.fastq.gz ..
+2026/07/19 04:36:17 AM INFO: Method ena-ftp worked.
+2026/07/19 04:36:17 AM INFO: Output files: ./SRR22904279.fastq.gz
+2026/07/19 04:36:17 AM INFO: Attempting download method ena-ftp for run SRR22904280 ..
+2026/07/19 04:36:17 AM INFO: Querying ENA for FTP paths for SRR22904280..
+2026/07/19 04:36:17 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904280/SRR22904280.fastq.gz ..
+
+07/19 04:36:17 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#224ded 0B/0B CN:1 DL:0B]
+[#224ded 144KiB/149MiB(0%) CN:4 DL:360KiB ETA:7m4s]
+[#224ded 27MiB/149MiB(18%) CN:4 DL:19MiB ETA:6s]
+[#224ded 53MiB/149MiB(35%) CN:3 DL:22MiB ETA:4s]
+
+07/19 04:36:22 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904280.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+224ded|OK  |    42MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904280.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:36:23 AM INFO: MD5sum OK for SRR22904280.fastq.gz
+2026/07/19 04:36:23 AM INFO: Verifying gzip file ./SRR22904280.fastq.gz ..
+2026/07/19 04:36:25 AM INFO: Method ena-ftp worked.
+2026/07/19 04:36:25 AM INFO: Output files: ./SRR22904280.fastq.gz
+2026/07/19 04:36:25 AM INFO: Attempting download method ena-ftp for run SRR22904281 ..
+2026/07/19 04:36:25 AM INFO: Querying ENA for FTP paths for SRR22904281..
+2026/07/19 04:36:25 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/081/SRR22904281/SRR22904281.fastq.gz ..
+
+07/19 04:36:25 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#6092c6 0B/0B CN:1 DL:0B]
+[#6092c6 112KiB/341MiB(0%) CN:5 DL:365KiB ETA:15m57s]
+[#6092c6 6.1MiB/341MiB(1%) CN:5 DL:4.5MiB ETA:1m13s]
+[#6092c6 45MiB/341MiB(13%) CN:5 DL:19MiB ETA:15s]
+[#6092c6 147MiB/341MiB(43%) CN:5 DL:44MiB ETA:4s]
+[#6092c6 196MiB/341MiB(57%) CN:5 DL:45MiB ETA:3s]
+[#6092c6 215MiB/341MiB(63%) CN:5 DL:40MiB ETA:3s]
+[#6092c6 252MiB/341MiB(73%) CN:4 DL:40MiB ETA:2s]
+[#6092c6 280MiB/341MiB(82%) CN:2 DL:38MiB ETA:1s]
+[#6092c6 286MiB/341MiB(83%) CN:2 DL:34MiB ETA:1s]
+[#6092c6 292MiB/341MiB(85%) CN:2 DL:31MiB ETA:1s]
+[#6092c6 298MiB/341MiB(87%) CN:2 DL:31MiB ETA:1s]
+[#6092c6 304MiB/341MiB(89%) CN:2 DL:29MiB ETA:1s]
+[#6092c6 306MiB/341MiB(89%) CN:2 DL:20MiB ETA:1s]
+[#6092c6 309MiB/341MiB(90%) CN:2 DL:12MiB ETA:2s]
+[#6092c6 322MiB/341MiB(94%) CN:1 DL:12MiB ETA:1s]
+[#6092c6 324MiB/341MiB(94%) CN:1 DL:8.3MiB ETA:2s]
+[#6092c6 326MiB/341MiB(95%) CN:1 DL:5.1MiB ETA:2s]
+[#6092c6 329MiB/341MiB(96%) CN:1 DL:4.7MiB ETA:2s]
+[#6092c6 331MiB/341MiB(96%) CN:1 DL:4.3MiB ETA:2s]
+[#6092c6 333MiB/341MiB(97%) CN:1 DL:3.9MiB ETA:2s]
+[#6092c6 335MiB/341MiB(98%) CN:1 DL:3.4MiB ETA:1s]
+[#6092c6 338MiB/341MiB(98%) CN:1 DL:3.4MiB ETA:1s]
+[#6092c6 338MiB/341MiB(98%) CN:1 DL:3.1MiB ETA:1s]
+[#6092c6 338MiB/341MiB(98%) CN:1 DL:1.9MiB ETA:1s]
+
+07/19 04:36:52 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904281.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+6092c6|OK  |    14MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904281.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:36:52 AM INFO: MD5sum OK for SRR22904281.fastq.gz
+2026/07/19 04:36:52 AM INFO: Verifying gzip file ./SRR22904281.fastq.gz ..
+2026/07/19 04:36:58 AM INFO: Method ena-ftp worked.
+2026/07/19 04:36:58 AM INFO: Output files: ./SRR22904281.fastq.gz
+2026/07/19 04:36:58 AM INFO: Attempting download method ena-ftp for run SRR22904282 ..
+2026/07/19 04:36:58 AM INFO: Querying ENA for FTP paths for SRR22904282..
+2026/07/19 04:36:58 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904282/SRR22904282.fastq.gz ..
+
+07/19 04:36:58 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#701d7f 0B/0B CN:1 DL:0B]
+[#701d7f 0B/227MiB(0%) CN:5 DL:0B]
+[#701d7f 0B/227MiB(0%) CN:5 DL:0B]
+[#701d7f 15MiB/227MiB(6%) CN:5 DL:15MiB ETA:13s]
+[#701d7f 113MiB/227MiB(49%) CN:4 DL:57MiB ETA:1s]
+[#701d7f 171MiB/227MiB(75%) CN:2 DL:57MiB]
+[#701d7f 199MiB/227MiB(87%) CN:1 DL:49MiB]
+
+07/19 04:37:07 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904282.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+701d7f|OK  |    33MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904282.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:37:07 AM INFO: MD5sum OK for SRR22904282.fastq.gz
+2026/07/19 04:37:07 AM INFO: Verifying gzip file ./SRR22904282.fastq.gz ..
+2026/07/19 04:37:11 AM INFO: Method ena-ftp worked.
+2026/07/19 04:37:11 AM INFO: Output files: ./SRR22904282.fastq.gz
+2026/07/19 04:37:11 AM INFO: Attempting download method ena-ftp for run SRR22904287 ..
+2026/07/19 04:37:11 AM INFO: Querying ENA for FTP paths for SRR22904287..
+2026/07/19 04:37:11 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/087/SRR22904287/SRR22904287.fastq.gz ..
+
+07/19 04:37:11 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#1c3d2d 0B/0B CN:1 DL:0B]
+[#1c3d2d 0B/145MiB(0%) CN:4 DL:0B]
+[#1c3d2d 0B/145MiB(0%) CN:4 DL:0B]
+[#1c3d2d 19MiB/145MiB(13%) CN:4 DL:19MiB ETA:6s]
+[#1c3d2d 145MiB/145MiB(100%) CN:1]
+
+07/19 04:37:17 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904287.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1c3d2d|OK  |    38MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904287.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:37:17 AM INFO: MD5sum OK for SRR22904287.fastq.gz
+2026/07/19 04:37:17 AM INFO: Verifying gzip file ./SRR22904287.fastq.gz ..
+2026/07/19 04:37:20 AM INFO: Method ena-ftp worked.
+2026/07/19 04:37:20 AM INFO: Output files: ./SRR22904287.fastq.gz
+2026/07/19 04:37:20 AM INFO: Attempting download method ena-ftp for run SRR22904290 ..
+2026/07/19 04:37:20 AM INFO: Querying ENA for FTP paths for SRR22904290..
+2026/07/19 04:37:20 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/090/SRR22904290/SRR22904290.fastq.gz ..
+
+07/19 04:37:20 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#a070f9 0B/0B CN:1 DL:0B]
+[#a070f9 0B/147MiB(0%) CN:4 DL:0B]
+[#a070f9 32KiB/147MiB(0%) CN:4 DL:248KiB ETA:10m7s]
+[#a070f9 18MiB/147MiB(12%) CN:4 DL:15MiB ETA:8s]
+[#a070f9 129MiB/147MiB(88%) CN:1 DL:58MiB]
+
+07/19 04:37:26 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904290.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+a070f9|OK  |    35MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904290.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:37:26 AM INFO: MD5sum OK for SRR22904290.fastq.gz
+2026/07/19 04:37:26 AM INFO: Verifying gzip file ./SRR22904290.fastq.gz ..
+2026/07/19 04:37:28 AM INFO: Method ena-ftp worked.
+2026/07/19 04:37:28 AM INFO: Output files: ./SRR22904290.fastq.gz
+2026/07/19 04:37:28 AM INFO: Attempting download method ena-ftp for run SRR22904291 ..
+2026/07/19 04:37:28 AM INFO: Querying ENA for FTP paths for SRR22904291..
+2026/07/19 04:37:29 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/091/SRR22904291/SRR22904291.fastq.gz ..
+
+07/19 04:37:29 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f4ff27 0B/0B CN:1 DL:0B]
+[#f4ff27 0B/343MiB(0%) CN:5 DL:0B]
+[#f4ff27 0B/343MiB(0%) CN:5 DL:0B]
+[#f4ff27 9.6MiB/343MiB(2%) CN:5 DL:11MiB ETA:29s]
+[#f4ff27 130MiB/343MiB(37%) CN:5 DL:70MiB ETA:3s]
+[#f4ff27 207MiB/343MiB(60%) CN:5 DL:73MiB ETA:1s]
+[#f4ff27 259MiB/343MiB(75%) CN:4 DL:67MiB ETA:1s]
+[#f4ff27 288MiB/343MiB(84%) CN:3 DL:59MiB]
+[#f4ff27 311MiB/343MiB(90%) CN:2 DL:53MiB]
+[#f4ff27 323MiB/343MiB(94%) CN:1 DL:47MiB]
+[#f4ff27 324MiB/343MiB(94%) CN:1 DL:41MiB]
+[#f4ff27 324MiB/343MiB(94%) CN:1 DL:36MiB]
+[#f4ff27 324MiB/343MiB(94%) CN:1 DL:32MiB]
+
+07/19 04:37:43 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904291.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f4ff27|OK  |    26MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904291.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:37:44 AM INFO: MD5sum OK for SRR22904291.fastq.gz
+2026/07/19 04:37:44 AM INFO: Verifying gzip file ./SRR22904291.fastq.gz ..
+2026/07/19 04:37:50 AM INFO: Method ena-ftp worked.
+2026/07/19 04:37:50 AM INFO: Output files: ./SRR22904291.fastq.gz
+2026/07/19 04:37:50 AM INFO: Attempting download method ena-ftp for run SRR22904292 ..
+2026/07/19 04:37:50 AM INFO: Querying ENA for FTP paths for SRR22904292..
+2026/07/19 04:37:50 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/092/SRR22904292/SRR22904292.fastq.gz ..
+
+07/19 04:37:50 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4a4bc6 0B/0B CN:1 DL:0B]
+[#4a4bc6 0B/204MiB(0%) CN:5 DL:0B]
+[#4a4bc6 1.6MiB/204MiB(0%) CN:5 DL:2.3MiB ETA:1m27s]
+[#4a4bc6 33MiB/204MiB(16%) CN:5 DL:19MiB ETA:8s]
+[#4a4bc6 135MiB/204MiB(66%) CN:4 DL:50MiB ETA:1s]
+
+07/19 04:37:56 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904292.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4a4bc6|OK  |    43MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904292.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:37:57 AM INFO: MD5sum OK for SRR22904292.fastq.gz
+2026/07/19 04:37:57 AM INFO: Verifying gzip file ./SRR22904292.fastq.gz ..
+2026/07/19 04:37:59 AM INFO: Method ena-ftp worked.
+2026/07/19 04:37:59 AM INFO: Output files: ./SRR22904292.fastq.gz
+2026/07/19 04:37:59 AM INFO: Attempting download method ena-ftp for run SRR22904293 ..
+2026/07/19 04:37:59 AM INFO: Querying ENA for FTP paths for SRR22904293..
+2026/07/19 04:38:00 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/093/SRR22904293/SRR22904293.fastq.gz ..
+
+07/19 04:38:00 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#56cd75 0B/0B CN:1 DL:0B]
+[#56cd75 0B/139MiB(0%) CN:4 DL:0B]
+[#56cd75 6.0MiB/139MiB(4%) CN:4 DL:5.8MiB ETA:22s]
+[#56cd75 43MiB/139MiB(31%) CN:3 DL:21MiB ETA:4s]
+[#56cd75 99MiB/139MiB(71%) CN:2 DL:32MiB ETA:1s]
+
+07/19 04:38:06 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904293.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+56cd75|OK  |    31MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904293.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:06 AM INFO: MD5sum OK for SRR22904293.fastq.gz
+2026/07/19 04:38:06 AM INFO: Verifying gzip file ./SRR22904293.fastq.gz ..
+2026/07/19 04:38:08 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:08 AM INFO: Output files: ./SRR22904293.fastq.gz
+2026/07/19 04:38:08 AM INFO: Attempting download method ena-ftp for run SRR22904297 ..
+2026/07/19 04:38:08 AM INFO: Querying ENA for FTP paths for SRR22904297..
+2026/07/19 04:38:09 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/097/SRR22904297/SRR22904297.fastq.gz ..
+
+07/19 04:38:09 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#566888 0B/0B CN:1 DL:0B]
+[#566888 0B/138MiB(0%) CN:4 DL:0B]
+[#566888 9.0MiB/138MiB(6%) CN:4 DL:8.6MiB ETA:14s]
+[#566888 42MiB/138MiB(30%) CN:3 DL:20MiB ETA:4s]
+[#566888 109MiB/138MiB(79%) CN:1 DL:34MiB]
+
+07/19 04:38:15 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904297.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+566888|OK  |    30MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904297.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:15 AM INFO: MD5sum OK for SRR22904297.fastq.gz
+2026/07/19 04:38:15 AM INFO: Verifying gzip file ./SRR22904297.fastq.gz ..
+2026/07/19 04:38:17 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:17 AM INFO: Output files: ./SRR22904297.fastq.gz
+2026/07/19 04:38:17 AM INFO: Attempting download method ena-ftp for run SRR22904299 ..
+2026/07/19 04:38:17 AM INFO: Querying ENA for FTP paths for SRR22904299..
+2026/07/19 04:38:18 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/099/SRR22904299/SRR22904299.fastq.gz ..
+
+07/19 04:38:18 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#3046be 0B/0B CN:1 DL:0B]
+[#3046be 0B/199MiB(0%) CN:5 DL:0B]
+[#3046be 8.0MiB/199MiB(4%) CN:5 DL:8.3MiB ETA:22s]
+[#3046be 37MiB/199MiB(18%) CN:5 DL:19MiB ETA:8s]
+[#3046be 142MiB/199MiB(71%) CN:3 DL:48MiB ETA:1s]
+[#3046be 190MiB/199MiB(95%) CN:1 DL:48MiB]
+
+07/19 04:38:24 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904299.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3046be|OK  |    40MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904299.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:25 AM INFO: MD5sum OK for SRR22904299.fastq.gz
+2026/07/19 04:38:25 AM INFO: Verifying gzip file ./SRR22904299.fastq.gz ..
+2026/07/19 04:38:28 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:28 AM INFO: Output files: ./SRR22904299.fastq.gz
+2026/07/19 04:38:28 AM INFO: Attempting download method ena-ftp for run SRR22904300 ..
+2026/07/19 04:38:28 AM INFO: Querying ENA for FTP paths for SRR22904300..
+2026/07/19 04:38:28 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/000/SRR22904300/SRR22904300.fastq.gz ..
+
+07/19 04:38:29 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#febfc0 0B/0B CN:1 DL:0B]
+[#febfc0 32KiB/53KiB(60%) CN:1 DL:205KiB]
+
+07/19 04:38:31 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904300.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+febfc0|OK  |    81KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904300.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:31 AM INFO: MD5sum OK for SRR22904300.fastq.gz
+2026/07/19 04:38:31 AM INFO: Verifying gzip file ./SRR22904300.fastq.gz ..
+2026/07/19 04:38:31 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:31 AM INFO: Output files: ./SRR22904300.fastq.gz
+2026/07/19 04:38:31 AM INFO: Attempting download method ena-ftp for run SRR22904301 ..
+2026/07/19 04:38:31 AM INFO: Querying ENA for FTP paths for SRR22904301..
+2026/07/19 04:38:31 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/001/SRR22904301/SRR22904301.fastq.gz ..
+
+07/19 04:38:31 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#fe1772 0B/0B CN:1 DL:0B]
+[#fe1772 33KiB/33KiB(100%) CN:1]
+
+07/19 04:38:33 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904301.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+fe1772|OK  |    60KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904301.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:33 AM INFO: MD5sum OK for SRR22904301.fastq.gz
+2026/07/19 04:38:33 AM INFO: Verifying gzip file ./SRR22904301.fastq.gz ..
+2026/07/19 04:38:33 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:33 AM INFO: Output files: ./SRR22904301.fastq.gz
+2026/07/19 04:38:33 AM INFO: Attempting download method ena-ftp for run SRR22904302 ..
+2026/07/19 04:38:33 AM INFO: Querying ENA for FTP paths for SRR22904302..
+2026/07/19 04:38:34 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/002/SRR22904302/SRR22904302.fastq.gz ..
+
+07/19 04:38:34 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4d4fe5 0B/0B CN:1 DL:0B]
+
+07/19 04:38:36 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904302.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4d4fe5|OK  |    43KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904302.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:36 AM INFO: MD5sum OK for SRR22904302.fastq.gz
+2026/07/19 04:38:36 AM INFO: Verifying gzip file ./SRR22904302.fastq.gz ..
+2026/07/19 04:38:36 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:36 AM INFO: Output files: ./SRR22904302.fastq.gz
+2026/07/19 04:38:36 AM INFO: Attempting download method ena-ftp for run SRR22904303 ..
+2026/07/19 04:38:36 AM INFO: Querying ENA for FTP paths for SRR22904303..
+2026/07/19 04:38:36 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/003/SRR22904303/SRR22904303.fastq.gz ..
+
+07/19 04:38:36 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#a6cfa5 0B/0B CN:1 DL:0B]
+[#a6cfa5 53KiB/53KiB(100%) CN:1]
+
+07/19 04:38:38 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904303.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+a6cfa5|OK  |    81KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904303.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:38 AM INFO: MD5sum OK for SRR22904303.fastq.gz
+2026/07/19 04:38:38 AM INFO: Verifying gzip file ./SRR22904303.fastq.gz ..
+2026/07/19 04:38:38 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:38 AM INFO: Output files: ./SRR22904303.fastq.gz
+2026/07/19 04:38:38 AM INFO: Attempting download method ena-ftp for run SRR22904304 ..
+2026/07/19 04:38:38 AM INFO: Querying ENA for FTP paths for SRR22904304..
+2026/07/19 04:38:39 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904304/SRR22904304.fastq.gz ..
+
+07/19 04:38:39 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#3b0332 0B/0B CN:1 DL:0B]
+[#3b0332 30KiB/30KiB(100%) CN:1]
+
+07/19 04:38:41 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904304.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3b0332|OK  |    55KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904304.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:41 AM INFO: MD5sum OK for SRR22904304.fastq.gz
+2026/07/19 04:38:41 AM INFO: Verifying gzip file ./SRR22904304.fastq.gz ..
+2026/07/19 04:38:41 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:41 AM INFO: Output files: ./SRR22904304.fastq.gz
+2026/07/19 04:38:41 AM INFO: Attempting download method ena-ftp for run SRR22904305 ..
+2026/07/19 04:38:41 AM INFO: Querying ENA for FTP paths for SRR22904305..
+2026/07/19 04:38:41 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/005/SRR22904305/SRR22904305.fastq.gz ..
+
+07/19 04:38:41 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#81c656 0B/0B CN:1 DL:0B]
+
+07/19 04:38:43 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904305.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+81c656|OK  |    46KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904305.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:43 AM INFO: MD5sum OK for SRR22904305.fastq.gz
+2026/07/19 04:38:43 AM INFO: Verifying gzip file ./SRR22904305.fastq.gz ..
+2026/07/19 04:38:43 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:43 AM INFO: Output files: ./SRR22904305.fastq.gz
+2026/07/19 04:38:43 AM INFO: Attempting download method ena-ftp for run SRR22904306 ..
+2026/07/19 04:38:43 AM INFO: Querying ENA for FTP paths for SRR22904306..
+2026/07/19 04:38:44 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904306/SRR22904306.fastq.gz ..
+
+07/19 04:38:44 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#1324a2 0B/0B CN:1 DL:0B]
+
+07/19 04:38:46 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904306.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1324a2|OK  |    61KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904306.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:46 AM INFO: MD5sum OK for SRR22904306.fastq.gz
+2026/07/19 04:38:46 AM INFO: Verifying gzip file ./SRR22904306.fastq.gz ..
+2026/07/19 04:38:46 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:46 AM INFO: Output files: ./SRR22904306.fastq.gz
+2026/07/19 04:38:46 AM INFO: Attempting download method ena-ftp for run SRR22904308 ..
+2026/07/19 04:38:46 AM INFO: Querying ENA for FTP paths for SRR22904308..
+2026/07/19 04:38:46 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/008/SRR22904308/SRR22904308.fastq.gz ..
+
+07/19 04:38:46 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#06260d 0B/0B CN:1 DL:0B]
+
+07/19 04:38:48 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904308.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+06260d|OK  |    37KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904308.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:48 AM INFO: MD5sum OK for SRR22904308.fastq.gz
+2026/07/19 04:38:48 AM INFO: Verifying gzip file ./SRR22904308.fastq.gz ..
+2026/07/19 04:38:48 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:48 AM INFO: Output files: ./SRR22904308.fastq.gz
+2026/07/19 04:38:48 AM INFO: Attempting download method ena-ftp for run SRR22904309 ..
+2026/07/19 04:38:48 AM INFO: Querying ENA for FTP paths for SRR22904309..
+2026/07/19 04:38:49 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/009/SRR22904309/SRR22904309.fastq.gz ..
+
+07/19 04:38:49 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#9b628d 0B/0B CN:1 DL:0B]
+
+07/19 04:38:51 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904309.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+9b628d|OK  |    30KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904309.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:51 AM INFO: MD5sum OK for SRR22904309.fastq.gz
+2026/07/19 04:38:51 AM INFO: Verifying gzip file ./SRR22904309.fastq.gz ..
+2026/07/19 04:38:51 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:51 AM INFO: Output files: ./SRR22904309.fastq.gz
+2026/07/19 04:38:51 AM INFO: Attempting download method ena-ftp for run SRR22904310 ..
+2026/07/19 04:38:51 AM INFO: Querying ENA for FTP paths for SRR22904310..
+2026/07/19 04:38:51 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/010/SRR22904310/SRR22904310.fastq.gz ..
+
+07/19 04:38:51 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#a99e89 0B/0B CN:1 DL:0B]
+
+07/19 04:38:53 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904310.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+a99e89|OK  |    51KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904310.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:53 AM INFO: MD5sum OK for SRR22904310.fastq.gz
+2026/07/19 04:38:53 AM INFO: Verifying gzip file ./SRR22904310.fastq.gz ..
+2026/07/19 04:38:53 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:53 AM INFO: Output files: ./SRR22904310.fastq.gz
+2026/07/19 04:38:53 AM INFO: Attempting download method ena-ftp for run SRR22904311 ..
+2026/07/19 04:38:53 AM INFO: Querying ENA for FTP paths for SRR22904311..
+2026/07/19 04:38:54 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/011/SRR22904311/SRR22904311.fastq.gz ..
+
+07/19 04:38:54 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#3be129 0B/0B CN:1 DL:0B]
+
+07/19 04:38:56 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904311.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3be129|OK  |    32KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904311.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:56 AM INFO: MD5sum OK for SRR22904311.fastq.gz
+2026/07/19 04:38:56 AM INFO: Verifying gzip file ./SRR22904311.fastq.gz ..
+2026/07/19 04:38:56 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:56 AM INFO: Output files: ./SRR22904311.fastq.gz
+2026/07/19 04:38:56 AM INFO: Attempting download method ena-ftp for run SRR22904312 ..
+2026/07/19 04:38:56 AM INFO: Querying ENA for FTP paths for SRR22904312..
+2026/07/19 04:38:56 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/012/SRR22904312/SRR22904312.fastq.gz ..
+
+07/19 04:38:56 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4aa586 0B/0B CN:1 DL:0B]
+
+07/19 04:38:58 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904312.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4aa586|OK  |    29KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904312.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:38:58 AM INFO: MD5sum OK for SRR22904312.fastq.gz
+2026/07/19 04:38:58 AM INFO: Verifying gzip file ./SRR22904312.fastq.gz ..
+2026/07/19 04:38:58 AM INFO: Method ena-ftp worked.
+2026/07/19 04:38:58 AM INFO: Output files: ./SRR22904312.fastq.gz
+2026/07/19 04:38:58 AM INFO: Attempting download method ena-ftp for run SRR22904314 ..
+2026/07/19 04:38:58 AM INFO: Querying ENA for FTP paths for SRR22904314..
+2026/07/19 04:38:59 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/014/SRR22904314/SRR22904314.fastq.gz ..
+
+07/19 04:38:59 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4ad5b4 0B/0B CN:1 DL:0B]
+
+07/19 04:39:01 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904314.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4ad5b4|OK  |    42KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904314.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:01 AM INFO: MD5sum OK for SRR22904314.fastq.gz
+2026/07/19 04:39:01 AM INFO: Verifying gzip file ./SRR22904314.fastq.gz ..
+2026/07/19 04:39:01 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:01 AM INFO: Output files: ./SRR22904314.fastq.gz
+2026/07/19 04:39:01 AM INFO: Attempting download method ena-ftp for run SRR22904315 ..
+2026/07/19 04:39:01 AM INFO: Querying ENA for FTP paths for SRR22904315..
+2026/07/19 04:39:02 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/015/SRR22904315/SRR22904315.fastq.gz ..
+
+07/19 04:39:02 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#43d435 0B/0B CN:1 DL:0B]
+
+07/19 04:39:04 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904315.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+43d435|OK  |    38KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904315.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:04 AM INFO: MD5sum OK for SRR22904315.fastq.gz
+2026/07/19 04:39:04 AM INFO: Verifying gzip file ./SRR22904315.fastq.gz ..
+2026/07/19 04:39:04 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:04 AM INFO: Output files: ./SRR22904315.fastq.gz
+2026/07/19 04:39:04 AM INFO: Attempting download method ena-ftp for run SRR22904316 ..
+2026/07/19 04:39:04 AM INFO: Querying ENA for FTP paths for SRR22904316..
+2026/07/19 04:39:04 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/016/SRR22904316/SRR22904316.fastq.gz ..
+
+07/19 04:39:04 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#dc144b 0B/0B CN:1 DL:0B]
+[#dc144b 32KiB/49KiB(65%) CN:1 DL:205KiB]
+
+07/19 04:39:06 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904316.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+dc144b|OK  |    73KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904316.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:06 AM INFO: MD5sum OK for SRR22904316.fastq.gz
+2026/07/19 04:39:06 AM INFO: Verifying gzip file ./SRR22904316.fastq.gz ..
+2026/07/19 04:39:06 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:06 AM INFO: Output files: ./SRR22904316.fastq.gz
+2026/07/19 04:39:06 AM INFO: Attempting download method ena-ftp for run SRR22904317 ..
+2026/07/19 04:39:06 AM INFO: Querying ENA for FTP paths for SRR22904317..
+2026/07/19 04:39:07 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/017/SRR22904317/SRR22904317.fastq.gz ..
+
+07/19 04:39:07 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#3bb94d 0B/0B CN:1 DL:0B]
+
+07/19 04:39:09 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904317.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3bb94d|OK  |    60KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904317.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:09 AM INFO: MD5sum OK for SRR22904317.fastq.gz
+2026/07/19 04:39:09 AM INFO: Verifying gzip file ./SRR22904317.fastq.gz ..
+2026/07/19 04:39:09 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:09 AM INFO: Output files: ./SRR22904317.fastq.gz
+2026/07/19 04:39:09 AM INFO: Attempting download method ena-ftp for run SRR22904319 ..
+2026/07/19 04:39:09 AM INFO: Querying ENA for FTP paths for SRR22904319..
+2026/07/19 04:39:10 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/019/SRR22904319/SRR22904319.fastq.gz ..
+
+07/19 04:39:10 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#2ed145 0B/0B CN:1 DL:0B]
+[#2ed145 24KiB/24KiB(100%) CN:1]
+
+07/19 04:39:12 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904319.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+2ed145|OK  |    45KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904319.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:12 AM INFO: MD5sum OK for SRR22904319.fastq.gz
+2026/07/19 04:39:12 AM INFO: Verifying gzip file ./SRR22904319.fastq.gz ..
+2026/07/19 04:39:12 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:12 AM INFO: Output files: ./SRR22904319.fastq.gz
+2026/07/19 04:39:12 AM INFO: Attempting download method ena-ftp for run SRR22904320 ..
+2026/07/19 04:39:12 AM INFO: Querying ENA for FTP paths for SRR22904320..
+2026/07/19 04:39:12 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/020/SRR22904320/SRR22904320.fastq.gz ..
+
+07/19 04:39:12 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#5f93cc 0B/0B CN:1 DL:0B]
+[#5f93cc 50KiB/50KiB(100%) CN:1]
+
+07/19 04:39:14 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904320.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+5f93cc|OK  |    75KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904320.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:14 AM INFO: MD5sum OK for SRR22904320.fastq.gz
+2026/07/19 04:39:14 AM INFO: Verifying gzip file ./SRR22904320.fastq.gz ..
+2026/07/19 04:39:14 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:14 AM INFO: Output files: ./SRR22904320.fastq.gz
+2026/07/19 04:39:14 AM INFO: Attempting download method ena-ftp for run SRR22904321 ..
+2026/07/19 04:39:14 AM INFO: Querying ENA for FTP paths for SRR22904321..
+2026/07/19 04:39:15 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/021/SRR22904321/SRR22904321.fastq.gz ..
+
+07/19 04:39:15 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#50ba3d 0B/0B CN:1 DL:0B]
+
+07/19 04:39:17 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904321.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+50ba3d|OK  |    59KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904321.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:17 AM INFO: MD5sum OK for SRR22904321.fastq.gz
+2026/07/19 04:39:17 AM INFO: Verifying gzip file ./SRR22904321.fastq.gz ..
+2026/07/19 04:39:17 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:17 AM INFO: Output files: ./SRR22904321.fastq.gz
+2026/07/19 04:39:17 AM INFO: Attempting download method ena-ftp for run SRR22904322 ..
+2026/07/19 04:39:17 AM INFO: Querying ENA for FTP paths for SRR22904322..
+2026/07/19 04:39:17 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/022/SRR22904322/SRR22904322.fastq.gz ..
+
+07/19 04:39:17 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#8a8250 0B/0B CN:1 DL:0B]
+
+07/19 04:39:19 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904322.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8a8250|OK  |    40KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904322.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:19 AM INFO: MD5sum OK for SRR22904322.fastq.gz
+2026/07/19 04:39:19 AM INFO: Verifying gzip file ./SRR22904322.fastq.gz ..
+2026/07/19 04:39:19 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:19 AM INFO: Output files: ./SRR22904322.fastq.gz
+2026/07/19 04:39:19 AM INFO: Attempting download method ena-ftp for run SRR22904323 ..
+2026/07/19 04:39:19 AM INFO: Querying ENA for FTP paths for SRR22904323..
+2026/07/19 04:39:20 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/023/SRR22904323/SRR22904323.fastq.gz ..
+
+07/19 04:39:20 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#40e76f 0B/0B CN:1 DL:0B]
+[#40e76f 51KiB/51KiB(100%) CN:1]
+
+07/19 04:39:22 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904323.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+40e76f|OK  |    76KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904323.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:22 AM INFO: MD5sum OK for SRR22904323.fastq.gz
+2026/07/19 04:39:22 AM INFO: Verifying gzip file ./SRR22904323.fastq.gz ..
+2026/07/19 04:39:22 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:22 AM INFO: Output files: ./SRR22904323.fastq.gz
+2026/07/19 04:39:22 AM INFO: Attempting download method ena-ftp for run SRR22904324 ..
+2026/07/19 04:39:22 AM INFO: Querying ENA for FTP paths for SRR22904324..
+2026/07/19 04:39:23 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/024/SRR22904324/SRR22904324.fastq.gz ..
+
+07/19 04:39:23 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f3b39a 0B/0B CN:1 DL:0B]
+
+07/19 04:39:25 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904324.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f3b39a|OK  |    51KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904324.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:25 AM INFO: MD5sum OK for SRR22904324.fastq.gz
+2026/07/19 04:39:25 AM INFO: Verifying gzip file ./SRR22904324.fastq.gz ..
+2026/07/19 04:39:25 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:25 AM INFO: Output files: ./SRR22904324.fastq.gz
+2026/07/19 04:39:25 AM INFO: Attempting download method ena-ftp for run SRR22904325 ..
+2026/07/19 04:39:25 AM INFO: Querying ENA for FTP paths for SRR22904325..
+2026/07/19 04:39:25 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/025/SRR22904325/SRR22904325.fastq.gz ..
+
+07/19 04:39:25 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#1b47e4 0B/0B CN:1 DL:0B]
+
+07/19 04:39:27 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904325.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1b47e4|OK  |    44KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904325.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:27 AM INFO: MD5sum OK for SRR22904325.fastq.gz
+2026/07/19 04:39:27 AM INFO: Verifying gzip file ./SRR22904325.fastq.gz ..
+2026/07/19 04:39:27 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:27 AM INFO: Output files: ./SRR22904325.fastq.gz
+2026/07/19 04:39:27 AM INFO: Attempting download method ena-ftp for run SRR22904327 ..
+2026/07/19 04:39:27 AM INFO: Querying ENA for FTP paths for SRR22904327..
+2026/07/19 04:39:28 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/027/SRR22904327/SRR22904327.fastq.gz ..
+
+07/19 04:39:28 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#036bb2 0B/0B CN:1 DL:0B]
+[#036bb2 80KiB/16MiB(0%) CN:1 DL:291KiB ETA:58s]
+
+07/19 04:39:31 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904327.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+036bb2|OK  |   9.9MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904327.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:31 AM INFO: MD5sum OK for SRR22904327.fastq.gz
+2026/07/19 04:39:31 AM INFO: Verifying gzip file ./SRR22904327.fastq.gz ..
+2026/07/19 04:39:32 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:32 AM INFO: Output files: ./SRR22904327.fastq.gz
+2026/07/19 04:39:32 AM INFO: Attempting download method ena-ftp for run SRR22904329 ..
+2026/07/19 04:39:32 AM INFO: Querying ENA for FTP paths for SRR22904329..
+2026/07/19 04:39:32 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/029/SRR22904329/SRR22904329.fastq.gz ..
+
+07/19 04:39:32 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#2ab1c3 0B/0B CN:1 DL:0B]
+[#2ab1c3 80KiB/6.2MiB(1%) CN:1 DL:289KiB ETA:21s]
+
+07/19 04:39:35 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904329.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+2ab1c3|OK  |   4.5MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904329.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:35 AM INFO: MD5sum OK for SRR22904329.fastq.gz
+2026/07/19 04:39:35 AM INFO: Verifying gzip file ./SRR22904329.fastq.gz ..
+2026/07/19 04:39:35 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:35 AM INFO: Output files: ./SRR22904329.fastq.gz
+2026/07/19 04:39:35 AM INFO: Attempting download method ena-ftp for run SRR22904332 ..
+2026/07/19 04:39:35 AM INFO: Querying ENA for FTP paths for SRR22904332..
+2026/07/19 04:39:36 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/032/SRR22904332/SRR22904332.fastq.gz ..
+
+07/19 04:39:36 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#b55690 0B/0B CN:1 DL:0B]
+[#b55690 39KiB/39KiB(100%) CN:1]
+
+07/19 04:39:38 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904332.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b55690|OK  |    70KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904332.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:38 AM INFO: MD5sum OK for SRR22904332.fastq.gz
+2026/07/19 04:39:38 AM INFO: Verifying gzip file ./SRR22904332.fastq.gz ..
+2026/07/19 04:39:38 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:38 AM INFO: Output files: ./SRR22904332.fastq.gz
+2026/07/19 04:39:38 AM INFO: Attempting download method ena-ftp for run SRR22904333 ..
+2026/07/19 04:39:38 AM INFO: Querying ENA for FTP paths for SRR22904333..
+2026/07/19 04:39:38 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/033/SRR22904333/SRR22904333.fastq.gz ..
+
+07/19 04:39:38 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#02491a 0B/0B CN:1 DL:0B]
+
+07/19 04:39:41 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904333.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+02491a|OK  |    40KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904333.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:41 AM INFO: MD5sum OK for SRR22904333.fastq.gz
+2026/07/19 04:39:41 AM INFO: Verifying gzip file ./SRR22904333.fastq.gz ..
+2026/07/19 04:39:41 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:41 AM INFO: Output files: ./SRR22904333.fastq.gz
+2026/07/19 04:39:41 AM INFO: Attempting download method ena-ftp for run SRR22904334 ..
+2026/07/19 04:39:41 AM INFO: Querying ENA for FTP paths for SRR22904334..
+2026/07/19 04:39:41 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/034/SRR22904334/SRR22904334.fastq.gz ..
+
+07/19 04:39:41 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#3126dd 0B/0B CN:1 DL:0B]
+
+07/19 04:39:43 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904334.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+3126dd|OK  |    75KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904334.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:43 AM INFO: MD5sum OK for SRR22904334.fastq.gz
+2026/07/19 04:39:43 AM INFO: Verifying gzip file ./SRR22904334.fastq.gz ..
+2026/07/19 04:39:43 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:43 AM INFO: Output files: ./SRR22904334.fastq.gz
+2026/07/19 04:39:43 AM INFO: Attempting download method ena-ftp for run SRR22904335 ..
+2026/07/19 04:39:43 AM INFO: Querying ENA for FTP paths for SRR22904335..
+2026/07/19 04:39:44 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/035/SRR22904335/SRR22904335.fastq.gz ..
+
+07/19 04:39:44 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#c9e19f 0B/0B CN:1 DL:0B]
+[#c9e19f 49KiB/49KiB(100%) CN:1]
+
+07/19 04:39:46 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904335.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c9e19f|OK  |    72KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904335.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:46 AM INFO: MD5sum OK for SRR22904335.fastq.gz
+2026/07/19 04:39:46 AM INFO: Verifying gzip file ./SRR22904335.fastq.gz ..
+2026/07/19 04:39:46 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:46 AM INFO: Output files: ./SRR22904335.fastq.gz
+2026/07/19 04:39:46 AM INFO: Attempting download method ena-ftp for run SRR22904336 ..
+2026/07/19 04:39:46 AM INFO: Querying ENA for FTP paths for SRR22904336..
+2026/07/19 04:39:46 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/036/SRR22904336/SRR22904336.fastq.gz ..
+
+07/19 04:39:46 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#46dfd4 0B/0B CN:1 DL:0B]
+[#46dfd4 33KiB/33KiB(100%) CN:1]
+
+07/19 04:39:48 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904336.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+46dfd4|OK  |    57KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904336.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:48 AM INFO: MD5sum OK for SRR22904336.fastq.gz
+2026/07/19 04:39:48 AM INFO: Verifying gzip file ./SRR22904336.fastq.gz ..
+2026/07/19 04:39:48 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:48 AM INFO: Output files: ./SRR22904336.fastq.gz
+2026/07/19 04:39:48 AM INFO: Attempting download method ena-ftp for run SRR22904337 ..
+2026/07/19 04:39:48 AM INFO: Querying ENA for FTP paths for SRR22904337..
+2026/07/19 04:39:49 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/037/SRR22904337/SRR22904337.fastq.gz ..
+
+07/19 04:39:49 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#122c33 0B/0B CN:1 DL:0B]
+[#122c33 50KiB/50KiB(100%) CN:1]
+
+07/19 04:39:51 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904337.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+122c33|OK  |    74KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904337.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:51 AM INFO: MD5sum OK for SRR22904337.fastq.gz
+2026/07/19 04:39:51 AM INFO: Verifying gzip file ./SRR22904337.fastq.gz ..
+2026/07/19 04:39:51 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:51 AM INFO: Output files: ./SRR22904337.fastq.gz
+2026/07/19 04:39:51 AM INFO: Attempting download method ena-ftp for run SRR22904338 ..
+2026/07/19 04:39:51 AM INFO: Querying ENA for FTP paths for SRR22904338..
+2026/07/19 04:39:51 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/038/SRR22904338/SRR22904338.fastq.gz ..
+
+07/19 04:39:51 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4d2fc0 0B/0B CN:1 DL:0B]
+[#4d2fc0 32KiB/50KiB(63%) CN:1 DL:204KiB]
+
+07/19 04:39:53 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904338.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4d2fc0|OK  |    76KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904338.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:53 AM INFO: MD5sum OK for SRR22904338.fastq.gz
+2026/07/19 04:39:53 AM INFO: Verifying gzip file ./SRR22904338.fastq.gz ..
+2026/07/19 04:39:53 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:53 AM INFO: Output files: ./SRR22904338.fastq.gz
+2026/07/19 04:39:53 AM INFO: Attempting download method ena-ftp for run SRR22904339 ..
+2026/07/19 04:39:53 AM INFO: Querying ENA for FTP paths for SRR22904339..
+2026/07/19 04:39:54 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/039/SRR22904339/SRR22904339.fastq.gz ..
+
+07/19 04:39:54 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#0d070b 0B/0B CN:1 DL:0B]
+
+07/19 04:39:56 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904339.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0d070b|OK  |    57KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904339.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:56 AM INFO: MD5sum OK for SRR22904339.fastq.gz
+2026/07/19 04:39:56 AM INFO: Verifying gzip file ./SRR22904339.fastq.gz ..
+2026/07/19 04:39:56 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:56 AM INFO: Output files: ./SRR22904339.fastq.gz
+2026/07/19 04:39:56 AM INFO: Attempting download method ena-ftp for run SRR22904342 ..
+2026/07/19 04:39:56 AM INFO: Querying ENA for FTP paths for SRR22904342..
+2026/07/19 04:39:57 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/042/SRR22904342/SRR22904342.fastq.gz ..
+
+07/19 04:39:57 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#535274 0B/0B CN:1 DL:0B]
+[#535274 52KiB/52KiB(100%) CN:1]
+
+07/19 04:39:59 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904342.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+535274|OK  |    79KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904342.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:39:59 AM INFO: MD5sum OK for SRR22904342.fastq.gz
+2026/07/19 04:39:59 AM INFO: Verifying gzip file ./SRR22904342.fastq.gz ..
+2026/07/19 04:39:59 AM INFO: Method ena-ftp worked.
+2026/07/19 04:39:59 AM INFO: Output files: ./SRR22904342.fastq.gz
+2026/07/19 04:39:59 AM INFO: Attempting download method ena-ftp for run SRR22904343 ..
+2026/07/19 04:39:59 AM INFO: Querying ENA for FTP paths for SRR22904343..
+2026/07/19 04:39:59 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/043/SRR22904343/SRR22904343.fastq.gz ..
+
+07/19 04:39:59 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#6ad417 0B/0B CN:1 DL:0B]
+
+07/19 04:40:01 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904343.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+6ad417|OK  |    53KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904343.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:01 AM INFO: MD5sum OK for SRR22904343.fastq.gz
+2026/07/19 04:40:01 AM INFO: Verifying gzip file ./SRR22904343.fastq.gz ..
+2026/07/19 04:40:01 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:01 AM INFO: Output files: ./SRR22904343.fastq.gz
+2026/07/19 04:40:01 AM INFO: Attempting download method ena-ftp for run SRR22904345 ..
+2026/07/19 04:40:01 AM INFO: Querying ENA for FTP paths for SRR22904345..
+2026/07/19 04:40:02 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/045/SRR22904345/SRR22904345.fastq.gz ..
+
+07/19 04:40:02 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#106fc7 0B/0B CN:1 DL:0B]
+[#106fc7 30KiB/30KiB(100%) CN:1]
+
+07/19 04:40:04 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904345.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+106fc7|OK  |    53KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904345.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:04 AM INFO: MD5sum OK for SRR22904345.fastq.gz
+2026/07/19 04:40:04 AM INFO: Verifying gzip file ./SRR22904345.fastq.gz ..
+2026/07/19 04:40:04 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:04 AM INFO: Output files: ./SRR22904345.fastq.gz
+2026/07/19 04:40:04 AM INFO: Attempting download method ena-ftp for run SRR22904346 ..
+2026/07/19 04:40:04 AM INFO: Querying ENA for FTP paths for SRR22904346..
+2026/07/19 04:40:04 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/046/SRR22904346/SRR22904346.fastq.gz ..
+
+07/19 04:40:04 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#d2adbb 0B/0B CN:1 DL:0B]
+
+07/19 04:40:06 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904346.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+d2adbb|OK  |    32KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904346.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:06 AM INFO: MD5sum OK for SRR22904346.fastq.gz
+2026/07/19 04:40:06 AM INFO: Verifying gzip file ./SRR22904346.fastq.gz ..
+2026/07/19 04:40:06 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:06 AM INFO: Output files: ./SRR22904346.fastq.gz
+2026/07/19 04:40:06 AM INFO: Attempting download method ena-ftp for run SRR22904347 ..
+2026/07/19 04:40:06 AM INFO: Querying ENA for FTP paths for SRR22904347..
+2026/07/19 04:40:07 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/047/SRR22904347/SRR22904347.fastq.gz ..
+
+07/19 04:40:07 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f260ad 0B/0B CN:1 DL:0B]
+
+07/19 04:40:09 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904347.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f260ad|OK  |    53KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904347.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:09 AM INFO: MD5sum OK for SRR22904347.fastq.gz
+2026/07/19 04:40:09 AM INFO: Verifying gzip file ./SRR22904347.fastq.gz ..
+2026/07/19 04:40:09 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:09 AM INFO: Output files: ./SRR22904347.fastq.gz
+2026/07/19 04:40:09 AM INFO: Attempting download method ena-ftp for run SRR22904348 ..
+2026/07/19 04:40:09 AM INFO: Querying ENA for FTP paths for SRR22904348..
+2026/07/19 04:40:09 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/048/SRR22904348/SRR22904348.fastq.gz ..
+
+07/19 04:40:09 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#42eaae 0B/0B CN:1 DL:0B]
+
+07/19 04:40:11 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904348.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+42eaae|OK  |    49KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904348.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:11 AM INFO: MD5sum OK for SRR22904348.fastq.gz
+2026/07/19 04:40:11 AM INFO: Verifying gzip file ./SRR22904348.fastq.gz ..
+2026/07/19 04:40:11 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:11 AM INFO: Output files: ./SRR22904348.fastq.gz
+2026/07/19 04:40:11 AM INFO: Attempting download method ena-ftp for run SRR22904349 ..
+2026/07/19 04:40:11 AM INFO: Querying ENA for FTP paths for SRR22904349..
+2026/07/19 04:40:12 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/049/SRR22904349/SRR22904349.fastq.gz ..
+
+07/19 04:40:12 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#5c78ff 0B/0B CN:1 DL:0B]
+
+07/19 04:40:14 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904349.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+5c78ff|OK  |    29KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904349.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:14 AM INFO: MD5sum OK for SRR22904349.fastq.gz
+2026/07/19 04:40:14 AM INFO: Verifying gzip file ./SRR22904349.fastq.gz ..
+2026/07/19 04:40:14 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:14 AM INFO: Output files: ./SRR22904349.fastq.gz
+2026/07/19 04:40:14 AM INFO: Attempting download method ena-ftp for run SRR22904351 ..
+2026/07/19 04:40:14 AM INFO: Querying ENA for FTP paths for SRR22904351..
+2026/07/19 04:40:14 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/051/SRR22904351/SRR22904351.fastq.gz ..
+
+07/19 04:40:14 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#ff7c10 0B/0B CN:1 DL:0B]
+
+07/19 04:40:16 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904351.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+ff7c10|OK  |    69KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904351.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:16 AM INFO: MD5sum OK for SRR22904351.fastq.gz
+2026/07/19 04:40:16 AM INFO: Verifying gzip file ./SRR22904351.fastq.gz ..
+2026/07/19 04:40:16 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:16 AM INFO: Output files: ./SRR22904351.fastq.gz
+2026/07/19 04:40:16 AM INFO: Attempting download method ena-ftp for run SRR22904353 ..
+2026/07/19 04:40:16 AM INFO: Querying ENA for FTP paths for SRR22904353..
+2026/07/19 04:40:17 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/053/SRR22904353/SRR22904353.fastq.gz ..
+
+07/19 04:40:17 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#0535e7 0B/0B CN:1 DL:0B]
+
+07/19 04:40:19 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904353.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0535e7|OK  |    41KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904353.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:19 AM INFO: MD5sum OK for SRR22904353.fastq.gz
+2026/07/19 04:40:19 AM INFO: Verifying gzip file ./SRR22904353.fastq.gz ..
+2026/07/19 04:40:19 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:19 AM INFO: Output files: ./SRR22904353.fastq.gz
+2026/07/19 04:40:19 AM INFO: Attempting download method ena-ftp for run SRR22904354 ..
+2026/07/19 04:40:19 AM INFO: Querying ENA for FTP paths for SRR22904354..
+2026/07/19 04:40:19 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/054/SRR22904354/SRR22904354.fastq.gz ..
+
+07/19 04:40:19 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#78fdd1 0B/0B CN:1 DL:0B]
+
+07/19 04:40:21 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904354.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+78fdd1|OK  |    57KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904354.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:21 AM INFO: MD5sum OK for SRR22904354.fastq.gz
+2026/07/19 04:40:21 AM INFO: Verifying gzip file ./SRR22904354.fastq.gz ..
+2026/07/19 04:40:21 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:21 AM INFO: Output files: ./SRR22904354.fastq.gz
+2026/07/19 04:40:21 AM INFO: Attempting download method ena-ftp for run SRR22904355 ..
+2026/07/19 04:40:21 AM INFO: Querying ENA for FTP paths for SRR22904355..
+2026/07/19 04:40:22 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/055/SRR22904355/SRR22904355.fastq.gz ..
+
+07/19 04:40:22 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#314079 0B/0B CN:1 DL:0B]
+[#314079 32KiB/47KiB(66%) CN:1 DL:204KiB]
+
+07/19 04:40:24 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904355.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+314079|OK  |    72KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904355.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:24 AM INFO: MD5sum OK for SRR22904355.fastq.gz
+2026/07/19 04:40:24 AM INFO: Verifying gzip file ./SRR22904355.fastq.gz ..
+2026/07/19 04:40:24 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:24 AM INFO: Output files: ./SRR22904355.fastq.gz
+2026/07/19 04:40:24 AM INFO: Attempting download method ena-ftp for run SRR22904356 ..
+2026/07/19 04:40:24 AM INFO: Querying ENA for FTP paths for SRR22904356..
+2026/07/19 04:40:25 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/056/SRR22904356/SRR22904356.fastq.gz ..
+
+07/19 04:40:25 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#720264 0B/0B CN:1 DL:0B]
+
+07/19 04:40:27 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904356.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+720264|OK  |    57KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904356.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:27 AM INFO: MD5sum OK for SRR22904356.fastq.gz
+2026/07/19 04:40:27 AM INFO: Verifying gzip file ./SRR22904356.fastq.gz ..
+2026/07/19 04:40:27 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:27 AM INFO: Output files: ./SRR22904356.fastq.gz
+2026/07/19 04:40:27 AM INFO: Attempting download method ena-ftp for run SRR22904358 ..
+2026/07/19 04:40:27 AM INFO: Querying ENA for FTP paths for SRR22904358..
+2026/07/19 04:40:27 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/058/SRR22904358/SRR22904358.fastq.gz ..
+
+07/19 04:40:27 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f5ca22 0B/0B CN:1 DL:0B]
+[#f5ca22 32KiB/48KiB(65%) CN:1 DL:205KiB]
+
+07/19 04:40:29 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904358.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f5ca22|OK  |    73KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904358.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:29 AM INFO: MD5sum OK for SRR22904358.fastq.gz
+2026/07/19 04:40:29 AM INFO: Verifying gzip file ./SRR22904358.fastq.gz ..
+2026/07/19 04:40:29 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:29 AM INFO: Output files: ./SRR22904358.fastq.gz
+2026/07/19 04:40:29 AM INFO: Attempting download method ena-ftp for run SRR22904359 ..
+2026/07/19 04:40:29 AM INFO: Querying ENA for FTP paths for SRR22904359..
+2026/07/19 04:40:30 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/059/SRR22904359/SRR22904359.fastq.gz ..
+
+07/19 04:40:30 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#56cb69 0B/0B CN:1 DL:0B]
+
+07/19 04:40:32 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904359.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+56cb69|OK  |    55KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904359.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:32 AM INFO: MD5sum OK for SRR22904359.fastq.gz
+2026/07/19 04:40:32 AM INFO: Verifying gzip file ./SRR22904359.fastq.gz ..
+2026/07/19 04:40:32 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:32 AM INFO: Output files: ./SRR22904359.fastq.gz
+2026/07/19 04:40:32 AM INFO: Attempting download method ena-ftp for run SRR22904360 ..
+2026/07/19 04:40:32 AM INFO: Querying ENA for FTP paths for SRR22904360..
+2026/07/19 04:40:32 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/060/SRR22904360/SRR22904360.fastq.gz ..
+
+07/19 04:40:32 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#701d60 0B/0B CN:1 DL:0B]
+[#701d60 43KiB/43KiB(100%) CN:1]
+
+07/19 04:40:34 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904360.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+701d60|OK  |    64KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904360.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:34 AM INFO: MD5sum OK for SRR22904360.fastq.gz
+2026/07/19 04:40:34 AM INFO: Verifying gzip file ./SRR22904360.fastq.gz ..
+2026/07/19 04:40:34 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:34 AM INFO: Output files: ./SRR22904360.fastq.gz
+2026/07/19 04:40:34 AM INFO: Attempting download method ena-ftp for run SRR22904361 ..
+2026/07/19 04:40:34 AM INFO: Querying ENA for FTP paths for SRR22904361..
+2026/07/19 04:40:35 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/061/SRR22904361/SRR22904361.fastq.gz ..
+
+07/19 04:40:35 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#f647c3 0B/0B CN:1 DL:0B]
+
+07/19 04:40:37 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904361.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+f647c3|OK  |    77KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904361.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:37 AM INFO: MD5sum OK for SRR22904361.fastq.gz
+2026/07/19 04:40:37 AM INFO: Verifying gzip file ./SRR22904361.fastq.gz ..
+2026/07/19 04:40:37 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:37 AM INFO: Output files: ./SRR22904361.fastq.gz
+2026/07/19 04:40:37 AM INFO: Attempting download method ena-ftp for run SRR22904362 ..
+2026/07/19 04:40:37 AM INFO: Querying ENA for FTP paths for SRR22904362..
+2026/07/19 04:40:37 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/062/SRR22904362/SRR22904362.fastq.gz ..
+
+07/19 04:40:37 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#b3baea 0B/0B CN:1 DL:0B]
+
+07/19 04:40:39 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904362.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b3baea|OK  |    50KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904362.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:39 AM INFO: MD5sum OK for SRR22904362.fastq.gz
+2026/07/19 04:40:39 AM INFO: Verifying gzip file ./SRR22904362.fastq.gz ..
+2026/07/19 04:40:39 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:39 AM INFO: Output files: ./SRR22904362.fastq.gz
+2026/07/19 04:40:39 AM INFO: Attempting download method ena-ftp for run SRR22904365 ..
+2026/07/19 04:40:39 AM INFO: Querying ENA for FTP paths for SRR22904365..
+2026/07/19 04:40:40 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/065/SRR22904365/SRR22904365.fastq.gz ..
+
+07/19 04:40:40 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4a0643 0B/0B CN:1 DL:0B]
+
+07/19 04:40:42 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904365.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4a0643|OK  |    58KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904365.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:42 AM INFO: MD5sum OK for SRR22904365.fastq.gz
+2026/07/19 04:40:42 AM INFO: Verifying gzip file ./SRR22904365.fastq.gz ..
+2026/07/19 04:40:42 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:42 AM INFO: Output files: ./SRR22904365.fastq.gz
+2026/07/19 04:40:42 AM INFO: Attempting download method ena-ftp for run SRR22904366 ..
+2026/07/19 04:40:42 AM INFO: Querying ENA for FTP paths for SRR22904366..
+2026/07/19 04:40:42 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/066/SRR22904366/SRR22904366.fastq.gz ..
+
+07/19 04:40:42 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#751c41 0B/0B CN:1 DL:0B]
+
+07/19 04:40:44 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904366.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+751c41|OK  |    35KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904366.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:44 AM INFO: MD5sum OK for SRR22904366.fastq.gz
+2026/07/19 04:40:44 AM INFO: Verifying gzip file ./SRR22904366.fastq.gz ..
+2026/07/19 04:40:44 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:44 AM INFO: Output files: ./SRR22904366.fastq.gz
+2026/07/19 04:40:44 AM INFO: Attempting download method ena-ftp for run SRR22904368 ..
+2026/07/19 04:40:44 AM INFO: Querying ENA for FTP paths for SRR22904368..
+2026/07/19 04:40:45 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904368/SRR22904368.fastq.gz ..
+
+07/19 04:40:45 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#8cf236 0B/0B CN:1 DL:0B]
+[#8cf236 29KiB/29KiB(100%) CN:1]
+
+07/19 04:40:47 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904368.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8cf236|OK  |    50KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904368.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:47 AM INFO: MD5sum OK for SRR22904368.fastq.gz
+2026/07/19 04:40:47 AM INFO: Verifying gzip file ./SRR22904368.fastq.gz ..
+2026/07/19 04:40:47 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:47 AM INFO: Output files: ./SRR22904368.fastq.gz
+2026/07/19 04:40:47 AM INFO: Attempting download method ena-ftp for run SRR22904369 ..
+2026/07/19 04:40:47 AM INFO: Querying ENA for FTP paths for SRR22904369..
+2026/07/19 04:40:48 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904369/SRR22904369.fastq.gz ..
+
+07/19 04:40:48 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#7a4838 0B/0B CN:1 DL:0B]
+
+07/19 04:40:50 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904369.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+7a4838|OK  |    30KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904369.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:50 AM INFO: MD5sum OK for SRR22904369.fastq.gz
+2026/07/19 04:40:50 AM INFO: Verifying gzip file ./SRR22904369.fastq.gz ..
+2026/07/19 04:40:50 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:50 AM INFO: Output files: ./SRR22904369.fastq.gz
+2026/07/19 04:40:50 AM INFO: Attempting download method ena-ftp for run SRR22904370 ..
+2026/07/19 04:40:50 AM INFO: Querying ENA for FTP paths for SRR22904370..
+2026/07/19 04:40:50 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904370/SRR22904370.fastq.gz ..
+
+07/19 04:40:50 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#e1e408 0B/0B CN:1 DL:0B]
+
+07/19 04:40:52 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904370.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+e1e408|OK  |    27KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904370.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:52 AM INFO: MD5sum OK for SRR22904370.fastq.gz
+2026/07/19 04:40:52 AM INFO: Verifying gzip file ./SRR22904370.fastq.gz ..
+2026/07/19 04:40:52 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:52 AM INFO: Output files: ./SRR22904370.fastq.gz
+2026/07/19 04:40:52 AM INFO: Attempting download method ena-ftp for run SRR22904371 ..
+2026/07/19 04:40:52 AM INFO: Querying ENA for FTP paths for SRR22904371..
+2026/07/19 04:40:53 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904371/SRR22904371.fastq.gz ..
+
+07/19 04:40:53 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#02deaf 0B/0B CN:1 DL:0B]
+
+07/19 04:40:55 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904371.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+02deaf|OK  |    70KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904371.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:55 AM INFO: MD5sum OK for SRR22904371.fastq.gz
+2026/07/19 04:40:55 AM INFO: Verifying gzip file ./SRR22904371.fastq.gz ..
+2026/07/19 04:40:55 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:55 AM INFO: Output files: ./SRR22904371.fastq.gz
+2026/07/19 04:40:55 AM INFO: Attempting download method ena-ftp for run SRR22904372 ..
+2026/07/19 04:40:55 AM INFO: Querying ENA for FTP paths for SRR22904372..
+2026/07/19 04:40:55 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904372/SRR22904372.fastq.gz ..
+
+07/19 04:40:55 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#cd0f06 0B/0B CN:1 DL:0B]
+
+07/19 04:40:57 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904372.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+cd0f06|OK  |    43KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904372.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:40:57 AM INFO: MD5sum OK for SRR22904372.fastq.gz
+2026/07/19 04:40:57 AM INFO: Verifying gzip file ./SRR22904372.fastq.gz ..
+2026/07/19 04:40:57 AM INFO: Method ena-ftp worked.
+2026/07/19 04:40:57 AM INFO: Output files: ./SRR22904372.fastq.gz
+2026/07/19 04:40:57 AM INFO: Attempting download method ena-ftp for run SRR22904373 ..
+2026/07/19 04:40:57 AM INFO: Querying ENA for FTP paths for SRR22904373..
+2026/07/19 04:40:58 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904373/SRR22904373.fastq.gz ..
+
+07/19 04:40:58 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#783bce 0B/0B CN:1 DL:0B]
+
+07/19 04:41:00 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904373.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+783bce|OK  |    39KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904373.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:00 AM INFO: MD5sum OK for SRR22904373.fastq.gz
+2026/07/19 04:41:00 AM INFO: Verifying gzip file ./SRR22904373.fastq.gz ..
+2026/07/19 04:41:00 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:00 AM INFO: Output files: ./SRR22904373.fastq.gz
+2026/07/19 04:41:00 AM INFO: Attempting download method ena-ftp for run SRR22904374 ..
+2026/07/19 04:41:00 AM INFO: Querying ENA for FTP paths for SRR22904374..
+2026/07/19 04:41:00 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904374/SRR22904374.fastq.gz ..
+
+07/19 04:41:00 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#02a804 0B/0B CN:1 DL:0B]
+[#02a804 80KiB/4.0MiB(1%) CN:1 DL:292KiB ETA:13s]
+
+07/19 04:41:03 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904374.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+02a804|OK  |   3.0MiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904374.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:03 AM INFO: MD5sum OK for SRR22904374.fastq.gz
+2026/07/19 04:41:03 AM INFO: Verifying gzip file ./SRR22904374.fastq.gz ..
+2026/07/19 04:41:03 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:03 AM INFO: Output files: ./SRR22904374.fastq.gz
+2026/07/19 04:41:03 AM INFO: Attempting download method ena-ftp for run SRR22904375 ..
+2026/07/19 04:41:03 AM INFO: Querying ENA for FTP paths for SRR22904375..
+2026/07/19 04:41:04 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/075/SRR22904375/SRR22904375.fastq.gz ..
+
+07/19 04:41:04 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#e1d119 0B/0B CN:1 DL:0B]
+
+07/19 04:41:06 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904375.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+e1d119|OK  |    76KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904375.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:06 AM INFO: MD5sum OK for SRR22904375.fastq.gz
+2026/07/19 04:41:06 AM INFO: Verifying gzip file ./SRR22904375.fastq.gz ..
+2026/07/19 04:41:06 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:06 AM INFO: Output files: ./SRR22904375.fastq.gz
+2026/07/19 04:41:06 AM INFO: Attempting download method ena-ftp for run SRR22904376 ..
+2026/07/19 04:41:06 AM INFO: Querying ENA for FTP paths for SRR22904376..
+2026/07/19 04:41:06 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904376/SRR22904376.fastq.gz ..
+
+07/19 04:41:06 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#c29e49 0B/0B CN:1 DL:0B]
+
+07/19 04:41:08 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904376.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c29e49|OK  |    60KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904376.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:08 AM INFO: MD5sum OK for SRR22904376.fastq.gz
+2026/07/19 04:41:08 AM INFO: Verifying gzip file ./SRR22904376.fastq.gz ..
+2026/07/19 04:41:08 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:08 AM INFO: Output files: ./SRR22904376.fastq.gz
+2026/07/19 04:41:08 AM INFO: Attempting download method ena-ftp for run SRR22904377 ..
+2026/07/19 04:41:08 AM INFO: Querying ENA for FTP paths for SRR22904377..
+2026/07/19 04:41:09 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/077/SRR22904377/SRR22904377.fastq.gz ..
+
+07/19 04:41:09 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#541ef8 0B/0B CN:1 DL:0B]
+
+07/19 04:41:11 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904377.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+541ef8|OK  |    44KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904377.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:11 AM INFO: MD5sum OK for SRR22904377.fastq.gz
+2026/07/19 04:41:11 AM INFO: Verifying gzip file ./SRR22904377.fastq.gz ..
+2026/07/19 04:41:11 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:11 AM INFO: Output files: ./SRR22904377.fastq.gz
+2026/07/19 04:41:11 AM INFO: Attempting download method ena-ftp for run SRR22904378 ..
+2026/07/19 04:41:11 AM INFO: Querying ENA for FTP paths for SRR22904378..
+2026/07/19 04:41:11 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/078/SRR22904378/SRR22904378.fastq.gz ..
+
+07/19 04:41:11 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#9f3e0e 0B/0B CN:1 DL:0B]
+[#9f3e0e 52KiB/52KiB(100%) CN:1]
+
+07/19 04:41:13 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904378.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+9f3e0e|OK  |    76KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904378.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:13 AM INFO: MD5sum OK for SRR22904378.fastq.gz
+2026/07/19 04:41:13 AM INFO: Verifying gzip file ./SRR22904378.fastq.gz ..
+2026/07/19 04:41:13 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:13 AM INFO: Output files: ./SRR22904378.fastq.gz
+2026/07/19 04:41:13 AM INFO: Attempting download method ena-ftp for run SRR22904379 ..
+2026/07/19 04:41:13 AM INFO: Querying ENA for FTP paths for SRR22904379..
+2026/07/19 04:41:14 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/079/SRR22904379/SRR22904379.fastq.gz ..
+
+07/19 04:41:14 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#babb49 0B/0B CN:1 DL:0B]
+
+07/19 04:41:16 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904379.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+babb49|OK  |    58KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904379.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:16 AM INFO: MD5sum OK for SRR22904379.fastq.gz
+2026/07/19 04:41:16 AM INFO: Verifying gzip file ./SRR22904379.fastq.gz ..
+2026/07/19 04:41:16 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:16 AM INFO: Output files: ./SRR22904379.fastq.gz
+2026/07/19 04:41:16 AM INFO: Attempting download method ena-ftp for run SRR22904380 ..
+2026/07/19 04:41:16 AM INFO: Querying ENA for FTP paths for SRR22904380..
+2026/07/19 04:41:16 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904380/SRR22904380.fastq.gz ..
+
+07/19 04:41:16 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#07e9e1 0B/0B CN:1 DL:0B]
+
+07/19 04:41:18 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904380.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+07e9e1|OK  |    39KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904380.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:18 AM INFO: MD5sum OK for SRR22904380.fastq.gz
+2026/07/19 04:41:18 AM INFO: Verifying gzip file ./SRR22904380.fastq.gz ..
+2026/07/19 04:41:18 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:18 AM INFO: Output files: ./SRR22904380.fastq.gz
+2026/07/19 04:41:18 AM INFO: Attempting download method ena-ftp for run SRR22904381 ..
+2026/07/19 04:41:18 AM INFO: Querying ENA for FTP paths for SRR22904381..
+2026/07/19 04:41:19 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/081/SRR22904381/SRR22904381.fastq.gz ..
+
+07/19 04:41:19 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#bd3ff8 0B/0B CN:1 DL:0B]
+[#bd3ff8 32KiB/52KiB(61%) CN:1 DL:205KiB]
+
+07/19 04:41:21 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904381.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+bd3ff8|OK  |    77KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904381.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:21 AM INFO: MD5sum OK for SRR22904381.fastq.gz
+2026/07/19 04:41:21 AM INFO: Verifying gzip file ./SRR22904381.fastq.gz ..
+2026/07/19 04:41:21 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:21 AM INFO: Output files: ./SRR22904381.fastq.gz
+2026/07/19 04:41:21 AM INFO: Attempting download method ena-ftp for run SRR22904382 ..
+2026/07/19 04:41:21 AM INFO: Querying ENA for FTP paths for SRR22904382..
+2026/07/19 04:41:22 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904382/SRR22904382.fastq.gz ..
+
+07/19 04:41:22 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#aa000c 0B/0B CN:1 DL:0B]
+
+07/19 04:41:24 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904382.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+aa000c|OK  |    53KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904382.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:24 AM INFO: MD5sum OK for SRR22904382.fastq.gz
+2026/07/19 04:41:24 AM INFO: Verifying gzip file ./SRR22904382.fastq.gz ..
+2026/07/19 04:41:24 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:24 AM INFO: Output files: ./SRR22904382.fastq.gz
+2026/07/19 04:41:24 AM INFO: Attempting download method ena-ftp for run SRR22904383 ..
+2026/07/19 04:41:24 AM INFO: Querying ENA for FTP paths for SRR22904383..
+2026/07/19 04:41:24 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904383/SRR22904383.fastq.gz ..
+
+07/19 04:41:24 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#c7b765 0B/0B CN:1 DL:0B]
+
+07/19 04:41:26 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904383.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+c7b765|OK  |    43KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904383.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:26 AM INFO: MD5sum OK for SRR22904383.fastq.gz
+2026/07/19 04:41:26 AM INFO: Verifying gzip file ./SRR22904383.fastq.gz ..
+2026/07/19 04:41:26 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:26 AM INFO: Output files: ./SRR22904383.fastq.gz
+2026/07/19 04:41:26 AM INFO: Attempting download method ena-ftp for run SRR22904384 ..
+2026/07/19 04:41:26 AM INFO: Querying ENA for FTP paths for SRR22904384..
+2026/07/19 04:41:27 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904384/SRR22904384.fastq.gz ..
+
+07/19 04:41:27 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#288df1 0B/0B CN:1 DL:0B]
+
+07/19 04:41:29 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904384.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+288df1|OK  |    55KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904384.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:29 AM INFO: MD5sum OK for SRR22904384.fastq.gz
+2026/07/19 04:41:29 AM INFO: Verifying gzip file ./SRR22904384.fastq.gz ..
+2026/07/19 04:41:29 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:29 AM INFO: Output files: ./SRR22904384.fastq.gz
+2026/07/19 04:41:29 AM INFO: Attempting download method ena-ftp for run SRR22904386 ..
+2026/07/19 04:41:29 AM INFO: Querying ENA for FTP paths for SRR22904386..
+2026/07/19 04:41:29 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904386/SRR22904386.fastq.gz ..
+
+07/19 04:41:29 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#0a97e7 0B/0B CN:1 DL:0B]
+
+07/19 04:41:31 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904386.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+0a97e7|OK  |    35KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904386.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:31 AM INFO: MD5sum OK for SRR22904386.fastq.gz
+2026/07/19 04:41:31 AM INFO: Verifying gzip file ./SRR22904386.fastq.gz ..
+2026/07/19 04:41:31 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:31 AM INFO: Output files: ./SRR22904386.fastq.gz
+2026/07/19 04:41:31 AM INFO: Attempting download method ena-ftp for run SRR22904387 ..
+2026/07/19 04:41:31 AM INFO: Querying ENA for FTP paths for SRR22904387..
+2026/07/19 04:41:32 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/087/SRR22904387/SRR22904387.fastq.gz ..
+
+07/19 04:41:32 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4783a1 0B/0B CN:1 DL:0B]
+
+07/19 04:41:34 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904387.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4783a1|OK  |    28KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904387.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:34 AM INFO: MD5sum OK for SRR22904387.fastq.gz
+2026/07/19 04:41:34 AM INFO: Verifying gzip file ./SRR22904387.fastq.gz ..
+2026/07/19 04:41:34 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:34 AM INFO: Output files: ./SRR22904387.fastq.gz
+2026/07/19 04:41:34 AM INFO: Attempting download method ena-ftp for run SRR22904388 ..
+2026/07/19 04:41:34 AM INFO: Querying ENA for FTP paths for SRR22904388..
+2026/07/19 04:41:34 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904388/SRR22904388.fastq.gz ..
+
+07/19 04:41:34 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#173017 0B/0B CN:1 DL:0B]
+
+07/19 04:41:36 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904388.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+173017|OK  |    51KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904388.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:36 AM INFO: MD5sum OK for SRR22904388.fastq.gz
+2026/07/19 04:41:36 AM INFO: Verifying gzip file ./SRR22904388.fastq.gz ..
+2026/07/19 04:41:36 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:36 AM INFO: Output files: ./SRR22904388.fastq.gz
+2026/07/19 04:41:36 AM INFO: Attempting download method ena-ftp for run SRR22904389 ..
+2026/07/19 04:41:36 AM INFO: Querying ENA for FTP paths for SRR22904389..
+2026/07/19 04:41:37 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904389/SRR22904389.fastq.gz ..
+
+07/19 04:41:37 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#319b05 0B/0B CN:1 DL:0B]
+
+07/19 04:41:39 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904389.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+319b05|OK  |    29KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904389.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:39 AM INFO: MD5sum OK for SRR22904389.fastq.gz
+2026/07/19 04:41:39 AM INFO: Verifying gzip file ./SRR22904389.fastq.gz ..
+2026/07/19 04:41:39 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:39 AM INFO: Output files: ./SRR22904389.fastq.gz
+2026/07/19 04:41:39 AM INFO: Attempting download method ena-ftp for run SRR22904390 ..
+2026/07/19 04:41:39 AM INFO: Querying ENA for FTP paths for SRR22904390..
+2026/07/19 04:41:39 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/090/SRR22904390/SRR22904390.fastq.gz ..
+
+07/19 04:41:39 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#81e527 0B/0B CN:1 DL:0B]
+
+07/19 04:41:41 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904390.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+81e527|OK  |    33KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904390.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:41 AM INFO: MD5sum OK for SRR22904390.fastq.gz
+2026/07/19 04:41:41 AM INFO: Verifying gzip file ./SRR22904390.fastq.gz ..
+2026/07/19 04:41:41 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:41 AM INFO: Output files: ./SRR22904390.fastq.gz
+2026/07/19 04:41:41 AM INFO: Attempting download method ena-ftp for run SRR22904391 ..
+2026/07/19 04:41:41 AM INFO: Querying ENA for FTP paths for SRR22904391..
+2026/07/19 04:41:42 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/091/SRR22904391/SRR22904391.fastq.gz ..
+
+07/19 04:41:42 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#750216 0B/0B CN:1 DL:0B]
+
+07/19 04:41:44 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904391.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+750216|OK  |    72KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904391.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:44 AM INFO: MD5sum OK for SRR22904391.fastq.gz
+2026/07/19 04:41:44 AM INFO: Verifying gzip file ./SRR22904391.fastq.gz ..
+2026/07/19 04:41:44 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:44 AM INFO: Output files: ./SRR22904391.fastq.gz
+2026/07/19 04:41:44 AM INFO: Attempting download method ena-ftp for run SRR22904392 ..
+2026/07/19 04:41:44 AM INFO: Querying ENA for FTP paths for SRR22904392..
+2026/07/19 04:41:44 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/092/SRR22904392/SRR22904392.fastq.gz ..
+
+07/19 04:41:44 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#e4839f 0B/0B CN:1 DL:0B]
+
+07/19 04:41:46 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904392.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+e4839f|OK  |    43KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904392.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:46 AM INFO: MD5sum OK for SRR22904392.fastq.gz
+2026/07/19 04:41:46 AM INFO: Verifying gzip file ./SRR22904392.fastq.gz ..
+2026/07/19 04:41:46 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:46 AM INFO: Output files: ./SRR22904392.fastq.gz
+2026/07/19 04:41:46 AM INFO: Attempting download method ena-ftp for run SRR22904393 ..
+2026/07/19 04:41:46 AM INFO: Querying ENA for FTP paths for SRR22904393..
+2026/07/19 04:41:47 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/093/SRR22904393/SRR22904393.fastq.gz ..
+
+07/19 04:41:47 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#8e3ce8 0B/0B CN:1 DL:0B]
+
+07/19 04:41:49 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904393.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8e3ce8|OK  |    37KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904393.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:49 AM INFO: MD5sum OK for SRR22904393.fastq.gz
+2026/07/19 04:41:49 AM INFO: Verifying gzip file ./SRR22904393.fastq.gz ..
+2026/07/19 04:41:49 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:49 AM INFO: Output files: ./SRR22904393.fastq.gz
+2026/07/19 04:41:49 AM INFO: Attempting download method ena-ftp for run SRR22904394 ..
+2026/07/19 04:41:49 AM INFO: Querying ENA for FTP paths for SRR22904394..
+2026/07/19 04:41:49 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/094/SRR22904394/SRR22904394.fastq.gz ..
+
+07/19 04:41:49 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4f346f 0B/0B CN:1 DL:0B]
+[#4f346f 48KiB/48KiB(100%) CN:1]
+
+07/19 04:41:51 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904394.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4f346f|OK  |    72KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904394.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:51 AM INFO: MD5sum OK for SRR22904394.fastq.gz
+2026/07/19 04:41:51 AM INFO: Verifying gzip file ./SRR22904394.fastq.gz ..
+2026/07/19 04:41:51 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:51 AM INFO: Output files: ./SRR22904394.fastq.gz
+2026/07/19 04:41:51 AM INFO: Attempting download method ena-ftp for run SRR22904395 ..
+2026/07/19 04:41:51 AM INFO: Querying ENA for FTP paths for SRR22904395..
+2026/07/19 04:41:52 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/095/SRR22904395/SRR22904395.fastq.gz ..
+
+07/19 04:41:52 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#473e65 0B/0B CN:1 DL:0B]
+
+07/19 04:41:54 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904395.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+473e65|OK  |    58KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904395.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:54 AM INFO: MD5sum OK for SRR22904395.fastq.gz
+2026/07/19 04:41:54 AM INFO: Verifying gzip file ./SRR22904395.fastq.gz ..
+2026/07/19 04:41:54 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:54 AM INFO: Output files: ./SRR22904395.fastq.gz
+2026/07/19 04:41:54 AM INFO: Attempting download method ena-ftp for run SRR22904396 ..
+2026/07/19 04:41:54 AM INFO: Querying ENA for FTP paths for SRR22904396..
+2026/07/19 04:41:54 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/096/SRR22904396/SRR22904396.fastq.gz ..
+
+07/19 04:41:54 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#803cf7 0B/0B CN:1 DL:0B]
+
+07/19 04:41:56 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904396.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+803cf7|OK  |    38KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904396.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:56 AM INFO: MD5sum OK for SRR22904396.fastq.gz
+2026/07/19 04:41:56 AM INFO: Verifying gzip file ./SRR22904396.fastq.gz ..
+2026/07/19 04:41:56 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:56 AM INFO: Output files: ./SRR22904396.fastq.gz
+2026/07/19 04:41:56 AM INFO: Attempting download method ena-ftp for run SRR22904397 ..
+2026/07/19 04:41:56 AM INFO: Querying ENA for FTP paths for SRR22904397..
+2026/07/19 04:41:57 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/097/SRR22904397/SRR22904397.fastq.gz ..
+
+07/19 04:41:57 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#5818d9 0B/0B CN:1 DL:0B]
+
+07/19 04:41:59 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904397.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+5818d9|OK  |    31KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904397.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:41:59 AM INFO: MD5sum OK for SRR22904397.fastq.gz
+2026/07/19 04:41:59 AM INFO: Verifying gzip file ./SRR22904397.fastq.gz ..
+2026/07/19 04:41:59 AM INFO: Method ena-ftp worked.
+2026/07/19 04:41:59 AM INFO: Output files: ./SRR22904397.fastq.gz
+2026/07/19 04:41:59 AM INFO: Attempting download method ena-ftp for run SRR22904398 ..
+2026/07/19 04:41:59 AM INFO: Querying ENA for FTP paths for SRR22904398..
+2026/07/19 04:41:59 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/098/SRR22904398/SRR22904398.fastq.gz ..
+
+07/19 04:41:59 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#7439a2 0B/0B CN:1 DL:0B]
+
+07/19 04:42:01 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904398.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+7439a2|OK  |    55KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904398.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:42:01 AM INFO: MD5sum OK for SRR22904398.fastq.gz
+2026/07/19 04:42:01 AM INFO: Verifying gzip file ./SRR22904398.fastq.gz ..
+2026/07/19 04:42:01 AM INFO: Method ena-ftp worked.
+2026/07/19 04:42:01 AM INFO: Output files: ./SRR22904398.fastq.gz
+2026/07/19 04:42:01 AM INFO: Attempting download method ena-ftp for run SRR22904399 ..
+2026/07/19 04:42:01 AM INFO: Querying ENA for FTP paths for SRR22904399..
+2026/07/19 04:42:02 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/099/SRR22904399/SRR22904399.fastq.gz ..
+
+07/19 04:42:02 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#2ba628 0B/0B CN:1 DL:0B]
+
+07/19 04:42:04 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904399.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+2ba628|OK  |    31KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904399.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:42:04 AM INFO: MD5sum OK for SRR22904399.fastq.gz
+2026/07/19 04:42:04 AM INFO: Verifying gzip file ./SRR22904399.fastq.gz ..
+2026/07/19 04:42:04 AM INFO: Method ena-ftp worked.
+2026/07/19 04:42:04 AM INFO: Output files: ./SRR22904399.fastq.gz
+2026/07/19 04:42:04 AM INFO: Attempting download method ena-ftp for run SRR22904400 ..
+2026/07/19 04:42:04 AM INFO: Querying ENA for FTP paths for SRR22904400..
+2026/07/19 04:42:04 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/000/SRR22904400/SRR22904400.fastq.gz ..
+
+07/19 04:42:04 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#936a06 0B/0B CN:1 DL:0B]
+
+07/19 04:42:06 [[1;32mNOTICE[0m] Download complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904400.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+936a06|OK  |    29KiB/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904400.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/07/19 04:42:06 AM INFO: MD5sum OK for SRR22904400.fastq.gz
+2026/07/19 04:42:06 AM INFO: Verifying gzip file ./SRR22904400.fastq.gz ..
+2026/07/19 04:42:06 AM INFO: Method ena-ftp worked.
+2026/07/19 04:42:06 AM INFO: Output files: ./SRR22904400.fastq.gz
+2026/07/19 04:42:06 AM INFO: Attempting download method ena-ftp for run SRR22904401 ..
+2026/07/19 04:42:06 AM INFO: Querying ENA for FTP paths for SRR22904401..
+2026/07/19 04:42:07 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/001/SRR22904401/SRR22904401.fastq.gz ..
+
+07/19 04:42:07 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#1c6612 0B/0B CN:1 DL:0B]
+
+07/19 04:42:09 [[1;31mERROR[0m] CUID#7 - Download aborted. URI=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/001/SRR22904401/SRR22904401.fastq.gz
+Exception: [AbstractCommand.cc:351] errorCode=3 URI=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/001/SRR22904401/SRR22904401.fastq.gz
+  -> [FtpNegotiationCommand.cc:885] errorCode=3 Resource not found
+
+07/19 04:42:09 [[1;32mNOTICE[0m] Download GID#1c66129267830d39 not complete: /mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904401.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1c6612|ERR |       0B/s|/mnt/nvme0n1/e3_work/3a_D1_fair_PRJNA916347_kingfisher_rep4/SRR22904401.fastq.gz
+
+Status Legend:
+(ERR):error occurred.
+
+aria2 will resume download if the transfer is restarted.
+If there are any errors, then see the log file. See '-l' option in help/man page for details.
+2026/07/19 04:42:09 AM WARNING: Method ena-ftp failed, error was Command 'aria2c -x8 -o SRR22904401.fastq.gz 'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/001/SRR22904401/SRR22904401.fastq.gz'' returned non-zero exit status 3.
+2026/07/19 04:42:09 AM INFO: Removing file that is either incomplete or part of an incomplete pair: SRR22904401.fastq.gz
+2026/07/19 04:42:09 AM WARNING: Method ena-ftp failed
+2026/07/19 04:42:09 AM ERROR: No more specified download methods, cannot continue

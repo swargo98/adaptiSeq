@@ -1,0 +1,18 @@
+D1  PRJNA916347 (overhead-dominated)
+  D1_full_PRJNA916347    runs=  241 files=  321 total=    7.59 GB  avg=   23.6 MB/file   robustness panel (3a-robust): runs-completed per tool
+  D1_fair_PRJNA916347    runs=  201 files=  201 total=    4.42 GB  avg=   22.0 MB/file   fair timing panel (3a): all tools can complete
+  D1_threefile_PRJNA916347 runs=   40 files=  120 total=    3.17 GB  avg=   26.4 MB/file   the runs iseq drops (E3 robustness call-out / E7e)
+D2  PRJNA762469 (byte-dominated, seeded subset)
+  D2_full_PRJNA762469    runs=   60 files=  120 total=  205.97 GB  avg= 1716.4 MB/file   reference only -- NOT run at 10 reps
+  D2_subset_PRJNA762469  runs=    8 files=   16 total=   25.88 GB  avg= 1617.2 MB/file   byte-dominated panel (3b), seed=20260717
+D3  PRJNA540705 (large per-file)
+  D3_full_PRJNA540705    runs=    6 files=    6 total=   69.35 GB  avg=11557.5 MB/file   large-file arm (3b-large / feeds E4a)
+  D3_seg_PRJNA540705     runs=    2 files=    2 total=   23.07 GB  avg=11534.8 MB/file   connections-per-worker sweep (3s): --max-segments 4/8/16
+D4  mixed cross-database
+  D4_mixed               runs=   20 (ENA=12 SRA-only=6 GSA=2)  manifest covers the ENA rows only
+D0  sweep workload (D2 subset, 4 runs)
+  D0_sweep_PRJNA762469   runs=    4 files=    8 total=   11.86 GB  avg= 1482.0 MB/file   concurrency sweep (3d): bounded
+SMOKE  (3 smallest D1 runs)
+  SMOKE_D1               runs=    3 files=    3 total=    0.00 GB  avg=    0.0 MB/file   harness validation only -- NOT a result
+
+Wrote lists + manifests to /expanse/lustre/scratch/rswargo/temp_project/adaptiSeq/datasets
