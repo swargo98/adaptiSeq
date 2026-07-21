@@ -1,0 +1,48 @@
+[limiter nokey mj= 1] ena  n=  96 mean=  2.11 peak1s=  3 cap=8 over=no
+[limiter nokey mj= 1] gsa  n=  96 mean=  2.14 peak1s=  4 cap=5 over=no
+[limiter nokey mj= 1] ncbi n=  96 mean=  2.12 peak1s=  3 cap=3 over=no
+[limiter nokey mj= 3] ena  n=  96 mean=  3.14 peak1s=  5 cap=8 over=no
+[limiter nokey mj= 3] gsa  n=  96 mean=  3.12 peak1s=  4 cap=5 over=no
+[limiter nokey mj= 3] ncbi n=  96 mean=  3.03 peak1s=  3 cap=3 over=no
+[limiter nokey mj= 8] ena  n=  96 mean=  3.40 peak1s=  8 cap=8 over=no
+[limiter nokey mj= 8] gsa  n=  96 mean=  3.32 peak1s=  5 cap=5 over=no
+[limiter nokey mj= 8] ncbi n=  96 mean=  3.03 peak1s=  3 cap=3 over=no
+[limiter nokey mj=16] ena  n=  96 mean=  3.90 peak1s=  8 cap=8 over=no
+[limiter nokey mj=16] gsa  n=  96 mean=  3.80 peak1s=  5 cap=5 over=no
+[limiter nokey mj=16] ncbi n=  96 mean=  3.03 peak1s=  3 cap=3 over=no
+[naive   nokey mj= 1] ena  n=  96 mean=  6.77 peak1s=  8 cap=8 over=no
+[naive   nokey mj= 1] gsa  n=  96 mean=  6.87 peak1s=  8 cap=5 over=YES
+[naive   nokey mj= 1] ncbi n=  96 mean=  6.84 peak1s=  8 cap=3 over=YES
+[naive   nokey mj= 3] ena  n=  96 mean= 20.38 peak1s= 22 cap=8 over=YES
+[naive   nokey mj= 3] gsa  n=  96 mean= 20.17 peak1s= 20 cap=5 over=YES
+[naive   nokey mj= 3] ncbi n=  96 mean= 20.82 peak1s= 22 cap=3 over=YES
+[naive   nokey mj= 8] ena  n=  96 mean= 56.34 peak1s= 56 cap=8 over=YES
+[naive   nokey mj= 8] gsa  n=  96 mean= 51.76 peak1s= 54 cap=5 over=YES
+[naive   nokey mj= 8] ncbi n=  96 mean= 56.30 peak1s= 56 cap=3 over=YES
+[naive   nokey mj=16] ena  n=  96 mean=119.54 peak1s= 96 cap=8 over=YES
+[naive   nokey mj=16] gsa  n=  96 mean= 95.88 peak1s= 95 cap=5 over=YES
+[naive   nokey mj=16] ncbi n=  96 mean=112.58 peak1s= 96 cap=3 over=YES
+[limiter key   mj= 1] ena  n=  96 mean=  3.34 peak1s=  4 cap=8 over=no
+[limiter key   mj= 1] gsa  n=  96 mean=  3.33 peak1s=  4 cap=5 over=no
+[limiter key   mj= 1] ncbi n=  96 mean=  3.37 peak1s=  4 cap=10 over=no
+[limiter key   mj= 3] ena  n=  96 mean=  5.36 peak1s=  8 cap=8 over=no
+[limiter key   mj= 3] gsa  n=  96 mean=  5.05 peak1s=  5 cap=5 over=no
+[limiter key   mj= 3] ncbi n=  96 mean=  5.43 peak1s=  8 cap=10 over=no
+[limiter key   mj= 8] ena  n=  96 mean=  6.49 peak1s=  8 cap=8 over=no
+[limiter key   mj= 8] gsa  n=  96 mean=  5.05 peak1s=  5 cap=5 over=no
+[limiter key   mj= 8] ncbi n=  96 mean=  6.59 peak1s=  8 cap=10 over=no
+[limiter key   mj=16] ena  n=  96 mean=  8.07 peak1s=  8 cap=8 over=no
+[limiter key   mj=16] gsa  n=  96 mean=  5.05 peak1s=  5 cap=5 over=no
+[limiter key   mj=16] ncbi n=  96 mean=  8.12 peak1s=  8 cap=10 over=no
+[naive   key   mj= 1] ena  n=  96 mean=  6.77 peak1s=  8 cap=8 over=no
+[naive   key   mj= 1] gsa  n=  96 mean=  6.87 peak1s=  8 cap=5 over=YES
+[naive   key   mj= 1] ncbi n=  96 mean=  6.84 peak1s=  8 cap=10 over=no
+[naive   key   mj= 3] ena  n=  96 mean= 20.38 peak1s= 22 cap=8 over=YES
+[naive   key   mj= 3] gsa  n=  96 mean= 20.17 peak1s= 20 cap=5 over=YES
+[naive   key   mj= 3] ncbi n=  96 mean= 20.82 peak1s= 22 cap=10 over=YES
+[naive   key   mj= 8] ena  n=  96 mean= 56.33 peak1s= 56 cap=8 over=YES
+[naive   key   mj= 8] gsa  n=  96 mean= 51.77 peak1s= 54 cap=5 over=YES
+[naive   key   mj= 8] ncbi n=  96 mean= 56.32 peak1s= 56 cap=10 over=YES
+[naive   key   mj=16] ena  n=  96 mean=119.56 peak1s= 96 cap=8 over=YES
+[naive   key   mj=16] gsa  n=  96 mean= 95.89 peak1s= 95 cap=5 over=YES
+[naive   key   mj=16] ncbi n=  96 mean=112.62 peak1s= 96 cap=10 over=YES

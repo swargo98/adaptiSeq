@@ -1,0 +1,8 @@
+[iseq] serial rep=1 N=20 wall=13.28s acc/s=1.51 ok=20 fail=0
+[iseq] serial rep=2 N=20 wall=13.26s acc/s=1.51 ok=20 fail=0
+[pysradb] serial rep=1 N=20 wall=19.17s acc/s=1.04 ok=20 fail=0
+[pysradb] serial rep=2 N=20 wall=18.59s acc/s=1.08 ok=20 fail=0
+[ffq] serial rep=1 N=20 wall=42.15s acc/s=0.47 ok=20 fail=0
+[ffq] serial rep=2 N=20 wall=41.68s acc/s=0.48 ok=19 fail=1
+[kingfisher] serial rep=1 N=20 wall=20.48s acc/s=0.98 ok=20 fail=0
+[kingfisher] serial rep=2 N=20 wall=19.43s acc/s=1.03 ok=20 fail=0

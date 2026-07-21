@@ -1,0 +1,25 @@
+E10 SUMMARY
+============================================================
+
+10a resolution throughput (adaptiseq, median acc/s):
+  N=   50  mj=1:1.76  mj=3:5.05  mj=8:7.46  mj=16:7.46   speedup(mj16/mj1)=4.2x
+  N=  150  mj=1:1.75  mj=3:5.19  mj=8:7.80  mj=16:7.80   speedup(mj16/mj1)=4.4x
+
+10a competitors (serial, median acc/s):
+  iseq         1.51/s
+  pysradb      1.06/s
+  kingfisher   1.00/s
+  ffq          0.48/s
+
+10b overlap (resolution wall, N=150):
+  meta_jobs=1: 85.41s
+  meta_jobs=8: 19.21s
+  -> parallel resolution cuts the resolve phase 4.4x (mj1 85.4s -> mj8 19.2s)
+
+10c etiquette (peak req/s, 1s window):
+  [nokey] NCBI cap = 3.0 rps
+    limiter NCBI peak: mj1:3, mj3:3, mj8:3, mj16:3   (! = over cap)
+    naive   NCBI peak: mj1:8!, mj3:22!, mj8:56!, mj16:96!   (! = over cap)
+  [key] NCBI cap = 10.0 rps
+    limiter NCBI peak: mj1:4, mj3:8, mj8:8, mj16:8   (! = over cap)
+    naive   NCBI peak: mj1:8, mj3:22!, mj8:56!, mj16:96!   (! = over cap)

@@ -1,0 +1,8 @@
+[adaptiseq] mj=1 rep=1 N=20 wall=34.28s acc/s=0.58 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=1 rep=2 N=20 wall=31.87s acc/s=0.63 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=3 rep=1 N=20 wall=12.35s acc/s=1.62 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=3 rep=2 N=20 wall=11.75s acc/s=1.70 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=8 rep=1 N=20 wall=8.98s acc/s=2.23 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=8 rep=2 N=20 wall=9.40s acc/s=2.13 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=16 rep=1 N=20 wall=8.20s acc/s=2.44 tasks=20 reqs={'ena': 18, 'gsa': 8}
+[adaptiseq] mj=16 rep=2 N=20 wall=8.25s acc/s=2.42 tasks=20 reqs={'ena': 18, 'gsa': 8}

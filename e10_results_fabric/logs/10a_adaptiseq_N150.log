@@ -1,0 +1,12 @@
+[adaptiseq] mj=1 rep=1 N=150 wall=85.54s acc/s=1.75 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=1 rep=2 N=150 wall=85.17s acc/s=1.76 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=1 rep=3 N=150 wall=85.69s acc/s=1.75 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=3 rep=1 N=150 wall=28.90s acc/s=5.19 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=3 rep=2 N=150 wall=28.87s acc/s=5.20 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=3 rep=3 N=150 wall=28.96s acc/s=5.18 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=8 rep=1 N=150 wall=19.21s acc/s=7.81 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=8 rep=2 N=150 wall=19.22s acc/s=7.80 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=8 rep=3 N=150 wall=19.22s acc/s=7.80 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=16 rep=1 N=150 wall=19.22s acc/s=7.81 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=16 rep=2 N=150 wall=19.22s acc/s=7.80 tasks=216 reqs={'ena': 150}
+[adaptiseq] mj=16 rep=3 N=150 wall=19.22s acc/s=7.80 tasks=216 reqs={'ena': 150}
