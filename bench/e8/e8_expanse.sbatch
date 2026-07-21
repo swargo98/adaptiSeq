@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=128
 #SBATCH --mem=240G
 #SBATCH --exclusive
-#SBATCH --time=04:00:00
+#SBATCH --time=10:00:00
 #SBATCH --output=slurm_e8_%j.out
 #SBATCH --error=slurm_e8_%j.err
 #
