@@ -1,0 +1,16 @@
+
+=== Table (Fig 6) — resource profile, median over reps ===
+panel   tool        reps  wall_s peakRSS_MB meanCPU% cpu_core_s  wr_MB/s  setup   data verify
+8-ENA   adaptiseq      5  1800.1       63.4      2.6      47.16      1.4    3.1 1797.0    0.0
+8-ENA   iseq           5  1800.4       21.3      0.1       2.37      0.4    5.8 1794.4    0.0
+8-ENA   kingfisher     5  1289.0      153.2      5.4      69.45      2.1    4.2  687.0  384.8
+8-SRA   adaptiseq      5    24.6     1145.5    308.1      77.96    138.0    3.1   17.8    3.6
+8-SRA   iseq           5    23.5     1098.8    274.2      64.97    144.8    3.1   16.7    3.7
+8-SRA   kingfisher     5    13.1     1195.6    253.4      34.57    213.8    8.9    3.7    0.5
+8-SRA   prefetch       5     9.4       57.2     19.1       1.83     21.3    8.3    0.0    1.0
+  wrote /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/fig6b_taskbar_8-ENA.png
+  wrote /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/fig6b_taskbar_8-SRA.png
+  wrote /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/fig6a_traces_8-ENA.png
+  wrote /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/fig6a_traces_8-SRA.png
+
+Figures + table in /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455
