@@ -1,12 +1,14 @@
-# Adaptive worker controller — `climb` mode
+# Adaptive worker controller — `topdown` mode
 
 How adaptiSeq decides *how many workers to run* during a batch download, so the
 user never has to pick `-j` by hand and still gets throughput at or above the
 best hand-tuned fixed value.
 
-Enable with `ASEQ_ADAPTIVE_MODE=climb` (the legacy gradient controller is the
-current default; see [§Why a new controller](#why-a-new-controller)).
-Implementation: `adaptiseq/batch.py`, `AdaptiveController._run_explore_exploit`.
+`topdown` is the **default** adaptive mode. Set `ASEQ_ADAPTIVE_MODE=bottomup` to
+use the older gradient controller instead (see
+[§Why top-down is the default](#why-top-down-is-the-default)). The legacy value
+`climb` is still accepted as an alias for `topdown`.
+Implementation: `adaptiseq/batch.py`, `AdaptiveController._run_topdown`.
 
 ---
 
@@ -37,11 +39,14 @@ flowchart LR
 | Knob | Env var | Default | Meaning |
 |---|---|---|---|
 | probe window | `ASEQ_PROBE_WINDOW` | 8 s (`probe_window`) | seconds of throughput averaged per measurement |
-| settle | `ASEQ_CLIMB_SETTLE` | 1.5 s | wait after changing worker count before measuring |
-| climb threshold | `ASEQ_CLIMB_THRESHOLD` | 0.10 | fewer workers must beat more by **>10%** to step down |
+| settle | `ASEQ_TOPDOWN_SETTLE` | 1.5 s | wait after changing worker count before measuring |
+| step-down threshold | `ASEQ_TOPDOWN_THRESHOLD` | 0.10 | fewer workers must beat more by **>10%** to step down |
 | re-probe period | `ASEQ_EXPLOIT_REPROBE_S` | 20 s | how often the exploit phase samples throughput |
 | re-explore drop | `ASEQ_EXPLOIT_REDO` | 0.35 | a **>35%** sustained drop below baseline triggers re-explore |
 | — (baseline smoothing) | — | EWMA 0.8/0.2 | baseline = `0.8·baseline + 0.2·sample` |
+
+The pre-rebrand names `ASEQ_CLIMB_SETTLE` / `ASEQ_CLIMB_THRESHOLD` are still read as
+fallbacks when the `ASEQ_TOPDOWN_*` equivalents are unset.
 
 ---
 
@@ -78,7 +83,7 @@ return best_w
 | 2 | 8  | 30 | 30 > 55·1.10? **no** → stop |
 
 → **commit 16 workers.** Two probes, ~20 s of exploration on a ~450 s transfer.
-(This is the D2_subset case: climb committed to 16 and reached ~57 MB/s.)
+(This is the D2_subset case: topdown committed to 16 and reached ~57 MB/s.)
 
 ### Example B — many connections throttled (steps down to the knee)
 
@@ -158,20 +163,21 @@ as throttling.
 
 ---
 
-## Why a new controller
+## Why top-down is the default
 
-The legacy gradient controller probes a ~4 s window for the *entire* run and
+The `bottomup` gradient controller probes a ~4 s window for the *entire* run and
 never commits, so on a bursty link it optimizes noise and parks at low worker
 counts. Measured medians (3 reps each, live ENA):
 
-| Workload | legacy | best fixed | **climb** |
+| Workload | bottomup | best fixed | **topdown** |
 |---|---|---|---|
 | D2_subset (16 files, byte-bound) | 40.3 | 41.6 (`-j 20`) | **57.0** |
 | D1_fair (201 files, throttled) | 17.6 | 24.2 (`-j 20`) | **30.4** |
 | D0_sweep (8 files) | ~24 | ~29 (`-j 8`) | **~39** |
 
-`climb` is top on all three *and* more consistent than any fixed choice, which is
-the point: no manual `-j`, better and steadier throughput.
+`topdown` is top on all three *and* more consistent than any fixed choice, which
+is the point: no manual `-j`, better and steadier throughput. That is why it is
+now the default.
 
 ### Known limitation
 

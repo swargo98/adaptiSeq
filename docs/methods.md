@@ -46,8 +46,9 @@ URL cache made every file on a host download the first file's bytes).
 - **Per-host:** a global cap (`--max-conns-per-host`) plus a reactive circuit
   breaker (429/503/refused → exponential global backoff + temporarily lowered
   cap, slow recovery).
-- **Per-batch:** a worker pool (`-j`) whose active size the gradient controller
-  tunes (`--adaptive`); workers are gated at file-pickup boundaries.
+- **Per-batch:** a worker pool (`-j`) whose active size the adaptive controller
+  tunes (`--adaptive`; `topdown` knee search by default, `bottomup` gradient via
+  `ASEQ_ADAPTIVE_MODE`); workers are gated at file-pickup boundaries.
 - **Resolution:** parallel (`--meta-jobs`) under per-endpoint rate limiters
   (ENA / NCBI / GSA; NCBI 3 rps, 10 with `NCBI_API_KEY`).
 - **Speed:** `-s/--speed` token-bucket cap in MB/s.

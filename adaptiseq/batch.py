@@ -139,13 +139,17 @@ class AdaptiveController:
         )
 
     async def run(self) -> None:
-        mode = os.environ.get("ASEQ_ADAPTIVE_MODE", "legacy").lower()
-        if mode in ("climb", "ladder", "ee"):
-            await self._run_explore_exploit()
+        # `topdown` (default) discovers the knee by searching *down* from the
+        # worker cap; `bottomup` is the gradient controller that crawls *up* from
+        # a low worker count. Legacy aliases: climb/ladder/ee -> topdown,
+        # legacy/gradient -> bottomup.
+        mode = os.environ.get("ASEQ_ADAPTIVE_MODE", "topdown").lower()
+        if mode in ("bottomup", "legacy", "gradient"):
+            await self._run_bottomup()
         else:
-            await self._run_legacy()
+            await self._run_topdown()
 
-    async def _run_legacy(self) -> None:
+    async def _run_bottomup(self) -> None:
         loop = asyncio.get_event_loop()
         # One window of settle before the first probe (mirrors run_download_optimizer).
         await asyncio.sleep(self.probe_window)
@@ -164,15 +168,16 @@ class AdaptiveController:
         )
 
     # ------------------------------------------------------------------
-    # Explore-then-exploit controller (ASEQ_ADAPTIVE_MODE=climb).
+    # Top-down explore-then-exploit controller (ASEQ_ADAPTIVE_MODE=topdown).
     #
-    # The legacy gradient optimizer probes a 4 s window forever and never
+    # The bottom-up gradient optimizer probes a 4 s window forever and never
     # commits, so on a bursty link it wanders and parks at low worker counts.
-    # This controller instead (1) climbs a geometric ladder of worker counts,
-    # each measured over a longer averaged window, to locate the knee; then
-    # (2) COMMITS to the best and holds; then (3) periodically re-probes, and
-    # re-explores only if throughput has clearly degraded (throttling / the
-    # file tail). No knob is chosen manually -- the knee is discovered.
+    # This controller instead (1) searches a geometric ladder of worker counts
+    # from the top down, each measured over a longer averaged window, to locate
+    # the knee; then (2) COMMITS to the best and holds; then (3) periodically
+    # re-probes, and re-explores only if throughput has clearly degraded
+    # (throttling / the file tail). No knob is chosen manually -- the knee is
+    # discovered.
     # ------------------------------------------------------------------
     def _cfg(self, name: str, default: float) -> float:
         try:
@@ -196,15 +201,17 @@ class AdaptiveController:
         n = max(1, int(round(window)))
         thrpt = self.meter.recent_average(n)
         self._record_probe(w, thrpt)
-        # Same log line the legacy path emits, so trajectories.tsv still parses.
+        # Same log line the bottom-up path emits, so trajectories.tsv still parses.
         log.info("adaptive probe: workers=%d throughput=%.1fMbps score=%d",
                  w, thrpt, int(round(-thrpt)))
         return thrpt
 
-    async def _run_explore_exploit(self) -> None:
+    async def _run_topdown(self) -> None:
         window = self._cfg("ASEQ_PROBE_WINDOW", self.probe_window)
-        settle = self._cfg("ASEQ_CLIMB_SETTLE", 1.5)
-        thresh = self._cfg("ASEQ_CLIMB_THRESHOLD", 0.10)   # frac gain that justifies MORE workers
+        # ASEQ_CLIMB_* are honoured as fallbacks for pre-rebrand configs/scripts.
+        settle = self._cfg("ASEQ_TOPDOWN_SETTLE", self._cfg("ASEQ_CLIMB_SETTLE", 1.5))
+        thresh = self._cfg("ASEQ_TOPDOWN_THRESHOLD",   # frac gain that justifies MORE workers
+                           self._cfg("ASEQ_CLIMB_THRESHOLD", 0.10))
         reprobe_s = self._cfg("ASEQ_EXPLOIT_REPROBE_S", 20.0)
         redo = self._cfg("ASEQ_EXPLOIT_REDO", 0.35)        # sustained frac drop => re-explore
 

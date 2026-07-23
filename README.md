@@ -64,8 +64,8 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
 - **Segmented, resumable HTTP(S)/FTP engine** (the default) with `.part`/`.part.meta`
   resume — interrupt and re-run to continue, not restart.
 - **Batch-parallel download** of accession lists through an asyncio worker pool.
-- **Adaptive concurrency**: a gradient controller tunes how many downloads run at
-  once from measured throughput.
+- **Adaptive concurrency**: an adaptive controller (top-down knee search by
+  default) tunes how many downloads run at once from measured throughput.
 - **Parallel metadata resolution** under polite per-endpoint rate limits.
 - **Adaptive parallel Aspera** via an efficiency-hysteresis controller.
 - **Python API** (`fetch`, `resolve`, `get_metadata`) that returns values and
@@ -251,8 +251,9 @@ speed cap (`-s` MB/s), skip md5 (`-k`), and quiet (`-Q`). See
 ### 7. Batch & adaptive (`-j`, `--adaptive`, `--meta-jobs`)
 
 For accession lists, adaptiSeq resolves in parallel (`--meta-jobs`) then downloads
-through an asyncio worker pool (`-j`) whose active size a gradient controller
-tunes (`--adaptive`).
+through an asyncio worker pool (`-j`) whose active size the adaptive controller
+tunes (`--adaptive`; `topdown` by default, `ASEQ_ADAPTIVE_MODE=bottomup` for the
+gradient controller — see `docs/ADAPTIVE_CONTROLLER.md`).
 
 ```bash
 adaptiseq -i accessions.txt -g -j 8

@@ -334,9 +334,12 @@ def test_batch_skips_already_in_success_log(tmp_path):
     assert (tmp_path / "g1.bin").exists()
 
 
-def test_adaptive_controller_adjusts_gate_and_records_trajectory(tmp_path):
+def test_adaptive_controller_adjusts_gate_and_records_trajectory(tmp_path, monkeypatch):
     # Drive the controller against a meter we feed manually; assert it sets the
     # gate active count and records a trajectory (observable, acceptance #2).
+    # The feed models "throughput rises with workers", i.e. the bottom-up
+    # gradient controller, so pin that mode (topdown is the default now).
+    monkeypatch.setenv("ASEQ_ADAPTIVE_MODE", "bottomup")
     async def main():
         gate = WorkerGate(jobs=8, active=2)
         meter = ThroughputMeter(interval=0.05)

@@ -89,14 +89,14 @@ declare -a ARMS_FULL=(
   "adaptiseq-fixed-j8|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 8 --meta-jobs 8 -Q -o ."
   "adaptiseq-fixed-j20|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 20 --meta-jobs 8 -Q -o ."
   "adaptiseq-fixed-j40|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j 40 --meta-jobs 8 -Q -o ."
-  "adaptiseq-adaptive-j20|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 20 --meta-jobs 8 -Q -o ."
-  "adaptiseq-adaptive-j40|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 40 --meta-jobs 8 -Q -o ."
-  # NEW: explore-then-exploit adaptive controller (docs/ADAPTIVE_CONTROLLER.md).
-  # Same CLI as the adaptive arms; the controller variant is selected by the
-  # ASEQ_ADAPTIVE_MODE=climb env var (aseq_run.py inherits it). The legacy
-  # adaptive arms above are kept unchanged for comparison.
-  "adaptiseq-climb-j20|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 20 --meta-jobs 8 -Q -o ."
-  "adaptiseq-climb-j40|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 40 --meta-jobs 8 -Q -o ."
+  # Bottom-up gradient controller, pinned explicitly (topdown is now the default).
+  "adaptiseq-bottomup-j20|adaptiseq|ASEQ_ADAPTIVE_MODE=bottomup $ASEQ -i \$LIST -g --adaptive -j 20 --meta-jobs 8 -Q -o ."
+  "adaptiseq-bottomup-j40|adaptiseq|ASEQ_ADAPTIVE_MODE=bottomup $ASEQ -i \$LIST -g --adaptive -j 40 --meta-jobs 8 -Q -o ."
+  # Top-down explore-then-exploit controller (docs/ADAPTIVE_CONTROLLER.md), the
+  # default mode; pinned here for clarity. Same CLI as the bottom-up arms; the
+  # variant is selected by ASEQ_ADAPTIVE_MODE (aseq_run.py inherits it).
+  "adaptiseq-topdown-j20|adaptiseq|ASEQ_ADAPTIVE_MODE=topdown ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 20 --meta-jobs 8 -Q -o ."
+  "adaptiseq-topdown-j40|adaptiseq|ASEQ_ADAPTIVE_MODE=topdown ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 40 --meta-jobs 8 -Q -o ."
 )
 FETCHNGS_ARM="fetchngs|fetchngs|nextflow run nf-core/fetchngs -r 1.12.0 --input \$IDS_CSV --outdir . -profile singularity --download_method ftp -ansi-log false"
 
@@ -120,10 +120,11 @@ build_sweep_arms() {
     for j in 4 8 16; do
         ARMS+=("adaptiseq-j${j}|adaptiseq|$ASEQ -i \$LIST -g --no-adaptive -j ${j} --meta-jobs 8 -Q -o .")
     done
-    # Adaptive at the same ceiling: does the controller find the fixed optimum?
-    ARMS+=("adaptiseq-adaptive-j16|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
-    # NEW: explore-then-exploit controller at the same ceiling.
-    ARMS+=("adaptiseq-climb-j16|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
+    # Bottom-up gradient controller at the same ceiling: does it find the fixed
+    # optimum? Pinned explicitly now that topdown is the default.
+    ARMS+=("adaptiseq-bottomup-j16|adaptiseq|ASEQ_ADAPTIVE_MODE=bottomup $ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
+    # Top-down explore-then-exploit controller at the same ceiling.
+    ARMS+=("adaptiseq-topdown-j16|adaptiseq|ASEQ_ADAPTIVE_MODE=topdown ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
 }
 
 # ---- 3s: connections-per-worker sweep (--max-segments) ----------------------
