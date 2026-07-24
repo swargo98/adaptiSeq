@@ -40,6 +40,6 @@ def test_merge_st_rejects_run_exp_sample():
 
 
 def test_merge_guard_includes_gsa_runs():
-    # The Bash guard regex includes C (CRR/CRX) for GSA accessions.
+    # The guard regex includes C (CRR/CRX) for GSA accessions.
     with pytest.raises(AdaptiSeqError):
         check_merge_guard("ex", ["CRR311377"])

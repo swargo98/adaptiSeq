@@ -1,7 +1,7 @@
-"""adaptiSeq — a tested, importable Python port of the iseq sequencing downloader.
+"""adaptiSeq — a tested, importable downloader for public sequencing data.
 
-Part 1 is a behaviour-preserving port on the classic ``wget``/``axel`` engine.
-The segmented and adaptive engines arrive in Parts 2 and 3.
+Part 1 provides the classic ``wget``/``axel`` engine. The segmented and adaptive
+engines arrive in Parts 2 and 3.
 
 Public library API (Section 6) — none of these print colour codes or call
 ``sys.exit``; they return values and raise the typed exceptions in

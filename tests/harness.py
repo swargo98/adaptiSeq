@@ -29,7 +29,7 @@ def sra_run_set(path: Path) -> List[str]:
 
 
 def sra_fastq_md5_set(path: Path) -> List[str]:
-    """The public fastq md5 set iseq validates against (``fastq_md5`` column)."""
+    """The public fastq md5 set adaptiSeq validates against (``fastq_md5`` column)."""
     lines = Path(path).read_text(errors="replace").splitlines()
     if not lines:
         return []

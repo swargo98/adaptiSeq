@@ -19,7 +19,7 @@ batch:
 2. **Adaptive download pool** (`-j`, default 20) — a single-process asyncio worker
    pool pulls the resolved files, each fetched by the segmented engine.
 
-Per-file semantics are preserved from `iseq`: skip-if-in-`success.log`, md5 check,
+Per-file semantics: skip-if-in-`success.log`, md5 check,
 retry up to 3, `fail.log`, continue past failures, non-zero overall exit on any
 failure. GSA accessions, `--engine classic`, `-m`, and GSA-Aspera use the
 sequential path.

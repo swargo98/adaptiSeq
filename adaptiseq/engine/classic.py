@@ -1,6 +1,6 @@
 """The classic ``wget``/``axel`` download engine and the ``ascp`` aspera path.
 
-Faithful port of ``executeDownload`` and ``executeAspera``. This module is the
+Provides ``executeDownload`` and ``executeAspera``. This module is the
 single seam through which sequence-data bytes are fetched (Section 5.1). The
 public surface is intentionally tiny:
 
@@ -8,8 +8,8 @@ public surface is intentionally tiny:
 * :meth:`ClassicEngine.fetch_aspera(link, db, save_path=None) -> bool` — the ascp
   path (unchanged by Part 2's HTTP/FTP segmented engine).
 
-Returns ``True`` when the transfer command exits 0. As in the Bash, *success* of
-a Run is ultimately decided by the integrity check, not by this return value.
+Returns ``True`` when the transfer command exits 0. *Success* of a Run is
+ultimately decided by the integrity check, not by this return value.
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ GSA_ASPERA_KEY_URL = (
 
 
 def _wget_supports_show_progress() -> bool:
-    """Port of the ``wget_version < 1.16`` test in ``executeDownload``."""
+    """The ``wget_version < 1.16`` test in ``executeDownload``."""
     try:
         out = subprocess.run(
             ["wget", "--version"], capture_output=True, text=True
@@ -146,7 +146,7 @@ class ClassicEngine:
 
     # --- aspera (ascp) ----------------------------------------------------------
     def fetch_aspera(self, link: str, db: str, save_path: Optional[str] = None) -> bool:
-        """Port of ``executeAspera`` for ``db`` in {ENA, GSA}."""
+        """``executeAspera`` for ``db`` in {ENA, GSA}."""
         opts = self.options
         if db == "ENA":
             key = find_ena_aspera_key()

@@ -1,9 +1,7 @@
-"""Coloured message output that mirrors iseq's exact escape sequences.
+"""Coloured message output (Note / Error / How to solve? style).
 
-The Bash original embeds ANSI codes directly in every ``echo -e``. To preserve
-byte-for-byte console parity (Section 3: "match the Bash output exactly,
-including the coloured Note / Error / How to solve? message style") this module
-reproduces those exact codes.
+ANSI codes for the coloured Note / Error / How to solve? message style are emitted
+directly, matching the documented console format.
 
 Crucially, the *library* API must not print colour codes or call ``sys.exit``
 (Section 6). So all user-facing output goes through a :class:`Reporter`. The CLI
@@ -66,7 +64,7 @@ class Reporter:
     """Sink for user-facing progress/status lines.
 
     Subclasses decide whether/where to emit. ``info`` is for stdout-style lines;
-    ``error`` is for stderr-style lines (the Bash sends some errors to ``>&2``).
+    ``error`` is for stderr-style lines (some errors go to ``>&2``).
     """
 
     def info(self, message: str) -> None:  # pragma: no cover - interface
@@ -77,7 +75,7 @@ class Reporter:
 
 
 class AnsiReporter(Reporter):
-    """Writes coloured lines exactly like the Bash ``echo -e`` calls."""
+    """Writes coloured output lines (``echo -e`` style)."""
 
     def __init__(self, out: Optional[TextIO] = None, err: Optional[TextIO] = None):
         self._out = out if out is not None else sys.stdout

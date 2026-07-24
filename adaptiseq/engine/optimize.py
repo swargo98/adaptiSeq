@@ -1,9 +1,9 @@
-"""Gradient adaptive concurrency controller (ported from ``search.py``).
+"""Gradient adaptive concurrency controller.
 
-Ports the *algorithm* of ``gradient_opt_fast`` + ``run_probe`` faithfully (the
-step, the ``cc_change_limit`` clamp, the best-seen reset), but fixes the three
-bookkeeping defects called out in spec §2.1 (see ``NOTES.md`` §P3.2). It does
-**not** port ``base_optimizer`` (no skopt/scipy).
+Implements the ``gradient_opt_fast`` + ``run_probe`` algorithm (the step, the
+``cc_change_limit`` clamp, the best-seen reset), with the three bookkeeping defects
+called out in spec §2.1 fixed (see ``NOTES.md`` §P3.2). There is no skopt/scipy
+``base_optimizer`` path.
 
 The optimizer controls the number of active **workers**, never a connection
 count (spec §0). The black-box it minimises is the negated, worker-cost-penalised
@@ -21,7 +21,7 @@ import numpy as np
 
 log = logging.getLogger("adaptiseq.engine.optimize")
 
-# Ported constants (search.py).
+# Controller constants.
 EXIT_SIGNAL = 10 ** 10
 CC_CHANGE_LIMIT = 5
 CACHE_LIMIT = 20
@@ -34,7 +34,7 @@ def run_probe(
     logger: Optional[logging.Logger] = None,
     verbose: bool = True,
 ) -> float:
-    """Faithful port of ``run_probe``: evaluate the black box once and log."""
+    """``run_probe``: evaluate the black box once and log."""
     logger = logger or log
     import time
 

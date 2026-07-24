@@ -38,7 +38,7 @@ def test_invalid_accessions_raise(acc):
 
 
 def test_run_requires_six_digits():
-    # The Bash regex is ^[EDS]RR[0-9]{6,}$ — fewer than 6 digits is invalid.
+    # The accession regex is ^[EDS]RR[0-9]{6,}$ — fewer than 6 digits is invalid.
     with pytest.raises(InvalidAccessionError):
         validate_query("SRR12345")
     assert validate_query("SRR123456") == "SRR123456"

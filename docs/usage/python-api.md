@@ -1,8 +1,8 @@
 # Python API
 
-Unlike `iseq` (a Bash script), adaptiSeq ships a real, importable Python API. The
-three public functions **return values and raise typed exceptions** — they never
-call `sys.exit` and never print colour codes — so you can drive them from a
+adaptiSeq ships a real, importable Python API. The three public functions
+**return values and raise typed exceptions** — they never call `sys.exit` and
+never print colour codes — so you can drive them from a
 script, notebook, or pipeline.
 
 ```python

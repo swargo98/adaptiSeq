@@ -74,10 +74,10 @@ instead.
 Yes — `from adaptiseq import fetch, resolve, get_metadata`. See the
 [Python API](usage/python-api.md).
 
-## Is the output identical to `iseq`?
+## Is the output correct?
 
-Resolution, metadata, integrity, logs, and merge are byte-for-byte faithful to
-`iseq` (guaranteed by a differential test suite). The engine changes only *how*
-bytes are transferred, never *which* bytes are written. One deliberate
-improvement: 3-file runs (orphan/barcode + `_1` + `_2`) that `iseq` mishandles are
-downloaded correctly.
+Resolution, metadata, integrity, logs, and merge are covered by a differential
+test suite that checks adaptiSeq's output against stored reference fixtures. The
+engine changes only *how* bytes are transferred, never *which* bytes are written.
+One deliberate improvement over `iseq`: 3-file runs (orphan/barcode + `_1` + `_2`)
+that it mishandles are downloaded correctly.

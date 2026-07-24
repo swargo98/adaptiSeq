@@ -64,7 +64,7 @@ def _srapath(srr: str) -> str:
 # ================================ downloadSRA ===================================
 
 def download_sra(ctx: RunContext, srr: str) -> None:
-    """Port of ``downloadSRA`` (resolves and fetches one Run)."""
+    """``downloadSRA``: resolve and fetch one Run."""
     opts = ctx.options
     reporter = ctx.reporter
     tsv_text = ctx.metadata_tsv().read_text(errors="replace")
@@ -267,7 +267,7 @@ GSA_BROWSE_URL = "https://ngdc.cncb.ac.cn/gsa/browse/{cra}/{crr}"
 
 
 def download_gsa(ctx: RunContext, crr: str) -> None:
-    """Port of ``downloadGSA`` (resolves and fetches all files of one Run)."""
+    """``downloadGSA``: resolve and fetch all files of one Run."""
     reporter = ctx.reporter
     opts = ctx.options
     csv_text = ctx.metadata_csv().read_text(errors="replace")
@@ -302,7 +302,7 @@ def download_gsa(ctx: RunContext, crr: str) -> None:
 
 
 def _gsa_one(ctx, link, crr, cra, *, mode, ftp, aspera):
-    """Download one GSA link with the per-file md5 retry loop (checkGSA port)."""
+    """Download one GSA link with the per-file md5 retry loop (``checkGSA``)."""
     from .console import bright_green, bright_red, bright_yellow as _by, green as _g
     from .errors import AdaptiSeqError
 

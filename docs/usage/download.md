@@ -56,7 +56,7 @@ adaptiseq -i SRR1178105 -q -t 10
 ```
 
 More is not always better — `fasterq-dump` is IO-heavy, and too many threads
-raise CPU/IO load. (`iseq` recommends a ceiling around 15.)
+raise CPU/IO load. A ceiling around 15 is a sensible default.
 
 ## `-d`, `--database` — force ENA or SRA
 
@@ -80,8 +80,7 @@ adaptiseq -i SRR7706354 -g -r https
 For the segmented engine, ENA transport defaults to **auto (HTTPS-first)**: it
 prefers the HTTPS mirror (confirmed by a cheap per-host range probe), then native
 segmented FTP, then a single stream **inside** the segmented engine. Pass
-`-r https` or `-r ftp` to force one. (This differs from `iseq`, whose default is
-FTP.)
+`-r https` or `-r ftp` to force one.
 
 ## `-p`, `--parallel` — classic-engine parallelism
 

@@ -3,14 +3,14 @@
 adaptiSeq fetches every sequence-data byte through a single **download seam**, so
 the scheduler and engines change only *how* bytes arrive and *when* files are
 scheduled — never *which* bytes. Resolution, metadata, integrity, logs, and merge
-stay byte-for-byte faithful to `iseq`.
+are independent of the transport in use.
 
 ## Engines
 
 | Engine | Flag | What it is |
 | ------ | ---- | ---------- |
 | **segmented** *(default)* | `--engine segmented` | Resumable, range-based HTTP(S)/FTP downloader (`aiohttp`/`aioftp`). Each file is fetched in multiple byte-range connections with atomic `.part`/`.part.meta` resume. Runs the batch worker pool and adaptive controller. |
-| **classic** *(opt-in)* | `--engine classic` | The faithful `iseq` path: `wget`, or `axel` with `-p`, plus `ascp` for `-a`. No segmentation. |
+| **classic** *(opt-in)* | `--engine classic` | The plain-tool path: `wget`, or `axel` with `-p`, plus `ascp` for `-a`. No segmentation. |
 
 > The segmented engine **never falls back to classic**. A host that cannot serve
 > ranges is downloaded as a **single stream inside the segmented engine**;
@@ -37,8 +37,8 @@ URL cache made every file on a host download the first file's bytes).
 | `single-stream` | range-incapable hosts | inside the segmented engine; never truncated |
 | `aspera (ena)` | ENA, `-a` | adaptive `ascp` pool (efficiency hysteresis) |
 | `aspera (gsa)` | GSA, `-a` | sequential, Huawei-Cloud preferred; best-effort |
-| `huawei-cloud` | GSA | preferred for GSA even with `-a` (inherited from iseq) |
-| `classic wget/axel` | `--engine classic` | the faithful iseq path; `axel` with `-p` |
+| `huawei-cloud` | GSA | preferred for GSA even with `-a` |
+| `classic wget/axel` | `--engine classic` | the plain-tool path; `axel` with `-p` |
 
 ## Concurrency & etiquette
 

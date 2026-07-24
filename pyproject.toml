@@ -36,10 +36,10 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-# Metadata bytes are pulled by `wget` (shelled out, exactly as iseq does) for
-# byte-for-byte parity. Part 2 adds the async segmented HTTP(S)/FTP engine, which
-# requires aiohttp + aioftp at runtime. `openpyxl` parses GSA XLSX in the library
-# API (the XLSX file itself is fetched verbatim by wget) — an optional extra.
+# Metadata bytes are pulled by `wget` (shelled out), so `requests` is not a
+# runtime dependency. The async segmented HTTP(S)/FTP engine requires aiohttp +
+# aioftp at runtime. `openpyxl` parses GSA XLSX in the library API (the XLSX file
+# itself is fetched verbatim by wget) — an optional extra.
 dependencies = [
     "aiohttp>=3.8",
     "aioftp>=0.21",
@@ -59,7 +59,6 @@ adaptiseq = "adaptiseq.cli:main"
 Homepage = "https://github.com/swargo98/adaptiSeq"
 Repository = "https://github.com/swargo98/adaptiSeq"
 Issues = "https://github.com/swargo98/adaptiSeq/issues"
-Upstream = "https://github.com/BioOmics/iSeq"
 
 [tool.setuptools.dynamic]
 version = { attr = "adaptiseq.__version__" }
@@ -74,4 +73,4 @@ adaptiseq = ["py.typed"]
 testpaths = ["tests"]
 addopts = "-q"
 # Offline CI can set ADAPTISEQ_NO_NETWORK=1 to force live tests to skip; the
-# fixture-mode differential tests never skip and cover parity offline.
+# fixture-mode differential tests never skip and run offline against fixtures.

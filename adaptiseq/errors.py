@@ -14,8 +14,8 @@ from typing import Optional
 class AdaptiSeqError(Exception):
     """Base class for all adaptiSeq errors.
 
-    ``solution`` carries the "How to solve?" guidance that iseq prints alongside
-    each error, so the CLI can reproduce the two-line Bash error format.
+    ``solution`` carries the "How to solve?" guidance printed alongside each
+    error, so the CLI can render the two-line error format.
     """
 
     def __init__(self, message: str, solution: Optional[str] = None):

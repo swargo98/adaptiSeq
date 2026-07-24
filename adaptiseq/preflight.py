@@ -1,13 +1,12 @@
-"""Port of ``CheckSoftware`` — the external-tool preflight.
+"""``CheckSoftware`` — the external-tool preflight.
 
-iseq runs ``CheckSoftware`` for ``wget axel pigz ascp md5sum srapath
-vdb-validate`` at startup, and conditionally for ``fasterq-dump`` (``-q``/``-e``)
-and ``axel`` (``-p``). On a missing tool it prints a three-line coloured
-guidance block and exits 1.
+Checks ``wget axel pigz ascp md5sum srapath vdb-validate`` (and conditionally
+``fasterq-dump`` for ``-q``/``-e`` and ``axel`` for ``-p``). On a missing tool it
+prints a three-line coloured guidance block and exits 1.
 
 The library API never calls this (Section 6). The CLI calls :func:`preflight`
 after argparse has already handled ``--help``/``--version`` — see NOTES.md
-divergence #1 for why the order differs from the Bash.
+decision #1 for why the order is what it is.
 """
 
 from __future__ import annotations
@@ -18,7 +17,7 @@ from typing import List, Optional, Tuple
 from .console import blue_bold, green_bold, red_bold
 from .errors import PreflightError
 
-# (binary, conda-package-hint) — order and hints copied from the Bash.
+# (binary, conda-package-hint).
 BASE_TOOLS: List[Tuple[str, str]] = [
     ("wget", "wget"),
     ("axel", "axel"),
@@ -52,9 +51,9 @@ def check_software(software1: str, software2: str) -> None:
 def preflight(*, need_fasterq_dump: bool = False, need_axel: bool = False) -> None:
     """Run the full startup check. Raises on the first missing tool.
 
-    ``need_fasterq_dump`` mirrors the conditional ``CheckSoftware fasterq-dump``
-    when ``-q``/``-e`` is used; ``need_axel`` mirrors the ``-p`` case (axel is in
-    the base set too, matching the Bash, which checks it twice).
+    ``need_fasterq_dump`` adds the conditional ``CheckSoftware fasterq-dump``
+    when ``-q``/``-e`` is used; ``need_axel`` covers the ``-p`` case (axel is in
+    the base set too).
     """
     for binary, hint in BASE_TOOLS:
         check_software(binary, hint)
@@ -65,7 +64,7 @@ def preflight(*, need_fasterq_dump: bool = False, need_axel: bool = False) -> No
 
 
 def render_preflight_error(err: PreflightError) -> str:
-    """Render a :class:`PreflightError` as the exact 2-3 line Bash block."""
+    """Render a :class:`PreflightError` as the 2-3 line guidance block."""
     lines = [f"{red_bold('Error')}: {err.message}"]
     if err.solution:
         # The first solution line is prefixed with the blue "How to solve?" label.

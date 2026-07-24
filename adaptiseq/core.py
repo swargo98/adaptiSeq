@@ -1,7 +1,7 @@
-"""The per-accession process loop — port of iseq's main body (lines ~981-1114).
+"""The per-accession process loop.
 
-This ties the modules together in the same order iseq does: metadata first, then
-the file-list preview, then per-Run download + integrity + convert, then merge.
+This ties the modules together in order: metadata first, then the file-list
+preview, then per-Run download + integrity + convert, then merge.
 It is shared by the CLI and the library API (:func:`adaptiseq.fetch`). It never
 prints colour directly — all output goes through ``ctx.reporter`` — and raises
 typed exceptions instead of exiting (Section 6).
@@ -26,7 +26,7 @@ from .options import Options, RunContext
 
 
 def _check_file(path: Path) -> None:
-    """Port of ``CheckFile``: error if missing or empty."""
+    """``CheckFile``: error if missing or empty."""
     if not path.is_file():
         raise AdaptiSeqError(
             f"{path.name} is not exist", f"Please check the accession in {path.name}"
@@ -212,7 +212,7 @@ def _to_float(value: str) -> float:
 
 
 def _print_gsa_filelist(ctx: RunContext, csv: Path) -> None:
-    """Port of the GSA awk preview (field 5 = filenames, field 6 = sizes)."""
+    """The GSA file-list preview (field 5 = filenames, field 6 = sizes)."""
     lines = csv.read_text(errors="replace").splitlines()
     for ln in lines[1:]:
         filenames = _csv_field(ln, 5).split("|")
@@ -225,7 +225,7 @@ def _print_gsa_filelist(ctx: RunContext, csv: Path) -> None:
 
 
 def _print_sra_filelist(ctx: RunContext, tsv: Path) -> None:
-    """Port of the SRA awk preview, including the gzip vs sra column math."""
+    """The SRA file-list preview, including the gzip vs sra column math."""
     opts = ctx.options
     text = tsv.read_text(errors="replace")
     lines = text.splitlines()

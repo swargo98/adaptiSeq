@@ -9,8 +9,7 @@ adaptiseq -i CRR343031 -m
 
 Metadata is always fetched (with or without `-m`) because it drives resolution; if
 metadata cannot be retrieved, adaptiSeq stops before downloading. The metadata
-bytes are pulled with the **same `wget` commands as `iseq`**, so the files are
-byte-for-byte identical.
+bytes are pulled with `wget`, so the files are exactly what the archive serves.
 
 ## SRA / ENA / DDBJ / GEO
 

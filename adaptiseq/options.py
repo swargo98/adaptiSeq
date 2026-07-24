@@ -1,7 +1,7 @@
 """Run-time options and context.
 
-The Bash script keeps state in shell globals (``gzip``, ``fastq``, ``database``,
-``parallel`` ...). This module collects them into an explicit, typed
+Rather than scattering run state across globals (``gzip``, ``fastq``, ``database``,
+``parallel`` ...), this module collects it into an explicit, typed
 :class:`Options` object plus a :class:`RunContext` that carries the per-accession
 mutable state (the current ``accession`` whose metadata file is being read, the
 retry counter, the engine, the reporter, and the fail flag).
@@ -29,7 +29,7 @@ class Options:
     gzip: bool = False              # -g
     fastq: bool = False             # -q
     threads: int = 8               # -t
-    merge: Optional[str] = None     # -e ex|sa|st  (None == off, matches Bash 0)
+    merge: Optional[str] = None     # -e ex|sa|st  (None == off)
     database: str = "auto"         # -d ena|sra (auto-detect default)
     parallel: int = 0              # -p (0 == use wget, >0 == axel -n parallel)
     aspera: bool = False            # -a
@@ -100,25 +100,24 @@ class Options:
 
 @dataclass
 class RunContext:
-    """Per-run mutable execution state, threaded through the port."""
+    """Per-run mutable execution state, threaded through the process loop."""
 
     options: Options
     reporter: Reporter = field(default_factory=NullReporter)
     workdir: Path = field(default_factory=Path.cwd)
 
-    # The accession whose metadata file the download/merge logic reads. In the
-    # Bash this is the loop variable ``$accession`` that ``${accession}.metadata.*``
-    # interpolates against.
+    # The accession whose metadata file the download/merge logic reads; the
+    # ``${accession}.metadata.*`` files are named after it.
     accession: str = ""
 
-    # iseq mutates ``database`` to "sra" when ENA returns no rows. We keep the
+    # ``database`` is mutated to "sra" when ENA returns no rows. We keep the
     # user's choice in options and the effective value here.
     database: str = "auto"
 
-    # ``count`` in the Bash. Reset per Run (see NOTES.md divergence #2).
+    # Per-Run retry counter. Reset per Run (see NOTES.md decision #2).
     retry_count: int = 1
 
-    # Set when any Run ultimately fails (the Bash ``.has_failed.flag``).
+    # Set when any Run ultimately fails (drives the failure flag / non-zero exit).
     failed: bool = False
 
     engine: object = None  # set to a ClassicEngine; typed loosely to avoid cycles

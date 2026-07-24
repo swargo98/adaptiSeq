@@ -1,10 +1,10 @@
-"""``success.log`` / ``fail.log`` helpers — faithful port of iseq's log handling.
+"""``success.log`` / ``fail.log`` helpers.
 
-iseq records one ``$(date)\t$ID`` line per Run/file. "Already downloaded" is a
+One ``$(date)\t$ID`` line is recorded per Run/file. "Already downloaded" is a
 *substring* test (``grep -c $ID success.log``), and a success removes the ID from
 ``fail.log`` (``sed -i "/$ID/d"``). The differential harness compares these logs
 as **sets of IDs** (the 2nd tab field), so the exact date string is cosmetic;
-we still reproduce the ``date``-style timestamp for realism.
+we still write a ``date``-style timestamp for realism.
 """
 
 from __future__ import annotations

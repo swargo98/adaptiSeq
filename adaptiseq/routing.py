@@ -1,13 +1,13 @@
 """Database routing and the ``-e`` merge accession-type guards.
 
-Two responsibilities, both faithful ports:
+Two responsibilities:
 
 1. Decide whether an accession is handled by the GSA branch or the SRA/ENA/DDBJ/
    GEO branch of the main process loop (``is_gsa`` in :mod:`accession`). The
    ENA-vs-SRA choice within the SRA branch is dynamic (ENA first, fall back to
    SRA when ENA returns no rows) and lives in :mod:`metadata`.
-2. Enforce the ``-e ex|sa|st`` accession-type guards that iseq applies up front
-   (lines 174-202 of the Bash), with the exact same error/solution text.
+2. Enforce the ``-e ex|sa|st`` accession-type guards up front, with clear
+   error/solution text.
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ from .errors import AdaptiSeqError
 
 __all__ = ["is_gsa", "route", "check_merge_guard"]
 
-# Verbatim guard patterns (note: include C for GSA, as the Bash does).
+# Guard patterns (note: include C for GSA).
 _RE_RUN_ANY = re.compile(r"^[CEDS]RR[0-9]{6,}$")
 _RE_EXP_ANY = re.compile(r"^[CEDS]RX[0-9]{6,}$")
 _RE_SAMPLE_SEC = re.compile(r"^[EDS]RS[0-9]{6,}$")
@@ -33,9 +33,9 @@ def route(accession: str) -> str:
 
 
 def check_merge_guard(merge: str, accessions: Iterable[str]) -> None:
-    """Port of the ``-e`` guard block. Raises :class:`AdaptiSeqError` on a bad type.
+    """The ``-e`` guard block. Raises :class:`AdaptiSeqError` on a bad type.
 
-    ``merge`` is one of ``ex``/``sa``/``st``. Mirrors the Bash messages exactly.
+    ``merge`` is one of ``ex``/``sa``/``st``.
     """
     for accession in accessions:
         if merge == "ex":

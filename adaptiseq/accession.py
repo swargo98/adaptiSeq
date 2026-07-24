@@ -1,8 +1,7 @@
-"""Accession validation and GEO resolution — a faithful port of ``validateQuery``.
+"""Accession validation and GEO resolution (``validateQuery``).
 
-The regexes are copied **verbatim** from ``iSeq-main/bin/iseq`` (Section 3.3:
-"Copy them verbatim from the Bash. Do not improve them. This is a behavioural
-contract."). Bash extended-regex ``=~`` maps directly to Python ``re`` with the
+The regexes are a behavioural contract: they define exactly which accession forms
+are accepted. Extended-regex ``=~`` patterns map directly to Python ``re`` with the
 same anchors and quantifiers.
 """
 
@@ -15,7 +14,7 @@ from .console import green, red_bold, Reporter, NullReporter
 from .errors import InvalidAccessionError
 from .net import wget_capture
 
-# --- Verbatim ports of the Bash =~ patterns -------------------------------------
+# --- Accession guard patterns (=~ style) ----------------------------------------
 # validateQuery (SRA/ENA/DDBJ/GEO path):
 RE_PROJECT_STUDY = re.compile(r"^PRJ[EDN][A-Z][0-9]+$|^[EDS]RP[0-9]{6,}$")
 RE_BIOSAMPLE_SAMPLE = re.compile(r"^SAM[EDN][A-Z]?[0-9]+$|^[EDS]RS[0-9]{6,}$")
@@ -52,7 +51,7 @@ def _uniq_adjacent(items: List[str]) -> List[str]:
 
 
 def validate_query(accession: str, reporter: Optional[Reporter] = None) -> str:
-    """Port of ``validateQuery``.
+    """``validateQuery``: validate and normalise an accession.
 
     Returns the query accession to feed the ENA/SRA metadata API. Direct
     accession types pass through unchanged; GEO ``GSE``/``GSM`` are resolved to a

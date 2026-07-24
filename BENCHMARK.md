@@ -104,8 +104,8 @@ On a single 2.2 MB file, `aria2c -x8 -s8` (~73 Mbps) beats adaptiSeq (~37 Mbps):
 aria2c is a highly-tuned C downloader and wins on raw single-file throughput. That
 is **not** adaptiSeq's claim — aria2c does not resolve SRA/ENA/GSA/GEO accessions,
 fetch metadata, verify MD5/`vdb-validate`, write success/fail logs, merge runs, or
-batch across many accessions. adaptiSeq's value is the differential-tested
-**parity with `iseq`**, the **importable Python API**, and — as Section 1 shows —
+batch across many accessions. adaptiSeq's value is its differential-tested
+**correctness**, the **importable Python API**, and — as Section 1 shows —
 **winning the multi-file batch workload against the dedicated tools** that *do*
 offer those features.
 

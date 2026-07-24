@@ -39,7 +39,7 @@ trajectory.
 ## GSA Aspera
 
 GSA Aspera is supported on a **sequential, best-effort** basis. The Huawei-Cloud
-preference rule is inherited from `iseq`: when a Huawei-Cloud link is available
+preference rule: when a Huawei-Cloud link is available
 adaptiSeq prefers it (faster/more stable) **even with `-a`**, so `-a` is still
 recommended for GSA as a fast fallback. GSA Aspera has **not yet** been validated
 against the live endpoint here.

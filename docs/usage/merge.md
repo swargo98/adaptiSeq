@@ -31,7 +31,7 @@ Output:
 > files use different prefixes (e.g. `CRX006713`/`CRR007192`), they are renamed as
 > `SRX*_<original_filename>`.
 
-> **Note 3 (parity)**
-> Merge logic is a faithful port of `iseq` — the same inputs produce the same
-> merged bytes. adaptiSeq's engine changes only *how* the per-Run files are
-> fetched, never their contents.
+> **Note 3**
+> Merge logic is deterministic — the same inputs produce the same merged bytes.
+> adaptiSeq's engine changes only *how* the per-Run files are fetched, never their
+> contents.

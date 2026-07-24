@@ -23,7 +23,7 @@ _RE_PRJ = re.compile(r"PRJ[EDN][A-Z][0-9]+")
 _RE_CRX = re.compile(r"CRX[0-9]+")
 _RE_SAMC = re.compile(r"SAMC[0-9]+")
 _RE_PRJC = re.compile(r"PRJC[A-Z][0-9]+")
-_RE_FQGZ = re.compile(r"[fastq|fq].gz")  # verbatim sloppy class from the Bash
+_RE_FQGZ = re.compile(r"[fastq|fq].gz")  # deliberately loose character class
 
 
 def _sorted_uniq(values: List[str]) -> List[str]:
@@ -53,7 +53,7 @@ def _cat(ctx: RunContext, inputs: List[str], output: str) -> None:
 # ================================ mergeSRArun ===================================
 
 def merge_sra_run(ctx: RunContext, metadata_path: Path) -> None:
-    """Port of ``mergeSRArun``."""
+    """``mergeSRArun``: merge an SRA Experiment/Sample/Study's Runs."""
     opts = ctx.options
     reporter = ctx.reporter
     merge = opts.merge
@@ -176,7 +176,7 @@ def _note_merge(reporter, files: List[str], output: str) -> None:
 # ================================ mergeGSArun ===================================
 
 def merge_gsa_run(ctx: RunContext, metadata_path: Path) -> None:
-    """Port of ``mergeGSArun``."""
+    """``mergeGSArun``: merge a GSA Experiment/Sample/Study's Runs."""
     opts = ctx.options
     reporter = ctx.reporter
     merge = opts.merge
@@ -206,7 +206,7 @@ def merge_gsa_run(ctx: RunContext, metadata_path: Path) -> None:
 
 
 def _field(line: str, n: int) -> str:
-    """``cut -d, -f n`` (1-indexed, naive comma split, matching the Bash)."""
+    """``cut -d, -f n`` (1-indexed, naive comma split)."""
     parts = line.split(",")
     return parts[n - 1] if len(parts) >= n else ""
 

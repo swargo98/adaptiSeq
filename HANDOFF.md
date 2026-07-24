@@ -16,32 +16,28 @@ docs as needed.
 
 ## What this project is
 
-A faithful, tested, importable **Python reimplementation of the `iseq` Bash tool**
-(BioOmics/iSeq) for downloading public sequencing data + metadata from GSA / SRA /
-ENA / DDBJ / GEO — extended with a segmented resumable engine, an adaptive
-concurrency controller, batch/parallel download, and adaptive Aspera. The original
-Bash lives (gitignored) at `iSeq-main/bin/iseq` (1120 lines) — **the source of
-truth for parity**. The build was driven by three spec files in the repo root:
-`adaptiSeq_part1_python_port.md`, `..._part2_segmented_engine.md`,
-`..._part3_adaptive_and_batch.md`. Parts 4 and 5 were user-directed follow-ups with
-plans in `PART4_PLAN.md` / `PART5_PLAN.md`.
+An importable, tested **Python tool** for downloading public sequencing data +
+metadata from GSA / SRA / ENA / DDBJ / GEO — with a segmented resumable engine, an
+adaptive concurrency controller, batch/parallel download, and adaptive Aspera.
+Parts 4 and 5 were user-directed follow-ups with plans in `PART4_PLAN.md` /
+`PART5_PLAN.md`.
 
 **Load-bearing principle:** the engine and scheduler change only *how* bytes arrive
 and *when* files are scheduled — **never which bytes**. Resolution, metadata,
-integrity, logs, and merge stay byte-for-byte faithful to `iseq`. The Part 1
-differential tests are the parity guarantee and still pass.
+integrity, logs, and merge are independent of the transport in use. The Part 1
+differential tests guard this and still pass.
 
 ## The five parts (what each added)
 
-- **Part 1 — faithful port (classic engine).** `iseq` ported to a package on the
-  classic `wget`/`axel`/`ascp` path, no behaviour change. Differential test harness
-  with golden fixtures proves parity. No speed claim.
+- **Part 1 — classic engine.** The classic `wget`/`axel`/`ascp` download path in a
+  tested, importable package. Differential test harness with golden fixtures. No
+  speed claim.
 - **Part 2 — segmented engine.** Resumable, range-based HTTP(S)/FTP downloader
   (`aiohttp`/`aioftp`) behind the single download seam, now the default
   (`--engine segmented`); per-host connection cap + reactive circuit breaker;
   HTTPS-first transport selection. Fixed concurrency.
-- **Part 3 — adaptive + batch.** Gradient controller (ported from `search.py`,
-  bookkeeping bugs fixed) tunes the active-*worker* count; batch parallel download
+- **Part 3 — adaptive + batch.** Gradient controller (bookkeeping bugs fixed)
+  tunes the active-*worker* count; batch parallel download
   pool (`-j/--jobs`, default 20); parallel metadata resolution (`--meta-jobs`) with
   per-endpoint rate limits (ENA/NCBI/GSA; NCBI 3 rps / 10 with `NCBI_API_KEY`).
 - **Part 4 — true default + batch-USP benchmark.** Default is segmented+adaptive;
@@ -82,15 +78,15 @@ differential tests are the parity guarantee and still pass.
 ```
 adaptiseq/
   __init__.py     # public API: fetch(), resolve(), get_metadata(); FetchResult
-  cli.py          # argparse mirroring iseq + all Part 2-5 flags; needs-based preflight
+  cli.py          # argparse CLI + all Part 2-5 flags; needs-based preflight
   core.py         # per-accession process loop + two-phase batch/aspera wiring (run())
-  accession.py    # validateQuery regexes (verbatim) + GEO resolution + is_gsa()
+  accession.py    # validateQuery regexes + GEO resolution + is_gsa()
   routing.py      # GSA-vs-SRA routing + -e merge guards
   metadata.py     # ENA filereport / SRA eutils+sra-db-be / GSA CSV+XLSX (via wget)
   resolve.py      # downloadSRA/downloadGSA ports + resolve_sra_urls/resolve_gsa_urls
   integrity.py    # checkSRA/checkGSA md5 + vdb-validate retry policy
   convert.py      # fasterq-dump + pigz ; merge.py: mergeSRArun/mergeGSArun
-  logs.py         # success.log / fail.log ; preflight.py: CheckSoftware port
+  logs.py         # success.log / fail.log ; preflight.py: CheckSoftware
   net.py          # wget wrappers (metadata bytes; consults ratelimits)
   ratelimits.py   # per-endpoint resolution rate limiters (ENA/NCBI/GSA)
   options.py      # Options dataclass (all flags) + RunContext
@@ -144,7 +140,7 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
 
 ## Key decisions & divergences (full list in NOTES.md)
 
-- Metadata bytes pulled by **`wget`** (same commands as iseq) → byte-identical.
+- Metadata bytes pulled by **`wget`** → files are exactly what the archive serves.
 - **Per-host transport cache stores only the transport *kind*, not the URL** — a
   critical fix; caching the URL made every file on a host download the first
   file's bytes (corrupted paired-end). (NOTES §P3.6)
@@ -165,7 +161,7 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
 - Offline-safe: most tests use local HTTP (`tests/servers.py`) / `aioftp` servers,
   synthetic traces, and golden fixtures (`tests/fixtures/`). Live tests skip when
   offline (`ADAPTISEQ_NO_NETWORK=1` forces skip).
-- Differential parity harness: `tests/test_differential.py` (fixture mode never
+- Differential test harness: `tests/test_differential.py` (fixture mode never
   skips; live mode + stock-iseq cross-check skip gracefully).
 - Batch USP benchmark: `bash bench/benchmark_batch.sh` (uses
   `bench/subset_small.txt`; results in `bench/results_batch.tsv`).
@@ -201,7 +197,7 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
   `~/.local/bin/ascp` purely so stock `iseq` passes its startup check during
   benchmarks — remove it for real Aspera).
 - `pip install -e .` works; deps: `aiohttp`, `aioftp`, `numpy`. Conda env:
-  `iSeq.yml`.
+  `environment.yml`.
 - Uploaded benchmark lists were at `/home/ubuntu/.claude/uploads/<id>/...` (small=
   PRJNA916347 243 runs, medium=PRJNA353374 12 runs, large=PRJNA251383 4 runs).
 
@@ -222,8 +218,8 @@ result = fetch("SRR1553469", outdir="data/", gzip=True, adaptive=True)
 
 ## Doc index
 
-`NOTES.md` (decisions/divergences, authoritative) · `CHANGES_FROM_ISEQ.md` ·
-`BENCHMARK.md` · `README.md` (iSeq-style overview) · `docs/` (Kingfisher-style
+`NOTES.md` (decisions/divergences, authoritative) ·
+`BENCHMARK.md` · `README.md` (project overview) · `docs/` (Kingfisher-style
 user docs: `installation`, `usage/*`, `methods`, `examples`, `faq`) ·
-`PART4_PLAN.md` · `PART5_PLAN.md` · the three `adaptiSeq_part*.md` specs ·
-`iSeq-main/` (reference Bash + README, gitignored).
+`PART4_PLAN.md` · `PART5_PLAN.md` ·
+`iSeq-main/` (competitor iSeq checkout for benchmarks/differential tests, gitignored).

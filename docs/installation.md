@@ -1,7 +1,7 @@
 # Installation
 
 adaptiSeq is a Python package (Python **≥ 3.10**) plus a small set of external
-command-line tools it shells out to (the same ones `iseq` uses).
+command-line tools it shells out to.
 
 ## 1. Install with pip (recommended)
 
@@ -25,11 +25,11 @@ adaptiseq --version
 
 ## 3. Conda environment
 
-A conda environment file ([`iSeq.yml`](../iSeq.yml)) is provided that pulls both
-the external tools and the Python dependencies:
+A conda environment file ([`environment.yml`](../environment.yml)) is provided
+that pulls both the external tools and the Python dependencies:
 
 ```bash
-conda env create -f iSeq.yml
+conda env create -f environment.yml
 conda activate adaptiseq
 ```
 
@@ -48,8 +48,8 @@ Installed automatically by pip:
 
 ## External command-line tools
 
-adaptiSeq fetches metadata and runs integrity/conversion through the same
-external tools as `iseq`. Which ones you need depends on what you ask for:
+adaptiSeq fetches metadata and runs integrity/conversion through a small set of
+external tools. Which ones you need depends on what you ask for:
 
 | Tool | Needed for |
 | ---- | ---------- |

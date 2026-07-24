@@ -44,9 +44,9 @@ def wget_to_file(
 ) -> int:
     """Download ``url`` to ``out_path``.
 
-    Flag order mirrors iseq's usage; ``--quiet`` is the norm for metadata.
-    Returns wget's exit code (the caller decides what an empty file means, just
-    as the Bash inspects the file afterwards rather than wget's status).
+    ``--quiet`` is the norm for metadata. Returns wget's exit code (the caller
+    decides what an empty file means, inspecting the file afterwards rather than
+    relying on wget's status).
     """
     _throttle(url)
     cmd = ["wget"]

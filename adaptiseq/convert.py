@@ -1,8 +1,7 @@
 """SRA→FASTQ conversion and compression — ``fasterq-dump`` + ``pigz`` wrappers.
 
-Faithful port of the conversion block in the SRA branch of iseq's process loop
-(lines ~1076-1096). External tools are shelled out, never reimplemented
-(Section 3.6).
+The conversion step in the SRA branch of the process loop. External tools are
+shelled out, never reimplemented (Section 3.6).
 """
 
 from __future__ import annotations

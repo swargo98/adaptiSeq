@@ -7,10 +7,7 @@
 
 # [adaptiSeq](https://github.com/swargo98/adaptiSeq): An [adapti](https://github.com/swargo98/adaptiSeq)ve tool to fetch public [Seq](https://github.com/swargo98/adaptiSeq)uencing data
 
-**Cite us**: TBD — a manuscript is in preparation. adaptiSeq builds on **iSeq**
-(Chao *et al.*, *Bioinformatics*, 2024, btae641,
-[doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641));
-please cite iSeq if you use adaptiSeq today.
+**Cite us**: TBD — a manuscript is in preparation.
 
 ## Description
 
@@ -19,9 +16,7 @@ metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**,
 **[SRA](https://www.ncbi.nlm.nih.gov/sra/)**,
 **[ENA](https://www.ebi.ac.uk/ena/)**,
 **[DDBJ](https://www.ddbj.nig.ac.jp/)**, and
-**[GEO](https://www.ncbi.nlm.nih.gov/geo/)**. It is a tested reimplementation of
-the [iSeq](https://github.com/BioOmics/iSeq) Bash tool — **byte-for-byte faithful**
-on resolution, metadata, integrity, and merge — extended for the workload real
+**[GEO](https://www.ncbi.nlm.nih.gov/geo/)**. It is built for the workload real
 pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 **segmented, resumable, self-tuning** engine and a **real Python API**.
 
@@ -52,14 +47,14 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
   unaffected.
 
 ### 0.1.0 (initial release)
-- First public release: faithful iSeq port + segmented engine + adaptive batch
-  pool + parallel metadata resolution + adaptive Aspera + Python API.
+- First public release: segmented engine + adaptive batch pool + parallel
+  metadata resolution + adaptive Aspera + Python API.
 - Validated against the **real ENA Aspera** endpoint with a genuine IBM `ascp`.
-- Offline test suite (parity, engine, batch, adaptive) green; CI on Python
+- Offline test suite (fixtures, engine, batch, adaptive) green; CI on Python
   3.10–3.12.
 
 <details>
-<summary>Design highlights vs iSeq</summary>
+<summary>Design highlights</summary>
 
 - **Segmented, resumable HTTP(S)/FTP engine** (the default) with `.part`/`.part.meta`
   resume — interrupt and re-run to continue, not restart.
@@ -114,10 +109,10 @@ adaptiseq --version
 
 ### 3. Conda environment
 ```bash
-conda env create -f iSeq.yml && conda activate adaptiseq
+conda env create -f environment.yml && conda activate adaptiseq
 ```
 
-External tools (same as iSeq): `wget` (always), `sra-tools`, `pigz`, `md5sum`,
+External tools: `wget` (always), `sra-tools`, `pigz`, `md5sum`,
 `axel` (classic `-p`), and IBM `ascp` (`-a`). adaptiSeq requires each **only when a
 run actually needs it**. Full detail: **[docs/installation.md](docs/installation.md)**.
 
@@ -325,10 +320,11 @@ Full documentation lives in **[`docs/`](docs/README.md)**:
 [FAQ](docs/faq.md) ·
 [Benchmark](BENCHMARK.md).
 
-## Inspired
+## Related tools
 
-adaptiSeq was inspired by **[iSeq](https://github.com/BioOmics/iSeq)** (which it
-ports and extends), and by [fastq-dl](https://github.com/rpetit3/fastq-dl),
+adaptiSeq sits among other downloaders for public sequencing data —
+[iSeq](https://github.com/BioOmics/iSeq),
+[fastq-dl](https://github.com/rpetit3/fastq-dl),
 [fetchngs](https://github.com/nf-core/fetchngs),
 [pysradb](https://github.com/saketkc/pysradb), and
 [Kingfisher](https://github.com/wwood/kingfisher-download). A comparison:
@@ -358,10 +354,7 @@ branch, and submit a pull request. The offline test suite runs with
 
 ## Cite us
 
-TBD (manuscript in preparation). Until then, please cite **iSeq**:
-Chao H, Li Z, Chen D, Chen M. *iSeq: An integrated tool to fetch public sequencing
-data.* **Bioinformatics**, 2024, btae641,
-[doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641).
+TBD (manuscript in preparation).
 
 ## License
 

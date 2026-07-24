@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 # Part 6 — provision a REAL IBM `ascp` (not the no-op benchmark stub) and the
-# CURRENT ENA Aspera key, laid out exactly where iSeq / adaptiSeq look for them.
+# CURRENT ENA Aspera key, laid out exactly where adaptiSeq looks for them.
 #
 # What this does, and why each step matters:
 #   1. Download the IBM Aspera Transfer SDK (ships a genuine linux-x86_64 `ascp`).
-#   2. Extract `ascp` into a prefix whose `../etc` matches iSeq's key search:
+#   2. Extract `ascp` into a prefix whose `../etc` matches adaptiSeq's key search:
 #         $(dirname ascp)/../etc/aspera/aspera_bypass_rsa.pem   (1st choice)
 #         $(dirname ascp)/../etc/aspera_tokenauth_id_rsa        (2nd choice)
 #   3. Install the `aspera-license` file the SDK `ascp` requires (decoded from the
 #      aspera-cli data repository; the bare SDK does not ship it).
 #   4. Install the ENA Aspera key.  IMPORTANT FINDING (2026-06): ENA migrated from
-#      the legacy DSA key (`asperaweb_id_dsa.openssh`, shipped by Kingfisher / old
-#      iSeq docs) to the **RSA** token-auth key.  The DSA key is now REJECTED by
-#      fasp.sra.ebi.ac.uk (server returns "Permission denied (publickey)").  The
+#      the legacy DSA key (`asperaweb_id_dsa.openssh`, shipped by Kingfisher and
+#      older Aspera docs) to the **RSA** token-auth key.  The DSA key is now REJECTED
+#      by fasp.sra.ebi.ac.uk (server returns "Permission denied (publickey)").  The
 #      working key is the RSA key (`aspera_tokenauth_id_rsa`) — which is exactly the
-#      2nd path iSeq/adaptiSeq already check, so no package code change is needed.
+#      2nd path adaptiSeq already checks, so no package code change is needed.
 #   5. Put `ascp` on PATH via a symlink (resolve() follows it to the prefix, so the
 #      `../etc` key discovery still resolves correctly).
 #
@@ -57,7 +57,7 @@ rsa = load_der_private_key(open("/tmp/_asp_rsa","rb").read(), password=None)
 pem = rsa.private_bytes(Encoding.PEM, PrivateFormat.TraditionalOpenSSL, NoEncryption())
 for name in (f"{pfx}/etc/aspera/aspera_bypass_rsa.pem", f"{pfx}/etc/aspera_tokenauth_id_rsa"):
     open(name, "wb").write(pem)
-print("[setup] wrote license + RSA key (both iSeq key paths)")
+print("[setup] wrote license + RSA key (both adaptiSeq key paths)")
 PY
 chmod 600 "$PFX/etc/aspera/aspera_bypass_rsa.pem" "$PFX/etc/aspera_tokenauth_id_rsa"
 

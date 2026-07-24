@@ -9,8 +9,7 @@ Policy (Section 3.4), reproduced exactly:
 * Up to three rounds of re-download, then record in ``fail.log``; successes go to
   ``success.log`` (``$(date)\t$ID``). ``-k`` skips the check entirely.
 
-Retry counter: reset per Run/file (NOTES.md divergence #2) rather than the Bash's
-process-global ``count``.
+Retry counter: reset per Run/file (NOTES.md decision #2), not process-global.
 """
 
 from __future__ import annotations
@@ -60,7 +59,7 @@ def vdb_validate(ctx: RunContext, srr: str) -> bool:
 
 
 def _gzip_fastq_files(ctx: RunContext, srr: str) -> List[str]:
-    """Port of the ``grep -o "${SRR}(_..)?\\.fastq\\.gz"`` file enumeration."""
+    """Enumerate ``${SRR}(_..)?\\.fastq\\.gz`` files for a Run."""
     tsv = ctx.metadata_tsv()
     if not tsv.exists():
         return []
@@ -97,7 +96,7 @@ def _gzip_md5_ok(ctx: RunContext, files: List[str]) -> Tuple[bool, Optional[str]
 # ================================ checkSRA ======================================
 
 def check_sra(ctx: RunContext, srr: str, download_fn: Callable[[], None]) -> bool:
-    """Port of ``checkSRA``. Returns True on success, False on final failure."""
+    """``checkSRA``: md5-verify a Run. Returns True on success, False on final failure."""
     opts = ctx.options
     reporter = ctx.reporter
     gzip_mode = opts.gzip and not opts.fastq and ctx.database != "sra"
@@ -225,7 +224,7 @@ GSA_DOWNLOAD_BASE = "https://download.cncb.ac.cn/"
 
 
 def ensure_gsa_md5(ctx: RunContext, cra: str) -> Path:
-    """Download ``CRA.md5sum.txt`` if missing (port of the checkGSA preamble)."""
+    """Download ``CRA.md5sum.txt`` if missing (the checkGSA preamble)."""
     md5_path = ctx.path(f"{cra}.md5sum.txt")
     if not md5_path.is_file():
         csv_text = ctx.metadata_csv().read_text(errors="replace")

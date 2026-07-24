@@ -305,10 +305,10 @@ python -m pytest -q
 | md5 mismatch → retry up to 3 rounds → `fail.log` → corrupt-file deletion → `vdb-validate` failure *(can't corrupt a healthy mirror)* | `tests/test_logs_integrity.py` |
 | Single-stream fallback / per-host circuit breaker (429/503 backoff) *(can't make ENA drop ranges or throttle politely)* | `tests/test_segmented.py`, `tests/test_ftp_segmented.py` |
 | Per-endpoint rate-limit behaviour *(internal timing)* | `tests/test_batch.py` |
-| Merge `ex`/`sa`/`st` **byte parity** vs iseq *(exact-bytes comparison)* | `tests/test_merge.py`, `tests/test_routing.py` |
+| Merge `ex`/`sa`/`st` **byte-exact output** *(exact-bytes comparison)* | `tests/test_merge.py`, `tests/test_routing.py` |
 | Gradient adaptive controller trajectory *(needs sustained load)* | `tests/test_optimize.py`, `tests/test_batch.py` |
 | Adaptive Aspera hysteresis controller (fake `ascp`) | `tests/test_aspera.py` |
-| Byte-for-byte resolution/metadata parity vs iseq | `tests/test_differential.py`, `tests/test_metadata_parse.py` |
+| Byte-for-byte resolution/metadata output (differential-tested) | `tests/test_differential.py`, `tests/test_metadata_parse.py` |
 
 What the live script now *does* prove directly (previously only indirect): the
 **3-file** orphan/barcode download (§4.3, `SRR22904350` ~32 KB), **HTTPS-first

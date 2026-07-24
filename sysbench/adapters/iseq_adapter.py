@@ -1,4 +1,4 @@
-"""Stock iSeq adapter (the Bash original) — the tool adaptiSeq is derived from.
+"""Stock iSeq adapter — runs the iSeq Bash tool as a benchmark baseline.
 
 Requires `iseq` on PATH (symlink `iSeq-main/bin/iseq`) and, for `-a`, a real `ascp`
 (provision via `bench/setup_real_ascp.sh`). Phase mapping mirrors the adaptiSeq

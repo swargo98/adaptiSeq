@@ -1,10 +1,10 @@
-"""Metadata fetching for ENA / SRA-fallback / GSA — faithful port.
+"""Metadata fetching for ENA / SRA-fallback / GSA.
 
 Filenames, endpoints, POST bodies, user-agents, and the comma→tab conversion are
-reproduced exactly (Section 3.2). All bytes are pulled by ``wget`` (see
-:mod:`adaptiseq.net`) so the saved files are byte-identical to iseq's.
+fixed by the archive APIs. All bytes are pulled by ``wget`` (see
+:mod:`adaptiseq.net`) so the saved files are exactly what the archive serves.
 
-Files produced (same as iseq):
+Files produced:
 * ``${accession}.metadata.tsv``  — ENA filereport, or SRA runinfo (comma→tab).
 * ``${accession}.metadata.csv``  — GSA getRunInfo / getRunInfoByCra.
 * ``${CRA}.metadata.xlsx``       — GSA exportExcelFile (3 sheets).
@@ -82,7 +82,7 @@ def _row2_field1(path: Path, sep: str) -> str:
 # ================================ ENA / SRA =====================================
 
 def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
-    """Port of ``getSRAMetadata``.
+    """Fetch SRA/ENA run metadata.
 
     Tries ENA first; on an empty result flips ``ctx.database`` to ``sra`` and
     falls back to the NCBI eutils + sra-db-be runinfo (comma→tab). Raises
@@ -148,7 +148,7 @@ def _comma_to_tab_inplace(path: Path) -> None:
 # ==================================== GSA =======================================
 
 def get_gsa_xlsx(ctx: RunContext, cra: str) -> Path:
-    """Port of ``getGSAxlsx``."""
+    """Fetch the GSA metadata XLSX (``exportExcelFile``)."""
     out = ctx.path(f"{cra}.metadata.xlsx")
     wget_to_file(
         GSA_EXPORT_XLSX,
@@ -161,7 +161,7 @@ def get_gsa_xlsx(ctx: RunContext, cra: str) -> Path:
 
 
 def get_gsa_metadata(ctx: RunContext, accession: str) -> Path:
-    """Port of ``getGSAMetadata``.
+    """Fetch GSA metadata.
 
     Produces ``${accession}.metadata.csv`` plus ``${CRA}.metadata.xlsx`` for each
     owning project. Raises :class:`MetadataError` on an unresolvable accession.

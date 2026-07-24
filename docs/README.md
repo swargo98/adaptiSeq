@@ -10,11 +10,9 @@ Experiment / Run, plus GEO `GSE`/`GSM`), resolves it across databases, downloads
 the sequence files with a **segmented, resumable, self-tuning** engine, verifies
 integrity, and optionally converts and merges FASTQ.
 
-adaptiSeq is a tested Python reimplementation of the [iseq](https://github.com/BioOmics/iSeq)
-Bash tool, kept byte-for-byte faithful on resolution / metadata / integrity, and
-extended with a batch-parallel download path built for the workload real
-pipelines actually have: **lists of accessions**, downloaded concurrently, from a
-script, notebook, or the shell.
+adaptiSeq is a tested Python tool with a batch-parallel download path built for the
+workload real pipelines actually have: **lists of accessions**, downloaded
+concurrently, from a script, notebook, or the shell.
 
 > **Note**
 > To use adaptiSeq your system must be **connected to the network** and able to
@@ -51,17 +49,11 @@ in `fail.log`.
 ## Quick links
 
 - Repository: <https://github.com/swargo98/adaptiSeq>
-- Upstream tool adaptiSeq ports: [iseq](https://github.com/BioOmics/iSeq)
 - Citation: TBD (see [Citation](#citation) once published)
 
 ## Citation
 
-TBD — a manuscript is in preparation. For now, please cite the repository and the
-upstream iseq paper:
-
-> Chao H, Li Z, Chen D, Chen M. *iSeq: An integrated tool to fetch public
-> sequencing data.* **Bioinformatics**, 2024, btae641.
-> <https://doi.org/10.1093/bioinformatics/btae641>
+TBD — a manuscript is in preparation. For now, please cite the repository.
 
 ## License
 

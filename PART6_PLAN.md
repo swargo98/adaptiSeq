@@ -2,8 +2,8 @@
 
 The Part 5 adaptive-Aspera path was only ever exercised against a **no-op `ascp`
 stub** and synthetic throughput curves (HANDOFF "Honest limitations" #2). The user
-wants the real thing: download with a **genuine IBM `ascp` binary, configured like
-`iseq`**, and prove the hysteresis controller works on real bytes.
+wants the real thing: download with a **genuine IBM `ascp` binary, configured for
+real ENA Aspera**, and prove the hysteresis controller works on real bytes.
 
 Good news from the environment probe:
 - `fasp.sra.ebi.ac.uk:33001` (ENA Aspera) is **reachable/OPEN** from the sandbox.
@@ -25,18 +25,17 @@ Commit at each milestone so a usage-limit pause resumes cleanly.
   note in HANDOFF that the stub is gone from the live-Aspera path).
 - Verify: `ascp --version` prints a real IBM build.
 
-## Item 2 — key discovery faithful to `iseq`, with an ENA fallback
+## Item 2 — key discovery, with an ENA fallback
 
-`iseq` (and our `find_ena_aspera_key`) look for, relative to `$(dirname ascp)/..`:
+`find_ena_aspera_key` looks for, relative to `$(dirname ascp)/..`:
 `etc/aspera/aspera_bypass_rsa.pem` then `etc/aspera_tokenauth_id_rsa`. The SDK ships
 the ENA-documented key under a different name (`asperaweb_id_dsa.openssh`).
 
-- First try to satisfy the iseq paths exactly (symlink/copy the SDK key into
-  `<prefix>/etc/aspera/aspera_bypass_rsa.pem`) so behaviour is byte-identical to
-  `iseq` key resolution.
+- First try the primary key paths exactly (symlink/copy the SDK key into
+  `<prefix>/etc/aspera/aspera_bypass_rsa.pem`).
 - Add `asperaweb_id_dsa.openssh` to `ena_aspera_key_candidates()` as a documented
   fallback (it is the public key ENA actually publishes), so real ENA transfers work
-  out-of-the-box with a stock SDK. Keep the iseq paths first for parity.
+  out-of-the-box with a stock SDK. Keep the primary key paths first.
 - Unit test the candidate list + discovery against a temp prefix.
 
 ## Item 3 — single-file real `ascp` sanity transfer

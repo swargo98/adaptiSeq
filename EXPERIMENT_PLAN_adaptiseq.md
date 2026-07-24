@@ -1,4 +1,4 @@
-# adaptiSeq — Benchmark & Experiment Plan (paper, iSeq-style)
+# adaptiSeq — Benchmark & Experiment Plan (paper)
 
 Target venue: *Bioinformatics* Applications Note (like iSeq, btae641) or a slightly
 longer methods paper. iSeq's evidence is one figure (1A–G) + one supplementary
@@ -23,7 +23,7 @@ and reviewers of a "yet another downloader" paper will ask for them:
 | C3 | **Batch download** (parallel multi-accession resolution + adaptive worker pool, overlapping resolve & transfer) | `batch.py:resolve_all` + `BatchDownloader`; iSeq/Kingfisher resolve & download **one run at a time** | E3 (headline), E10 |
 | C3b ⟵ *sub of C3* | **Parallel, rate-limited metadata resolution** — `--meta-jobs` concurrent multi-DB resolution whose request rate is **decoupled from pool size** by per-endpoint limiters (ENA/GSA/NCBI; NCBI 3 rps, 10 with key) | `batch.py:resolve_all`, `ratelimits.py:EndpointLimiters`/`set_active`, consulted in `net.py` | E10 |
 | **C4** ⟵ *add* | **Segmented, resumable, multi-connection engine** (HTTPS-first range GETs, atomic `.part`/`.part.meta` resume, native segmented FTP, never-truncate single-stream fallback) | `engine/segmented.py` — iSeq shells out to `wget`/`axel`, no in-process resume map | E2, E7 |
-| **C5** ⟵ *add* | **Reliability / good-citizen robustness** (per-host circuit breaker on 429/503, ENA RSA-key path, completes 3-file runs iSeq drops, differential-tested byte-parity with iSeq) | `engine/ratelimit.py:HostGuard`, `ratelimits.py`, BENCHMARK.md robustness findings | E7 |
+| **C5** ⟵ *add* | **Reliability / good-citizen robustness** (per-host circuit breaker on 429/503, ENA RSA-key path, completes 3-file runs iSeq drops, differential-tested output correctness) | `engine/ratelimit.py:HostGuard`, `ratelimits.py`, BENCHMARK.md robustness findings | E7 |
 
 > **Framing advice.** Lead the abstract with C3 (batch) + C1 (adaptive) as the
 > novelty, C4 as the mechanism that makes them safe (resumable, never-corrupt),
