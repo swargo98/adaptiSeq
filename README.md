@@ -1,16 +1,28 @@
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE)
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
-[![PyPI](https://img.shields.io/pypi/v/adaptiseq.svg)](https://pypi.org/project/adaptiseq/)
-[![CI](https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml/badge.svg)](https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-swargo98.github.io%2FadaptiSeq-0a6b6b)](https://swargo98.github.io/adaptiSeq/)
+<h1 align="center">
+  <img src="adaptiseq/assets/logo.png" alt="adaptiSeq" width="480">
+</h1>
+
+<p align="center"><b>An adaptive tool to fetch public sequencing data</b></p>
+
+<p align="center">
+  <a href="https://github.com/swargo98/adaptiSeq/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+"></a>
+  <a href="https://pypi.org/project/adaptiseq/"><img src="https://img.shields.io/pypi/v/adaptiseq.svg" alt="PyPI version"></a>
+  <a href="https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml"><img src="https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
+  <a href="https://swargo98.github.io/adaptiSeq/"><img src="https://img.shields.io/badge/docs-online-0a6b6b" alt="Documentation"></a>
+</p>
+
+<p align="center">
+  <a href="https://swargo98.github.io/adaptiSeq/"><b>📖 Documentation</b></a>
+  &nbsp;·&nbsp;
+  <a href="#installation">Installation</a>
+  &nbsp;·&nbsp;
+  <a href="#usage">Usage</a>
+  &nbsp;·&nbsp;
+  <a href="#related-tools">Comparison</a>
+</p>
 
 <!-- PyPI/bioconda badges resolve once the package is published; until then see Installation. -->
-
-# [adaptiSeq](https://github.com/swargo98/adaptiSeq): An [adapti](https://github.com/swargo98/adaptiSeq)ve tool to fetch public [Seq](https://github.com/swargo98/adaptiSeq)uencing data
-
-📖 **Documentation: <https://swargo98.github.io/adaptiSeq/>**
-
-**Cite us**: TBD — a manuscript is in preparation.
 
 ## Description
 
@@ -22,9 +34,6 @@ metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**,
 **[GEO](https://www.ncbi.nlm.nih.gov/geo/)**. It is built for the workload real
 pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 **segmented, resumable, self-tuning** engine and a **real Python API**.
-
-_Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
-<!-- When ready: ![adaptiSeq-pipeline](docs/img/adaptiSeq-Pipeline.png) -->
 
 > **Important**
 > To use adaptiSeq your system must be **connected to the network** and able to
@@ -39,7 +48,7 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
 
 ### 0.1.2
 - **Fix**: the notebook event-loop handling from 0.1.1 now also works when
-  `nest_asyncio` is active (it previously hung/erered on batch downloads). The
+  `nest_asyncio` is active (it previously hung/errored on batch downloads). The
   API detects a re-entrant loop and drives the coroutine on it directly; plain
   Jupyter still uses a worker thread. Works with or without `nest_asyncio`.
 
@@ -98,7 +107,7 @@ _Pipeline diagram: **TBD** (to be added at `docs/img/adaptiSeq-Pipeline.png`)._
 
 ### 1. From PyPI (once published)
 ```bash
-pip install adaptiseq            # TBD: not yet on PyPI
+pip install adaptiseq            # not yet on PyPI — see "From source" below
 pip install adaptiseq[xlsx]      # + openpyxl, for parsing GSA project XLSX
 ```
 
@@ -125,13 +134,11 @@ run actually needs it**. Full detail: **[docs/installation.md](docs/installation
 ```bash
 adaptiseq -i PRJNA211801
 ```
-<!-- TBD: ![e01](docs/img/e01.png) -->
 
 2. Batch download a list, directly as gzip FASTQ, through the adaptive pool.
 ```bash
 adaptiseq -i SRR_Acc_List.txt -g
 ```
-<!-- TBD: ![e02](docs/img/e02.png) -->
 
 See **[docs/examples.md](docs/examples.md)** for more.
 
