@@ -338,20 +338,30 @@ adaptiSeq sits among other downloaders for public sequencing data —
 [pysradb](https://github.com/saketkc/pysradb), and
 [Kingfisher](https://github.com/wwood/kingfisher-download). A comparison:
 
-| Software | Languages | Databases | Accessions | Formats | Methods | Metadata | MD5 | Resumable | Parallel | Merge | Skip done | Conda |
-| -------- | --------- | --------- | ---------- | ------- | ------- | :------: | :-: | :-------: | :------: | :---: | :-------: | :---: |
-| **adaptiSeq** | Python | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | segmented http(s)/ftp, aspera, wget/axel | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | TBD (pip ✔) |
-| [iSeq](https://github.com/BioOmics/iSeq) | Shell | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | wget, axel, aspera | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| [SRA Toolkit](https://github.com/ncbi/sra-tools) | C | SRA, ENA, DDBJ | All except Run | fq, fq.gz, sra | prefetch | ❌ | ✔ | ✔ | ❌ | ❌ | ✔ | ✔ |
-| [enaBrowserTools](https://github.com/enasequence/enaBrowserTools) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | urllib, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ | ✔ |
-| [fastq-dl](https://github.com/rpetit3/fastq-dl) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | wget | ✔ | ✔ | ❌ | ❌ | ✔ | ✔ | ✔ |
-| [fetchngs](https://github.com/nf-core/fetchngs) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz | wget, aspera, prefetch | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ | ❌ |
-| [pysradb](https://github.com/saketkc/pysradb) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz, sra, bam | requests, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ | ✔ |
-| [Kingfisher](https://github.com/wwood/kingfisher-download) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | curl, aria2c, aspera | ✔ | ✔ | ❌ | ✔ | ❌ | ✔ | ✔ |
+The last three columns — **Batch**, **Adaptive**, and **Python API** — are what set
+adaptiSeq apart.
 
-Beyond this matrix, adaptiSeq adds what the single-shot downloaders do not: an
-**adaptive, batch-parallel** download path, **parallel metadata resolution**, a
-**segmented resumable** engine, and an importable **Python API**.
+| Software | Languages | Databases | Accessions | Formats | Methods | Metadata | MD5 | Resumable | Parallel | Batch | Adaptive | Python API | Merge | Skip done | Conda |
+| -------- | --------- | --------- | ---------- | ------- | ------- | :------: | :-: | :-------: | :------: | :---: | :------: | :--------: | :---: | :-------: | :---: |
+| **adaptiSeq** | Python | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | segmented http(s)/ftp, aspera, wget/axel | ✔ | ✔ | ✔ | ✔ | **✔** | **✔** | **✔** | ✔ | ✔ | TBD (pip ✔) |
+| [iSeq](https://github.com/BioOmics/iSeq) | Shell | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | wget, axel, aspera | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ✔ | ✔ | ✔ |
+| [SRA Toolkit](https://github.com/ncbi/sra-tools) | C | SRA, ENA, DDBJ | All except Run | fq, fq.gz, sra | prefetch | ❌ | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |
+| [enaBrowserTools](https://github.com/enasequence/enaBrowserTools) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | urllib, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |
+| [fastq-dl](https://github.com/rpetit3/fastq-dl) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | wget | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ | ✔ |
+| [fetchngs](https://github.com/nf-core/fetchngs) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz | wget, aspera, prefetch | ✔ | ✔ | ✔ | ❌ | ✔ | ❌ | ❌ | ❌ | ✔ | ❌ |
+| [pysradb](https://github.com/saketkc/pysradb) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz, sra, bam | requests, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ✔ | ❌ | ✔ | ✔ |
+| [Kingfisher](https://github.com/wwood/kingfisher-download) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | curl, aria2c, aspera | ✔ | ✔ | ❌ | ✔ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |
+
+> **Parallel** = multiple connections/segments per transfer · **Batch** = many
+> accessions downloaded **in parallel** in one run (not one-at-a-time) ·
+> **Adaptive** = a controller that self-tunes the worker count from measured
+> throughput · **Python API** = importable library (`fetch`/`resolve`/`get_metadata`),
+> not only a command-line tool.
+
+No other tool combines all three. adaptiSeq pairs them with **parallel metadata
+resolution** and a **segmented, resumable** engine, so a list of hundreds of
+accessions is resolved and downloaded concurrently, self-tuning to the throughput
+the servers actually give — from a script, notebook, or the shell.
 
 ## Contributing
 
