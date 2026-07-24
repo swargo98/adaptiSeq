@@ -4,9 +4,8 @@ These offline tests exercise the controller on synthetic throughput curves and t
 whole pool end-to-end with a fake ``ascp`` (a function that writes a file's bytes
 over a short time) — they never need the network and always run.
 
-Real ENA Aspera *was* subsequently validated with a genuine IBM ``ascp`` (Part 6):
-see ``test_aspera_live.py`` (opt-in, ``ADAPTISEQ_LIVE_ASPERA=1``) and
-``BENCHMARK.md`` "Real Aspera" for the measured single-file + 32-file results.
+Real ENA Aspera *was* subsequently validated with a genuine IBM ``ascp``: see
+``test_aspera_live.py`` (opt-in, ``ADAPTISEQ_LIVE_ASPERA=1``).
 """
 
 import asyncio

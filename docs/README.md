@@ -34,7 +34,6 @@ concurrently, from a script, notebook, or the shell.
 - [Method details](methods.md) — the transports and engines, and how one is chosen
 - [Examples](examples.md) — worked, copy-pasteable commands
 - [FAQ](faq.md) — common errors and how to solve them
-- [Benchmark](https://github.com/swargo98/adaptiSeq/blob/main/BENCHMARK.md) — honest measurements vs iseq and Kingfisher
 
 ## The three things adaptiSeq does
 

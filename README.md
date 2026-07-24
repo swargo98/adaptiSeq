@@ -320,8 +320,7 @@ Full documentation lives in **[`docs/`](docs/README.md)**:
 [Python API](docs/usage/python-api.md) ·
 [Method details](docs/methods.md) ·
 [Examples](docs/examples.md) ·
-[FAQ](docs/faq.md) ·
-[Benchmark](BENCHMARK.md).
+[FAQ](docs/faq.md).
 
 ## Related tools
 
@@ -345,9 +344,7 @@ adaptiSeq sits among other downloaders for public sequencing data —
 
 Beyond this matrix, adaptiSeq adds what the single-shot downloaders do not: an
 **adaptive, batch-parallel** download path, **parallel metadata resolution**, a
-**segmented resumable** engine, and an importable **Python API**. See
-[BENCHMARK.md](BENCHMARK.md) for honest measurements (on a 35-file ENA batch,
-adaptiSeq > Kingfisher > iSeq in MB/s).
+**segmented resumable** engine, and an importable **Python API**.
 
 ## Contributing
 
