@@ -3,6 +3,10 @@ fastbiodl_upgrade.py
 search.py
 utils.py
 
+# Credentials — NEVER commit (safety net; real config lives in $HOME)
+.pypirc
+/~/
+
 # MkDocs site build output (deployed to GitHub Pages by CI, never committed)
 site/
 

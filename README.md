@@ -10,6 +10,7 @@
   <a href="https://pypi.org/project/adaptiseq/"><img src="https://img.shields.io/pypi/v/adaptiseq.svg" alt="PyPI version"></a>
   <a href="https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml"><img src="https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml/badge.svg" alt="CI status"></a>
   <a href="https://swargo98.github.io/adaptiSeq/"><img src="https://img.shields.io/badge/docs-online-0a6b6b" alt="Documentation"></a>
+  <a href="https://colab.research.google.com/github/swargo98/adaptiSeq/blob/main/adaptiSeq_Colab_Quickstart.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 </p>
 
 <p align="center">
