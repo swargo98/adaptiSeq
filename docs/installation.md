@@ -25,7 +25,7 @@ adaptiseq --version
 
 ## 3. Conda environment
 
-A conda environment file ([`environment.yml`](../environment.yml)) is provided
+A conda environment file ([`environment.yml`](https://github.com/swargo98/adaptiSeq/blob/main/environment.yml)) is provided
 that pulls both the external tools and the Python dependencies:
 
 ```bash

@@ -1,0 +1,99 @@
+site_name: adaptiSeq
+site_description: >-
+  Fast, importable downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO)
+  with a segmented, resumable, self-tuning batch engine.
+site_url: https://swargo98.github.io/adaptiSeq/
+site_author: swargo98
+
+repo_url: https://github.com/swargo98/adaptiSeq
+repo_name: swargo98/adaptiSeq
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 swargo98 — MIT License
+
+docs_dir: docs
+
+theme:
+  name: material
+  logo: assets/logo-mark.png
+  favicon: assets/favicon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+
+# Internal benchmark/experiment planning docs are not part of the public site.
+exclude_docs: |
+  EXPERIMENT_PLAN*.md
+  img/README.md
+
+nav:
+  - Home: README.md
+  - Installation: installation.md
+  - Usage:
+      - Overview: usage/README.md
+      - Downloading data: usage/download.md
+      - Fetching metadata: usage/metadata.md
+      - Merging FASTQ: usage/merge.md
+      - Batch & adaptive: usage/batch.md
+      - Aspera: usage/aspera.md
+      - Python API: usage/python-api.md
+  - Method details: methods.md
+  - Adaptive controller: ADAPTIVE_CONTROLLER.md
+  - Examples: examples.md
+  - FAQ: faq.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/swargo98/adaptiSeq
+      name: adaptiSeq on GitHub

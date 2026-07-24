@@ -33,7 +33,7 @@ adaptiseq -i ena_list.txt -a --aspera-efficiency 0.8
 This path is **validated against the real ENA Aspera endpoint** with a genuine IBM
 `ascp`: single-file and multi-file batches transfer and pass md5, and the
 controller correctly backs off to one session when ENA throttles a second
-concurrent `ascp`. See [BENCHMARK.md](../../BENCHMARK.md) for the measured
+concurrent `ascp`. See [BENCHMARK.md](https://github.com/swargo98/adaptiSeq/blob/main/BENCHMARK.md) for the measured
 trajectory.
 
 ## GSA Aspera

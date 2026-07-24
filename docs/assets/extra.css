@@ -1,0 +1,22 @@
+/* adaptiSeq brand palette (dark teal from the logo mark) */
+:root {
+  --md-primary-fg-color:        #0a6b6b;
+  --md-primary-fg-color--light: #0e8686;
+  --md-primary-fg-color--dark:  #06504f;
+  --md-accent-fg-color:         #0e9c9c;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0e8686;
+  --md-primary-fg-color--light: #14a3a3;
+  --md-primary-fg-color--dark:  #0a6b6b;
+  --md-accent-fg-color:         #19bcbc;
+}
+
+/* Homepage hero logo (used via <img class="hero-logo"> in README.md) */
+.md-typeset .hero-logo {
+  display: block;
+  margin: 1.2rem auto 1.6rem;
+  max-width: 420px;
+  width: 100%;
+}

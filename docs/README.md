@@ -1,3 +1,5 @@
+<img class="hero-logo" src="assets/logo.png" alt="adaptiSeq">
+
 # adaptiSeq documentation
 
 **adaptiSeq** is a fast, importable tool for fetching public sequencing data and
@@ -32,7 +34,7 @@ concurrently, from a script, notebook, or the shell.
 - [Method details](methods.md) — the transports and engines, and how one is chosen
 - [Examples](examples.md) — worked, copy-pasteable commands
 - [FAQ](faq.md) — common errors and how to solve them
-- [Benchmark](../BENCHMARK.md) — honest measurements vs iseq and Kingfisher
+- [Benchmark](https://github.com/swargo98/adaptiSeq/blob/main/BENCHMARK.md) — honest measurements vs iseq and Kingfisher
 
 ## The three things adaptiSeq does
 
@@ -57,4 +59,4 @@ TBD — a manuscript is in preparation. For now, please cite the repository.
 
 ## License
 
-adaptiSeq is released under the [MIT License](../LICENSE).
+adaptiSeq is released under the [MIT License](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE).

@@ -64,7 +64,7 @@ The chosen trajectory (e.g. `1w@…→2w@…`) is logged at the end of the run.
 
 > **Honesty note**
 > On small batches, adaptive vs fixed is within measurement noise — the payoff is
-> on long, sustained runs. See [BENCHMARK.md](../../BENCHMARK.md).
+> on long, sustained runs. See [BENCHMARK.md](https://github.com/swargo98/adaptiSeq/blob/main/BENCHMARK.md).
 
 ## `--meta-jobs` — resolution parallelism
 

@@ -2,10 +2,13 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyPI](https://img.shields.io/pypi/v/adaptiseq.svg)](https://pypi.org/project/adaptiseq/)
 [![CI](https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml/badge.svg)](https://github.com/swargo98/adaptiSeq/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-swargo98.github.io%2FadaptiSeq-0a6b6b)](https://swargo98.github.io/adaptiSeq/)
 
 <!-- PyPI/bioconda badges resolve once the package is published; until then see Installation. -->
 
 # [adaptiSeq](https://github.com/swargo98/adaptiSeq): An [adapti](https://github.com/swargo98/adaptiSeq)ve tool to fetch public [Seq](https://github.com/swargo98/adaptiSeq)uencing data
+
+📖 **Documentation: <https://swargo98.github.io/adaptiSeq/>**
 
 **Cite us**: TBD — a manuscript is in preparation.
 
