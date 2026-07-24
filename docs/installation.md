@@ -7,7 +7,6 @@ command-line tools it shells out to.
 
 ```bash
 pip install adaptiseq            # once published to PyPI
-pip install adaptiseq[xlsx]      # + openpyxl, to parse GSA project XLSX in the API
 ```
 
 > **Note**
@@ -44,7 +43,6 @@ Installed automatically by pip:
 | `aiohttp` (≥ 3.8) | segmented HTTP(S) engine |
 | `aioftp` (≥ 0.21) | native segmented FTP transport |
 | `numpy` (≥ 1.21) | gradient adaptive-concurrency controller |
-| `openpyxl` (≥ 3.0) | *optional* (`[xlsx]`) — parse GSA project XLSX in the library API |
 
 ## External command-line tools
 

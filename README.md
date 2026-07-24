@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="adaptiseq/assets/logo.png" alt="adaptiSeq" width="480">
+  <img src="https://raw.githubusercontent.com/swargo98/adaptiSeq/main/adaptiseq/assets/logo.png" alt="adaptiSeq" width="480">
 </h1>
 
 <p align="center"><b>An adaptive tool to fetch public sequencing data</b></p>
@@ -108,7 +108,6 @@ pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 ### 1. From PyPI (once published)
 ```bash
 pip install adaptiseq            # not yet on PyPI — see "From source" below
-pip install adaptiseq[xlsx]      # + openpyxl, for parsing GSA project XLSX
 ```
 
 ### 2. From source

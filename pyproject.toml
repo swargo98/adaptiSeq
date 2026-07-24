@@ -38,8 +38,7 @@ classifiers = [
 
 # Metadata bytes are pulled by `wget` (shelled out), so `requests` is not a
 # runtime dependency. The async segmented HTTP(S)/FTP engine requires aiohttp +
-# aioftp at runtime. `openpyxl` parses GSA XLSX in the library API (the XLSX file
-# itself is fetched verbatim by wget) — an optional extra.
+# aioftp at runtime; numpy backs the adaptive-concurrency controller.
 dependencies = [
     "aiohttp>=3.8",
     "aioftp>=0.21",
@@ -47,8 +46,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-xlsx = ["openpyxl>=3.0"]
-test = ["pytest>=7.0", "openpyxl>=3.0"]
+test = ["pytest>=7.0"]
 # Build the documentation site locally: `pip install -e '.[docs]'` then `mkdocs serve`.
 docs = ["mkdocs-material>=9.5"]
 
