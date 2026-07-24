@@ -1,0 +1,1456 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Fast, importable downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO) with a segmented, resumable, self-tuning batch engine.">
+      
+      
+        <meta name="author" content="swargo98">
+      
+      
+        <link rel="canonical" href="https://swargo98.github.io/adaptiSeq/ADAPTIVE_CONTROLLER/">
+      
+      
+        <link rel="prev" href="../methods/">
+      
+      
+        <link rel="next" href="../examples/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Adaptive controller - adaptiSeq</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#adaptive-worker-controller-topdown-mode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="adaptiSeq" class="md-header__button md-logo" aria-label="adaptiSeq" data-md-component="logo">
+      
+  <img src="../assets/logo-mark.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            adaptiSeq
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Adaptive controller
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/swargo98/adaptiSeq" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    swargo98/adaptiSeq
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="adaptiSeq" class="md-nav__button md-logo" aria-label="adaptiSeq" data-md-component="logo">
+      
+  <img src="../assets/logo-mark.png" alt="logo">
+
+    </a>
+    adaptiSeq
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/swargo98/adaptiSeq" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    swargo98/adaptiSeq
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Usage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloading data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/metadata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fetching metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/merge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Merging FASTQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/batch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Batch & adaptive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/aspera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aspera
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/python-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Method details
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adaptive controller
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adaptive controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea-in-one-sentence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The idea in one sentence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-explore-top-down-knee-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 — EXPLORE (top-down knee search)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1 — EXPLORE (top-down knee search)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-a-byte-bound-workload-no-throttling-cap-wins-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example A — byte-bound workload, no throttling (cap wins fast)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-b-many-connections-throttled-steps-down-to-the-knee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example B — many connections throttled (steps down to the knee)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-commit-exploit-hold-watch-passively" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — COMMIT + EXPLOIT (hold, watch passively)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2 — COMMIT + EXPLOIT (hold, watch passively)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-c-sudden-speed-drop-mid-transfer-your-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example C — sudden speed drop mid-transfer (your question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-d-stable-worker-5-only-3-files-remaining-your-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example D — stable worker = 5, only 3 files remaining (your question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-top-down-is-the-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why top-down is the default
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why top-down is the default">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-limitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea-in-one-sentence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The idea in one sentence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-explore-top-down-knee-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 — EXPLORE (top-down knee search)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1 — EXPLORE (top-down knee search)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-a-byte-bound-workload-no-throttling-cap-wins-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example A — byte-bound workload, no throttling (cap wins fast)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-b-many-connections-throttled-steps-down-to-the-knee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example B — many connections throttled (steps down to the knee)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-commit-exploit-hold-watch-passively" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — COMMIT + EXPLOIT (hold, watch passively)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2 — COMMIT + EXPLOIT (hold, watch passively)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-c-sudden-speed-drop-mid-transfer-your-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example C — sudden speed drop mid-transfer (your question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-d-stable-worker-5-only-3-files-remaining-your-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example D — stable worker = 5, only 3 files remaining (your question)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-top-down-is-the-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why top-down is the default
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why top-down is the default">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-limitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known limitation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="adaptive-worker-controller-topdown-mode">Adaptive worker controller — <code>topdown</code> mode<a class="headerlink" href="#adaptive-worker-controller-topdown-mode" title="Permanent link">&para;</a></h1>
+<p>How adaptiSeq decides <em>how many workers to run</em> during a batch download, so the
+user never has to pick <code>-j</code> by hand and still gets throughput at or above the
+best hand-tuned fixed value.</p>
+<p><code>topdown</code> is the <strong>default</strong> adaptive mode. Set <code>ASEQ_ADAPTIVE_MODE=bottomup</code> to
+use the older gradient controller instead (see
+<a href="#why-top-down-is-the-default">§Why top-down is the default</a>). The legacy value
+<code>climb</code> is still accepted as an alias for <code>topdown</code>.
+Implementation: <code>adaptiseq/batch.py</code>, <code>AdaptiveController._run_topdown</code>.</p>
+<hr />
+<h2 id="the-idea-in-one-sentence">The idea in one sentence<a class="headerlink" href="#the-idea-in-one-sentence" title="Permanent link">&para;</a></h2>
+<p><strong>Explore top-down to find the knee, commit to it, then hold — re-exploring only
+if throughput drops in a sustained way.</strong></p>
+<p>A <em>worker</em> holds one file; a file is split into
+<code>min(max_segments, size // segment_size)</code> TCP connections. The controller tunes
+the <strong>worker count</strong>, i.e. how many files are in flight at once.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart LR
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A[Start: fill meter] --&gt; B[EXPLORE&lt;br/&gt;top-down knee search]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt; C[COMMIT&lt;br/&gt;set workers = best]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    C --&gt; D[EXPLOIT&lt;br/&gt;hold + watch passively]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    D --&gt;|sustained drop| B
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    D --&gt;|files draining| E[follow cap down]
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    E --&gt; D
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    D --&gt;|done| F[exit]
+</code></pre></div>
+<hr />
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Knob</th>
+<th>Env var</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>probe window</td>
+<td><code>ASEQ_PROBE_WINDOW</code></td>
+<td>8 s (<code>probe_window</code>)</td>
+<td>seconds of throughput averaged per measurement</td>
+</tr>
+<tr>
+<td>settle</td>
+<td><code>ASEQ_TOPDOWN_SETTLE</code></td>
+<td>1.5 s</td>
+<td>wait after changing worker count before measuring</td>
+</tr>
+<tr>
+<td>step-down threshold</td>
+<td><code>ASEQ_TOPDOWN_THRESHOLD</code></td>
+<td>0.10</td>
+<td>fewer workers must beat more by <strong>&gt;10%</strong> to step down</td>
+</tr>
+<tr>
+<td>re-probe period</td>
+<td><code>ASEQ_EXPLOIT_REPROBE_S</code></td>
+<td>20 s</td>
+<td>how often the exploit phase samples throughput</td>
+</tr>
+<tr>
+<td>re-explore drop</td>
+<td><code>ASEQ_EXPLOIT_REDO</code></td>
+<td>0.35</td>
+<td>a <strong>&gt;35%</strong> sustained drop below baseline triggers re-explore</td>
+</tr>
+<tr>
+<td>— (baseline smoothing)</td>
+<td>—</td>
+<td>EWMA 0.8/0.2</td>
+<td>baseline = <code>0.8·baseline + 0.2·sample</code></td>
+</tr>
+</tbody>
+</table>
+<p>The pre-rebrand names <code>ASEQ_CLIMB_SETTLE</code> / <code>ASEQ_CLIMB_THRESHOLD</code> are still read as
+fallbacks when the <code>ASEQ_TOPDOWN_*</code> equivalents are unset.</p>
+<hr />
+<h2 id="phase-1-explore-top-down-knee-search">Phase 1 — EXPLORE (top-down knee search)<a class="headerlink" href="#phase-1-explore-top-down-knee-search" title="Permanent link">&para;</a></h2>
+<p>Start at the <strong>cap</strong> (all available workers) and step <em>down</em> only while fewer
+workers is <em>clearly</em> better. On a healthy link "more is better", so the cap wins
+in ~2 probes with no slow crawl-up. When high concurrency is being throttled,
+fewer workers measures faster, so it walks down to the knee.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cap = min(jobs, files_remaining)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>best_w, best_t = cap, measure(cap)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>w = cap
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>while w &gt; 1:
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    lower = w // 2
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    t = measure(lower)
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    if t &gt; best_t * (1 + 0.10):     # clearly better -&gt; knee is lower, keep going
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        best_w, best_t, w = lower, t, lower
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        continue
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    if t &gt; best_t:                  # mild gain -&gt; record but stop
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        best_w, best_t = lower, t
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    break
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>return best_w
+</code></pre></div>
+<h3 id="example-a-byte-bound-workload-no-throttling-cap-wins-fast">Example A — byte-bound workload, no throttling (cap wins fast)<a class="headerlink" href="#example-a-byte-bound-workload-no-throttling-cap-wins-fast" title="Permanent link">&para;</a></h3>
+<p>16 large files, cap = 16.</p>
+<table>
+<thead>
+<tr>
+<th>Probe</th>
+<th>workers</th>
+<th>measured MB/s</th>
+<th>decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>16</td>
+<td>55</td>
+<td><code>best = 16</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>8</td>
+<td>30</td>
+<td>30 &gt; 55·1.10? <strong>no</strong> → stop</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>commit 16 workers.</strong> Two probes, ~20 s of exploration on a ~450 s transfer.
+(This is the D2_subset case: topdown committed to 16 and reached ~57 MB/s.)</p>
+<h3 id="example-b-many-connections-throttled-steps-down-to-the-knee">Example B — many connections throttled (steps down to the knee)<a class="headerlink" href="#example-b-many-connections-throttled-steps-down-to-the-knee" title="Permanent link">&para;</a></h3>
+<p>Server throttles at high concurrency, cap = 40.</p>
+<table>
+<thead>
+<tr>
+<th>Probe</th>
+<th>workers</th>
+<th>measured MB/s</th>
+<th>decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>40</td>
+<td>6</td>
+<td><code>best = 40</code> (throttled)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>21</td>
+<td>21 &gt; 6·1.10 = 6.6? <strong>yes</strong> → go lower, <code>best = 20</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>10</td>
+<td>19</td>
+<td>19 &gt; 21·1.10 = 23? <strong>no</strong>, and 19 &lt; 21 → stop</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>commit 20 workers.</strong> It found the knee (20) and avoided the throttled 40 —
+without the user ever choosing <code>-j 20</code>.</p>
+<hr />
+<h2 id="phase-2-commit-exploit-hold-watch-passively">Phase 2 — COMMIT + EXPLOIT (hold, watch passively)<a class="headerlink" href="#phase-2-commit-exploit-hold-watch-passively" title="Permanent link">&para;</a></h2>
+<p>Set the pool to <code>best_w</code> and <strong>hold</strong>. Every <code>reprobe_s</code> (20 s) read the meter
+<em>without changing the worker count</em>. The first steady reading becomes the
+<code>committed</code> baseline; subsequent readings update it via EWMA so a transient burst
+can't poison it.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>set_active(best_w)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>committed = 0
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>low_checks = 0
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>loop every 20s:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    cap = min(jobs, files_remaining)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    if cap &lt; best_w:            # tail draining -&gt; follow cap down, re-baseline
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        best_w = cap; set_active(best_w); committed = 0; continue
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    t = meter.recent_average(window)     # passive, no worker change
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    if committed == 0: committed = t; continue          # steady baseline
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    if t &lt; committed * (1 - 0.35):
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        low_checks += 1
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        if low_checks &gt;= 2: RE-EXPLORE      # sustained drop -&gt; back to Phase 1
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    else:
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        low_checks = 0
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        committed = 0.8*committed + 0.2*t   # EWMA
+</code></pre></div>
+<h3 id="example-c-sudden-speed-drop-mid-transfer-your-question">Example C — sudden speed drop mid-transfer (your question)<a class="headerlink" href="#example-c-sudden-speed-drop-mid-transfer-your-question" title="Permanent link">&para;</a></h3>
+<p>Committed at 16 workers, baseline ≈ 100 MB/s. The archive starts throttling and
+throughput collapses.</p>
+<table>
+<thead>
+<tr>
+<th>t (s)</th>
+<th>passive read</th>
+<th>vs 65 MB/s (100·0.65)</th>
+<th><code>low_checks</code></th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>100</td>
+<td>—</td>
+<td>0</td>
+<td>baseline set = 100</td>
+</tr>
+<tr>
+<td>20</td>
+<td>98</td>
+<td>ok</td>
+<td>0</td>
+<td>EWMA → 99.6</td>
+</tr>
+<tr>
+<td>40</td>
+<td>52</td>
+<td><strong>below</strong></td>
+<td>1</td>
+<td>wait (could be a blip)</td>
+</tr>
+<tr>
+<td>60</td>
+<td>47</td>
+<td><strong>below</strong></td>
+<td>2</td>
+<td><strong>RE-EXPLORE</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Re-explore runs Phase 1 again from the current cap: measures 16 (still ~50,
+throttled), 8 (~70 — better, throttle eases with fewer connections), 4 (~60, not</p>
+<blockquote>
+<p>10% better) → <strong>commit 8</strong>. The transfer recovers at 8 workers, all mid-flight.</p>
+</blockquote>
+<p>So: <strong>yes, the worker count changes mid-transfer.</strong> The two-consecutive-checks
+rule (≈40 s) means it reacts to <em>sustained</em> throttling/route changes, not to a
+single noisy dip.</p>
+<h3 id="example-d-stable-worker-5-only-3-files-remaining-your-question">Example D — stable worker = 5, only 3 files remaining (your question)<a class="headerlink" href="#example-d-stable-worker-5-only-3-files-remaining-your-question" title="Permanent link">&para;</a></h3>
+<p><code>best_w = 5</code>, but the batch has drained to 3 files, so
+<code>cap = min(jobs, 3) = 3 &lt; 5</code>.</p>
+<table>
+<thead>
+<tr>
+<th>t (s)</th>
+<th>cap</th>
+<th>branch</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>…</td>
+<td>5</td>
+<td>normal</td>
+<td>holding at 5</td>
+</tr>
+<tr>
+<td>T</td>
+<td>3</td>
+<td><code>cap &lt; best_w</code></td>
+<td><code>best_w = 3</code>, <code>set_active(3)</code>, re-baseline</td>
+</tr>
+</tbody>
+</table>
+<p>It follows the drain <strong>down to 3</strong> and keeps going — no re-explore is triggered,
+because the throughput fall here is expected (2 of the 5 workers would have no
+file to hold anyway). A worker only ever holds one file, so 3 files ⇒ at most 3
+useful workers. The controller simply tracks that floor instead of misreading it
+as throttling.</p>
+<hr />
+<h2 id="why-top-down-is-the-default">Why top-down is the default<a class="headerlink" href="#why-top-down-is-the-default" title="Permanent link">&para;</a></h2>
+<p>The <code>bottomup</code> gradient controller probes a ~4 s window for the <em>entire</em> run and
+never commits, so on a bursty link it optimizes noise and parks at low worker
+counts. Measured medians (3 reps each, live ENA):</p>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>bottomup</th>
+<th>best fixed</th>
+<th><strong>topdown</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D2_subset (16 files, byte-bound)</td>
+<td>40.3</td>
+<td>41.6 (<code>-j 20</code>)</td>
+<td><strong>57.0</strong></td>
+</tr>
+<tr>
+<td>D1_fair (201 files, throttled)</td>
+<td>17.6</td>
+<td>24.2 (<code>-j 20</code>)</td>
+<td><strong>30.4</strong></td>
+</tr>
+<tr>
+<td>D0_sweep (8 files)</td>
+<td>~24</td>
+<td>~29 (<code>-j 8</code>)</td>
+<td><strong>~39</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>topdown</code> is top on all three <em>and</em> more consistent than any fixed choice, which
+is the point: no manual <code>-j</code>, better and steadier throughput. That is why it is
+now the default.</p>
+<h3 id="known-limitation">Known limitation<a class="headerlink" href="#known-limitation" title="Permanent link">&para;</a></h3>
+<p>On overhead-dominated lists (hundreds of sub-MB files) the small files can all
+drain during the first probe window, so the controller only ever tunes the
+big-file tail — it has no lever on the overhead phase, which is over in seconds.
+Its win there is real but modest, consistent with treating adaptive ≈ fixed
+"within noise" on that regime.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../methods/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Method details">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Method details
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../examples/" class="md-footer__link md-footer__link--next" aria-label="Next: Examples">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Examples
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 swargo98 — MIT License
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/swargo98/adaptiSeq" target="_blank" rel="noopener" title="adaptiSeq on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
