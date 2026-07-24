@@ -1,6 +1,0 @@
-method	seconds	MB	MB/s	files	formats	status
-iseq	44.0	89	2.03	35	gz	ok
-iseq -p 8	120.0	0	0.00	1	gz	TIMEOUT
-kingfisher ena-ftp	22.4	89	3.99	35	gz	ok
-adaptiseq --no-adaptive	15.9	89	5.62	35	gz	ok
-adaptiseq --adaptive	20.4	89	4.38	35	gz	ok

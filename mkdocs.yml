@@ -71,9 +71,7 @@ markdown_extensions:
 plugins:
   - search
 
-# Internal benchmark/experiment planning docs are not part of the public site.
 exclude_docs: |
-  EXPERIMENT_PLAN*.md
   img/README.md
 
 nav:

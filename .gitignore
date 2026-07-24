@@ -3,6 +3,9 @@ fastbiodl_upgrade.py
 search.py
 utils.py
 
+# MkDocs site build output (deployed to GitHub Pages by CI, never committed)
+site/
+
 # Python build / cache artifacts
 __pycache__/
 *.py[cod]
@@ -24,10 +27,6 @@ fail.log
 
 # but DO keep checked-in golden fixtures
 !tests/fixtures/**
-bench/benchmark_run.log
-
-# sysbench (Part 7): regenerable benchmark output + downloaded data — keep code only
-sysbench/runs/
 
 # copyrighted reference papers (local only)
 papers/

@@ -6,15 +6,9 @@ fetchers resolve and download **one run at a time**. The right competitors are
 therefore those dedicated tools (**iseq**, **Kingfisher**), not a raw downloader
 like aria2c. This file proves the premise honestly.
 
-## How to run
-
-```bash
-# batch USP benchmark vs iseq / iseq -p 8 / Kingfisher (files deleted between runs)
-bash bench/benchmark_batch.sh            # uses bench/subset_small.txt
-
-# single-file segmented-vs-aria2c micro-benchmark (Part 3)
-python bench/benchmark.py
-```
+> The benchmark harness and dataset lists used to produce these numbers are kept
+> out of the released repository. They remain available in the project's git
+> history if you need to reproduce the runs.
 
 ---
 
@@ -133,8 +127,7 @@ offer those features.
 
 Unlike Part 5 (which only ever ran a **no-op `ascp` stub** + synthetic curves), Part 6
 ran a **genuine IBM `ascp` 4.4.4** (from the IBM Aspera Transfer SDK) against the real
-ENA Aspera endpoint `fasp.sra.ebi.ac.uk:33001`. Provision with
-`bench/setup_real_ascp.sh`.
+ENA Aspera endpoint `fasp.sra.ebi.ac.uk:33001`.
 
 **Key finding (ENA key migration, 2026-06):** ENA has migrated its `era-fasp` Aspera
 auth from the legacy **DSA** key (`asperaweb_id_dsa.openssh`, still shipped by

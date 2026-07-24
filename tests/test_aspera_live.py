@@ -10,7 +10,7 @@ result. Skips unless ALL of:
   benchmark no-op stub), and
 * the ENA Aspera key is discoverable (``find_ena_aspera_key()``).
 
-Provision the real ``ascp`` + key with ``bench/setup_real_ascp.sh``. This test never
+Provision a real IBM ``ascp`` and the ENA Aspera key on PATH first. This test never
 runs in normal/offline CI.
 """
 from __future__ import annotations

@@ -30,8 +30,6 @@ jobs:
           pip install -e '.[test]'
       - name: Run offline test suite
         run: python -m pytest -q
-      - name: Run sysbench unit tests
-        run: python -m pytest sysbench/tests -q
 
   build:
     name: build + twine check + wheel smoke
