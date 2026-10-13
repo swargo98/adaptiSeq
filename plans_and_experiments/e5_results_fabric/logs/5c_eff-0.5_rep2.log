@@ -1,0 +1,55 @@
+[32mNote[0m: Aspera batch downloading 8 file(s) with up to 8 worker(s) (adaptive hysteresis concurrency)
+06:29:40.563 adaptiseq.aspera: aspera probe: workers=1 throughput=0.000 efficiency=1.000
+06:29:40.563 adaptiseq.aspera: aspera probe: workers=2 throughput=164.934 efficiency=1.000
+06:29:40.563 adaptiseq.aspera: aspera probe: workers=3 throughput=74.974 efficiency=0.303
+06:29:40.563 adaptiseq.aspera: aspera settled: workers=2 efficiency>=0.50
+06:29:40.563 adaptiseq.aspera: aspera controller settled at 2 workers (efficiency>=0.50)
+[32mNote[0m: aspera worker trajectory: 1w@0Mbps(eff1.00), 2w@165Mbps(eff1.00), 3w@75Mbps(eff0.30)
+[32mNote[0m: SRR22904278.metadata.tsv exists, skip downloading metadata for SRR22904278
+      SRR22904278.fastq.gz 0.38G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904278.metadata.tsv
+[91mMD5 mismatch for:[0m SRR22904278.fastq.gz
+[93mNote[0m: SRR22904278 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.38G	Database: ENA	Mode: Aspera
+[91mMD5 mismatch for:[0m SRR22904278.fastq.gz
+[93mNote[0m: SRR22904278 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.38G	Database: ENA	Mode: Aspera
+[92mSRR22904278 download and md5 check successful, save SRR22904278 in success.log[0m
+=======================SRR22904278 download finished=======================
+[32mNote[0m: SRR22904271.metadata.tsv exists, skip downloading metadata for SRR22904271
+      SRR22904271.fastq.gz 0.34G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904271.metadata.tsv
+[92mSRR22904271 download and md5 check successful, save SRR22904271 in success.log[0m
+=======================SRR22904271 download finished=======================
+[32mNote[0m: SRR22904291.metadata.tsv exists, skip downloading metadata for SRR22904291
+      SRR22904291.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904291.metadata.tsv
+[92mSRR22904291 download and md5 check successful, save SRR22904291 in success.log[0m
+=======================SRR22904291 download finished=======================
+[32mNote[0m: SRR22904281.metadata.tsv exists, skip downloading metadata for SRR22904281
+      SRR22904281.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904281.metadata.tsv
+[92mSRR22904281 download and md5 check successful, save SRR22904281 in success.log[0m
+=======================SRR22904281 download finished=======================
+[32mNote[0m: SRR22904275.metadata.tsv exists, skip downloading metadata for SRR22904275
+      SRR22904275.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904275.metadata.tsv
+[92mSRR22904275 download and md5 check successful, save SRR22904275 in success.log[0m
+=======================SRR22904275 download finished=======================
+[32mNote[0m: SRR22904429.metadata.tsv exists, skip downloading metadata for SRR22904429
+      SRR22904429.fastq.gz 0.33G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904429.metadata.tsv
+[92mSRR22904429 download and md5 check successful, save SRR22904429 in success.log[0m
+=======================SRR22904429 download finished=======================
+[32mNote[0m: SRR22904282.metadata.tsv exists, skip downloading metadata for SRR22904282
+      SRR22904282.fastq.gz 0.22G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904282.metadata.tsv
+[92mSRR22904282 download and md5 check successful, save SRR22904282 in success.log[0m
+=======================SRR22904282 download finished=======================
+[32mNote[0m: SRR22904292.metadata.tsv exists, skip downloading metadata for SRR22904292
+      SRR22904292.fastq.gz 0.20G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904292.metadata.tsv
+[92mSRR22904292 download and md5 check successful, save SRR22904292 in success.log[0m
+=======================SRR22904292 download finished=======================

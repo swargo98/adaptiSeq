@@ -1,0 +1,4 @@
+arm,n,wall_med,wall_iqr,MBps_med,MBps_iqr,runs_ok_med,runs_exp,peak_rss_MB,cpu_pct_med,conc_med,conc_max,conc_host_max,workers_max,timeouts,nonzero_rc,formats,success_pct
+adaptiseq-seg16,3,143.9,23.8,160.36,22.16,2.0,2,86.0,72.0,21.0,25,25,2,0,0,gz,100.0
+adaptiseq-seg8,3,159.2,29.0,144.92,29.71,2.0,2,74.0,72.0,16.0,16,16,2,0,0,gz,100.0
+adaptiseq-seg4,3,234.4,41.6,98.43,26.74,2.0,2,63.0,59.0,6.0,8,8,2,0,0,gz,100.0

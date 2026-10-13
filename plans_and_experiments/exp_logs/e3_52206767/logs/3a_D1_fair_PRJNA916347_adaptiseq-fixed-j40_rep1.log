@@ -1,0 +1,458 @@
+[32mNote[0m: batch downloading 201 file(s) across 201 accession(s) with up to 40 worker(s) (fixed concurrency)
+11:22:05.050 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS reachable but no ranges; single-stream HTTPS
+11:22:05.053 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS reachable but no ranges; single-stream HTTPS
+11:22:05.053 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS reachable but no ranges; single-stream HTTPS
+11:22:05.436 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS reachable but no ranges; single-stream HTTPS
+11:22:06.001 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS reachable but no ranges; single-stream HTTPS
+11:22:13.037 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.038 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.038 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.040 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.041 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.049 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.049 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.354 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:13.507 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:13.711 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:13.776 adaptiseq.batch: downloaded SRR22904263.fastq.gz
+11:22:13.776 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:13.879 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:13.879 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:13.928 adaptiseq.batch: downloaded SRR22904304.fastq.gz
+11:22:13.928 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+11:22:14.059 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.091 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.130 adaptiseq.batch: downloaded SRR22904310.fastq.gz
+11:22:14.131 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.133 adaptiseq.batch: downloaded SRR22904258.fastq.gz
+11:22:14.133 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.172 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.178 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.216 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.281 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.284 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.284 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.367 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+11:22:14.465 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.478 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.483 adaptiseq.batch: downloaded SRR22904306.fastq.gz
+11:22:14.483 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.486 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.507 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.593 adaptiseq.batch: downloaded SRR22904256.fastq.gz
+11:22:14.593 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.638 adaptiseq.batch: downloaded SRR22904267.fastq.gz
+11:22:14.638 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.653 adaptiseq.batch: downloaded SRR22904300.fastq.gz
+11:22:14.653 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.664 adaptiseq.batch: downloaded SRR22904312.fastq.gz
+11:22:14.664 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.703 adaptiseq.batch: downloaded SRR22904308.fastq.gz
+11:22:14.703 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.747 adaptiseq.batch: downloaded SRR22904262.fastq.gz
+11:22:14.747 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.787 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.845 adaptiseq.batch: downloaded SRR22904257.fastq.gz
+11:22:14.845 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:14.882 adaptiseq.batch: downloaded SRR22904315.fastq.gz
+11:22:14.882 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:15.010 adaptiseq.batch: downloaded SRR22904320.fastq.gz
+11:22:15.010 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:15.042 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+11:22:15.073 adaptiseq.batch: downloaded SRR22904317.fastq.gz
+11:22:15.073 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+11:22:15.102 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:15.104 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:15.105 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:15.109 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:15.126 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:15.210 adaptiseq.batch: downloaded SRR22904264.fastq.gz
+11:22:15.210 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+11:22:15.216 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:15.228 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:15.233 adaptiseq.batch: downloaded SRR22904316.fastq.gz
+11:22:15.233 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:15.864 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:15.881 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:15.967 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:16.068 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:16.136 adaptiseq.engine.ftp: FTP could not determine size for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/011/SRR22904311/SRR22904311.fastq.gz
+11:22:16.136 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:16.366 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:16.456 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:16.539 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:16.978 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:17.260 adaptiseq.engine.ftp: FTP could not determine size for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/027/SRR22904327/SRR22904327.fastq.gz
+11:22:17.260 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:17.400 adaptiseq.batch: downloaded SRR22904268.fastq.gz
+11:22:17.400 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:17.402 adaptiseq.engine.ftp: FTP could not determine size for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/029/SRR22904329/SRR22904329.fastq.gz
+11:22:17.402 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:17.641 adaptiseq.batch: downloaded SRR22904260.fastq.gz
+11:22:17.641 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:21.739 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:22.543 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:22:34.717 adaptiseq.batch: downloaded SRR22904293.fastq.gz
+11:22:34.717 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:22:45.937 adaptiseq.batch: downloaded SRR22904297.fastq.gz
+11:22:45.937 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:23:12.176 adaptiseq.batch: downloaded SRR22904282.fastq.gz
+11:23:12.176 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:24:31.299 adaptiseq.batch: downloaded SRR22904271.fastq.gz
+11:24:31.300 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:16.734 adaptiseq.batch: downloaded SRR22904281.fastq.gz
+11:26:16.734 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:19.576 adaptiseq.batch: downloaded SRR22904321.fastq.gz
+11:26:19.576 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:28.063 adaptiseq.batch: downloaded SRR22904322.fastq.gz
+11:26:28.063 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:34.884 adaptiseq.engine.ftp: Completed (ftp) SRR22904301.fastq.gz
+11:26:34.884 adaptiseq.batch: downloaded SRR22904301.fastq.gz
+11:26:34.884 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:34.958 adaptiseq.batch: downloaded SRR22904337.fastq.gz
+11:26:34.958 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:43.208 adaptiseq.batch: downloaded SRR22904335.fastq.gz
+11:26:43.209 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:45.183 adaptiseq.batch: downloaded SRR22904334.fastq.gz
+11:26:45.184 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:48.547 adaptiseq.batch: downloaded SRR22904255.fastq.gz
+11:26:48.548 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:26:55.758 adaptiseq.batch: downloaded SRR22904336.fastq.gz
+11:26:55.758 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:00.366 adaptiseq.engine.ftp: Completed (ftp) SRR22904253.fastq.gz
+11:27:00.366 adaptiseq.batch: downloaded SRR22904253.fastq.gz
+11:27:00.366 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:02.371 adaptiseq.batch: downloaded SRR22904303.fastq.gz
+11:27:02.371 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:02.894 adaptiseq.batch: downloaded SRR22904305.fastq.gz
+11:27:02.895 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:03.184 adaptiseq.batch: downloaded SRR22904261.fastq.gz
+11:27:03.184 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:05.114 adaptiseq.batch: downloaded SRR22904323.fastq.gz
+11:27:05.114 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:06.562 adaptiseq.batch: downloaded SRR22904314.fastq.gz
+11:27:06.563 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:18.195 adaptiseq.engine.ftp: FTP segment 0 attempt 2/3 failed: Waiting for ('1xx',) but got 450 [' Temporarily failed to open file']
+11:27:18.814 adaptiseq.engine.ftp: FTP segment 0 attempt 2/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:27:18.893 adaptiseq.engine.ftp: Completed (ftp) SRR22904302.fastq.gz
+11:27:18.893 adaptiseq.batch: downloaded SRR22904302.fastq.gz
+11:27:18.893 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:19.072 adaptiseq.batch: downloaded SRR22904338.fastq.gz
+11:27:19.072 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:21.313 adaptiseq.engine.ftp: Completed (ftp) SRR22904254.fastq.gz
+11:27:21.313 adaptiseq.batch: downloaded SRR22904254.fastq.gz
+11:27:21.313 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:24.661 adaptiseq.engine.ftp: FTP segment 0 attempt 2/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:27:26.335 adaptiseq.engine.ftp: FTP segment 0 attempt 2/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:27:32.331 adaptiseq.engine.ftp: FTP segment 0 attempt 2/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:27:38.202 adaptiseq.batch: downloaded SRR22904279.fastq.gz
+11:27:38.203 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:27:59.677 adaptiseq.batch: downloaded SRR22904280.fastq.gz
+11:27:59.677 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:03.714 adaptiseq.batch: downloaded SRR22904360.fastq.gz
+11:28:03.714 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:14.263 adaptiseq.batch: downloaded SRR22904324.fastq.gz
+11:28:14.264 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:14.488 adaptiseq.engine.ftp: FTP segment 0 attempt 3/3 failed: Waiting for ('1xx',) but got 450 [' Temporarily failed to open file']
+11:28:14.489 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:20.079 adaptiseq.batch: downloaded SRR22904353.fastq.gz
+11:28:20.079 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:20.213 adaptiseq.batch: downloaded SRR22904361.fastq.gz
+11:28:20.213 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:20.283 adaptiseq.batch: downloaded SRR22904265.fastq.gz
+11:28:20.283 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:25.542 adaptiseq.engine.ftp: Completed (ftp) SRR22904266.fastq.gz
+11:28:25.542 adaptiseq.batch: downloaded SRR22904266.fastq.gz
+11:28:25.542 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:28.093 adaptiseq.batch: downloaded SRR22904371.fastq.gz
+11:28:28.093 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:28.864 adaptiseq.batch: downloaded SRR22904346.fastq.gz
+11:28:28.865 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:31.131 adaptiseq.batch: downloaded SRR22904351.fastq.gz
+11:28:31.131 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:32.264 adaptiseq.batch: downloaded SRR22904259.fastq.gz
+11:28:32.265 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:34.215 adaptiseq.batch: downloaded SRR22904349.fastq.gz
+11:28:34.215 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:36.034 adaptiseq.engine.ftp: Completed (ftp) SRR22904309.fastq.gz
+11:28:36.034 adaptiseq.batch: downloaded SRR22904309.fastq.gz
+11:28:36.034 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:36.137 adaptiseq.engine.ftp: FTP segment 0 attempt 3/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:28:36.138 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:36.596 adaptiseq.batch: downloaded SRR22904343.fastq.gz
+11:28:36.597 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:37.809 adaptiseq.batch: downloaded SRR22904319.fastq.gz
+11:28:37.809 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:40.366 adaptiseq.batch: downloaded SRR22904370.fastq.gz
+11:28:40.366 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:44.755 adaptiseq.batch: downloaded SRR22904358.fastq.gz
+11:28:44.755 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:45.545 adaptiseq.batch: downloaded SRR22904369.fastq.gz
+11:28:45.545 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:45.903 adaptiseq.batch: downloaded SRR22904348.fastq.gz
+11:28:45.903 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:48.233 adaptiseq.batch: downloaded SRR22904375.fastq.gz
+11:28:48.233 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:51.640 adaptiseq.batch: downloaded SRR22904355.fastq.gz
+11:28:51.640 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:51.999 adaptiseq.batch: downloaded SRR22904347.fastq.gz
+11:28:52.000 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:52.010 adaptiseq.engine.segmented: Segment errors for SRR22904339.fastq.gz: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+11:28:52.010 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:52.149 adaptiseq.batch: downloaded SRR22904342.fastq.gz
+11:28:52.150 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:52.414 adaptiseq.batch: downloaded SRR22904359.fastq.gz
+11:28:52.414 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:53.036 adaptiseq.batch: downloaded SRR22904382.fastq.gz
+11:28:53.037 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:53.274 adaptiseq.batch: downloaded SRR22904379.fastq.gz
+11:28:53.274 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:53.671 adaptiseq.engine.ftp: FTP segment 0 attempt 3/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:28:53.672 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:54.575 adaptiseq.batch: downloaded SRR22904362.fastq.gz
+11:28:54.575 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:55.378 adaptiseq.batch: downloaded SRR22904381.fastq.gz
+11:28:55.379 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:55.416 adaptiseq.batch: downloaded SRR22904373.fastq.gz
+11:28:55.416 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:28:55.927 adaptiseq.batch: downloaded SRR22904403.fastq.gz
+11:28:55.927 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:00.967 adaptiseq.engine.segmented: Segment errors for SRR22904354.fastq.gz: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+11:29:00.967 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:01.260 adaptiseq.batch: downloaded SRR22904386.fastq.gz
+11:29:01.260 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:03.522 adaptiseq.batch: downloaded SRR22904378.fastq.gz
+11:29:03.522 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:04.336 adaptiseq.engine.ftp: FTP segment 0 attempt 3/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+11:29:04.337 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:19.757 adaptiseq.batch: downloaded SRR22904390.fastq.gz
+11:29:19.757 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:19.990 adaptiseq.batch: downloaded SRR22904404.fastq.gz
+11:29:19.990 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:20.196 adaptiseq.batch: downloaded SRR22904400.fastq.gz
+11:29:20.196 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:20.336 adaptiseq.batch: downloaded SRR22904377.fastq.gz
+11:29:20.336 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:21.489 adaptiseq.batch: downloaded SRR22904384.fastq.gz
+11:29:21.489 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:21.788 adaptiseq.batch: downloaded SRR22904356.fastq.gz
+11:29:21.788 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:22.096 adaptiseq.batch: downloaded SRR22904396.fastq.gz
+11:29:22.097 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:22.503 adaptiseq.batch: downloaded SRR22904393.fastq.gz
+11:29:22.503 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:22.928 adaptiseq.batch: downloaded SRR22904394.fastq.gz
+11:29:22.929 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:31.008 adaptiseq.batch: downloaded SRR22904345.fastq.gz
+11:29:31.008 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:31.036 adaptiseq.batch: downloaded SRR22904405.fastq.gz
+11:29:31.037 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:31.819 adaptiseq.batch: downloaded SRR22904391.fastq.gz
+11:29:31.820 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:31.961 adaptiseq.batch: downloaded SRR22904415.fastq.gz
+11:29:31.961 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:32.864 adaptiseq.batch: downloaded SRR22904389.fastq.gz
+11:29:32.864 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:32.971 adaptiseq.batch: downloaded SRR22904407.fastq.gz
+11:29:32.971 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:33.108 adaptiseq.batch: downloaded SRR22904368.fastq.gz
+11:29:33.108 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:33.124 adaptiseq.batch: downloaded SRR22904397.fastq.gz
+11:29:33.125 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:33.254 adaptiseq.batch: downloaded SRR22904388.fastq.gz
+11:29:33.254 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:33.447 adaptiseq.batch: downloaded SRR22904392.fastq.gz
+11:29:33.447 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:33.981 adaptiseq.batch: downloaded SRR22904406.fastq.gz
+11:29:33.981 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:34.021 adaptiseq.batch: downloaded SRR22904325.fastq.gz
+11:29:34.021 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:34.186 adaptiseq.batch: downloaded SRR22904332.fastq.gz
+11:29:34.187 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:34.253 adaptiseq.batch: downloaded SRR22904387.fastq.gz
+11:29:34.254 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:34.388 adaptiseq.batch: downloaded SRR22904418.fastq.gz
+11:29:34.388 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:34.751 adaptiseq.batch: downloaded SRR22904395.fastq.gz
+11:29:34.751 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:35.094 adaptiseq.batch: downloaded SRR22904409.fastq.gz
+11:29:35.094 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:35.120 adaptiseq.batch: downloaded SRR22904365.fastq.gz
+11:29:35.120 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:35.411 adaptiseq.batch: downloaded SRR22904333.fastq.gz
+11:29:35.411 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:36.320 adaptiseq.batch: downloaded SRR22904376.fastq.gz
+11:29:36.320 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:45.040 adaptiseq.engine.segmented: Failed SRR22904399.fastq.gz: Expected 200 OK, got 403
+11:29:45.040 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:45.161 adaptiseq.engine.segmented: Failed SRR22904291.fastq.gz: Server disconnected
+11:29:45.161 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:45.181 adaptiseq.engine.segmented: Segment errors for SRR22904372.fastq.gz: Server disconnected
+11:29:45.182 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:29:45.635 adaptiseq.batch: downloaded SRR22904422.fastq.gz
+11:29:45.636 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:01.936 adaptiseq.engine.segmented: Failed SRR22904366.fastq.gz: Expected 200 OK, got 403
+11:30:01.937 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:12.557 adaptiseq.batch: downloaded SRR22904442.fastq.gz
+11:30:12.557 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:16.523 adaptiseq.batch: downloaded SRR22904427.fastq.gz
+11:30:16.523 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:18.194 adaptiseq.batch: downloaded SRR22904425.fastq.gz
+11:30:18.194 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:25.411 adaptiseq.batch: downloaded SRR22904432.fastq.gz
+11:30:25.411 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:28.370 adaptiseq.batch: downloaded SRR22904398.fastq.gz
+11:30:28.370 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:37.075 adaptiseq.batch: downloaded SRR22904380.fastq.gz
+11:30:37.075 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:37.249 adaptiseq.batch: downloaded SRR22904451.fastq.gz
+11:30:37.249 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:37.770 adaptiseq.batch: downloaded SRR22904443.fastq.gz
+11:30:37.770 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:40.434 adaptiseq.batch: downloaded SRR22904414.fastq.gz
+11:30:40.435 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:41.878 adaptiseq.batch: downloaded SRR22904426.fastq.gz
+11:30:41.879 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:51.738 adaptiseq.batch: downloaded SRR22904420.fastq.gz
+11:30:51.738 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:51.934 adaptiseq.batch: downloaded SRR22904410.fastq.gz
+11:30:51.934 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:54.098 adaptiseq.batch: downloaded SRR22904452.fastq.gz
+11:30:54.098 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:56.894 adaptiseq.batch: downloaded SRR22904417.fastq.gz
+11:30:56.894 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:57.689 adaptiseq.batch: downloaded SRR22904450.fastq.gz
+11:30:57.689 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:30:58.842 adaptiseq.batch: downloaded SRR22904411.fastq.gz
+11:30:58.843 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:03.610 adaptiseq.batch: downloaded SRR22904441.fastq.gz
+11:31:03.610 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:06.962 adaptiseq.batch: downloaded SRR22904439.fastq.gz
+11:31:06.962 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:09.116 adaptiseq.batch: downloaded SRR22904437.fastq.gz
+11:31:09.117 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:18.850 adaptiseq.batch: downloaded SRR22904408.fastq.gz
+11:31:18.851 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:20.105 adaptiseq.batch: downloaded SRR22904449.fastq.gz
+11:31:20.105 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:25.320 adaptiseq.batch: downloaded SRR22904421.fastq.gz
+11:31:25.320 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:25.586 adaptiseq.batch: downloaded SRR22904440.fastq.gz
+11:31:25.586 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:25.728 adaptiseq.engine.segmented: Failed SRR22904445.fastq.gz: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+11:31:25.728 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:28.908 adaptiseq.batch: downloaded SRR22904434.fastq.gz
+11:31:28.908 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:34.107 adaptiseq.batch: downloaded SRR22904436.fastq.gz
+11:31:34.107 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:34.442 adaptiseq.batch: downloaded SRR22904461.fastq.gz
+11:31:34.443 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:35.105 adaptiseq.batch: downloaded SRR22904412.fastq.gz
+11:31:35.105 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:35.651 adaptiseq.batch: downloaded SRR22904456.fastq.gz
+11:31:35.651 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:40.916 adaptiseq.batch: downloaded SRR22904383.fastq.gz
+11:31:40.916 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:41.395 adaptiseq.batch: downloaded SRR22904444.fastq.gz
+11:31:41.395 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:41.704 adaptiseq.batch: downloaded SRR22904466.fastq.gz
+11:31:41.705 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:41.990 adaptiseq.batch: downloaded SRR22904423.fastq.gz
+11:31:41.990 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:45.793 adaptiseq.batch: downloaded SRR22904419.fastq.gz
+11:31:45.794 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:46.064 adaptiseq.batch: downloaded SRR22904465.fastq.gz
+11:31:46.064 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:46.637 adaptiseq.batch: downloaded SRR22904473.fastq.gz
+11:31:46.638 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:46.697 adaptiseq.batch: downloaded SRR22904464.fastq.gz
+11:31:46.697 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:46.825 adaptiseq.batch: downloaded SRR22904448.fastq.gz
+11:31:46.825 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:47.814 adaptiseq.batch: downloaded SRR22904455.fastq.gz
+11:31:47.815 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:51.409 adaptiseq.batch: downloaded SRR22904475.fastq.gz
+11:31:51.409 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:51.500 adaptiseq.batch: downloaded SRR22904476.fastq.gz
+11:31:51.500 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:52.675 adaptiseq.batch: downloaded SRR22904470.fastq.gz
+11:31:52.675 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:53.540 adaptiseq.batch: downloaded SRR22904474.fastq.gz
+11:31:53.540 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:53.712 adaptiseq.batch: downloaded SRR22904477.fastq.gz
+11:31:53.712 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:31:55.251 adaptiseq.batch: downloaded SRR22904447.fastq.gz
+11:31:55.251 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:10.501 adaptiseq.batch: downloaded SRR22904374.fastq.gz
+11:32:10.501 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:12.763 adaptiseq.batch: downloaded SRR22904492.fastq.gz
+11:32:12.764 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:21.563 adaptiseq.batch: downloaded SRR22904469.fastq.gz
+11:32:21.564 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:27.608 adaptiseq.batch: downloaded SRR22904494.fastq.gz
+11:32:27.608 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:35.855 adaptiseq.batch: downloaded SRR22904401.fastq.gz
+11:32:35.855 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:37.607 adaptiseq.batch: downloaded SRR22904480.fastq.gz
+11:32:37.607 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:38.375 adaptiseq.batch: downloaded SRR22904472.fastq.gz
+11:32:38.376 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:47.348 adaptiseq.batch: downloaded SRR22904463.fastq.gz
+11:32:47.348 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:52.192 adaptiseq.batch: downloaded SRR22904327.fastq.gz
+11:32:52.192 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:32:55.022 adaptiseq.engine.segmented: Failed SRR22904275.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 66871296 of 351202331 bytes).'>
+11:32:55.023 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:03.689 adaptiseq.batch: downloaded SRR22904478.fastq.gz
+11:33:03.690 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:04.813 adaptiseq.batch: downloaded SRR22904491.fastq.gz
+11:33:04.813 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:05.492 adaptiseq.batch: downloaded SRR22904454.fastq.gz
+11:33:05.492 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:09.800 adaptiseq.batch: downloaded SRR22904485.fastq.gz
+11:33:09.800 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:10.052 adaptiseq.batch: downloaded SRR22904311.fastq.gz
+11:33:10.154 adaptiseq.batch: downloaded SRR22904483.fastq.gz
+11:33:10.451 adaptiseq.batch: downloaded SRR22904486.fastq.gz
+11:33:10.547 adaptiseq.batch: downloaded SRR22904433.fastq.gz
+11:33:10.688 adaptiseq.engine.segmented: Segment errors for SRR22904468.fastq.gz: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+11:33:10.689 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:10.698 adaptiseq.batch: downloaded SRR22904459.fastq.gz
+11:33:10.870 adaptiseq.batch: downloaded SRR22904453.fastq.gz
+11:33:10.996 adaptiseq.batch: downloaded SRR22904479.fastq.gz
+11:33:12.064 adaptiseq.batch: downloaded SRR22904487.fastq.gz
+11:33:12.502 adaptiseq.batch: downloaded SRR22904484.fastq.gz
+11:33:12.680 adaptiseq.engine.segmented: Failed SRR22904287.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 19279747 of 152850396 bytes).'>
+11:33:12.680 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:33:14.363 adaptiseq.batch: downloaded SRR22904471.fastq.gz
+11:33:18.184 adaptiseq.batch: downloaded SRR22904488.fastq.gz
+11:33:18.730 adaptiseq.batch: downloaded SRR22904481.fastq.gz
+11:33:18.763 adaptiseq.batch: downloaded SRR22904438.fastq.gz
+11:33:19.623 adaptiseq.batch: downloaded SRR22904416.fastq.gz
+11:33:19.920 adaptiseq.batch: downloaded SRR22904467.fastq.gz
+11:33:20.166 adaptiseq.batch: downloaded SRR22904339.fastq.gz
+11:33:20.173 adaptiseq.batch: downloaded SRR22904399.fastq.gz
+11:33:20.219 adaptiseq.batch: downloaded SRR22904462.fastq.gz
+11:33:20.337 adaptiseq.batch: downloaded SRR22904329.fastq.gz
+11:33:20.385 adaptiseq.batch: downloaded SRR22904490.fastq.gz
+11:33:20.434 adaptiseq.batch: downloaded SRR22904457.fastq.gz
+11:33:20.981 adaptiseq.batch: downloaded SRR22904354.fastq.gz
+11:33:21.751 adaptiseq.batch: downloaded SRR22904468.fastq.gz
+11:33:22.507 adaptiseq.batch: downloaded SRR22904445.fastq.gz
+11:33:22.687 adaptiseq.batch: downloaded SRR22904366.fastq.gz
+11:33:22.938 adaptiseq.batch: downloaded SRR22904489.fastq.gz
+11:33:23.715 adaptiseq.batch: downloaded SRR22904372.fastq.gz
+11:33:26.951 adaptiseq.batch: downloaded SRR22904424.fastq.gz
+11:33:33.685 adaptiseq.batch: downloaded SRR22904495.fastq.gz
+11:34:21.244 adaptiseq.batch: downloaded SRR22904290.fastq.gz
+11:35:19.513 adaptiseq.batch: downloaded SRR22904428.fastq.gz
+11:35:19.796 adaptiseq.engine.segmented: Segment errors for SRR22904299.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 134015690 of 209421746 bytes).'>
+11:35:19.836 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:35:20.573 adaptiseq.engine.segmented: Segment errors for SRR22904430.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 67039232 of 144892698 bytes).'>
+11:35:20.573 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:35:27.919 adaptiseq.engine.segmented: Segment errors for SRR22904277.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 20551549 of 117131963 bytes).'>
+11:35:27.920 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:35:31.759 adaptiseq.engine.segmented: Segment errors for SRR22904292.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 13599683 of 160872100 bytes).'>
+11:35:31.759 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+11:35:40.663 adaptiseq.engine.segmented: Failed SRR22904429.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1623746 of 350649757 bytes).'>
+11:35:40.663 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS

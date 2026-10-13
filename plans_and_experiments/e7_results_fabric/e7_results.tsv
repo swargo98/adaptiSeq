@@ -1,0 +1,11 @@
+subexp	dataset	arm	tool	rep	wall_s	exit_code	status	runs_complete	runs_partial	runs_expected	files_verified	files_expected	bytes_verified	bytes_expected	md5_pass_rate	retries	fail_log_n	format	host	stamp
+7a	D1_full	iseq	iseq	1	2071.92	1	rc=1	199	0	241	199	321	4419159901	7585839215	0.6199	86	42	gz	Node-FIU	2026-07-21T02:01:35+00:00
+7a	D1_full	kingfisher	kingfisher	1	1607.08	1	rc=1	148	0	241	214	321	6633456977	7585839215	0.6667	0	0	gz	Node-FIU	2026-07-21T02:28:25+00:00
+7a	D1_full	adaptiseq	adaptiseq	1	540.54	1	rc=1	240	0	241	320	321	7585794873	7585839215	0.9969	3	1	gz	Node-FIU	2026-07-21T02:37:29+00:00
+7a	D1_full	iseq	iseq	2	3121.30	1	rc=1	200	0	241	200	321	4419183267	7585839215	0.6231	83	41	gz	Node-FIU	2026-07-21T03:29:33+00:00
+7a	D1_full	kingfisher	kingfisher	2	2170.78	1	rc=1	148	0	241	214	321	6633456977	7585839215	0.6667	0	0	gz	Node-FIU	2026-07-21T04:05:46+00:00
+7a	D1_full	adaptiseq	adaptiseq	2	472.79	1	rc=1	240	0	241	320	321	7585794873	7585839215	0.9969	3	1	gz	Node-FIU	2026-07-21T04:13:42+00:00
+7e	D1_threefile	iseq	iseq	1	435.56	1	rc=1	0	0	40	0	120	0	3166611606	0.0000	81	40	-	Node-FIU	2026-07-21T04:38:26+00:00
+7e	D1_threefile	adaptiseq	adaptiseq	1	295.84	0	ok	40	0	40	120	120	3166611606	3166611606	1.0000	0	0	gz	Node-FIU	2026-07-21T04:43:24+00:00
+7e	D1_threefile	iseq	iseq	2	479.10	1	rc=1	0	0	40	0	120	0	3166611606	0.0000	81	40	-	Node-FIU	2026-07-21T04:51:23+00:00
+7e	D1_threefile	adaptiseq	adaptiseq	2	409.26	0	ok	40	0	40	120	120	3166611606	3166611606	1.0000	0	0	gz	Node-FIU	2026-07-21T04:58:14+00:00

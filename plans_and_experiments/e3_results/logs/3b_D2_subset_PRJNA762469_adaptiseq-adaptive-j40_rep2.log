@@ -1,0 +1,101 @@
+[32mNote[0m: batch downloading 16 file(s) across 8 accession(s) with up to 16 worker(s) (configured max 40) (adaptive concurrency)
+15:15:41.599 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:15:41.600 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:15:50.994 adaptiseq.batch: adaptive probe: workers=1 throughput=888.2Mbps score=-879
+15:15:55.996 adaptiseq.batch: adaptive probe: workers=2 throughput=761.9Mbps score=-747
+15:16:00.997 adaptiseq.batch: adaptive probe: workers=1 throughput=398.5Mbps score=-395
+15:16:05.999 adaptiseq.batch: adaptive probe: workers=2 throughput=429.3Mbps score=-421
+15:16:06.111 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:11.000 adaptiseq.batch: adaptive probe: workers=3 throughput=522.6Mbps score=-507
+15:16:11.069 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:16.002 adaptiseq.batch: adaptive probe: workers=4 throughput=958.2Mbps score=-921
+15:16:16.033 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:16.034 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:16.034 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:21.006 adaptiseq.batch: adaptive probe: workers=7 throughput=1665.4Mbps score=-1553
+15:16:21.016 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:21.017 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:26.010 adaptiseq.batch: adaptive probe: workers=9 throughput=2384.8Mbps score=-2181
+15:16:26.056 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:26.057 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:31.014 adaptiseq.batch: adaptive probe: workers=11 throughput=2434.4Mbps score=-2182
+15:16:31.049 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:36.021 adaptiseq.batch: adaptive probe: workers=12 throughput=3307.1Mbps score=-2935
+15:16:41.039 adaptiseq.batch: adaptive probe: workers=12 throughput=3271.5Mbps score=-2903
+15:16:46.053 adaptiseq.batch: adaptive probe: workers=11 throughput=2540.5Mbps score=-2277
+15:16:46.101 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:51.058 adaptiseq.batch: adaptive probe: workers=13 throughput=2524.3Mbps score=-2218
+15:16:51.349 adaptiseq.batch: downloaded SRR15852406_2.fastq.gz
+15:16:51.349 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:16:56.064 adaptiseq.batch: adaptive probe: workers=12 throughput=2820.4Mbps score=-2503
+15:16:56.657 adaptiseq.batch: downloaded SRR15852400_2.fastq.gz
+15:16:56.658 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:17:01.072 adaptiseq.batch: adaptive probe: workers=10 throughput=3003.0Mbps score=-2719
+15:17:03.651 adaptiseq.batch: downloaded SRR15852415_2.fastq.gz
+15:17:03.770 adaptiseq.batch: downloaded SRR15852411_2.fastq.gz
+15:17:03.987 adaptiseq.batch: downloaded SRR15852411_1.fastq.gz
+15:17:03.987 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+15:17:06.099 adaptiseq.batch: adaptive probe: workers=9 throughput=3420.6Mbps score=-3128
+15:17:06.210 adaptiseq.batch: downloaded SRR15852407_1.fastq.gz
+15:17:06.243 adaptiseq.batch: downloaded SRR15852404_1.fastq.gz
+15:17:07.359 adaptiseq.batch: downloaded SRR15852407_2.fastq.gz
+15:17:07.704 adaptiseq.batch: downloaded SRR15852400_1.fastq.gz
+15:17:11.119 adaptiseq.batch: adaptive probe: workers=7 throughput=2211.7Mbps score=-2063
+15:17:15.449 adaptiseq.batch: downloaded SRR15852415_1.fastq.gz
+15:17:16.121 adaptiseq.batch: adaptive probe: workers=6 throughput=1793.3Mbps score=-1689
+15:17:21.123 adaptiseq.batch: adaptive probe: workers=6 throughput=1305.4Mbps score=-1230
+15:17:21.259 adaptiseq.batch: downloaded SRR15852425_2.fastq.gz
+15:17:26.124 adaptiseq.batch: adaptive probe: workers=5 throughput=956.5Mbps score=-910
+15:17:26.295 adaptiseq.batch: downloaded SRR15852404_2.fastq.gz
+15:17:27.820 adaptiseq.batch: downloaded SRR15852406_1.fastq.gz
+15:17:31.126 adaptiseq.batch: adaptive probe: workers=3 throughput=913.5Mbps score=-887
+15:17:36.126 adaptiseq.batch: adaptive probe: workers=3 throughput=559.0Mbps score=-543
+15:17:41.128 adaptiseq.batch: adaptive probe: workers=3 throughput=622.2Mbps score=-604
+15:17:46.129 adaptiseq.batch: adaptive probe: workers=3 throughput=610.7Mbps score=-593
+15:17:47.282 adaptiseq.batch: downloaded SRR15852425_1.fastq.gz
+15:17:51.130 adaptiseq.batch: adaptive probe: workers=2 throughput=238.2Mbps score=-234
+15:17:56.131 adaptiseq.batch: adaptive probe: workers=2 throughput=245.7Mbps score=-241
+15:18:00.405 adaptiseq.batch: downloaded SRR15852430_1.fastq.gz
+15:18:01.132 adaptiseq.batch: adaptive probe: workers=1 throughput=280.8Mbps score=-278
+15:18:02.299 adaptiseq.batch: downloaded SRR15852430_2.fastq.gz
+[32mNote[0m: adaptive worker summary: 27 probe(s); best 3421 Mbps at 9 worker(s); last 281 Mbps at 1 worker(s); recent: 9w@3421Mbps, 7w@2212Mbps, 6w@1793Mbps, 6w@1305Mbps, 5w@957Mbps, 3w@913Mbps, 3w@559Mbps, 3w@622Mbps, 3w@611Mbps, 2w@238Mbps, 2w@246Mbps, 1w@281Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================

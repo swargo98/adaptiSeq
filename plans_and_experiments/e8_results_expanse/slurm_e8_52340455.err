@@ -1,0 +1,114 @@
+[8-ENA] run=SRR15852400  manifest=/scratch/rswargo/job_52340455/e8_payload/ena_run.manifest
+[08:30:29] 8-ENA rep=1 arm=adaptiseq
+    -> 1800.14s  peakRSS=63.4MB  cpu_core_s=44.89  setup/data/verify=3.13/1796.98/0.03  md5=0  TIMEOUT
+[09:00:30] 8-ENA rep=1 arm=iseq
+    -> 1800.52s  peakRSS=21.3MB  cpu_core_s=2.26  setup/data/verify=10.45/1790.05/0.02  md5=0  TIMEOUT
+[09:30:32] 8-ENA rep=1 arm=kingfisher
+    -> 979.44s  peakRSS=153.1MB  cpu_core_s=69.66  setup/data/verify=4.19/590.43/384.82  md5=1  ok
+[09:46:54] 8-ENA rep=2 arm=adaptiseq
+    -> 1394.33s  peakRSS=63.4MB  cpu_core_s=49.46  setup/data/verify=2.61/1332.82/58.9  md5=1  ok
+[10:10:11] 8-ENA rep=2 arm=iseq
+    -> 1800.40s  peakRSS=21.3MB  cpu_core_s=2.52  setup/data/verify=9.41/1790.96/0.02  md5=0  TIMEOUT
+[10:40:12] 8-ENA rep=2 arm=kingfisher
+    -> 1327.72s  peakRSS=153.3MB  cpu_core_s=69.45  setup/data/verify=4.18/1008.62/314.92  md5=1  ok
+[11:02:23] 8-ENA rep=3 arm=adaptiseq
+    -> 1800.53s  peakRSS=63.4MB  cpu_core_s=47.16  setup/data/verify=2.62/1797.89/0.03  md5=0  TIMEOUT
+[11:32:26] 8-ENA rep=3 arm=iseq
+    -> 1800.12s  peakRSS=21.3MB  cpu_core_s=1.75  setup/data/verify=5.24/1794.86/0.02  md5=0  TIMEOUT
+[12:02:27] 8-ENA rep=3 arm=kingfisher
+    -> 1334.87s  peakRSS=153.4MB  cpu_core_s=69.83  setup/data/verify=4.18/699.97/630.73  md5=1  ok
+[12:24:44] 8-ENA rep=4 arm=adaptiseq
+    -> 1786.13s  peakRSS=63.4MB  cpu_core_s=50.84  setup/data/verify=6.78/1775.15/4.2  md5=1  ok
+[12:54:33] 8-ENA rep=4 arm=iseq
+    -> 1800.14s  peakRSS=21.3MB  cpu_core_s=2.37  setup/data/verify=5.76/1794.36/0.02  md5=0  TIMEOUT
+[13:24:35] 8-ENA rep=4 arm=kingfisher
+    -> 1288.95s  peakRSS=153.2MB  cpu_core_s=69.23  setup/data/verify=4.17/686.99/597.78  md5=1  ok
+[13:46:06] 8-ENA rep=5 arm=adaptiseq
+    -> 1800.49s  peakRSS=63.4MB  cpu_core_s=46.41  setup/data/verify=3.13/1797.33/0.03  md5=0  TIMEOUT
+[14:16:07] 8-ENA rep=5 arm=iseq
+    -> 1800.37s  peakRSS=21.3MB  cpu_core_s=5.78  setup/data/verify=5.75/1794.59/0.02  md5=0  TIMEOUT
+[14:46:10] 8-ENA rep=5 arm=kingfisher
+    -> 455.02s  peakRSS=152.8MB  cpu_core_s=68.94  setup/data/verify=3.66/263.21/188.15  md5=1  ok
+
+=== E8 results: /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/e8_results.tsv ===
+8-ENA  D2_subset  adaptiseq   adaptiseq   2    1394.33  0          ok       63.4         60.4         3.5           2904.4        49.46       0.4            2654.7          1.90             2.61           1332.82       58.9            2652616379      2652616379     2              gz      1       exp-9-52  2026-07-21T10:10:10
+8-ENA  D2_subset  iseq        iseq        2    1800.40  -9         TIMEOUT  21.3         14.4         0.1           1.9           2.52        0.0            766.9           0.43             9.41           1790.96       0.02            0               765455992      1              gz      0       exp-9-52  2026-07-21T10:40:12
+8-ENA  D2_subset  kingfisher  kingfisher  2    1327.72  0          ok       153.3        151.8        5.2           2932.1        69.45       0.1            2653.1          2.00             4.18           1008.62       314.92          2652616379      2652616379     2              gz      1       exp-9-52  2026-07-21T11:02:22
+8-ENA  D2_subset  adaptiseq   adaptiseq   3    1800.53  -9         TIMEOUT  63.4         60.2         2.6           2903.7        47.16       0.4            2592.1          1.44             2.62           1797.89       0.03            1328295383      2617719560     2              gz      0       exp-9-52  2026-07-21T11:32:25
+8-ENA  D2_subset  iseq        iseq        3    1800.12  -9         TIMEOUT  21.3         14.4         0.1           1.9           1.75        0.0            495.0           0.27             5.24           1794.86       0.02            0               493725704      1              gz      0       exp-9-52  2026-07-21T12:02:27
+8-ENA  D2_subset  kingfisher  kingfisher  3    1334.87  0          ok       153.4        151.9        5.2           2927.9        69.83       0.4            2653.1          1.99             4.18           699.97        630.73          2652616379      2652616379     2              gz      1       exp-9-52  2026-07-21T12:24:44
+8-ENA  D2_subset  adaptiseq   adaptiseq   4    1786.13  0          ok       63.4         61.3         2.8           2910.1        50.84       0.4            2657.2          1.49             6.78           1775.15       4.2             2652616379      2652616379     2              gz      1       exp-9-52  2026-07-21T12:54:33
+8-ENA  D2_subset  iseq        iseq        4    1800.14  -9         TIMEOUT  21.3         14.4         0.1           3.8           2.37        0.0            712.5           0.40             5.76           1794.36       0.02            0               711064440      1              gz      0       exp-9-52  2026-07-21T13:24:35
+8-ENA  D2_subset  kingfisher  kingfisher  4    1288.95  0          ok       153.2        151.9        5.4           2934.9        69.23       0.1            2653.1          2.06             4.17           686.99        597.78          2652616379      2652616379     2              gz      1       exp-9-52  2026-07-21T13:46:06
+8-ENA  D2_subset  adaptiseq   adaptiseq   5    1800.49  -9         TIMEOUT  63.4         60.8         2.6           2928.5        46.41       0.4            2614.5          1.45             3.13           1797.33       0.03            0               2610595547     2              -       0       exp-9-52  2026-07-21T14:16:07
+8-ENA  D2_subset  iseq        iseq        5    1800.37  -9         TIMEOUT  21.3         14.4         0.3           3.8           5.78        0.0            1826.9          1.01             5.75           1794.59       0.02            1324320996      1825592116     2              gz      0       exp-9-52  2026-07-21T14:46:10
+8-ENA  D2_subset  kingfisher  kingfisher  5    455.02   0          ok       152.8        150.4        15.1          2921.0        68.94       0.1            2652.8          5.83             3.66           263.21        188.15          2652616379      2652616379     2              gz      1       exp-9-52  2026-07-21T14:53:48
+[8-SRA] run=SRR1031060 (NOT manifest-scored; verify ~0.5-2 GB)
+[14:53:48] 8-SRA rep=1 arm=adaptiseq
+    -> 28.70s  peakRSS=1145.5MB  cpu_core_s=78.67  setup/data/verify=4.18/20.87/3.65  md5=-  rc=1
+[14:54:17] 8-SRA rep=1 arm=iseq
+    -> 23.59s  peakRSS=1099.0MB  cpu_core_s=63.73  setup/data/verify=3.14/16.78/3.67  md5=-  rc=1
+[14:54:41] 8-SRA rep=1 arm=kingfisher
+    -> 14.62s  peakRSS=1195.6MB  cpu_core_s=34.51  setup/data/verify=10.44/3.66/0.52  md5=-  ok
+[14:54:56] 8-SRA rep=1 arm=prefetch
+    -> 9.92s  peakRSS=10.9MB  cpu_core_s=2.00  setup/data/verify=8.35/0.0/1.57  md5=-  ok
+[14:55:06] 8-SRA rep=2 arm=adaptiseq
+    -> 24.53s  peakRSS=1145.1MB  cpu_core_s=77.33  setup/data/verify=3.13/17.74/3.66  md5=-  rc=1
+[14:55:30] 8-SRA rep=2 arm=iseq
+    -> 22.51s  peakRSS=1098.6MB  cpu_core_s=63.90  setup/data/verify=3.14/15.7/3.66  md5=-  rc=1
+[14:55:53] 8-SRA rep=2 arm=kingfisher
+    -> 13.08s  peakRSS=1195.6MB  cpu_core_s=34.65  setup/data/verify=8.87/3.67/0.53  md5=-  ok
+[14:56:06] 8-SRA rep=2 arm=prefetch
+    -> 9.39s  peakRSS=118.6MB  cpu_core_s=2.29  setup/data/verify=8.35/0.0/1.04  md5=-  ok
+[14:56:16] 8-SRA rep=3 arm=adaptiseq
+    -> 24.55s  peakRSS=1145.6MB  cpu_core_s=77.96  setup/data/verify=3.13/17.76/3.65  md5=-  rc=1
+[14:56:41] 8-SRA rep=3 arm=iseq
+    -> 23.00s  peakRSS=1098.7MB  cpu_core_s=64.97  setup/data/verify=3.14/16.2/3.66  md5=-  rc=1
+[14:57:04] 8-SRA rep=3 arm=kingfisher
+    -> 13.05s  peakRSS=1195.9MB  cpu_core_s=34.57  setup/data/verify=8.87/3.65/0.52  md5=-  ok
+[14:57:17] 8-SRA rep=3 arm=prefetch
+    -> 9.39s  peakRSS=11.2MB  cpu_core_s=1.63  setup/data/verify=8.34/0.0/1.04  md5=-  ok
+[14:57:27] 8-SRA rep=4 arm=adaptiseq
+    -> 24.60s  peakRSS=1145.4MB  cpu_core_s=77.58  setup/data/verify=3.13/17.78/3.68  md5=-  rc=1
+[14:57:51] 8-SRA rep=4 arm=iseq
+    -> 23.51s  peakRSS=1098.8MB  cpu_core_s=65.89  setup/data/verify=3.14/16.71/3.66  md5=-  rc=1
+[14:58:15] 8-SRA rep=4 arm=kingfisher
+    -> 13.59s  peakRSS=1195.5MB  cpu_core_s=34.31  setup/data/verify=9.39/3.68/0.52  md5=-  ok
+[14:58:29] 8-SRA rep=4 arm=prefetch
+    -> 8.86s  peakRSS=84.1MB  cpu_core_s=1.83  setup/data/verify=8.34/0.0/0.52  md5=-  ok
+[14:58:38] 8-SRA rep=5 arm=adaptiseq
+    -> 25.03s  peakRSS=1145.8MB  cpu_core_s=79.72  setup/data/verify=3.13/18.24/3.65  md5=-  rc=1
+[14:59:03] 8-SRA rep=5 arm=iseq
+    -> 23.51s  peakRSS=1098.9MB  cpu_core_s=65.36  setup/data/verify=3.14/16.71/3.66  md5=-  rc=1
+[14:59:27] 8-SRA rep=5 arm=kingfisher
+    -> 13.08s  peakRSS=1195.9MB  cpu_core_s=35.13  setup/data/verify=8.35/3.67/1.06  md5=-  ok
+[14:59:40] 8-SRA rep=5 arm=prefetch
+    -> 8.86s  peakRSS=57.2MB  cpu_core_s=1.80  setup/data/verify=8.34/0.0/0.52  md5=-  ok
+
+=== E8 results: /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/e8_results.tsv ===
+8-SRA  SRR1031060  adaptiseq   adaptiseq   3    24.55    1          rc=1     1145.6       150.5        309.7         2899.3        77.96       0.0            5266.6          214.56           3.13           17.76         3.65            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:56:41
+8-SRA  SRR1031060  iseq        iseq        3    23.00    1          rc=1     1098.7       125.4        276.2         821.6         64.97       0.0            3403.1          147.97           3.14           16.2          3.66            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:57:04
+8-SRA  SRR1031060  kingfisher  kingfisher  3    13.05    0          ok       1195.9       305.1        253.6         2931.3        34.57       0.0            2794.5          214.13           8.87           3.65          0.52            1572529944      1572529944     2              sra     -       exp-9-52  2026-07-21T14:57:17
+8-SRA  SRR1031060  prefetch    prefetch    3    9.39     0          ok       11.2         10.1         16.4          32.5          1.63        0.0            199.6           21.26            8.34           0.0           1.04            199571400       199571400      1              sra     -       exp-9-52  2026-07-21T14:57:27
+8-SRA  SRR1031060  adaptiseq   adaptiseq   4    24.60    1          rc=1     1145.4       170.0        307.8         2907.1        77.58       0.0            3395.4          138.04           3.13           17.78         3.68            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:57:51
+8-SRA  SRR1031060  iseq        iseq        4    23.51    1          rc=1     1098.8       123.3        274.2         819.5         65.89       0.0            3403.1          144.73           3.14           16.71         3.66            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:58:15
+8-SRA  SRR1031060  kingfisher  kingfisher  4    13.59    0          ok       1195.5       295.8        241.3         2922.9        34.31       0.0            2866.5          210.90           9.39           3.68          0.52            1572529944      1572529944     2              sra     -       exp-9-52  2026-07-21T14:58:29
+8-SRA  SRR1031060  prefetch    prefetch    4    8.86     0          ok       84.1         14.2         19.4          80.6          1.83        0.0            199.6           22.51            8.34           0.0           0.52            199571400       199571400      1              sra     -       exp-9-52  2026-07-21T14:58:38
+8-SRA  SRR1031060  adaptiseq   adaptiseq   5    25.03    1          rc=1     1145.8       173.5        311.3         2896.4        79.72       0.0            3388.9          135.41           3.13           18.24         3.65            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:59:03
+8-SRA  SRR1031060  iseq        iseq        5    23.51    1          rc=1     1098.9       131.2        272.0         819.7         65.36       0.0            3403.0          144.76           3.14           16.71         3.66            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:59:27
+8-SRA  SRR1031060  kingfisher  kingfisher  5    13.08    0          ok       1195.9       308.4        256.6         2930.2        35.13       0.0            3150.7          240.94           8.35           3.67          1.06            1572529944      1572529944     2              sra     -       exp-9-52  2026-07-21T14:59:40
+8-SRA  SRR1031060  prefetch    prefetch    5    8.86     0          ok       57.2         12.7         19.0          78.7          1.80        0.0            199.6           22.51            8.34           0.0           0.52            199571400       199571400      1              sra     -       exp-9-52  2026-07-21T14:59:49
+
+=== E8 results: /expanse/lustre/scratch/rswargo/temp_project/adaptiseq_e8/e8_52340455/e8_results.tsv ===
+8-SRA  SRR1031060  adaptiseq   adaptiseq   3    24.55    1          rc=1     1145.6       150.5        309.7         2899.3        77.96       0.0            5266.6          214.56           3.13           17.76         3.65            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:56:41
+8-SRA  SRR1031060  iseq        iseq        3    23.00    1          rc=1     1098.7       125.4        276.2         821.6         64.97       0.0            3403.1          147.97           3.14           16.2          3.66            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:57:04
+8-SRA  SRR1031060  kingfisher  kingfisher  3    13.05    0          ok       1195.9       305.1        253.6         2931.3        34.57       0.0            2794.5          214.13           8.87           3.65          0.52            1572529944      1572529944     2              sra     -       exp-9-52  2026-07-21T14:57:17
+8-SRA  SRR1031060  prefetch    prefetch    3    9.39     0          ok       11.2         10.1         16.4          32.5          1.63        0.0            199.6           21.26            8.34           0.0           1.04            199571400       199571400      1              sra     -       exp-9-52  2026-07-21T14:57:27
+8-SRA  SRR1031060  adaptiseq   adaptiseq   4    24.60    1          rc=1     1145.4       170.0        307.8         2907.1        77.58       0.0            3395.4          138.04           3.13           17.78         3.68            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:57:51
+8-SRA  SRR1031060  iseq        iseq        4    23.51    1          rc=1     1098.8       123.3        274.2         819.5         65.89       0.0            3403.1          144.73           3.14           16.71         3.66            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:58:15
+8-SRA  SRR1031060  kingfisher  kingfisher  4    13.59    0          ok       1195.5       295.8        241.3         2922.9        34.31       0.0            2866.5          210.90           9.39           3.68          0.52            1572529944      1572529944     2              sra     -       exp-9-52  2026-07-21T14:58:29
+8-SRA  SRR1031060  prefetch    prefetch    4    8.86     0          ok       84.1         14.2         19.4          80.6          1.83        0.0            199.6           22.51            8.34           0.0           0.52            199571400       199571400      1              sra     -       exp-9-52  2026-07-21T14:58:38
+8-SRA  SRR1031060  adaptiseq   adaptiseq   5    25.03    1          rc=1     1145.8       173.5        311.3         2896.4        79.72       0.0            3388.9          135.41           3.13           18.24         3.65            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:59:03
+8-SRA  SRR1031060  iseq        iseq        5    23.51    1          rc=1     1098.9       131.2        272.0         819.7         65.36       0.0            3403.0          144.76           3.14           16.71         3.66            451923215       451923215      3              sra     -       exp-9-52  2026-07-21T14:59:27
+8-SRA  SRR1031060  kingfisher  kingfisher  5    13.08    0          ok       1195.9       308.4        256.6         2930.2        35.13       0.0            3150.7          240.94           8.35           3.67          1.06            1572529944      1572529944     2              sra     -       exp-9-52  2026-07-21T14:59:40
+8-SRA  SRR1031060  prefetch    prefetch    5    8.86     0          ok       57.2         12.7         19.0          78.7          1.80        0.0            199.6           22.51            8.34           0.0           0.52            199571400       199571400      1              sra     -       exp-9-52  2026-07-21T14:59:49

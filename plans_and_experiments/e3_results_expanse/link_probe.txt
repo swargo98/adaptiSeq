@@ -1,0 +1,4 @@
+single-stream:
+  25320 B/s (17029 B)
+aria2c -x8 -s8:
+  ok

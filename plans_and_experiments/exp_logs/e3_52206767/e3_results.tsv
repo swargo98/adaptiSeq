@@ -1,0 +1,2 @@
+panel	dataset	arm	tool	rep	order_idx	wall_s	exit_code	status	runs_complete	runs_partial	runs_expected	files_verified	files_expected	bytes_verified	bytes_expected	bytes_on_disk	files_on_disk	extra_files	format	MBps_verified	peak_rss_kb	cpu_pct	conc_med	conc_p95	conc_max	conc_per_host_max	procs_max	conc_samples	workers_med	workers_max	host	stamp
+3a	D1_fair_PRJNA916347	adaptiseq-fixed-j8	adaptiseq	1	1	508.94	0	ok	201	0	201	201	201	4419227609	4419227609	4419227609	201	0	gz	8.68	69484	8	8	8	8	8	11	2253	8	8	exp-4-21	2026-07-17T11:21:36-07:00

@@ -1,0 +1,1046 @@
+      SRR22904269.fastq.gz 0.02G 	       SRR22904269_1.fastq.gz 0.00G 	       SRR22904269_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904269.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904269 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904269/SRR22904269_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904269 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904269 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904269/SRR22904269_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904269 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904269 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904269/SRR22904269_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904269 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904269 download finished=======================
+      SRR22904270.fastq.gz 0.02G 	       SRR22904270_1.fastq.gz 0.00G 	       SRR22904270_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904270.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904270 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904270/SRR22904270_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904270 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904270 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904270/SRR22904270_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904270 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904270 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904270/SRR22904270_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904270 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904270 download finished=======================
+      SRR22904272.fastq.gz 0.19G 	       SRR22904272_1.fastq.gz 0.00G 	       SRR22904272_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904272.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904272 is single-end data, but has multiple links
+[93mNote[0m: SRR22904272 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904272/SRR22904272_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904272 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904272 is single-end data, but has multiple links
+[93mNote[0m: SRR22904272 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904272/SRR22904272_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904272 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904272 is single-end data, but has multiple links
+[93mNote[0m: SRR22904272 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904272/SRR22904272_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904272 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904272 download finished=======================
+      SRR22904273.fastq.gz 0.15G 	       SRR22904273_1.fastq.gz 0.00G 	       SRR22904273_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904273.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904273 is single-end data, but has multiple links
+[93mNote[0m: SRR22904273 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904273/SRR22904273_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904273 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904273 is single-end data, but has multiple links
+[93mNote[0m: SRR22904273 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904273/SRR22904273_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904273 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904273 is single-end data, but has multiple links
+[93mNote[0m: SRR22904273 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904273/SRR22904273_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904273 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904273 download finished=======================
+      SRR22904274.fastq.gz 0.02G 	       SRR22904274_1.fastq.gz 0.00G 	       SRR22904274_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904274.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904274 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904274/SRR22904274_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904274 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904274 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904274/SRR22904274_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904274 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904274 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904274/SRR22904274_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904274 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904274 download finished=======================
+      SRR22904276.fastq.gz 0.17G 	       SRR22904276_1.fastq.gz 0.00G 	       SRR22904276_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904276.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904276 is single-end data, but has multiple links
+[93mNote[0m: SRR22904276 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904276/SRR22904276_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904276 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904276 is single-end data, but has multiple links
+[93mNote[0m: SRR22904276 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904276/SRR22904276_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904276 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904276 is single-end data, but has multiple links
+[93mNote[0m: SRR22904276 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904276/SRR22904276_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904276 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904276 download finished=======================
+      SRR22904283.fastq.gz 0.15G 	       SRR22904283_1.fastq.gz 0.00G 	       SRR22904283_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904283.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904283 is single-end data, but has multiple links
+[93mNote[0m: SRR22904283 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904283 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904283 is single-end data, but has multiple links
+[93mNote[0m: SRR22904283 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904283 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904283 is single-end data, but has multiple links
+[93mNote[0m: SRR22904283 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904283 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904283 download finished=======================
+      SRR22904284.fastq.gz 0.33G 	       SRR22904284_1.fastq.gz 0.00G 	       SRR22904284_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904284.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904284 is single-end data, but has multiple links
+[93mNote[0m: SRR22904284 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904284/SRR22904284_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904284 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904284 is single-end data, but has multiple links
+[93mNote[0m: SRR22904284 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904284/SRR22904284_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904284 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904284 is single-end data, but has multiple links
+[93mNote[0m: SRR22904284 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904284/SRR22904284_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904284 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904284 download finished=======================
+      SRR22904285.fastq.gz 0.02G 	       SRR22904285_1.fastq.gz 0.00G 	       SRR22904285_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904285.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904285 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904285/SRR22904285_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904285 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904285 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904285/SRR22904285_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904285 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904285 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904285/SRR22904285_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904285 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904285 download finished=======================
+      SRR22904286.fastq.gz 0.18G 	       SRR22904286_1.fastq.gz 0.00G 	       SRR22904286_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904286.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904286 is single-end data, but has multiple links
+[93mNote[0m: SRR22904286 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904286/SRR22904286_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904286 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904286 is single-end data, but has multiple links
+[93mNote[0m: SRR22904286 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904286/SRR22904286_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904286 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904286 is single-end data, but has multiple links
+[93mNote[0m: SRR22904286 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904286/SRR22904286_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904286 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904286 download finished=======================
+      SRR22904288.fastq.gz 0.36G 	       SRR22904288_1.fastq.gz 0.00G 	       SRR22904288_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904288.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904288 is single-end data, but has multiple links
+[93mNote[0m: SRR22904288 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904288/SRR22904288_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904288 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904288 is single-end data, but has multiple links
+[93mNote[0m: SRR22904288 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904288/SRR22904288_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904288 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904288 is single-end data, but has multiple links
+[93mNote[0m: SRR22904288 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904288/SRR22904288_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904288 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904288 download finished=======================
+      SRR22904289.fastq.gz 0.20G 	       SRR22904289_1.fastq.gz 0.00G 	       SRR22904289_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904289.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904289 is single-end data, but has multiple links
+[93mNote[0m: SRR22904289 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904289/SRR22904289_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904289 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904289 is single-end data, but has multiple links
+[93mNote[0m: SRR22904289 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904289/SRR22904289_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904289 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904289 is single-end data, but has multiple links
+[93mNote[0m: SRR22904289 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904289/SRR22904289_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904289 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904289 download finished=======================
+      SRR22904294.fastq.gz 0.33G 	       SRR22904294_1.fastq.gz 0.00G 	       SRR22904294_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904294.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904294 is single-end data, but has multiple links
+[93mNote[0m: SRR22904294 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/094/SRR22904294/SRR22904294_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904294 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904294 is single-end data, but has multiple links
+[93mNote[0m: SRR22904294 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/094/SRR22904294/SRR22904294_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904294 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904294 is single-end data, but has multiple links
+[93mNote[0m: SRR22904294 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/094/SRR22904294/SRR22904294_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904294 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904294 download finished=======================
+      SRR22904295.fastq.gz 0.19G 	       SRR22904295_1.fastq.gz 0.00G 	       SRR22904295_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904295.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904295 is single-end data, but has multiple links
+[93mNote[0m: SRR22904295 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/095/SRR22904295/SRR22904295_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904295 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904295 is single-end data, but has multiple links
+[93mNote[0m: SRR22904295 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/095/SRR22904295/SRR22904295_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904295 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904295 is single-end data, but has multiple links
+[93mNote[0m: SRR22904295 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/095/SRR22904295/SRR22904295_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904295 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904295 download finished=======================
+      SRR22904296.fastq.gz 0.02G 	       SRR22904296_1.fastq.gz 0.00G 	       SRR22904296_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904296.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904296 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/096/SRR22904296/SRR22904296_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904296 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904296 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/096/SRR22904296/SRR22904296_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904296 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904296 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/096/SRR22904296/SRR22904296_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904296 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904296 download finished=======================
+      SRR22904298.fastq.gz 0.32G 	       SRR22904298_1.fastq.gz 0.00G 	       SRR22904298_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904298.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904298 is single-end data, but has multiple links
+[93mNote[0m: SRR22904298 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/098/SRR22904298/SRR22904298_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904298 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904298 is single-end data, but has multiple links
+[93mNote[0m: SRR22904298 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/098/SRR22904298/SRR22904298_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904298 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904298 is single-end data, but has multiple links
+[93mNote[0m: SRR22904298 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/098/SRR22904298/SRR22904298_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904298 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904298 download finished=======================
+      SRR22904307.fastq.gz 0.00G 	       SRR22904307_1.fastq.gz 0.00G 	       SRR22904307_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904307.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904307 is single-end data, but has multiple links
+[93mNote[0m: SRR22904307 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/007/SRR22904307/SRR22904307_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904307 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904307 is single-end data, but has multiple links
+[93mNote[0m: SRR22904307 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/007/SRR22904307/SRR22904307_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904307 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904307 is single-end data, but has multiple links
+[93mNote[0m: SRR22904307 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/007/SRR22904307/SRR22904307_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904307 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904307 download finished=======================
+      SRR22904313.fastq.gz 0.00G 	       SRR22904313_1.fastq.gz 0.00G 	       SRR22904313_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904313.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904313 is single-end data, but has multiple links
+[93mNote[0m: SRR22904313 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/013/SRR22904313/SRR22904313_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904313 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904313 is single-end data, but has multiple links
+[93mNote[0m: SRR22904313 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/013/SRR22904313/SRR22904313_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904313 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904313 is single-end data, but has multiple links
+[93mNote[0m: SRR22904313 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/013/SRR22904313/SRR22904313_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904313 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904313 download finished=======================
+      SRR22904318.fastq.gz 0.00G 	       SRR22904318_1.fastq.gz 0.00G 	       SRR22904318_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904318.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904318 is single-end data, but has multiple links
+[93mNote[0m: SRR22904318 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/018/SRR22904318/SRR22904318_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904318 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904318 is single-end data, but has multiple links
+[93mNote[0m: SRR22904318 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/018/SRR22904318/SRR22904318_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904318 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904318 is single-end data, but has multiple links
+[93mNote[0m: SRR22904318 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/018/SRR22904318/SRR22904318_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904318 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904318 download finished=======================
+      SRR22904326.fastq.gz 0.02G 	       SRR22904326_1.fastq.gz 0.00G 	       SRR22904326_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904326.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904326 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/026/SRR22904326/SRR22904326_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904326 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904326 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/026/SRR22904326/SRR22904326_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904326 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904326 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/026/SRR22904326/SRR22904326_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904326 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904326 download finished=======================
+      SRR22904328.fastq.gz 0.01G 	       SRR22904328_1.fastq.gz 0.00G 	       SRR22904328_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904328.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904328 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/028/SRR22904328/SRR22904328_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904328 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904328 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/028/SRR22904328/SRR22904328_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904328 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904328 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/028/SRR22904328/SRR22904328_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904328 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904328 download finished=======================
+      SRR22904330.fastq.gz 0.01G 	       SRR22904330_1.fastq.gz 0.00G 	       SRR22904330_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904330.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904330 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/030/SRR22904330/SRR22904330_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904330 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904330 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/030/SRR22904330/SRR22904330_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904330 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904330 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/030/SRR22904330/SRR22904330_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904330 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904330 download finished=======================
+      SRR22904331.fastq.gz 0.02G 	       SRR22904331_1.fastq.gz 0.00G 	       SRR22904331_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904331.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904331 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/031/SRR22904331/SRR22904331_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904331 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904331 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/031/SRR22904331/SRR22904331_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904331 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904331 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/031/SRR22904331/SRR22904331_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904331 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904331 download finished=======================
+      SRR22904340.fastq.gz 0.00G 	       SRR22904340_1.fastq.gz 0.00G 	       SRR22904340_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904340.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904340 is single-end data, but has multiple links
+[93mNote[0m: SRR22904340 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/040/SRR22904340/SRR22904340_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904340 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904340 is single-end data, but has multiple links
+[93mNote[0m: SRR22904340 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/040/SRR22904340/SRR22904340_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904340 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904340 is single-end data, but has multiple links
+[93mNote[0m: SRR22904340 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/040/SRR22904340/SRR22904340_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904340 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904340 download finished=======================
+      SRR22904341.fastq.gz 0.00G 	       SRR22904341_1.fastq.gz 0.00G 	       SRR22904341_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904341.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904341 is single-end data, but has multiple links
+[93mNote[0m: SRR22904341 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/041/SRR22904341/SRR22904341_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904341 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904341 is single-end data, but has multiple links
+[93mNote[0m: SRR22904341 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/041/SRR22904341/SRR22904341_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904341 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904341 is single-end data, but has multiple links
+[93mNote[0m: SRR22904341 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/041/SRR22904341/SRR22904341_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904341 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904341 download finished=======================
+      SRR22904344.fastq.gz 0.00G 	       SRR22904344_1.fastq.gz 0.00G 	       SRR22904344_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904344.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904344 is single-end data, but has multiple links
+[93mNote[0m: SRR22904344 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/044/SRR22904344/SRR22904344_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904344 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904344 is single-end data, but has multiple links
+[93mNote[0m: SRR22904344 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/044/SRR22904344/SRR22904344_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904344 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904344 is single-end data, but has multiple links
+[93mNote[0m: SRR22904344 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/044/SRR22904344/SRR22904344_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904344 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904344 download finished=======================
+      SRR22904350.fastq.gz 0.00G 	       SRR22904350_1.fastq.gz 0.00G 	       SRR22904350_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904350.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904350 is single-end data, but has multiple links
+[93mNote[0m: SRR22904350 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/050/SRR22904350/SRR22904350_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904350 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904350 is single-end data, but has multiple links
+[93mNote[0m: SRR22904350 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/050/SRR22904350/SRR22904350_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904350 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904350 is single-end data, but has multiple links
+[93mNote[0m: SRR22904350 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/050/SRR22904350/SRR22904350_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904350 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904350 download finished=======================
+      SRR22904352.fastq.gz 0.00G 	       SRR22904352_1.fastq.gz 0.00G 	       SRR22904352_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904352.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904352 is single-end data, but has multiple links
+[93mNote[0m: SRR22904352 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/052/SRR22904352/SRR22904352_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904352 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904352 is single-end data, but has multiple links
+[93mNote[0m: SRR22904352 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/052/SRR22904352/SRR22904352_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904352 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904352 is single-end data, but has multiple links
+[93mNote[0m: SRR22904352 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/052/SRR22904352/SRR22904352_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904352 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904352 download finished=======================
+      SRR22904357.fastq.gz 0.00G 	       SRR22904357_1.fastq.gz 0.00G 	       SRR22904357_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904357.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904357 is single-end data, but has multiple links
+[93mNote[0m: SRR22904357 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/057/SRR22904357/SRR22904357_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904357 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904357 is single-end data, but has multiple links
+[93mNote[0m: SRR22904357 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/057/SRR22904357/SRR22904357_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904357 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904357 is single-end data, but has multiple links
+[93mNote[0m: SRR22904357 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/057/SRR22904357/SRR22904357_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904357 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904357 download finished=======================
+      SRR22904363.fastq.gz 0.00G 	       SRR22904363_1.fastq.gz 0.00G 	       SRR22904363_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904363.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904363 is single-end data, but has multiple links
+[93mNote[0m: SRR22904363 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904363/SRR22904363_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904363 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904363 is single-end data, but has multiple links
+[93mNote[0m: SRR22904363 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904363/SRR22904363_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904363 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904363 is single-end data, but has multiple links
+[93mNote[0m: SRR22904363 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904363/SRR22904363_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904363 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904363 download finished=======================
+      SRR22904364.fastq.gz 0.00G 	       SRR22904364_1.fastq.gz 0.00G 	       SRR22904364_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904364.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904364 is single-end data, but has multiple links
+[93mNote[0m: SRR22904364 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904364/SRR22904364_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904364 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904364 is single-end data, but has multiple links
+[93mNote[0m: SRR22904364 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904364/SRR22904364_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904364 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904364 is single-end data, but has multiple links
+[93mNote[0m: SRR22904364 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904364/SRR22904364_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904364 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904364 download finished=======================
+      SRR22904367.fastq.gz 0.00G 	       SRR22904367_1.fastq.gz 0.00G 	       SRR22904367_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904367.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904367 is single-end data, but has multiple links
+[93mNote[0m: SRR22904367 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/067/SRR22904367/SRR22904367_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904367 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904367 is single-end data, but has multiple links
+[93mNote[0m: SRR22904367 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/067/SRR22904367/SRR22904367_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904367 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904367 is single-end data, but has multiple links
+[93mNote[0m: SRR22904367 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/067/SRR22904367/SRR22904367_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904367 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904367 download finished=======================
+      SRR22904385.fastq.gz 0.00G 	       SRR22904385_1.fastq.gz 0.00G 	       SRR22904385_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904385.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904385 is single-end data, but has multiple links
+[93mNote[0m: SRR22904385 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904385/SRR22904385_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904385 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904385 is single-end data, but has multiple links
+[93mNote[0m: SRR22904385 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904385/SRR22904385_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904385 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904385 is single-end data, but has multiple links
+[93mNote[0m: SRR22904385 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904385/SRR22904385_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904385 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904385 download finished=======================
+      SRR22904413.fastq.gz 0.00G 	       SRR22904413_1.fastq.gz 0.00G 	       SRR22904413_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904413.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904413 is single-end data, but has multiple links
+[93mNote[0m: SRR22904413 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/013/SRR22904413/SRR22904413_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904413 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904413 is single-end data, but has multiple links
+[93mNote[0m: SRR22904413 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/013/SRR22904413/SRR22904413_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904413 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904413 is single-end data, but has multiple links
+[93mNote[0m: SRR22904413 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/013/SRR22904413/SRR22904413_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904413 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904413 download finished=======================
+      SRR22904431.fastq.gz 0.12G 	       SRR22904431_1.fastq.gz 0.00G 	       SRR22904431_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904431.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904431 is single-end data, but has multiple links
+[93mNote[0m: SRR22904431 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/031/SRR22904431/SRR22904431_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904431 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904431 is single-end data, but has multiple links
+[93mNote[0m: SRR22904431 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/031/SRR22904431/SRR22904431_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904431 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904431 is single-end data, but has multiple links
+[93mNote[0m: SRR22904431 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/031/SRR22904431/SRR22904431_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904431 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904431 download finished=======================
+      SRR22904435.fastq.gz 0.02G 	       SRR22904435_1.fastq.gz 0.00G 	       SRR22904435_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904435.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904435 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/035/SRR22904435/SRR22904435_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904435 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904435 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/035/SRR22904435/SRR22904435_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904435 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904435 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/035/SRR22904435/SRR22904435_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904435 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904435 download finished=======================
+      SRR22904446.fastq.gz 0.02G 	       SRR22904446_1.fastq.gz 0.00G 	       SRR22904446_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904446.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904446 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/046/SRR22904446/SRR22904446_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904446 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904446 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/046/SRR22904446/SRR22904446_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904446 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904446 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/046/SRR22904446/SRR22904446_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904446 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904446 download finished=======================
+      SRR22904458.fastq.gz 0.02G 	       SRR22904458_1.fastq.gz 0.00G 	       SRR22904458_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904458.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904458 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/058/SRR22904458/SRR22904458_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904458 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904458 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/058/SRR22904458/SRR22904458_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904458 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904458 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/058/SRR22904458/SRR22904458_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904458 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904458 download finished=======================
+      SRR22904460.fastq.gz 0.00G 	       SRR22904460_1.fastq.gz 0.00G 	       SRR22904460_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904460.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904460 is single-end data, but has multiple links
+[93mNote[0m: SRR22904460 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/060/SRR22904460/SRR22904460_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904460 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904460 is single-end data, but has multiple links
+[93mNote[0m: SRR22904460 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/060/SRR22904460/SRR22904460_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904460 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904460 is single-end data, but has multiple links
+[93mNote[0m: SRR22904460 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/060/SRR22904460/SRR22904460_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904460 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904460 download finished=======================
+      SRR22904482.fastq.gz 0.00G 	       SRR22904482_1.fastq.gz 0.00G 	       SRR22904482_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904482.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904482 is single-end data, but has multiple links
+[93mNote[0m: SRR22904482 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904482/SRR22904482_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904482 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904482 is single-end data, but has multiple links
+[93mNote[0m: SRR22904482 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904482/SRR22904482_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[93mNote[0m: SRR22904482 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+[93mNote[0m: SRR22904482 is single-end data, but has multiple links
+[93mNote[0m: SRR22904482 is paired-end data, but has only one link
+File size: 	Database: ENA	Mode: ftp
+basename: extra operand ‘ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904482/SRR22904482_2.fastq.gz’
+Try 'basename --help' for more information.
+No such file or directory
+[91mSRR22904482 md5 check failed after trying 3 times, save Run ID in fail.log[0m
+=======================SRR22904482 download finished=======================
+[1;31mError[0m: Download failures detected. Please check [4mfail.log[0m for details.
+[93mNote:[0m You can re-run the script to retry failed items.

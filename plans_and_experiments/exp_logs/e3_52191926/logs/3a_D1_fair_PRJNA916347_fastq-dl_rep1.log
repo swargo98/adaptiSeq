@@ -1,0 +1,1537 @@
+2026-07-17 08:42:07 INFO     Query: SRR22904253                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904253...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904253.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:42:11 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904253.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/053/SRR22904253/SRR22904253.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 08:42:22 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904253.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/053/SRR22904253/SRR22904253.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (2 of 3)                utils.py:84
+2026-07-17 08:42:36 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904253.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:42:37 INFO     Query: SRR22904254                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904254...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904254.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:42:39 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904254.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:42:40 INFO     Query: SRR22904255                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904255...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904255.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:42:48 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904255.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:42:49 INFO     Query: SRR22904256                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904256...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904256.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:42:50 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904256.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/056/SRR22904256/SRR22904256.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 08:43:02 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904256.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:04 INFO     Query: SRR22904257                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904257...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904257.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:05 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904257.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/057/SRR22904257/SRR22904257.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 08:43:20 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904257.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:22 INFO     Query: SRR22904258                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904258...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904258.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:24 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904258.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:25 INFO     Query: SRR22904259                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904259...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904259.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:31 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904259.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:32 INFO     Query: SRR22904260                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904260...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904260.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:34 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904260.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:35 INFO     Query: SRR22904261                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904261...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904261.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:39 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904261.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:40 INFO     Query: SRR22904262                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904262...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904262.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:43 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904262.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:43:44 INFO     Query: SRR22904263                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904263...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904263.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:43:45 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904263.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/063/SRR22904263/SRR22904263.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 08:43:56 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904263.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/063/SRR22904263/SRR22904263.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (2 of 3)                utils.py:84
+2026-07-17 08:44:08 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904263.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:44:10 INFO     Query: SRR22904264                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904264...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904264.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:44:13 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904264.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:44:15 INFO     Query: SRR22904265                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904265...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904265.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:44:18 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904265.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:44:19 INFO     Query: SRR22904266                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904266...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904266.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:44:21 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904266.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/066/SRR22904266/SRR22904266.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 08:44:33 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904266.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:44:34 INFO     Query: SRR22904267                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904267...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904267.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:44:39 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904267.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:44:40 INFO     Query: SRR22904268                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904268...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904268.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:44:41 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904268.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/068/SRR22904268/SRR22904268.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 08:44:52 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904268.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/068/SRR22904268/SRR22904268.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (2 of 3)                utils.py:84
+2026-07-17 08:45:06 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904268.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:45:07 INFO     Query: SRR22904271                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904271...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904271.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:47:40 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904271.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:47:41 INFO     Query: SRR22904275                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904275...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904275.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:50:15 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904275.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:50:16 INFO     Query: SRR22904277                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904277...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904277.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:50:34 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904277.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:50:35 INFO     Query: SRR22904278                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904278...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904278.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:53:34 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904278.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:53:36 INFO     Query: SRR22904279                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904279...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904279.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:54:57 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904279.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:54:58 INFO     Query: SRR22904280                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904280...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904280.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:55:35 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904280.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:55:36 INFO     Query: SRR22904281                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904281...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904281.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:56:15 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904281.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:56:17 INFO     Query: SRR22904282                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904282...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904282.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:56:38 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904282.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:56:40 INFO     Query: SRR22904287                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904287...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904287.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:56:54 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904287.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:56:56 INFO     Query: SRR22904290                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904290...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904290.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:57:45 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904290.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:57:46 INFO     Query: SRR22904291                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904291...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904291.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 08:59:36 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904291.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 08:59:38 INFO     Query: SRR22904292                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904292...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904292.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:00:36 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904292.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:00:37 INFO     Query: SRR22904293                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904293...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904293.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:01:23 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904293.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:01:24 INFO     Query: SRR22904297                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904297...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904297.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:03:04 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904297.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:03:06 INFO     Query: SRR22904299                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904299...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904299.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:03:45 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904299.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:03:46 INFO     Query: SRR22904300                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904300...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904300.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:03:49 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904300.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:03:50 INFO     Query: SRR22904301                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904301...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904301.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:06 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904301.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:07 INFO     Query: SRR22904302                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904302...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904302.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:09 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904302.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:10 INFO     Query: SRR22904303                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904303...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904303.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:18 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904303.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:19 INFO     Query: SRR22904304                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904304...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904304.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:21 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904304.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:23 INFO     Query: SRR22904305                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904305...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904305.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:25 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904305.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:26 INFO     Query: SRR22904306                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904306...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904306.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:35 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904306.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:36 INFO     Query: SRR22904308                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904308...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904308.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:40 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904308.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:41 INFO     Query: SRR22904309                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904309...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904309.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:46 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904309.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:48 INFO     Query: SRR22904310                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904310...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904310.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:50 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904310.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:51 INFO     Query: SRR22904311                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904311...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904311.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:04:57 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904311.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:04:58 INFO     Query: SRR22904312                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904312...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904312.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:00 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904312.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:02 INFO     Query: SRR22904314                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904314...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904314.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:07 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904314.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:09 INFO     Query: SRR22904315                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904315...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904315.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:11 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904315.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:12 INFO     Query: SRR22904316                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904316...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904316.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:18 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904316.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:19 INFO     Query: SRR22904317                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904317...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904317.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:21 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904317.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:22 INFO     Query: SRR22904319                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904319...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904319.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:28 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904319.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:30 INFO     Query: SRR22904320                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904320...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904320.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:32 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904320.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:33 INFO     Query: SRR22904321                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904321...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904321.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:40 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904321.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:41 INFO     Query: SRR22904322                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904322...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904322.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:45 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904322.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:46 INFO     Query: SRR22904323                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904323...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904323.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:48 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904323.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:49 INFO     Query: SRR22904324                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904324...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904324.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:05:54 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904324.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:05:55 INFO     Query: SRR22904325                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904325...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904325.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:00 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904325.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:06:02 INFO     Query: SRR22904327                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904327...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904327.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:14 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904327.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:06:15 INFO     Query: SRR22904329                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904329...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904329.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:29 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904329.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:06:30 INFO     Query: SRR22904332                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904332...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904332.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:33 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904332.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:06:34 INFO     Query: SRR22904333                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904333...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904333.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:43 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904333.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:06:44 INFO     Query: SRR22904334                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904334...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904334.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:46 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904334.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:06:47 INFO     Query: SRR22904335                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904335...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904335.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:06:52 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904335.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/035/SRR22904335/SRR22904335.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 09:07:03 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904335.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/035/SRR22904335/SRR22904335.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (2 of 3)                utils.py:84
+2026-07-17 09:07:18 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904335.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/035/SRR22904335/SRR22904335.fastq.g            
+                             z']" return exit code 8                            
+                    INFO     SRR22904335 not found on ENA,       download.py:586
+                             retrying from SRA                                  
+                    INFO     Skipping re-download of existing file:   sra.py:160
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904335.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:07:20 INFO     Query: SRR22904336                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904336...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904336.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:07:23 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904336.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:07:24 INFO     Query: SRR22904337                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904337...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904337.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:07:25 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904337.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/037/SRR22904337/SRR22904337.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 09:07:38 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904337.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:07:39 INFO     Query: SRR22904338                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904338...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904338.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:07:45 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904338.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:07:46 INFO     Query: SRR22904339                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904339...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904339.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:07:48 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904339.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:07:50 INFO     Query: SRR22904342                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904342...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904342.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:07:56 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904342.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:07:57 INFO     Query: SRR22904343                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904343...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904343.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:07:59 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904343.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:00 INFO     Query: SRR22904345                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904345...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904345.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:06 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904345.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:07 INFO     Query: SRR22904346                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904346...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904346.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:09 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904346.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:10 INFO     Query: SRR22904347                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904347...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904347.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:12 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904347.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:13 INFO     Query: SRR22904348                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904348...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904348.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:16 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904348.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:17 INFO     Query: SRR22904349                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904349...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904349.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:19 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904349.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:20 INFO     Query: SRR22904351                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904351...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904351.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:21 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904351.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/051/SRR22904351/SRR22904351.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 09:08:33 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904351.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:34 INFO     Query: SRR22904353                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904353...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904353.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:36 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904353.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:37 INFO     Query: SRR22904354                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904354...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904354.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:39 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904354.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:40 INFO     Query: SRR22904355                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904355...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904355.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:44 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904355.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:08:45 INFO     Query: SRR22904356                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904356...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904356.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:08:46 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904356.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/056/SRR22904356/SRR22904356.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 09:08:58 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904356.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:00 INFO     Query: SRR22904358                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904358...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904358.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:01 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904358.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/058/SRR22904358/SRR22904358.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 09:09:13 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904358.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:14 INFO     Query: SRR22904359                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904359...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904359.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:16 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904359.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:17 INFO     Query: SRR22904360                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904360...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904360.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:18 ERROR    "['wget', '--quiet', '-O',              utils.py:70
+                             '/scratch/rswargo/job_52191926/e3_paylo            
+                             ad/3a_D1_fair_PRJNA916347_fastq-dl_rep1            
+                             /SRR22904360.fastq.gz',                            
+                             'ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR            
+                             229/060/SRR22904360/SRR22904360.fastq.g            
+                             z']" return exit code 8                            
+                    ERROR    Retry execution (1 of 3)                utils.py:84
+2026-07-17 09:09:30 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904360.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:32 INFO     Query: SRR22904361                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904361...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904361.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:37 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904361.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:38 INFO     Query: SRR22904362                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904362...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904362.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:40 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904362.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:41 INFO     Query: SRR22904365                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904365...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904365.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:47 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904365.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:48 INFO     Query: SRR22904366                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904366...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904366.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:09:50 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904366.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:09:51 INFO     Query: SRR22904368                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904368...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904368.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:10:01 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904368.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:10:02 INFO     Query: SRR22904369                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904369...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904369.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:10:07 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904369.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:10:09 INFO     Query: SRR22904370                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904370...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904370.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:10:11 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904370.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:10:12 INFO     Query: SRR22904371                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904371...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904371.fastq.gz FTP download attempt            
+                             1                                                  
+2026-07-17 09:10:22 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_52191926/e3_payload           
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904371.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_52191926/e3_pa                
+                             yload/3a_D1_fair_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-07-17 09:10:23 INFO     Query: SRR22904372                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904372...       download.py:402
+                    INFO     /scratch/rswargo/job_52191926/e3_payload ena.py:202
+                             /3a_D1_fair_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904372.fastq.gz FTP download attempt            
+                             1                                                  

@@ -1,0 +1,797 @@
+[32mNote[0m: batch downloading 201 file(s) across 201 accession(s) with up to 40 worker(s) (fixed concurrency)
+05:17:12.492 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.500 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.507 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.509 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.512 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.515 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.519 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.523 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.524 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.526 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.528 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.530 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.530 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.534 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.535 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.710 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.803 adaptiseq.batch: downloaded SRR22904265.fastq.gz
+05:17:12.804 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.818 adaptiseq.batch: downloaded SRR22904308.fastq.gz
+05:17:12.818 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.820 adaptiseq.batch: downloaded SRR22904302.fastq.gz
+05:17:12.820 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.826 adaptiseq.batch: downloaded SRR22904309.fastq.gz
+05:17:12.826 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.830 adaptiseq.batch: downloaded SRR22904301.fastq.gz
+05:17:12.830 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.833 adaptiseq.batch: downloaded SRR22904266.fastq.gz
+05:17:12.834 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.835 adaptiseq.batch: downloaded SRR22904259.fastq.gz
+05:17:12.836 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.837 adaptiseq.batch: downloaded SRR22904262.fastq.gz
+05:17:12.837 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.840 adaptiseq.batch: downloaded SRR22904267.fastq.gz
+05:17:12.840 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.841 adaptiseq.batch: downloaded SRR22904261.fastq.gz
+05:17:12.841 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.841 adaptiseq.batch: downloaded SRR22904255.fastq.gz
+05:17:12.841 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.847 adaptiseq.batch: downloaded SRR22904254.fastq.gz
+05:17:12.847 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.915 adaptiseq.batch: downloaded SRR22904300.fastq.gz
+05:17:12.915 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.927 adaptiseq.batch: downloaded SRR22904303.fastq.gz
+05:17:12.927 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:12.948 adaptiseq.batch: downloaded SRR22904260.fastq.gz
+05:17:12.948 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.022 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.053 adaptiseq.batch: downloaded SRR22904312.fastq.gz
+05:17:13.053 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.057 adaptiseq.batch: downloaded SRR22904311.fastq.gz
+05:17:13.057 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.058 adaptiseq.batch: downloaded SRR22904310.fastq.gz
+05:17:13.058 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.065 adaptiseq.batch: downloaded SRR22904319.fastq.gz
+05:17:13.066 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.074 adaptiseq.batch: downloaded SRR22904315.fastq.gz
+05:17:13.074 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.077 adaptiseq.batch: downloaded SRR22904317.fastq.gz
+05:17:13.077 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.081 adaptiseq.batch: downloaded SRR22904314.fastq.gz
+05:17:13.081 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.086 adaptiseq.batch: downloaded SRR22904321.fastq.gz
+05:17:13.086 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.145 adaptiseq.batch: downloaded SRR22904324.fastq.gz
+05:17:13.145 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.161 adaptiseq.batch: downloaded SRR22904325.fastq.gz
+05:17:13.161 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.161 adaptiseq.batch: downloaded SRR22904322.fastq.gz
+05:17:13.161 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.163 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.192 adaptiseq.batch: downloaded SRR22904316.fastq.gz
+05:17:13.192 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.192 adaptiseq.batch: downloaded SRR22904320.fastq.gz
+05:17:13.193 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.193 adaptiseq.batch: downloaded SRR22904323.fastq.gz
+05:17:13.193 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.217 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.281 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.300 adaptiseq.batch: downloaded SRR22904334.fastq.gz
+05:17:13.300 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.306 adaptiseq.batch: downloaded SRR22904333.fastq.gz
+05:17:13.306 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.331 adaptiseq.batch: downloaded SRR22904336.fastq.gz
+05:17:13.331 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.380 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.393 adaptiseq.batch: downloaded SRR22904332.fastq.gz
+05:17:13.393 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.403 adaptiseq.batch: downloaded SRR22904339.fastq.gz
+05:17:13.403 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.407 adaptiseq.batch: downloaded SRR22904343.fastq.gz
+05:17:13.407 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.409 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.409 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.409 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.409 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.411 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.428 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.429 adaptiseq.batch: downloaded SRR22904345.fastq.gz
+05:17:13.429 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.433 adaptiseq.batch: downloaded SRR22904337.fastq.gz
+05:17:13.433 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.439 adaptiseq.batch: downloaded SRR22904347.fastq.gz
+05:17:13.439 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.439 adaptiseq.batch: downloaded SRR22904335.fastq.gz
+05:17:13.439 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.440 adaptiseq.batch: downloaded SRR22904338.fastq.gz
+05:17:13.440 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.447 adaptiseq.batch: downloaded SRR22904346.fastq.gz
+05:17:13.448 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.508 adaptiseq.batch: downloaded SRR22904342.fastq.gz
+05:17:13.508 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.529 adaptiseq.batch: downloaded SRR22904348.fastq.gz
+05:17:13.529 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.557 adaptiseq.batch: downloaded SRR22904349.fastq.gz
+05:17:13.558 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.576 adaptiseq.batch: downloaded SRR22904351.fastq.gz
+05:17:13.576 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.618 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/005/SRR22904305/SRR22904305.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.619 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.619 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904268/SRR22904268.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.619 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.642 adaptiseq.batch: downloaded SRR22904354.fastq.gz
+05:17:13.642 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.646 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/099/SRR22904299/SRR22904299.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.646 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.647 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/053/SRR22904253/SRR22904253.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.648 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.651 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.659 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.665 adaptiseq.batch: downloaded SRR22904353.fastq.gz
+05:17:13.666 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.679 adaptiseq.batch: downloaded SRR22904356.fastq.gz
+05:17:13.679 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.680 adaptiseq.batch: downloaded SRR22904359.fastq.gz
+05:17:13.680 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.690 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.706 adaptiseq.batch: downloaded SRR22904362.fastq.gz
+05:17:13.706 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.710 adaptiseq.batch: downloaded SRR22904360.fastq.gz
+05:17:13.710 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.721 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.722 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.722 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.722 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.723 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.751 adaptiseq.batch: downloaded SRR22904365.fastq.gz
+05:17:13.751 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.755 adaptiseq.batch: downloaded SRR22904358.fastq.gz
+05:17:13.755 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.757 adaptiseq.batch: downloaded SRR22904355.fastq.gz
+05:17:13.757 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.774 adaptiseq.batch: downloaded SRR22904366.fastq.gz
+05:17:13.774 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP single-stream (no concurrency/REST)
+05:17:13.784 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.796 adaptiseq.batch: downloaded SRR22904368.fastq.gz
+05:17:13.796 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.803 adaptiseq.batch: downloaded SRR22904361.fastq.gz
+05:17:13.803 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.823 adaptiseq.batch: downloaded SRR22904369.fastq.gz
+05:17:13.823 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.863 adaptiseq.batch: downloaded SRR22904370.fastq.gz
+05:17:13.864 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.908 adaptiseq.batch: downloaded SRR22904375.fastq.gz
+05:17:13.909 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.909 adaptiseq.batch: downloaded SRR22904372.fastq.gz
+05:17:13.909 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.926 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/097/SRR22904297/SRR22904297.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.926 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.935 adaptiseq.batch: downloaded SRR22904376.fastq.gz
+05:17:13.935 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.957 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904306/SRR22904306.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.958 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.958 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904271/SRR22904271.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.958 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.987 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904380/SRR22904380.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.988 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.988 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904382/SRR22904382.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.988 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.989 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904383/SRR22904383.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.989 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:13.990 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/081/SRR22904381/SRR22904381.fastq.gz: [Errno 104] Connection reset by peer
+05:17:13.990 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:14.029 adaptiseq.batch: downloaded SRR22904377.fastq.gz
+05:17:14.029 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:14.030 adaptiseq.batch: downloaded SRR22904386.fastq.gz
+05:17:14.030 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+05:17:14.078 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.088 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.096 adaptiseq.batch: downloaded SRR22904371.fastq.gz
+05:17:14.096 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.097 adaptiseq.batch: downloaded SRR22904388.fastq.gz
+05:17:14.097 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.104 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.117 adaptiseq.batch: downloaded SRR22904373.fastq.gz
+05:17:14.117 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.149 adaptiseq.batch: downloaded SRR22904389.fastq.gz
+05:17:14.149 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.173 adaptiseq.batch: downloaded SRR22904387.fastq.gz
+05:17:14.173 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.179 adaptiseq.batch: downloaded SRR22904329.fastq.gz
+05:17:14.179 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.180 adaptiseq.batch: downloaded SRR22904392.fastq.gz
+05:17:14.180 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.182 adaptiseq.batch: downloaded SRR22904390.fastq.gz
+05:17:14.182 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.183 adaptiseq.batch: downloaded SRR22904391.fastq.gz
+05:17:14.183 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.212 adaptiseq.batch: downloaded SRR22904393.fastq.gz
+05:17:14.212 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.220 adaptiseq.batch: downloaded SRR22904394.fastq.gz
+05:17:14.220 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.239 adaptiseq.batch: downloaded SRR22904384.fastq.gz
+05:17:14.239 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.247 adaptiseq.batch: downloaded SRR22904327.fastq.gz
+05:17:14.247 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.258 adaptiseq.batch: downloaded SRR22904396.fastq.gz
+05:17:14.258 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.292 adaptiseq.batch: downloaded SRR22904395.fastq.gz
+05:17:14.292 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.314 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/003/SRR22904403/SRR22904403.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.314 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.314 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904304/SRR22904304.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.314 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.356 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904404/SRR22904404.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.356 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.388 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904406/SRR22904406.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.388 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.397 adaptiseq.batch: downloaded SRR22904400.fastq.gz
+05:17:14.397 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.406 adaptiseq.batch: downloaded SRR22904399.fastq.gz
+05:17:14.406 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.415 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/007/SRR22904407/SRR22904407.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.415 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.415 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/010/SRR22904410/SRR22904410.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.415 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.450 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/012/SRR22904412/SRR22904412.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.450 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.450 adaptiseq.batch: downloaded SRR22904398.fastq.gz
+05:17:14.451 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.479 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/015/SRR22904415/SRR22904415.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.479 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.486 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/016/SRR22904416/SRR22904416.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.486 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.511 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:14.554 adaptiseq.batch: downloaded SRR22904397.fastq.gz
+05:17:14.554 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.593 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/020/SRR22904420/SRR22904420.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.594 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.624 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/023/SRR22904423/SRR22904423.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.624 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.641 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/025/SRR22904425/SRR22904425.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.642 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.647 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/024/SRR22904424/SRR22904424.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.647 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.647 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/021/SRR22904421/SRR22904421.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.647 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.647 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/022/SRR22904422/SRR22904422.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.647 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.691 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/026/SRR22904426/SRR22904426.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.691 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.692 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/027/SRR22904427/SRR22904427.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.692 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.693 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/028/SRR22904428/SRR22904428.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.693 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.721 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/029/SRR22904429/SRR22904429.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.721 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.791 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/030/SRR22904430/SRR22904430.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.791 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.829 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/032/SRR22904432/SRR22904432.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.830 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.877 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/034/SRR22904434/SRR22904434.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.877 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.878 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/033/SRR22904433/SRR22904433.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.878 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.878 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/037/SRR22904437/SRR22904437.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.878 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.879 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/038/SRR22904438/SRR22904438.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.879 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.881 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/036/SRR22904436/SRR22904436.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.881 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.926 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/039/SRR22904439/SRR22904439.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.927 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.927 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/040/SRR22904440/SRR22904440.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.927 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.928 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/041/SRR22904441/SRR22904441.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.928 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.966 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/042/SRR22904442/SRR22904442.fastq.gz: [Errno 104] Connection reset by peer
+05:17:14.967 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:14.981 adaptiseq.batch: downloaded SRR22904374.fastq.gz
+05:17:14.981 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.030 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/043/SRR22904443/SRR22904443.fastq.gz: [Errno 104] Connection reset by peer
+05:17:15.030 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.142 adaptiseq.engine.ftp: Completed (ftp) SRR22904263.fastq.gz
+05:17:15.142 adaptiseq.batch: downloaded SRR22904263.fastq.gz
+05:17:15.142 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.163 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.205 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/055/SRR22904455/SRR22904455.fastq.gz: [Errno 104] Connection reset by peer
+05:17:15.205 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.385 adaptiseq.engine.ftp: Completed (ftp) SRR22904379.fastq.gz
+05:17:15.386 adaptiseq.batch: downloaded SRR22904379.fastq.gz
+05:17:15.386 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.454 adaptiseq.engine.ftp: Completed (ftp) SRR22904258.fastq.gz
+05:17:15.454 adaptiseq.batch: downloaded SRR22904258.fastq.gz
+05:17:15.454 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.500 adaptiseq.engine.ftp: Completed (ftp) SRR22904378.fastq.gz
+05:17:15.501 adaptiseq.batch: downloaded SRR22904378.fastq.gz
+05:17:15.501 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.742 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.742 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904463/SRR22904463.fastq.gz: [Errno 104] Connection reset by peer
+05:17:15.742 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:15.743 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.745 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.766 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.766 adaptiseq.engine.ftp: FTP segment 0 attempt 2/3 failed: [Errno 104] Connection reset by peer
+05:17:15.766 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.766 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.766 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.767 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.767 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.767 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.767 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.768 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.827 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.937 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.939 adaptiseq.engine.ftp: FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+05:17:15.978 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904464/SRR22904464.fastq.gz: [Errno 104] Connection reset by peer
+05:17:15.978 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.217 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/065/SRR22904465/SRR22904465.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.217 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.456 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/066/SRR22904466/SRR22904466.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.456 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.651 adaptiseq.engine.ftp: Completed (ftp) SRR22904453.fastq.gz
+05:17:16.652 adaptiseq.batch: downloaded SRR22904453.fastq.gz
+05:17:16.652 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.652 adaptiseq.engine.ftp: Completed (ftp) SRR22904414.fastq.gz
+05:17:16.652 adaptiseq.batch: downloaded SRR22904414.fastq.gz
+05:17:16.652 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.657 adaptiseq.engine.ftp: Completed (ftp) SRR22904417.fastq.gz
+05:17:16.657 adaptiseq.batch: downloaded SRR22904417.fastq.gz
+05:17:16.658 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.684 adaptiseq.engine.ftp: Completed (ftp) SRR22904401.fastq.gz
+05:17:16.684 adaptiseq.batch: downloaded SRR22904401.fastq.gz
+05:17:16.684 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.721 adaptiseq.engine.ftp: Completed (ftp) SRR22904264.fastq.gz
+05:17:16.721 adaptiseq.batch: downloaded SRR22904264.fastq.gz
+05:17:16.722 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.759 adaptiseq.engine.ftp: Completed (ftp) SRR22904450.fastq.gz
+05:17:16.759 adaptiseq.batch: downloaded SRR22904450.fastq.gz
+05:17:16.759 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.763 adaptiseq.engine.ftp: Completed (ftp) SRR22904411.fastq.gz
+05:17:16.763 adaptiseq.batch: downloaded SRR22904411.fastq.gz
+05:17:16.763 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.774 adaptiseq.engine.ftp: Completed (ftp) SRR22904452.fastq.gz
+05:17:16.774 adaptiseq.batch: downloaded SRR22904452.fastq.gz
+05:17:16.774 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.887 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904469/SRR22904469.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.888 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.889 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904470/SRR22904470.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.889 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.889 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904468/SRR22904468.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.889 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.919 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904471/SRR22904471.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.919 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.957 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904472/SRR22904472.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.958 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.995 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904473/SRR22904473.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.995 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:16.998 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904474/SRR22904474.fastq.gz: [Errno 104] Connection reset by peer
+05:17:16.998 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.127 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/077/SRR22904477/SRR22904477.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.127 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.127 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904476/SRR22904476.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.127 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.129 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/078/SRR22904478/SRR22904478.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.129 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.161 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/079/SRR22904479/SRR22904479.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.161 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.197 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904480/SRR22904480.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.197 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.233 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904483/SRR22904483.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.233 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.367 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904486/SRR22904486.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.367 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.368 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904484/SRR22904484.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.368 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.369 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904485/SRR22904485.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.369 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.399 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/087/SRR22904487/SRR22904487.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.399 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.435 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904488/SRR22904488.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.435 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.477 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904489/SRR22904489.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.477 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.608 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/091/SRR22904491/SRR22904491.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.609 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.619 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/090/SRR22904490/SRR22904490.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.619 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.713 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/005/SRR22904305/SRR22904305.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.713 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.848 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904268/SRR22904268.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.848 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.851 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/099/SRR22904299/SRR22904299.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.851 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:17.951 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/053/SRR22904253/SRR22904253.fastq.gz: [Errno 104] Connection reset by peer
+05:17:17.951 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.087 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904306/SRR22904306.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.087 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.089 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/097/SRR22904297/SRR22904297.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.089 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.187 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904271/SRR22904271.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.187 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.323 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904382/SRR22904382.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.323 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.324 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904380/SRR22904380.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.324 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.422 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904383/SRR22904383.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.423 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.556 adaptiseq.batch: downloaded SRR22904280.fastq.gz
+05:17:18.556 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.561 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/081/SRR22904381/SRR22904381.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.561 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.562 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/003/SRR22904403/SRR22904403.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.562 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.661 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904304/SRR22904304.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.662 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.796 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/007/SRR22904407/SRR22904407.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.796 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.796 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904404/SRR22904404.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.797 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.798 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904406/SRR22904406.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.798 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.901 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/010/SRR22904410/SRR22904410.fastq.gz: [Errno 104] Connection reset by peer
+05:17:18.901 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:18.965 adaptiseq.batch: downloaded SRR22904279.fastq.gz
+05:17:18.965 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.032 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/015/SRR22904415/SRR22904415.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.033 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.033 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/012/SRR22904412/SRR22904412.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.033 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.033 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/016/SRR22904416/SRR22904416.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.033 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.137 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/020/SRR22904420/SRR22904420.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.137 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.204 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/023/SRR22904423/SRR22904423.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.204 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.268 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/025/SRR22904425/SRR22904425.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.268 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.270 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/024/SRR22904424/SRR22904424.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.270 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.271 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/021/SRR22904421/SRR22904421.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.271 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.374 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/022/SRR22904422/SRR22904422.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.374 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.442 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/026/SRR22904426/SRR22904426.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.442 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.505 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/027/SRR22904427/SRR22904427.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.505 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.506 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/029/SRR22904429/SRR22904429.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.506 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.507 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/028/SRR22904428/SRR22904428.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.507 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.613 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/030/SRR22904430/SRR22904430.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.613 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.678 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/032/SRR22904432/SRR22904432.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.678 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.743 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/037/SRR22904437/SRR22904437.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.743 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.743 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/034/SRR22904434/SRR22904434.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.743 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.744 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/033/SRR22904433/SRR22904433.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.744 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.838 adaptiseq.batch: downloaded SRR22904290.fastq.gz
+05:17:19.838 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.849 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/038/SRR22904438/SRR22904438.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.849 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.914 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/036/SRR22904436/SRR22904436.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.914 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.978 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/040/SRR22904440/SRR22904440.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.978 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.978 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/039/SRR22904439/SRR22904439.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.979 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:19.979 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/041/SRR22904441/SRR22904441.fastq.gz: [Errno 104] Connection reset by peer
+05:17:19.979 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.073 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/042/SRR22904442/SRR22904442.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.073 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.075 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/043/SRR22904443/SRR22904443.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.075 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.153 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/055/SRR22904455/SRR22904455.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.153 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.214 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904464/SRR22904464.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.214 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.215 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/065/SRR22904465/SRR22904465.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.215 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.215 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904463/SRR22904463.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.215 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.309 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904469/SRR22904469.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.309 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.310 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/066/SRR22904466/SRR22904466.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.310 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.390 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904470/SRR22904470.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.391 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.451 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904468/SRR22904468.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.451 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.451 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904472/SRR22904472.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.451 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.454 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904471/SRR22904471.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.454 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.546 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904474/SRR22904474.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.546 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.549 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904473/SRR22904473.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.549 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.626 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/077/SRR22904477/SRR22904477.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.626 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.685 adaptiseq.batch: downloaded SRR22904292.fastq.gz
+05:17:20.685 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.687 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/079/SRR22904479/SRR22904479.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.687 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.687 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/078/SRR22904478/SRR22904478.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.687 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.687 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904476/SRR22904476.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.687 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.782 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904483/SRR22904483.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.783 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.784 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904480/SRR22904480.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.784 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.865 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904486/SRR22904486.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.865 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.921 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904484/SRR22904484.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.921 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.922 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904488/SRR22904488.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.922 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.922 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904485/SRR22904485.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.922 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.923 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/087/SRR22904487/SRR22904487.fastq.gz: [Errno 104] Connection reset by peer
+05:17:20.923 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:20.930 adaptiseq.batch: downloaded SRR22904287.fastq.gz
+05:17:20.930 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.018 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/091/SRR22904491/SRR22904491.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.018 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.019 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904489/SRR22904489.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.019 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.100 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/090/SRR22904490/SRR22904490.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.101 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.157 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904306/SRR22904306.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.157 adaptiseq.batch: failed after retries: SRR22904306.fastq.gz
+05:17:21.157 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.159 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/005/SRR22904305/SRR22904305.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.159 adaptiseq.batch: failed after retries: SRR22904305.fastq.gz
+05:17:21.159 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.159 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904268/SRR22904268.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.159 adaptiseq.batch: failed after retries: SRR22904268.fastq.gz
+05:17:21.159 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.160 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/099/SRR22904299/SRR22904299.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.160 adaptiseq.batch: failed after retries: SRR22904299.fastq.gz
+05:17:21.160 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.160 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/053/SRR22904253/SRR22904253.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.161 adaptiseq.batch: failed after retries: SRR22904253.fastq.gz
+05:17:21.161 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.254 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904271/SRR22904271.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.254 adaptiseq.batch: failed after retries: SRR22904271.fastq.gz
+05:17:21.254 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.256 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/097/SRR22904297/SRR22904297.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.256 adaptiseq.batch: failed after retries: SRR22904297.fastq.gz
+05:17:21.256 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.335 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/082/SRR22904382/SRR22904382.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.336 adaptiseq.batch: failed after retries: SRR22904382.fastq.gz
+05:17:21.336 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.393 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/081/SRR22904381/SRR22904381.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.393 adaptiseq.batch: failed after retries: SRR22904381.fastq.gz
+05:17:21.393 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.394 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/003/SRR22904403/SRR22904403.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.394 adaptiseq.batch: failed after retries: SRR22904403.fastq.gz
+05:17:21.394 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.394 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904380/SRR22904380.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.394 adaptiseq.batch: failed after retries: SRR22904380.fastq.gz
+05:17:21.395 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.395 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904383/SRR22904383.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.395 adaptiseq.batch: failed after retries: SRR22904383.fastq.gz
+05:17:21.395 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.398 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904304/SRR22904304.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.398 adaptiseq.batch: failed after retries: SRR22904304.fastq.gz
+05:17:21.398 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.490 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/004/SRR22904404/SRR22904404.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.490 adaptiseq.batch: failed after retries: SRR22904404.fastq.gz
+05:17:21.490 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.490 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/007/SRR22904407/SRR22904407.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.490 adaptiseq.batch: failed after retries: SRR22904407.fastq.gz
+05:17:21.491 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.570 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/006/SRR22904406/SRR22904406.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.570 adaptiseq.batch: failed after retries: SRR22904406.fastq.gz
+05:17:21.570 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.628 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/015/SRR22904415/SRR22904415.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.629 adaptiseq.batch: failed after retries: SRR22904415.fastq.gz
+05:17:21.629 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.629 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/012/SRR22904412/SRR22904412.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.629 adaptiseq.batch: failed after retries: SRR22904412.fastq.gz
+05:17:21.630 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.630 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/020/SRR22904420/SRR22904420.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.630 adaptiseq.batch: failed after retries: SRR22904420.fastq.gz
+05:17:21.630 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.631 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/016/SRR22904416/SRR22904416.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.631 adaptiseq.batch: failed after retries: SRR22904416.fastq.gz
+05:17:21.631 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.631 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/010/SRR22904410/SRR22904410.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.631 adaptiseq.batch: failed after retries: SRR22904410.fastq.gz
+05:17:21.631 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.725 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/025/SRR22904425/SRR22904425.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.725 adaptiseq.batch: failed after retries: SRR22904425.fastq.gz
+05:17:21.726 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.726 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/023/SRR22904423/SRR22904423.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.726 adaptiseq.batch: failed after retries: SRR22904423.fastq.gz
+05:17:21.726 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.807 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/024/SRR22904424/SRR22904424.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.807 adaptiseq.batch: failed after retries: SRR22904424.fastq.gz
+05:17:21.807 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.863 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/026/SRR22904426/SRR22904426.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.864 adaptiseq.batch: failed after retries: SRR22904426.fastq.gz
+05:17:21.864 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.864 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/027/SRR22904427/SRR22904427.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.864 adaptiseq.batch: failed after retries: SRR22904427.fastq.gz
+05:17:21.864 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.864 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/029/SRR22904429/SRR22904429.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.864 adaptiseq.batch: failed after retries: SRR22904429.fastq.gz
+05:17:21.864 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.865 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/022/SRR22904422/SRR22904422.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.865 adaptiseq.batch: failed after retries: SRR22904422.fastq.gz
+05:17:21.865 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.865 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/021/SRR22904421/SRR22904421.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.865 adaptiseq.batch: failed after retries: SRR22904421.fastq.gz
+05:17:21.866 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.934 adaptiseq.batch: downloaded SRR22904277.fastq.gz
+05:17:21.934 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.961 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/030/SRR22904430/SRR22904430.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.961 adaptiseq.batch: failed after retries: SRR22904430.fastq.gz
+05:17:21.961 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:21.961 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/028/SRR22904428/SRR22904428.fastq.gz: [Errno 104] Connection reset by peer
+05:17:21.961 adaptiseq.batch: failed after retries: SRR22904428.fastq.gz
+05:17:21.961 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.042 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/032/SRR22904432/SRR22904432.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.042 adaptiseq.batch: failed after retries: SRR22904432.fastq.gz
+05:17:22.042 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.100 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/033/SRR22904433/SRR22904433.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.100 adaptiseq.batch: failed after retries: SRR22904433.fastq.gz
+05:17:22.100 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.101 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/036/SRR22904436/SRR22904436.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.101 adaptiseq.batch: failed after retries: SRR22904436.fastq.gz
+05:17:22.101 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.101 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/038/SRR22904438/SRR22904438.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.101 adaptiseq.batch: failed after retries: SRR22904438.fastq.gz
+05:17:22.101 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.101 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/037/SRR22904437/SRR22904437.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.101 adaptiseq.batch: failed after retries: SRR22904437.fastq.gz
+05:17:22.101 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.101 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/034/SRR22904434/SRR22904434.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.101 adaptiseq.batch: failed after retries: SRR22904434.fastq.gz
+05:17:22.102 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.169 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/040/SRR22904440/SRR22904440.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.169 adaptiseq.batch: failed after retries: SRR22904440.fastq.gz
+05:17:22.169 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.169 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/039/SRR22904439/SRR22904439.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.169 adaptiseq.batch: failed after retries: SRR22904439.fastq.gz
+05:17:22.169 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.196 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/041/SRR22904441/SRR22904441.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.197 adaptiseq.batch: failed after retries: SRR22904441.fastq.gz
+05:17:22.197 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.278 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/042/SRR22904442/SRR22904442.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.278 adaptiseq.batch: failed after retries: SRR22904442.fastq.gz
+05:17:22.278 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.335 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/055/SRR22904455/SRR22904455.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.336 adaptiseq.batch: failed after retries: SRR22904455.fastq.gz
+05:17:22.336 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.337 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/065/SRR22904465/SRR22904465.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.337 adaptiseq.batch: failed after retries: SRR22904465.fastq.gz
+05:17:22.337 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.337 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/064/SRR22904464/SRR22904464.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.337 adaptiseq.batch: failed after retries: SRR22904464.fastq.gz
+05:17:22.337 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.337 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/063/SRR22904463/SRR22904463.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.337 adaptiseq.batch: failed after retries: SRR22904463.fastq.gz
+05:17:22.338 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.338 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/043/SRR22904443/SRR22904443.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.338 adaptiseq.batch: failed after retries: SRR22904443.fastq.gz
+05:17:22.339 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.404 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/069/SRR22904469/SRR22904469.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.404 adaptiseq.batch: failed after retries: SRR22904469.fastq.gz
+05:17:22.404 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.404 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/066/SRR22904466/SRR22904466.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.404 adaptiseq.batch: failed after retries: SRR22904466.fastq.gz
+05:17:22.405 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.433 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/070/SRR22904470/SRR22904470.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.433 adaptiseq.batch: failed after retries: SRR22904470.fastq.gz
+05:17:22.433 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.514 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/068/SRR22904468/SRR22904468.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.515 adaptiseq.batch: failed after retries: SRR22904468.fastq.gz
+05:17:22.515 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.571 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/072/SRR22904472/SRR22904472.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.571 adaptiseq.batch: failed after retries: SRR22904472.fastq.gz
+05:17:22.571 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.571 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/077/SRR22904477/SRR22904477.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.571 adaptiseq.batch: failed after retries: SRR22904477.fastq.gz
+05:17:22.571 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.572 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/071/SRR22904471/SRR22904471.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.572 adaptiseq.batch: failed after retries: SRR22904471.fastq.gz
+05:17:22.572 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.572 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/073/SRR22904473/SRR22904473.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.572 adaptiseq.batch: failed after retries: SRR22904473.fastq.gz
+05:17:22.572 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.572 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/074/SRR22904474/SRR22904474.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.572 adaptiseq.batch: failed after retries: SRR22904474.fastq.gz
+05:17:22.573 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.640 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/078/SRR22904478/SRR22904478.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.640 adaptiseq.batch: failed after retries: SRR22904478.fastq.gz
+05:17:22.640 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.641 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/079/SRR22904479/SRR22904479.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.641 adaptiseq.batch: failed after retries: SRR22904479.fastq.gz
+05:17:22.641 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.668 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/076/SRR22904476/SRR22904476.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.668 adaptiseq.batch: failed after retries: SRR22904476.fastq.gz
+05:17:22.668 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.751 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904483/SRR22904483.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.751 adaptiseq.batch: failed after retries: SRR22904483.fastq.gz
+05:17:22.751 adaptiseq.engine.seam: Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+05:17:22.806 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/085/SRR22904485/SRR22904485.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.806 adaptiseq.batch: failed after retries: SRR22904485.fastq.gz
+05:17:22.806 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/088/SRR22904488/SRR22904488.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.806 adaptiseq.batch: failed after retries: SRR22904488.fastq.gz
+05:17:22.806 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/080/SRR22904480/SRR22904480.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.806 adaptiseq.batch: failed after retries: SRR22904480.fastq.gz
+05:17:22.806 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904484/SRR22904484.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.806 adaptiseq.batch: failed after retries: SRR22904484.fastq.gz
+05:17:22.806 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/086/SRR22904486/SRR22904486.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.807 adaptiseq.batch: failed after retries: SRR22904486.fastq.gz
+05:17:22.875 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/091/SRR22904491/SRR22904491.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.875 adaptiseq.batch: failed after retries: SRR22904491.fastq.gz
+05:17:22.876 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/087/SRR22904487/SRR22904487.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.876 adaptiseq.batch: failed after retries: SRR22904487.fastq.gz
+05:17:22.902 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/089/SRR22904489/SRR22904489.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.903 adaptiseq.batch: failed after retries: SRR22904489.fastq.gz
+05:17:22.986 adaptiseq.engine.ftp: FTP connect/size failed for ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/090/SRR22904490/SRR22904490.fastq.gz: [Errno 104] Connection reset by peer
+05:17:22.986 adaptiseq.batch: failed after retries: SRR22904490.fastq.gz
+05:17:24.907 adaptiseq.batch: downloaded SRR22904291.fastq.gz
+05:17:27.099 adaptiseq.batch: downloaded SRR22904293.fastq.gz
+05:17:33.324 adaptiseq.engine.ftp: Completed (ftp) SRR22904281.fastq.gz
+05:17:33.324 adaptiseq.batch: downloaded SRR22904281.fastq.gz
+05:17:40.174 adaptiseq.batch: downloaded SRR22904278.fastq.gz
+05:18:29.424 adaptiseq.batch: downloaded SRR22904275.fastq.gz
+05:18:30.667 adaptiseq.engine.ftp: Completed (ftp) SRR22904257.fastq.gz
+05:18:30.667 adaptiseq.batch: downloaded SRR22904257.fastq.gz
+05:18:31.921 adaptiseq.engine.ftp: Completed (ftp) SRR22904445.fastq.gz
+05:18:31.921 adaptiseq.batch: downloaded SRR22904445.fastq.gz
+05:18:33.158 adaptiseq.engine.ftp: Completed (ftp) SRR22904405.fastq.gz
+05:18:33.158 adaptiseq.batch: downloaded SRR22904405.fastq.gz
+05:18:34.283 adaptiseq.engine.ftp: Completed (ftp) SRR22904448.fastq.gz
+05:18:34.283 adaptiseq.batch: downloaded SRR22904448.fastq.gz
+05:18:35.401 adaptiseq.engine.ftp: Completed (ftp) SRR22904451.fastq.gz
+05:18:35.402 adaptiseq.batch: downloaded SRR22904451.fastq.gz
+05:18:36.630 adaptiseq.engine.ftp: Completed (ftp) SRR22904408.fastq.gz
+05:18:36.630 adaptiseq.batch: downloaded SRR22904408.fastq.gz
+05:18:37.752 adaptiseq.engine.ftp: Completed (ftp) SRR22904459.fastq.gz
+05:18:37.752 adaptiseq.batch: downloaded SRR22904459.fastq.gz
+05:18:39.627 adaptiseq.engine.ftp: Completed (ftp) SRR22904447.fastq.gz
+05:18:39.628 adaptiseq.batch: downloaded SRR22904447.fastq.gz
+05:18:53.843 adaptiseq.engine.ftp: Completed (ftp) SRR22904282.fastq.gz
+05:18:53.844 adaptiseq.batch: downloaded SRR22904282.fastq.gz
+05:18:54.962 adaptiseq.engine.ftp: Completed (ftp) SRR22904461.fastq.gz
+05:18:54.962 adaptiseq.batch: downloaded SRR22904461.fastq.gz
+05:18:56.193 adaptiseq.engine.ftp: Completed (ftp) SRR22904444.fastq.gz
+05:18:56.193 adaptiseq.batch: downloaded SRR22904444.fastq.gz
+05:18:57.434 adaptiseq.engine.ftp: Completed (ftp) SRR22904449.fastq.gz
+05:18:57.435 adaptiseq.batch: downloaded SRR22904449.fastq.gz
+05:18:58.558 adaptiseq.engine.ftp: Completed (ftp) SRR22904409.fastq.gz
+05:18:58.558 adaptiseq.batch: downloaded SRR22904409.fastq.gz
+05:19:01.045 adaptiseq.engine.ftp: Completed (ftp) SRR22904495.fastq.gz
+05:19:01.045 adaptiseq.batch: downloaded SRR22904495.fastq.gz
+05:19:02.169 adaptiseq.engine.ftp: Completed (ftp) SRR22904454.fastq.gz
+05:19:02.169 adaptiseq.batch: downloaded SRR22904454.fastq.gz
+05:19:03.312 adaptiseq.engine.ftp: Completed (ftp) SRR22904256.fastq.gz
+05:19:03.312 adaptiseq.batch: downloaded SRR22904256.fastq.gz
+05:19:04.547 adaptiseq.engine.ftp: Completed (ftp) SRR22904481.fastq.gz
+05:19:04.547 adaptiseq.batch: downloaded SRR22904481.fastq.gz
+05:19:05.680 adaptiseq.engine.ftp: Completed (ftp) SRR22904492.fastq.gz
+05:19:05.680 adaptiseq.batch: downloaded SRR22904492.fastq.gz
+05:19:06.832 adaptiseq.engine.ftp: Completed (ftp) SRR22904456.fastq.gz
+05:19:06.833 adaptiseq.batch: downloaded SRR22904456.fastq.gz
+05:19:08.694 adaptiseq.engine.ftp: Completed (ftp) SRR22904494.fastq.gz
+05:19:08.695 adaptiseq.batch: downloaded SRR22904494.fastq.gz
+05:19:09.822 adaptiseq.engine.ftp: Completed (ftp) SRR22904457.fastq.gz
+05:19:09.822 adaptiseq.batch: downloaded SRR22904457.fastq.gz
+05:19:10.947 adaptiseq.engine.ftp: Completed (ftp) SRR22904475.fastq.gz
+05:19:10.947 adaptiseq.batch: downloaded SRR22904475.fastq.gz
+05:19:12.065 adaptiseq.engine.ftp: Completed (ftp) SRR22904467.fastq.gz
+05:19:12.065 adaptiseq.batch: downloaded SRR22904467.fastq.gz
+05:19:13.187 adaptiseq.engine.ftp: Completed (ftp) SRR22904418.fastq.gz
+05:19:13.187 adaptiseq.batch: downloaded SRR22904418.fastq.gz
+05:19:14.458 adaptiseq.engine.ftp: Completed (ftp) SRR22904462.fastq.gz
+05:19:14.458 adaptiseq.batch: downloaded SRR22904462.fastq.gz
