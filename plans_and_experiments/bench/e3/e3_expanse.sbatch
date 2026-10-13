@@ -28,8 +28,11 @@
 # Corollary: do not submit 3a/3b/3c simultaneously either. Use `--dependency`
 # (see submit_e3.sh) or run panel `all` in one job.
 #
-# Submit:  sbatch bench/e3/e3_expanse.sbatch          # runs every panel
-#          PANELS="3a 3b" sbatch bench/e3/e3_expanse.sbatch
+# Submit from the directory that contains bench/ and datasets/:
+#   export E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl
+#   sbatch --export=ALL bench/e3/e3_expanse.sbatch                 # 3r + 3b, 5 reps (the paper run)
+#   REPS=1 sbatch --export=ALL bench/e3/e3_expanse.sbatch          # the gate: one rep of both
+#   PANELS="3a 3b" ARM_SET=legacy sbatch --export=ALL bench/e3/e3_expanse.sbatch
 
 set -uo pipefail
 export PS1="${PS1:-}"
@@ -50,6 +53,9 @@ export PATH="${CONDA_PREFIX}/bin:$PATH"
 
 REPO_DIR="${SLURM_SUBMIT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
 cd "$REPO_DIR" || exit 1
+[[ -f "$REPO_DIR/bench/e3/run_e3.sh" ]] || { echo "[ERROR] submit from the directory that contains bench/e3 (got $REPO_DIR)" >&2; exit 1; }
+export PANELS="${PANELS:-3r 3b}"
+REPS="${REPS:-5}"
 E3_PYTHON="${CONDA_PREFIX}/bin/python3"
 export E3_PYTHON
 
@@ -106,7 +112,8 @@ echo "repo        : $REPO_DIR"
 echo "python      : $E3_PYTHON  ($(python3 --version 2>&1))"
 echo "payload     : $E3_WORK   ($(df -h "$NVME_DIR" | awk 'NR==2{print $4}') free)"
 echo "results     : $RUN_OUT"
-echo "panels      : ${PANELS:-3a 3r 3b 3c 3d 3s}"
+echo "panels      : $PANELS  (reps=$REPS, arm set=${ARM_SET:-submission})"
+echo "wheel       : ${E3_ASEQ_WHEEL:-<not set>}"
 
 # ─── GATE 1: outbound egress (EXPERIMENT_PLAN §16.1 -- gate everything) ────
 echo; echo "=== egress check ==="
@@ -146,6 +153,7 @@ echo; echo "=== versions (pinned for the paper) ==="
 {
     echo "date: $(date -Is)"; echo "node: $(hostname -s)"
     adaptiseq -v 2>&1 | head -1
+    "$E3_PYTHON" "$REPO_DIR/bench/e3/aseq_fingerprint.py" ${E3_ASEQ_WHEEL:+--wheel "$E3_ASEQ_WHEEL"} 2>&1
     iseq -v 2>&1 | head -2 | tail -1
     kingfisher --version 2>&1 | head -1
     fastq-dl --version 2>&1 | head -1
@@ -173,15 +181,27 @@ echo; echo "=== link ceiling probe (single + 8-stream, ENA) ==="
     fi
 } 2>&1 | tee "$RUN_OUT/link_probe.txt"
 
+# ─── GATE 3: the md5 verifier agrees with a by-hand check ─────────────────
+# Three runs fetched with curl, hashed, compared with ENA and the manifest, then
+# judged by verify_output.py. A stale manifest or a bad mirror stops the job here.
+echo; echo "=== manual md5 check ==="
+if ! "$E3_PYTHON" "$REPO_DIR/bench/e3/manual_md5_check.py" \
+        --manifest "$DATASETS/D1_full_PRJNA916347.manifest" 2>&1 | tee "$RUN_OUT/manual_md5_check.txt"; then
+    echo "[ERROR] manual md5 check failed; not starting the benchmark." >&2
+    exit 1
+fi
+
 # ─── Run ───────────────────────────────────────────────────────────────────
 echo; echo "=== running panels ==="
 status=0
-PANELS="${PANELS:-3a 3r 3b 3c 3d 3s}" bash "$REPO_DIR/bench/e3/run_e3.sh" all || status=$?
+bash "$REPO_DIR/bench/e3/run_e3.sh" all "$REPS" || status=$?
 
 # ─── Aggregate ─────────────────────────────────────────────────────────────
 echo; echo "=== aggregating ==="
 "$E3_PYTHON" "$REPO_DIR/bench/e3/aggregate.py" \
     --tsv "$RUN_OUT/e3_results.tsv" --outdir "$RUN_OUT" 2>&1 | tee "$RUN_OUT/summary.txt" || true
+"$E3_PYTHON" "$REPO_DIR/bench/e3/check_run.py" --tsv "$RUN_OUT/e3_results.tsv" \
+    --panels $PANELS --reps "$REPS" 2>&1 | tee "$RUN_OUT/check_run.txt" || true
 
 cp "$REPO_DIR/bench/e3/"*.sh "$REPO_DIR/bench/e3/"*.py "$REPO_DIR/bench/e3/"*.sbatch "$RUN_OUT/" 2>/dev/null || true
 for f in "slurm_e3_${SLURM_JOB_ID}.out" "slurm_e3_${SLURM_JOB_ID}.err"; do

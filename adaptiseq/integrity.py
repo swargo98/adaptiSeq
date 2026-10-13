@@ -100,71 +100,61 @@ def check_sra(ctx: RunContext, srr: str, download_fn: Callable[[], None]) -> boo
     opts = ctx.options
     reporter = ctx.reporter
     gzip_mode = opts.gzip and not opts.fastq and ctx.database != "sra"
+    files = _gzip_fastq_files(ctx, srr) if gzip_mode else []
+    if gzip_mode and not files:
+        # -g on a Run with no ENA fastq.gz mirror: download_sra fetched the .sra
+        # instead, so there is no fastq md5 to compare. Validate the .sra (it is
+        # converted and compressed afterwards). iseq records such a Run in
+        # fail.log and exits 1 even though the converted FASTQ is complete.
+        reporter.info(
+            f"{green('Note')}: {srr} has no FASTQ files in the ENA database, "
+            "validate the SRA file instead"
+        )
+        gzip_mode = False
     count = 1
 
     while True:
         if gzip_mode:
-            files = _gzip_fastq_files(ctx, srr)
-            if files:
-                all_pass, mismatch = _gzip_md5_ok(ctx, files)
-                if mismatch is not None:
-                    reporter.info(f"{bright_red('MD5 mismatch for:')} {mismatch}")
-                if all_pass:
-                    reporter.info(
-                        bright_green(
-                            f"{srr} download and md5 check successful, "
-                            f"save {srr} in success.log"
-                        )
-                    )
-                    mark_success(ctx.workdir, srr)
-                    return True
-                if count <= 1:
-                    reporter.info(
-                        f"{bright_yellow('Note')}: {srr} validate failed, "
-                        f"retry {count} times"
-                    )
-                    download_fn()
-                    count += 1
-                    continue
-                elif count <= 2:
-                    reporter.info(
-                        f"{bright_yellow('Note')}: {srr} validate failed, "
-                        f"remove the files and retry {count} times"
-                    )
-                    _rm_files(ctx, files)
-                    download_fn()
-                    count += 1
-                    continue
-                else:
-                    _rm_files(ctx, files)
-                    reporter.info(
-                        bright_red(
-                            f"{srr} md5 check failed after trying {count} times, "
-                            "save Run ID in fail.log"
-                        )
-                    )
-                    mark_fail(ctx.workdir, srr)
-                    ctx.failed = True
-                    return False
-            else:
+            all_pass, mismatch = _gzip_md5_ok(ctx, files)
+            if mismatch is not None:
+                reporter.info(f"{bright_red('MD5 mismatch for:')} {mismatch}")
+            if all_pass:
                 reporter.info(
-                    f"{bright_yellow('Note')}: No FASTQ files found for {srr}"
-                )
-                if count <= 2:
-                    count += 1
-                    download_fn()
-                    continue
-                else:
-                    _rm_files(ctx, files)
-                    reporter.info(
-                        bright_red(
-                            f"{srr} failed: no FASTQ files after retry, "
-                            "saving to fail.log"
-                        )
+                    bright_green(
+                        f"{srr} download and md5 check successful, "
+                        f"save {srr} in success.log"
                     )
-                    mark_fail(ctx.workdir, srr)
-                    ctx.failed = True
-                    return False
+                )
+                mark_success(ctx.workdir, srr)
+                return True
+            if count <= 1:
+                reporter.info(
+                    f"{bright_yellow('Note')}: {srr} validate failed, "
+                    f"retry {count} times"
+                )
+                download_fn()
+                count += 1
+                continue
+            elif count <= 2:
+                reporter.info(
+                    f"{bright_yellow('Note')}: {srr} validate failed, "
+                    f"remove the files and retry {count} times"
+                )
+                _rm_files(ctx, files)
+                download_fn()
+                count += 1
+                continue
+            else:
+                _rm_files(ctx, files)
+                reporter.info(
+                    bright_red(
+                        f"{srr} md5 check failed after trying {count} times, "
+                        "save Run ID in fail.log"
+                    )
+                )
+                mark_fail(ctx.workdir, srr)
+                ctx.failed = True
+                return False
         else:
             if vdb_validate(ctx, srr):
                 reporter.info(

@@ -6,11 +6,13 @@ command-line tools it shells out to.
 ## 1. Install with pip (recommended)
 
 ```bash
-pip install adaptiseq            # once published to PyPI
+pip install adaptiseq
+adaptiseq --version
 ```
 
 > **Note**
-> adaptiSeq is not yet on PyPI/bioconda. Until then, install from source (below).
+> adaptiSeq is on [PyPI](https://pypi.org/project/adaptiseq/). It is not on
+> bioconda; the external tools below are easiest to get from conda (section 3).
 
 ## 2. Install from source
 

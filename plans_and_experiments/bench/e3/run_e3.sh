@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # E3 -- Batch download (HEADLINE, Fig 3). Driver.
 #
+# The submission benchmark (MINIMAL_SUBMISSION_PLAN.md, Step 2) is panels 3r and
+# 3b with the default arm set:
+#
+#   E3_ASEQ_WHEEL=/path/adaptiseq-0.1.4-py3-none-any.whl PANELS="3r 3b" \
+#       bash bench/e3/run_e3.sh all 5
+#
 # Panels:
 #   3a  overhead-dominated  (D1_fair, 201 runs / 4.4 GB)   -- fair timing, all tools complete
 #   3r  robustness          (D1_full, 241 runs / 7.6 GB)   -- runs-completed; iseq drops the 3-file runs
@@ -12,11 +18,17 @@
 # Usage:  bash bench/e3/run_e3.sh <panel> [reps]
 #         PANELS="3a 3b" bash bench/e3/run_e3.sh all
 #
+# Arm sets (ARM_SET):
+#   submission (default)  6 arms: adaptiSeq at released defaults, one fixed-j
+#                         anchor, and each competitor as its docs recommend
+#   legacy                the 11 arms of the first E3 campaign (tuned adaptiSeq
+#                         arms, Kingfisher restricted to ena-ftp)
+#
 # Fairness protocol enforced here (EXPERIMENT_PLAN §12):
 #   * every arm downloads the same list, in the same job, on the same node;
-#   * arm order is RESHUFFLED every rep (seeded, logged) so no arm keeps a
-#     systematic cold/warm-cache position -- this subsumes BENCHMARK.md's
-#     reversed-order control and generalizes it to all 10 arms;
+#   * arm order is a fresh seeded permutation every rep (logged to
+#     logs/arm_order.tsv) so no arm keeps a systematic cold/warm-cache position;
+#   * every row records the adaptiSeq version and build hash it ran;
 #   * payload deleted after every arm;
 #   * success/bytes judged by md5 against the ENA manifest, not by exit code.
 
@@ -36,6 +48,14 @@ export E3_OUT="${E3_OUT:-$REPO_DIR/e3_results}"    # results: Lustre (persists)
 export E3_MD5_JOBS="${E3_MD5_JOBS:-32}"
 export DATASETS="${DATASETS:-$REPO_DIR/datasets}"
 ENABLE_FETCHNGS="${ENABLE_FETCHNGS:-0}"            # needs Nextflow+Singularity; off by default
+ARM_SET="${ARM_SET:-submission}"
+# The release wheel the installed adaptiSeq must be byte-identical to. Its sha256
+# goes in every row; see aseq_fingerprint.py. Required for the paper panels.
+export E3_ASEQ_WHEEL="${E3_ASEQ_WHEEL:-}"
+export E3_SEED="${E3_SEED:-20261013}"              # base seed for the arm-order permutation
+# Kingfisher's prefetch fallback writes nothing with sra-tools >= 3.1 unless this
+# is set (found in E8). It only matters when ena-ftp fails for a run.
+export NCBI_VDB_PREFETCH_USES_OUTPUT_TO_FILE="${NCBI_VDB_PREFETCH_USES_OUTPUT_TO_FILE:-1}"
 
 mkdir -p "$E3_WORK" "$E3_OUT"
 export E3_LOGS="$E3_OUT/logs"; mkdir -p "$E3_LOGS"
@@ -64,23 +84,68 @@ if [[ -n "$(ls -A "$E3_WORK" 2>/dev/null)" ]]; then
     echo "[cleanup] removing stale payload from a prior run in $E3_WORK" >&2
     rm -rf "${E3_WORK:?}"/* 2>/dev/null || true
 fi
-export E3_TSV="$E3_OUT/e3_results.tsv"
-e3_init_results "$E3_TSV"
-[[ -f "$E3_LOGS/trajectories.tsv" ]] || printf 'arm\trep\tline\n' > "$E3_LOGS/trajectories.tsv"
-
 ISEQ_BIN="${ISEQ_BIN:-iseq}"
+export E3_TSV="$E3_OUT/e3_results.tsv"
+e3_init_results "$E3_TSV" || exit 1
+
+# Fail before the first download, not after 14 hours, if the install is not the
+# release wheel.
+if ! _fp="$(e3_aseq_fingerprint)"; then
+    echo "[ERROR] cannot fingerprint the installed adaptiSeq (see message above)." >&2
+    exit 1
+fi
+case "$PANEL" in
+  3r|3b)
+    if [[ "$ARM_SET" == "submission" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
+        echo "[ERROR] E3_ASEQ_WHEEL is not set. The paper panels must run the released wheel:" >&2
+        echo "          pip download adaptiseq==0.1.4 --no-deps -d wheels/" >&2
+        echo "          pip install --force-reinstall --no-deps wheels/adaptiseq-0.1.4-py3-none-any.whl" >&2
+        echo "          export E3_ASEQ_WHEEL=\$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl" >&2
+        echo "        (E3_ALLOW_UNPINNED=1 overrides this for a dry run.)" >&2
+        exit 1
+    fi ;;
+esac
+if [[ "$PANEL" != "all" ]]; then
+    {
+        echo "# $(date -Is)  host=$(hostname -s)  panel=$PANEL  arm_set=$ARM_SET  seed=$E3_SEED"
+        echo "adaptiseq: $_fp  wheel=${E3_ASEQ_WHEEL:-none}"
+        echo "iseq: $("$ISEQ_BIN" -v 2>&1 | grep -m1 -i 'version' || echo missing)"
+        echo "kingfisher: $(kingfisher --version 2>&1 | head -1)"
+        echo "fastq-dl: $(fastq-dl --version 2>&1 | head -1)"
+        echo "python: $("$E3_PYTHON" --version 2>&1)"
+    } >> "$E3_OUT/versions_e3.txt"
+fi
+[[ -f "$E3_LOGS/trajectories.tsv" ]] || printf 'arm\trep\tline\n' > "$E3_LOGS/trajectories.tsv"
 
 # adaptiSeq arms run through aseq_run.py: same code path as the bare CLI
 # (cli.main -> core.run), but with the batch controller's INFO logging on so the
 # per-probe gate.active decisions are recorded. Set ASEQ=adaptiseq to use the
 # bare CLI instead (you then lose the internal trajectory, not any behaviour).
 ASEQ="${ASEQ:-$E3_PYTHON $E3_DIR/aseq_run.py}"
+# The submission arms use the bare CLI: the claim is about what a user gets from
+# `adaptiseq -i LIST -g`, so nothing may sit between the harness and the release.
+ASEQ_CLI="${ASEQ_CLI:-adaptiseq}"
 
 # ---- arm table --------------------------------------------------------------
 # "arm_name|tool|command".  $LIST / $IDS_CSV are exported by run_arm; CWD is a
 # fresh empty dir.  Every arm is asked for gzip FASTQ from ENA so the formats are
 # comparable; md5 checking is left ON for every tool that offers it (we do NOT
 # pass adaptiSeq's -k), because integrity is part of what these tools are for.
+#
+# Submission set. adaptiseq-default carries no tuning flag at all (released
+# defaults: -j 20, --adaptive, --meta-jobs 3, probe window 5). adaptiseq-fixed-j20
+# differs from it only by --no-adaptive, to anchor the default. Kingfisher gets
+# its documented method fallback chain, not ena-ftp alone.
+declare -a ARMS_SUBMISSION=(
+  "adaptiseq-default|adaptiseq|$ASEQ_CLI -i \$LIST -g -o ."
+  "adaptiseq-fixed-j20|adaptiseq|$ASEQ_CLI -i \$LIST -g --no-adaptive -j 20 -o ."
+  "iseq-p8|iseq|$ISEQ_BIN -i \$LIST -g -p 8 -o ."
+  "iseq|iseq|$ISEQ_BIN -i \$LIST -g -o ."
+  "kingfisher|kingfisher|kingfisher get --run-identifiers-list \$LIST -m ena-ftp aws-http prefetch --check-md5sums -f fastq.gz --output-directory ."
+  "fastq-dl|fastq-dl|while read -r a; do [ -n \"\$a\" ] && fastq-dl --accession \"\$a\" --outdir . ; done < \$LIST"
+)
+
+# Legacy set (first E3 campaign). Kept so those results stay reproducible.
 declare -a ARMS_FULL=(
   "iseq|iseq|$ISEQ_BIN -i \$LIST -g -o ."
   "iseq-p8|iseq|$ISEQ_BIN -i \$LIST -g -p 8 -o ."
@@ -101,7 +166,11 @@ declare -a ARMS_FULL=(
 FETCHNGS_ARM="fetchngs|fetchngs|nextflow run nf-core/fetchngs -r 1.12.0 --input \$IDS_CSV --outdir . -profile singularity --download_method ftp -ansi-log false"
 
 build_arms() {
-    ARMS=("${ARMS_FULL[@]}")
+    case "$ARM_SET" in
+      submission) ARMS=("${ARMS_SUBMISSION[@]}") ;;
+      legacy)     ARMS=("${ARMS_FULL[@]}") ;;
+      *) echo "unknown ARM_SET: $ARM_SET (want submission|legacy)" >&2; exit 2 ;;
+    esac
     [[ "$ENABLE_FETCHNGS" == "1" ]] && ARMS+=("$FETCHNGS_ARM")
 }
 
@@ -160,13 +229,30 @@ run_panel() {
     echo "# panel $panel  dataset=$dataset  reps=$reps  arms=${#ARMS[@]}  timeout=${timeout_s}s" >&2
     echo "############################################################" >&2
 
+    local orderf="$E3_LOGS/arm_order.tsv"
+    [[ -f "$orderf" ]] || printf 'panel\trep\tseed\torder_idx\tarm\n' > "$orderf"
+
     for rep in $(seq 1 "$reps"); do
-        # Reshuffle arm order every rep, seeded by rep for reproducibility.
-        mapfile -t shuffled < <(printf '%s\n' "${ARMS[@]}" | shuf --random-source=<(yes "$rep"))
+        # A fresh seeded permutation every rep. (`shuf --random-source=<(yes N)`,
+        # used before, is not one: the repeating byte stream left most arms in the
+        # same position in every rep.) The seed mixes panel and rep so the two
+        # panels do not share an order; a str seed is hashed with sha512, so the
+        # order is the same on every machine and Python 3 version.
+        local seed="${E3_SEED}:${panel}:${rep}"
+        mapfile -t shuffled < <(printf '%s\n' "${ARMS[@]}" | "$E3_PYTHON" -c '
+import random, sys
+arms = [ln for ln in sys.stdin.read().split("\n") if ln]
+random.Random(sys.argv[1]).shuffle(arms)
+print("\n".join(arms))' "$seed")
+        if [[ ${#shuffled[@]} -ne ${#ARMS[@]} ]]; then
+            echo "[ERROR] arm shuffle returned ${#shuffled[@]} of ${#ARMS[@]} arms" >&2
+            return 1
+        fi
         local idx=0
         for entry in "${shuffled[@]}"; do
             idx=$((idx + 1))
             IFS='|' read -r arm tool cmd <<< "$entry"
+            printf '%s\t%s\t%s\t%s\t%s\n' "$panel" "$rep" "$seed" "$idx" "$arm" >> "$orderf"
             run_arm "$panel" "$dataset" "$arm" "$tool" "$rep" "$idx" \
                     "$list" "$manifest" "$cmd"
         done
@@ -180,7 +266,7 @@ case "$PANEL" in
   # minutes here instead of 12 hours inside panel 3a.
   smoke) build_arms;     run_panel smoke "SMOKE_D1"           "${REPS_ARG:-1}"  "${E3_TIMEOUT_SMOKE:-300}" ;;
   3a)  build_arms;       run_panel 3a "D1_fair_PRJNA916347"   "${REPS_ARG:-5}"  "${E3_TIMEOUT_3A:-3600}" ;;
-  3r)  build_arms;       run_panel 3r "D1_full_PRJNA916347"   "${REPS_ARG:-3}"  "${E3_TIMEOUT_3R:-5400}" ;;
+  3r)  build_arms;       run_panel 3r "D1_full_PRJNA916347"   "${REPS_ARG:-5}"  "${E3_TIMEOUT_3R:-5400}" ;;
   3b)  build_arms;       run_panel 3b "D2_subset_PRJNA762469" "${REPS_ARG:-5}"  "${E3_TIMEOUT_3B:-7200}" ;;
   3c)  build_arms;       run_panel 3c "D4_mixed"              "${REPS_ARG:-5}"  "${E3_TIMEOUT_3C:-3600}" ;;
   3d)  build_sweep_arms; run_panel 3d "D0_sweep_PRJNA762469"  "${REPS_ARG:-3}"  "${E3_TIMEOUT_3D:-5400}" ;;

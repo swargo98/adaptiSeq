@@ -127,14 +127,34 @@ def main() -> int:
     matched = {d for d in got if d in want_md5}
     extra = [got[d][0] for d in got if d not in want_md5]
 
+    # Runs with 3+ files (orphan/barcode + _1 + _2) are counted separately as well:
+    # they are the layout some tools drop, and one total would hide which runs a
+    # tool lost.
     runs_complete = 0
     runs_partial = 0
+    runs_complete_3file = 0
+    runs_expected_3file = sum(1 for rows in manifest.values() if len(rows) >= 3)
     for run, rows in manifest.items():
         have = sum(1 for (_n, _b, m) in rows if m in matched)
         if have == len(rows):
             runs_complete += 1
+            if len(rows) >= 3:
+                runs_complete_3file += 1
         elif have > 0:
             runs_partial += 1
+
+    # Diagnostic only, never counted as success: runs that are not md5-complete
+    # but do have a payload file named after them. A tool that falls back from
+    # ENA to the .sra and recompresses locally (e.g. Kingfisher's aws-http /
+    # prefetch methods) lands here -- its FASTQ may be correct, but it cannot be
+    # byte-identical to ENA's, so the manifest cannot vouch for it.
+    extra_names = [os.path.basename(p) for p in extra]
+    runs_present_unverified = 0
+    for run, rows in manifest.items():
+        if all(m in matched for (_n, _b, m) in rows):
+            continue
+        if any(n == run or n.startswith((run + "_", run + ".")) for n in extra_names):
+            runs_present_unverified += 1
 
     files_expected = sum(len(r) for r in manifest.values())
     bytes_expected = sum(b for rows in manifest.values() for (_n, b, _m) in rows)
@@ -145,6 +165,9 @@ def main() -> int:
             "runs_complete": runs_complete,
             "runs_partial": runs_partial,
             "runs_expected": len(manifest),
+            "runs_complete_3file": runs_complete_3file,
+            "runs_expected_3file": runs_expected_3file,
+            "runs_present_unverified": runs_present_unverified,
             "files_verified": len(matched),
             "files_expected": files_expected,
             "bytes_verified": bytes_verified,
@@ -164,7 +187,10 @@ def main() -> int:
         f"bytes_on_disk={total_bytes} "
         f"files_on_disk={len(paths)} "
         f"extra_files={len(extra)} "
-        f"format={fmt_of(paths)}"
+        f"format={fmt_of(paths)} "
+        f"runs_complete_3file={runs_complete_3file} "
+        f"runs_expected_3file={runs_expected_3file} "
+        f"runs_present_unverified={runs_present_unverified}"
     )
     return 0
 

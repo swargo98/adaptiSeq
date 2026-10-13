@@ -126,7 +126,9 @@ def _run_files_present(ctx: RunContext, srr: str) -> bool:
     gzip_mode = opts.gzip and not opts.fastq and ctx.database != "sra"
     if gzip_mode:
         files = integrity._gzip_fastq_files(ctx, srr)
-        return bool(files) and all(ctx.path(f).is_file() for f in files)
+        if files:
+            return all(ctx.path(f).is_file() for f in files)
+        # No ENA fastq.gz mirror: the Run was fetched as a .sra (see check_sra).
     return ctx.path(srr).is_file()
 
 

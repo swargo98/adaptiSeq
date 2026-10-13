@@ -10,13 +10,27 @@
 
 set -uo pipefail
 
-E3_TSV_HEADER=$'panel\tdataset\tarm\ttool\trep\torder_idx\twall_s\texit_code\tstatus\truns_complete\truns_partial\truns_expected\tfiles_verified\tfiles_expected\tbytes_verified\tbytes_expected\tbytes_on_disk\tfiles_on_disk\textra_files\tformat\tMBps_verified\tpeak_rss_kb\tcpu_pct\tconc_med\tconc_p95\tconc_max\tconc_per_host_max\tprocs_max\tconc_samples\tworkers_med\tworkers_max\thost\tstamp'
+E3_TSV_HEADER=$'panel\tdataset\tarm\ttool\trep\torder_idx\twall_s\texit_code\tstatus\truns_complete\truns_partial\truns_expected\tfiles_verified\tfiles_expected\tbytes_verified\tbytes_expected\tbytes_on_disk\tfiles_on_disk\textra_files\tformat\tMBps_verified\tpeak_rss_kb\tcpu_pct\tconc_med\tconc_p95\tconc_max\tconc_per_host_max\tprocs_max\tconc_samples\tworkers_med\tworkers_max\thost\tstamp\truns_complete_3file\truns_expected_3file\truns_present_unverified\taseq_version\taseq_sha256'
 
 e3_init_results() {
     local tsv="$1"
     if [[ ! -f "$tsv" ]]; then
         printf '%s\n' "$E3_TSV_HEADER" > "$tsv"
+    elif [[ "$(head -n 1 "$tsv")" != "$E3_TSV_HEADER" ]]; then
+        # Appending rows under a header from an older harness would silently
+        # shift every column after the change.
+        echo "[ERROR] $tsv has a different header (older harness?). Use a fresh E3_OUT." >&2
+        return 1
     fi
+}
+
+# Which adaptiSeq build is installed right now: "aseq_version=.. aseq_sha256=..".
+# Called before every arm (outside the timed region) so a reinstall mid-run shows
+# up in the rows instead of going unnoticed.
+e3_aseq_fingerprint() {
+    local args=()
+    [[ -n "${E3_ASEQ_WHEEL:-}" ]] && args=(--wheel "$E3_ASEQ_WHEEL")
+    "$E3_PYTHON" "$E3_DIR/aseq_fingerprint.py" ${args[@]+"${args[@]}"}
 }
 
 # run_arm <panel> <dataset_name> <arm_name> <tool> <rep> <order_idx> <list> <manifest> <cmd>
@@ -38,6 +52,9 @@ run_arm() {
     local ids_csv="$dir/.ids.csv"
     { echo "id"; cat "$list"; } > "$ids_csv"
 
+    local aseq_version="-" aseq_sha256="-" fp
+    fp="$(e3_aseq_fingerprint 2>>"$logf")" && eval "$fp"
+
     echo "[$(date +%H:%M:%S)] rep=$rep order=$order_idx arm=$arm dataset=$dataset (timeout ${E3_TIMEOUT}s)" >&2
 
     local concf="$E3_LOGS/conc_${panel}_${dataset}_${safe_arm}_rep${rep}.tsv"
@@ -55,7 +72,7 @@ run_arm() {
         # is the honest envelope for iseq's subprocess-per-run model AND for
         # adaptiSeq's single-process asyncio pool (EXPERIMENT_PLAN §10).
         timeout --kill-after=60 "$E3_TIMEOUT" \
-            /usr/bin/time -v -o "$timef" \
+            "${E3_TIME_BIN:-/usr/bin/time}" -v -o "$timef" \
             bash -c "$cmd"
     ) > "$logf" 2>&1 &
     local arm_pid=$!
@@ -109,10 +126,11 @@ run_arm() {
     local v
     v=$("$E3_PYTHON" "$E3_DIR/verify_output.py" \
             --manifest "$manifest" --outdir "$dir" --jobs "$E3_MD5_JOBS" 2>>"$logf")
-    [[ -z "$v" ]] && v="runs_complete=0 runs_partial=0 runs_expected=0 files_verified=0 files_expected=0 bytes_verified=0 bytes_expected=0 bytes_on_disk=0 files_on_disk=0 extra_files=0 format=-"
+    [[ -z "$v" ]] && v="runs_complete=0 runs_partial=0 runs_expected=0 files_verified=0 files_expected=0 bytes_verified=0 bytes_expected=0 bytes_on_disk=0 files_on_disk=0 extra_files=0 format=- runs_complete_3file=0 runs_expected_3file=0 runs_present_unverified=0"
 
     local runs_complete runs_partial runs_expected files_verified files_expected
     local bytes_verified bytes_expected bytes_on_disk files_on_disk extra_files format
+    local runs_complete_3file runs_expected_3file runs_present_unverified
     eval "$v"
 
     # MB/s is computed from VERIFIED bytes only: a tool gets credit for bytes it
@@ -121,7 +139,7 @@ run_arm() {
     local mbps
     mbps=$(awk -v b="$bytes_verified" -v s="$wall" 'BEGIN{printf "%.2f", (s>0)? b/1e6/s : 0}')
 
-    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
         "$panel" "$dataset" "$arm" "$tool" "$rep" "$order_idx" "$wall" "$rc" "$status" \
         "$runs_complete" "$runs_partial" "$runs_expected" "$files_verified" "$files_expected" \
         "$bytes_verified" "$bytes_expected" "$bytes_on_disk" "$files_on_disk" "$extra_files" \
@@ -129,6 +147,7 @@ run_arm() {
         "$conc_med" "$conc_p95" "$conc_max" "$conc_per_host_max" "$procs_max" "$conc_samples" \
         "$workers_med" "$workers_max" \
         "$(hostname -s)" "$(date -Is)" \
+        "$runs_complete_3file" "$runs_expected_3file" "$runs_present_unverified" "$aseq_version" "$aseq_sha256" \
         >> "$E3_TSV"
 
     # adaptiSeq's INTERNAL view: what the controller intended (gate.active per

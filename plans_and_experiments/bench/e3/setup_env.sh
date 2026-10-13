@@ -42,9 +42,21 @@ fi
 
 conda activate "$ENV_NAME"
 
-echo "=== installing adaptiSeq (editable) ==="
+# The benchmark must run the released wheel, the same file on every machine --
+# never an editable install. The wheel is kept so run_e3.sh can record its sha256
+# (export E3_ASEQ_WHEEL=<path printed below>). Set E3_ASEQ_WHEEL beforehand to
+# install a local wheel instead (e.g. a dry run before the release is on PyPI).
+ASEQ_VERSION="${ASEQ_VERSION:-0.1.4}"
+echo "=== installing adaptiSeq ${ASEQ_VERSION} (release wheel) ==="
 cd "$REPO_DIR"
-pip install -e . --no-deps
+if [[ -z "${E3_ASEQ_WHEEL:-}" ]]; then
+    mkdir -p "$REPO_DIR/wheels"
+    pip download "adaptiseq==${ASEQ_VERSION}" --no-deps --only-binary :all: -d "$REPO_DIR/wheels"
+    E3_ASEQ_WHEEL="$(ls "$REPO_DIR"/wheels/adaptiseq-"${ASEQ_VERSION}"-*.whl | head -1)"
+fi
+pip install --force-reinstall --no-deps "$E3_ASEQ_WHEEL"
+python "$REPO_DIR/bench/e3/aseq_fingerprint.py" --wheel "$E3_ASEQ_WHEEL"
+echo "export E3_ASEQ_WHEEL=$E3_ASEQ_WHEEL"
 
 # nf-core/fetchngs is optional (ENABLE_FETCHNGS=1). It needs Nextflow +
 # Singularity; Expanse ships singularitypro as a module.

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use adaptiSeq in your research, please cite it using these metadata."
+message: "If you use adaptiSeq in your research, please cite it using these metadata, and cite iSeq (see references)."
 title: "adaptiSeq: a self-tuning batch downloader for public sequencing data"
 abstract: >-
   adaptiSeq is an importable Python tool for fetching public sequencing data and
@@ -8,12 +8,16 @@ abstract: >-
   controller, and adaptive parallel Aspera.
 type: software
 authors:
-  # TODO: replace with your real name and ORCID before a tagged release.
-  - name: "swargo98"
+  # TODO before the tagged release: add co-authors, ORCIDs, and affiliations.
+  - family-names: "Swargo"
+    given-names: "Rasman Mubtasim"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
 repository-code: "https://github.com/swargo98/adaptiSeq"
-url: "https://github.com/swargo98/adaptiSeq"
+url: "https://swargo98.github.io/adaptiSeq/"
 license: MIT
-version: "0.1.0"
+version: "0.1.4"
+# date-released: "YYYY-MM-DD"   # set on the day 0.1.4 is tagged
+# doi: "10.5281/zenodo.XXXXXXX" # set once Zenodo has archived the tag
 keywords:
   - bioinformatics
   - sequencing
@@ -21,3 +25,31 @@ keywords:
   - ENA
   - GSA
   - download
+references:
+  - type: article
+    title: "iSeq: an integrated tool to fetch public sequencing data"
+    authors:
+      - family-names: "Chao"
+        given-names: "Haoyu"
+      - family-names: "Li"
+        given-names: "Zhuojin"
+      - family-names: "Chen"
+        given-names: "Dijun"
+      - family-names: "Chen"
+        given-names: "Ming"
+    journal: "Bioinformatics"
+    year: 2024
+    doi: "10.1093/bioinformatics/btae641"
+    notes: "adaptiSeq reimplements iSeq's accession resolution, metadata, integrity, and merge behaviour in Python."
+  - type: article
+    title: "Adaptive Parallel Downloader for Large Genomic Datasets"
+    authors:
+      - family-names: "Swargo"
+        given-names: "Rasman Mubtasim"
+      - family-names: "Arslan"
+        given-names: "Engin"
+      - family-names: "Arifuzzaman"
+        given-names: "Md"
+    year: 2025
+    url: "https://arxiv.org/abs/2508.05511"
+    notes: "FastBioDL; adaptiSeq's segmented, resumable transfer engine is ported from it."

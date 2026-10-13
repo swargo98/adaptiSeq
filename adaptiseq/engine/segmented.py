@@ -1,5 +1,8 @@
 """Segmented, resumable HTTP(S) download engine (fixed concurrency).
 
+Ported from FastBioDL (Swargo RM, Arslan E, Arifuzzaman M. "Adaptive Parallel
+Downloader for Large Genomic Datasets." arXiv:2508.05511).
+
 A self-contained port of ``SegmentedDownloader`` from ``fastbiodl_upgrade.py``
 (L63-777), decoupled per the plan in ``NOTES.md`` §P2.1: the pause check, byte
 counting, connection cap, disk gating, and output directory are all injected

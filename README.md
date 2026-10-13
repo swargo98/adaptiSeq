@@ -23,8 +23,6 @@
   <a href="#related-tools">Comparison</a>
 </p>
 
-<!-- PyPI/bioconda badges resolve once the package is published; until then see Installation. -->
-
 ## Description
 
 **adaptiSeq** is a fast, importable Python tool that downloads sequencing data and
@@ -36,11 +34,26 @@ metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**,
 pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 **segmented, resumable, self-tuning** engine and a **real Python API**.
 
+adaptiSeq builds on **[iSeq](https://github.com/BioOmics/iSeq)** (Chao *et al.*,
+*Bioinformatics*, 2024,
+[doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641)):
+its accession resolution, metadata, integrity, and merge behaviour are a Python
+reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
+(see [Cite us](#cite-us)).
+
 > **Important**
 > To use adaptiSeq your system must be **connected to the network** and able to
 > reach the databases over **HTTP, HTTPS, and (optionally) FTP / Aspera**.
 
 ## Update Notes
+
+### 0.1.4
+- **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)
+  no longer exits with code 1 and a `fail.log` entry after producing complete
+  FASTQ. The `.sra` is now validated with `vdb-validate`, recorded in
+  `success.log`, and not re-downloaded.
+- **Docs**: iSeq's MIT notice added to `LICENSE`; iSeq and FastBioDL credited in
+  the README and `CITATION.cff`.
 
 ### 0.1.3
 - **Fix**: a segmented download whose `.part` file is missing at finalize (e.g.
@@ -106,9 +119,10 @@ pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 
 ## Installation
 
-### 1. From PyPI (once published)
+### 1. From PyPI (recommended)
 ```bash
-pip install adaptiseq            # not yet on PyPI — see "From source" below
+pip install adaptiseq
+adaptiseq --version
 ```
 
 ### 2. From source
@@ -371,8 +385,23 @@ branch, and submit a pull request. The offline test suite runs with
 
 ## Cite us
 
-TBD (manuscript in preparation).
+A manuscript describing adaptiSeq is in preparation; citation metadata for the
+software itself is in [`CITATION.cff`](CITATION.cff).
+
+adaptiSeq builds on two earlier tools. If you use it, please also cite:
+
+- **iSeq**, whose accession resolution, metadata, integrity, and merge behaviour
+  adaptiSeq reimplements in Python:
+  Chao H, Li Z, Chen D, Chen M. *iSeq: An integrated tool to fetch public sequencing
+  data.* **Bioinformatics**, 2024, btae641,
+  [doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641).
+- **FastBioDL**, from which the segmented, resumable transfer engine
+  (`adaptiseq/engine/segmented.py`) is ported:
+  Swargo RM, Arslan E, Arifuzzaman M. *Adaptive Parallel Downloader for Large
+  Genomic Datasets.* [arXiv:2508.05511](https://arxiv.org/abs/2508.05511).
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE). The `LICENSE` file also
+reproduces the MIT notice of [iSeq](https://github.com/BioOmics/iSeq)
+(Copyright (c) 2024 BioOmics), from which adaptiSeq is derived.
