@@ -1,8 +1,20 @@
 # adaptiSeq: pre-submission plan (Bioinformatics, Application Note)
 
-Status: draft, 2026-10-13. Supersedes the "what to claim" parts of
+Status: draft, 2026-10-13 (revised the same day against `main` and the PyPI
+release). Supersedes the "what to claim" parts of
 `EXPERIMENT_PLAN_adaptiseq.md`; the experiment protocols there remain the
 reference where this document does not override them.
+
+**Released state (checked 2026-10-13).** `adaptiseq` 0.1.3 is on PyPI
+(released 2026-07-24, MIT, Python >= 3.10). The 0.1.3 wheel already ships the
+explore-exploit controller as the default adaptive mode, renamed `topdown`
+(`ASEQ_ADAPTIVE_MODE`, default `topdown`; `bottomup` = the old gradient
+controller), with `--adaptive` on by default. Its control logic is identical
+to the `climb` arm benchmarked in E3; only names and env-var aliases changed.
+`main` has also removed the internal notes, `BENCHMARK.md` and `sysbench/`, and
+added an mkdocs site and a Colab notebook. Still open in 0.1.3: no CLI flag for
+the controller, resolve/transfer overlap not implemented (`core.py:380`),
+default probe window 5 s whereas E3 ran `climb` with `ASEQ_PROBE_WINDOW=8`.
 
 Target format (OUP author guidelines): Application Note, up to 4 journal pages
 (approx. 2,600 words, or 2,000 words plus one figure). Plan for one multi-panel
@@ -57,21 +69,25 @@ versions.
 Make these in writing (commit to this file) before any rerun. They are the
 pre-registration.
 
-**A1. Default adaptive controller.** The shipped `--adaptive` uses `legacy`;
-`climb` is reachable only via `ASEQ_ADAPTIVE_MODE` (`batch.py:142`) and was
-benchmarked with a non-default `ASEQ_PROBE_WINDOW=8`. Legacy lost to
-`fixed-j20` in nearly every panel. Decide one of:
+**A1. Default adaptive controller (largely done in 0.1.3).** The released
+default is `topdown` (= the benchmarked `climb`), which is the right choice:
+the old gradient controller (`bottomup`, benchmarked as `adaptive-*`) lost to
+`fixed-j20` in nearly every panel. Remaining decisions:
 
-- **A1-a (recommended):** promote `climb` to the default adaptive mode, expose it
-  as a real CLI flag (`--adaptive-mode {climb,legacy}`), make its tuned probe
-  window the default, keep `legacy` selectable. Default `-j` cap = 20.
-- A1-b: default to fixed `-j 20`, adaptive opt-in. Honest, but awkward for a tool
-  named adaptiSeq.
+- **Probe window.** E3 ran `climb` with `ASEQ_PROBE_WINDOW=8`; the released
+  default is 5 s (`options.py`). Either make 8 s the default in the next
+  release, or rerun with 5 s. The paper must describe the configuration users
+  actually get.
+- **CLI flag.** Expose the mode as `--adaptive-mode {topdown,bottomup}` rather
+  than an environment variable only; reviewers will try it.
+- **Default cap.** Fix and document the default `-j` (the figure uses it).
+- **Docs.** Remove the stale "gradient controller" description where it still
+  describes the default (e.g. `README` feature list on `e8`).
 
 **A2. The adaptive claim.** Adopt K4 (robustness to over-provisioning), not
 "faster than the best fixed". Existing medians already support it:
 
-| panel | fixed-j40 | adaptive(climb)-j40 | fixed-j20 |
+| panel | fixed-j40 | topdown-j40 (run as `climb`) | fixed-j20 |
 |---|---|---|---|
 | 3a Fabric | 6.8 | 31.0 | 35.4 |
 | 3r Fabric | 9.7 | 39.4 | 70.0 |
@@ -104,12 +120,29 @@ pre-specified adaptiSeq arm (the default) appears in Fig 1b.
 (i) adaptiSeq vs iSeq (port plus what is new); (ii) adaptiSeq vs FastBioDL
 (arXiv:2508.05511), which also does adaptive concurrency for the same datasets.
 If the adaptive controller is shared with FastBioDL, it cannot be a novelty
-claim here; say so and cite. Decide author list and contributions (CRediT).
+claim here; say so and cite. Note that `adaptiseq/engine/segmented.py` states
+it is "a self-contained port of `SegmentedDownloader` from
+`fastbiodl_upgrade.py`", so the segmented engine is FastBioDL code: cite it
+and do not present the engine as new in this paper. Decide author list and
+contributions (CRediT).
 
-**A6. Attribution and licence.** adaptiSeq ports `iSeq-main/bin/iseq` 1.9.8. If
-iSeq is MIT-licensed, the MIT terms require keeping its copyright notice:
-add it to `LICENSE` (or a `NOTICE` file). Consider contacting the iSeq authors
-before submission; it reduces the risk of a hostile review.
+**A6. Attribution and licence (blocking).** adaptiSeq ports
+`iSeq-main/bin/iseq` 1.9.8. iSeq is MIT-licensed, `Copyright (c) 2024 BioOmics`
+(verified in BioOmics/iSeq `LICENSE`). MIT requires that this notice be
+included in copies or substantial portions of the software. On `main`:
+- `LICENSE` carries only `Copyright (c) 2026 swargo98`;
+- the README no longer has the "builds on iSeq, please cite iSeq" statement
+  that `e8` has;
+- in the 0.1.3 wheel, docstrings that said "Port of iseq ..." were reworded to
+  drop the provenance (e.g. `core.py` module docstring, `CheckFile`, the awk
+  preview functions);
+- `CHANGES_FROM_ISEQ.md` is not on `main`.
+
+Taken together this reads as removing provenance from a derived work. Fix
+before submission: add the BioOmics notice to `LICENSE` (or a `NOTICE` file),
+restore the iSeq credit and citation in the README and docs, and keep a
+changes-from-iSeq page in the docs site. This also protects the paper: the
+iSeq authors are likely reviewers. Consider contacting them before submission.
 
 ---
 
@@ -119,15 +152,17 @@ before submission; it reduces the risk of a hostile review.
 |----|------|----------------------|
 | B1 | Fix exit code on SRA-only runs: currently `rc=1` and the run in `fail.log` while valid `_1/_2(.fastq.gz)` are produced (E8, both machines; reproduce with `SRR1031060`/`SRR1031066`) | exit 0, run in `success.log`, regression test added |
 | B2 | Resolve/transfer overlap: either implement producer/consumer streaming using `resolve_all(on_task=...)` in `core._batch_download_phase` and `_aspera_download_phase`, or remove every overlap claim | if implemented: test showing first download starts before resolution ends; if not: grep shows no overlap claim in README, docs, FINDINGS |
-| B3 | Implement A1 (controller flag, defaults) | CLI help, docs, tests updated |
+| B3 | Finish A1: `--adaptive-mode` flag, probe-window default, documented `-j` default | CLI help, docs, tests updated |
+| B3b | A6 attribution: BioOmics MIT notice in `LICENSE`/`NOTICE`; iSeq credit and citation restored in README and docs; FastBioDL credited for the segmented engine | notices present in the sdist and wheel |
 | B4 | Remove stale claims flagged by the 2026-06-15 Codex verdict (`--protocol` default, `--engine` fallback text, etc.) | all items in that document closed or answered |
 | B5 | Decide whether an SRA-only accession now resolves via ENA (E10 notes say `SRR1031060` resolves with 1 ENA request; E8 says it is forced to `.sra`). Fix the resolver or the notes | one consistent, tested statement |
-| B6 | Version bump to 0.2.0; changelog | tag pushed |
-| B7 | Publish to PyPI | `pip install adaptiseq` works in a clean env |
+| B6 | Release 0.2.0 with B1 to B5 and B3b; changelog; git tag | tag pushed, PyPI updated |
+| B6b | Version discipline: E3 `versions.txt` reports "adaptiSeq 0.1.3" for pre-release code whose default was still the gradient controller, and the published 0.1.3 has a different default. Every benchmark TSV row must record the installed version **and** the git commit or wheel sha256; never reuse a version string for changed code | new fields present in all TSVs |
+| B7 | PyPI: **done** (0.1.3). Remaining: update `main` README, which still says "not yet on PyPI" (Installation section) and has the stale "badges resolve once the package is published" comment | README matches PyPI |
 | B8 | Bioconda recipe (gives BioContainers image automatically) | `conda install -c bioconda adaptiseq` works |
-| B9 | Zenodo DOI for the release (GitHub integration) | DOI in README and CITATION.cff |
+| B9 | Zenodo DOI for the release (GitHub integration); fix `CITATION.cff` (author is still the `TODO` placeholder "swargo98", version says 0.1.0) | DOI in README; CITATION.cff has real names, ORCIDs, current version |
 | B10 | CI green on 3.10 to 3.12; offline test suite passes; coverage figure if cheap | badge green |
-| B11 | Repository hygiene before reviewers look: move internal notes (`HANDOFF.md`, `PART*_PLAN.md`, `adaptiseq_codex_*.md`, `NOTES.md`, `adaptiSeq_part*.md`) to a `dev-notes/` directory or a separate branch; remove `btae641 (1).pdf`; remove `*.bak` | top-level contains only user-facing material |
+| B11 | Repository hygiene: **done on `main`**. Remaining: the benchmark harness and raw results exist only on `e8`. Decide where the paper's benchmark material lives (recommended: a separate `adaptiSeq-benchmarks` repository plus a Zenodo data DOI) so `main` stays clean and the paper still links to code that regenerates every figure | location decided and linked from the README |
 | B12 | Upstream: check the latest iSeq release; if the 3-file-run bug persists, open an issue on BioOmics/iSeq with the reproducer (`SRR22904269`) | issue link (cite in Supplement) |
 
 All benchmark reruns in Phase D must use the tagged release (B6), installed from
@@ -339,7 +374,7 @@ the reruns), Results last.
 |---|---|---|
 | 1 | A1 to A6 decisions written here | decisions committed |
 | 2 | B1 to B5, B11, C1 to C6 | tests green; C1 permutation test passes |
-| 3 | B6 to B10 release | `pip`/`conda` install of 0.2.0 in clean env |
+| 3 | B6 to B10 release (PyPI channel already exists) | `pip`/`conda` install of 0.2.0 in clean env |
 | 4 | C7 dry run | all TSV rows parse; verifier spot-check passes |
 | 5 | D1, D7 (cheap) in parallel with D2 on both machines | D2 complete, 10 reps |
 | 6 | D3, D4 | D4 corpus complete on both machines |
