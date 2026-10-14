@@ -1,0 +1,2 @@
+Checking /scratch/rswargo/job_54902878/dist/adaptiseq-0.1.4-py3-none-any.whl: [32mPASSED[0m
+Checking /scratch/rswargo/job_54902878/dist/adaptiseq-0.1.4.tar.gz: [32mPASSED[0m
