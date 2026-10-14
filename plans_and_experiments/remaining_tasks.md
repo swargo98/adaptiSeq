@@ -431,6 +431,19 @@ after a failed ENA query and could not be checked against ENA's checksums.
 Kingfisher's three-file handling is fine; it is the Kingfisher completeness
 number that the paper should explain this way.
 
+**fastq-dl has the same problem (same gate, 3r rep 1).** fastq-dl took 2395 s
+and verified 237 of 241 runs (39 of the 40 three-file runs); exit 0, nothing
+partial. The 4 missing runs (`SRR22904276`, `SRR22904351`, `SRR22904370`,
+`SRR22904422`) are 4 different runs from Kingfisher's. For each one, ENA's
+search API answered "ERROR occurred. Not all results may have been written"
+instead of the record, and fastq-dl 4.0.1 crashed with `KeyError: 'fastq_ftp'`
+(no retry, no fallback). The harness calls fastq-dl once per accession, so only
+that run was lost. adaptiSeq completed all 241 in the same window. So ENA's
+metadata service fails transiently about 1 query in 60 at present; tools that
+do not retry lose those runs. For the paper: describe the shortfall of both
+tools this way (transient ENA metadata errors, no retry), with the median count
+from the full run, rather than as a failure on particular runs.
+
 ### C. The gate has not been run on the benchmark machines
 
 The plan's gate ("one rep of both panels, then check") needs about 2.7 hours and
