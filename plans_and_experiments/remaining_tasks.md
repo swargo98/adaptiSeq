@@ -15,8 +15,8 @@ Three things I found along the way change what the paper can claim. They are in
 ## Update 2026-10-13, Expanse (`login02`, account `umr115`)
 
 Fresh clone of `app-notes` at `3b073f1` in `/home/rswargo/adaptiSeq`. This
-session's changes are uncommitted in that working tree; nothing was pushed,
-tagged, or published.
+session's changes are committed locally as they come in (from `4947475` on);
+nothing was pushed, tagged, or published.
 
 **State of the benchmark: setup done, gate running.** Two Slurm jobs:
 
