@@ -57,8 +57,8 @@ accessions and must obtain every run in it, intact, before any analysis starts.
 
 Several tools download sequencing data by accession. iSeq (Chao *et al.*, 2024)
 covers five databases with one interface and verifies checksums. Kingfisher
-(Woodcroft *et al.*) tries several sources for each run. fastq-dl (Petit *et
-al.*) retrieves FASTQ files from ENA or SRA. nf-core/fetchngs (Ewels *et al.*,
+(Woodcroft *et al.*, 2024) tries several sources for each run. fastq-dl (Petit *et
+al.*, 2026) retrieves FASTQ files from ENA or SRA. nf-core/fetchngs (Ewels *et al.*,
 2020) wraps retrieval in a Nextflow workflow, and pysradb (Choudhary, 2019)
 exposes archive metadata and downloads to Python. With the exception of
 workflow-level parallelism in fetchngs, these tools handle the runs in a list
@@ -216,25 +216,29 @@ sequencing data are public in ENA and SRA under the accessions listed there.
 
 ## References
 
-Reference details marked (verify) were written from memory and must be checked
-against the source before submission.
+Kingfisher, fastq-dl, pysradb, nf-core, and iSeq entries were checked on
+2026-10-13 against Crossref, Zenodo, and each project's citation file. The
+FastBioDL author order and the archive references still need checking.
 
 - Chao H, Li Z, Chen D, Chen M. iSeq: an integrated tool to fetch public
-  sequencing data. *Bioinformatics* 2024;40:btae641.
+  sequencing data. *Bioinformatics* 2024;40(11):btae641.
   doi:10.1093/bioinformatics/btae641
 - Choudhary S. pysradb: a Python package to query next-generation sequencing
   metadata and data from NCBI Sequence Read Archive. *F1000Research* 2019;8:532.
-  (verify)
+  doi:10.12688/f1000research.18676.1
 - Ewels PA, Peltzer A, Fillinger S *et al.* The nf-core framework for
   community-curated bioinformatics pipelines. *Nat Biotechnol* 2020;38:276-8.
-  (verify; add the nf-core/fetchngs Zenodo record for the version used)
-- Petit RA III *et al.* fastq-dl: efficiently download FASTQ files from SRA or
-  ENA repositories. (verify; cite the Zenodo record or JOSS paper the project
-  asks for)
+  doi:10.1038/s41587-020-0439-x
+- nf-core/fetchngs v1.12.0. Zenodo, 2024. doi:10.5281/zenodo.10728509
+  (author list: take from the Zenodo record)
+- Petit RA III, Hall MB, Tonkin-Hill G *et al.* fastq-dl: efficiently download
+  FASTQ files from SRA or ENA repositories. v4.0.1. Zenodo, 2026.
+  doi:10.5281/zenodo.8051230
 - Swargo RM, Arslan E, Arifuzzaman M. Adaptive parallel downloader for large
-  genomic datasets. arXiv:2508.05511, 2025.
-- Woodcroft BJ *et al.* Kingfisher: fast and flexible program for procurement of
-  sequence data from public repositories. (verify; cite as the project asks)
+  genomic datasets. arXiv:2508.05511, 2025. (verify author order)
+- Woodcroft BJ, Cunningham M, Gans JD, Bolduc BB, Hodgkins SB. Kingfisher: a
+  utility for procurement of public sequencing data. Zenodo, 2024.
+  doi:10.5281/zenodo.10525085
 - Archive references for SRA, ENA, DDBJ, and GSA (the current *Nucleic Acids
   Research* database-issue papers). (add)
 

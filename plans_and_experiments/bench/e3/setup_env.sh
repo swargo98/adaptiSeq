@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# One-time Expanse setup for E3. Run on a LOGIN node (it only installs; it must
+# One-time setup for E3 (Expanse or Fabric). On Expanse run on a LOGIN node (it only installs; it must
 # never benchmark -- EXPERIMENT_PLAN §13).
 #
 #   bash bench/e3/setup_env.sh
@@ -15,8 +15,13 @@ export PS1="${PS1:-}"
 ENV_NAME="${ENV_NAME:-adaptiseq_e3}"
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
-module purge
-module load slurm cpu/0.17.3b anaconda3/2021.05
+# Expanse gets conda from a module; elsewhere (Fabric) conda must already be on
+# PATH, e.g. a Miniforge install.
+if command -v module >/dev/null 2>&1; then
+    module purge
+    module load slurm cpu/0.17.3b anaconda3/2021.05
+fi
+command -v conda >/dev/null 2>&1 || { echo "[ERROR] conda not on PATH" >&2; exit 1; }
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
 if conda env list | grep -qE "^${ENV_NAME}\s"; then

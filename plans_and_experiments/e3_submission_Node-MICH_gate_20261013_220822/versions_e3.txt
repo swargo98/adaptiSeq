@@ -1,0 +1,6 @@
+# 2026-10-13T22:08:33+00:00  host=Node-MICH  panel=3r  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.4 aseq_sha256=a9f9de4045867f4d6273dd5c46f525394cb9bc5c5367a839f2c0a0a801619362  wheel=/home/ubuntu/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.4-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17

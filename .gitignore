@@ -34,3 +34,5 @@ fail.log
 
 # copyrighted reference papers (local only)
 papers/
+# macOS
+.DS_Store

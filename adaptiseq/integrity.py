@@ -132,6 +132,13 @@ def check_sra(ctx: RunContext, srr: str, download_fn: Callable[[], None]) -> boo
                     f"{bright_yellow('Note')}: {srr} validate failed, "
                     f"retry {count} times"
                 )
+                # A file that is present but has the wrong md5 cannot be repaired
+                # by resuming: the engine (like wget -c) sees a full-size file and
+                # leaves it alone, so this retry would re-check the same bytes.
+                # Drop it so every retry is a fresh download. A missing or partial
+                # file (mismatch is None) is still resumed. iseq keeps the file.
+                if mismatch is not None:
+                    _rm_files(ctx, [mismatch])
                 download_fn()
                 count += 1
                 continue

@@ -77,6 +77,36 @@ def test_gzip_md5_failure_after_retries(tmp_path):
     assert "SRR0000002" in (tmp_path / "fail.log").read_text()
 
 
+def test_gzip_md5_mismatch_first_retry_is_a_fresh_download(tmp_path):
+    # Regression: the first retry used to call the download with the bad file
+    # still in place; the engine skips a full-size file, so only the second
+    # retry actually re-downloaded.
+    good = b"good payload"
+    f = tmp_path / "SRR0000006.fastq.gz"
+    f.write_bytes(b"same size, wrong bytes")
+    (tmp_path / "SRR0000006.metadata.tsv").write_text(
+        "run_accession\tfastq_md5\tlibrary_layout\tfastq_ftp\n"
+        f"SRR0000006\t{_md5(good)}\tSINGLE\t"
+        "ftp.sra.ebi.ac.uk/vol1/fastq/SRR000/SRR0000006/SRR0000006.fastq.gz\n"
+    )
+    ctx = _ctx(tmp_path, gzip=True, database="ena")
+    ctx.accession = "SRR0000006"
+    ctx.database = "ena"
+
+    calls = []
+
+    def redownload():
+        # Behaves like the engine: an existing file is left alone.
+        calls.append(f.exists())
+        if not f.exists():
+            f.write_bytes(good)
+
+    ok = integrity.check_sra(ctx, "SRR0000006", redownload)
+    assert ok is True
+    assert calls == [False]  # bad file was gone before the first retry
+    assert logs.in_success(tmp_path, "SRR0000006")
+
+
 # ------------------------- checkSRA (-g, SRA-only Run) -------------------------
 
 def _sra_only_ctx(tmp_path, srr):

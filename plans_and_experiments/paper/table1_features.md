@@ -2,17 +2,17 @@
 
 Compiled 2026-10-13 from each tool's own `--help` output, source, or current
 documentation, at the versions listed. The "Evidence" section says where every
-cell comes from. Cells marked `?` could not be confirmed from a primary source
+cell comes from. The one cell still marked `?` (fetchngs rate limiting) could not be confirmed from a primary source
 and must be checked before submission (see `../remaining_tasks.md`).
 
 | Tool (version) | Databases | Accession list in one call | Parallel across accessions | Parallel, rate-limited resolution | md5 check | Resume partial file | Merge runs | Python API | pip / conda |
 |---|---|---|---|---|---|---|---|---|---|
 | **adaptiSeq** (0.1.4) | GSA, SRA, ENA, DDBJ, GEO | yes | yes (`-j`, adaptive) | yes (`--meta-jobs`) | yes | yes | yes (`-e`) | yes | pip |
 | iSeq (1.9.8) | GSA, SRA, ENA, DDBJ, GEO | yes | no (one run at a time) | no | yes | yes (`wget -c`) | yes (`-e`) | no | conda |
-| Kingfisher (0.5.0) | SRA, ENA, DDBJ; GSA experimental | yes | no (one run at a time) | no | optional (`--check-md5sums`) | ? | no | yes | pip, conda |
+| Kingfisher (0.5.0) | SRA, ENA, DDBJ; GSA experimental | yes | no (one run at a time) | no | optional (`--check-md5sums`) | no | no | yes | pip, conda |
 | fastq-dl (4.0.1) | SRA, ENA, DDBJ | no (one accession per call) | no | no | yes | no (`wget -O`) | yes (`--group-by-*`) | no | pip, conda |
 | nf-core/fetchngs (1.12.0) | SRA, ENA, DDBJ, GEO | yes | yes (Nextflow tasks) | ? | yes | task-level (`-resume`) | no | no | neither (Nextflow) |
-| pysradb (2.5.1) | SRA, ENA, GEO | by project/experiment | yes (`--threads`) | no | ? | yes (`.part`) | no | yes | pip, conda |
+| pysradb (2.5.1) | SRA, ENA, GEO | by project/experiment | yes (`--threads`) | no | no | yes (`.part`) | no | yes | pip, conda |
 
 Column definitions, to print under the table:
 
@@ -48,8 +48,13 @@ aws-http" and is off by default; `--download-threads` is connections per file
 (aria2c). Runs are processed in a loop (`kingfisher/__init__.py`,
 `download_and_extract` calls `download_and_extract_one_run` per run), and the
 same functions are importable. It skips runs whose output already exists
-(`_check_for_existing_files`); whether a *partial* file is resumed depends on
-aria2c's control file and is not documented: `?`.
+(`_check_for_existing_files`). A partial file is not resumed: `kingfisher/ena.py`
+runs `aria2c -x N -o FILE` (or `curl -L`) without a continue flag, and on a
+failed download or md5 mismatch `_clean_incomplete_files` deletes the file and
+its mate (checked in the installed 0.5.0 source, 2026-10-13). Also seen in the
+2026-10-13 gate run: when the ENA file-report query for one run fails (curl exit
+35), Kingfisher logs the error and exits, so the rest of the list is not
+attempted.
 
 **fastq-dl 4.0.1.** `fastq-dl --help`: `--accession` takes one Study, Sample,
 Experiment, or Run accession; `--provider ena|sra`; `--ignore` skips md5;
@@ -57,16 +62,18 @@ Experiment, or Run accession; `--provider ena|sra`; `--ignore` skips md5;
 connections per file for SRA downloads". ENA files are fetched with
 `wget --quiet -O` (`fastq_dl/providers/ena.py`), which restarts the file.
 
-**nf-core/fetchngs 1.12.0** (the latest release; the repository's dev branch
-reports 1.13.0). From the pipeline documentation: ids from SRA, ENA, DDBJ, GEO
+**nf-core/fetchngs 1.12.0** (Zenodo 10.5281/zenodo.10728509). Zenodo also
+lists a 1.13.0 release dated 2026-09-15 (10.5281/zenodo.22764959); decide which
+version the table describes and recheck the row against it. From the pipeline documentation: ids from SRA, ENA, DDBJ, GEO
 (and Synapse), md5 check on downloaded FASTQ, `--download_method ftp|aspera|sratools`.
 Not run here. Whether id resolution is rate-limited is not stated: `?`.
 
 **pysradb 2.5.1.** `pysradb download --help`: `--srp`, `--srx`, `--geo`,
 `--threads`, `--use_ascp`. `pysradb/download.py`: downloads to `<file>.part` and
 appends from the existing size; `download_file(..., md5_hash=None)` validates
-only when a hash is passed, and whether the `download` command passes one was
-not traced: `?`.
+only when a hash is passed, and no caller in 2.5.1 passes one (`sradb.py` and
+`geoweb.py` call it without `md5_hash`; checked in the installed source,
+2026-10-13), so downloads are not md5-checked.
 
 ## Differences from the README comparison table
 
