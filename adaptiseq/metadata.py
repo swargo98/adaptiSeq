@@ -13,6 +13,7 @@ Files produced:
 from __future__ import annotations
 
 import re
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -64,6 +65,33 @@ _RE_WEBENV = re.compile(r"<WebEnv>([^<]+)")
 _RE_QUERYKEY = re.compile(r"<QueryKey>([^<]+)")
 
 
+# ENA's portal sometimes answers with HTTP 200 and, in place of (or after) the
+# rows, a line "ERROR occurred. Not all results may have been written.Query:
+# {...}". Taken at face value that line becomes a Run called "ERROR occurred..."
+# and the accession is lost; seen on 2026-10-13 for about 1 query in 60, by every
+# tool in the benchmark. The answer is transient: the same query succeeds later.
+ENA_ERROR_MARKER = "ERROR occurred"
+ENA_ATTEMPTS = 4          # tries before falling back to the SRA path
+ENA_RETRY_BASE_S = 2.0    # sleep 2, 4, 8 s between tries
+_sleep = time.sleep       # patched in tests
+
+
+def has_ena_error(path: Path) -> bool:
+    """True if a saved metadata TSV contains ENA's in-band error line."""
+    try:
+        with open(path, "r", errors="replace") as fh:
+            return any(ln.lstrip().startswith(ENA_ERROR_MARKER) for ln in fh)
+    except FileNotFoundError:
+        return False
+
+
+def _unlink(path: Path) -> None:
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        pass
+
+
 # --- small awk-equivalents ------------------------------------------------------
 
 def _row2_field1(path: Path, sep: str) -> str:
@@ -92,12 +120,28 @@ def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
     query = validate_query(accession, reporter)
 
     tsv = ctx.metadata_tsv(accession)
-    wget_to_file(
-        ENA_URL.format(query=query, fields=ENA_FIELDS),
-        tsv,
-        cont=True,
-        quiet=True,
-    )
+    for attempt in range(1, ENA_ATTEMPTS + 1):
+        if has_ena_error(tsv):
+            _unlink(tsv)  # never resume (-c) onto an error body
+        wget_to_file(
+            ENA_URL.format(query=query, fields=ENA_FIELDS),
+            tsv,
+            cont=True,
+            quiet=True,
+        )
+        if not has_ena_error(tsv):
+            break
+        if attempt < ENA_ATTEMPTS:
+            delay = ENA_RETRY_BASE_S * 2 ** (attempt - 1)
+            reporter.info(
+                f"{bright_yellow('Note')}: ENA returned an error for {accession} "
+                f"(attempt {attempt}/{ENA_ATTEMPTS}), retrying in {delay:.0f} s"
+            )
+            _sleep(delay)
+    else:
+        # Still an error body: drop it and use the SRA path below, as for an
+        # empty ENA answer.
+        _unlink(tsv)
 
     if not _row2_field1(tsv, "\t"):
         reporter.info(

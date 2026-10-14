@@ -56,6 +56,17 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   first retry, so every retry is a fresh download. Previously the first retry
   found the full-size file, treated it as already complete, and re-checked the
   same bytes.
+- **Fix**: ENA's portal sometimes answers a metadata query with an in-band
+  error (`ERROR occurred. Not all results may have been written...`). adaptiSeq
+  took that line for a Run, cached it as the accession's `.metadata.tsv`, and
+  lost the accession. The error body is now retried (4 tries, 2/4/8 s apart,
+  then the SRA fallback) and a cached error body is fetched again.
+- **Fix**: in an accession list, one accession that cannot be resolved or
+  downloaded no longer stops the rest. It is reported, written to `fail.log`,
+  and the run continues (exit status 1 at the end), as iSeq does. Previously
+  the verification pass after a batch download stopped at that accession, so
+  later Runs were neither md5-checked nor retried. A single accession still
+  raises as before.
 - **Docs**: iSeq's and FastBioDL's MIT notices added to `LICENSE`; iSeq and
   FastBioDL credited in the README and `CITATION.cff`. Comparison table updated
   for Kingfisher 0.5.0 (Python API, experimental GSA) and pysradb 2.5.1

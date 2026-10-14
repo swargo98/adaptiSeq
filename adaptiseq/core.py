@@ -17,10 +17,10 @@ from . import metadata as meta
 from . import resolve, integrity, convert, merge
 from ._async import run_sync
 from .accession import is_gsa
-from .console import green
+from .console import bright_yellow, green, green_bold, red_bold
 from .errors import AdaptiSeqError
 from .engine import get_engine
-from .logs import ensure_success_log, in_success
+from .logs import ensure_success_log, in_success, mark_fail
 from .net import file_nonempty
 from .options import Options, RunContext
 
@@ -137,7 +137,7 @@ def _process_sra(ctx: RunContext, accession: str) -> None:
     opts = ctx.options
     tsv = ctx.metadata_tsv(accession)
 
-    if file_nonempty(tsv):
+    if file_nonempty(tsv) and not meta.has_ena_error(tsv):
         reporter.info(
             f"{green('Note')}: {tsv.name} exists, skip downloading metadata "
             f"for {accession}"
@@ -310,7 +310,24 @@ def run(
 
     for accession in accessions:
         ctx.retry_count = 1
-        process_accession(ctx, accession)
+        if len(accessions) == 1:
+            process_accession(ctx, accession)
+            continue
+        # In a list, one accession that cannot be resolved or downloaded must not
+        # stop the rest (iSeq runs each accession in a subshell for the same
+        # reason). It is reported, recorded in fail.log, and the run exits 1.
+        try:
+            process_accession(ctx, accession)
+        except AdaptiSeqError as exc:
+            ctx.reporter.error(f"{red_bold('Error')}: {exc.message}")
+            if exc.solution:
+                ctx.reporter.error(f"{green_bold('How to solve?')} {exc.solution}")
+            ctx.reporter.info(
+                f"{bright_yellow('Note')}: {accession} failed, save it in fail.log "
+                "and continue with the next accession"
+            )
+            mark_fail(ctx.workdir, accession)
+            ctx.failed = True
     return ctx
 
 

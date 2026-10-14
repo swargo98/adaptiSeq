@@ -467,6 +467,43 @@ only one of the retries was a fresh download. That makes a transient bad
 transfer less likely to survive, but it does not show what caused the July
 failures, so the wording decision still waits on the rerun.
 
+**Update, Expanse gate (job `54902879`, 3r rep 1): two adaptiSeq bugs found
+and fixed.** `adaptiseq-fixed-j20` completed 241/241 (354 s), but
+`adaptiseq-default` completed 239/241 (577 s, exit 1). The log shows why:
+
+1. ENA's portal answered the filereport query for `SRR22904257` with the
+   in-band error "ERROR occurred. Not all results may have been written..."
+   (the same transient error that cost Kingfisher and fastq-dl 4 runs each).
+   adaptiSeq accepted it, took the error line for a Run, and cached it as
+   `SRR22904257.metadata.tsv`, so the accession could never be resolved, even
+   in Phase B, which reuses cached metadata.
+2. In Phase B (the per-accession md5/convert/merge pass after the batch
+   download), the resulting `DownloadError` ended the whole loop at the fifth
+   accession. So no later accession was md5-checked or retried. The second lost
+   run is presumably a file that failed in the batch phase and that Phase B
+   would have retried; the payload is deleted, so I cannot name it. iSeq runs
+   each accession in a subshell, so there one bad accession does not stop the
+   list; adaptiSeq diverged from iSeq here.
+
+Fixes (in `adaptiseq/metadata.py`, `core.py`, `batch.py`; tests in
+`tests/test_list_resilience.py`; README 0.1.4 notes updated):
+- An ENA answer containing the error line is retried (4 tries, 2/4/8 s apart),
+  then treated like an empty answer (SRA fallback). A cached metadata file
+  containing it is fetched again, in both the batch resolver and Phase B.
+- In a list, an `AdaptiSeqError` for one accession is reported, written to
+  `fail.log`, `ctx.failed` is set (exit 1), and the loop continues. A single
+  accession still raises as before.
+
+This changes the wheel again (new sha256). The gate's remaining adaptiSeq arms
+(3b) run the old wheel; the full run must use the rebuilt one. Test job
+`54908172` (`bench/e3/pytest_expanse.sbatch`, output `pytest_expanse_<jobid>/`)
+runs the suite from the checkout; the wheel is rebuilt after the gate ends,
+because rebuilding reinstalls into the env the gate is using.
+
+For decision A: with the fix, a transient ENA error costs adaptiSeq nothing
+(it retries); without it, adaptiSeq is no better than the other tools on this.
+The full run will show whether 241/241 holds.
+
 ### B. Kingfisher's fallback methods cannot be credited by the md5 verifier
 
 The plan's Kingfisher arm is `-m ena-ftp aws-http prefetch`. When `ena-ftp`
