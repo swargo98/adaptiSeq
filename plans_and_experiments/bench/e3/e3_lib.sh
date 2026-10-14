@@ -44,6 +44,9 @@ run_arm() {
     local safe_arm="${arm//[^A-Za-z0-9_.-]/_}"
     local dir="$E3_WORK/${panel}_${dataset}_${safe_arm}_rep${rep}"
     local logf="$E3_LOGS/${panel}_${dataset}_${safe_arm}_rep${rep}.log"
+    # The tool writes to node scratch; only a copy without progress-bar redraws
+    # goes to $logf (axel under iSeq -p wrote a 26 GB log in one 3r arm).
+    local rawf="$E3_WORK/${panel}_${dataset}_${safe_arm}_rep${rep}.raw.log"
     local timef; timef="$(mktemp)"
 
     rm -rf "$dir"; mkdir -p "$dir"
@@ -74,7 +77,7 @@ run_arm() {
         timeout --kill-after=60 "$E3_TIMEOUT" \
             "${E3_TIME_BIN:-/usr/bin/time}" -v -o "$timef" \
             bash -c "$cmd"
-    ) > "$logf" 2>&1 &
+    ) > "$rawf" 2>&1 &
     local arm_pid=$!
 
     # Instantaneous concurrency, sampled identically for every arm (see
@@ -87,6 +90,8 @@ run_arm() {
     wait "$arm_pid"; rc=$?
     t1=$(date +%s.%N)
     wait "$samp_pid" 2>/dev/null || true
+    perl "$E3_DIR/strip_progress.pl" < "$rawf" >> "$logf" 2>/dev/null || cat "$rawf" >> "$logf"
+    rm -f "$rawf"
 
     # Default first, then let the sampler's line overwrite: a sampler that died,
     # timed out, or emitted a partial line must degrade to zeros, never abort the

@@ -111,6 +111,36 @@ after the point where it timed out. Details:
   errors that iSeq retried three times (and note that its retry counter is not
   reset between runs). Logs in `diag_iseq_md5_54907181/` and
   `diag_iseq_md5_54907247/`.
+
+**Gate result, iSeq `-p 8` (3r rep 1): 241 of 241 runs verified, all 40
+three-file runs, 4097 s, exit 0.** With axel's 8 FTP connections per file it
+finishes where iSeq at defaults timed out.
+
+**Harness fix: the iSeq `-p 8` log was 26 GB.** axel draws its progress bar
+with `\r` and no newline, and without a terminal the bar is very wide, so the 3r
+`iseq-p8` log grew to 26 GB (1.7 GB on disk after ZFS compression). A 1.46 GB
+partial copy of it had gone into three of my local commits; GitHub refuses files
+over 100 MB, so a push would have failed. I rewrote those three unpushed
+commits without the file (`4f2658e`, `8cbdfba`, `d80b459` replace `732b3f7`,
+`0edfff6`, `4506bd4`; messages and dates kept). The old commits are kept on the
+local branch `backup/app-notes-before-log-rewrite`; delete it once you are happy
+(`git branch -D backup/app-notes-before-log-rewrite`). Changes:
+
+- `bench/e3/strip_progress.pl` (new): drops the bar redraws, keeps every line of
+  text, and appends a count of what it removed.
+- `bench/e3/e3_lib.sh`: each arm now writes its output to the node's scratch,
+  and only the stripped copy goes to the results `logs/` directory. This takes
+  effect for jobs started after this change. The running gate read the old
+  version when it started, so its 3b `iseq-p8` log will be large again. (I
+  replaced the file by rename, not in place, so the running job is not
+  disturbed.) Also, the gate copies `bench/e3/*` into its results directory when
+  it ends, so that copy will show the new `e3_lib.sh`, not the one it ran.
+- `bench/e3/strip_logs.sbatch` (new): strips logs written before the fix,
+  keeping the raw file as `<log>.raw.gz` (git-ignored). Job `54907912` is doing
+  this for the 3r `iseq-p8` log; I will run it again for the 3b one after the
+  gate ends.
+- A smoke test of the changed harness (`SMOKE_D1`, all six arms) is job
+  `54907911`; output in `smoke_strip_<jobid>/` (not a result).
 - iSeq's retry counter (`count`) is a global that is never reset, so after the
   first run that fails md5, later failing runs get no retries. Minor; worth one
   clause if the paper discusses iSeq's failures.

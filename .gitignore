@@ -36,3 +36,6 @@ fail.log
 papers/
 # macOS
 .DS_Store
+
+# raw tool logs kept beside their progress-stripped copies (bench/e3/strip_logs.sbatch)
+*.raw.gz
