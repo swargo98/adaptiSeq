@@ -96,6 +96,14 @@ after the point where it timed out. Details:
   (`bench/e3/diag_iseq_md5.sbatch`, output `diag_iseq_md5_<jobid>/`) downloads
   the three files over FTP (iSeq's `wget` command) and HTTPS, compares md5 with
   ENA's, and reruns iSeq on `SRR22904281` keeping its metadata.
+  **Result (01:55 to 02:05):** over both FTP and HTTPS all three files arrived
+  complete and matched ENA's md5 (FTP 1.4 to 1.6 MB/s, HTTPS 2.1 to 2.3 MB/s).
+  So ENA's files and md5s are consistent now, and the failures are not a
+  property of these runs; a transfer problem during iSeq's window (about 23:00
+  to 00:00) is the likeliest cause. Not size-related: 7 other files of 0.32 to
+  0.38 GB passed iSeq's check in the same arm. The iSeq rerun in that job did
+  not happen (conda activation broke under `set -u`); fixed and resubmitted as
+  job `54907247`, now running iSeq on all three runs.
 - iSeq's retry counter (`count`) is a global that is never reset, so after the
   first run that fails md5, later failing runs get no retries. Minor; worth one
   clause if the paper discusses iSeq's failures.

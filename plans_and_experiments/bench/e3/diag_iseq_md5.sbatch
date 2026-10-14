@@ -16,7 +16,7 @@
 #
 # For each run: record ENA's file report now; download the FASTQ over FTP with
 # iSeq's own command (wget -c ftp://...) and over HTTPS with curl; md5 both;
-# then run iSeq itself on the first run and keep its metadata.tsv, so we can see which
+# then run iSeq itself on each run and keep its metadata.tsv, so we can see which
 # md5 it compared against.
 #
 # Submit from plans_and_experiments/:  sbatch bench/e3/diag_iseq_md5.sbatch
@@ -25,8 +25,11 @@ set -uo pipefail
 module purge
 module load slurm cpu/0.17.3b anaconda3/2021.05
 ENV_NAME="${ENV_NAME:-adaptiseq_e3_sub}"
+set +u   # conda's activate scripts read unset variables (PS1)
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate "$ENV_NAME"
+conda activate "$ENV_NAME" || { echo "conda activate $ENV_NAME failed"; exit 1; }
+set -u
+command -v iseq >/dev/null || { echo "iseq not on PATH"; exit 1; }
 
 RUNS="${RUNS:-SRR22904281 SRR22904283 SRR22904284}"
 OUT="$SLURM_SUBMIT_DIR/diag_iseq_md5_${SLURM_JOB_ID}"
@@ -52,8 +55,7 @@ for r in $RUNS; do
     echo "https $f  exit=$?  $(stat -c %s "$f") bytes  $(( $(date +%s) - t0 )) s  md5=$(md5sum "$f" | cut -d' ' -f1)" ) &
   wait
   echo "ena   $f  $(tail -n +2 "$OUT/${r}.filereport.tsv" | cut -f4,5)"
-  # iSeq itself, keeping its metadata (first run only: up to 3 slow FTP tries)
-  [[ "$r" != "${RUNS%% *}" ]] && continue
+  # iSeq itself, keeping its metadata
   mkdir -p iseq && cd iseq && t0=$(date +%s)
   iseq -i "$r" -g > "$OUT/${r}.iseq.log" 2>&1; rc=$?
   echo "iseq  exit=$rc  $(( $(date +%s) - t0 )) s  success.log: $(cat success.log 2>/dev/null | wc -l)  fail.log: $(cat fail.log 2>/dev/null | wc -l)"

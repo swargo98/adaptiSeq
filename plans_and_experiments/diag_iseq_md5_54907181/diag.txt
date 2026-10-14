@@ -1,0 +1,31 @@
+date: 2026-10-14T01:55:22-07:00  node: exp-1-09  public ip: 198.202.103.246
+/cm/local/apps/slurm/var/spool/job54907181/slurm_script: line 38: iseq: command not found
+wget: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by wget)
+iseq:   wget: GNU Wget 1.19.5 built on linux-gnu.
+
+=== SRR22904281 ===
+run_accession	library_layout	fastq_ftp	fastq_bytes	fastq_md5
+SRR22904281	SINGLE	ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/081/SRR22904281/SRR22904281.fastq.gz	358597858	21b63337bd6be2b72a69b93198e7fd7c
+wget: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by wget)
+https SRR22904281.fastq.gz  exit=0  358597858 bytes  158 s  md5=21b63337bd6be2b72a69b93198e7fd7c
+ftp   SRR22904281.fastq.gz  exit=0  358597858 bytes  220 s  md5=21b63337bd6be2b72a69b93198e7fd7c
+ena   SRR22904281.fastq.gz  358597858	21b63337bd6be2b72a69b93198e7fd7c
+iseq  exit=127  0 s  success.log: 0  fail.log: 0
+
+=== SRR22904283 ===
+run_accession	library_layout	fastq_ftp	fastq_bytes	fastq_md5
+SRR22904283	SINGLE	ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_2.fastq.gz	164633471;534090;534089	3e0b2b35a70f0a10ee016b87afd1ef97;17b7a2985959659e34a7c4e792e2c60d;35bf023531241721f67f6b8a0f452642
+wget: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by wget)
+https SRR22904283.fastq.gz  exit=0  164633471 bytes  72 s  md5=3e0b2b35a70f0a10ee016b87afd1ef97
+ftp   SRR22904283.fastq.gz  exit=0  164633471 bytes  137 s  md5=3e0b2b35a70f0a10ee016b87afd1ef97
+ena   SRR22904283.fastq.gz  164633471;534090;534089	3e0b2b35a70f0a10ee016b87afd1ef97;17b7a2985959659e34a7c4e792e2c60d;35bf023531241721f67f6b8a0f452642
+
+=== SRR22904284 ===
+run_accession	library_layout	fastq_ftp	fastq_bytes	fastq_md5
+SRR22904284	SINGLE	ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904284/SRR22904284.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904284/SRR22904284_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/084/SRR22904284/SRR22904284_2.fastq.gz	356892160;2068500;2068497	ce18132b2b4333c013fa8e2b05d7b9ed;e11020598ddfcff8c821aef13fcdc020;fc51c7a017c6d74f6fbcbdef3d130444
+wget: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by wget)
+https SRR22904284.fastq.gz  exit=0  356892160 bytes  179 s  md5=ce18132b2b4333c013fa8e2b05d7b9ed
+ftp   SRR22904284.fastq.gz  exit=0  356892160 bytes  252 s  md5=ce18132b2b4333c013fa8e2b05d7b9ed
+ena   SRR22904284.fastq.gz  356892160;2068500;2068497	ce18132b2b4333c013fa8e2b05d7b9ed;e11020598ddfcff8c821aef13fcdc020;fc51c7a017c6d74f6fbcbdef3d130444
+
+=== done 2026-10-14T02:05:35-07:00. Output: /home/rswargo/adaptiSeq/plans_and_experiments/diag_iseq_md5_54907181 ===
