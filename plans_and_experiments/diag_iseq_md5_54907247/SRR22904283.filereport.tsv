@@ -1,0 +1,2 @@
+run_accession	library_layout	fastq_ftp	fastq_bytes	fastq_md5
+SRR22904283	SINGLE	ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/083/SRR22904283/SRR22904283_2.fastq.gz	164633471;534090;534089	3e0b2b35a70f0a10ee016b87afd1ef97;17b7a2985959659e34a7c4e792e2c60d;35bf023531241721f67f6b8a0f452642

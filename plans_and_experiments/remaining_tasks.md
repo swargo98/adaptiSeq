@@ -103,7 +103,14 @@ after the point where it timed out. Details:
   to 00:00) is the likeliest cause. Not size-related: 7 other files of 0.32 to
   0.38 GB passed iSeq's check in the same arm. The iSeq rerun in that job did
   not happen (conda activation broke under `set -u`); fixed and resubmitted as
-  job `54907247`, now running iSeq on all three runs.
+  job `54907247`. **Result (02:07 to 02:37):** iSeq 1.9.9 itself, run alone on
+  each of the three, succeeded first time (exit 0, all files md5-verified, 127
+  to 290 s each). So the gate's failures were transient, not a defect of iSeq or
+  of these runs. For the paper: report iSeq's completeness as measured, and if
+  the full run shows md5 failures again, describe them as transient transfer
+  errors that iSeq retried three times (and note that its retry counter is not
+  reset between runs). Logs in `diag_iseq_md5_54907181/` and
+  `diag_iseq_md5_54907247/`.
 - iSeq's retry counter (`count`) is a global that is never reset, so after the
   first run that fails md5, later failing runs get no retries. Minor; worth one
   clause if the paper discusses iSeq's failures.
