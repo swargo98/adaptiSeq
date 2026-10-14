@@ -280,28 +280,36 @@ Not done here, and why:
    Kingfisher (decision B).
    **Timing from the gate so far:** 3r arms took Kingfisher 2649 s,
    adaptiSeq-j20 354 s, fastq-dl 2395 s, iSeq 10800 s (timeout). Because iSeq
-   uses FTP, its 3b arm will very likely run to the 30000 s timeout too. My
-   estimate for one repetition is now about 21 to 22 h (3r about 7 h, 3b about
-   15 h), so the gate may hit its 20 h limit during its last 3b arm (Slurm does
-   not let users raise a running job's limit). If it does, the finished arms
-   are still in the TSV. For the full run that means 2 repetitions per 48 h job,
-   3 jobs for 5 repetitions (`REPS=2`, `E3_REP_FIRST=3 REPS=2`,
-   `E3_REP_FIRST=5 REPS=1`, chained with `afterany`), about 110 h and 14,000 SUs
-   (the allocation has about 159,000 left). Lowering the iSeq timeouts would
-   shorten this but report less of iSeq; I would keep them.
-3. Then submit the full run, split so each job fits in 48 h. With the gate's
-   wall times `T3r` and `T3b` (sum over the six arms), one job holds
-   `48 h / (T3r + T3b)` repetitions. If that is 3, for example:
+   uses FTP, its 3b arm will very likely run to the 30000 s timeout too.
+   **Update 2026-10-14 09:53:** the first 3b arm, fastq-dl, took 24132 s
+   (6.7 h, 8/8 runs, about 1.1 MB/s: one FTP stream per file; one md5 mismatch
+   on `SRR15852406_2`, which fastq-dl re-downloaded by itself). The seeded 3b
+   order for rep 1 is fastq-dl, iseq-p8, adaptiseq-fixed-j20,
+   adaptiseq-default, iseq, kingfisher, so the gate's 20 h limit (17:20 PDT)
+   will stop it inside the `iseq` arm and Kingfisher's 3b arm will not run in
+   the gate. My estimate for one repetition is now about 24 h (3r about 5.8 h;
+   3b about 18 h: fastq-dl 6.7 h, iSeq up to 8.3 h, Kingfisher about 2.5 h at its
+   3r rate, iSeq `-p 8` and the two adaptiSeq arms about 1 h together).
+   **Two repetitions do not fit in a 48 h job**, so the full run is 5 chained
+   jobs of one repetition each (`E3_REP_FIRST=1..5 REPS=1`, `afterany`),
+   about 120 h of wall time and about 15,500 SUs (128-core node; the
+   allocation has about 159,000 left). Lowering the iSeq/fastq-dl timeouts
+   would shorten this but report less of them; I would keep them.
+3. Then submit the full run, one repetition per 48 h job (see the timing
+   above), chained so that no two overlap:
    ```bash
    cd plans_and_experiments
    export ENV_NAME=adaptiseq_e3_sub E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl
    export E3_TIMEOUT_3R=10800 E3_TIMEOUT_3B=30000 RESULTS_ROOT=$PWD/e3_submission_expanse
-   j1=$(REPS=3 sbatch --parsable --export=ALL bench/e3/e3_expanse.sbatch)
-   E3_REP_FIRST=4 REPS=2 sbatch --export=ALL --dependency=afterany:$j1 bench/e3/e3_expanse.sbatch
-   python bench/e3/analyze_submission.py --tsv Expanse=<job1>/e3_results.tsv \
-       --tsv Expanse=<job2>/e3_results.tsv --outdir paper/numbers
+   prev=""
+   for r in 1 2 3 4 5; do
+       dep=${prev:+--dependency=afterany:$prev}
+       prev=$(E3_REP_FIRST=$r REPS=1 sbatch --parsable --export=ALL $dep bench/e3/e3_expanse.sbatch)
+   done
+   python bench/e3/analyze_submission.py --tsv Expanse=<job1>/e3_results.tsv ... \
+       --tsv Expanse=<job5>/e3_results.tsv --outdir paper/numbers
    ```
-   The two jobs must not overlap (they would share the link), hence the
+   The jobs must not overlap (they would share the link), hence the
    dependency. They will probably land on different nodes; ratios are paired
    within a repetition, so that does not bias them, but say it in the methods.
 4. Decide what the paper says about the Fabric half. `Node-MICH` did not produce
