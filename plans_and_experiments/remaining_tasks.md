@@ -77,6 +77,32 @@ complete those 40 runs. The gate's 3r panel shows it either way. If it does:
   object to. Your call; the switch is `ENV_NAME=adaptiseq_e3` plus installing
   the wheel into it.
 
+**Gate result, iSeq 1.9.9 at defaults (3r rep 1): TIMEOUT at 10800 s, 181 of
+241 runs verified, 34 of the 40 three-file runs.** So 1.9.9 does handle
+three-file runs; the July claim is out for this version (the bullets above
+apply). Of the 6 three-file runs it did not complete, 2 failed md5 and 4 were
+after the point where it timed out. Details:
+
+- **Why so slow.** iSeq downloads ENA files over FTP by default (all 272
+  downloads in the log are `Mode: ftp`, single `wget` stream), and ENA's FTP is
+  slower per connection than HTTPS at present: 0.2 to 1.2 MB/s in this log, vs
+  about 2 MB/s for HTTPS in the probes. In July the same arm took about 1470 s.
+  The paper must say iSeq used its default protocol, FTP.
+- **3 runs failed md5 three times** (`SRR22904281`, a single-file run;
+  `SRR22904283` and `SRR22904284`, three-file runs, failing on the large
+  unpaired file). The full file size arrived each time. Kingfisher and adaptiSeq
+  verified these same files in the same job. About 50 min of the 3 h went to
+  re-downloading `SRR22904281`. Cause unknown; diagnostic job `54907181`
+  (`bench/e3/diag_iseq_md5.sbatch`, output `diag_iseq_md5_<jobid>/`) downloads
+  the three files over FTP (iSeq's `wget` command) and HTTPS, compares md5 with
+  ENA's, and reruns iSeq on `SRR22904281` keeping its metadata.
+- iSeq's retry counter (`count`) is a global that is never reset, so after the
+  first run that fails md5, later failing runs get no retries. Minor; worth one
+  clause if the paper discusses iSeq's failures.
+- 2 runs hit the same transient ENA metadata error ("ERROR occurred. Not all
+  results may have been written") that cost Kingfisher and fastq-dl 4 runs each;
+  iSeq logged "not available in all databases" for them.
+
 `paper/supplement.md` still says iSeq 1.9.8; that is correct, since those
 experiments ran 1.9.8.
 
@@ -207,6 +233,17 @@ Not done here, and why:
    `check_run.txt`, `manual_md5_check.txt`, `link_probe.txt`, and in
    `e3_results.tsv` the `wall_s` of every arm and `runs_present_unverified` for
    Kingfisher (decision B).
+   **Timing from the gate so far:** 3r arms took Kingfisher 2649 s,
+   adaptiSeq-j20 354 s, fastq-dl 2395 s, iSeq 10800 s (timeout). Because iSeq
+   uses FTP, its 3b arm will very likely run to the 30000 s timeout too. My
+   estimate for one repetition is now about 21 to 22 h (3r about 7 h, 3b about
+   15 h), so the gate may hit its 20 h limit during its last 3b arm (Slurm does
+   not let users raise a running job's limit). If it does, the finished arms
+   are still in the TSV. For the full run that means 2 repetitions per 48 h job,
+   3 jobs for 5 repetitions (`REPS=2`, `E3_REP_FIRST=3 REPS=2`,
+   `E3_REP_FIRST=5 REPS=1`, chained with `afterany`), about 110 h and 14,000 SUs
+   (the allocation has about 159,000 left). Lowering the iSeq timeouts would
+   shorten this but report less of iSeq; I would keep them.
 3. Then submit the full run, split so each job fits in 48 h. With the gate's
    wall times `T3r` and `T3b` (sum over the six arms), one job holds
    `48 h / (T3r + T3b)` repetitions. If that is 3, for example:
