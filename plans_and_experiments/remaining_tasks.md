@@ -310,6 +310,25 @@ Not done here, and why:
    speedup should be reported from the five-rep medians, and a tail-end
    re-split of the last segments would be a real improvement but changes the
    tool under test, so not before the full run.
+   **Update 12:09:** 3b adaptiSeq-default finished 7/8 in 4136 s, exit 1:
+   SRR15852411 failed md5 three times (the batch copy of `_1`, a fresh `_1`,
+   then a fresh `_2`; `integrity.check_sra` drops the mismatching file before
+   each retry, so these were three separate downloads). All of them were HTTPS,
+   so TLS rules out corruption in transit, and the log has no failed segment,
+   only 8 refused connects, which write nothing. The worker gate does not pause
+   files mid-download (`batch._worker` passes no pause token), so the
+   adaptive controller cannot cause it either. That leaves ENA serving wrong
+   bytes for that run for a while, or a bug I have not found. Other tools hit
+   md5 mismatches in this gate too (fastq-dl on `SRR15852406_2`, iSeq on three
+   3r runs), which fits a server-side cause. The retries ran at 1 or 2
+   connections (about 1 MB/s per connection), which is most of the extra
+   40 minutes over the fixed arm. **Diagnostic `54917324`**
+   (`bench/e3/diag_corrupt.{py,sbatch}`) downloads SRR15852411 four times with
+   adaptiSeq's `SegmentedDownloader` and with curl side by side, logs each
+   response's ETag/Last-Modified/Content-Range, and compares any bad copy
+   block by block with a good one (zero blocks at a segment boundary would
+   mean adaptiSeq; scattered garbage or a second ETag would mean ENA). I will
+   hold the full run until it reports.
 3. Then submit the full run, one repetition per 48 h job (see the timing
    above), chained so that no two overlap:
    ```bash

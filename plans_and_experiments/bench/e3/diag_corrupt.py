@@ -67,11 +67,6 @@ async def seg_download(url, dest, hdr_log):
         return ok, d.calculate_segments(os.path.getsize(dest)) if ok else []
 
 
-def curl_download(url, dest, hdr_path):
-    rc = subprocess.call(["curl", "-sS", "-D", hdr_path, "-o", dest, url])
-    return rc == 0
-
-
 def compare(bad, good):
     """Return a summary of the 1 MiB blocks that differ."""
     diff, zero = [], 0
@@ -121,15 +116,19 @@ def main():
     good, bad = {}, []
     for it in range(1, a.iters + 1):
         for name, want, size, url in specs:
-            for method in ("seg", "curl"):
-                dest = os.path.join(a.work, f"{method}_{it}_{name}")
-                t0 = time.time()
-                if method == "seg":
-                    ok, segs = asyncio.run(seg_download(url, dest, hdr_log))
-                else:
-                    ok = curl_download(url, dest, os.path.join(a.out, f"curl_{it}_{name}.headers"))
-                    segs = []
-                dt = time.time() - t0
+            # curl runs alongside the segmented download (both are slow per
+            # connection; sequential would not fit the job)
+            cdest = os.path.join(a.work, f"curl_{it}_{name}")
+            t0 = time.time()
+            cproc = subprocess.Popen(["curl", "-sS", "-D",
+                                      os.path.join(a.out, f"curl_{it}_{name}.headers"),
+                                      "-o", cdest, url])
+            sdest = os.path.join(a.work, f"seg_{it}_{name}")
+            ok, segs = asyncio.run(seg_download(url, sdest, hdr_log))
+            done = {"seg": (sdest, ok, time.time() - t0, segs)}
+            crc = cproc.wait()
+            done["curl"] = (cdest, crc == 0, time.time() - t0, [])
+            for method, (dest, ok, dt, segs) in done.items():
                 got = md5_of(dest) if os.path.exists(dest) else "-"
                 match = got == want
                 res.write(f"{it}\t{method}\t{name}\t{ok}\t{os.path.getsize(dest) if os.path.exists(dest) else 0}"

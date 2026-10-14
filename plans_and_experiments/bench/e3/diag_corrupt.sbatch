@@ -6,7 +6,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
-#SBATCH --time=04:00:00
+#SBATCH --time=06:00:00
 #SBATCH --output=slurm_diag_corrupt_%j.out
 #
 # Were the md5 mismatches on SRR15852411 (gate 54902879, 3b adaptiseq-default)
@@ -46,5 +46,5 @@ for r in ${RUNS:-SRR15852411}; do
     done
 done
 python -u "$REPO_DIR/bench/e3/diag_corrupt.py" --out "$OUT" --work "$WORK" \
-    --iters "${ITERS:-5}" "${specs[@]}"
+    --iters "${ITERS:-4}" "${specs[@]}"
 echo "=== done $(date -Is) ==="
