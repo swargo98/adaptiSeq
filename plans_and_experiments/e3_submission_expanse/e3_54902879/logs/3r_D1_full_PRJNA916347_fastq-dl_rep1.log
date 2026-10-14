@@ -1,0 +1,32 @@
+2026-10-13 22:11:42 INFO     Query: SRR22904253                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904253...       download.py:402
+                    INFO     /scratch/rswargo/job_54902879/e3_payload ena.py:202
+                             /3r_D1_full_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904253.fastq.gz FTP download attempt            
+                             1                                                  
+2026-10-13 22:11:44 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_54902879/e3_payload           
+                             /3r_D1_full_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904253.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_54902879/e3_pa                
+                             yload/3r_D1_full_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
+2026-10-13 22:11:45 INFO     Query: SRR22904254                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR22904254...       download.py:402
+                    INFO     /scratch/rswargo/job_54902879/e3_payload ena.py:202
+                             /3r_D1_full_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904254.fastq.gz FTP download attempt            
+                             1                                                  
+2026-10-13 22:11:47 INFO     Successfully downloaded                  ena.py:232
+                             /scratch/rswargo/job_54902879/e3_payload           
+                             /3r_D1_full_PRJNA916347_fastq-dl_rep1/SR           
+                             R22904254.fastq.gz                                 
+                    INFO     Writing metadata to                 download.py:469
+                             /scratch/rswargo/job_54902879/e3_pa                
+                             yload/3r_D1_full_PRJNA916347_fastq-                
+                             dl_rep1/fastq-run-info.tsv                         
