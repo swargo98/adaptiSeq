@@ -496,9 +496,13 @@ Fixes (in `adaptiseq/metadata.py`, `core.py`, `batch.py`; tests in
 
 This changes the wheel again (new sha256). The gate's remaining adaptiSeq arms
 (3b) run the old wheel; the full run must use the rebuilt one. Test job
-`54908172` (`bench/e3/pytest_expanse.sbatch`, output `pytest_expanse_<jobid>/`)
-runs the suite from the checkout; the wheel is rebuilt after the gate ends,
-because rebuilding reinstalls into the env the gate is using.
+`54908172` (`bench/e3/pytest_expanse.sbatch`, output `pytest_expanse_54908172/`)
+ran the suite from the checkout: all pass, offline (7 live tests skipped) and
+with network (1 skipped, live Aspera). Committed as `41ac3c9`. The wheel is
+rebuilt after the gate ends, because rebuilding reinstalls into the env the
+gate is using: setup job `54908326` is queued with `--dependency=afterany:54902879`
+and writes `setup_expanse_54908326/` (new `wheel_sha256.txt`, tests, README
+check).
 
 For decision A: with the fix, a transient ENA error costs adaptiSeq nothing
 (it retries); without it, adaptiSeq is no better than the other tools on this.

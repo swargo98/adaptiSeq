@@ -4,3 +4,9 @@ iseq: Version 1.9.9
 kingfisher: 0.5.0
 fastq-dl: fastq-dl, version 4.0.1
 python: Python 3.11.17
+# 2026-10-14T03:10:16-07:00  host=exp-5-53  panel=3b  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.4 aseq_sha256=40bbfd17a0703ebafcb4589710974252d87d3819c2614991b90f7f1cd1699650  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.4-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
