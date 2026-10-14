@@ -295,6 +295,21 @@ Not done here, and why:
    about 120 h of wall time and about 15,500 SUs (128-core node; the
    allocation has about 159,000 left). Lowering the iSeq/fastq-dl timeouts
    would shorten this but report less of them; I would keep them.
+   **Update 11:00:** 3b iSeq `-p 8` took 1990 s and adaptiSeq-fixed-j20
+   1903 s, both 8/8 (about 13 MB/s each; its log stayed at 22 KB, so no
+   stripping needed). So on 3b adaptiSeq is only about 5% faster than iSeq
+   `-p 8` in this rep, against 11.6x on 3r. The connection log shows why:
+   adaptiSeq held about 17 HTTPS connections for the first 20 minutes, but
+   the path gave about 13 MB/s whatever the connection count (the setup-job
+   probe got 40 MB/s at 20 connections the evening before), and the last
+   10 minutes ran on 8 or fewer connections while the largest files' final
+   segments finished. Six segment connects to `ftp.sra.ebi.ac.uk:443` were
+   refused and retried. These three arms together take about 1.6 h, so a
+   repetition is about 24.5 h; one per 48 h job still holds. A 3b result
+   this close is worth knowing before the paper's claims are written: the 3b
+   speedup should be reported from the five-rep medians, and a tail-end
+   re-split of the last segments would be a real improvement but changes the
+   tool under test, so not before the full run.
 3. Then submit the full run, one repetition per 48 h job (see the timing
    above), chained so that no two overlap:
    ```bash
