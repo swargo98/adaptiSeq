@@ -2,16 +2,15 @@
 
 Compiled 2026-10-13 from each tool's own `--help` output, source, or current
 documentation, at the versions listed. The "Evidence" section says where every
-cell comes from. The one cell still marked `?` (fetchngs rate limiting) could not be confirmed from a primary source
-and must be checked before submission (see `../remaining_tasks.md`).
+cell comes from. No cell is unresolved.
 
 | Tool (version) | Databases | Accession list in one call | Parallel across accessions | Parallel, rate-limited resolution | md5 check | Resume partial file | Merge runs | Python API | pip / conda |
 |---|---|---|---|---|---|---|---|---|---|
 | **adaptiSeq** (0.1.4) | GSA, SRA, ENA, DDBJ, GEO | yes | yes (`-j`, adaptive) | yes (`--meta-jobs`) | yes | yes | yes (`-e`) | yes | pip |
-| iSeq (1.9.8) | GSA, SRA, ENA, DDBJ, GEO | yes | no (one run at a time) | no | yes | yes (`wget -c`) | yes (`-e`) | no | conda |
+| iSeq (1.9.9) | GSA, SRA, ENA, DDBJ, GEO | yes | no (one run at a time) | no | yes | yes (`wget -c`) | yes (`-e`) | no | conda |
 | Kingfisher (0.5.0) | SRA, ENA, DDBJ; GSA experimental | yes | no (one run at a time) | no | optional (`--check-md5sums`) | no | no | yes | pip, conda |
 | fastq-dl (4.0.1) | SRA, ENA, DDBJ | no (one accession per call) | no | no | yes | no (`wget -O`) | yes (`--group-by-*`) | no | pip, conda |
-| nf-core/fetchngs (1.12.0) | SRA, ENA, DDBJ, GEO | yes | yes (Nextflow tasks) | ? | yes | task-level (`-resume`) | no | no | neither (Nextflow) |
+| nf-core/fetchngs (1.13.0) | SRA, ENA, DDBJ, GEO | yes | yes (Nextflow tasks) | parallel; no rate cap (waits after HTTP 429) | yes | task-level (`-resume`) | no | no | neither (Nextflow) |
 | pysradb (2.5.1) | SRA, ENA, GEO | by project/experiment | yes (`--threads`) | no | no | yes (`.part`) | no | yes | pip, conda |
 
 Column definitions, to print under the table:
@@ -33,8 +32,13 @@ Column definitions, to print under the table:
 `adaptiseq/engine/segmented.py` (`.part` + `.part.meta`), `adaptiseq/__init__.py`
 (`fetch`, `resolve`, `get_metadata`). On PyPI; not on Bioconda.
 
-**iSeq 1.9.8** (the version benchmarked; Bioconda now carries 1.9.9).
-`bin/iseq` usage text: `-i` takes "a file containing multiple accessions",
+**iSeq 1.9.9** (the version in the submission benchmark env
+`adaptiseq_e3_sub`; the July runs and the supplement used 1.9.8). The usage text
+of 1.9.8 and 1.9.9 is identical, so no cell changes. The scripts differ in three
+places: run metadata comes from NCBI E-utilities instead of the Trace back end,
+the BioSample accession pattern (`SAM[EDN]...`) is widened, and for ENA gzip downloads 1.9.9 loops over every
+`fastq.gz` link of a run (1.9.8 handled exactly one or two links, so runs with
+three files failed). `bin/iseq` usage text: `-i` takes "a file containing multiple accessions",
 `-p` is "the number of connections" for one file, `-k` skips the md5 check,
 `-e` merges, `-d ena|sra`. It is a Bash script with no importable interface.
 Resume from offset was observed in E7b (Supplementary Table S1). Bioconda:
@@ -62,11 +66,22 @@ Experiment, or Run accession; `--provider ena|sra`; `--ignore` skips md5;
 connections per file for SRA downloads". ENA files are fetched with
 `wget --quiet -O` (`fastq_dl/providers/ena.py`), which restarts the file.
 
-**nf-core/fetchngs 1.12.0** (Zenodo 10.5281/zenodo.10728509). Zenodo also
-lists a 1.13.0 release dated 2026-09-15 (10.5281/zenodo.22764959); decide which
-version the table describes and recheck the row against it. From the pipeline documentation: ids from SRA, ENA, DDBJ, GEO
-(and Synapse), md5 check on downloaded FASTQ, `--download_method ftp|aspera|sratools`.
-Not run here. Whether id resolution is rate-limited is not stated: `?`.
+**nf-core/fetchngs 1.13.0** (2026-09-15, Zenodo 10.5281/zenodo.22764959; the
+rate-limit cell was checked in 1.12.0 as well, Zenodo 10.5281/zenodo.10728509,
+and is the same). Not run here; read from the source at the release tags on
+2026-10-13. README and `docs/usage.md`: ids from SRA, ENA, DDBJ, and GEO; FASTQ
+fetched "in parallel via `wget`" with an `md5sum` check;
+`--download_method ftp|aspera|sratools|fastq-dl` (`fastq-dl` is new in 1.13.0,
+and Synapse ids are no longer listed). Resolution is one Nextflow task per id
+(`SRA_IDS_TO_RUNINFO`, called on the id channel in `workflows/fetchngs.nf`), so
+lookups run concurrently, as many at once as the executor allows. Nothing caps
+the request rate: no `maxForks`, `queueSize`, or `submitRateLimit` appears in
+any `.nf` or `.config` file of the pipeline. The lookup script
+(`bin/sra_ids_to_runinfo.py`, `fetch_url`) reacts after the fact: on HTTP 429 it
+sleeps for the server's `Retry-After`, or 5 s doubling, and retries; on HTTP 500
+it retries with the same backoff. The task also carries the `error_retry` label
+(two Nextflow retries). By the column's definition this is parallel resolution
+without a request-rate cap.
 
 **pysradb 2.5.1.** `pysradb download --help`: `--srp`, `--srx`, `--geo`,
 `--threads`, `--use_ascp`. `pysradb/download.py`: downloads to `<file>.part` and
@@ -75,14 +90,17 @@ only when a hash is passed, and no caller in 2.5.1 passes one (`sradb.py` and
 `geoweb.py` call it without `md5_hash`; checked in the installed source,
 2026-10-13), so downloads are not md5-checked.
 
-## Differences from the README comparison table
+## The README comparison table
 
-The README's table (written earlier) disagrees with the above in three places.
-It should be updated in the same release so the paper and the repository agree:
+The README's table (written earlier) disagreed with the above in three places.
+It was corrected on 2026-10-13, before the 0.1.4 wheel was rebuilt, so the paper
+and the repository agree:
 
-1. Kingfisher is listed without a Python API. 0.5.0 exposes
-   `kingfisher.download_and_extract`.
-2. Kingfisher is listed as "All except GSA/GEO". 0.5.0 has experimental
-   `ngdc-ascp` / `ngdc-http` methods for CRR accessions.
-3. fetchngs is listed with "Batch ✔" but pysradb is not, although
-   `pysradb download --threads` downloads several files at once.
+1. Kingfisher now has "Python API ✔" (0.5.0 exposes
+   `kingfisher.download_and_extract`).
+2. Kingfisher's databases now read "SRA, ENA, DDBJ, GSA (experimental)" and its
+   accessions "All except GEO" (0.5.0 has experimental `ngdc-ascp` /
+   `ngdc-http` methods for CRR accessions).
+3. pysradb now has "Batch ✔": `pysradb download --threads N` maps the file list
+   over N threads (`sradb.py`, `thread_map(..., max_workers=threads)`; the
+   default is 1).

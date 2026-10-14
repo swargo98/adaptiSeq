@@ -32,6 +32,8 @@ def main() -> int:
     ap.add_argument("--tsv", required=True, type=Path)
     ap.add_argument("--panels", nargs="+", default=["3r", "3b"])
     ap.add_argument("--reps", type=int, default=5)
+    ap.add_argument("--rep-first", type=int, default=1,
+                    help="first repetition number in this TSV (E3_REP_FIRST of the run)")
     args = ap.parse_args()
 
     df = pd.read_csv(args.tsv, sep="\t", dtype={"aseq_version": str, "aseq_sha256": str})
@@ -41,7 +43,7 @@ def main() -> int:
 
     for panel in args.panels:
         for arm in ARMS:
-            for rep in range(1, args.reps + 1):
+            for rep in range(args.rep_first, args.rep_first + args.reps):
                 n = len(df[(df["panel"] == panel) & (df["arm"] == arm) & (df["rep"] == rep)])
                 if n != 1:
                     problems.append(f"{panel} {arm} rep{rep}: {n} rows (want 1)")

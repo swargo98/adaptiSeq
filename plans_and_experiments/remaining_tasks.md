@@ -12,6 +12,222 @@ Three things I found along the way change what the paper can claim. They are in
 
 ---
 
+## Update 2026-10-13, Expanse (`login02`, account `umr115`)
+
+Fresh clone of `app-notes` at `3b073f1` in `/home/rswargo/adaptiSeq`. This
+session's changes are uncommitted in that working tree; nothing was pushed,
+tagged, or published.
+
+**State of the benchmark: setup done, gate running.** Two Slurm jobs:
+
+| Job | What | State |
+|---|---|---|
+| `54902878` `adaptiseq_setup` (`shared`, 8 cores, 2 h) | env, wheel, tests, README check, ENA probe | **COMPLETED** 20:40 to 21:20 PDT on `exp-1-44`, all steps passed (below) |
+| `54902879` `adaptiseq_gate` (`compute`, exclusive, 20 h limit) | the gate: one rep of 3r + 3b | **RUNNING** since 21:20 PDT on `exp-5-53` (AMD EPYC 7742, 128 cores, 251 GB, 870 GB free NVMe) |
+
+Both jobs waited about 3 h in the queue because of a Lustre fault on Expanse
+(about 600 compute nodes draining, "Lustre df is hung"). The full five-rep run is
+not submitted; it waits on the gate (see "What you need to do next").
+
+Setup job results (`setup_expanse_54902878/`):
+
+- **Env** `adaptiseq_e3_sub` built from the exact pins of the Fabric export:
+  iSeq 1.9.9, Kingfisher 0.5.0, fastq-dl 4.0.1, sra-tools 3.4.1, aria2 1.37.0,
+  axel 2.17.13, Python 3.11.17 (`versions.txt`; full list re-exported to
+  `bench/e3/env_adaptiseq_e3_sub.yml`). Note iSeq is 1.9.9 here, not the 1.9.8
+  of the July env; Table 1 and the manuscript should name 1.9.9.
+- **Wheel and sdist rebuilt** from this tree, `twine check` passed for both.
+  New hashes (`wheel_sha256.txt`), replacing `a9f9de40...`:
+  - `adaptiseq-0.1.4-py3-none-any.whl` sha256
+    `40bbfd17a0703ebafcb4589710974252d87d3819c2614991b90f7f1cd1699650`
+  - `adaptiseq-0.1.4.tar.gz` sha256
+    `2e34f82ae26bedf7fb910aa4392f8d97023398bf6a4fe3efd64a0693a77b3114`
+  The gate's `versions.txt` shows the same wheel hash, so the benchmark is
+  running exactly these files. Upload these two, unchanged, if you release.
+- **Tests:** 176 collected. Offline (`ADAPTISEQ_NO_NETWORK=1`): all pass, 7
+  skipped (the live tests). With network: all pass, 1 skipped (live Aspera,
+  opt-in, needs `ascp` and a key).
+- **README examples** (CLI and Python API) in a clean venv from the wheel on
+  `SMOKE_D1`: both exit 0, 3/3 runs and 3/3 files verified by md5
+  (`readme_example.txt`).
+- **ENA probe from a compute node** (`exp-1-44`, public IP 198.202.103.211):
+  1.7 MB/s with 1 connection, 16.9 with 8, 40.4 with 20 (1.65 to 2.11 MB/s per
+  connection). Same picture as from the login node.
+
+**iSeq 1.9.9 may no longer drop the three-file runs. This affects a claim in the
+paper.** I diffed the July iSeq 1.9.8 script against the 1.9.9 now in the
+benchmark env. The usage text is identical (Table 1 cells unchanged; row now
+says 1.9.9). But for ENA gzip downloads, 1.9.9 loops over every `fastq.gz` link
+of a run, where 1.9.8 handled exactly one or two links and failed on the 40
+three-file runs of PRJNA916347; md5 is checked per file against the ENA
+metadata. (The other changes: run metadata from E-utilities instead of the
+Trace back end, and a wider BioSample pattern.) So iSeq 1.9.9 will probably
+complete those 40 runs. The gate's 3r panel shows it either way. If it does:
+
+- The Results sentence "none of the 40 three-file runs ... because it passes the
+  three URLs to `wget` as a single string" is wrong for the version benchmarked.
+  I already replaced it in `manuscript_draft.md` with a placeholder that states
+  the 1.9.8 behaviour and what to delete.
+- The Introduction lists "correct handling of three-file runs" as one of
+  adaptiSeq's additions over iSeq. It was true against 1.9.8; against 1.9.9 it
+  is not a difference. Reword or drop it, and check Fig. 1c's legend and the
+  abstract's completeness sentence.
+- Alternative: benchmark iSeq 1.9.8 (the July env has it). I did not do this,
+  because comparing against an outdated release is easy for a reviewer to
+  object to. Your call; the switch is `ENV_NAME=adaptiseq_e3` plus installing
+  the wheel into it.
+
+`paper/supplement.md` still says iSeq 1.9.8; that is correct, since those
+experiments ran 1.9.8.
+
+Because of the Lustre fault the gate writes its results to home, not Lustre:
+`plans_and_experiments/e3_submission_expanse/e3_<jobid>/`. Payload still goes to
+the node's local NVMe. The setup job writes to
+`plans_and_experiments/setup_expanse_<jobid>/`.
+
+**ENA limits throughput per connection for Expanse too.** This is the check the
+Fabric section asked for. From `login02`, one 1.3 GB ENA file, 20 s windows:
+2.2 MB/s with 1 connection, 16.2 with 8, 44.3 with 20 (2.0 to 2.2 MB/s per
+connection throughout). In July a single stream from Expanse got 9 to 13 MB/s.
+So the limit is not specific to the Fabric networks; EBI applies it generally
+at present, at about twice the rate Fabric saw. Consequences:
+
+- The July timeouts no longer hold. At 2.2 MB/s a single-stream arm needs about
+  3.3 h for 3b (limit was 7200 s) and about 1.2 h for 3r (limit 5400 s). The
+  gate is submitted with the values the Fabric section proposed,
+  `E3_TIMEOUT_3R=10800 E3_TIMEOUT_3B=30000`.
+- One repetition will take roughly 12 h, not 2.7 h, so five repetitions (about
+  60 h) do not fit in one 48 h job. `run_e3.sh` now takes `E3_REP_FIRST`, so the
+  run can be split across jobs (for example reps 1 to 3, then
+  `E3_REP_FIRST=4 REPS=2`); each rep keeps the arm order it would have had in a
+  single job. `analyze_submission.py` already accepts several TSVs under one
+  machine name (`--tsv Expanse=a.tsv --tsv Expanse=b.tsv`).
+- The comparison now measures tools against a per-connection limit. Tools that
+  open more connections win by roughly the number of connections, which favours
+  adaptiSeq more than the July data did. The paper should state the limit and
+  the probe figures (the gate records them in `link_probe.txt`); a reviewer who
+  reruns on a day without the limit will see smaller ratios.
+- The login-node figures are from a login node. The setup job and the gate
+  repeat the probe from compute nodes; use those in the paper.
+
+**The wheel changed, and so did its sha256** (new hash above). I edited files
+that go into the package (below), so the wheel built on the Fabric node
+(`a9f9de40...`) was no longer what would be released. The setup job rebuilt the
+wheel and sdist from this tree and replaced the files in `wheels/`; the gate runs
+that wheel. No valid benchmark row exists for the old wheel, so nothing is lost. The earlier
+advice still applies: upload exactly the file in `wheels/`. `pyproject.toml`,
+`README.md`, `LICENSE`, and everything under `adaptiseq/` go into the wheel, so
+a change to any of them means a rebuild and a new sha256 (`CITATION.cff` does
+not). If only the metadata files change, the code the benchmark ran is still
+identical, but the hash in the TSV rows will not be the one PyPI shows.
+
+Done in this session:
+
+- **FastBioDL licence (Step 1, item 2): resolved.** FastBioDL is public and MIT
+  (`github.com/swargo98/FastBioDL-Adaptive-Parallel_Downloader`, "Copyright (c)
+  2025 Rasman Mubtasim Swargo"). MIT requires the notice to travel with copied
+  portions, so the notice is now reproduced in `LICENSE` next to iSeq's,
+  verbatim from FastBioDL's `LICENSE`.
+- **README comparison table (Step 1, item 4): corrected** in the three places
+  Table 1 flagged. Kingfisher: "Python API ✔", databases "SRA, ENA, DDBJ, GSA
+  (experimental)", accessions "All except GEO". pysradb: "Batch ✔" (I confirmed
+  in the 2.5.1 source that `--threads N` maps the file list over N threads;
+  default 1). The sentence "No other tool combines all three" is still true.
+  These are edits to how your table describes competitors, so please read the
+  two rows.
+- **README update notes for 0.1.4** now also list the retry fix and the licence
+  and table changes.
+- **`pyproject.toml` author** changed from `swargo98` to `Rasman Mubtasim
+  Swargo` (the name on FastBioDL's licence and on arXiv). Co-authors, ORCIDs,
+  and affiliations are still yours to add, there and in `CITATION.cff`.
+- **Table 1: no `?` left.** fetchngs resolves ids in parallel (one Nextflow task
+  per id) with no request-rate cap; its lookup script waits and retries after an
+  HTTP 429 or 500. Read from the source at tags 1.12.0 and 1.13.0. The row now
+  describes 1.13.0 (the current release, 2026-09-15); 1.13.0 also adds a
+  `fastq-dl` download method and no longer lists Synapse ids.
+- **References: all verified, none pending.** FastBioDL author order is Swargo,
+  Arslan, Arifuzzaman on arXiv (2508.05511), which is what the draft and
+  `CITATION.cff` have. (FastBioDL's own README has a commented-out BibTeX entry
+  with Arifuzzaman second; that one is the odd one out.) I found no published
+  proceedings version of the FastBioDL paper in Crossref, so it stays an arXiv
+  citation; replace it if the PDSW version has a DOI. fetchngs is cited as Patel
+  H, Garcia MU, Talbot A *et al.*, v1.13.0, from its Zenodo record. Archive
+  references added and cited in the Introduction: SRA (Katz 2022), ENA (Yuan
+  2026), DDBJ (Ara 2026), GSA (Chen 2021), each checked in Crossref.
+- **Introduction, the two statements to check (Step 4, item 4).** "Tens of
+  millions of runs" holds: ENA's portal counts 44.4 million read runs and NCBI
+  Entrez 47.2 million SRA records (both queried 2026-10-13). The second
+  statement was wrong and is rewritten: fetchngs is not the only tool with
+  parallelism across runs, because pysradb has `--threads`. The text now says
+  fetchngs runs one task per run, pysradb can download several files at once
+  when given a thread count (default one), and the others are sequential.
+- **Acknowledgements (Step 4, item 3): drafted.** The ACCESS sentence and grant
+  numbers are copied from access-ci.org's acknowledgement page, with the
+  Expanse, ACCESS, and FABRIC citations (DOIs checked). The FABRIC grant list
+  matches the FABRIC portal footer. Two things for you: the allocation number
+  (`expanse-client user` reports `TG-CIS250262`; I wrote `CIS250262`), and
+  whether the FABRIC sentence stays, which depends on whether FABRIC results
+  are in the paper. Funding, co-authors, and corresponding author are still
+  placeholders.
+- **Harness.**
+  - `bench/e3/setup_expanse.sbatch` (new): one job that creates the env, builds
+    and installs the wheel, runs the tests offline and with the network, runs
+    the README's CLI and Python examples from the wheel in a clean venv, and
+    probes ENA at 1, 8, and 20 connections.
+  - `setup_env.sh`: `ENV_FILE=<yml>` creates the env from exact pins.
+  - `e3_expanse.sbatch`: `ENV_NAME` selects the env; the link probe is replaced
+    (it downloaded a 17 KB file, so it finished in one round trip and measured
+    nothing; it now uses a 1.3 GB file at 1, 8, and 20 connections); the node's
+    CPU, memory, and scratch are recorded in `machine.txt` for the methods
+    paragraph.
+  - `run_e3.sh`: `E3_REP_FIRST`; `check_run.py`: `--rep-first`.
+- **Environment (Step 2, item 2): decided as "rebuild, same builds as Fabric".**
+  The setup job creates a new env, `adaptiseq_e3_sub`, from
+  `bench/e3/env_adaptiseq_e3.yml` (the Fabric export: iSeq 1.9.9, Kingfisher
+  0.5.0, fastq-dl 4.0.1, sra-tools 3.4.1, aria2 1.37.0, Python 3.11.17). The
+  July env `adaptiseq_e3` (iSeq 1.9.8, adaptiSeq 0.1.3 editable) is untouched.
+  If you would rather benchmark the July versions, submit with
+  `ENV_NAME=adaptiseq_e3` after installing the wheel into it.
+
+Not done here, and why:
+
+- **The gate**: running (job `54902879`); results not in yet.
+- **The full run**: waits on the gate.
+- **Env build on the login node**: tried first and failed twice ("Resource
+  temporarily unavailable": the login nodes cap virtual memory at 8 GB). Moved
+  to a compute node at your instruction. The empty `adaptiseq_e3_sub` stub those
+  attempts left in `~/.conda/envs` is removed.
+- **Release, Zenodo, publishing the benchmark files**: unchanged, yours.
+
+### What you need to do next
+
+1. ~~When the setup job has run, read `setup_expanse_<jobid>/`.~~ Done: all
+   passed (above).
+2. When the gate has run, read `e3_submission_expanse/e3_<jobid>/`:
+   `check_run.txt`, `manual_md5_check.txt`, `link_probe.txt`, and in
+   `e3_results.tsv` the `wall_s` of every arm and `runs_present_unverified` for
+   Kingfisher (decision B).
+3. Then submit the full run, split so each job fits in 48 h. With the gate's
+   wall times `T3r` and `T3b` (sum over the six arms), one job holds
+   `48 h / (T3r + T3b)` repetitions. If that is 3, for example:
+   ```bash
+   cd plans_and_experiments
+   export ENV_NAME=adaptiseq_e3_sub E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl
+   export E3_TIMEOUT_3R=10800 E3_TIMEOUT_3B=30000 RESULTS_ROOT=$PWD/e3_submission_expanse
+   j1=$(REPS=3 sbatch --parsable --export=ALL bench/e3/e3_expanse.sbatch)
+   E3_REP_FIRST=4 REPS=2 sbatch --export=ALL --dependency=afterany:$j1 bench/e3/e3_expanse.sbatch
+   python bench/e3/analyze_submission.py --tsv Expanse=<job1>/e3_results.tsv \
+       --tsv Expanse=<job2>/e3_results.tsv --outdir paper/numbers
+   ```
+   The two jobs must not overlap (they would share the link), hence the
+   dependency. They will probably land on different nodes; ratios are paired
+   within a repetition, so that does not bias them, but say it in the methods.
+4. Decide what the paper says about the Fabric half. `Node-MICH` did not produce
+   a valid run, and the plan allows Expanse only. The manuscript still describes
+   two machines in the abstract, methods, Figure 1 legend, and limitations.
+
+---
+
 ## Update 2026-10-13, Fabric node `Node-MICH`
 
 The earlier work is committed on `app-notes` (`d59bd0a`) and on the remote.
@@ -248,11 +464,11 @@ Remaining:
 
 1. **Author metadata in `CITATION.cff`.** I entered "Swargo, Rasman Mubtasim" from
    the FastBioDL author list and your GitHub handle. Please confirm it, and add
-   co-authors, ORCIDs, and affiliations. I do not have them. The same applies to
-   `authors` in `pyproject.toml`, which still says `swargo98`.
-2. **FastBioDL's licence.** I credited it by citation. If FastBioDL is published
-   under a licence that requires its notice to be reproduced, add that notice to
-   `LICENSE` next to iSeq's. I could not find its repository to check.
+   co-authors, ORCIDs, and affiliations. I do not have them. `authors` in
+   `pyproject.toml` now has the same name (Expanse update); co-authors there are
+   also yours. `LICENSE` still reads "Copyright (c) 2026 swargo98".
+2. ~~**FastBioDL's licence.**~~ Done (Expanse update): FastBioDL is MIT and its
+   notice is in `LICENSE`.
 3. **Release (plan task 4).** Needs your PyPI token, push rights, and your
    Zenodo login, and publishing is not reversible, so I did not attempt it.
    Order matters, because Zenodo only archives releases created after the
@@ -263,11 +479,9 @@ Remaining:
    4. Tag `v0.1.4`, push the tag, and create a GitHub release from it.
    5. Put the DOI and release date into `CITATION.cff` (two commented lines are
       ready), the README, and the manuscript.
-4. **README comparison table.** `paper/table1_features.md` lists three cells that
-   disagree with the tools' current versions (Kingfisher has a Python API and
-   experimental GSA support; pysradb downloads in parallel). The iSeq and
-   Kingfisher authors may review this paper, so the table should be corrected in
-   the same release. I left it because how you define the columns is your call.
+4. ~~**README comparison table.**~~ Done (Expanse update): the three cells are
+   corrected. Read the Kingfisher and pysradb rows, since the column definitions
+   are yours.
 
 ---
 
@@ -314,9 +528,13 @@ Not covered by that test, because this is a macOS laptop:
 
 Remaining:
 
-1. **Run the gate, then the full benchmark, on Expanse and Fabric.** Not done:
-   `Node-MICH` is unusable for it (update section) and I have no access to
-   Expanse. The run needs about 14 hours per machine. With the wheel in
+1. **Run the gate, then the full benchmark, on Expanse and Fabric.** On
+   Expanse the gate is running (job `54902879`; Expanse update) and
+   the full run follows it, split across jobs. `Node-MICH` is unusable. The
+   14-hour estimate below is from July; with ENA's per-connection limit expect
+   about 12 hours per repetition. The commands below are the original ones; on
+   Expanse use those in the Expanse update, which set the env name, timeouts,
+   and results directory. With the wheel in
    `wheels/` (or after 0.1.4 is on PyPI), from `plans_and_experiments/` on each
    machine. On a fresh Fabric node, install Miniforge first and put `conda` on
    `PATH`; set `E3_WORK` to the NVMe, since the default is `/tmp`:
@@ -339,7 +557,9 @@ Remaining:
    1.9.8; Bioconda now has 1.9.9). Decide whether to keep the July versions or
    rebuild the environment, and use the same choice on both machines. A fresh
    environment today gets iSeq 1.9.9 (this node did), so keeping 1.9.8 on Fabric
-   means pinning it in `setup_env.sh`.
+   means pinning it in `setup_env.sh`. **Decided on Expanse:** a new env
+   `adaptiseq_e3_sub` built from the Fabric export, so both machines have the
+   same builds (iSeq 1.9.9); the July env is kept as it was.
 3. **Paths.** The harness expects to be run from the directory containing
    `bench/` and `datasets/`, which is now `plans_and_experiments/`. The old
    `submit_e3.sh` and `status.sh` are untouched and still assume the six-panel
@@ -369,9 +589,10 @@ Remaining:
        --tsv Expanse=<expanse run dir>/e3_results.tsv \
        --tsv Fabric=<fabric run dir>/e3_results.tsv --outdir paper/numbers
    ```
-2. **One cell in Table 1 is still marked `?`** (fetchngs rate limiting).
-   fetchngs was not installed or run; its row comes from its documentation.
-   The Kingfisher and pysradb cells are resolved from the installed sources.
+2. ~~**One cell in Table 1 is still marked `?`**~~ Resolved from the fetchngs
+   source (Expanse update): parallel resolution, no request-rate cap. fetchngs
+   was still not installed or run; its row describes 1.13.0 from the source and
+   documentation at that tag.
 3. **With five repetitions the bootstrap interval is coarse**: it can only fall
    on observed ratios, so it will often equal the minimum and maximum. The
    Limitations section says so. If a reviewer is likely to press on this, more
@@ -391,18 +612,16 @@ Remaining:
 
 1. **Fill the result placeholders** (`[[...]]`) from `paper/numbers/`. The table
    at the end of the draft maps each one to a file and field.
-2. **References.** The Kingfisher, fastq-dl, pysradb, nf-core, and iSeq entries
-   are checked and carry DOIs. Still to do: confirm the FastBioDL author order,
-   take the fetchngs author list from its Zenodo record, and add the archive
-   references (SRA, ENA, DDBJ, GSA).
+2. ~~**References.**~~ Done (Expanse update): every entry is verified, the
+   archive references are added, and fetchngs has its author list.
 3. **Things only you know:** co-authors and affiliations, funding, the
-   acknowledgement wording that ACCESS/Expanse and FABRIC require, the
    corresponding author, and the description of the two machines (I wrote "128-core
-   Expanse node" and "8-core FABRIC virtual machine" from the result files).
-4. **Two factual statements in the Introduction** should be checked against a
-   source: that the archives hold "tens of millions" of runs, and that fetchngs
-   is the only listed tool with parallelism across runs (pysradb's `--threads`
-   may also qualify; see Table 1).
+   Expanse node" and "8-core FABRIC virtual machine" from the result files;
+   `Node-MICH` had 4 cores, and the gate writes the Expanse node's hardware to
+   `machine.txt`). The ACCESS/Expanse and FABRIC acknowledgement wording is now
+   drafted from the programs' pages; confirm the allocation number.
+4. ~~**Two factual statements in the Introduction.**~~ Checked (Expanse
+   update): the first holds, the second was wrong and is rewritten.
 5. **Convert to the journal's format** (OUP template, 4 pages) once the numbers
    are in. The draft is Markdown.
 
@@ -412,8 +631,10 @@ Remaining:
 
 - [x] iSeq and FastBioDL credited in `LICENSE` and README. In the paper: drafted.
 - [ ] `pip install adaptiseq==0.1.4` in a fresh environment runs the README
-      example. Verified with the locally built wheel; repeat from PyPI after
-      release.
+      example. Verified with the wheel built on the Fabric node, and again on
+      Expanse for the rebuilt wheel (sha256 `40bbfd17...`; CLI and API both
+      3/3 runs md5-verified, `setup_expanse_54902878/readme_example.txt`).
+      Repeat from PyPI after release.
 - [ ] Every number in the text comes from the new TSVs via the script. The
       script and placeholders are in place; the TSVs do not exist yet.
 - [ ] Zenodo DOI resolves. Needs the release.

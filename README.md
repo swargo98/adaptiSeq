@@ -52,8 +52,14 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   no longer exits with code 1 and a `fail.log` entry after producing complete
   FASTQ. The `.sra` is now validated with `vdb-validate`, recorded in
   `success.log`, and not re-downloaded.
-- **Docs**: iSeq's MIT notice added to `LICENSE`; iSeq and FastBioDL credited in
-  the README and `CITATION.cff`.
+- **Fix**: after an MD5 mismatch, the mismatching file is deleted before the
+  first retry, so every retry is a fresh download. Previously the first retry
+  found the full-size file, treated it as already complete, and re-checked the
+  same bytes.
+- **Docs**: iSeq's and FastBioDL's MIT notices added to `LICENSE`; iSeq and
+  FastBioDL credited in the README and `CITATION.cff`. Comparison table updated
+  for Kingfisher 0.5.0 (Python API, experimental GSA) and pysradb 2.5.1
+  (`--threads`).
 
 ### 0.1.3
 - **Fix**: a segmented download whose `.part` file is missing at finalize (e.g.
@@ -363,8 +369,8 @@ adaptiSeq apart.
 | [enaBrowserTools](https://github.com/enasequence/enaBrowserTools) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | urllib, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |
 | [fastq-dl](https://github.com/rpetit3/fastq-dl) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | wget | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ | ✔ |
 | [fetchngs](https://github.com/nf-core/fetchngs) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz | wget, aspera, prefetch | ✔ | ✔ | ✔ | ❌ | ✔ | ❌ | ❌ | ❌ | ✔ | ❌ |
-| [pysradb](https://github.com/saketkc/pysradb) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz, sra, bam | requests, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ✔ | ❌ | ✔ | ✔ |
-| [Kingfisher](https://github.com/wwood/kingfisher-download) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | curl, aria2c, aspera | ✔ | ✔ | ❌ | ✔ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |
+| [pysradb](https://github.com/saketkc/pysradb) | Python | SRA, ENA, DDBJ, GEO | All except GSA | fq, fq.gz, sra, bam | requests, aspera | ✔ | ✔ | ✔ | ❌ | ✔ | ❌ | ✔ | ❌ | ✔ | ✔ |
+| [Kingfisher](https://github.com/wwood/kingfisher-download) | Python | SRA, ENA, DDBJ, GSA (experimental) | All except GEO | fq, fq.gz, sra | curl, aria2c, aspera | ✔ | ✔ | ❌ | ✔ | ❌ | ❌ | ✔ | ❌ | ✔ | ✔ |
 
 > **Parallel** = multiple connections/segments per transfer · **Batch** = many
 > accessions downloaded **in parallel** in one run (not one-at-a-time) ·

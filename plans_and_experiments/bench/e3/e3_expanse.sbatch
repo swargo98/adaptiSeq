@@ -48,7 +48,8 @@ if [[ -z "$CONDA_BASE" || ! -f "$CONDA_BASE/etc/profile.d/conda.sh" ]]; then
     exit 1
 fi
 source "$CONDA_BASE/etc/profile.d/conda.sh"
-conda activate adaptiseq_e3 || { echo "[ERROR] conda env 'adaptiseq_e3' missing. Run bench/e3/setup_env.sh first." >&2; exit 1; }
+ENV_NAME="${ENV_NAME:-adaptiseq_e3}"
+conda activate "$ENV_NAME" || { echo "[ERROR] conda env '$ENV_NAME' missing. Run bench/e3/setup_env.sh first." >&2; exit 1; }
 export PATH="${CONDA_PREFIX}/bin:$PATH"
 
 REPO_DIR="${SLURM_SUBMIT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
@@ -112,7 +113,7 @@ echo "repo        : $REPO_DIR"
 echo "python      : $E3_PYTHON  ($(python3 --version 2>&1))"
 echo "payload     : $E3_WORK   ($(df -h "$NVME_DIR" | awk 'NR==2{print $4}') free)"
 echo "results     : $RUN_OUT"
-echo "panels      : $PANELS  (reps=$REPS, arm set=${ARM_SET:-submission})"
+echo "panels      : $PANELS  (reps=$REPS from rep ${E3_REP_FIRST:-1}, arm set=${ARM_SET:-submission})"
 echo "wheel       : ${E3_ASEQ_WHEEL:-<not set>}"
 
 # ─── GATE 1: outbound egress (EXPERIMENT_PLAN §16.1 -- gate everything) ────
@@ -149,6 +150,16 @@ done
 # drop integrity from the headline figure.
 [[ $missing -eq 1 ]] && { echo "[ERROR] missing tools; run bench/e3/setup_env.sh" >&2; exit 1; }
 
+# The machine, for the paper's methods paragraph.
+{
+    echo "date: $(date -Is)"; echo "node: $(hostname -s)"; echo "kernel: $(uname -r)"
+    lscpu 2>/dev/null | grep -E '^(Model name|Socket\(s\)|Core\(s\) per socket|Thread\(s\) per core|CPU\(s\)):'
+    echo "memory: $(free -g | awk '/^Mem:/{print $2}') GB"
+    echo "local scratch: $(df -h "$NVME_DIR" | awk 'NR==2{print $2" total, "$4" free, "$1}')"
+    echo "os: $(. /etc/os-release 2>/dev/null; echo "${PRETTY_NAME:-?}")"
+} > "$RUN_OUT/machine.txt" 2>&1
+cat "$RUN_OUT/machine.txt"
+
 echo; echo "=== versions (pinned for the paper) ==="
 {
     echo "date: $(date -Is)"; echo "node: $(hostname -s)"
@@ -169,16 +180,24 @@ echo; echo "=== datasets ==="
 cp -r "$DATASETS" "$RUN_OUT/datasets_used" 2>/dev/null || true
 
 # ─── Baseline link capacity (context for §11 / E9, and for reading Fig 3) ──
-echo; echo "=== link ceiling probe (single + 8-stream, ENA) ==="
+# A 1.3 GB file, so the transfer is still in progress when the 20 s window ends.
+# (The 17 KB file used before finished in one round trip and measured nothing.)
+# ENA has limited throughput per connection since at least 2026-10, so the rate
+# at 1, 8, and 20 connections is what explains the single-stream arms.
+echo; echo "=== link ceiling probe (ENA, 1 / 8 / 20 connections, 20 s each) ==="
 {
-    PROBE="https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/053/SRR22904253/SRR22904253.fastq.gz"
-    echo "single-stream:"
-    curl -so /dev/null -w '  %{speed_download} B/s (%{size_download} B)\n' --max-time 120 "$PROBE"
-    if command -v aria2c >/dev/null; then
-        echo "aria2c -x8 -s8:"
-        ( cd "$E3_WORK" && timeout 180 aria2c -x8 -s8 -q --allow-overwrite=true -d . "$PROBE" \
-            && echo "  ok" ; rm -f "$E3_WORK"/SRR22904253.fastq.gz* )
-    fi
+    PROBE="https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/000/SRR15852400/SRR15852400_1.fastq.gz"
+    echo "date: $(date -Is)  node: $(hostname -s)  public ip: $(curl -s --max-time 10 https://api.ipify.org || echo '?')"
+    for P in 1 8 20; do
+        tmp="$(mktemp)"
+        for i in $(seq 0 $((P - 1))); do
+            s=$((i * 60000000)); e=$((s + 59999999))
+            curl -so /dev/null -r "$s-$e" -w '%{speed_download}\n' --max-time 20 "$PROBE" >> "$tmp" &
+        done
+        wait
+        awk -v p="$P" '{s+=$1; n++} END{printf "  P=%-2d  total %.1f MB/s  (%.2f MB/s per connection, %d reported)\n", p, s/1e6, (n? s/1e6/n : 0), n}' "$tmp"
+        rm -f "$tmp"
+    done
 } 2>&1 | tee "$RUN_OUT/link_probe.txt"
 
 # ─── GATE 3: the md5 verifier agrees with a by-hand check ─────────────────
@@ -201,7 +220,7 @@ echo; echo "=== aggregating ==="
 "$E3_PYTHON" "$REPO_DIR/bench/e3/aggregate.py" \
     --tsv "$RUN_OUT/e3_results.tsv" --outdir "$RUN_OUT" 2>&1 | tee "$RUN_OUT/summary.txt" || true
 "$E3_PYTHON" "$REPO_DIR/bench/e3/check_run.py" --tsv "$RUN_OUT/e3_results.tsv" \
-    --panels $PANELS --reps "$REPS" 2>&1 | tee "$RUN_OUT/check_run.txt" || true
+    --panels $PANELS --reps "$REPS" --rep-first "${E3_REP_FIRST:-1}" 2>&1 | tee "$RUN_OUT/check_run.txt" || true
 
 cp "$REPO_DIR/bench/e3/"*.sh "$REPO_DIR/bench/e3/"*.py "$REPO_DIR/bench/e3/"*.sbatch "$RUN_OUT/" 2>/dev/null || true
 for f in "slurm_e3_${SLURM_JOB_ID}.out" "slurm_e3_${SLURM_JOB_ID}.err"; do

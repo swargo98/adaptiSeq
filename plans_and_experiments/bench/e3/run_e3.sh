@@ -53,6 +53,12 @@ ARM_SET="${ARM_SET:-submission}"
 # goes in every row; see aseq_fingerprint.py. Required for the paper panels.
 export E3_ASEQ_WHEEL="${E3_ASEQ_WHEEL:-}"
 export E3_SEED="${E3_SEED:-20261013}"              # base seed for the arm-order permutation
+# First repetition number. A run too long for one job can be split: a second job
+# with E3_REP_FIRST=4 and reps=2 produces reps 4 and 5, with the arm orders those
+# reps would have had in a single job (the seed depends on the rep number). Give
+# each job its own E3_OUT and pass every TSV to analyze_submission.py under the
+# same machine name.
+export E3_REP_FIRST="${E3_REP_FIRST:-1}"
 # Kingfisher's prefetch fallback writes nothing with sra-tools >= 3.1 unless this
 # is set (found in E8). It only matters when ena-ftp fails for a run.
 export NCBI_VDB_PREFETCH_USES_OUTPUT_TO_FILE="${NCBI_VDB_PREFETCH_USES_OUTPUT_TO_FILE:-1}"
@@ -226,13 +232,13 @@ run_panel() {
     export E3_TIMEOUT="$timeout_s"
 
     echo "############################################################" >&2
-    echo "# panel $panel  dataset=$dataset  reps=$reps  arms=${#ARMS[@]}  timeout=${timeout_s}s" >&2
+    echo "# panel $panel  dataset=$dataset  reps=$reps (from rep $E3_REP_FIRST)  arms=${#ARMS[@]}  timeout=${timeout_s}s" >&2
     echo "############################################################" >&2
 
     local orderf="$E3_LOGS/arm_order.tsv"
     [[ -f "$orderf" ]] || printf 'panel\trep\tseed\torder_idx\tarm\n' > "$orderf"
 
-    for rep in $(seq 1 "$reps"); do
+    for rep in $(seq "$E3_REP_FIRST" "$((E3_REP_FIRST + reps - 1))"); do
         # A fresh seeded permutation every rep. (`shuf --random-source=<(yes N)`,
         # used before, is not one: the repeating byte stream left most arms in the
         # same position in every rep.) The seed mixes panel and rep so the two

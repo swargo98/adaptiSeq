@@ -24,8 +24,22 @@ fi
 command -v conda >/dev/null 2>&1 || { echo "[ERROR] conda not on PATH" >&2; exit 1; }
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
+# ENV_FILE=<exported yml> builds the env from exact pins (same builds as the
+# machine that exported it) instead of solving for the newest versions. The
+# file's pip section and prefix are dropped: adaptiSeq is installed from the
+# wheel below.
+ENV_FILE="${ENV_FILE:-}"
 if conda env list | grep -qE "^${ENV_NAME}\s"; then
     echo "env ${ENV_NAME} already exists; activating."
+elif [[ -n "$ENV_FILE" ]]; then
+    echo "=== creating ${ENV_NAME} from pins in ${ENV_FILE} ==="
+    [[ -f "$ENV_FILE" ]] || { echo "[ERROR] ENV_FILE not found: $ENV_FILE" >&2; exit 1; }
+    SOLVER="conda"
+    command -v mamba >/dev/null 2>&1 && SOLVER="mamba"
+    pins="$(mktemp --suffix=.yml)"
+    awk '/^  - pip:/{skip=1} /^prefix:/{next} /^name:/{next} !skip{print}' "$ENV_FILE" > "$pins"
+    $SOLVER env create -y -p "${CONDA_ENVS_DIR:-$HOME/.conda/envs}/$ENV_NAME" -f "$pins"
+    rm -f "$pins"
 else
     echo "=== creating ${ENV_NAME} ==="
     # mamba resolves this stack far faster than classic conda; fall back if absent.
