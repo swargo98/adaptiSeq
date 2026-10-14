@@ -416,6 +416,21 @@ Expanse, `runs_present_unverified` will be near zero and option (1) is enough,
 but the paper should then say that Kingfisher stops at the first failed
 metadata query, which is a fairer description than "drops runs".
 
+**Update, Expanse gate (job `54902879`, 3r rep 1):** Kingfisher did not abort
+this time. It finished all 241 runs in 2649 s (exit 0): 237 md5-verified
+(including all 40 three-file runs), 4 `runs_present_unverified` (`SRR22904287`,
+`SRR22904300`, `SRR22904432`, `SRR22904448`). For each of the four, Kingfisher's
+ENA query returned no URLs ("No ENA FTP download URLs found ... cannot
+continue"), so it fell back to `aws-http` and recompressed from SRA. ENA does
+have FASTQ for them: I queried the ENA file report for two of them afterwards
+and both list a `fastq_ftp` and `fastq_md5`. So the empty answer was transient
+and Kingfisher does not retry the query. The count is small (4 of 241, 1.7%),
+so option (1) is enough: count only md5 matches and state in the paper that
+4 runs (median over reps, from the full run) were obtained by Kingfisher from SRA
+after a failed ENA query and could not be checked against ENA's checksums.
+Kingfisher's three-file handling is fine; it is the Kingfisher completeness
+number that the paper should explain this way.
+
 ### C. The gate has not been run on the benchmark machines
 
 The plan's gate ("one rep of both panels, then check") needs about 2.7 hours and
