@@ -98,3 +98,45 @@ def test_ftp_single_segment_accounting(tmp_path):
     ok = asyncio.run(_with_server(str(src), body))
     assert ok is True
     assert md5((outdir / "f.bin").read_bytes()) == md5(data)
+
+
+def _ftp_stale_meta_case(tmp_path, completed):
+    """Resume metadata listing ``completed`` segments, with no .part on disk."""
+    from adaptiseq.engine.segmented import calculate_segments, write_part_meta
+
+    src = tmp_path / "src"
+    src.mkdir()
+    data = os.urandom(4 * 1024 * 1024 + 99)
+    (src / "file.bin").write_bytes(data)
+    outdir = tmp_path / "out"
+    outdir.mkdir()
+    segs = calculate_segments(len(data), min_file_size=1024 * 1024, max_segments=4,
+                              segment_size=1024 * 1024)
+    write_part_meta(str(outdir / "file.bin.part.meta"), len(data), segs,
+                    set(completed(len(segs))), {})
+
+    async def body(port):
+        d = FtpSegmentedDownloader(
+            f"ftp://127.0.0.1:{port}/file.bin", str(outdir / "file.bin"),
+            segment_size=1024 * 1024, max_segments=4,
+            min_file_size_for_segmentation=1024 * 1024,
+        )
+        return await d.download()
+
+    ok = asyncio.run(_with_server(str(src), body))
+    return ok, data, outdir
+
+
+def test_ftp_partial_meta_without_part_restarts(tmp_path):
+    # Without the guard the finished segments stayed zeros in the new .part.
+    ok, data, outdir = _ftp_stale_meta_case(tmp_path, lambda n: {0, 1})
+    assert ok is True
+    assert md5((outdir / "file.bin").read_bytes()) == md5(data)
+    assert not (outdir / "file.bin.part.meta").exists()
+
+
+def test_ftp_complete_meta_without_part_downloads(tmp_path):
+    # Without the guard this returned True with no file on disk.
+    ok, data, outdir = _ftp_stale_meta_case(tmp_path, lambda n: set(range(n)))
+    assert ok is True
+    assert md5((outdir / "file.bin").read_bytes()) == md5(data)

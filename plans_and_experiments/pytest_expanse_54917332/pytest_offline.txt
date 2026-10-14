@@ -1,0 +1,60 @@
+FF.......................                                                [100%]
+=================================== FAILURES ===================================
+___________________ test_partial_meta_without_part_restarts ____________________
+
+tmp_path = PosixPath('/scratch/rswargo/job_54917332/pytest-of-rswargo/pytest-0/test_partial_meta_without_part0')
+
+    def test_partial_meta_without_part_restarts(tmp_path):
+        data = os.urandom(4 * SEG + 77)
+        dest = str(tmp_path / "file.bin")
+        d = S.SegmentedDownloader(None, "http://x/file.bin", dest, segment_size=SEG,
+                                  max_segments=4, min_file_size_for_segmentation=SEG)
+        segments = d.calculate_segments(len(data))
+        # metadata says segments 0 and 1 are done, but there is no .part
+        d.write_metadata(len(data), segments, {0, 1}, {2: segments[2][0] + 100})
+    
+        with RangeServer(data) as srv:
+            ok = asyncio.run(_download(srv.url(), dest))
+    
+        assert ok is True
+>       assert md5((tmp_path / "file.bin").read_bytes()) == md5(data)
+E       AssertionError: assert 'afa781abbff8...23753d474900c' == '2e459cc80d7c...ada9df0b3d06c'
+E         
+E         - 2e459cc80d7c7290638ada9df0b3d06c
+E         + afa781abbff8413323d23753d474900c
+
+tests/test_segmented_stale_meta.py:52: AssertionError
+__________ test_single_connection_clears_meta_and_redownload_is_whole __________
+
+tmp_path = PosixPath('/scratch/rswargo/job_54917332/pytest-of-rswargo/pytest-0/test_single_connection_clears_0')
+
+    def test_single_connection_clears_meta_and_redownload_is_whole(tmp_path):
+        data = os.urandom(4 * SEG + 77)
+        dest = str(tmp_path / "file.bin")
+    
+        class StopAfter:
+            def __init__(self, n):
+                self.n, self.calls = n, 0
+    
+            def should_continue(self):
+                self.calls += 1
+                return self.calls <= self.n
+    
+        with RangeServer(data) as srv:
+            # 1. a segmented attempt that stops part way: .part + .part.meta remain
+            assert asyncio.run(_download(srv.url(), dest, pause=StopAfter(3))) is False
+            assert (tmp_path / "file.bin.part.meta").exists()
+    
+        with RangeServer(data, force_200=True) as srv:
+            # 2. the retry finds no range support and completes on one connection
+            assert asyncio.run(_download(srv.url(), dest)) is True
+        assert md5((tmp_path / "file.bin").read_bytes()) == md5(data)
+>       assert not (tmp_path / "file.bin.part.meta").exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = (PosixPath('/scratch/rswargo/job_54917332/pytest-of-rswargo/pytest-0/test_single_connection_clears_0') / 'file.bin.part.meta').exists
+
+tests/test_segmented_stale_meta.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_segmented_stale_meta.py::test_partial_meta_without_part_restarts
+FAILED tests/test_segmented_stale_meta.py::test_single_connection_clears_meta_and_redownload_is_whole

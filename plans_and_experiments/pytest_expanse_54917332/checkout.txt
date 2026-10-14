@@ -1,0 +1,2 @@
+checkout: f1a7fba  node: exp-1-12
+adaptiseq imported from /home/rswargo/adaptiSeq/adaptiseq/__init__.py

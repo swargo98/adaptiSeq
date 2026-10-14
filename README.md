@@ -67,6 +67,12 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   the verification pass after a batch download stopped at that accession, so
   later Runs were neither md5-checked nor retried. A single accession still
   raises as before.
+- **Fix**: resume state left without its data (`.part.meta` present, `.part`
+  gone) is discarded instead of resumed. Previously a re-download after an MD5
+  mismatch could fetch only the segments that state listed as unfinished and
+  leave the rest of the file as zeros; segmented FTP could also report success
+  with no file written. A single-connection download now also clears the resume
+  state of an earlier segmented attempt.
 - **Docs**: iSeq's and FastBioDL's MIT notices added to `LICENSE`; iSeq and
   FastBioDL credited in the README and `CITATION.cff`. Comparison table updated
   for Kingfisher 0.5.0 (Python API, experimental GSA) and pysradb 2.5.1

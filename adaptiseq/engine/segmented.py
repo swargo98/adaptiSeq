@@ -391,6 +391,17 @@ class SegmentedDownloader:
                 partial_offsets = self._load_partial_offsets(
                     metadata, segments, completed
                 )
+                if len(completed) < len(segments) and not os.path.exists(self.part_path):
+                    # resume state without the bytes it describes (e.g. the md5
+                    # check deleted a finished file whose .part.meta was left
+                    # behind): resuming would write only the unfinished segments
+                    # into a new .part and leave the rest as zeros
+                    log.warning(
+                        "Stale resume metadata for %s (.part missing); restarting",
+                        os.path.basename(self.local_path),
+                    )
+                    os.remove(self.meta_path)
+                    completed, partial_offsets = set(), {}
                 log.info(
                     "Resume: %s/%s segments complete for %s",
                     len(completed), len(segments), os.path.basename(self.local_path),
@@ -562,7 +573,12 @@ class SegmentedDownloader:
                         fd = None
                         current_offset = initial_offset
                         try:
-                            fd = os.open(self.part_path, os.O_CREAT | os.O_RDWR)
+                            flags = os.O_CREAT | os.O_RDWR
+                            if initial_offset == 0:
+                                # whole file from the start: nothing of an older
+                                # .part may survive past the new end
+                                flags |= os.O_TRUNC
+                            fd = os.open(self.part_path, flags)
                             os.lseek(fd, initial_offset, os.SEEK_SET)
                             async for chunk in resp.content.iter_chunked(CHUNK_SIZE):
                                 if not self.pause.should_continue():
@@ -575,6 +591,10 @@ class SegmentedDownloader:
                             os.close(fd)
                             fd = None
                             os.rename(self.part_path, self.local_path)
+                            # the segmented attempt that may have run before
+                            # this one left its resume state; it is now stale
+                            if os.path.exists(self.meta_path):
+                                os.remove(self.meta_path)
                             log.info("Completed %s", os.path.basename(self.local_path))
                             return True, False, 1
                         finally:

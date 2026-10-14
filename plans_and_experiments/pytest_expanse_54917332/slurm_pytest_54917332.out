@@ -1,0 +1,24 @@
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip
+checkout: f1a7fba  node: exp-1-12
+adaptiseq imported from /home/rswargo/adaptiSeq/adaptiseq/__init__.py
+
+=== tests, offline (ADAPTISEQ_NO_NETWORK=1) ===
+            assert (tmp_path / "file.bin.part.meta").exists()
+    
+        with RangeServer(data, force_200=True) as srv:
+            # 2. the retry finds no range support and completes on one connection
+            assert asyncio.run(_download(srv.url(), dest)) is True
+        assert md5((tmp_path / "file.bin").read_bytes()) == md5(data)
+>       assert not (tmp_path / "file.bin.part.meta").exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = (PosixPath('/scratch/rswargo/job_54917332/pytest-of-rswargo/pytest-0/test_single_connection_clears_0') / 'file.bin.part.meta').exists
+
+tests/test_segmented_stale_meta.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_segmented_stale_meta.py::test_partial_meta_without_part_restarts
+FAILED tests/test_segmented_stale_meta.py::test_single_connection_clears_meta_and_redownload_is_whole
+=== pytest done (status=1). Output: /home/rswargo/adaptiSeq/plans_and_experiments/pytest_expanse_54917332 ===
+rm: cannot remove '/scratch/rswargo/job_54917332': Permission denied

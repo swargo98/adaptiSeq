@@ -238,6 +238,14 @@ class FtpSegmentedDownloader:
         meta = read_part_meta(self.meta_path)
         completed: Set[int] = set()
         partial: Dict[int, int] = {}
+        if meta and not os.path.exists(self.part_path):
+            # resume state without the bytes it describes: resuming would leave
+            # the segments it calls finished as a hole of zeros (or, with every
+            # segment listed, "finish" a file that does not exist)
+            log.warning("Stale resume metadata for %s (.part missing); restarting",
+                        os.path.basename(self.local_path))
+            os.remove(self.meta_path)
+            meta = None
         if meta:
             if meta.get("file_size") == file_size and meta.get("segments") == [
                 [s, e] for s, e in segments
