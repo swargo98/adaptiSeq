@@ -13,6 +13,7 @@ Files produced:
 from __future__ import annotations
 
 import re
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -60,6 +61,13 @@ GSA_RUNINFO_BY_CRA = "https://ngdc.cncb.ac.cn/gsa/search/getRunInfoByCra"
 GSA_RUNINFO = "https://ngdc.cncb.ac.cn/gsa/search/getRunInfo"
 GSA_EXPORT_XLSX = "https://ngdc.cncb.ac.cn/gsa/file/exportExcelFile"
 
+# ENA's portal API sometimes answers with this text instead of (or after) the
+# TSV rows. iseq treats the line as a Run ("ERROR") and fails that accession;
+# adaptiSeq re-queries, then falls back to SRA (departs from iSeq).
+ENA_ERROR_MARK = "ERROR occurred. Not all results may have been written"
+ENA_QUERY_ATTEMPTS = 3
+ENA_RETRY_DELAY_S = 5.0
+
 _RE_WEBENV = re.compile(r"<WebEnv>([^<]+)")
 _RE_QUERYKEY = re.compile(r"<QueryKey>([^<]+)")
 
@@ -79,6 +87,22 @@ def _row2_field1(path: Path, sep: str) -> str:
     return fields[0] if fields else ""
 
 
+def has_ena_error(path: Path) -> bool:
+    """True if a saved metadata file contains ENA's portal-API error text."""
+    try:
+        with open(path, "r", errors="replace") as fh:
+            return any(ENA_ERROR_MARK in ln for ln in fh)
+    except FileNotFoundError:
+        return False
+
+
+def _unlink(path: Path) -> None:
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        pass
+
+
 # ================================ ENA / SRA =====================================
 
 def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
@@ -92,12 +116,25 @@ def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
     query = validate_query(accession, reporter)
 
     tsv = ctx.metadata_tsv(accession)
-    wget_to_file(
-        ENA_URL.format(query=query, fields=ENA_FIELDS),
-        tsv,
-        cont=True,
-        quiet=True,
-    )
+    if has_ena_error(tsv):
+        _unlink(tsv)
+    for attempt in range(1, ENA_QUERY_ATTEMPTS + 1):
+        wget_to_file(
+            ENA_URL.format(query=query, fields=ENA_FIELDS),
+            tsv,
+            cont=True,
+            quiet=True,
+        )
+        if not has_ena_error(tsv):
+            break
+        # Remove before re-querying: wget -c would append to the error body.
+        _unlink(tsv)
+        if attempt < ENA_QUERY_ATTEMPTS:
+            reporter.info(
+                f"{bright_yellow('Note')}: The ENA database returned an error for "
+                f"{accession}, retry {attempt} times"
+            )
+            time.sleep(ENA_RETRY_DELAY_S * attempt)
 
     if not _row2_field1(tsv, "\t"):
         reporter.info(

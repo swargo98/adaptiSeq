@@ -499,7 +499,7 @@ def _resolve_one(accession: str, options: Options, workdir: Path) -> List[Downlo
                     tasks.append(DownloadTask(url, url.rsplit("/", 1)[-1], accession))
         else:
             tsv = ctx.metadata_tsv(accession)
-            if not (tsv.exists() and tsv.stat().st_size > 0):
+            if not (tsv.exists() and tsv.stat().st_size > 0) or _meta.has_ena_error(tsv):
                 tsv = _meta.get_sra_metadata(ctx, accession)
             lines = tsv.read_text(errors="replace").splitlines()
             for ln in lines[1:]:

@@ -138,6 +138,36 @@ Done in this session:
   Arifuzzaman, Arslan; the draft has Arslan second), and the archive references.
 - `.DS_Store` added to `.gitignore`.
 
+**2026-10-14, gate results for panel 3r** (`e3_submission_Node-MICH_gate_20261014_002646/`):
+
+| arm | wall (s) | runs complete / 241 | exit |
+|---|---|---|---|
+| kingfisher | 2184 | 238 | 0 |
+| adaptiseq-fixed-j20 | 358 | 237 | 1 |
+| fastq-dl | 5214 | 214 | 0 |
+| iseq | 4963 | 238 | 0 |
+| iseq-p8 | 2161 | 238 | 0 |
+| adaptiseq-default | 421 | 240 | 1 |
+
+- **New failure: ENA portal API error bodies.** For about 3 of 241 per-Run
+  filereport queries per arm (27 for fastq-dl), ENA returned `ERROR occurred.
+  Not all results may have been written.Query: …` in place of the row. iSeq takes
+  the line as a Run called `ERROR` and loses that Run; the harness runs iSeq once
+  per accession, so it carries on. adaptiSeq took the line as a Run accession,
+  raised `DownloadError`, and stopped the whole batch (exit 1), losing the bad
+  Run plus anything not yet fetched (1 Run at defaults, 4 at `-j 20`). Kingfisher
+  logged none.
+- **Fixed in the working tree (not in the 0.1.4 wheel):** `get_sra_metadata`
+  detects the error text, deletes the file (so `wget -c` cannot append to it),
+  re-queries up to 3 times with 5 s/10 s waits, then falls back to SRA. Cached
+  metadata files holding the error are fetched again (`core._process_sra`,
+  `batch._resolve_one`). New tests are in `tests/test_ena_error_body.py`; the offline
+  suite passes. Departs from iSeq. Using it needs a new wheel (0.1.5) and new
+  adaptiSeq gate rows. The 3r rows above are from 0.1.4.
+- Separate open question: adaptiSeq stops the batch when one accession fails,
+  but iSeq in this harness does not. Should one bad accession be recorded in
+  `fail.log` while the batch continues?
+
 Other things to know:
 
 - This node has 4 cores, not the 8 the manuscript states for the Fabric machine.

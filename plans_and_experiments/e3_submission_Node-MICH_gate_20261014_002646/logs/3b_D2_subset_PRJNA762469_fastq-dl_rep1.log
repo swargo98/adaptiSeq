@@ -1,0 +1,530 @@
+2026-10-14 04:42:31 INFO     Query: SRR15852400                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852400...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-14 04:51:29 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-14 05:01:26 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-14 05:01:28 INFO     Query: SRR15852404                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852404...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-14 05:09:30 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-14 05:18:57 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-14 05:18:59 INFO     Query: SRR15852406                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852406...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-14 05:30:24 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-14 05:42:19 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-14 05:42:20 INFO     Query: SRR15852407                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852407...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-14 05:49:52 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-14 06:02:01 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-14 06:02:02 INFO     Query: SRR15852411                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852411...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-14 06:57:45 WARNING  MD5 checksums do not match, attempting   ena.py:217
+                             re-download of                                     
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz FTP download attempt 2                  
+2026-10-14 08:10:10 WARNING  MD5 checksums do not match, attempting   ena.py:217
+                             re-download of                                     
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz FTP download attempt 3                  
+2026-10-14 08:27:13 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-14 08:51:15 WARNING  MD5 checksums do not match, attempting   ena.py:217
+                             re-download of                                     
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             2.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             2.fastq.gz FTP download attempt 2                  
+2026-10-14 09:08:17 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-14 09:08:31 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:08:55 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:09:19 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    WARNING  Querying ENA was unsuccessful,       generic.py:133
+                             retrying after (10 seconds)                        
+2026-10-14 09:09:43 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:10:06 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:10:30 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    WARNING  Querying ENA was unsuccessful,       generic.py:133
+                             retrying after (10 seconds)                        
+2026-10-14 09:10:54 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:11:18 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:11:42 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             15%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:11:58 WARNING  pysradb query failed (Attempt 1 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:12:24 WARNING  pysradb query failed (Attempt 2 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:12:51 WARNING  pysradb query failed (Attempt 3 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    ERROR    No results from ENA or SRA for      download.py:313
+                             'SRR15852415'.                                     
+2026-10-14 09:13:03 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:13:25 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:13:48 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    WARNING  Querying ENA was unsuccessful,       generic.py:133
+                             retrying after (10 seconds)                        
+2026-10-14 09:14:12 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:14:34 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:14:56 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    WARNING  Querying ENA was unsuccessful,       generic.py:133
+                             retrying after (10 seconds)                        
+2026-10-14 09:15:19 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:15:42 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:16:04 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             25%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:16:21 WARNING  pysradb query failed (Attempt 1 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:16:48 WARNING  pysradb query failed (Attempt 2 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:17:15 WARNING  pysradb query failed (Attempt 3 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    ERROR    No results from ENA or SRA for      download.py:313
+                             'SRR15852425'.                                     
+2026-10-14 09:17:27 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:17:49 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:18:13 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    WARNING  Querying ENA was unsuccessful,       generic.py:133
+                             retrying after (10 seconds)                        
+2026-10-14 09:18:36 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:18:58 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:19:21 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    WARNING  Querying ENA was unsuccessful,       generic.py:133
+                             retrying after (10 seconds)                        
+2026-10-14 09:19:43 WARNING  ENA metadata query failed (Attempt 1 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:20:07 WARNING  ENA metadata query failed (Attempt 2 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:20:30 WARNING  ENA metadata query failed (Attempt 3 of   ena.py:59
+                             3):                                                
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/search?result=read_run&fo          
+                             rmat=tsv&query=%22run_accession=SRR158524          
+                             30%22&fields=all (Caused by                        
+                             SSLError(SSLEOFError(8, '[SSL:                     
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:20:46 WARNING  pysradb query failed (Attempt 1 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:21:13 WARNING  pysradb query failed (Attempt 2 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+2026-10-14 09:21:40 WARNING  pysradb query failed (Attempt 3 of 3):    sra.py:47
+                             HTTPSConnectionPool(host='www.ebi.ac.uk',          
+                             port=443): Max retries exceeded with url:          
+                             /ena/portal/api/filereport?result=read_ru          
+                             n&fields=fastq_ftp&accession=SRP336638             
+                             (Caused by SSLError(SSLEOFError(8, '[SSL:          
+                             UNEXPECTED_EOF_WHILE_READING] EOF                  
+                             occurred in violation of protocol                  
+                             (_ssl.c:1016)')))                                  
+                    ERROR    No results from ENA or SRA for      download.py:313
+                             'SRR15852430'.                                     
