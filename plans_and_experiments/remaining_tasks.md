@@ -329,6 +329,21 @@ Not done here, and why:
    block by block with a good one (zero blocks at a segment boundary would
    mean adaptiSeq; scattered garbage or a second ETag would mean ENA). I will
    hold the full run until it reports.
+   **While looking, I found and fixed a real adaptiSeq bug (`98f3e56`):** resume
+   state is two files, and a `.part.meta` that outlived its `.part` was
+   resumed from. The single-connection path never removed `.part.meta`, so if
+   a segmented attempt was interrupted, the retry finished on one connection,
+   and the md5 check later deleted the file, the next download fetched only the
+   segments the old metadata listed as unfinished and left the rest as zeros.
+   Segmented FTP had the same flaw and could even return success with no file.
+   New tests fail on the old code (`pytest_expanse_54917332`) and the full
+   offline suite passes with the fix (`pytest_expanse_54918923`: 180 passed,
+   7 skipped). It does not obviously explain the gate failure: the log shows
+   no segment that ran out of retries, which is what would leave such metadata
+   behind, and it cannot explain the first bad copy. The queued wheel rebuild
+   (`54908326`) builds from the checkout, so the full run gets this fix.
+   Diagnostic so far: the first pass of `_1` (adaptiSeq 795 s, curl 1627 s)
+   matched ENA's md5 for both.
 3. Then submit the full run, one repetition per 48 h job (see the timing
    above), chained so that no two overlap:
    ```bash
