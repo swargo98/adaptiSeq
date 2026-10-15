@@ -56,6 +56,26 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 | fastq-dl | 10800 | 44/241 **TIMEOUT** | 2395 / 237 | 5.81 of 7.59 GB verified. One FTP stream: per-run rates from the log were 1.5 to 2 MB/s until about 01:20 PDT, then 0.15 to 0.5 MB/s from 01:20 to 03:40 PDT (09:20 to 11:40 UK time, ENA's working day); two md5 mismatches retried by fastq-dl. ENA throughput clearly varies with time of day. Arm order is shuffled per rep, so the five-rep medians average this out, but the paper should say runs were spread over several days and times |
 | iseq | 10678 | 143/241 md5-verified, 98 present unverified, exit 0 | 10800 / 181 TIMEOUT | Reached the last accession inside the limit and printed "download and md5 check successful" for all 241. For 98 runs, iSeq's ENA metadata query came back empty ("No metadata information found for ... in the ENA database, try to download from the SRA database"), so it fetched the `.sra` from NCBI over HTTPS and converted it to fastq.gz. The converted files can't match ENA's md5 (`format=gz,none`, `extra_files=234`, `runs_present_unverified=98`). The other 193 used ENA FTP. The gate run had no SRA fallbacks in any arm, so this is new tonight. Under ENA portal load, iSeq quietly switches archives and still exits 0. Decision B: report md5-verified runs (143) and give the present-unverified count separately. Log: wget dot-progress lines aren't removed by `strip_progress.pl` (it only handles `\r` redraws); the raw log is 36 MB, so the commit holds `3r_..._iseq_rep1.log.gz` (5.9 MB) and the raw file stays on Expanse only |
 | iseq-p8 | 8600 | 198/241 md5-verified, 43 present unverified, exit 0 | 4097 / 241 | Same pattern: 43 runs fell back to SRA after an empty ENA metadata answer (06:39 to 09:03 PDT); log 10.6 MB (axel bars stripped) |
+| adaptiseq-default | 1647 | **0/241 md5-verified, 241 present unverified**, exit 0 | 577 / 239 (rc=1) | Every run was resolved to SRA (`sra-pub-run-odp.s3.amazonaws.com`): `.sra` download, fasterq-dump, gzip, so nothing can match ENA's md5. **Cause: ENA's portal API was down.** A probe at 09:32 PDT returned HTTP 500 (an HTML error page) for every `filereport` query. The adaptiSeq arm ran 09:03 to 09:30. Log 58 MB raw (fasterq-dump progress); the commit holds the `.log.gz` (11.8 MB) |
+
+**ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
+The 98 iSeq and 43 iSeq-p8 fallbacks above are probably the same outage
+starting on and off. Whenever an ENA query fails outright (HTTP 500, timeout,
+empty body), every tool treats it as "this run is not in ENA" and goes to SRA:
+iSeq does, and adaptiSeq inherits it (`metadata.get_sra_metadata`: `wget_to_file`
+leaves no file on HTTP 500, `_row2_field1` is empty, `ctx.database = "sra"`).
+The `ERROR occurred` retry (fix `41ac3c9`) covers only an HTTP 200 carrying an
+error body. Consequences:
+- For the paper, rep 1's 3r rows for iseq, iseq-p8 and adaptiseq-default (and
+  any 3b arm that ran during the outage) measure an outage, not the tools. Either
+  re-run rep 1 as a sixth chained job once the chain ends, or report md5-verified
+  counts and say ENA was down. **User decision (C).** I recommend re-running the
+  affected rep, so all five reps are comparable.
+- adaptiSeq improvement (after the full run, since it changes the measured wheel):
+  tell "ENA failed" (non-200, timeout, network error) apart from "ENA answered and
+  has no rows". Retry the first with backoff, and fall back to SRA only on the
+  second. A `--no-sra-fallback` / `--require-md5` style option would stop a
+  benchmark or pipeline from silently getting unverifiable files.
 
 Setup job results (`setup_expanse_54902878/`):
 
