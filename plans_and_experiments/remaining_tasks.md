@@ -28,14 +28,14 @@ of the two fixes when you merge (ours has the tests in
 `tests/test_list_resilience.py` and also keeps a list going past a failed
 accession).
 
-**State of the benchmark (2026-10-14 17:30 PDT): gate done, wheel rebuild and full run queued.**
+**State of the benchmark (2026-10-14 23:30 PDT): full run started; rep 1 running.**
 
 | Job | What | State |
 |---|---|---|
 | `54902878` `adaptiseq_setup` (`shared`, 8 cores, 2 h) | env, wheel, tests, README check, ENA probe | **COMPLETED** 20:40 to 21:20 PDT on `exp-1-44`, all steps passed (below) |
 | `54902879` `adaptiseq_gate` (`compute`, exclusive, 20 h limit) | the gate: one rep of 3r + 3b | **TIMEOUT** at the 20 h limit (21:20 to 17:20 PDT) inside the 3b `iseq` arm, as predicted; 3b Kingfisher did not run. GATE PASS (md5 gate); `check_run.txt` lists the missing rows. Node `exp-5-53` (AMD EPYC 7742, 128 cores, 251 GB, 870 GB free NVMe) |
 | `54908326` `adaptiseq_setup` | rebuild the wheel from the checkout (with the ENA-error, list-resilience and stale-`.part.meta` fixes), reinstall into `adaptiseq_e3_sub`, tests, README check | **COMPLETED** 17:44 to 17:49 PDT, all passed; new wheel sha256 `2a0a6f5c...` (below); ENA probe 2.1/15.6/43.7 MB/s at 1/8/20 connections |
-| `54927001`, `54927008`, `54927009`, `54927010`, `54927011` `adaptiseq_e3` | the full run: reps 1 to 5 of 3r + 3b, one rep per job (48 h limit, about 24.5 h each) | **PENDING**. The first waits `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
+| `54927001`, `54927008`, `54927009`, `54927010`, `54927011` `adaptiseq_e3` | the full run: reps 1 to 5 of 3r + 3b, one rep per job (48 h limit, about 24.5 h each) | `54927001` (rep 1) **RUNNING** since 23:24 PDT 10-14 on `exp-4-08`: GATE PASS, `versions_e3.txt` shows wheel sha256 `2a0a6f5c...` (the rebuilt one), link probe 2.2/15.6/36.7 MB/s at 1/8/20 connections. The other four are PENDING (Dependency). The first waited `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
 
 
 The first two jobs waited about 3 h in the queue because of a Lustre fault on
