@@ -18,16 +18,24 @@ Fresh clone of `app-notes` at `3b073f1` in `/home/rswargo/adaptiSeq`. This
 session's changes are committed locally as they come in (from `4947475` on);
 nothing was pushed, tagged, or published.
 
-**State of the benchmark: setup done, gate running.** Two Slurm jobs:
+**State of the benchmark (2026-10-14 17:30 PDT): gate done, wheel rebuild and full run queued.**
 
 | Job | What | State |
 |---|---|---|
 | `54902878` `adaptiseq_setup` (`shared`, 8 cores, 2 h) | env, wheel, tests, README check, ENA probe | **COMPLETED** 20:40 to 21:20 PDT on `exp-1-44`, all steps passed (below) |
-| `54902879` `adaptiseq_gate` (`compute`, exclusive, 20 h limit) | the gate: one rep of 3r + 3b | **RUNNING** since 21:20 PDT on `exp-5-53` (AMD EPYC 7742, 128 cores, 251 GB, 870 GB free NVMe) |
+| `54902879` `adaptiseq_gate` (`compute`, exclusive, 20 h limit) | the gate: one rep of 3r + 3b | **TIMEOUT** at the 20 h limit (21:20 to 17:20 PDT) inside the 3b `iseq` arm, as predicted; 3b Kingfisher did not run. GATE PASS (md5 gate); `check_run.txt` lists the missing rows. Node `exp-5-53` (AMD EPYC 7742, 128 cores, 251 GB, 870 GB free NVMe) |
+| `54908326` `adaptiseq_setup` | rebuild the wheel from the checkout (with the ENA-error, list-resilience and stale-`.part.meta` fixes), reinstall into `adaptiseq_e3_sub`, tests, README check | **PENDING** (queued after the gate) |
+| `54927001`, `54927008`, `54927009`, `54927010`, `54927011` `adaptiseq_e3` | the full run: reps 1 to 5 of 3r + 3b, one rep per job (48 h limit, about 24.5 h each) | **PENDING**. The first waits `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
 
-Both jobs waited about 3 h in the queue because of a Lustre fault on Expanse
-(about 600 compute nodes draining, "Lustre df is hung"). The full five-rep run is
-not submitted; it waits on the gate (see "What you need to do next").
+
+The first two jobs waited about 3 h in the queue because of a Lustre fault on
+Expanse (about 600 compute nodes draining, "Lustre df is hung"). The full run is
+submitted as above (env `adaptiseq_e3_sub`, `E3_ASEQ_WHEEL=wheels/adaptiseq-0.1.4-py3-none-any.whl`,
+`E3_TIMEOUT_3R=10800`, `E3_TIMEOUT_3B=30000`, `RESULTS_ROOT=e3_submission_expanse`),
+about 120 h of wall time and about 15,500 SUs once it starts. **While it runs,
+do not edit `bench/e3/`, `datasets/` or the installed env:** every job reads them
+when it starts. If the rebuild fails, the chain sits in `DependencyNeverSatisfied`;
+`scancel` it and resubmit with the loop under "What you need to do next".
 
 Setup job results (`setup_expanse_54902878/`):
 
