@@ -342,8 +342,17 @@ Not done here, and why:
    no segment that ran out of retries, which is what would leave such metadata
    behind, and it cannot explain the first bad copy. The queued wheel rebuild
    (`54908326`) builds from the checkout, so the full run gets this fix.
-   Diagnostic so far: the first pass of `_1` (adaptiSeq 795 s, curl 1627 s)
-   matched ENA's md5 for both.
+   **Diagnostic result (13:07 to 17:00, `diag_corrupt_54917324/`):** 16
+   downloads of SRR15852411 (4 passes x 2 files x adaptiSeq's
+   `SegmentedDownloader` and curl), all 16 matched ENA's md5. Every response
+   carried the same ETag and a 2021 Last-Modified, so ENA serves one copy and
+   the md5 in its report is current. The gate's three bad copies were deleted
+   with the arm's payload, so the failure cannot be examined directly and was
+   not reproduced. My reading: a transient fault on ENA's side or on the
+   path, of the same kind as fastq-dl's and iSeq's mismatches in this gate,
+   not adaptiSeq. For the paper, report md5 failures per tool from the full
+   run as they occur. The adaptiSeq per-connection rate was 0.9 to 2 MB/s
+   (2 connections per file), curl's 0.5 to 1 MB/s.
 3. Then submit the full run, one repetition per 48 h job (see the timing
    above), chained so that no two overlap:
    ```bash

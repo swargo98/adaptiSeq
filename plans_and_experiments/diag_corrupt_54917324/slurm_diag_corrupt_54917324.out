@@ -1,0 +1,24 @@
+date: 2026-10-14T13:07:26-07:00  node: exp-1-09  public ip: 198.202.103.246
+checkout: f1a7fba
+run_accession	fastq_ftp	fastq_bytes	fastq_md5
+SRR15852411	ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_1.fastq.gz;ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_2.fastq.gz	1400303576;1444188419	37f6be6d2c7cd6a9e50b1847a68398fe;a4f38693a6f6031f4e4efca08692f061
+SRR15852411	SRR15852411_1.fastq.gz	1400303576	37f6be6d2c7cd6a9e50b1847a68398fe
+SRR15852411	SRR15852411_2.fastq.gz	1444188419	a4f38693a6f6031f4e4efca08692f061
+iter 1 seg  SRR15852411_1.fastq.gz: ok=True 795s md5 OK segments=[(0, 700151787), (700151788, 1400303575)]
+iter 1 curl SRR15852411_1.fastq.gz: ok=True 1627s md5 OK
+iter 1 seg  SRR15852411_2.fastq.gz: ok=True 2319s md5 OK segments=[(0, 722094208), (722094209, 1444188418)]
+iter 1 curl SRR15852411_2.fastq.gz: ok=True 3067s md5 OK
+iter 2 seg  SRR15852411_1.fastq.gz: ok=True 859s md5 OK segments=[(0, 700151787), (700151788, 1400303575)]
+iter 2 curl SRR15852411_1.fastq.gz: ok=True 1360s md5 OK
+iter 2 seg  SRR15852411_2.fastq.gz: ok=True 854s md5 OK segments=[(0, 722094208), (722094209, 1444188418)]
+iter 2 curl SRR15852411_2.fastq.gz: ok=True 1472s md5 OK
+iter 3 seg  SRR15852411_1.fastq.gz: ok=True 674s md5 OK segments=[(0, 700151787), (700151788, 1400303575)]
+iter 3 curl SRR15852411_1.fastq.gz: ok=True 1374s md5 OK
+iter 3 seg  SRR15852411_2.fastq.gz: ok=True 735s md5 OK segments=[(0, 722094208), (722094209, 1444188418)]
+iter 3 curl SRR15852411_2.fastq.gz: ok=True 1544s md5 OK
+iter 4 seg  SRR15852411_1.fastq.gz: ok=True 1173s md5 OK segments=[(0, 700151787), (700151788, 1400303575)]
+iter 4 curl SRR15852411_1.fastq.gz: ok=True 1798s md5 OK
+iter 4 seg  SRR15852411_2.fastq.gz: ok=True 704s md5 OK segments=[(0, 722094208), (722094209, 1444188418)]
+iter 4 curl SRR15852411_2.fastq.gz: ok=True 1682s md5 OK
+done: 0 mismatching download(s)
+=== done 2026-10-14T17:00:11-07:00 ===
