@@ -18,6 +18,16 @@ Fresh clone of `app-notes` at `3b073f1` in `/home/rswargo/adaptiSeq`. This
 session's changes are committed locally as they come in (from `4947475` on);
 nothing was pushed, tagged, or published.
 
+**Branches (2026-10-14 18:15 PDT):** this work is pushed to
+`expanse-app-notes` (remote `expanse`, deploy key). `app-notes` on GitHub got
+a separate commit from the Node-MICH machine, `6ae2fd3` "3b and 3r running"
+(its gate results plus its own fix for the ENA error body in `metadata.py`,
+`batch.py`, `core.py`). That fix and ours (`41ac3c9`) touch the same lines,
+so merging the two branches will conflict there; I have not merged. Keep one
+of the two fixes when you merge (ours has the tests in
+`tests/test_list_resilience.py` and also keeps a list going past a failed
+accession).
+
 **State of the benchmark (2026-10-14 17:30 PDT): gate done, wheel rebuild and full run queued.**
 
 | Job | What | State |
