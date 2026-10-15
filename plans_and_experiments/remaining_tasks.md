@@ -24,7 +24,7 @@ nothing was pushed, tagged, or published.
 |---|---|---|
 | `54902878` `adaptiseq_setup` (`shared`, 8 cores, 2 h) | env, wheel, tests, README check, ENA probe | **COMPLETED** 20:40 to 21:20 PDT on `exp-1-44`, all steps passed (below) |
 | `54902879` `adaptiseq_gate` (`compute`, exclusive, 20 h limit) | the gate: one rep of 3r + 3b | **TIMEOUT** at the 20 h limit (21:20 to 17:20 PDT) inside the 3b `iseq` arm, as predicted; 3b Kingfisher did not run. GATE PASS (md5 gate); `check_run.txt` lists the missing rows. Node `exp-5-53` (AMD EPYC 7742, 128 cores, 251 GB, 870 GB free NVMe) |
-| `54908326` `adaptiseq_setup` | rebuild the wheel from the checkout (with the ENA-error, list-resilience and stale-`.part.meta` fixes), reinstall into `adaptiseq_e3_sub`, tests, README check | **PENDING** (queued after the gate) |
+| `54908326` `adaptiseq_setup` | rebuild the wheel from the checkout (with the ENA-error, list-resilience and stale-`.part.meta` fixes), reinstall into `adaptiseq_e3_sub`, tests, README check | **COMPLETED** 17:44 to 17:49 PDT, all passed; new wheel sha256 `2a0a6f5c...` (below); ENA probe 2.1/15.6/43.7 MB/s at 1/8/20 connections |
 | `54927001`, `54927008`, `54927009`, `54927010`, `54927011` `adaptiseq_e3` | the full run: reps 1 to 5 of 3r + 3b, one rep per job (48 h limit, about 24.5 h each) | **PENDING**. The first waits `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
 
 
@@ -50,8 +50,17 @@ Setup job results (`setup_expanse_54902878/`):
     `40bbfd17a0703ebafcb4589710974252d87d3819c2614991b90f7f1cd1699650`
   - `adaptiseq-0.1.4.tar.gz` sha256
     `2e34f82ae26bedf7fb910aa4392f8d97023398bf6a4fe3efd64a0693a77b3114`
-  The gate's `versions.txt` shows the same wheel hash, so the benchmark is
-  running exactly these files. Upload these two, unchanged, if you release.
+  The gate's `versions.txt` shows the same wheel hash, so the gate ran
+  exactly these files. **Superseded 2026-10-14 17:44** by the rebuild in
+  `setup_expanse_54908326/` (adds the ENA-error-body, list-resilience and
+  stale-`.part.meta` fixes; `twine check` passed; tests offline and with
+  network pass, only the live-Aspera opt-in skipped; README CLI and API 3/3):
+  - `adaptiseq-0.1.4-py3-none-any.whl` sha256
+    `2a0a6f5ca5580bd660b4bf6da5a0a4475968b6b01fd430558f644086ec3b7f25`
+  - `adaptiseq-0.1.4.tar.gz` sha256
+    `185e5d1221135a3670f3718aa99d0e00b422ca0e5e78a4a972b959aba09bb9e0`
+  The full run uses this wheel (`check_run.txt` of each job prints the
+  hash). Upload these two, unchanged, if you release.
 - **Tests:** 176 collected. Offline (`ADAPTISEQ_NO_NETWORK=1`): all pass, 7
   skipped (the live tests). With network: all pass, 1 skipped (live Aspera,
   opt-in, needs `ascp` and a key).
@@ -857,8 +866,9 @@ Remaining:
 - [x] iSeq and FastBioDL credited in `LICENSE` and README. In the paper: drafted.
 - [ ] `pip install adaptiseq==0.1.4` in a fresh environment runs the README
       example. Verified with the wheel built on the Fabric node, and again on
-      Expanse for the rebuilt wheel (sha256 `40bbfd17...`; CLI and API both
-      3/3 runs md5-verified, `setup_expanse_54902878/readme_example.txt`).
+      Expanse for the rebuilt wheel (sha256 `40bbfd17...`, then `2a0a6f5c...`;
+      CLI and API both 3/3 runs md5-verified,
+      `setup_expanse_54908326/readme_example.txt`).
       Repeat from PyPI after release.
 - [ ] Every number in the text comes from the new TSVs via the script. The
       script and placeholders are in place; the TSVs do not exist yet.
