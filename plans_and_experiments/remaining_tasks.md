@@ -53,6 +53,7 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 |---|---|---|---|---|
 | kingfisher | 3255 | 241/241 | 2649 / 237 | complete this time |
 | adaptiseq-fixed-j20 | 1280 | 241/241 | 354 / 241 | 3.6x slower than the gate. The bulk phase held 20 connections for about 550 s (gate: about 250 s), so ENA served about half the gate's rate tonight; then about 700 s on 1 to 3 connections for the last files. One transient md5 mismatch (SRR22904281, 0.33 GB, over HTTPS), fixed by the retry; one failed segment attempt. The tail is the case the tail-end re-split (below) would address. Don't judge the speedup on one rep; use the five-rep medians |
+| fastq-dl | 10800 | 44/241 **TIMEOUT** | 2395 / 237 | 5.81 of 7.59 GB verified. One FTP stream: per-run rates from the log were 1.5 to 2 MB/s until about 01:20 PDT, then 0.15 to 0.5 MB/s from 01:20 to 03:40 PDT (09:20 to 11:40 UK time, ENA's working day); two md5 mismatches retried by fastq-dl. ENA throughput clearly varies with time of day. Arm order is shuffled per rep, so the five-rep medians average this out, but the paper should say runs were spread over several days and times |
 
 Setup job results (`setup_expanse_54902878/`):
 
