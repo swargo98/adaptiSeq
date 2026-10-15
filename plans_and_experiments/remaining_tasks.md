@@ -47,6 +47,13 @@ do not edit `bench/e3/`, `datasets/` or the installed env:** every job reads the
 when it starts. If the rebuild fails, the chain sits in `DependencyNeverSatisfied`;
 `scancel` it and resubmit with the loop under "What you need to do next".
 
+Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r rows so far:
+
+| arm | wall_s | runs | gate (`54902879`) wall_s / runs | notes |
+|---|---|---|---|---|
+| kingfisher | 3255 | 241/241 | 2649 / 237 | complete this time |
+| adaptiseq-fixed-j20 | 1280 | 241/241 | 354 / 241 | 3.6x slower than the gate. The bulk phase held 20 connections for about 550 s (gate: about 250 s), so ENA served about half the gate's rate tonight; then about 700 s on 1 to 3 connections for the last files. One transient md5 mismatch (SRR22904281, 0.33 GB, over HTTPS), fixed by the retry; one failed segment attempt. The tail is the case the tail-end re-split (below) would address. Don't judge the speedup on one rep; use the five-rep medians |
+
 Setup job results (`setup_expanse_54902878/`):
 
 - **Env** `adaptiseq_e3_sub` built from the exact pins of the Fabric export:
