@@ -1,2 +1,3 @@
 arm	rep	line
 adaptiseq-default	rep1	[32mNote[0m: adaptive worker summary: 25 probe(s); best 780 Mbps at 10 worker(s); last 35 Mbps at 1 worker(s); recent: 10w@133Mbps, 10w@87Mbps, 10w@80Mbps, 20w@111Mbps, 10w@89Mbps, 6w@48Mbps, 6w@68Mbps, 3w@23Mbps, 3w@17Mbps, 1w@13Mbps, 1w@14Mbps, 1w@35Mbps
+adaptiseq-default	rep1	[32mNote[0m: adaptive worker summary: 74 probe(s); best 892 Mbps at 8 worker(s); last 6 Mbps at 1 worker(s); recent: 8w@176Mbps, 8w@133Mbps, 8w@105Mbps, 8w@94Mbps, 8w@69Mbps, 1w@5Mbps, 1w@3Mbps, 1w@4Mbps, 1w@6Mbps, 1w@3Mbps, 1w@3Mbps, 1w@6Mbps
