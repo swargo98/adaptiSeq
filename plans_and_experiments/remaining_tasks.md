@@ -66,12 +66,18 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 | iseq-p8 | 3274 | 7/8 md5-verified, 1 present unverified | 1990 / 8 | 1 SRA fallback after an empty ENA answer (17:20 to 18:15 PDT) |
 | adaptiseq-fixed-j20 | 1515 | 5/8 md5-verified, 3 present unverified | 1903 / 8 | 3 runs resolved to SRA (`sra-pub-run-odp.s3.amazonaws.com`): ENA's portal timed out (probes at 18:27 and 18:33 PDT got no answer in 60 s). 10 segment attempts failed with `ContentLengthError` (the server closed early) and were retried; no md5 mismatch. 18:15 to 18:41 PDT |
 | adaptiseq-default | 4481 | 6/8 md5-verified, 2 present unverified | 4136 / 7 (rc=1) | 2 runs resolved to SRA (ENA portal). 2 md5 mismatches on ENA HTTPS `_2` files, both fixed by the retry; 6 refused connects to `ftp.sra.ebi.ac.uk:443`. The adaptive controller collapsed again: summary "85 probes; best 3690 Mbps at 14 workers; last 9 Mbps at 1 worker". The 3690 Mbps best is not a real link rate (the node probe is about 300 Mbps at 20 connections), so one probe window is mis-measured, probably bytes counted from an already-complete or cached file. The controller then spent the rest of the arm at 1 to 3 workers. **adaptiSeq fix candidate (after the full run):** clamp or discard probe readings above the link ceiling, and stop the top-down search from settling on 1 worker when per-worker throughput is flat. 18:41 to 19:56 PDT |
+| iseq | 30000 **TIMEOUT** | 4/8 md5-verified, 3 present unverified | ran out of the gate's 20 h | 2 SRA fallbacks logged before the cut; 7 md5 mismatches on ENA FTP (iSeq retries and keeps going). One FTP stream; 12.4 of 25.9 GB verified. Raw log 47.6 MB of wget dots; the commit holds the `.log.gz` (3.4 MB). 19:56 to 04:16 PDT |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
 the login node. From 09:33 to 17:20 PDT, 15 probes got HTTP 500 and 2 timed out
 (000). The failures came in short windows (09:33 to 10:14 almost solid, then 1 or 2
 probes per hour), and 24 successful answers took more than 10 s.
+Two probes (01:19 and 04:04 PDT on 10-16) got HTTP 200 with only the header
+line (24 bytes, no rows) for a run that is in ENA, so ENA's "empty" answer
+can't be trusted either. The adaptiSeq fix must therefore also retry an
+empty 200 (with backoff, for example 3 tries over about 1 min) before it
+falls back to SRA, not only non-200s and timeouts.
 The 98 iSeq and 43 iSeq-p8 fallbacks above are probably the same outage
 starting on and off. Whenever an ENA query fails outright (HTTP 500, timeout,
 empty body), every tool treats it as "this run is not in ENA" and goes to SRA:
