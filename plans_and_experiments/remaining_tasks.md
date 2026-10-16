@@ -71,6 +71,12 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 
 Rep 1 ended **COMPLETED** at 04:23 PDT on 10-16 after 28 h 59 min. `check_run.txt`: CHECK FAIL (3r fastq-dl and 3b iseq TIMEOUT; nine rows with present-unverified runs). Committed the whole result directory (scripts, summaries, `fig3_*.png`, slurm files), except the three raw logs over 20 MB; their `.log.gz` copies are committed.
 
+Rep 2 (`54927008`, `e3_submission_expanse/e3_54927008/`) rows:
+
+| panel | arm | wall_s | runs | notes |
+|---|---|---|---|---|
+| 3r | kingfisher | 4978 | 218/241 md5-verified, 23 present unverified | 23 times "Unexpected ENA API response ... missing one or more required columns (fastq_ftp, fastq_md5)", then `aws-http` (SRA). So the ENA portal is still flaky on 10-16 (probes 200 but up to 49 s). 04:26 to 05:49 PDT |
+
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
 the login node. From 09:33 to 17:20 PDT, 15 probes got HTTP 500 and 2 timed out
