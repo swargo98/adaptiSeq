@@ -1,0 +1,7 @@
+arm,n,wall_med,wall_iqr,MBps_med,MBps_iqr,runs_ok_med,runs_exp,peak_rss_MB,cpu_pct_med,conc_med,conc_max,conc_host_max,workers_max,timeouts,nonzero_rc,formats,success_pct
+adaptiseq-fixed-j20,1,1515.5,0.0,10.89,0.0,5.0,8,674.0,313.0,21.0,37,25,0,0,0,"gz,none",62.5
+iseq-p8,1,3274.1,0.0,6.7,0.0,7.0,8,672.0,66.0,8.0,8,8,0,0,0,"gz,none",87.5
+adaptiseq-default,1,4481.3,0.0,4.26,0.0,6.0,8,673.0,80.0,3.0,34,25,0,0,0,"gz,none",75.0
+kingfisher,1,410.7,0.0,3.23,0.0,0.0,8,133.0,11.0,5.0,5,5,0,0,1,gz,0.0
+fastq-dl,1,28137.0,0.0,0.42,0.0,3.0,8,4417.0,2.0,1.0,35,7,0,0,0,"gz,jsonl",37.5
+iseq,1,30000.0,0.0,0.41,0.0,4.0,8,0.0,0.0,1.0,1,1,0,1,0,"gz,none",50.0

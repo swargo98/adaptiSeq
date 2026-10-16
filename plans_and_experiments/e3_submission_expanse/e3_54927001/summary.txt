@@ -1,0 +1,56 @@
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+==============================================================================
+3b  Byte-dominated (D2_subset: 8 runs, 25.9 GB, ~1.6 GB/file)
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+            n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                              
+kingfisher  1     410.7       0.0      3.23       0.0          0.0         8        133.0         11.0       5.0         5              5            0         0           1      gz          0.0
+
+-- SEGREGATED: fetched a different format/size; NOT wall-time comparable (§12.2) --
+                     n  wall_med  MBps_med   formats  runs_ok_med  runs_exp
+arm                                                                        
+adaptiseq-fixed-j20  1    1515.5     10.89   gz,none          5.0         8
+iseq-p8              1    3274.1      6.70   gz,none          7.0         8
+adaptiseq-default    1    4481.3      4.26   gz,none          6.0         8
+fastq-dl             1   28137.0      0.42  gz,jsonl          3.0         8
+iseq                 1   30000.0      0.41   gz,none          4.0         8
+
+-- runs NOT completed (of 8 expected) --
+   adaptiseq-default          completed    6  (dropped 2)
+   adaptiseq-fixed-j20        completed    5  (dropped 3)
+   fastq-dl                   completed    3  (dropped 5)
+   iseq                       completed    4  (dropped 4)
+   iseq-p8                    completed    7  (dropped 1)
+   kingfisher                 completed    0  (dropped 8)
+
+==============================================================================
+3r  Robustness (D1_full: 241 runs incl. 40 three-file runs)
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                     n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                       
+adaptiseq-fixed-j20  1    1280.0       0.0      5.93       0.0        241.0       241         71.0          7.0       4.0        20             20            0         0           0      gz        100.0
+kingfisher           1    3255.5       0.0      2.33       0.0        241.0       241        134.0          5.0       1.0         5              5            0         0           0      gz        100.0
+fastq-dl             1   10800.0       0.0      0.54       0.0         44.0       241          0.0          0.0       1.0         2              1            0         1           0      gz         18.3
+
+-- SEGREGATED: fetched a different format/size; NOT wall-time comparable (§12.2) --
+                   n  wall_med  MBps_med  formats  runs_ok_med  runs_exp
+arm                                                                     
+iseq-p8            1    8600.1      0.73  gz,none        198.0       241
+iseq               1   10677.9      0.54  gz,none        143.0       241
+adaptiseq-default  1    1647.4      0.00  gz,none          0.0       241
+
+-- runs NOT completed (of 241 expected) --
+   adaptiseq-default          completed    0  (dropped 241)
+   fastq-dl                   completed   44  (dropped 197)
+   iseq                       completed  143  (dropped 98)
+   iseq-p8                    completed  198  (dropped 43)
+
+Wrote summaries + fig3_*.png to /home/rswargo/adaptiSeq/plans_and_experiments/e3_submission_expanse/e3_54927001

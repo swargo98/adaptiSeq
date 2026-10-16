@@ -28,14 +28,14 @@ of the two fixes when you merge (ours has the tests in
 `tests/test_list_resilience.py` and also keeps a list going past a failed
 accession).
 
-**State of the benchmark (2026-10-14 23:30 PDT): full run started; rep 1 running.**
+**State of the benchmark (2026-10-16 04:30 PDT): rep 1 done (hit by ENA portal outage), rep 2 running.**
 
 | Job | What | State |
 |---|---|---|
 | `54902878` `adaptiseq_setup` (`shared`, 8 cores, 2 h) | env, wheel, tests, README check, ENA probe | **COMPLETED** 20:40 to 21:20 PDT on `exp-1-44`, all steps passed (below) |
 | `54902879` `adaptiseq_gate` (`compute`, exclusive, 20 h limit) | the gate: one rep of 3r + 3b | **TIMEOUT** at the 20 h limit (21:20 to 17:20 PDT) inside the 3b `iseq` arm, as predicted; 3b Kingfisher did not run. GATE PASS (md5 gate); `check_run.txt` lists the missing rows. Node `exp-5-53` (AMD EPYC 7742, 128 cores, 251 GB, 870 GB free NVMe) |
 | `54908326` `adaptiseq_setup` | rebuild the wheel from the checkout (with the ENA-error, list-resilience and stale-`.part.meta` fixes), reinstall into `adaptiseq_e3_sub`, tests, README check | **COMPLETED** 17:44 to 17:49 PDT, all passed; new wheel sha256 `2a0a6f5c...` (below); ENA probe 2.1/15.6/43.7 MB/s at 1/8/20 connections |
-| `54927001`, `54927008`, `54927009`, `54927010`, `54927011` `adaptiseq_e3` | the full run: reps 1 to 5 of 3r + 3b, one rep per job (48 h limit, about 24.5 h each) | `54927001` (rep 1) **RUNNING** since 23:24 PDT 10-14 on `exp-4-08`: GATE PASS, `versions_e3.txt` shows wheel sha256 `2a0a6f5c...` (the rebuilt one), link probe 2.2/15.6/36.7 MB/s at 1/8/20 connections. The other four are PENDING (Dependency). The first waited `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
+| `54927001`, `54927008`, `54927009`, `54927010`, `54927011` `adaptiseq_e3` | the full run: reps 1 to 5 of 3r + 3b, one rep per job (48 h limit, about 24.5 h each) | `54927001` (rep 1) **COMPLETED** 23:24 10-14 to 04:23 10-16 (29 h) on `exp-4-08`; `54927008` (rep 2) **RUNNING** since 04:24 10-16 on `exp-3-36`. Rep 1: GATE PASS, `versions_e3.txt` shows wheel sha256 `2a0a6f5c...` (the rebuilt one), link probe 2.2/15.6/36.7 MB/s at 1/8/20 connections. The other four are PENDING (Dependency). The first waited `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
 
 
 The first two jobs waited about 3 h in the queue because of a Lustre fault on
@@ -67,6 +67,9 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 | adaptiseq-fixed-j20 | 1515 | 5/8 md5-verified, 3 present unverified | 1903 / 8 | 3 runs resolved to SRA (`sra-pub-run-odp.s3.amazonaws.com`): ENA's portal timed out (probes at 18:27 and 18:33 PDT got no answer in 60 s). 10 segment attempts failed with `ContentLengthError` (the server closed early) and were retried; no md5 mismatch. 18:15 to 18:41 PDT |
 | adaptiseq-default | 4481 | 6/8 md5-verified, 2 present unverified | 4136 / 7 (rc=1) | 2 runs resolved to SRA (ENA portal). 2 md5 mismatches on ENA HTTPS `_2` files, both fixed by the retry; 6 refused connects to `ftp.sra.ebi.ac.uk:443`. The adaptive controller collapsed again: summary "85 probes; best 3690 Mbps at 14 workers; last 9 Mbps at 1 worker". The 3690 Mbps best is not a real link rate (the node probe is about 300 Mbps at 20 connections), so one probe window is mis-measured, probably bytes counted from an already-complete or cached file. The controller then spent the rest of the arm at 1 to 3 workers. **adaptiSeq fix candidate (after the full run):** clamp or discard probe readings above the link ceiling, and stop the top-down search from settling on 1 worker when per-worker throughput is flat. 18:41 to 19:56 PDT |
 | iseq | 30000 **TIMEOUT** | 4/8 md5-verified, 3 present unverified | ran out of the gate's 20 h | 2 SRA fallbacks logged before the cut; 7 md5 mismatches on ENA FTP (iSeq retries and keeps going). One FTP stream; 12.4 of 25.9 GB verified. Raw log 47.6 MB of wget dots; the commit holds the `.log.gz` (3.4 MB). 19:56 to 04:16 PDT |
+| kingfisher | 411 | **0/8, rc=1** | did not run in the gate | The first file, `SRR15852400_1.fastq.gz` over ENA FTP (aria2c), failed Kingfisher's `pigz -t` gzip test (a corrupt transfer); `_2` passed md5. Kingfisher does not retry a corrupt file: it aborts the whole list with rc=1, so the other 7 runs never ran. 04:16 to 04:23 PDT |
+
+Rep 1 ended **COMPLETED** at 04:23 PDT on 10-16 after 28 h 59 min. `check_run.txt`: CHECK FAIL (3r fastq-dl and 3b iseq TIMEOUT; nine rows with present-unverified runs). Committed the whole result directory (scripts, summaries, `fig3_*.png`, slurm files), except the three raw logs over 20 MB; their `.log.gz` copies are committed.
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
