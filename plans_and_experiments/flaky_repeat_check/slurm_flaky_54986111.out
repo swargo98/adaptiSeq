@@ -1,0 +1,24 @@
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip
+checkout: 4b93640 + uncommitted test changes node: exp-1-03
+idle: 40 passed, 0 failed
+                f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+                f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+                f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+                f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+                f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+loaded: 35 passed, 5 failed
+rm: cannot remove '/scratch/rswargo/job_54986111': Permission denied
+/cm/local/apps/slurm/var/spool/job54986111/slurm_script: line 1: 3459568 Terminated              ( while :; do
+    :;
+done )
+/cm/local/apps/slurm/var/spool/job54986111/slurm_script: line 1: 3459569 Terminated              ( while :; do
+    :;
+done )
+/cm/local/apps/slurm/var/spool/job54986111/slurm_script: line 1: 3459570 Terminated              ( while :; do
+    :;
+done )
+/cm/local/apps/slurm/var/spool/job54986111/slurm_script: line 1: 3459571 Terminated              ( while :; do
+    :;
+done )

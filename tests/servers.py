@@ -107,6 +107,10 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
 
     daemon_threads = True
     allow_reuse_address = True
+    # socketserver's default listen backlog is 5: on a loaded node the single
+    # accept thread falls behind, the kernel drops further SYNs and the client
+    # retries ~1 s later, so concurrent connections never overlap as intended.
+    request_queue_size = 128
 
     def handle_error(self, request, client_address):
         return
@@ -140,6 +144,10 @@ class RangeServer(socketserver.ThreadingTCPServer):
 
     daemon_threads = True
     allow_reuse_address = True
+    # socketserver's default listen backlog is 5: on a loaded node the single
+    # accept thread falls behind, the kernel drops further SYNs and the client
+    # retries ~1 s later, so concurrent connections never overlap as intended.
+    request_queue_size = 128
 
     def handle_error(self, request, client_address):
         # Clients legitimately close early (probe reads 1 byte; segments close on
