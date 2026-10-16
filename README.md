@@ -58,6 +58,11 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   instead of ENA ("N accession(s) had no usable ENA metadata and will be
   downloaded from SRA: ..."). Previously that fallback was silent until each
   Run's verification note.
+- **New** `--no-sra-fallback`: a Run with no usable ENA metadata or file fails
+  (exit 1; in a list it goes to `fail.log` and the rest continue) instead of
+  being fetched from NCBI SRA, so every file that is kept was checked against
+  ENA's md5. A cached SRA runinfo file from an earlier run is queried again on
+  ENA. Cannot be combined with `-d sra`.
 
 ### 0.1.4
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)
@@ -210,6 +215,7 @@ Optional options:
   -t, --threads   int           Threads for SRA->FASTQ / compression (default: 8).
   -e, --merge     [ex|sa|st]    Merge fastq files per Experiment, Sample, or Study.
   -d, --database  [ena|sra]     Force database for SRA data (default: auto-detect).
+      --no-sra-fallback         Fail a Run that ENA cannot serve instead of fetching it from SRA.
   -p, --parallel  int           axel connection count (classic engine only), e.g. -p 10.
   -a, --aspera                  Use Aspera (ascp); GSA/ENA only.
   -s, --speed     int           Download speed limit (MB/s) (default: 1000).

@@ -31,6 +31,10 @@ class Options:
     threads: int = 8               # -t
     merge: Optional[str] = None     # -e ex|sa|st  (None == off)
     database: str = "auto"         # -d ena|sra (auto-detect default)
+    # --no-sra-fallback: fail an accession instead of fetching it from NCBI SRA
+    # when ENA has no usable metadata or file for it (SRA-converted files cannot
+    # be checked against ENA's md5).
+    no_sra_fallback: bool = False
     parallel: int = 0              # -p (0 == use wget, >0 == axel -n parallel)
     aspera: bool = False            # -a
     speed: int = 1000              # -s MB/s
@@ -64,6 +68,8 @@ class Options:
             raise ValueError(f"Invalid merge: {self.merge}")
         if self.database not in ("auto", "ena", "sra"):
             raise ValueError(f"Invalid database: {self.database}")
+        if self.no_sra_fallback and self.database == "sra":
+            raise ValueError("no_sra_fallback conflicts with database='sra'")
         if self.protocol not in ("auto", "ftp", "https"):
             raise ValueError(f"Invalid protocol: {self.protocol}")
         if self.engine not in ("classic", "segmented"):

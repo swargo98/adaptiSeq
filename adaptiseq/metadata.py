@@ -128,6 +128,15 @@ def _row2_field1(path: Path, sep: str) -> str:
 
 # ================================ ENA / SRA =====================================
 
+def is_ena_tsv(path: Path) -> bool:
+    """True if ``path`` holds an ENA filereport (not the SRA runinfo fallback)."""
+    try:
+        with open(path, errors="replace") as fh:
+            return fh.readline().startswith("study_accession\t")
+    except OSError:
+        return False
+
+
 def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
     """Fetch SRA/ENA run metadata.
 
@@ -168,6 +177,14 @@ def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
             _sleep(delay)
 
     if not _row2_field1(tsv, "\t"):
+        if ctx.options.no_sra_fallback:
+            raise MetadataError(
+                f"No usable ENA metadata for {accession}, and SRA fallback is "
+                "disabled (--no-sra-fallback)",
+                "ENA may be down or the run may exist only in SRA: retry later, "
+                "or drop --no-sra-fallback to accept files that cannot be checked "
+                "against ENA's md5",
+            )
         reporter.info(
             f"{bright_yellow('Note')}: No metadata information found for "
             f"{accession} in the ENA database, try to download from the SRA database"

@@ -125,6 +125,11 @@ def download_sra(ctx: RunContext, srr: str) -> None:
     # --- SRA file path ---
     forced_sra = ctx.database == "sra"
     if forced_sra or not sra_link:
+        if opts.no_sra_fallback:
+            raise DownloadError(
+                f"ENA lists no file for {srr}, and SRA fallback is disabled "
+                "(--no-sra-fallback)"
+            )
         if ctx.database == "ena":
             reporter.info(
                 f"{bright_yellow('Note')}: The SRA file of {srr} is not available "
@@ -217,6 +222,11 @@ def resolve_sra_urls(ctx: RunContext, srr: str) -> List[str]:
         return [scheme + p for p in parts if ".fastq.gz" in p]
 
     if ctx.database == "sra" or not sra_link:
+        if opts.no_sra_fallback:
+            raise DownloadError(
+                f"ENA lists no file for {srr}, and SRA fallback is disabled "
+                "(--no-sra-fallback)"
+            )
         link = _srapath(srr)
         return [link] if link else []
     return [scheme + sra_link]

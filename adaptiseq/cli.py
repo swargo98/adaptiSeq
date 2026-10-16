@@ -70,6 +70,10 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Merge fastq files per Experiment/Sample/Study.")
     g.add_argument("-d", "--database", metavar="[ena|sra]",
                    help="Force database for SRA data (default: auto-detect).")
+    g.add_argument("--no-sra-fallback", action="store_true", dest="no_sra_fallback",
+                   help="Fail an accession instead of downloading it from NCBI SRA "
+                        "when ENA has no usable metadata or file for it, so every "
+                        "file can be checked against ENA's md5.")
     g.add_argument("-p", "--parallel", metavar="int",
                    help="axel connection count for parallel download, e.g. -p 10.")
     g.add_argument("-a", "--aspera", action="store_true",
@@ -292,6 +296,10 @@ def main(argv: Optional[List[str]] = None) -> int:
         _emit_error(reporter, "SRA database does not support Aspera download",
                     'Please remove -a option or switch to the ENA database by "-d ena"')
         return 1
+    if args.no_sra_fallback and database == "sra":
+        _emit_error(reporter, "--no-sra-fallback cannot be used with -d sra",
+                    'Please remove one of them: "-d sra" downloads from SRA on purpose')
+        return 1
 
     # --- preflight (needs-based; see NOTES.md divergence #4 / #P2.3) ---
     try:
@@ -312,6 +320,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             threads=threads,
             merge=merge,
             database=database,
+            no_sra_fallback=args.no_sra_fallback,
             parallel=parallel,
             aspera=args.aspera,
             speed=speed,

@@ -138,7 +138,8 @@ def _process_sra(ctx: RunContext, accession: str) -> None:
     opts = ctx.options
     tsv = ctx.metadata_tsv(accession)
 
-    if file_nonempty(tsv) and not meta.has_ena_error(tsv):
+    if (file_nonempty(tsv) and not meta.has_ena_error(tsv)
+            and (meta.is_ena_tsv(tsv) or not opts.no_sra_fallback)):
         reporter.info(
             f"{green('Note')}: {tsv.name} exists, skip downloading metadata "
             f"for {accession}"

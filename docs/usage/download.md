@@ -71,6 +71,19 @@ unnecessary. Force `-d sra` when ENA is slow for a given file.
 > If a file is not in **ENA**, adaptiSeq switches to **SRA** automatically even
 > with `-d ena`.
 
+## `--no-sra-fallback` — ENA or nothing
+
+```bash
+adaptiseq -i accessions.txt -g --no-sra-fallback
+```
+
+Fail a Run instead of fetching it from SRA when ENA has no usable metadata or
+file for it (after the usual retries). FASTQ converted from an SRA file cannot
+be checked against ENA's md5, so use this when every kept file must be
+md5-verified, e.g. in a pipeline or a benchmark. adaptiSeq exits 1; in a list,
+the failed accessions go to `fail.log` and the rest continue. Re-run them later, or without the flag to accept SRA. Cannot be
+combined with `-d sra`.
+
 ## `-r`, `--protocol` — ENA transport
 
 ```bash
