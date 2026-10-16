@@ -63,6 +63,7 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 | arm | wall_s | runs | gate wall_s / runs | notes |
 |---|---|---|---|---|
 | fastq-dl | 28137 | 3/8 md5-verified, 5 present unverified | 24132 / 8 | "Querying ENA was unsuccessful" 11 times, so 5 runs went to SRA (`Archive: SRA`, AWS S3 at up to 34 connections); 5 md5 mismatches on the ENA FTP runs, each retried by fastq-dl. Ran 09:30 to 17:20 PDT, all during the outage |
+| iseq-p8 | 3274 | 7/8 md5-verified, 1 present unverified | 1990 / 8 | 1 SRA fallback after an empty ENA answer (17:20 to 18:15 PDT) |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
