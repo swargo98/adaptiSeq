@@ -5,3 +5,4 @@ panel	rep	seed	order_idx	arm
 3r	2	20261013:3r:2	4	fastq-dl
 3r	2	20261013:3r:2	5	adaptiseq-default
 3r	2	20261013:3r:2	6	iseq
+3b	2	20261013:3b:2	1	kingfisher
