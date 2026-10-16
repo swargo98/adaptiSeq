@@ -1,0 +1,2 @@
+checkout: 6afd084 + uncommitted changes  node: exp-1-20
+adaptiseq imported from /home/rswargo/adaptiSeq/adaptiseq/__init__.py

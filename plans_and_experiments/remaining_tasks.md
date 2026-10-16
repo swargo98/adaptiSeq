@@ -93,7 +93,8 @@ error body. Consequences:
   re-run rep 1 as a sixth chained job once the chain ends, or report md5-verified
   counts and say ENA was down. **User decision (C).** I recommend re-running the
   affected rep, so all five reps are comparable.
-- adaptiSeq improvement (after the full run, since it changes the measured wheel):
+- **Done in source (not in the benchmarked wheel), 2026-10-16:** `metadata.get_sra_metadata` now retries a failed ENA query (wget exit non-zero: HTTP 500, timeout) like the error body (4 tries, 2/4/8 s), and retries an empty answer once (`ENA_EMPTY_ATTEMPTS = 2`) before it falls back to SRA. 4 new tests in `tests/test_list_resilience.py`, which fail on the old code (`pytest_expanse_54976002`). Full offline suite with the fix: 184 passed, 7 skipped (`pytest_expanse_54975961`). README notes: new "Unreleased" section, so the 0.1.4 notes still describe the benchmarked wheel. Not done yet: a `--require-md5`-style option, and a visible batch note when a Run goes to SRA (the batch resolver uses a NullReporter, so the fallback is silent in `-j` mode).
+- Original note: adaptiSeq improvement (after the full run, since it changes the measured wheel):
   tell "ENA failed" (non-200, timeout, network error) apart from "ENA answered and
   has no rows". Retry the first with backoff, and fall back to SRA only on the
   second. A `--no-sra-fallback` / `--require-md5` style option would stop a

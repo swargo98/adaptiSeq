@@ -47,6 +47,14 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### Unreleased
+- **Fix**: an ENA metadata query that fails (HTTP 500, timeout, network error)
+  or comes back with no rows is no longer read as "not in ENA". Previously such
+  a Run went to the SRA fallback, and the converted FASTQ could not be checked
+  against ENA's md5; during an ENA portal outage this hit whole lists. A failed
+  query is now retried like the error body (4 tries, 2/4/8 s apart); an empty
+  answer is retried once, so a Run that is really SRA-only costs one extra query.
+
 ### 0.1.4
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)
   no longer exits with code 1 and a `fail.log` entry after producing complete

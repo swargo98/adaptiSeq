@@ -73,6 +73,14 @@ _RE_QUERYKEY = re.compile(r"<QueryKey>([^<]+)")
 ENA_ERROR_MARKER = "ERROR occurred"
 ENA_ATTEMPTS = 4          # tries before falling back to the SRA path
 ENA_RETRY_BASE_S = 2.0    # sleep 2, 4, 8 s between tries
+# During the ENA portal outage of 2026-10-15 the portal also answered with HTTP
+# 500 (wget exits non-zero and leaves an empty file), timed out, or returned
+# HTTP 200 with the header line and no rows for a Run that is in ENA. Each of
+# these used to read as "not in ENA" and sent the Run to SRA, whose converted
+# FASTQ cannot match ENA's md5. A failed request is retried like an error body;
+# an empty answer is retried once, so a Run that is really SRA-only costs one
+# extra query.
+ENA_EMPTY_ATTEMPTS = 2
 _sleep = time.sleep       # patched in tests
 
 
@@ -90,6 +98,17 @@ def _unlink(path: Path) -> None:
         path.unlink()
     except FileNotFoundError:
         pass
+
+
+def _ena_problem(rc: int, tsv: Path) -> str:
+    """Why an ENA filereport answer can't be used ("" if it can)."""
+    if rc != 0:
+        return f"request failed, wget exit {rc}"
+    if has_ena_error(tsv):
+        return "error body"
+    if not _row2_field1(tsv, "\t"):
+        return "empty answer"
+    return ""
 
 
 # --- small awk-equivalents ------------------------------------------------------
@@ -120,28 +139,33 @@ def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
     query = validate_query(accession, reporter)
 
     tsv = ctx.metadata_tsv(accession)
+    empty = 0
     for attempt in range(1, ENA_ATTEMPTS + 1):
         if has_ena_error(tsv):
             _unlink(tsv)  # never resume (-c) onto an error body
-        wget_to_file(
+        rc = wget_to_file(
             ENA_URL.format(query=query, fields=ENA_FIELDS),
             tsv,
             cont=True,
             quiet=True,
         )
-        if not has_ena_error(tsv):
+        problem = _ena_problem(rc, tsv)
+        if not problem:
             break
+        # Drop whatever came back (error page, partial or header-only file):
+        # never resume onto it, and let the SRA path below start clean.
+        _unlink(tsv)
+        if problem == "empty answer":
+            empty += 1
+            if empty >= ENA_EMPTY_ATTEMPTS:
+                break  # ENA keeps answering with no rows: not in ENA
         if attempt < ENA_ATTEMPTS:
             delay = ENA_RETRY_BASE_S * 2 ** (attempt - 1)
             reporter.info(
-                f"{bright_yellow('Note')}: ENA returned an error for {accession} "
-                f"(attempt {attempt}/{ENA_ATTEMPTS}), retrying in {delay:.0f} s"
+                f"{bright_yellow('Note')}: ENA query for {accession} failed "
+                f"({problem}, attempt {attempt}/{ENA_ATTEMPTS}), retrying in {delay:.0f} s"
             )
             _sleep(delay)
-    else:
-        # Still an error body: drop it and use the SRA path below, as for an
-        # empty ENA answer.
-        _unlink(tsv)
 
     if not _row2_field1(tsv, "\t"):
         reporter.info(

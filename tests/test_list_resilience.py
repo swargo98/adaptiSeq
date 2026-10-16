@@ -95,6 +95,88 @@ def test_persistent_ena_error_falls_back_to_sra(tmp_path, monkeypatch):
     assert tsv.read_text().splitlines()[1].split("\t")[0] == "SRR22904251"
 
 
+# ENA portal outage, 2026-10-15 (full run 54927001): the portal also answered
+# with HTTP 500 (wget exit 8, empty file), timed out (exit 4), or sent HTTP 200
+# with the header line only. Each sent the Run to SRA and cost its md5.
+HEADER_ONLY = "run_accession\tfastq_md5\n"
+SRA_RUNINFO = "Run,ReleaseDate\nSRR22904251,2023-01-01\n"
+
+
+def _fake_ena(answers, calls):
+    """wget_to_file stand-in: ENA gets the next (body, rc) (the last repeats);
+    NCBI gets an esearch/runinfo answer for SRR22904251."""
+    def fake(url, out_path, **kw):
+        calls.append(url)
+        if "ebi.ac.uk" in url:
+            n = len([u for u in calls if "ebi.ac.uk" in u])
+            body, rc = answers[min(n, len(answers)) - 1]
+        elif "esearch" in url:
+            body, rc = "<WebEnv>W</WebEnv><QueryKey>1</QueryKey>", 0
+        else:
+            body, rc = SRA_RUNINFO, 0
+        with open(out_path, "a" if kw.get("cont") else "w") as fh:
+            fh.write(body)
+        return rc
+    return fake
+
+
+def test_failed_ena_request_is_retried(tmp_path, monkeypatch):
+    calls, sleeps = [], []
+    answers = [("", 8), ("", 4), (GOOD_BODY, 0)]
+    monkeypatch.setattr(meta, "wget_to_file", _fake_ena(answers, calls))
+    monkeypatch.setattr(meta, "_sleep", sleeps.append)
+    ctx = _ctx(tmp_path)
+
+    tsv = meta.get_sra_metadata(ctx, "SRR22904251")
+
+    assert len(calls) == 3 and sleeps == [2.0, 4.0]
+    assert tsv.read_text() == GOOD_BODY
+    assert ctx.database == "ena"
+
+
+def test_empty_ena_answer_is_retried_once(tmp_path, monkeypatch):
+    calls, sleeps = [], []
+    monkeypatch.setattr(meta, "wget_to_file", _fake_ena([(HEADER_ONLY, 0), (GOOD_BODY, 0)], calls))
+    monkeypatch.setattr(meta, "_sleep", sleeps.append)
+    ctx = _ctx(tmp_path)
+
+    tsv = meta.get_sra_metadata(ctx, "SRR22904251")
+
+    assert len(calls) == 2 and sleeps == [meta.ENA_RETRY_BASE_S]
+    assert tsv.read_text() == GOOD_BODY  # not appended onto the header-only file
+    assert ctx.database == "ena"
+
+
+def test_sra_only_run_costs_one_extra_ena_query(tmp_path, monkeypatch):
+    calls, sleeps = [], []
+    monkeypatch.setattr(meta, "wget_to_file", _fake_ena([(HEADER_ONLY, 0)], calls))
+    monkeypatch.setattr(meta, "_sleep", sleeps.append)
+    ctx = _ctx(tmp_path)
+
+    tsv = meta.get_sra_metadata(ctx, "SRR22904251")
+
+    ena_calls = [u for u in calls if "ebi.ac.uk" in u]
+    assert len(ena_calls) == meta.ENA_EMPTY_ATTEMPTS
+    assert len(sleeps) == meta.ENA_EMPTY_ATTEMPTS - 1
+    assert ctx.database == "sra"
+    assert tsv.read_text().splitlines()[1].split("\t")[0] == "SRR22904251"
+
+
+def test_persistent_ena_failure_falls_back_to_sra(tmp_path, monkeypatch):
+    calls, sleeps = [], []
+    monkeypatch.setattr(meta, "wget_to_file", _fake_ena([("<!doctype html>", 8)], calls))
+    monkeypatch.setattr(meta, "_sleep", sleeps.append)
+    ctx = _ctx(tmp_path)
+
+    tsv = meta.get_sra_metadata(ctx, "SRR22904251")
+
+    ena_calls = [u for u in calls if "ebi.ac.uk" in u]
+    assert len(ena_calls) == meta.ENA_ATTEMPTS
+    assert len(sleeps) == meta.ENA_ATTEMPTS - 1
+    assert ctx.database == "sra"
+    assert "doctype" not in tsv.read_text()
+
+
 def test_cached_error_body_is_refetched_by_batch_resolver(tmp_path, monkeypatch):
     (tmp_path / "SRR22904251.metadata.tsv").write_text("run_accession\n" + ERROR_BODY)
     fetched = []
