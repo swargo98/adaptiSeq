@@ -58,7 +58,17 @@ Full-run progress, rep 1 (`54927001`, `e3_submission_expanse/e3_54927001/`), 3r 
 | iseq-p8 | 8600 | 198/241 md5-verified, 43 present unverified, exit 0 | 4097 / 241 | Same pattern: 43 runs fell back to SRA after an empty ENA metadata answer (06:39 to 09:03 PDT); log 10.6 MB (axel bars stripped) |
 | adaptiseq-default | 1647 | **0/241 md5-verified, 241 present unverified**, exit 0 | 577 / 239 (rc=1) | Every run was resolved to SRA (`sra-pub-run-odp.s3.amazonaws.com`): `.sra` download, fasterq-dump, gzip, so nothing can match ENA's md5. **Cause: ENA's portal API was down.** A probe at 09:32 PDT returned HTTP 500 (an HTML error page) for every `filereport` query. The adaptiSeq arm ran 09:03 to 09:30. Log 58 MB raw (fasterq-dump progress); the commit holds the `.log.gz` (11.8 MB) |
 
+3b rows, rep 1:
+
+| arm | wall_s | runs | gate wall_s / runs | notes |
+|---|---|---|---|---|
+| fastq-dl | 28137 | 3/8 md5-verified, 5 present unverified | 24132 / 8 | "Querying ENA was unsuccessful" 11 times, so 5 runs went to SRA (`Archive: SRA`, AWS S3 at up to 34 connections); 5 md5 mismatches on the ENA FTP runs, each retried by fastq-dl. Ran 09:30 to 17:20 PDT, all during the outage |
+
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
+`ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
+the login node. From 09:33 to 17:20 PDT, 15 probes got HTTP 500 and 2 timed out
+(000). The failures came in short windows (09:33 to 10:14 almost solid, then 1 or 2
+probes per hour), and 24 successful answers took more than 10 s.
 The 98 iSeq and 43 iSeq-p8 fallbacks above are probably the same outage
 starting on and off. Whenever an ENA query fails outright (HTTP 500, timeout,
 empty body), every tool treats it as "this run is not in ENA" and goes to SRA:
