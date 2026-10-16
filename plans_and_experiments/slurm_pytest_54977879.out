@@ -1,0 +1,10 @@
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: python -m pip install --upgrade pip
+checkout: 3c33767 + uncommitted changes  node: exp-1-01
+adaptiseq imported from /home/rswargo/adaptiSeq/adaptiseq/__init__.py
+
+=== tests, offline (ADAPTISEQ_NO_NETWORK=1) ===
+.............                                                            [100%]
+=== pytest done (status=0). Output: /home/rswargo/adaptiSeq/plans_and_experiments/pytest_expanse_54977879 ===
+rm: cannot remove '/scratch/rswargo/job_54977879': Permission denied

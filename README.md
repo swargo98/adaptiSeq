@@ -54,6 +54,10 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   against ENA's md5; during an ENA portal outage this hit whole lists. A failed
   query is now retried like the error body (4 tries, 2/4/8 s apart); an empty
   answer is retried once, so a Run that is really SRA-only costs one extra query.
+- **Batch mode** (`-j`) now says which accessions are downloaded from SRA
+  instead of ENA ("N accession(s) had no usable ENA metadata and will be
+  downloaded from SRA: ..."). Previously that fallback was silent until each
+  Run's verification note.
 
 ### 0.1.4
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)

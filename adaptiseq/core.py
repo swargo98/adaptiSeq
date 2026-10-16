@@ -12,6 +12,7 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 from typing import List
+from urllib.parse import urlsplit
 
 from . import metadata as meta
 from . import resolve, integrity, convert, merge
@@ -386,6 +387,18 @@ def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         reporter.info(f"{green('Note')}: aspera worker trajectory: {traj}")
 
 
+def _non_ena_accessions(tasks) -> List[str]:
+    """Accessions with a file resolved to a host outside ENA, i.e. the SRA
+    fallback. Their converted FASTQ cannot be checked against ENA's md5."""
+    out: List[str] = []
+    for t in tasks:
+        url = t.url if "://" in t.url else "//" + t.url
+        host = urlsplit(url).hostname or ""
+        if not host.endswith("ebi.ac.uk") and t.accession not in out:
+            out.append(t.accession)
+    return out
+
+
 def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
     """Phase A: parallel-resolve SRA/ENA accessions and adaptively batch-download
     their files. Phase B (integrity/convert/merge/logs) is the normal per-accession
@@ -406,6 +419,16 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         )
     if not tasks:
         return
+    # The resolver runs on a NullReporter, so say here which accessions left ENA
+    # (an explicit -d sra asks for that and needs no note).
+    if opts.database != "sra":
+        non_ena = _non_ena_accessions(tasks)
+        if non_ena:
+            shown = ", ".join(non_ena[:10]) + (" ..." if len(non_ena) > 10 else "")
+            reporter.info(
+                f"{bright_yellow('Note')}: {len(non_ena)} accession(s) had no usable "
+                f"ENA metadata and will be downloaded from SRA: {shown}"
+            )
     reporter.info(
         f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
         f"{len(sra_accs)} accession(s) with up to "

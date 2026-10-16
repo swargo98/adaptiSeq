@@ -1,0 +1,49 @@
+...............................ss............s....................F..... [ 37%]
+...........................sss.......................................... [ 75%]
+.............................................s..                         [100%]
+=================================== FAILURES ===================================
+_____________ test_auto_cap_does_not_truncate_intended_concurrency _____________
+
+tmp_path = PosixPath('/scratch/rswargo/job_54977858/pytest-of-rswargo/pytest-0/test_auto_cap_does_not_truncat0')
+
+    def test_auto_cap_does_not_truncate_intended_concurrency(tmp_path):
+        """Regression: the per-host cap must not silently truncate the design.
+    
+        ``max_conns_per_host`` used to default to a fixed 8. ``HostGuard`` is
+        process-wide and shared by every worker, so N in-flight files x k segments
+        could never exceed 8 connections in total -- one 8-segment file consumed the
+        entire budget and ``-j`` went inert for large files. The intended plan is one
+        worker per file, each opening up to ``max_segments`` connections, so auto
+        (``0``) derives ``jobs * max_segments`` and the plan becomes reachable.
+    
+        Files are 8 MB (above the engine's 5 MB min_file_size_for_segmentation) so
+        segmentation actually engages: 8 MB / 1 MB segments -> capped at
+        max_segments=4 -> 4 files x 4 segments = 16 intended connections.
+        """
+        files = {f"g{i}.bin": os.urandom(8 * 1024 * 1024) for i in range(4)}
+        with MultiFileRangeServer(files, delay=0.05) as srv:
+            opts = Options(engine="segmented", segment_size=1024 * 1024, max_segments=4,
+                           quiet=True, adaptive=False, jobs=4)  # max_conns_per_host: auto
+            assert opts.max_conns_per_host == 16, "auto cap should be jobs * max_segments"
+            eng = SegmentedEngine(opts, str(tmp_path))
+            tasks = [DownloadTask(srv.url(n), n, "ACC") for n in files]
+            failed = asyncio.run(BatchDownloader(eng, opts, str(tmp_path)).run(tasks))
+            assert not failed
+            # The old fixed default of 8 made this impossible by construction.
+>           assert srv.max_concurrent > 8, (
+                f"per-host cap still truncating: peak={srv.max_concurrent} (want >8)"
+            )
+E           AssertionError: per-host cap still truncating: peak=7 (want >8)
+E           assert 7 > 8
+E            +  where 7 = <tests.servers.MultiFileRangeServer object at 0x15552e37b110>.max_concurrent
+
+tests/test_batch.py:310: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_batch.py::test_auto_cap_does_not_truncate_intended_concurrency
+SKIPPED [1] tests/test_api_drift.py:23: offline: API-drift canary skipped
+SKIPPED [1] tests/test_api_drift.py:33: offline: API-drift canary skipped
+SKIPPED [1] tests/test_aspera_live.py:65: live aspera opt-in: set ADAPTISEQ_LIVE_ASPERA=1 with a real ascp + ENA key
+SKIPPED [1] tests/test_differential.py:74: offline: live differential test skipped (fixture mode covers CI)
+SKIPPED [1] tests/test_differential.py:86: offline: live differential test skipped
+SKIPPED [1] tests/test_differential.py:96: offline: cannot diff against live iseq
+SKIPPED [1] tests/test_segmented_live.py:32: offline: live segmented byte-identity test skipped

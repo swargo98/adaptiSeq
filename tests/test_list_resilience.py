@@ -177,6 +177,34 @@ def test_persistent_ena_failure_falls_back_to_sra(tmp_path, monkeypatch):
     assert "doctype" not in tsv.read_text()
 
 
+def test_batch_phase_names_accessions_sent_to_sra(tmp_path, monkeypatch):
+    tasks = [
+        batch.DownloadTask("https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/051/SRR22904251/SRR22904251.fastq.gz",
+                           "SRR22904251.fastq.gz", "SRR22904251"),
+        batch.DownloadTask("ftp.sra.ebi.ac.uk/vol1/fastq/SRR229/052/SRR22904252/SRR22904252.fastq.gz",
+                           "SRR22904252.fastq.gz", "SRR22904252"),
+        batch.DownloadTask("https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR22904253/SRR22904253",
+                           "SRR22904253", "SRR22904253"),
+    ]
+    monkeypatch.setattr(batch, "resolve_all", lambda *a, **k: (tasks, []))
+
+    class NoDownload:
+        def __init__(self, *a, **k):
+            pass
+
+        async def run(self, tasks):
+            return set()
+
+    monkeypatch.setattr(batch, "BatchDownloader", NoDownload)
+    ctx = _ctx(tmp_path)
+
+    core._batch_download_phase(ctx, ["SRR22904251", "SRR22904252", "SRR22904253"])
+
+    notes = [m for m in ctx.reporter.infos if "downloaded from SRA" in m]
+    assert len(notes) == 1 and notes[0].endswith("SRA: SRR22904253")
+    assert "1 accession(s)" in notes[0]
+
+
 def test_cached_error_body_is_refetched_by_batch_resolver(tmp_path, monkeypatch):
     (tmp_path / "SRR22904251.metadata.tsv").write_text("run_accession\n" + ERROR_BODY)
     fetched = []
