@@ -78,6 +78,7 @@ Rep 2 (`54927008`, `e3_submission_expanse/e3_54927008/`) rows:
 | 3r | kingfisher | 4978 | 218/241 md5-verified, 23 present unverified | 23 times "Unexpected ENA API response ... missing one or more required columns (fastq_ftp, fastq_md5)", then `aws-http` (SRA). So the ENA portal is still flaky on 10-16 (probes 200 but up to 49 s). 04:26 to 05:49 PDT |
 | 3r | adaptiseq-fixed-j20 | 561 | 240/241 md5-verified, 1 present unverified | 1 run resolved to SRA (the ENA probe at 05:49 timed out). 320 files over ENA HTTPS. Gate 354 s, rep 1 1280 s. 05:49 to 05:59 PDT |
 | 3r | iseq-p8 | 5139 | 227/241 md5-verified, 14 present unverified | 14 SRA fallbacks after empty ENA metadata. Gate 4097 s, rep 1 8600 s. 05:59 to 07:24 PDT |
+| 3r | fastq-dl | 9545 | 239/241 md5-verified, 2 present unverified | fastq-dl retries the ENA metadata query: 12 first attempts failed, 2 also failed the second attempt and went to SRA. This is the behaviour the adaptiSeq source fix now copies. 1 md5 mismatch, retried. Gate 2395 s, rep 1 TIMEOUT. 07:24 to 10:03 PDT |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
