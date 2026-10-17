@@ -1,0 +1,7 @@
+arm,n,wall_med,wall_iqr,MBps_med,MBps_iqr,runs_ok_med,runs_exp,peak_rss_MB,cpu_pct_med,conc_med,conc_max,conc_host_max,workers_max,timeouts,nonzero_rc,formats,success_pct
+adaptiseq-fixed-j20,1,2499.9,0.0,10.35,0.0,8.0,8,77.0,11.0,2.0,25,25,0,0,0,gz,100.0
+iseq-p8,1,4087.6,0.0,4.84,0.0,6.0,8,10.0,8.0,8.0,8,8,0,0,1,gz,75.0
+kingfisher,1,5232.2,0.0,4.18,0.0,7.0,8,663.0,46.0,5.0,5,5,0,0,0,gz,87.5
+adaptiseq-default,1,6552.2,0.0,3.95,0.0,8.0,8,77.0,5.0,3.0,25,25,0,0,0,gz,100.0
+iseq,1,30000.0,0.0,0.73,0.0,7.0,8,0.0,0.0,1.0,1,1,0,1,0,gz,87.5
+fastq-dl,1,30000.0,0.0,0.63,0.0,6.0,8,0.0,0.0,1.0,1,1,0,1,0,gz,75.0

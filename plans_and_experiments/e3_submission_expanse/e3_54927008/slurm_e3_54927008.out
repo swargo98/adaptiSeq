@@ -1,0 +1,154 @@
+=== adaptiSeq E3 (batch download, Fig 3) ===
+node        : exp-3-36
+repo        : /home/rswargo/adaptiSeq/plans_and_experiments
+python      : /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/python3  (Python 3.11.17)
+payload     : /scratch/rswargo/job_54927008/e3_payload   (870G free)
+results     : /home/rswargo/adaptiSeq/plans_and_experiments/e3_submission_expanse/e3_54927008
+panels      : 3r 3b  (reps=1 from rep 2, arm set=submission)
+wheel       : /home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.4-py3-none-any.whl
+
+=== egress check ===
+  OK   https://ftp.sra.ebi.ac.uk -> 200
+  OK   https://www.ebi.ac.uk -> 200
+  OK   https://ftp.ncbi.nlm.nih.gov -> 200
+
+=== tool check ===
+  OK   adaptiseq      /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/adaptiseq
+  OK   iseq           /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/iseq
+  OK   kingfisher     /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/kingfisher
+  OK   fastq-dl       /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/fastq-dl
+  OK   axel           /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/axel
+  OK   wget           /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/wget
+  OK   aria2c         /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/aria2c
+  OK   srapath        /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/srapath
+  OK   vdb-validate   /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/vdb-validate
+  OK   md5sum         /usr/bin/md5sum
+date: 2026-10-16T04:24:07-07:00
+node: exp-3-36
+kernel: 4.18.0-513.24.1.el8_9.x86_64
+CPU(s):              128
+Thread(s) per core:  1
+Core(s) per socket:  64
+Socket(s):           2
+Model name:          AMD EPYC 7742 64-Core Processor
+free: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+memory: 251 GB
+local scratch: 916G total, 870G free, /dev/nvme0n1p1
+os: Rocky Linux 8.9 (Green Obsidian)
+
+=== versions (pinned for the paper) ===
+date: 2026-10-16T04:24:07-07:00
+node: exp-3-36
+adaptiSeq 0.1.4
+aseq_version=0.1.4 aseq_sha256=2a0a6f5ca5580bd660b4bf6da5a0a4475968b6b01fd430558f644086ec3b7f25
+Version 1.9.9
+0.5.0
+fastq-dl, version 4.0.1
+Python 3.11.17
+
+=== datasets ===
+D1  PRJNA916347 (overhead-dominated)
+  D1_full_PRJNA916347    runs=  241 files=  321 total=    7.59 GB  avg=   23.6 MB/file   robustness panel (3a-robust): runs-completed per tool
+  D1_fair_PRJNA916347    runs=  201 files=  201 total=    4.42 GB  avg=   22.0 MB/file   fair timing panel (3a): all tools can complete
+  D1_threefile_PRJNA916347 runs=   40 files=  120 total=    3.17 GB  avg=   26.4 MB/file   the runs iseq drops (E3 robustness call-out / E7e)
+D2  PRJNA762469 (byte-dominated, seeded subset)
+  D2_full_PRJNA762469    runs=   60 files=  120 total=  205.97 GB  avg= 1716.4 MB/file   reference only -- NOT run at 10 reps
+  D2_subset_PRJNA762469  runs=    8 files=   16 total=   25.88 GB  avg= 1617.2 MB/file   byte-dominated panel (3b), seed=20260717
+D3  PRJNA540705 (large per-file)
+  D3_full_PRJNA540705    runs=    6 files=    6 total=   69.35 GB  avg=11557.5 MB/file   large-file arm (3b-large / feeds E4a)
+  D3_seg_PRJNA540705     runs=    2 files=    2 total=   23.07 GB  avg=11534.8 MB/file   connections-per-worker sweep (3s): --max-segments 4/8/16
+D4  mixed cross-database
+  D4_mixed               runs=   20 (ENA=12 SRA-only=6 GSA=2)  manifest covers the ENA rows only
+D0  sweep workload (D2 subset, 4 runs)
+  D0_sweep_PRJNA762469   runs=    4 files=    8 total=   11.86 GB  avg= 1482.0 MB/file   concurrency sweep (3d): bounded
+SMOKE  (3 smallest D1 runs)
+  SMOKE_D1               runs=    3 files=    3 total=    0.00 GB  avg=    0.0 MB/file   harness validation only -- NOT a result
+
+Wrote lists + manifests to /home/rswargo/adaptiSeq/plans_and_experiments/datasets
+
+=== link ceiling probe (ENA, 1 / 8 / 20 connections, 20 s each) ===
+date: 2026-10-16T04:24:41-07:00  node: exp-3-36  public ip: 198.202.103.99
+  P=1   total 2.1 MB/s  (2.09 MB/s per connection, 1 reported)
+  P=8   total 15.6 MB/s  (1.96 MB/s per connection, 8 reported)
+  P=20  total 21.2 MB/s  (1.06 MB/s per connection, 20 reported)
+
+=== manual md5 check ===
+SRR22904482  SRR22904482.fastq.gz  got=c48d3ba53ffbc09f378413e01d059393  ena=c48d3ba53ffbc09f378413e01d059393  manifest=c48d3ba53ffbc09f378413e01d059393  ok
+SRR22904482  SRR22904482_1.fastq.gz  got=b091e1e2594fecf65b968c9b72b047a7  ena=b091e1e2594fecf65b968c9b72b047a7  manifest=b091e1e2594fecf65b968c9b72b047a7  ok
+SRR22904482  SRR22904482_2.fastq.gz  got=26ed1ec400746ebbf5012eb98ddb22f8  ena=26ed1ec400746ebbf5012eb98ddb22f8  manifest=26ed1ec400746ebbf5012eb98ddb22f8  ok
+SRR22904404  SRR22904404.fastq.gz  got=b24d2e07d9bfc605d6eaa684a3010f15  ena=b24d2e07d9bfc605d6eaa684a3010f15  manifest=b24d2e07d9bfc605d6eaa684a3010f15  ok
+SRR22904321  SRR22904321.fastq.gz  got=0319180f6f5569d188f4e2f50bfe83ec  ena=0319180f6f5569d188f4e2f50bfe83ec  manifest=0319180f6f5569d188f4e2f50bfe83ec  ok
+verify_output.py: runs_complete=3 (expected 3)  extra_files=0  agrees
+GATE PASS
+
+=== running panels ===
+
+=== aggregating ===
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+==============================================================================
+3b  Byte-dominated (D2_subset: 8 runs, 25.9 GB, ~1.6 GB/file)
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                     n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct  speedup_vs_iseq  MBps_x_iseq
+arm                                                                                                                                                                                                                                     
+adaptiseq-fixed-j20  1    2499.9       0.0     10.35       0.0          8.0         8         77.0         11.0       2.0        25             25            0         0           0      gz        100.0            12.00        14.18
+iseq-p8              1    4087.6       0.0      4.84       0.0          6.0         8         10.0          8.0       8.0         8              8            0         0           1      gz         75.0             7.34         6.63
+kingfisher           1    5232.2       0.0      4.18       0.0          7.0         8        663.0         46.0       5.0         5              5            0         0           0      gz         87.5             5.73         5.73
+adaptiseq-default    1    6552.2       0.0      3.95       0.0          8.0         8         77.0          5.0       3.0        25             25            0         0           0      gz        100.0             4.58         5.41
+iseq                 1   30000.0       0.0      0.73       0.0          7.0         8          0.0          0.0       1.0         1              1            0         1           0      gz         87.5             1.00         1.00
+fastq-dl             1   30000.0       0.0      0.63       0.0          6.0         8          0.0          0.0       1.0         1              1            0         1           0      gz         75.0             1.00         0.86
+
+-- runs NOT completed (of 8 expected) --
+   fastq-dl                   completed    6  (dropped 2)
+   iseq                       completed    7  (dropped 1)
+   iseq-p8                    completed    6  (dropped 2)
+   kingfisher                 completed    7  (dropped 1)
+
+==============================================================================
+3r  Robustness (D1_full: 241 runs incl. 40 three-file runs)
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                   n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                     
+adaptiseq-default  1    1320.2       0.0      5.75       0.0        241.0       241         73.0          7.0       7.0        20             20            0         0           0      gz        100.0
+kingfisher         1    4978.0       0.0      1.45       0.0        218.0       241        761.0          8.0       1.0         5              5            0         0           0      gz         90.5
+
+-- SEGREGATED: fetched a different format/size; NOT wall-time comparable (§12.2) --
+                     n  wall_med  MBps_med   formats  runs_ok_med  runs_exp
+arm                                                                        
+adaptiseq-fixed-j20  1     560.8     13.53   gz,none        240.0       241
+iseq-p8              1    5139.0      1.37   gz,none        227.0       241
+fastq-dl             1    9545.0      0.77  gz,jsonl        239.0       241
+iseq                 1   10800.0      0.62   gz,none        198.0       241
+
+-- runs NOT completed (of 241 expected) --
+   adaptiseq-fixed-j20        completed  240  (dropped 1)
+   fastq-dl                   completed  239  (dropped 2)
+   iseq                       completed  198  (dropped 43)
+   iseq-p8                    completed  227  (dropped 14)
+   kingfisher                 completed  218  (dropped 23)
+
+Wrote summaries + fig3_*.png to /home/rswargo/adaptiSeq/plans_and_experiments/e3_submission_expanse/e3_54927008
+note    adaptiSeq 0.1.4  wheel sha256 2a0a6f5ca5580bd660b4bf6da5a0a4475968b6b01fd430558f644086ec3b7f25
+note    3r kingfisher rep2: exit 0, 218/241 runs verified, 23 present but not byte-identical to ENA
+note    3r adaptiseq-fixed-j20 rep2: exit 0, 240/241 runs verified, 1 present but not byte-identical to ENA
+note    3r iseq-p8 rep2: exit 0, 227/241 runs verified, 14 present but not byte-identical to ENA
+note    3r fastq-dl rep2: exit 0, 239/241 runs verified, 2 present but not byte-identical to ENA
+note    3r iseq rep2: exit 124, 198/241 runs verified, 7 present but not byte-identical to ENA
+note    3b kingfisher rep2: exit 0, 7/8 runs verified, 1 present but not byte-identical to ENA
+note    3b iseq rep2: exit 124, 7/8 runs verified, 1 present but not byte-identical to ENA
+note    3b iseq-p8 rep2: exit 1, 6/8 runs verified
+note    3b fastq-dl rep2: exit 124, 6/8 runs verified, 1 present but not byte-identical to ENA
+PROBLEM 3r iseq rep2: TIMEOUT after 10800.0s
+PROBLEM 3b iseq rep2: TIMEOUT after 30000.01s
+PROBLEM 3b fastq-dl rep2: TIMEOUT after 30000.02s
+CHECK FAIL
+=== done (status=0). Results: /home/rswargo/adaptiSeq/plans_and_experiments/e3_submission_expanse/e3_54927008 ===
+kept: TSV + logs + manifests + versions (a few MB). Downloaded fastq: discarded.
+[cleanup] removing payload /scratch/rswargo/job_54927008/e3_payload (4.0K)
