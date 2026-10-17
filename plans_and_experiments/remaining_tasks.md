@@ -28,7 +28,7 @@ of the two fixes when you merge (ours has the tests in
 `tests/test_list_resilience.py` and also keeps a list going past a failed
 accession).
 
-**State of the benchmark (2026-10-16 04:30 PDT): rep 1 done (hit by ENA portal outage), rep 2 running.**
+**State of the benchmark (2026-10-17 14:00 PDT): rep 1 done (hit by ENA portal outage; re-run queued as `54997452`), rep 2 done, rep 3 running.**
 
 | Job | What | State |
 |---|---|---|
@@ -87,6 +87,12 @@ Rep 2 (`54927008`, `e3_submission_expanse/e3_54927008/`) rows:
 | 3b | adaptiseq-fixed-j20 | 2500 | 8/8 | All 16 files over segmented ENA HTTPS, 0 SRA fallbacks. 8 segment connects refused by `ftp.sra.ebi.ac.uk:443` (193.62.193.165), all retried. 1 md5 mismatch, SRR15852406_1, fixed by the retry. That file has now mismatched in 3 of 4 rep-2 3b arms (iseq x2, iseq-p8 x3, fixed-j20 x1); kingfisher got it OK. Rep 1: 1515 s, 5/8 (3 via SRA). 00:23 to 01:05 PDT |
 | 3b | fastq-dl | 30000 (TIMEOUT) | 6/8 | One ENA FTP stream, 0 SRA fallbacks. SRR15852404_1 failed md5 3 times (02:34, 03:10, 03:41) and fastq-dl gave the run up; SRR15852406_1 mismatched once, then OK. The limit hit during the last run, left partial (present-unverified). Rep 1: 28137 s, 3/8 (5 via SRA). 01:05 to 09:25 PDT |
 | 3b | adaptiseq-default | 6552 | 8/8 | All 16 files over segmented ENA HTTPS, 0 SRA fallbacks. 4 md5 mismatches, all fixed by retries (SRR15852400_2, SRR15852404_1, SRR15852425_2 x2, the last needing the third try); 8 refused connects to 193.62.193.165:443. Controller: "107 probes; best 1608 Mbps at 16 workers; last 3 Mbps at 1 worker", so most of the 6552 s was the 1-worker tail (ENA's per-connection limit), again the tail-end re-split case. 2.6x slower than fixed-j20 this rep. Rep 1: 4481 s, 6/8. 09:25 to 11:14 PDT |
+
+Rep 3 (`54927009`, `e3_submission_expanse/e3_54927009/`) rows:
+
+| panel | arm | wall_s | runs | notes |
+|---|---|---|---|---|
+| 3r | iseq | 9658 | 241/241 | First complete iseq 3r of the full run (rep 1 10678 s 143/241, rep 2 10800 TIMEOUT 198/241). All via ENA FTP: 0 SRA fallbacks, 0 md5 mismatches. Faster link today (probe 7.2 MB/s per connection). 11:17 to 13:58 PDT |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
