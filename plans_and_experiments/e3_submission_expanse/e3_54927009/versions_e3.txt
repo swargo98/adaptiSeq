@@ -1,0 +1,6 @@
+# 2026-10-17T11:17:10-07:00  host=exp-3-36  panel=3r  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.4 aseq_sha256=2a0a6f5ca5580bd660b4bf6da5a0a4475968b6b01fd430558f644086ec3b7f25  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.4-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
