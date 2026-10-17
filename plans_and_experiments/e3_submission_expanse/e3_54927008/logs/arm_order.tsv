@@ -9,3 +9,4 @@ panel	rep	seed	order_idx	arm
 3b	2	20261013:3b:2	2	iseq
 3b	2	20261013:3b:2	3	iseq-p8
 3b	2	20261013:3b:2	4	adaptiseq-fixed-j20
+3b	2	20261013:3b:2	5	fastq-dl
