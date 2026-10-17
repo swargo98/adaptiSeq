@@ -93,6 +93,7 @@ Rep 3 (`54927009`, `e3_submission_expanse/e3_54927009/`) rows:
 | panel | arm | wall_s | runs | notes |
 |---|---|---|---|---|
 | 3r | iseq | 9658 | 241/241 | First complete iseq 3r of the full run (rep 1 10678 s 143/241, rep 2 10800 TIMEOUT 198/241). All via ENA FTP: 0 SRA fallbacks, 0 md5 mismatches. Faster link today (probe 7.2 MB/s per connection). 11:17 to 13:58 PDT |
+| 3r | kingfisher | 2082 | 241/241 | All 241 via ena-ftp, all md5 OK, no ENA API errors (rep 1 3255 s 241/241, rep 2 4978 s 218/241 with 23 via aws-http). 13:58 to 14:32 PDT |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
