@@ -100,6 +100,7 @@ Rep 3 (`54927009`, `e3_submission_expanse/e3_54927009/`) rows:
 | 3r | adaptiseq-default | 725 | 241/241 | All 321 files over ENA HTTPS, no SRA fallbacks. 1 md5 mismatch, SRR22904279, fixed by the retry; that is the run that fell back to SRA in rep 1 and 2 iseq and rep 3 iseq-p8, so it is now a repeat offender (single 0.3 GB file). Controller: "14 probes; best 1366 Mbps at 20 workers; last 6 Mbps at 1 worker"; held 20 workers to 326 s, then 3 or fewer archive connections for 42% of samples (tail). Rep 1 1647 s (outage), rep 2 1320 s. 17:34 to 17:46 PDT |
 | 3b | fastq-dl | 20583 | 8/8 | All 16 files from ENA FTP (one stream), no SRA fallbacks, no md5 mismatches. Mean 1.26 MB/s over 25.9 GB, well under the link probe's 7.2 MB/s per connection, so the single FTP stream is limited by more than the per-connection cap. First complete fastq-dl 3b (rep 1 28137 s 3/8, rep 2 30000 TIMEOUT 6/8). 17:46 to 23:29 PDT |
 | 3b | kingfisher | 2510 | 8/8 | All 8 via ena-ftp, all md5 OK, no ENA API errors, no corrupt files. 10.3 MB/s mean. Rep 1 411 s 0/8 (pigz abort), rep 2 5232 s 7/8. 23:29 to 00:11 PDT |
+| 3b | iseq-p8 | 1436 | 8/8 | All 8 from ENA FTP (axel, 8 connections), no SRA fallbacks, no md5 mismatches. 18.0 MB/s mean. Rep 1 3274 s 7/8, rep 2 4088 s 6/8 (rc=1). 00:11 to 00:36 PDT |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
