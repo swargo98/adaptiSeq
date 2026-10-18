@@ -42,6 +42,8 @@ PUSHBACK_STATUSES = (429, 503)
 # and this many times before it counts as a failed attempt.
 CEILING_PAUSE_S = 0.5
 MAX_CEILING_WAITS = 120
+# Smallest segment a batch-tail split will make (see calculate_segments).
+MIN_SPLIT = 64 * 1024 * 1024
 
 
 class AlwaysRun:
@@ -125,12 +127,22 @@ def load_partial_offsets(
 
 
 def calculate_segments(
-    file_size: int, *, min_file_size: int, max_segments: int, segment_size: int
+    file_size: int, *, min_file_size: int, max_segments: int, segment_size: int,
+    target_segments: int = 0, min_split: int = 0,
 ) -> List[Tuple[int, int]]:
-    """Size-derived segment plan (do not invert): small files -> 1 segment."""
+    """Size-derived segment plan (do not invert): small files -> 1 segment.
+
+    ``target_segments`` raises the count, still within ``max_segments``, for a
+    file the batch wants split finer than ``segment_size`` gives (the last files
+    of a batch, when connections are free); no segment is made smaller than
+    ``min_split``.
+    """
     if file_size < min_file_size:
         return [(0, file_size - 1)]
     num_segments = min(max_segments, max(1, file_size // segment_size))
+    if target_segments > num_segments:
+        finest = max(1, file_size // max(1, min_split or MIN_SPLIT))
+        num_segments = max(num_segments, min(max_segments, target_segments, finest))
     segment_list: List[Tuple[int, int]] = []
     bytes_per_segment = file_size // num_segments
     for i in range(num_segments):
@@ -138,6 +150,32 @@ def calculate_segments(
         end = file_size - 1 if i == num_segments - 1 else (i + 1) * bytes_per_segment - 1
         segment_list.append((start, end))
     return segment_list
+
+
+def plan_from_meta(
+    metadata: Optional[Dict], file_size: int
+) -> Optional[List[Tuple[int, int]]]:
+    """The segment plan a ``.part.meta`` was written with, if it fits this file.
+
+    A resumed download keeps the plan it started with, so a different split now
+    (a batch tail asks for more segments) does not throw away the bytes already
+    on disk. Only a plan that tiles ``0 .. file_size - 1`` exactly is accepted.
+    """
+    if not metadata or metadata.get("file_size") != file_size:
+        return None
+    raw = metadata.get("segments")
+    if not isinstance(raw, list) or not raw:
+        return None
+    try:
+        plan = [(int(a), int(b)) for a, b in raw]
+    except (TypeError, ValueError):
+        return None
+    pos = 0
+    for a, b in plan:
+        if a != pos or b < a:
+            return None
+        pos = b + 1
+    return plan if pos == file_size else None
 
 
 def ensure_free_space(path: str, needed: int, margin: int = 0) -> None:
@@ -168,9 +206,11 @@ class SegmentedDownloader:
         host_guard: Optional[HostGuard] = None,
         rate: Optional[TokenBucket] = None,
         free_space_margin: int = 0,
+        target_segments: int = 0,
     ):
         self.session = session
         self.url = url
+        self.target_segments = max(0, int(target_segments))
         self.local_path = local_path
         self.part_path = local_path + ".part"
         self.meta_path = local_path + ".part.meta"
@@ -238,6 +278,7 @@ class SegmentedDownloader:
             min_file_size=self.min_file_size,
             max_segments=self.max_segments,
             segment_size=self.segment_size,
+            target_segments=self.target_segments,
         )
 
     # ------------------------------ streaming ----------------------------------
@@ -404,9 +445,8 @@ class SegmentedDownloader:
             if file_size is None:
                 return await self.download_single_connection(supports_ranges=False)
 
-        segments = self.calculate_segments(file_size)
-
         metadata = self.read_metadata()
+        segments = plan_from_meta(metadata, file_size) or self.calculate_segments(file_size)
         completed: Set[int] = set()
         partial_offsets: Dict[int, int] = {}
         if metadata:

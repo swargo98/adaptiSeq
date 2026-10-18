@@ -27,6 +27,7 @@ from .ratelimit import HostGuard, TokenBucket
 from .segmented import (
     AlwaysRun,
     calculate_segments,
+    plan_from_meta,
     ensure_free_space,
     load_partial_offsets,
     read_part_meta,
@@ -132,6 +133,7 @@ class FtpSegmentedDownloader:
         host_guard: Optional[HostGuard] = None,
         rate: Optional[TokenBucket] = None,
         free_space_margin: int = 0,
+        target_segments: int = 0,
     ):
         self.url = url
         self.host, self.port, self.path = parse_ftp_url(url)
@@ -147,6 +149,7 @@ class FtpSegmentedDownloader:
         self.host_guard = host_guard or HostGuard()
         self.rate = rate
         self.free_space_margin = max(0, int(free_space_margin))
+        self.target_segments = max(0, int(target_segments))
 
     def calculate_segments(self, file_size: int) -> List[Tuple[int, int]]:
         return calculate_segments(
@@ -154,6 +157,7 @@ class FtpSegmentedDownloader:
             min_file_size=self.min_file_size,
             max_segments=self.max_segments,
             segment_size=self.segment_size,
+            target_segments=self.target_segments,
         )
 
     async def _download_segment(
@@ -234,8 +238,8 @@ class FtpSegmentedDownloader:
             self.on_bytes(file_size)
             return True
 
-        segments = self.calculate_segments(file_size)
         meta = read_part_meta(self.meta_path)
+        segments = plan_from_meta(meta, file_size) or self.calculate_segments(file_size)
         completed: Set[int] = set()
         partial: Dict[int, int] = {}
         if meta and not os.path.exists(self.part_path):

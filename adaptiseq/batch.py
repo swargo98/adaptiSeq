@@ -39,7 +39,7 @@ from .accession import is_gsa
 from .console import NullReporter, Reporter, bright_yellow, green
 from .engine.gate import WorkerGate
 from .engine.optimize import EXIT_SIGNAL, gradient_opt_fast
-from .engine.ratelimit import HostGuard, TokenBucket
+from .engine.ratelimit import HostGuard, TokenBucket, host_of
 from .engine.throughput import ThroughputMeter
 from .integrity import fastq_md5s, md5sum
 from .logs import in_success
@@ -317,6 +317,7 @@ class BatchDownloader:
         # the per-Run check reuses these instead of hashing the files again.
         self.verified: dict = {}
         self.md5_mismatches = 0
+        self._in_flight = 0   # files being fetched right now
 
     async def run(self, tasks: List[DownloadTask]) -> Set[str]:
         """Download all ``tasks``; return the set of save_paths that ultimately
@@ -446,16 +447,20 @@ class BatchDownloader:
                         progress.inc()
                         self._cap_gate_to_remaining(progress, gate)
                     continue
+                self._in_flight += 1
                 try:
                     ok = await self.engine.fetch_async(
                         task.url, task.save_path, session=session,
                         host_guard=guard, rate=rate, on_bytes=meter.on_bytes,
+                        target_segments=self._tail_segments(queue, guard, task),
                     )
                 except asyncio.CancelledError:
                     raise
                 except Exception as e:
                     log.warning("download error for %s: %s", task.save_path, e)
                     ok = False
+                finally:
+                    self._in_flight -= 1
 
                 if ok and task.md5:
                     ok = await self._verify(task)
@@ -474,6 +479,21 @@ class BatchDownloader:
             finally:
                 queue.task_done()
 
+
+    def _tail_segments(self, queue, guard, task: DownloadTask) -> int:
+        """How many segments the file now starting may use.
+
+        Each file's split is fixed when it starts, at ``size // segment_size``
+        (three for a 1.6 GB file). That suits a full pool, but at the end of a
+        batch, and for a file fetched again after an md5 mismatch, a few files
+        on three connections each leave most of the connection budget idle.
+        Share the per-host budget among the files still to do instead: the
+        file gets ``budget // files_left`` segments, never more than
+        ``max_segments`` and never smaller than ``MIN_SPLIT`` each.
+        """
+        files_left = queue.qsize() + self._in_flight   # this one is in flight
+        budget = min(guard.cap_of(host_of(task.url)), self.jobs * self.options.max_segments)
+        return max(1, budget // max(1, files_left))
 
     async def _verify(self, task: DownloadTask) -> bool:
         """Check a finished file against ENA's md5 while the pool is still running.

@@ -75,6 +75,12 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   and the segment waits for a slot. Previously each refusal halved the cap,
   blocked the host for a backoff, and used up one of the segment's three
   attempts, so a few refusals could fail a whole file.
+- **Batch mode**: a file that starts near the end of a batch (or is fetched
+  again after an md5 mismatch) shares the per-host connection budget with the
+  files still to do, so it may use up to `--max-segments` segments of at least
+  64 MiB. Previously its split was fixed at `size // --segment-size` (three for
+  a 1.6 GB file), and the last files of a batch ran on one to three
+  connections. A resumed download keeps the split it started with.
 
 ### 0.1.4
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)
