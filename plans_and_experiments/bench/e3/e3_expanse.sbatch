@@ -29,7 +29,7 @@
 # (see submit_e3.sh) or run panel `all` in one job.
 #
 # Submit from the directory that contains bench/ and datasets/:
-#   export E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl
+#   export E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.5-py3-none-any.whl
 #   sbatch --export=ALL bench/e3/e3_expanse.sbatch                 # 3r + 3b, 5 reps (the paper run)
 #   REPS=1 sbatch --export=ALL bench/e3/e3_expanse.sbatch          # the gate: one rep of both
 #   PANELS="3a 3b" ARM_SET=legacy sbatch --export=ALL bench/e3/e3_expanse.sbatch

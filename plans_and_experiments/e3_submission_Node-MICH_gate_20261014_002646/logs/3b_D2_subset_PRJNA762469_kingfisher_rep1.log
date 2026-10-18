@@ -1,0 +1,5 @@
+2026/10/14 09:51:11 AM INFO: Kingfisher v0.5.0
+2026/10/14 09:51:11 AM INFO: Attempting download method ena-ftp for run SRR15852400 ..
+2026/10/14 09:51:11 AM INFO: Querying ENA for FTP paths for SRR15852400..
+2026/10/14 09:51:25 AM ERROR: Command curl --silent 'https://www.ebi.ac.uk/ena/portal/api/filereport?accession=SRR15852400&result=read_run&fields=fastq_ftp,fastq_md5' returned non-zero exit status 35.
+STDERR was: b''STDOUT was: b''

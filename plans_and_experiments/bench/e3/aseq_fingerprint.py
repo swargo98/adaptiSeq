@@ -7,8 +7,8 @@ rebuilt from a dirty tree, reports the same version string as the release.
 
 Prints one line of `key=value` pairs for the harness to splice into its TSV row:
 
-    aseq_version=0.1.4 aseq_sha256=<64 hex>          # --wheel given and it matches
-    aseq_version=0.1.4 aseq_sha256=tree:<64 hex>     # no --wheel
+    aseq_version=0.1.5 aseq_sha256=<64 hex>          # --wheel given and it matches
+    aseq_version=0.1.5 aseq_sha256=tree:<64 hex>     # no --wheel
 
 With `--wheel PATH` the sha256 is that of the wheel FILE (the number PyPI shows
 under "view hashes"), and it is reported only if every file inside the wheel is
@@ -20,7 +20,7 @@ path + content of every non-bytecode file). It is still comparable across
 machines and across rows, it just cannot be looked up on PyPI -- hence the
 `tree:` prefix, so the two kinds are never confused.
 
-    python bench/e3/aseq_fingerprint.py [--wheel adaptiseq-0.1.4-py3-none-any.whl]
+    python bench/e3/aseq_fingerprint.py [--wheel adaptiseq-0.1.5-py3-none-any.whl]
 """
 
 from __future__ import annotations

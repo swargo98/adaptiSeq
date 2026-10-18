@@ -47,7 +47,21 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.5
+- **Fix**: when ENA's portal API answers a metadata query with its error text
+  (`ERROR occurred. Not all results may have been written…`) instead of rows,
+  adaptiSeq re-queries up to 3 times and then falls back to SRA. It previously
+  took the error line as a Run accession and failed. A saved metadata file that
+  holds the error text is fetched again.
+- **Change**: with a list of accessions, an accession that fails (metadata,
+  download, md5, or merge error) is written to `fail.log` and the remaining
+  accessions still run; the exit code is still 1. iSeq stops at the first such
+  error. Setup errors (missing tools, bad options) still stop the run.
+
 ### 0.1.4
+- **Fix**: when a downloaded file fails its md5 check, the first retry now
+  downloads it again from scratch. Previously the full-size file was taken as
+  already complete, so that retry did nothing.
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)
   no longer exits with code 1 and a `fail.log` entry after producing complete
   FASTQ. The `.sra` is now validated with `vdb-validate`, recorded in

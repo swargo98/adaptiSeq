@@ -33,14 +33,14 @@ else
     command -v mamba >/dev/null 2>&1 && SOLVER="mamba"
     $SOLVER create -y -n "$ENV_NAME" -c conda-forge -c bioconda \
         python=3.11 \
-        iseq \
-        kingfisher \
-        fastq-dl \
-        sra-tools \
-        pysradb \
+        iseq=1.9.9 \
+        kingfisher=0.5.0 \
+        fastq-dl=4.0.1 \
+        sra-tools=3.4.1 \
+        pysradb=2.5.1 \
         ffq \
         entrez-direct \
-        aria2 axel wget pigz curl \
+        aria2=1.37.0 axel=2.17.13 wget pigz curl \
         "aiohttp>=3.8" "aioftp>=0.21" "numpy>=1.21" openpyxl psutil \
         pandas matplotlib
 fi
@@ -51,7 +51,7 @@ conda activate "$ENV_NAME"
 # never an editable install. The wheel is kept so run_e3.sh can record its sha256
 # (export E3_ASEQ_WHEEL=<path printed below>). Set E3_ASEQ_WHEEL beforehand to
 # install a local wheel instead (e.g. a dry run before the release is on PyPI).
-ASEQ_VERSION="${ASEQ_VERSION:-0.1.4}"
+ASEQ_VERSION="${ASEQ_VERSION:-0.1.5}"
 echo "=== installing adaptiSeq ${ASEQ_VERSION} (release wheel) ==="
 cd "$REPO_DIR"
 if [[ -z "${E3_ASEQ_WHEEL:-}" ]]; then

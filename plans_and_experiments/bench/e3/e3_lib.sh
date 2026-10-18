@@ -33,6 +33,40 @@ e3_aseq_fingerprint() {
     "$E3_PYTHON" "$E3_DIR/aseq_fingerprint.py" ${args[@]+"${args[@]}"}
 }
 
+# e3_net_check <arm> <phase> <list>
+#
+# Can this machine still reach the ENA portal API and the ENA file server? Run
+# outside the timed region, before and after every arm, and logged to
+# logs/net_checks.tsv. On 2026-10-14 an unattended upgrade restarted
+# systemd-networkd mid-run on the Fabric node, the manual IPv4 route vanished,
+# and five arms "ran" with no network. A failure is retried every 30 s, for up to
+# E3_NET_WAIT seconds before an arm and 120 s after one (ENA's API fails single
+# queries now and then). If it persists the harness stops; after an arm, that
+# arm's row is then suspect (see net_checks.tsv).
+e3_net_check() {
+    local arm="$1" phase="$2" list="$3"
+    [[ "${E3_NET_CHECK:-1}" == "0" ]] && return 0
+    local acc; acc="$(head -n 1 "$list")"
+    local api="https://www.ebi.ac.uk/ena/portal/api/filereport?accession=${acc}&result=read_run&fields=run_accession&format=tsv"
+    local netf="$E3_LOGS/net_checks.tsv"
+    [[ -f "$netf" ]] || printf 'stamp\tarm\tphase\tena_api\tena_ftp\n' > "$netf"
+    local wait_s=${E3_NET_WAIT:-600}
+    [[ $phase == after ]] && wait_s=120
+    local deadline=$(( $(date +%s) + wait_s ))
+    while :; do
+        local a=fail f=fail
+        curl -s -m 20 "$api" | grep -q "^${acc}" && a=ok
+        curl -s -m 20 -o /dev/null --list-only ftp://ftp.sra.ebi.ac.uk/vol1/ && f=ok
+        printf '%s\t%s\t%s\t%s\t%s\n' "$(date -u +%FT%TZ)" "$arm" "$phase" "$a" "$f" >> "$netf"
+        [[ $a == ok && $f == ok ]] && return 0
+        if [[ $(date +%s) -ge $deadline ]]; then
+            echo "[ERROR] network check failed ($phase $arm: ena_api=$a ena_ftp=$f); stopping. See $netf" >&2
+            return 1
+        fi
+        sleep 30
+    done
+}
+
 # run_arm <panel> <dataset_name> <arm_name> <tool> <rep> <order_idx> <list> <manifest> <cmd>
 #
 # <cmd> is a shell string executed with CWD set to a fresh scratch dir; it may
@@ -54,6 +88,8 @@ run_arm() {
 
     local aseq_version="-" aseq_sha256="-" fp
     fp="$(e3_aseq_fingerprint 2>>"$logf")" && eval "$fp"
+
+    e3_net_check "$arm" before "$list" || exit 3
 
     echo "[$(date +%H:%M:%S)] rep=$rep order=$order_idx arm=$arm dataset=$dataset (timeout ${E3_TIMEOUT}s)" >&2
 
@@ -163,4 +199,6 @@ run_arm() {
     echo "    -> ${wall}s  ${mbps} MB/s  runs=${runs_complete}/${runs_expected}  fmt=${format}  conc=${conc_med}/${conc_max} w=${workers_med}/${workers_max}  ${status}" >&2
 
     rm -rf "$dir" "$timef"
+
+    e3_net_check "$arm" after "$list" || exit 3
 }

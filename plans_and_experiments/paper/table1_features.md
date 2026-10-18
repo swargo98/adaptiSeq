@@ -7,7 +7,7 @@ and must be checked before submission (see `../remaining_tasks.md`).
 
 | Tool (version) | Databases | Accession list in one call | Parallel across accessions | Parallel, rate-limited resolution | md5 check | Resume partial file | Merge runs | Python API | pip / conda |
 |---|---|---|---|---|---|---|---|---|---|
-| **adaptiSeq** (0.1.4) | GSA, SRA, ENA, DDBJ, GEO | yes | yes (`-j`, adaptive) | yes (`--meta-jobs`) | yes | yes | yes (`-e`) | yes | pip |
+| **adaptiSeq** (0.1.5) | GSA, SRA, ENA, DDBJ, GEO | yes | yes (`-j`, adaptive) | yes (`--meta-jobs`) | yes | yes | yes (`-e`) | yes | pip |
 | iSeq (1.9.8) | GSA, SRA, ENA, DDBJ, GEO | yes | no (one run at a time) | no | yes | yes (`wget -c`) | yes (`-e`) | no | conda |
 | Kingfisher (0.5.0) | SRA, ENA, DDBJ; GSA experimental | yes | no (one run at a time) | no | optional (`--check-md5sums`) | no | no | yes | pip, conda |
 | fastq-dl (4.0.1) | SRA, ENA, DDBJ | no (one accession per call) | no | no | yes | no (`wget -O`) | yes (`--group-by-*`) | no | pip, conda |
@@ -28,7 +28,7 @@ Column definitions, to print under the table:
 
 ## Evidence
 
-**adaptiSeq 0.1.4.** `adaptiseq --help`; `adaptiseq/batch.py` (worker pool,
+**adaptiSeq 0.1.5.** `adaptiseq --help`; `adaptiseq/batch.py` (worker pool,
 `resolve_all`), `adaptiseq/ratelimits.py` (ENA 8, GSA 5, NCBI 3 or 10 requests/s),
 `adaptiseq/engine/segmented.py` (`.part` + `.part.meta`), `adaptiseq/__init__.py`
 (`fetch`, `resolve`, `get_metadata`). On PyPI; not on Bioconda.

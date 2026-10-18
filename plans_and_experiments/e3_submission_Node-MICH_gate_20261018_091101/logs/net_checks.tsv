@@ -1,0 +1,14 @@
+stamp	arm	phase	ena_api	ena_ftp
+2026-10-18T09:11:16Z	kingfisher	before	ok	ok
+2026-10-18T10:11:38Z	kingfisher	after	ok	ok
+2026-10-18T10:11:39Z	adaptiseq-fixed-j20	before	ok	ok
+2026-10-18T10:20:53Z	adaptiseq-fixed-j20	after	ok	ok
+2026-10-18T10:20:55Z	fastq-dl	before	ok	ok
+2026-10-18T11:50:41Z	fastq-dl	after	ok	ok
+2026-10-18T11:50:47Z	iseq	before	ok	ok
+2026-10-18T14:06:19Z	iseq	after	ok	ok
+2026-10-18T14:06:22Z	iseq-p8	before	ok	ok
+2026-10-18T14:43:57Z	iseq-p8	after	ok	ok
+2026-10-18T14:43:59Z	adaptiseq-default	before	ok	ok
+2026-10-18T14:56:05Z	adaptiseq-default	after	ok	ok
+2026-10-18T14:56:08Z	fastq-dl	before	ok	ok

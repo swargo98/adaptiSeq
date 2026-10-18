@@ -2,7 +2,7 @@
 # The submission benchmark on a machine without Slurm (Fabric). On Expanse use
 # e3_expanse.sbatch, which runs the same gates and the same driver.
 #
-#   export E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl
+#   export E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.5-py3-none-any.whl
 #   bash bench/e3/run_submission.sh gate     # one rep of 3r + 3b, then the checks
 #   nohup bash bench/e3/run_submission.sh full > run_submission.log 2>&1 &   # 5 reps, ~14 h
 #

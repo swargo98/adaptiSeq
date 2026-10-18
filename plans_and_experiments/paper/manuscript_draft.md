@@ -5,7 +5,7 @@ figure, one table, four pages.*
 
 **Status of this draft.** The prose, structure, and methods are written. Every
 result is a placeholder of the form `[[file:field]]`, to be filled from the
-output of `bench/e3/analyze_submission.py` once the 0.1.4 benchmark has run.
+output of `bench/e3/analyze_submission.py` once the 0.1.5 benchmark has run.
 No number from the earlier benchmark appears in the main text. Authors,
 affiliations, the Zenodo DOI, and the benchmark commit are also placeholders.
 The list at the end maps each placeholder to its source.
@@ -35,7 +35,7 @@ Python.
 
 **Availability and implementation:** adaptiSeq is implemented in Python (3.10 or
 later) and released under the MIT licence. Source: https://github.com/swargo98/adaptiSeq.
-Package: https://pypi.org/project/adaptiseq/. The version described here, 0.1.4,
+Package: https://pypi.org/project/adaptiseq/. The version described here, 0.1.5,
 is archived at [[Zenodo DOI]]. Benchmark scripts, accession lists, and checksum
 manifests are at [[benchmark repository and commit]].
 
@@ -129,7 +129,7 @@ Table 1 compares these features with those of the other tools.
 
 ## 3 Results
 
-**Design.** We compared adaptiSeq 0.1.4 with iSeq 1.9.8, Kingfisher 0.5.0, and
+**Design.** We compared adaptiSeq 0.1.5 with iSeq 1.9.9, Kingfisher 0.5.0, and
 fastq-dl 4.0.1 on two public datasets chosen to stress different costs:
 BioProject PRJNA916347 (241 runs, 7.6 GB, of which 40 runs have three FASTQ
 files), where per-run overhead dominates, and eight runs of PRJNA762469
@@ -142,7 +142,7 @@ takes one accession per call, was called once per run. Exact commands are in the
 Supplementary Methods.
 
 Each dataset was downloaded [[n reps]] times by every arm on two machines: an
-exclusive 128-core node of SDSC Expanse and an 8-core virtual machine on the
+exclusive 128-core node of SDSC Expanse and a 4-core virtual machine on the
 FABRIC testbed. Arms ran strictly one after another, in an order drawn afresh
 for every repetition, and all output was deleted between arms. A run counted as
 completed only if every one of its files matched the MD5 in a manifest taken
@@ -250,7 +250,7 @@ See `table1_features.md`.
 
 ## Figure 1 legend
 
-**Fig. 1.** Download of accession lists by adaptiSeq 0.1.4 and three other tools
+**Fig. 1.** Download of accession lists by adaptiSeq 0.1.5 and three other tools
 on two machines (circles, SDSC Expanse; squares, FABRIC). **(a)** Verified
 throughput on 241 runs totalling 7.6 GB. **(b)** Verified throughput on 8 runs
 totalling 25.9 GB. Large markers are medians over [[n reps]] repetitions, bars
@@ -271,7 +271,7 @@ line marks 241.
 | `[[ratios.tsv:ARM.field]]` | `ratios.tsv`, reference arm `adaptiseq-default` |
 | `[[numbers.json:headline.PANEL.field]]` | `numbers.json`, `headline_vs_fastest_competitor` |
 | `[[n reps]]` | `n_reps` in any of the tables (planned: 5) |
-| `[[Zenodo DOI]]` | created when the 0.1.4 tag is archived |
+| `[[Zenodo DOI]]` | created when the 0.1.5 tag is archived |
 | `[[benchmark repository and commit]]` | chosen when the benchmark files are published |
 
 Panel `3r` is the 241-run project and `3b` is the eight large runs.

@@ -17,10 +17,17 @@ from . import metadata as meta
 from . import resolve, integrity, convert, merge
 from ._async import run_sync
 from .accession import is_gsa
-from .console import green
-from .errors import AdaptiSeqError
+from .console import green, green_bold, red_bold
+from .errors import (
+    AdaptiSeqError,
+    DownloadError,
+    IntegrityError,
+    InvalidAccessionError,
+    MergeError,
+    MetadataError,
+)
 from .engine import get_engine
-from .logs import ensure_success_log, in_success
+from .logs import ensure_success_log, in_success, mark_fail
 from .net import file_nonempty
 from .options import Options, RunContext
 
@@ -270,6 +277,15 @@ def _finished_banner(ctx: RunContext, accession: str) -> None:
 
 # ================================ batch runner ==================================
 
+# Errors that concern one accession; the batch continues past them.
+_PER_ACCESSION_ERRORS = (
+    InvalidAccessionError,
+    MetadataError,
+    DownloadError,
+    IntegrityError,
+    MergeError,
+)
+
 def run(
     accessions: List[str],
     options: Options,
@@ -310,7 +326,19 @@ def run(
 
     for accession in accessions:
         ctx.retry_count = 1
-        process_accession(ctx, accession)
+        try:
+            process_accession(ctx, accession)
+        except _PER_ACCESSION_ERRORS as exc:
+            # iseq exits on the first such error; adaptiSeq records the accession
+            # in fail.log and carries on with the rest of the list (departs from
+            # iSeq). Setup errors (preflight, engine) still stop the run.
+            if len(accessions) == 1:
+                raise
+            ctx.reporter.error(f"{red_bold('Error')}: {exc.message}")
+            if exc.solution:
+                ctx.reporter.error(f"{green_bold('How to solve?')} {exc.solution}")
+            mark_fail(ctx.workdir, accession)
+            ctx.failed = True
     return ctx
 
 

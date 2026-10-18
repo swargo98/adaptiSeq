@@ -1,0 +1,184 @@
+2026-10-18 14:56:09 INFO     Query: SRR15852400                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852400...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 15:11:10 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 15:35:32 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852400_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 15:35:34 INFO     Query: SRR15852404                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852404...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 16:06:15 WARNING  MD5 checksums do not match, attempting   ena.py:217
+                             re-download of                                     
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             1.fastq.gz FTP download attempt 2                  
+2026-10-18 16:34:37 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 16:50:11 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852404_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 16:50:12 INFO     Query: SRR15852406                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852406...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 17:13:28 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 17:38:20 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852406_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 17:38:21 INFO     Query: SRR15852407                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852407...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 18:01:51 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 18:24:55 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852407_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 18:24:56 INFO     Query: SRR15852411                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852411...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 18:51:35 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 19:17:07 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852411_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 19:17:09 INFO     Query: SRR15852415                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852415...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852415_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 19:49:48 WARNING  MD5 checksums do not match, attempting   ena.py:217
+                             re-download of                                     
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852415_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852415_           
+                             1.fastq.gz FTP download attempt 2                  
+2026-10-18 20:24:29 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852415_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852415_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 21:01:11 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852415_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 21:01:12 INFO     Query: SRR15852425                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852425...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852425_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 21:29:49 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852425_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852425_           
+                             2.fastq.gz FTP download attempt 1                  
+2026-10-18 22:09:25 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852425_           
+                             2.fastq.gz                                         
+                    INFO     Writing metadata to                 download.py:469
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_                
+                             subset_PRJNA762469_fastq-dl_rep1/fa                
+                             stq-run-info.tsv                                   
+2026-10-18 22:09:26 INFO     Query: SRR15852430                  download.py:373
+                    INFO     Archive: ENA                        download.py:374
+                    INFO     Total Runs To Download: 1           download.py:379
+                    INFO     Working on run SRR15852430...       download.py:402
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852430_           
+                             1.fastq.gz FTP download attempt 1                  
+2026-10-18 22:34:35 INFO     Successfully downloaded                  ena.py:232
+                             /mnt/nvme0n1/work/e3_payload/3b_D2_subse           
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852430_           
+                             1.fastq.gz                                         
+                    INFO     /mnt/nvme0n1/work/e3_payload/3b_D2_subse ena.py:202
+                             t_PRJNA762469_fastq-dl_rep1/SRR15852430_           
+                             2.fastq.gz FTP download attempt 1                  

@@ -1,4 +1,4 @@
-"""ENA's portal API sometimes returns an error message instead of the TSV rows.
+"""ENA error bodies and per-accession failures in a batch.
 
 Seen on 2026-10-14 for ~3 of 241 per-Run queries per tool. iseq parses the line
 as a Run named "ERROR"; adaptiSeq must re-query, and fall back to SRA if ENA
@@ -7,8 +7,13 @@ keeps failing, instead of treating the text as an accession.
 
 from pathlib import Path
 
+import pytest
+
+from adaptiseq import core
 from adaptiseq import metadata as meta
 from adaptiseq.console import NullReporter
+from adaptiseq.errors import DownloadError, PreflightError
+from adaptiseq.logs import FAIL_LOG
 from adaptiseq.options import Options, RunContext
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
@@ -91,3 +96,45 @@ def test_cached_error_file_is_replaced(tmp_path, monkeypatch):
 
     assert len(calls) == 1
     assert tsv.read_text() == GOOD
+
+
+# --- one failing accession must not stop a multi-accession batch -----------------
+
+
+def _fake_process(fail_with):
+    seen = []
+
+    def fake(ctx, accession):
+        seen.append(accession)
+        if accession == "SRR2":
+            raise fail_with
+
+    return fake, seen
+
+
+def test_batch_continues_past_a_failed_accession(tmp_path, monkeypatch):
+    fake, seen = _fake_process(DownloadError("not available in all databases"))
+    monkeypatch.setattr(core, "process_accession", fake)
+
+    ctx = core.run(["SRR1", "SRR2", "SRR3"], Options(engine="classic"),
+                   workdir=tmp_path)
+
+    assert seen == ["SRR1", "SRR2", "SRR3"]
+    assert ctx.failed
+    assert "SRR2" in (tmp_path / FAIL_LOG).read_text()
+
+
+def test_single_accession_error_still_raises(tmp_path, monkeypatch):
+    fake, _ = _fake_process(DownloadError("not available in all databases"))
+    monkeypatch.setattr(core, "process_accession", fake)
+    with pytest.raises(DownloadError):
+        core.run(["SRR2"], Options(engine="classic"), workdir=tmp_path)
+
+
+def test_setup_errors_still_stop_the_batch(tmp_path, monkeypatch):
+    fake, seen = _fake_process(PreflightError("srapath missing"))
+    monkeypatch.setattr(core, "process_accession", fake)
+    with pytest.raises(PreflightError):
+        core.run(["SRR1", "SRR2", "SRR3"], Options(engine="classic"),
+                 workdir=tmp_path)
+    assert seen == ["SRR1", "SRR2"]

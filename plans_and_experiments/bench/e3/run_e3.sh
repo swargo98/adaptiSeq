@@ -4,7 +4,7 @@
 # The submission benchmark (MINIMAL_SUBMISSION_PLAN.md, Step 2) is panels 3r and
 # 3b with the default arm set:
 #
-#   E3_ASEQ_WHEEL=/path/adaptiseq-0.1.4-py3-none-any.whl PANELS="3r 3b" \
+#   E3_ASEQ_WHEEL=/path/adaptiseq-0.1.5-py3-none-any.whl PANELS="3r 3b" \
 #       bash bench/e3/run_e3.sh all 5
 #
 # Panels:
@@ -98,9 +98,9 @@ case "$PANEL" in
   3r|3b)
     if [[ "$ARM_SET" == "submission" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
         echo "[ERROR] E3_ASEQ_WHEEL is not set. The paper panels must run the released wheel:" >&2
-        echo "          pip download adaptiseq==0.1.4 --no-deps -d wheels/" >&2
-        echo "          pip install --force-reinstall --no-deps wheels/adaptiseq-0.1.4-py3-none-any.whl" >&2
-        echo "          export E3_ASEQ_WHEEL=\$PWD/wheels/adaptiseq-0.1.4-py3-none-any.whl" >&2
+        echo "          pip download adaptiseq==0.1.5 --no-deps -d wheels/" >&2
+        echo "          pip install --force-reinstall --no-deps wheels/adaptiseq-0.1.5-py3-none-any.whl" >&2
+        echo "          export E3_ASEQ_WHEEL=\$PWD/wheels/adaptiseq-0.1.5-py3-none-any.whl" >&2
         echo "        (E3_ALLOW_UNPINNED=1 overrides this for a dry run.)" >&2
         exit 1
     fi ;;

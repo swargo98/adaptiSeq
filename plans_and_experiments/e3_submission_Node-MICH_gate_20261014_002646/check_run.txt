@@ -1,0 +1,14 @@
+note    adaptiSeq 0.1.4  wheel sha256 a9f9de4045867f4d6273dd5c46f525394cb9bc5c5367a839f2c0a0a801619362
+note    3r kingfisher rep1: exit 0, 238/241 runs verified, 3 present but not byte-identical to ENA
+note    3r adaptiseq-fixed-j20 rep1: exit 1, 237/241 runs verified
+note    3r fastq-dl rep1: exit 0, 214/241 runs verified
+note    3r iseq rep1: exit 0, 238/241 runs verified
+note    3r iseq-p8 rep1: exit 0, 238/241 runs verified
+note    3r adaptiseq-default rep1: exit 1, 240/241 runs verified
+note    3b fastq-dl rep1: exit 2, 5/8 runs verified
+note    3b iseq-p8 rep1: exit 0, 0/8 runs verified
+note    3b adaptiseq-fixed-j20 rep1: exit 1, 0/8 runs verified
+note    3b adaptiseq-default rep1: exit 1, 0/8 runs verified
+note    3b iseq rep1: exit 0, 0/8 runs verified
+note    3b kingfisher rep1: exit 1, 0/8 runs verified
+CHECK PASS

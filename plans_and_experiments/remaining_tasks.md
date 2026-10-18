@@ -157,16 +157,76 @@ Done in this session:
   raised `DownloadError`, and stopped the whole batch (exit 1), losing the bad
   Run plus anything not yet fetched (1 Run at defaults, 4 at `-j 20`). Kingfisher
   logged none.
-- **Fixed in the working tree (not in the 0.1.4 wheel):** `get_sra_metadata`
-  detects the error text, deletes the file (so `wget -c` cannot append to it),
-  re-queries up to 3 times with 5 s/10 s waits, then falls back to SRA. Cached
-  metadata files holding the error are fetched again (`core._process_sra`,
-  `batch._resolve_one`). New tests are in `tests/test_ena_error_body.py`; the offline
-  suite passes. Departs from iSeq. Using it needs a new wheel (0.1.5) and new
-  adaptiSeq gate rows. The 3r rows above are from 0.1.4.
-- Separate open question: adaptiSeq stops the batch when one accession fails,
-  but iSeq in this harness does not. Should one bad accession be recorded in
-  `fail.log` while the batch continues?
+- **Fixed in 0.1.5:** `get_sra_metadata` detects the error text, deletes the
+  file (so `wget -c` cannot append to it), re-queries up to 3 times with 5 s/10 s
+  waits, then falls back to SRA. Cached metadata files holding the error are
+  fetched again (`core._process_sra`, `batch._resolve_one`). Departs from iSeq.
+- **Also changed in 0.1.5:** with a list of accessions, an accession that raises
+  a metadata, download, md5, or merge error goes to `fail.log` and the rest of
+  the list still runs (exit code still 1). iSeq stops at the first such error.
+  Setup errors still stop the run. Tests: `tests/test_ena_error_body.py`; the
+  offline suite passes. Revert if you want iSeq's behaviour here.
+- **The 3b rows of that gate are invalid.** At 06:15 UTC on 2026-10-14
+  unattended-upgrades restarted `systemd-networkd`, which removed the manual IPv4
+  default route and the NAT64 `unreachable` route. fastq-dl (running then) got
+  5/8; the next five arms got 0/8 in 13–596 s. iSeq exited 0 with 0/8 runs, which
+  is worth knowing for the paper: iSeq's exit code does not show a total failure.
+- **Fabric node fixed for good (2026-10-18):** both routes are now in
+  `/etc/netplan/90-fabric-enp9s0.yaml` (backup in
+  `/root/90-fabric-enp9s0.yaml.bak-20261018`) and survive a `networkd` restart.
+  `apt-daily.timer` and `apt-daily-upgrade.timer` are disabled for the benchmark;
+  re-enable with `sudo systemctl enable --now apt-daily.timer apt-daily-upgrade.timer`.
+- **Harness:** `e3_lib.sh` now checks the ENA portal API and the ENA FTP server
+  before and after every arm (outside the timed region), logs it to
+  `logs/net_checks.tsv`, and stops the run if the network stays down (10 min
+  before an arm, 2 min after). Disable with `E3_NET_CHECK=0`.
+- **0.1.5 wheel built**, `twine check` passes: `wheels/adaptiseq-0.1.5-py3-none-any.whl`,
+  sha256 `a7ac78587b8cec8e84d829cf8a6caca8e4f3bd847bca28256c7a72380c9b3634`
+  (sdist `0e1daa41…88fe`). Version bumped in `adaptiseq/__init__.py`,
+  `CITATION.cff`, and the README notes; the bench scripts now default to 0.1.5.
+  0.1.4 was never uploaded, so the release to make is 0.1.5. Use this wheel on
+  Expanse too.
+- `analyze_submission.py` runs end to end on the 3r gate rows (tables, ratios,
+  `fig1`). Kingfisher had 3 runs `present_unverified`, not ~40 as I expected,
+  so decision B affects 3 runs.
+- **Gate rerun with 0.1.5 started 2026-10-18 09:10 UTC**, same settings as
+  before; log `/mnt/nvme0n1/work/gate3.log`, results in a new
+  `e3_submission_Node-MICH_gate_20261018_*` directory.
+
+**2026-10-18, gate with 0.1.5, panel 3r** (`e3_submission_Node-MICH_gate_20261018_091101/`).
+All arms exit 0; every network check passed; no ENA error bodies this time.
+
+| arm | wall (s) | MB/s verified | runs complete / 241 |
+|---|---|---|---|
+| kingfisher | 3615 | 2.10 | 241 |
+| adaptiseq-fixed-j20 | 546 | 13.89 | 241 |
+| fastq-dl | 5379 | 1.41 | 239 (+1 partial) |
+| iseq | 8127 | 0.93 | 241 |
+| iseq-p8 | 2249 | 3.37 | 241 |
+| adaptiseq-default | 718 | 10.56 | 241 |
+
+- adaptiSeq at defaults: 241/241, 3.1x iseq-p8, 5.0x Kingfisher, 11.4x iSeq.
+- **The adaptive default was slower than fixed `-j 20` in both gates** (ratio
+  0.76 here, 0.85 on 2026-10-14). The draft says the controller avoids the
+  collapse of an oversized fixed pool. On this node, where EBI caps each
+  connection at ~1 MB/s, more connections is simply better, so stepping down
+  costs throughput. The manuscript's sentence on what the controller
+  contributes must follow the Expanse numbers; on Fabric it is a cost.
+- Every tool was slower than on 2026-10-14 (iSeq 8127 s against 4963 s), so
+  ENA's speed changes from day to day. Arms in one rep are hours apart, which
+  is why the randomized order and several reps matter.
+- Kingfisher: 241/241 with 0 `present_unverified` this time (3 on 2026-10-14).
+- `workers_med`/`workers_max` are 0 for the adaptiSeq arms by design: the
+  submission arms call the bare CLI, not `aseq_run.py`. The controller summary
+  line is still in `logs/trajectories.tsv`.
+- **Panel 3b of this gate was stopped by hand at 22:52 UTC** (the benchmark will
+  be rerun on Expanse with changes). It was still on its first arm, fastq-dl:
+  7 of 8 runs on disk plus part of the last file, 25.0 GB in 7 h 56 min (about
+  0.88 MB/s), not verified. No 3b row was written. Details in the folder's
+  `STOPPED.md`. So there is no valid 3b result from Fabric yet.
+- **State of the Fabric node after the stop:** nothing running, payload
+  deleted. The netplan routes stay in place. The apt timers are still disabled.
+  Re-enable them when you no longer benchmark on this node.
 
 Other things to know:
 

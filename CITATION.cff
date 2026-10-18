@@ -15,8 +15,8 @@ authors:
 repository-code: "https://github.com/swargo98/adaptiSeq"
 url: "https://swargo98.github.io/adaptiSeq/"
 license: MIT
-version: "0.1.4"
-# date-released: "YYYY-MM-DD"   # set on the day 0.1.4 is tagged
+version: "0.1.5"
+# date-released: "YYYY-MM-DD"   # set on the day 0.1.5 is tagged
 # doi: "10.5281/zenodo.XXXXXXX" # set once Zenodo has archived the tag
 keywords:
   - bioinformatics

@@ -305,5 +305,5 @@ dependencies:
   - zlib-ng=2.3.3=hce19668_1
   - zstd=1.5.7=hb78ec9c_7
   - pip:
-      - adaptiseq==0.1.4
+      - adaptiseq==0.1.5
 prefix: /mnt/nvme0n1/work/miniforge3/envs/adaptiseq_e3
