@@ -138,6 +138,14 @@ the checkout as it was before these fixes, so it measures the benchmarked engine
 16 files at once, twice each with adaptiSeq segmented HTTPS, adaptiSeq segmented FTP, 16 curl HTTPS streams and 16
 curl FTP streams, md5-checks every file and compares bad copies block by block with good ones. It also gives the
 per-connection rate of HTTPS against FTP at the same time of day.
+**First two passes (15:26 to 16:30 10-18): the corruption is not adaptiSeq's.** 16 plain curl FTP streams produced
+SRR15852411_1 at exactly its ENA size (1,400,303,576 bytes) with the wrong md5 (`da2052d2...`, ENA `37f6be6d...`):
+a full-length corrupt transfer from a standard client over plain FTP. The same pass also shows ENA's connection
+limit hitting plain tools: 6 of the 16 curl FTP streams got "Could not connect to server" (FTP needs a control and a
+data connection each), and one transfer was cut short (curl 18). adaptiSeq segmented HTTPS in the same hour: 16/16
+md5 OK in 1491 s (17.4 MB/s, against 11.0 MB/s for the 10 curl FTP streams that connected, about 1 MB/s each), with
+13 refused connects that drove the old breaker's cap to 1. So the right response is detection and fast re-fetch,
+which is fix 1; the block-by-block comparison at the end of the job will show what the damage looks like.
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
