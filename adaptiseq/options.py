@@ -128,6 +128,10 @@ class RunContext:
 
     engine: object = None  # set to a ClassicEngine; typed loosely to avoid cycles
 
+    # md5 digests the batch phase already computed: path -> ((size, mtime_ns), md5).
+    # The per-Run check reuses a digest only while the file is unchanged.
+    verified_md5: dict = field(default_factory=dict)
+
     def __post_init__(self) -> None:
         self.database = self.options.database
 

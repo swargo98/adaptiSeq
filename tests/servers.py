@@ -86,17 +86,18 @@ class _MultiHandler(http.server.BaseHTTPRequestHandler):
                 a = int(a)
                 b = int(b) if b else len(data) - 1
                 b = min(b, len(data) - 1)
-                body = data[a:b + 1]
+                body = srv.maybe_corrupt(name, data[a:b + 1])
                 self.send_response(206)
                 self.send_header("Content-Range", f"bytes {a}-{b}/{len(data)}")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 self.wfile.write(body)
             else:
+                body = srv.maybe_corrupt(name, data)
                 self.send_response(200)
-                self.send_header("Content-Length", str(len(data)))
+                self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
-                self.wfile.write(data)
+                self.wfile.write(body)
         finally:
             with srv.lock:
                 srv.concurrent -= 1
@@ -122,6 +123,20 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
         self.lock = threading.Lock()
         self.concurrent = 0
         self.max_concurrent = 0
+        # {name: n}: the next n data responses for that file (not 1-byte range
+        # probes) have one byte flipped -- a transfer that arrives intact in
+        # length but fails the md5 check, as ENA's sometimes do.
+        self.corrupt = {}
+
+    def maybe_corrupt(self, name: str, body: bytes) -> bytes:
+        if len(body) <= 1:
+            return body
+        with self.lock:
+            left = self.corrupt.get(name, 0)
+            if left <= 0:
+                return body
+            self.corrupt[name] = left - 1
+        return bytes([body[0] ^ 0xFF]) + body[1:]
 
     @property
     def port(self) -> int:

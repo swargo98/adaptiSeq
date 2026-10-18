@@ -438,6 +438,7 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
     )
     bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
     run_sync(bd.run(tasks))
+    ctx.verified_md5.update(getattr(bd, "verified", {}))
     controller = getattr(bd, "_controller", None)
     if controller is not None:
         summary = controller.summary()

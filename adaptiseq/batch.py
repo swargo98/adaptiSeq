@@ -36,11 +36,12 @@ from . import metadata as _meta
 # `adaptiseq.resolve` is the public API *function*, which shadows the submodule.
 from .resolve import resolve_gsa_urls, resolve_sra_urls
 from .accession import is_gsa
-from .console import NullReporter, Reporter, green
+from .console import NullReporter, Reporter, bright_yellow, green
 from .engine.gate import WorkerGate
 from .engine.optimize import EXIT_SIGNAL, gradient_opt_fast
 from .engine.ratelimit import HostGuard, TokenBucket
 from .engine.throughput import ThroughputMeter
+from .integrity import fastq_md5s, md5sum
 from .logs import in_success
 from .options import Options, RunContext
 from .ratelimits import EndpointLimiters, set_active
@@ -55,6 +56,7 @@ class DownloadTask:
     accession: str
     retries: int = 0
     aspera_db: Optional[str] = None   # "ENA"/"GSA" when this task is an ascp link
+    md5: Optional[str] = None         # ENA's fastq_md5, checked as soon as the file lands
 
 
 # ============================== adaptive controller ===========================
@@ -311,6 +313,10 @@ class BatchDownloader:
         self.reporter = reporter or NullReporter()
         self.jobs = max(1, int(options.jobs))
         self.adaptive = bool(options.adaptive)
+        # save_path -> md5 of every file this batch verified against ENA's md5;
+        # the per-Run check reuses these instead of hashing the files again.
+        self.verified: dict = {}
+        self.md5_mismatches = 0
 
     async def run(self, tasks: List[DownloadTask]) -> Set[str]:
         """Download all ``tasks``; return the set of save_paths that ultimately
@@ -451,6 +457,8 @@ class BatchDownloader:
                     log.warning("download error for %s: %s", task.save_path, e)
                     ok = False
 
+                if ok and task.md5:
+                    ok = await self._verify(task)
                 if ok:
                     if progress is not None:
                         progress.inc()
@@ -465,6 +473,42 @@ class BatchDownloader:
                         failed.add(task.save_path)
             finally:
                 queue.task_done()
+
+
+    async def _verify(self, task: DownloadTask) -> bool:
+        """Check a finished file against ENA's md5 while the pool is still running.
+
+        A corrupt transfer is common enough on ENA (several per 26 GB panel on a
+        bad day) that leaving it to the per-Run check costs a serial re-download
+        after the batch, one file at a time on a few connections. Here the bad
+        file is deleted and put back on the queue, so it is fetched again in
+        parallel with everything else, at the pool's full concurrency.
+        """
+        path = self.workdir / task.save_path
+        loop = asyncio.get_event_loop()
+        try:
+            digest = await loop.run_in_executor(None, md5sum, path)
+        except OSError as e:
+            log.warning("could not hash %s: %s", task.save_path, e)
+            return False
+        if digest == task.md5.lower():
+            try:
+                st = path.stat()
+                self.verified[str(path)] = ((st.st_size, st.st_mtime_ns), digest)
+            except OSError:
+                pass
+            return True
+        self.md5_mismatches += 1
+        self.reporter.info(
+            f"{bright_yellow('Note')}: MD5 mismatch for {task.save_path} "
+            f"(attempt {task.retries + 1}); removed, it will be downloaded again"
+        )
+        for p in (path, Path(str(path) + ".part"), Path(str(path) + ".part.meta")):
+            try:
+                p.unlink()
+            except FileNotFoundError:
+                pass
+        return False
 
 
 # ============================== parallel resolution ===========================
@@ -502,13 +546,15 @@ def _resolve_one(accession: str, options: Options, workdir: Path) -> List[Downlo
             if (not (tsv.exists() and tsv.stat().st_size > 0) or _meta.has_ena_error(tsv)
                     or (options.no_sra_fallback and not _meta.is_ena_tsv(tsv))):
                 tsv = _meta.get_sra_metadata(ctx, accession)
-            lines = tsv.read_text(errors="replace").splitlines()
-            for ln in lines[1:]:
+            tsv_text = tsv.read_text(errors="replace")
+            md5s = {} if options.skip_md5 else fastq_md5s(tsv_text)
+            for ln in tsv_text.splitlines()[1:]:
                 run = ln.split("\t")[0]
                 if not run:
                     continue
                 for url in resolve_sra_urls(ctx, run):
-                    tasks.append(DownloadTask(url, _save_name_for(url, run), accession))
+                    name = _save_name_for(url, run)
+                    tasks.append(DownloadTask(url, name, accession, md5=md5s.get(name)))
     except Exception as e:
         log.error("resolution failed for %s: %s", accession, e)
         raise

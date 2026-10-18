@@ -63,6 +63,18 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   being fetched from NCBI SRA, so every file that is kept was checked against
   ENA's md5. A cached SRA runinfo file from an earlier run is queried again on
   ENA. Cannot be combined with `-d sra`.
+- **Batch mode** checks each `.fastq.gz` against ENA's md5 as soon as it lands.
+  A corrupt transfer is deleted and downloaded again inside the pool, in
+  parallel with the other files, instead of after the batch, one file at a
+  time. The per-Run check reuses the digest rather than hashing the file twice.
+  On a 26 GB, 16-file list with several corrupt transfers, the serial retries
+  had taken 1.5 to 2.5 h of a 2 to 3 h run.
+- **Fix**: a refused connect while other connections to the same host are open
+  is treated as the host's connection limit (ENA refuses beyond about 25 per
+  client address). The per-host cap is held at the number of open connections
+  and the segment waits for a slot. Previously each refusal halved the cap,
+  blocked the host for a backoff, and used up one of the segment's three
+  attempts, so a few refusals could fail a whole file.
 
 ### 0.1.4
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)

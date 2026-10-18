@@ -18,7 +18,7 @@ import re
 import shutil
 import subprocess
 from pathlib import Path
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 
 from .console import bright_green, bright_red, bright_yellow, green
 from .logs import mark_fail, mark_success
@@ -79,6 +79,59 @@ def _gzip_fastq_files(ctx: RunContext, srr: str) -> List[str]:
     return result
 
 
+def fastq_md5s(tsv_text: str) -> Dict[str, str]:
+    """Map each ``fastq_ftp`` file name to its ``fastq_md5`` in an ENA filereport.
+
+    Both columns are ``;``-separated and in the same order. Empty when the table
+    has no such columns (an NCBI runinfo table, for example).
+    """
+    lines = tsv_text.splitlines()
+    if not lines:
+        return {}
+    header = lines[0].split("\t")
+    try:
+        i_ftp, i_md5 = header.index("fastq_ftp"), header.index("fastq_md5")
+    except ValueError:
+        return {}
+    out: Dict[str, str] = {}
+    for ln in lines[1:]:
+        cols = ln.split("\t")
+        if len(cols) <= max(i_ftp, i_md5):
+            continue
+        links = [x for x in cols[i_ftp].split(";") if x]
+        md5s = [x for x in cols[i_md5].split(";") if x]
+        if len(links) != len(md5s):
+            continue
+        for link, digest in zip(links, md5s):
+            out[link.rsplit("/", 1)[-1]] = digest.lower()
+    return out
+
+
+def _file_key(path: Path) -> Tuple[int, int]:
+    st = path.stat()
+    return st.st_size, st.st_mtime_ns
+
+
+def remember_md5(ctx: RunContext, path: Path, digest: str) -> None:
+    """Record a digest computed elsewhere (the batch phase), so the per-Run check
+    does not hash the same unchanged file a second time."""
+    try:
+        ctx.verified_md5[str(path)] = (_file_key(path), digest)
+    except OSError:
+        pass
+
+
+def _md5_cached(ctx: RunContext, path: Path) -> str:
+    hit = ctx.verified_md5.get(str(path))
+    if hit is not None:
+        try:
+            if hit[0] == _file_key(path):
+                return hit[1]
+        except OSError:
+            pass
+    return md5sum(path)
+
+
 def _gzip_md5_ok(ctx: RunContext, files: List[str]) -> Tuple[bool, Optional[str]]:
     """Return (all_pass, first_mismatch). Each file must exist and its md5 must
     appear somewhere in the metadata.tsv (``grep -q "$md5" metadata``)."""
@@ -87,7 +140,7 @@ def _gzip_md5_ok(ctx: RunContext, files: List[str]) -> Tuple[bool, Optional[str]
         fpath = ctx.path(fname)
         if not fpath.is_file():
             return False, None
-        digest = md5sum(fpath)
+        digest = _md5_cached(ctx, fpath)
         if digest not in tsv_text:
             return False, fname
     return True, None
