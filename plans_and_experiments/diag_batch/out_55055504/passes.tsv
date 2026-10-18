@@ -1,0 +1,5 @@
+round	method	start	wall_s	MBps	files_ok	files	mismatches	extra
+1	aseq-https	2026-10-18T15:25:34	1.8	0.03	3	3	0	{"failed": [], "guard_trips": 0, "guard_trip_kinds": [], "guard_min_cap": 24, "guard_default_cap": 24}
+1	curl-ftp	2026-10-18T15:25:36	2.5	0.02	3	3	0	{"failed": []}
+1	aseq-ftp	2026-10-18T15:25:38	2.1	0.02	3	3	0	{"failed": [], "guard_trips": 0, "guard_trip_kinds": [], "guard_min_cap": 24, "guard_default_cap": 24}
+1	curl-https	2026-10-18T15:25:40	0.6	0.08	3	3	0	{"failed": []}

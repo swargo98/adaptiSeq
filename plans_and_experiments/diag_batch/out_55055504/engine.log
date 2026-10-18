@@ -1,0 +1,18 @@
+2026-10-18 15:25:34,282 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:25:34,283 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:25:34,283 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:25:35,053 adaptiseq.engine.segmented INFO Completed SRR22904370.fastq.gz
+2026-10-18 15:25:35,053 adaptiseq.batch INFO downloaded SRR22904370.fastq.gz
+2026-10-18 15:25:35,175 adaptiseq.engine.segmented INFO Completed SRR22904387.fastq.gz
+2026-10-18 15:25:35,175 adaptiseq.batch INFO downloaded SRR22904387.fastq.gz
+2026-10-18 15:25:36,028 adaptiseq.engine.segmented INFO Completed SRR22904390.fastq.gz
+2026-10-18 15:25:36,028 adaptiseq.batch INFO downloaded SRR22904390.fastq.gz
+2026-10-18 15:25:38,667 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 15:25:38,667 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 15:25:38,667 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 15:25:40,642 adaptiseq.engine.ftp INFO Completed (ftp) SRR22904390.fastq.gz
+2026-10-18 15:25:40,642 adaptiseq.batch INFO downloaded SRR22904390.fastq.gz
+2026-10-18 15:25:40,780 adaptiseq.engine.ftp INFO Completed (ftp) SRR22904387.fastq.gz
+2026-10-18 15:25:40,780 adaptiseq.batch INFO downloaded SRR22904387.fastq.gz
+2026-10-18 15:25:40,781 adaptiseq.engine.ftp INFO Completed (ftp) SRR22904370.fastq.gz
+2026-10-18 15:25:40,781 adaptiseq.batch INFO downloaded SRR22904370.fastq.gz

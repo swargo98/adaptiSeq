@@ -113,6 +113,31 @@ Rep 4 (`54927010`, `e3_submission_expanse/e3_54927010/`) rows:
 
 **md5 mismatches per 3b arm, reps 1 to 3 (counted from the logs, 2026-10-18):** adaptiseq-default 2 / 4 / 5; adaptiseq-fixed-j20 0 / 1 / 8; fastq-dl 5 / 4 / 0; iseq 7 / 4 / 0; iseq-p8 0 / 6 / 0; kingfisher 0 / 0 / 0 (plus the rep 1 corrupt file that pigz caught). Both adaptiSeq arms use the same engine and segment plan (512 MB segments, so 3 per 1.5 to 1.9 GB file) and differ only in `--adaptive` vs `--no-adaptive -j 20`. The gate never interrupts an in-flight file (`batch._worker` gates at pickup only, `fetch_async` gets no pause token), so I found no code path that would make adaptive mode corrupt more, and rep 3's fixed-j20 arm then had 8, so it is not the controller. **The split in rep 3 is by transport:** the two adaptiSeq arms (segmented HTTPS from `ftp.sra.ebi.ac.uk:443`) had 13 mismatches in about 45 file downloads, all four FTP arms 0 in about 64 (17:46 10-17 to 07:31 10-18), and the HTTPS arms ran 07:31 to 12:32 PDT 10-18. In rep 2 the FTP arms had 14 between them, so FTP is not immune; it may be time of day at ENA, or ENA's HTTPS service, or adaptiSeq's ranged reads. **After the chain (it would perturb the benchmark now):** rerun `bench/e3/diag_corrupt` on SRR15852425, SRR15852404, SRR15852406 and SRR22904279 through `BatchDownloader` in both modes, several passes each, keeping every bad copy and comparing it block by block with a good one. Zero blocks at segment boundaries would mean adaptiSeq; scattered differences would mean the wire or ENA. Decision A's wording depends on the answer.
 
+**Why adaptiSeq lost panel 3b, and what is fixed (2026-10-18, user: "making the tool robust is more important").**
+From the concurrency samples (`conc_3b_*`, 5-min bins) every adaptiSeq 3b arm has two phases. Phase A, the batch,
+moves all 26 GB in 25 to 35 min at 18 to 25 connections, about the same time as iseq-p8 (24 min) and faster than
+kingfisher (42 min). Phase B, the per-Run md5 check, then re-downloads each corrupt file serially, one file at a time
+on its 3 segments (1.5 to 3 connections), for 1 to 2.5 h. That is the whole gap. Two more things showed up:
+- Connections to `ftp.sra.ebi.ac.uk` peak at exactly 25 in every adaptiSeq arm: ENA accepts about 25 per client
+  address and refuses the rest (the 6 to 8 "Connect call failed" lines per arm). Each refusal halved adaptiSeq's
+  per-host cap, blocked the host, and spent one of the segment's 3 attempts.
+- A 1.6 GB file is split into 3 segments of 512 MB, fixed at its start, so a lone file (the batch tail, or a
+  re-fetch) uses 3 of the 25 connections ENA allows.
+
+Fixed in source (not in the benchmarked wheel; tests in each commit, full suite `pytest_expanse_55055698` passes):
+1. `4a8f115`: the batch md5-checks each `.fastq.gz` as it lands (tasks carry ENA's `fastq_md5`) and re-queues a bad
+   one in the pool, so it is fetched again in parallel at full concurrency; the per-Run check reuses the digest.
+2. `64c1028`: a refused connect while other connections are open holds the per-host cap at the open count and
+   waits for a slot without spending an attempt (`HostGuard.note_refused`). With nothing open it is pushback as before.
+3. `2838193`: a file starting near the end of a batch gets `budget // files left` segments, up to `--max-segments`,
+   none under 64 MiB; a resumed `.part` keeps its stored plan.
+
+Still open: **why the transfers are corrupt.** Diagnostic `55055531` (`diag_batch/`, started 15:26 10-18, imports
+the checkout as it was before these fixes, so it measures the benchmarked engine) replays the 3b download phase,
+16 files at once, twice each with adaptiSeq segmented HTTPS, adaptiSeq segmented FTP, 16 curl HTTPS streams and 16
+curl FTP streams, md5-checks every file and compares bad copies block by block with good ones. It also gives the
+per-connection rate of HTTPS against FTP at the same time of day.
+
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
 the login node. From 09:33 to 17:20 PDT, 15 probes got HTTP 500 and 2 timed out

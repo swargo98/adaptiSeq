@@ -1,0 +1,13 @@
+round	method	file	bytes	finish_s	md5	match
+1	aseq-https	SRR22904390.fastq.gz	15578	1.8	a248174ec9c685f27ec21a0fb51ba2dd	True
+1	aseq-https	SRR22904370.fastq.gz	16110	0.8	c6fd42a4d06d36413ba7f200f80765d4	True
+1	aseq-https	SRR22904387.fastq.gz	16260	0.9	1ee5f8623c0b2931fb71aab30e3b02c7	True
+1	curl-ftp	SRR22904390.fastq.gz	15578	2.2	a248174ec9c685f27ec21a0fb51ba2dd	True
+1	curl-ftp	SRR22904370.fastq.gz	16110	2.4	c6fd42a4d06d36413ba7f200f80765d4	True
+1	curl-ftp	SRR22904387.fastq.gz	16260	2.4	1ee5f8623c0b2931fb71aab30e3b02c7	True
+1	aseq-ftp	SRR22904390.fastq.gz	15578	1.7	a248174ec9c685f27ec21a0fb51ba2dd	True
+1	aseq-ftp	SRR22904370.fastq.gz	16110	1.8	c6fd42a4d06d36413ba7f200f80765d4	True
+1	aseq-ftp	SRR22904387.fastq.gz	16260	1.8	1ee5f8623c0b2931fb71aab30e3b02c7	True
+1	curl-https	SRR22904390.fastq.gz	15578	0.6	a248174ec9c685f27ec21a0fb51ba2dd	True
+1	curl-https	SRR22904370.fastq.gz	16110	0.6	c6fd42a4d06d36413ba7f200f80765d4	True
+1	curl-https	SRR22904387.fastq.gz	16260	0.6	1ee5f8623c0b2931fb71aab30e3b02c7	True
