@@ -1,0 +1,5 @@
+note    adaptiSeq 0.1.4  wheel sha256 2a0a6f5ca5580bd660b4bf6da5a0a4475968b6b01fd430558f644086ec3b7f25
+note    3r iseq-p8 rep3: exit 0, 240/241 runs verified, 1 present but not byte-identical to ENA
+note    3b adaptiseq-default rep3: exit 1, 7/8 runs verified
+note    3b adaptiseq-fixed-j20 rep3: exit 1, 7/8 runs verified
+CHECK PASS
