@@ -101,6 +101,7 @@ Rep 3 (`54927009`, `e3_submission_expanse/e3_54927009/`) rows:
 | 3b | fastq-dl | 20583 | 8/8 | All 16 files from ENA FTP (one stream), no SRA fallbacks, no md5 mismatches. Mean 1.26 MB/s over 25.9 GB, well under the link probe's 7.2 MB/s per connection, so the single FTP stream is limited by more than the per-connection cap. First complete fastq-dl 3b (rep 1 28137 s 3/8, rep 2 30000 TIMEOUT 6/8). 17:46 to 23:29 PDT |
 | 3b | kingfisher | 2510 | 8/8 | All 8 via ena-ftp, all md5 OK, no ENA API errors, no corrupt files. 10.3 MB/s mean. Rep 1 411 s 0/8 (pigz abort), rep 2 5232 s 7/8. 23:29 to 00:11 PDT |
 | 3b | iseq-p8 | 1436 | 8/8 | All 8 from ENA FTP (axel, 8 connections), no SRA fallbacks, no md5 mismatches. 18.0 MB/s mean. Rep 1 3274 s 7/8, rep 2 4088 s 6/8 (rc=1). 00:11 to 00:36 PDT |
+| 3b | iseq | 24862 | 8/8 | All 8 from ENA FTP (one connection), no SRA fallbacks, no md5 mismatches. 1.04 MB/s mean, again far under the 7.2 MB/s per-connection probe (like fastq-dl's 1.26 MB/s). First complete iseq 3b (rep 1 30000 TIMEOUT 4/8, rep 2 30000 TIMEOUT 7/8). Log 40 MB raw (wget dots); the commit holds the `.log.gz`. 00:36 to 07:31 PDT |
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from
