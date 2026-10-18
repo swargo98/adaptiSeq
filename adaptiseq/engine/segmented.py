@@ -38,6 +38,10 @@ log = logging.getLogger("adaptiseq.engine.segmented")
 
 CHUNK_SIZE = 1024 * 1024  # 1 MiB streaming chunks (as in the original)
 PUSHBACK_STATUSES = (429, 503)
+# A connect refused at the host's connection ceiling waits for a slot this long
+# and this many times before it counts as a failed attempt.
+CEILING_PAUSE_S = 0.5
+MAX_CEILING_WAITS = 120
 
 
 class AlwaysRun:
@@ -251,7 +255,9 @@ class SegmentedDownloader:
         current_offset = start
         progress_offsets[segment_id] = start
 
-        for attempt in range(self.max_retries):
+        attempt = 0
+        ceiling_waits = 0
+        while attempt < self.max_retries:
             req_start = current_offset
             req_end = end
             expected_bytes = req_end - req_start + 1
@@ -309,6 +315,25 @@ class SegmentedDownloader:
                 return segment_id, bytes_written
             except asyncio.CancelledError:
                 raise
+            except aiohttp.ClientConnectorError as e:
+                # Refused at connect: nothing was written. If other connections to
+                # the host are open this is its connection ceiling; the guard now
+                # holds the cap there, so wait for a slot without spending one of
+                # the segment's attempts (the whole file is retried otherwise).
+                if (await self.host_guard.note_refused(self.host)
+                        and ceiling_waits < MAX_CEILING_WAITS):
+                    ceiling_waits += 1
+                    log.info("Segment %s refused at the host's connection ceiling; "
+                             "waiting for a slot", segment_id)
+                    await asyncio.sleep(CEILING_PAUSE_S)
+                    continue
+                log.warning(
+                    "Segment %s attempt %s refused: %s", segment_id, attempt + 1, e
+                )
+                if attempt < self.max_retries - 1:
+                    await asyncio.sleep(2 ** attempt)
+                else:
+                    raise
             except aiohttp.ClientConnectionError as e:
                 await self.host_guard.note_pushback(self.host, "refused")
                 log.warning(
@@ -327,6 +352,7 @@ class SegmentedDownloader:
                     await asyncio.sleep(2 ** attempt)
                 else:
                     raise
+            attempt += 1
         return segment_id, bytes_written
 
     # ------------------------------ orchestration ------------------------------

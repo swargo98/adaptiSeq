@@ -153,6 +153,29 @@ class HostGuard:
             self.trips.append((host, kind, delay))
             self._cond.notify_all()
 
+    async def note_refused(self, host: str) -> bool:
+        """A connect to ``host`` was refused. Returns True if it looks like a
+        connection ceiling rather than distress.
+
+        ENA, for one, accepts about 25 connections per client address and refuses
+        the rest (full run, every adaptiSeq arm peaked at exactly 25). When other
+        connections to the host are open, hold the cap at that number -- the next
+        clean response nudges it up by one, which re-tests the ceiling now and
+        then -- and let the caller wait for a free slot. Halving the cap and
+        blocking the whole host, the 429/503 response, would drop well below a
+        limit the server is happily serving at. With nothing else open the
+        refusal is treated as ordinary pushback and False is returned.
+        """
+        async with self._cond:
+            st = self._state(host)
+            if st.in_flight >= 1:
+                st.cap = max(self.min_cap, st.in_flight)
+                self.trips.append((host, "ceiling", 0.0))
+                self._cond.notify_all()
+                return True
+        await self.note_pushback(host, "refused")
+        return False
+
     async def note_success(self, host: str) -> None:
         """A clean response: recover slowly (clear backoff, nudge cap upward)."""
         async with self._cond:
