@@ -1,0 +1,33 @@
+round	method	file	bytes	finish_s	md5	match
+1	aseq-https	SRR15852400_1.fastq.gz	1324320996	778.3	a13bf409cd3afca5facae47cb21cbdb4	True
+1	aseq-https	SRR15852400_2.fastq.gz	1328295383	774.6	bb3a78d55a3be80c09e54315d163954b	True
+1	aseq-https	SRR15852404_1.fastq.gz	1409220131	1362.0	09444651c24e50ff129610cdfb7b39f7	True
+1	aseq-https	SRR15852404_2.fastq.gz	1455955532	1463.9	da0da4a5e8ac898d0c39bf2c57d8dbaa	True
+1	aseq-https	SRR15852406_1.fastq.gz	1587548609	1490.3	33feb2d88aff8394b20587207fc8b957	True
+1	aseq-https	SRR15852406_2.fastq.gz	1644561466	523.6	3e4ebb0e5c4eb7ad62e656efdddf5bc2	True
+1	aseq-https	SRR15852407_1.fastq.gz	1236288346	788.5	00fd98b4065c64658cde6e8fccb96af9	True
+1	aseq-https	SRR15852407_2.fastq.gz	1267881618	634.2	5e933001f4bbd88e2e90a5c496189ddd	True
+1	aseq-https	SRR15852411_1.fastq.gz	1400303576	706.4	37f6be6d2c7cd6a9e50b1847a68398fe	True
+1	aseq-https	SRR15852411_2.fastq.gz	1444188419	1414.0	a4f38693a6f6031f4e4efca08692f061	True
+1	aseq-https	SRR15852415_1.fastq.gz	1945040528	534.0	bcd205df1c724538ea0a473ca9797e18	True
+1	aseq-https	SRR15852415_2.fastq.gz	2000513630	1491.2	52a5f42639f08096c37f0fea9b13a800	True
+1	aseq-https	SRR15852425_1.fastq.gz	1884373067	1306.7	53dcdd056bd3d1aa7dac7b0f4732a055	True
+1	aseq-https	SRR15852425_2.fastq.gz	1920721392	1432.3	c4bfa521038f42bf29e66bb8d8422fd4	True
+1	aseq-https	SRR15852430_1.fastq.gz	1971246114	1365.0	182ffad7f45d3565a0d47aa125bd105c	True
+1	aseq-https	SRR15852430_2.fastq.gz	2054631365	1373.5	a56b5f3df915a59179069b8f7cc5979c	True
+1	curl-ftp	SRR15852400_1.fastq.gz	1324320996	1618.1	a13bf409cd3afca5facae47cb21cbdb4	True
+1	curl-ftp	SRR15852400_2.fastq.gz	1328295383	1281.5	bb3a78d55a3be80c09e54315d163954b	True
+1	curl-ftp	SRR15852404_1.fastq.gz	1409220131	1543.2	09444651c24e50ff129610cdfb7b39f7	True
+1	curl-ftp	SRR15852404_2.fastq.gz	1455955532	1147.5	da0da4a5e8ac898d0c39bf2c57d8dbaa	True
+1	curl-ftp	SRR15852406_1.fastq.gz	1584857088	2099.6	9ff5f785ead5b63fbf040bb4625f1f73	False
+1	curl-ftp	SRR15852406_2.fastq.gz	0		-	False
+1	curl-ftp	SRR15852407_1.fastq.gz	0		-	False
+1	curl-ftp	SRR15852407_2.fastq.gz	1267881618	1290.6	5e933001f4bbd88e2e90a5c496189ddd	True
+1	curl-ftp	SRR15852411_1.fastq.gz	1400303576	1616.8	da2052d2484bfd60cc8ef6b437c4836f	False
+1	curl-ftp	SRR15852411_2.fastq.gz	0		-	False
+1	curl-ftp	SRR15852415_1.fastq.gz	0		-	False
+1	curl-ftp	SRR15852415_2.fastq.gz	2000513630	2357.3	52a5f42639f08096c37f0fea9b13a800	True
+1	curl-ftp	SRR15852425_1.fastq.gz	1884373067	1718.1	53dcdd056bd3d1aa7dac7b0f4732a055	True
+1	curl-ftp	SRR15852425_2.fastq.gz	0		-	False
+1	curl-ftp	SRR15852430_1.fastq.gz	0		-	False
+1	curl-ftp	SRR15852430_2.fastq.gz	0		-	False

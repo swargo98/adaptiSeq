@@ -1,0 +1,115 @@
+2026-10-18 15:26:21,348 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,348 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,348 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,348 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,349 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,349 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,349 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,349 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,349 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:21,350 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-18 15:26:22,229 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,230 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,230 adaptiseq.engine.segmented WARNING Segment 2 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,237 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,241 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,242 adaptiseq.engine.segmented WARNING Segment 2 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,268 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,269 adaptiseq.engine.segmented WARNING Segment 2 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,275 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,276 adaptiseq.engine.segmented WARNING Segment 2 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,291 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,322 adaptiseq.engine.segmented WARNING Segment 2 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:26:22,322 adaptiseq.engine.segmented WARNING Segment 1 attempt 1 refused: Cannot connect to host ftp.sra.ebi.ac.uk:443 ssl:default [Connect call failed ('193.62.193.165', 443)]
+2026-10-18 15:35:04,913 adaptiseq.engine.segmented INFO Completed SRR15852406_2.fastq.gz
+2026-10-18 15:35:04,913 adaptiseq.batch INFO downloaded SRR15852406_2.fastq.gz
+2026-10-18 15:35:15,342 adaptiseq.engine.segmented INFO Completed SRR15852415_1.fastq.gz
+2026-10-18 15:35:15,342 adaptiseq.batch INFO downloaded SRR15852415_1.fastq.gz
+2026-10-18 15:36:55,505 adaptiseq.engine.segmented INFO Completed SRR15852407_2.fastq.gz
+2026-10-18 15:36:55,506 adaptiseq.batch INFO downloaded SRR15852407_2.fastq.gz
+2026-10-18 15:38:07,787 adaptiseq.engine.segmented INFO Completed SRR15852411_1.fastq.gz
+2026-10-18 15:38:07,787 adaptiseq.batch INFO downloaded SRR15852411_1.fastq.gz
+2026-10-18 15:39:15,910 adaptiseq.engine.segmented INFO Completed SRR15852400_2.fastq.gz
+2026-10-18 15:39:15,911 adaptiseq.batch INFO downloaded SRR15852400_2.fastq.gz
+2026-10-18 15:39:19,662 adaptiseq.engine.segmented INFO Completed SRR15852400_1.fastq.gz
+2026-10-18 15:39:19,662 adaptiseq.batch INFO downloaded SRR15852400_1.fastq.gz
+2026-10-18 15:39:29,843 adaptiseq.engine.segmented INFO Completed SRR15852407_1.fastq.gz
+2026-10-18 15:39:29,843 adaptiseq.batch INFO downloaded SRR15852407_1.fastq.gz
+2026-10-18 15:48:08,005 adaptiseq.engine.segmented INFO Completed SRR15852425_1.fastq.gz
+2026-10-18 15:48:08,005 adaptiseq.batch INFO downloaded SRR15852425_1.fastq.gz
+2026-10-18 15:49:03,342 adaptiseq.engine.segmented INFO Completed SRR15852404_1.fastq.gz
+2026-10-18 15:49:03,342 adaptiseq.batch INFO downloaded SRR15852404_1.fastq.gz
+2026-10-18 15:49:06,321 adaptiseq.engine.segmented INFO Completed SRR15852430_1.fastq.gz
+2026-10-18 15:49:06,321 adaptiseq.batch INFO downloaded SRR15852430_1.fastq.gz
+2026-10-18 15:49:14,867 adaptiseq.engine.segmented INFO Completed SRR15852430_2.fastq.gz
+2026-10-18 15:49:14,867 adaptiseq.batch INFO downloaded SRR15852430_2.fastq.gz
+2026-10-18 15:49:55,357 adaptiseq.engine.segmented INFO Completed SRR15852411_2.fastq.gz
+2026-10-18 15:49:55,357 adaptiseq.batch INFO downloaded SRR15852411_2.fastq.gz
+2026-10-18 15:50:13,681 adaptiseq.engine.segmented INFO Completed SRR15852425_2.fastq.gz
+2026-10-18 15:50:13,681 adaptiseq.batch INFO downloaded SRR15852425_2.fastq.gz
+2026-10-18 15:50:45,218 adaptiseq.engine.segmented INFO Completed SRR15852404_2.fastq.gz
+2026-10-18 15:50:45,218 adaptiseq.batch INFO downloaded SRR15852404_2.fastq.gz
+2026-10-18 15:51:11,695 adaptiseq.engine.segmented INFO Completed SRR15852406_1.fastq.gz
+2026-10-18 15:51:11,695 adaptiseq.batch INFO downloaded SRR15852406_1.fastq.gz
+2026-10-18 15:51:12,595 adaptiseq.engine.segmented INFO Completed SRR15852415_2.fastq.gz
+2026-10-18 15:51:12,595 adaptiseq.batch INFO downloaded SRR15852415_2.fastq.gz
+2026-10-18 16:30:43,180 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,181 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,181 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,182 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,182 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,183 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,183 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,183 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,183 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,183 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,183 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,184 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,184 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,184 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,184 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:43,184 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: FTP supports REST + concurrency; segmented FTP
+2026-10-18 16:30:44,761 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,765 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,765 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,765 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,767 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,767 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,771 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,772 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,774 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,774 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,775 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,780 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,780 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:44,780 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 104] Connection reset by peer
+2026-10-18 16:30:45,429 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 12859)
+2026-10-18 16:30:45,429 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 56353)
+2026-10-18 16:30:45,430 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 40409)
+2026-10-18 16:30:45,431 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 19041)
+2026-10-18 16:30:45,431 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 53217)
+2026-10-18 16:30:45,431 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 34369)
+2026-10-18 16:30:45,431 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 45055)
+2026-10-18 16:30:45,431 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 3057)
+2026-10-18 16:30:45,432 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 30241)
+2026-10-18 16:30:45,441 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 49761)
+2026-10-18 16:30:45,441 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 47731)
+2026-10-18 16:30:45,442 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 38235)
+2026-10-18 16:30:45,442 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 13705)
+2026-10-18 16:30:45,444 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 12001)
+2026-10-18 16:30:45,445 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 26449)
+2026-10-18 16:30:45,453 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 49141)
+2026-10-18 16:30:45,453 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 49137)
+2026-10-18 16:30:45,454 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 32833)
+2026-10-18 16:30:45,454 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 31841)
+2026-10-18 16:30:45,464 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 51073)
+2026-10-18 16:30:45,464 adaptiseq.engine.ftp WARNING FTP segment 0 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 44129)
+2026-10-18 16:30:45,464 adaptiseq.engine.ftp WARNING FTP segment 2 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 16615)
+2026-10-18 16:30:45,466 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 38625)
+2026-10-18 16:30:45,488 adaptiseq.engine.ftp WARNING FTP segment 1 attempt 1/3 failed: [Errno 111] Connect call failed ('193.62.193.165', 18753)

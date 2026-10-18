@@ -101,8 +101,8 @@ if ! _fp="$(e3_aseq_fingerprint)"; then
     exit 1
 fi
 case "$PANEL" in
-  3r|3b)
-    if [[ "$ARM_SET" == "submission" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
+  3r|3b|3jr|3jb)
+    if [[ "$ARM_SET" != "legacy" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
         echo "[ERROR] E3_ASEQ_WHEEL is not set. The paper panels must run the released wheel:" >&2
         echo "          pip download adaptiseq==0.1.4 --no-deps -d wheels/" >&2
         echo "          pip install --force-reinstall --no-deps wheels/adaptiseq-0.1.4-py3-none-any.whl" >&2
@@ -174,8 +174,11 @@ FETCHNGS_ARM="fetchngs|fetchngs|nextflow run nf-core/fetchngs -r 1.12.0 --input 
 build_arms() {
     case "$ARM_SET" in
       submission) ARMS=("${ARMS_SUBMISSION[@]}") ;;
+      # the two adaptiSeq submission arms only: checks a new build on a panel
+      # without spending hours on the other tools
+      aseq)       ARMS=("${ARMS_SUBMISSION[@]:0:2}") ;;
       legacy)     ARMS=("${ARMS_FULL[@]}") ;;
-      *) echo "unknown ARM_SET: $ARM_SET (want submission|legacy)" >&2; exit 2 ;;
+      *) echo "unknown ARM_SET: $ARM_SET (want submission|aseq|legacy)" >&2; exit 2 ;;
     esac
     [[ "$ENABLE_FETCHNGS" == "1" ]] && ARMS+=("$FETCHNGS_ARM")
 }
@@ -199,6 +202,24 @@ build_sweep_arms() {
     ARMS+=("adaptiseq-adaptive-j16|adaptiseq|$ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
     # NEW: explore-then-exploit controller at the same ceiling.
     ARMS+=("adaptiseq-climb-j16|adaptiseq|ASEQ_ADAPTIVE_MODE=climb ASEQ_PROBE_WINDOW=8 $ASEQ -i \$LIST -g --adaptive -j 16 --meta-jobs 8 -Q -o .")
+}
+
+# ---- 3jr / 3jb: fixed worker-count sweep on the submission panels ------------
+#
+# Is there one fixed -j that is right everywhere? Each arm is the bare released
+# CLI with --no-adaptive and one -j value, on the same datasets as 3r (241 runs,
+# many small files) and 3b (8 runs, 16 large files), next to the untuned default.
+# Nothing else changes: segments and the per-host cap stay at their defaults
+# (auto cap = jobs x max_segments), so -j is the one variable. If the best fixed
+# value differs between the panels (or machines), and the default lands near the
+# best in each, that is the case for the adaptive controller; if one fixed value
+# wins everywhere, the paper should say so.
+build_jsweep_arms() {
+    ARMS=()
+    for j in ${E3_JSWEEP:-1 2 4 8 16 32 64}; do
+        ARMS+=("adaptiseq-fixed-j${j}|adaptiseq|$ASEQ_CLI -i \$LIST -g --no-adaptive -j ${j} -o .")
+    done
+    ARMS+=("${ARMS_SUBMISSION[0]}")   # adaptiseq-default, untuned
 }
 
 # ---- 3s: connections-per-worker sweep (--max-segments) ----------------------
@@ -277,12 +298,14 @@ case "$PANEL" in
   3c)  build_arms;       run_panel 3c "D4_mixed"              "${REPS_ARG:-5}"  "${E3_TIMEOUT_3C:-3600}" ;;
   3d)  build_sweep_arms; run_panel 3d "D0_sweep_PRJNA762469"  "${REPS_ARG:-3}"  "${E3_TIMEOUT_3D:-5400}" ;;
   3s)  build_seg_arms;   run_panel 3s "D3_seg_PRJNA540705"    "${REPS_ARG:-3}"  "${E3_TIMEOUT_3S:-5400}" ;;
+  3jr) build_jsweep_arms; run_panel 3jr "D1_full_PRJNA916347"  "${REPS_ARG:-3}"  "${E3_TIMEOUT_3R:-5400}" ;;
+  3jb) build_jsweep_arms; run_panel 3jb "D2_subset_PRJNA762469" "${REPS_ARG:-3}" "${E3_TIMEOUT_3B:-7200}" ;;
   all)
       for p in ${PANELS:-3a 3r 3b 3c 3d 3s}; do
           bash "$E3_DIR/run_e3.sh" "$p" "$REPS_ARG"
       done
       ;;
-  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|all)" >&2; exit 2 ;;
+  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|3jr|3jb|all)" >&2; exit 2 ;;
 esac
 
 echo >&2

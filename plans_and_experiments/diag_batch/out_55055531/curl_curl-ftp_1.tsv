@@ -1,0 +1,24 @@
+SRR15852400_1.fastq.gz	226	193.62.193.165	1324320996	1618.023014	818480
+SRR15852400_2.fastq.gz	226	193.62.193.165	1328295383	1281.392768	1036602
+SRR15852404_1.fastq.gz	226	193.62.193.165	1409220131	1543.086740	913247
+SRR15852404_2.fastq.gz	226	193.62.193.165	1455955532	1147.382341	1268936
+SRR15852406_1.fastq.gz	150	193.62.193.165	1584857088	2099.569476	754848
+# SRR15852406_1.fastq.gz stderr: curl: (18) transfer closed with 2691521 bytes remaining to read
+SRR15852406_2.fastq.gz	227	193.62.193.165	0	31.347604	0
+# SRR15852406_2.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:22401 after 31347 ms: Could not connect to server
+SRR15852407_1.fastq.gz	227	193.62.193.165	0	31.358159	0
+# SRR15852407_1.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:27233 after 31358 ms: Could not connect to server
+SRR15852407_2.fastq.gz	226	193.62.193.165	1267881618	1290.569359	982420
+SRR15852411_1.fastq.gz	226	193.62.193.165	1400303576	1616.757643	866118
+SRR15852411_2.fastq.gz	227	193.62.193.165	0	31.362937	0
+# SRR15852411_2.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:2721 after 31362 ms: Could not connect to server
+SRR15852415_1.fastq.gz	227	193.62.193.165	0	31.274474	0
+# SRR15852415_1.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:29891 after 31274 ms: Could not connect to server
+SRR15852415_2.fastq.gz	226	193.62.193.165	2000513630	2357.200030	848682
+SRR15852425_1.fastq.gz	226	193.62.193.165	1884373067	1717.985092	1096850
+SRR15852425_2.fastq.gz	227	193.62.193.165	0	31.304048	0
+# SRR15852425_2.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:64161 after 31304 ms: Could not connect to server
+SRR15852430_1.fastq.gz	227	193.62.193.165	0	31.319212	0
+# SRR15852430_1.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:17633 after 31319 ms: Could not connect to server
+SRR15852430_2.fastq.gz	227	193.62.193.165	0	31.263038	0
+# SRR15852430_2.fastq.gz stderr: curl: (7) Failed to connect to ftp.sra.ebi.ac.uk:21 via 193.62.193.165:2529 after 31263 ms: Could not connect to server

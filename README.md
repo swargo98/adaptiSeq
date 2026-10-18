@@ -47,7 +47,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
-### Unreleased
+### 0.1.5 (built for the benchmark; not yet on PyPI)
 - **Fix**: an ENA metadata query that fails (HTTP 500, timeout, network error)
   or comes back with no rows is no longer read as "not in ENA". Previously such
   a Run went to the SRA fallback, and the converted FASTQ could not be checked
