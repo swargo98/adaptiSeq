@@ -1,0 +1,2 @@
+1a1aeeca007d55464fa71e4c88432865de2e4fc0278d9a18b0f6ea3b56f0a7bf  adaptiseq-0.1.5-py3-none-any.whl
+4782be60e92873f6b6c07ed4fca8ad43ffb0aa1ea9496967e1e097b47bb2cd10  adaptiseq-0.1.5.tar.gz

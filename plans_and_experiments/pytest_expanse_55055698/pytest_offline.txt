@@ -1,0 +1,11 @@
+...............................ss............s.......................... [ 33%]
+....................................sss................................. [ 67%]
+............................................................s.......     [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_api_drift.py:23: offline: API-drift canary skipped
+SKIPPED [1] tests/test_api_drift.py:33: offline: API-drift canary skipped
+SKIPPED [1] tests/test_aspera_live.py:65: live aspera opt-in: set ADAPTISEQ_LIVE_ASPERA=1 with a real ascp + ENA key
+SKIPPED [1] tests/test_differential.py:74: offline: live differential test skipped (fixture mode covers CI)
+SKIPPED [1] tests/test_differential.py:86: offline: live differential test skipped
+SKIPPED [1] tests/test_differential.py:96: offline: cannot diff against live iseq
+SKIPPED [1] tests/test_segmented_live.py:32: offline: live segmented byte-identity test skipped

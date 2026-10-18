@@ -62,7 +62,10 @@ status=0
 # whatever wheel is already in wheels/; step 2 replaces it.
 VERSION="$(sed -n 's/^__version__ *= *"\(.*\)"/\1/p' "$SRC_DIR/adaptiseq/__init__.py" | head -1)"
 export E3_ASEQ_WHEEL="$REPO_DIR/wheels/adaptiseq-${VERSION}-py3-none-any.whl"
-[[ -f "$E3_ASEQ_WHEEL" ]] || unset E3_ASEQ_WHEEL      # setup_env.sh then tries PyPI
+# A new version has no wheel yet (step 2 builds it): give the env step the newest
+# wheel already in wheels/, so it does not depend on what is on PyPI.
+[[ -f "$E3_ASEQ_WHEEL" ]] || E3_ASEQ_WHEEL="$(ls -t "$REPO_DIR"/wheels/adaptiseq-*-py3-none-any.whl 2>/dev/null | head -1)"
+[[ -n "$E3_ASEQ_WHEEL" && -f "$E3_ASEQ_WHEEL" ]] || unset E3_ASEQ_WHEEL   # setup_env.sh then tries PyPI
 echo; echo "=== environment ==="
 bash "$REPO_DIR/bench/e3/setup_env.sh" > "$OUT/setup_env.log" 2>&1 \
     || { echo "[ERROR] setup_env.sh failed; tail of $OUT/setup_env.log:" >&2; tail -20 "$OUT/setup_env.log" >&2; exit 1; }

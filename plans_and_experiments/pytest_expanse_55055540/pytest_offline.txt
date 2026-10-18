@@ -1,0 +1,164 @@
+..................F.F......................                              [100%]
+=================================== FAILURES ===================================
+__________ test_batch_phase_reports_summary_not_unbounded_trajectory ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x15552e42c690>
+tmp_path = PosixPath('/scratch/rswargo/job_55055540/pytest-of-rswargo/pytest-0/test_batch_phase_reports_summa0')
+
+    def test_batch_phase_reports_summary_not_unbounded_trajectory(monkeypatch, tmp_path):
+        from adaptiseq import core as core_mod
+    
+        task = DownloadTask("https://example.test/SRR1.fastq.gz", "SRR1.fastq.gz", "SRR1")
+    
+        class FakeBatchDownloader:
+            def __init__(self, engine, options, workdir, reporter=None):
+                ctrl = AdaptiveController(WorkerGate(jobs=4), ThroughputMeter())
+                ctrl._record_probe(1, 100.0)
+                ctrl._record_probe(2, 400.0)
+                self._controller = ctrl
+    
+            async def run(self, tasks):
+                return set()
+    
+        monkeypatch.setattr(
+            "adaptiseq.batch.resolve_all",
+            lambda accessions, opts, workdir, meta_jobs: ([task], []),
+        )
+        monkeypatch.setattr("adaptiseq.batch.BatchDownloader", FakeBatchDownloader)
+        reporter = ListReporter()
+        opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20)
+        ctx = RunContext(options=opts, reporter=reporter, workdir=tmp_path)
+        ctx.engine = FakeEngine()
+    
+>       core_mod._batch_download_phase(ctx, ["SRR1"])
+
+tests/test_batch.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ctx = RunContext(options=Options(metadata=False, gzip=False, fastq=False, threads=8, merge=None, database='auto', no_sra_fal...se='auto', retry_count=1, failed=False, engine=<tests.test_batch.FakeEngine object at 0x15552e422690>, verified_md5={})
+sra_accs = ['SRR1']
+
+    def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
+        """Phase A: parallel-resolve SRA/ENA accessions and adaptively batch-download
+        their files. Phase B (integrity/convert/merge/logs) is the normal per-accession
+        loop, which finds the files already present."""
+        import asyncio
+    
+        from .batch import BatchDownloader, resolve_all
+    
+        opts = ctx.options
+        reporter = ctx.reporter
+        tasks, unresolved = resolve_all(
+            sra_accs, opts, ctx.workdir, meta_jobs=opts.meta_jobs
+        )
+        for acc in unresolved:
+            reporter.error(
+                f"{green('Note')}: could not resolve {acc}; it will be retried "
+                "sequentially"
+            )
+        if not tasks:
+            return
+        # The resolver runs on a NullReporter, so say here which accessions left ENA
+        # (an explicit -d sra asks for that and needs no note).
+        if opts.database != "sra":
+            non_ena = _non_ena_accessions(tasks)
+            if non_ena:
+                shown = ", ".join(non_ena[:10]) + (" ..." if len(non_ena) > 10 else "")
+                reporter.info(
+                    f"{bright_yellow('Note')}: {len(non_ena)} accession(s) had no usable "
+                    f"ENA metadata and will be downloaded from SRA: {shown}"
+                )
+        reporter.info(
+            f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
+            f"{len(sra_accs)} accession(s) with up to "
+            f"{_worker_cap_label(opts.jobs, len(tasks))} "
+            f"({'adaptive' if opts.adaptive else 'fixed'} concurrency)"
+        )
+        bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
+        run_sync(bd.run(tasks))
+>       ctx.verified_md5.update(bd.verified)
+                                ^^^^^^^^^^^
+E       AttributeError: 'FakeBatchDownloader' object has no attribute 'verified'
+
+adaptiseq/core.py:441: AttributeError
+_____________ test_batch_start_notice_reports_effective_worker_cap _____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x15552e412090>
+tmp_path = PosixPath('/scratch/rswargo/job_55055540/pytest-of-rswargo/pytest-0/test_batch_start_notice_report0')
+
+    def test_batch_start_notice_reports_effective_worker_cap(monkeypatch, tmp_path):
+        from adaptiseq import core as core_mod
+    
+        task = DownloadTask("https://example.test/SRR1.fastq.gz", "SRR1.fastq.gz", "SRR1")
+    
+        class FakeBatchDownloader:
+            def __init__(self, engine, options, workdir, reporter=None):
+                self._controller = None
+    
+            async def run(self, tasks):
+                return set()
+    
+        monkeypatch.setattr(
+            "adaptiseq.batch.resolve_all",
+            lambda accessions, opts, workdir, meta_jobs: ([task], []),
+        )
+        monkeypatch.setattr("adaptiseq.batch.BatchDownloader", FakeBatchDownloader)
+        reporter = ListReporter()
+        opts = Options(engine="segmented", quiet=True, adaptive=True, jobs=20)
+        ctx = RunContext(options=opts, reporter=reporter, workdir=tmp_path)
+        ctx.engine = FakeEngine()
+    
+>       core_mod._batch_download_phase(ctx, ["SRR1"])
+
+tests/test_batch.py:249: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ctx = RunContext(options=Options(metadata=False, gzip=False, fastq=False, threads=8, merge=None, database='auto', no_sra_fal...se='auto', retry_count=1, failed=False, engine=<tests.test_batch.FakeEngine object at 0x15552e4129d0>, verified_md5={})
+sra_accs = ['SRR1']
+
+    def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
+        """Phase A: parallel-resolve SRA/ENA accessions and adaptively batch-download
+        their files. Phase B (integrity/convert/merge/logs) is the normal per-accession
+        loop, which finds the files already present."""
+        import asyncio
+    
+        from .batch import BatchDownloader, resolve_all
+    
+        opts = ctx.options
+        reporter = ctx.reporter
+        tasks, unresolved = resolve_all(
+            sra_accs, opts, ctx.workdir, meta_jobs=opts.meta_jobs
+        )
+        for acc in unresolved:
+            reporter.error(
+                f"{green('Note')}: could not resolve {acc}; it will be retried "
+                "sequentially"
+            )
+        if not tasks:
+            return
+        # The resolver runs on a NullReporter, so say here which accessions left ENA
+        # (an explicit -d sra asks for that and needs no note).
+        if opts.database != "sra":
+            non_ena = _non_ena_accessions(tasks)
+            if non_ena:
+                shown = ", ".join(non_ena[:10]) + (" ..." if len(non_ena) > 10 else "")
+                reporter.info(
+                    f"{bright_yellow('Note')}: {len(non_ena)} accession(s) had no usable "
+                    f"ENA metadata and will be downloaded from SRA: {shown}"
+                )
+        reporter.info(
+            f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
+            f"{len(sra_accs)} accession(s) with up to "
+            f"{_worker_cap_label(opts.jobs, len(tasks))} "
+            f"({'adaptive' if opts.adaptive else 'fixed'} concurrency)"
+        )
+        bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
+        run_sync(bd.run(tasks))
+>       ctx.verified_md5.update(bd.verified)
+                                ^^^^^^^^^^^
+E       AttributeError: 'FakeBatchDownloader' object has no attribute 'verified'
+
+adaptiseq/core.py:441: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_batch.py::test_batch_phase_reports_summary_not_unbounded_trajectory
+FAILED tests/test_batch.py::test_batch_start_notice_reports_effective_worker_cap
