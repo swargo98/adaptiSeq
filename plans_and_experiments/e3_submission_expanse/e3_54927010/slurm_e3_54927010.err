@@ -1,0 +1,9 @@
+############################################################
+# panel 3r  dataset=D1_full_PRJNA916347  reps=1 (from rep 4)  arms=6  timeout=10800s
+############################################################
+[12:34:49] rep=4 order=1 arm=iseq dataset=D1_full_PRJNA916347 (timeout 10800s)
+    -> 10758.83s  0.71 MB/s  runs=241/241  fmt=gz  conc=1/1 w=0/0  ok
+[15:34:09] rep=4 order=2 arm=adaptiseq-default dataset=D1_full_PRJNA916347 (timeout 10800s)
+    -> 721.07s  10.52 MB/s  runs=241/241  fmt=gz  conc=9/20 w=0/0  ok
+[15:46:12] rep=4 order=3 arm=kingfisher dataset=D1_full_PRJNA916347 (timeout 10800s)
+slurmstepd: error: *** JOB 54927010 ON exp-2-48 CANCELLED AT 2026-10-18T15:50:19 ***
