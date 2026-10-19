@@ -57,6 +57,31 @@ class DownloadTask:
     retries: int = 0
     aspera_db: Optional[str] = None   # "ENA"/"GSA" when this task is an ascp link
     md5: Optional[str] = None         # ENA's fastq_md5, checked as soon as the file lands
+    progress_passes: int = 0          # failed passes that still moved the resume point
+
+
+MAX_PROGRESS_PASSES = 20
+
+
+def _resume_progress(path: Path) -> int:
+    """Bytes a ``.part.meta`` records as done (finished segments plus partial
+    offsets); 0 without one."""
+    from .engine.segmented import read_part_meta
+
+    meta = read_part_meta(str(path) + ".part.meta")
+    if not meta:
+        return 0
+    try:
+        segs = [(int(a), int(b)) for a, b in meta.get("segments", [])]
+        done = set(int(i) for i in meta.get("completed_indices", []))
+        total = sum(b - a + 1 for i, (a, b) in enumerate(segs) if i in done)
+        for k, off in (meta.get("partial_offsets") or {}).items():
+            i = int(k)
+            if 0 <= i < len(segs) and i not in done:
+                total += max(0, int(off) - segs[i][0])
+        return total
+    except (TypeError, ValueError):
+        return 0
 
 
 # ============================== adaptive controller ===========================
@@ -325,9 +350,11 @@ class AdaptiveController:
     # a quarter instead (kept while it costs under a quarter of proportional),
     # so it settles near the knee from either side; and cut it by 30 % on
     # distress (HTTP 429/503, refused connects with nothing open, dropped
-    # streams, or repeated connection-ceiling refusals). Windows in which the
-    # open-connection count did not reach the budget are not used to judge it.
-    # Once nothing is waiting to start, the budget only feeds segment splitting.
+    # streams, or, within one window, 3+ connection-ceiling refusals or 3+
+    # responses cut short of their length). Windows in which the
+    # open-connection count did not reach the budget are not used to judge a
+    # raise. With nothing waiting to start the budget is still judged while it
+    # is filled (in-flight files split to use it), and left alone in the tail.
     # ------------------------------------------------------------------
     DISTRESS_KINDS = ("429", "503", "refused", "pushback", "ftp-error")
 
@@ -359,14 +386,21 @@ class AdaptiveController:
             seen = len(guard.trips)
             hard = sum(1 for _h, k, _d in new if k in self.DISTRESS_KINDS)
             ceiling = sum(1 for _h, k, _d in new if k == "ceiling")
+            cut = sum(1 for _h, k, _d in new if k == "truncated")
             self._record_probe(budget, t)
             used = sorted(conns)[len(conns) // 2]
             log.info("adaptive budget: budget=%d conns=%d throughput=%.1fMbps "
-                     "pushback=%d ceiling=%d", budget, used, t, hard, ceiling)
-            if self.pending is not None and self.pending() == 0:
-                probe = None         # tail: no new files start; nothing to judge
+                     "pushback=%d ceiling=%d truncated=%d", budget, used, t, hard,
+                     ceiling, cut)
+            queue_empty = self.pending is not None and self.pending() == 0
+            if queue_empty and used < 0.8 * budget:
+                # the tail: nothing waits to start and the budget is not filled,
+                # so throughput falls as files finish; nothing to judge. With
+                # the queue empty but the budget filled (a few large files, all
+                # started at once), splitting keeps using it, so it is judged.
+                probe = None
                 continue
-            if hard or ceiling >= 3:
+            if hard or ceiling >= 3 or cut >= 3:
                 budget = max(floor, int(budget * 0.7))
                 guard.set_budget(budget)
                 log.info("adaptive budget: distress, down to %d", budget)
@@ -595,6 +629,7 @@ class BatchDownloader:
                         self._cap_gate_to_remaining(progress, gate)
                     continue
                 self._in_flight += 1
+                before = _resume_progress(self.workdir / task.save_path)
                 try:
                     ok = await self.engine.fetch_async(
                         task.url, task.save_path, session=session,
@@ -618,7 +653,16 @@ class BatchDownloader:
                         self._cap_gate_to_remaining(progress, gate)
                     log.info("downloaded %s", task.save_path)
                 else:
-                    task.retries += 1
+                    # A download that failed but moved its resume point on (the
+                    # bytes are kept in .part) is not a failed attempt: under a
+                    # storm of cut streams (GSA) a large file can need many
+                    # passes, and three used to send it to the slow per-Run
+                    # retry after the batch. Capped so a file cannot loop.
+                    after = _resume_progress(self.workdir / task.save_path)
+                    if after > before and task.progress_passes < MAX_PROGRESS_PASSES:
+                        task.progress_passes += 1
+                    else:
+                        task.retries += 1
                     if task.retries < 3:
                         queue.put_nowait(task)
                     else:

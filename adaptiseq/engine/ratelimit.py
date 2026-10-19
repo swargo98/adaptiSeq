@@ -176,6 +176,14 @@ class HostGuard:
         await self.note_pushback(host, "refused")
         return False
 
+    async def note_truncated(self, host: str) -> None:
+        """A response that ended short of its Content-Length. Recorded (kind
+        "truncated") for the controllers, without touching the cap: ENA cuts a
+        few streams per hour at any load, while GSA cut 95 in 28 minutes at 40
+        connections (tournament rep 1), which a controller should answer."""
+        async with self._cond:
+            self.trips.append((host, "truncated", 0.0))
+
     async def note_success(self, host: str) -> None:
         """A clean response: recover slowly (clear backoff, nudge cap upward)."""
         async with self._cond:

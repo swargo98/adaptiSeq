@@ -97,11 +97,27 @@ def test_budget_cuts_on_pushback(fast):
 
 
 def test_budget_does_not_judge_the_tail(fast):
-    link = FakeLink(knee=100)
+    # queue empty and the budget not filled (few connections left): hold
+    link = FakeLink(knee=100, available=10)
     gate, ctrl = _controller(link, "budget", pending=lambda: 0)
-    start = link.guard.default_cap
     _run_for(ctrl, 0.4)
-    assert link.guard.default_cap == 40 or link.guard.default_cap == start
+    assert link.guard.default_cap == 40
+
+
+@pytest.mark.parametrize("knee", [12, 70])
+def test_budget_still_adapts_when_all_files_started_at_once(fast, knee):
+    """Rep 1 of the tournament (NCBI panel): 8 files, 8 workers, so the queue was
+    empty from the first second and the old rule never judged the budget at all.
+    With the budget filled (segments split to use it) it must still move."""
+    link = FakeLink(knee)
+    gate, ctrl = _controller(link, "budget", pending=lambda: 0)
+    seen = []
+    orig = link.guard.set_budget
+    link.guard.set_budget = lambda n: (seen.append(n), orig(n))[1]
+    _run_for(ctrl, 1.5)
+    tail = seen[-12:]
+    assert len(set(seen)) > 2, seen
+    assert min(tail) >= 0.6 * knee and max(tail) <= 1.6 * knee + 2, (knee, seen)
 
 
 def test_greedy_runs_every_worker_and_backs_off_on_429(fast):

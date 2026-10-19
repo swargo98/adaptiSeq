@@ -47,7 +47,20 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
-### 0.1.8 (in development)
+### 0.1.9 (in development)
+- **Batch mode**: a download that fails but moves its resume point on (the
+  bytes are kept) no longer uses up one of the file's three retries (capped
+  at 20 such passes). Under a storm of cut-short responses, as GSA served at
+  about 40 connections, large files used to run out of retries and fall back
+  to the slow per-Run retry after the batch.
+- A file downloaded on its own (the per-Run retry, single runs) may now split
+  onto spare connections, like a batch file once the queue is empty.
+- Responses cut short of their length are now recorded for the controllers;
+  `budget` treats 3 or more in one window as distress. `budget` also keeps
+  adjusting when every file started at once (the queue empty from the start);
+  it only stops in the tail, when its budget is not filled.
+
+### 0.1.8 (in development, superseded by 0.1.9)
 - **New** `--controller NAME` (and `fetch(controller=...)`) picks the adaptive
   controller: `topdown` (the default, unchanged), `bottomup` (the original
   gradient optimizer), and two candidates under evaluation: `budget`, which

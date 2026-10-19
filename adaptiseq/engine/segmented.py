@@ -445,6 +445,8 @@ class SegmentedDownloader:
                 else:
                     raise
             except Exception as e:
+                if isinstance(e, aiohttp.ClientPayloadError):
+                    await self.host_guard.note_truncated(self.host)
                 log.warning(
                     "Segment %s attempt %s/%s failed: %s",
                     segment_id, attempt + 1, self.max_retries, e,

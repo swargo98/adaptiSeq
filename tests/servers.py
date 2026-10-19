@@ -97,6 +97,12 @@ class _MultiHandler(http.server.BaseHTTPRequestHandler):
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 rate = srv.rate_for(name, a, len(body))
+                if srv.maybe_short(name, len(body)):
+                    # promise the whole range, deliver half, hang up
+                    self.wfile.write(body[: len(body) // 2])
+                    self.wfile.flush()
+                    self.close_connection = True
+                    return
                 if rate:
                     piece = 64 * 1024
                     for k in range(0, len(body), piece):
@@ -145,6 +151,18 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
         self.throttle = {}
         self.range_starts = []
         self.drop = {}
+        self.short = {}
+
+    def maybe_short(self, name: str, length: int) -> bool:
+        """``short[name] = n``: cut the next n data responses for that file short."""
+        if length <= 1:
+            return False
+        with self.lock:
+            left = self.short.get(name, 0)
+            if left <= 0:
+                return False
+            self.short[name] = left - 1
+            return True
 
     def maybe_drop(self, name: str) -> bool:
         """``drop[name] = n``: hang up on the next n requests for that file."""

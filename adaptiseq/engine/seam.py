@@ -27,7 +27,7 @@ import aiohttp
 from ..console import green
 from .classic import ClassicEngine
 from .ftp import FtpSegmentedDownloader, parse_ftp_url, probe_ftp
-from .ratelimit import HostGuard, TokenBucket
+from .ratelimit import HostGuard, TokenBucket, host_of
 from .segmented import ProbeError, SegmentedDownloader
 
 log = logging.getLogger("adaptiseq.engine.seam")
@@ -73,8 +73,14 @@ class SegmentedEngine:
         timeout = aiohttp.ClientTimeout(total=None, sock_connect=30, sock_read=120)
         connector = aiohttp.TCPConnector(limit=0)
         async with aiohttp.ClientSession(timeout=timeout, connector=connector) as session:
-            return await self.fetch_async(url, save_path, session=session,
-                                          host_guard=guard, rate=rate)
+            # A file fetched on its own (the per-Run retry after the batch, GSA
+            # and SRA single runs) has the per-host budget to itself, so it may
+            # split onto spare connections like a batch file once the queue is
+            # empty; before, its last segment ran alone on one connection.
+            return await self.fetch_async(
+                url, save_path, session=session, host_guard=guard, rate=rate,
+                spare_slots=lambda: max(0, guard.cap_of(host_of(url)) - guard.in_flight_of(host_of(url))),
+            )
 
     # --- async core (shared by Part 2 seam and Part 3 batch pool) ---------------
     async def fetch_async(
