@@ -203,7 +203,15 @@ load (fixed -j 20: 76 at 22 connections; budget: 60 at under 5), so a cut-short 
 `budget`'s rule "3+ cut short in a window = distress" (added in 0.1.9 after the 0.1.8 GSA rep) therefore cut it to
 about 3 connections within 4 minutes and it spent 40 minutes there: my mistake, made from one observation. Holding
 high concurrency (fixed -j 20, 35 connections at first) finished in 6.4 min. Candidates are frozen, so `budget`
-competes as built; if it otherwise does well, the follow-up is a `budget` without that rule, evaluated on fresh reps. iSeq 1.9.9 presumably has the same
+competes as built; if it otherwise does well, the follow-up is a `budget` without that rule, evaluated on fresh reps.
+
+| rep | panel | arm | wall_s | runs | connections mean / max | download phase | controller |
+|---|---|---|---|---|---|---|---|
+| 2 | 4s NCBI | fixed-j20 | 110.1 | 8/8 | 23.2 / 64 | 73 s | - (ran first) |
+| 2 | 4s NCBI | greedy | 85.7 | 8/8 | 25.3 / 64 | 49 s | 6 workers |
+| 2 | 4s NCBI | bottomup | 83.0 | 8/8 | 10.7 / 32 | 46 s | best at 3 workers |
+| 2 | 4s NCBI | budget | 91.5 | 8/8 | 7.2 / 20 | 55 s | 16 connections |
+| 2 | 4s NCBI | topdown | 78.9 | 8/8 | 22.1 / 64 | 42 s | 4 workers | iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).

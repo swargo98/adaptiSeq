@@ -1,0 +1,7 @@
+panel	rep	seed	order_idx	arm
+4s	2	20261013:4s:2	1	adaptiseq-fixed-j20
+4s	2	20261013:4s:2	2	adaptiseq-ctrl-greedy
+4s	2	20261013:4s:2	3	adaptiseq-ctrl-bottomup
+4s	2	20261013:4s:2	4	adaptiseq-ctrl-budget
+4s	2	20261013:4s:2	5	adaptiseq-ctrl-topdown
+4g	2	20261013:4g:2	1	adaptiseq-ctrl-budget
