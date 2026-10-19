@@ -142,7 +142,22 @@ iSeq's GSA path fails silently with exit 0.
 **Tournament started on the non-ENA panels (03:20 10-19):** 0.1.8 wheel `63fe4b82...` (`setup_expanse_55068362`,
 env `adaptiseq_e3_dev`, so the sweep's env is untouched; includes the GSA, GEO and GSA-md5 fixes). Jobs 55068446 55068447 55068448:
 `PANELS="4s 4g"`, one rep each, chained, `RESULTS_ROOT=e3_ctrl_expanse`, `E3_TIMEOUT_CTRL=3600`. NCBI's AWS copies
-and GSA are not ENA, so these run alongside the sweep; 4r and 4b (ENA) and 4x wait for the sweep to finish. iSeq 1.9.9 presumably has the same
+and GSA are not ENA, so these run alongside the sweep; 4r and 4b (ENA) and 4x wait for the sweep to finish.
+
+Tournament rows (`e3_ctrl_expanse/`; download phase = until the last archive connection closed, from `conc_*`):
+
+| rep | panel | arm | wall_s | runs | download phase, connections (mean / max) | controller summary |
+|---|---|---|---|---|---|---|
+| 1 | 4s NCBI | topdown | 84.7 | 8/8 | 48 s, 24 / 64 | 2 probes; committed 4 workers |
+| 1 | 4s NCBI | bottomup | 86.4 | 8/8 | 50 s, 9 / 24 | 7 probes; best at 1 worker |
+| 1 | 4s NCBI | greedy | 80.3 | 8/8 | 43 s, 28 / 64 | 6 workers |
+| 1 | 4s NCBI | budget | 81.2 | 8/8 | 44 s, 7 / 16 | held 16 connections |
+| 1 | 4s NCBI | fixed-j20 | 82.8 | 8/8 | 46 s, 29 / 64 | - |
+
+4s rep 1 (job `55068446`, `exp-9-37`, 03:12 to 03:20): every arm 8/8 md5-verified against the reference copies,
+19.7 GB in 80 to 86 s, all within 8 %: about 4.4 Gbit/s while downloading (NCBI's AWS copy or the node's link is
+the limit), then about 35 s of `vdb-validate`. `budget` matched the fastest with a quarter of fixed -j 20's
+connections (16 max against 64). iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
