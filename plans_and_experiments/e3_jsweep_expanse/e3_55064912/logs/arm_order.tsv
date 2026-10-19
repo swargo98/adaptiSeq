@@ -1,2 +1,6 @@
 panel	rep	seed	order_idx	arm
 3jr	2	20261013:3jr:2	1	adaptiseq-default
+3jr	2	20261013:3jr:2	2	adaptiseq-fixed-j4
+3jr	2	20261013:3jr:2	3	adaptiseq-fixed-j64
+3jr	2	20261013:3jr:2	4	adaptiseq-fixed-j8
+3jr	2	20261013:3jr:2	5	adaptiseq-fixed-j2
