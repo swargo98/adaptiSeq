@@ -221,7 +221,35 @@ competes as built; if it otherwise does well, the follow-up is a `budget` withou
 Rep 2 (job `55071527`, 06:59 to 09:06 PDT). **GSA is mostly noise so far:** fixed-j20 385 then 1247 s, topdown 1761 then
 654, budget 2694 then 1184; the arm order changes per rep, and the same arm moves 3x between reps. Three reps will
 give a median, but the GSA panel's verdict should be read as "no controller is reliably better at GSA" unless rep 3
-changes the picture. iSeq 1.9.9 presumably has the same
+changes the picture.
+
+| rep | panel | arm | wall_s | runs | connections mean / max | notes |
+|---|---|---|---|---|---|---|
+| 3 | 4s NCBI | greedy | 85.1 | 8/8 | 26.1 / 64 | |
+| 3 | 4s NCBI | budget | 85.4 | 8/8 | 8.3 / 20 | |
+| 3 | 4s NCBI | fixed-j20 | 87.0 | 8/8 | 29.0 / 64 | |
+| 3 | 4s NCBI | topdown | 84.2 | 8/8 | 23.7 / 64 | |
+| 3 | 4s NCBI | bottomup | 83.3 | 8/8 | 10.4 / 32 | |
+| 3 | 4g GSA | bottomup | 511 | 6/6 | 12.0 / 33 | 43 cut short, 0 out |
+| 3 | 4g GSA | topdown | 963 | 6/6 | 11.6 / 48 | 133 cut short, 20 out |
+| 3 | 4g GSA | fixed-j20 | 954 | 6/6 | 10.9 / 48 | 99 cut short, 22 out |
+| 3 | 4g GSA | greedy | 657 | 6/6 | 15.6 / 48 | 53 cut short, 3 out |
+| 3 | 4g GSA | budget | 589 | 6/6 | 9.5 / 25 | 40 cut short, 2 out |
+
+Rep 3 (job `55071528`, 09:07 to 10:18 PDT). **Score after the NCBI and GSA panels**
+(`bench/e3/score_tournament.py`; every arm completed every run in every rep, so all qualify):
+
+| arm | NCBI median (s) | NCBI score | GSA median (s) | GSA score | worst | geometric mean |
+|---|---|---|---|---|---|---|
+| bottomup | 83.3 | 1.045 | 510.7 | **1.000** | **1.045** | 1.022 |
+| greedy | 85.1 | 1.068 | 690.1 | 1.351 | 1.351 | 1.201 |
+| fixed-j20 (ref) | 90.2 | 1.131 | 953.9 | 1.868 | 1.868 | 1.454 |
+| topdown | **79.7** | **1.000** | 962.8 | 1.885 | 1.885 | 1.373 |
+| budget | 85.4 | 1.071 | 1183.7 | 2.318 | 2.318 | 1.576 |
+
+Caveats: on NCBI all arms are within 13 % (the link is the limit); on GSA the same arm moves 3x to 4x between reps
+(bottomup 482, 2187, 511 s), so a 3-rep median there is fragile, and bottomup's GSA lead rests on two good reps of
+three. The ENA panels (4r, 4b) are still to run; the decision waits for them. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
