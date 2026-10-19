@@ -191,7 +191,19 @@ Official tournament rows (0.1.9):
 | 1 | 4s NCBI | bottomup | 89.6 | 8/8 | 8.8 / 24 | 53 s | 1 worker |
 | 1 | 4s NCBI | greedy | 79.3 | 8/8 | 28.0 / 64 | 42 s | 6 to 8 workers |
 | 1 | 4s NCBI | budget | 81.6 | 8/8 | 7.8 / 20 | 45 s | tried 20, back to 16 |
-| 1 | 4s NCBI | fixed-j20 | 90.2 | 8/8 | 24.7 / 64 | 53 s | - | iSeq 1.9.9 presumably has the same
+| 1 | 4s NCBI | fixed-j20 | 90.2 | 8/8 | 24.7 / 64 | 53 s | - |
+| 1 | 4g GSA | greedy | 690 | 6/6 | 19.6 / 48 | 46 cut short, 1 segment out of attempts | 6 workers, ended at 1 |
+| 1 | 4g GSA | bottomup | 482 | 6/6 | 15.5 / 48 | 67 cut short, 2 out | 5 workers best |
+| 1 | 4g GSA | budget | **2694** | 6/6 | 4.6 / 20 | 60 cut short, 3 out | cut to about 3 connections within 4 min |
+| 1 | 4g GSA | topdown | 1761 | 6/6 | 11.6 / 48 | 73 cut short, 7 out | workers fell from about 30 to 3 connections over 28 min |
+| 1 | 4g GSA | fixed-j20 | **385** | 6/6 | 21.9 / 48 | 76 cut short, 0 out | - |
+
+Rep 1 (job `55071526`, 05:10 to 06:58 PDT, 20:10 to 22:00 Beijing). **GSA reading:** GSA cuts responses short at any
+load (fixed -j 20: 76 at 22 connections; budget: 60 at under 5), so a cut-short response is not a load signal there.
+`budget`'s rule "3+ cut short in a window = distress" (added in 0.1.9 after the 0.1.8 GSA rep) therefore cut it to
+about 3 connections within 4 minutes and it spent 40 minutes there: my mistake, made from one observation. Holding
+high concurrency (fixed -j 20, 35 connections at first) finished in 6.4 min. Candidates are frozen, so `budget`
+competes as built; if it otherwise does well, the follow-up is a `budget` without that rule, evaluated on fresh reps. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
