@@ -27,6 +27,48 @@ _RE_FASTQLINK = re.compile(r"ftp.sra.ebi.ac.uk/vol[0-9]/fastq")
 _RE_GSA_LINK = re.compile(r'(?:https|ftp)://[^"]*\.(?:gz|bam|tar|bz2)')
 _RE_CRA = re.compile(r"CRA[0-9]+")
 
+# GSA serves the paths its metadata lists (ftp://download.big.ac.cn/...) over
+# range-capable HTTPS on download.cncb.ac.cn; download.big.ac.cn has no HTTPS.
+GSA_FTP_PREFIX = "ftp://download.big.ac.cn/"
+GSA_HTTPS_PREFIX = "https://download.cncb.ac.cn/"
+
+
+def gsa_csv_links(csv_text: str, crr: str) -> List[str]:
+    """The download paths the GSA run-info table lists for ``crr`` (column
+    ``Download_path``; several files are ``|``-separated), in table order.
+
+    The browse page used to be the source of these links, but since 2026 it
+    answers scripts with a JavaScript "browser check" page and no links, which
+    left GSA downloads with nothing to fetch. The run-info table, which comes
+    from GSA's API, carries the same paths.
+    """
+    import csv
+    import io
+
+    rows = list(csv.reader(io.StringIO(csv_text)))
+    if not rows:
+        return []
+    header = rows[0]
+    try:
+        i_run, i_path = header.index("Run"), header.index("Download_path")
+    except ValueError:
+        return []
+    out: List[str] = []
+    for row in rows[1:]:
+        if len(row) > max(i_run, i_path) and row[i_run] == crr:
+            for link in row[i_path].split("|"):
+                link = link.strip()
+                if link and link not in out:
+                    out.append(link)
+    return out
+
+
+def gsa_https(link: str) -> str:
+    """``ftp://download.big.ac.cn/X`` -> ``https://download.cncb.ac.cn/X``."""
+    if link.startswith(GSA_FTP_PREFIX):
+        return GSA_HTTPS_PREFIX + link[len(GSA_FTP_PREFIX):]
+    return link
+
 
 # --- token helpers --------------------------------------------------------------
 
@@ -237,6 +279,11 @@ def resolve_gsa_urls(ctx: RunContext, crr: str) -> List[str]:
     other than the read-only browse-page lookup."""
     opts = ctx.options
     csv_text = ctx.metadata_csv().read_text(errors="replace")
+    listed = gsa_csv_links(csv_text, crr)
+    if listed:
+        if opts.aspera or opts.protocol == "ftp":
+            return listed
+        return [gsa_https(l) for l in listed]
     cra_matches = _uniq_adjacent(
         [m for ln in _lines_with(csv_text, crr) for m in _RE_CRA.findall(ln)]
     )
@@ -287,6 +334,22 @@ def download_gsa(ctx: RunContext, crr: str) -> None:
     )
     cra = cra_matches[0] if cra_matches else ""
 
+    listed = gsa_csv_links(csv_text, crr)
+    if listed:
+        if opts.aspera:
+            for link in listed:
+                _gsa_one(ctx, link, crr, cra, mode="Aspera", ftp=True, aspera=True)
+        elif opts.protocol == "ftp":
+            for link in listed:
+                _gsa_one(ctx, link, crr, cra, mode="ftp", ftp=True, aspera=False)
+        else:
+            for link in listed:
+                _gsa_one(ctx, gsa_https(link), crr, cra, mode="https", ftp=False,
+                         aspera=False)
+        return
+
+    # No paths in the run-info table: the browse page, as iSeq does (it may
+    # answer with a browser check and no links; then nothing is fetched).
     html = wget_capture(
         GSA_BROWSE_URL.format(cra=cra, crr=crr), user_agent=USER_AGENT_MOZILLA
     )
@@ -382,6 +445,11 @@ def _gsa_one(ctx, link, crr, cra, *, mode, ftp, aspera):
             reporter.info(
                 f"{_by('Note')}: {save_name} validate failed, retry {count} times"
             )
+            # A full-size file with the wrong md5 is left alone by a resuming
+            # engine, so keeping it would re-check the same bytes (the fix the
+            # SRA path got in 0.1.4): drop it so the retry downloads again.
+            if ctx.path(save_name).is_file():
+                ctx.path(save_name).unlink()
             count += 1
             continue
         elif count <= 2:

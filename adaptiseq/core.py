@@ -306,9 +306,10 @@ def run(
         if sra_accs:
             _aspera_download_phase(ctx, sra_accs)
     elif options.engine == "segmented" and not options.metadata:
-        sra_accs = [a for a in accessions if not is_gsa(a)]
-        if sra_accs:
-            _batch_download_phase(ctx, sra_accs)
+        # GSA runs join the same pool (their links come from the run-info
+        # table); the per-accession loop below then verifies them in place.
+        if accessions:
+            _batch_download_phase(ctx, list(accessions))
 
     for accession in accessions:
         ctx.retry_count = 1
@@ -393,6 +394,8 @@ def _non_ena_accessions(tasks) -> List[str]:
     fallback. Their converted FASTQ cannot be checked against ENA's md5."""
     out: List[str] = []
     for t in tasks:
+        if is_gsa(t.accession):
+            continue          # GSA is its own archive, not an SRA fallback
         url = t.url if "://" in t.url else "//" + t.url
         host = urlsplit(url).hostname or ""
         if not host.endswith("ebi.ac.uk") and t.accession not in out:

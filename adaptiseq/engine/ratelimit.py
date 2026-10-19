@@ -186,6 +186,18 @@ class HostGuard:
                 st.cap += 1
             self._cond.notify_all()
 
+    def set_budget(self, n: int) -> None:
+        """Set every host's connection cap, and the level clean responses recover
+        to, to ``n`` (the ``budget`` controller's knob). A ceiling or pushback can
+        still hold a host below it."""
+        n = max(self.min_cap, int(n))
+        self.default_cap = n
+        for st in self._hosts.values():
+            st.cap = n
+
+    def total_in_flight(self) -> int:
+        return sum(st.in_flight for st in self._hosts.values())
+
     # --- sync inspection for tests/logging ---
     def in_flight_of(self, host: str) -> int:
         st = self._hosts.get(host)

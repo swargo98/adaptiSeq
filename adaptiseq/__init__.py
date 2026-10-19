@@ -40,7 +40,7 @@ from .errors import (
 from .logs import FAIL_LOG, SUCCESS_LOG
 from .options import Options, RunContext, load_accessions, resolve_output_dir
 
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 __all__ = [
     "fetch",
     "resolve",
@@ -188,6 +188,7 @@ def fetch(
     meta_jobs: int = 3,
     aspera_efficiency: float = 0.70,
     reporter: Optional[Reporter] = None,
+    controller: Optional[str] = None,
 ) -> FetchResult:
     """Download and verify ``accession``.
 
@@ -227,6 +228,7 @@ def fetch(
         adaptive=adaptive,
         probe_window=probe_window,
         cc_penalty=cc_penalty,
+        controller=controller,
         meta_jobs=meta_jobs,
         aspera_efficiency=aspera_efficiency,
     )

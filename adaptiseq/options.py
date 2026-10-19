@@ -58,6 +58,9 @@ class Options:
     adaptive: bool = True           # --adaptive/--no-adaptive
     probe_window: int = 5           # --probe-window (seconds)
     cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
+    # --controller: which adaptive controller runs. None -> ASEQ_ADAPTIVE_MODE, then
+    # "topdown". "budget" and "greedy" are candidates under evaluation.
+    controller: Optional[str] = None
     meta_jobs: int = 3              # --meta-jobs (parallel resolution)
     aspera_efficiency: float = 0.70 # --aspera-efficiency (keep-worker threshold)
 
@@ -98,10 +101,17 @@ class Options:
             raise ValueError(f"Invalid probe_window: {self.probe_window}")
         if self.cc_penalty < 1.0:
             raise ValueError(f"Invalid cc_penalty: {self.cc_penalty}")
+        if self.controller is not None and self.controller not in CONTROLLERS:
+            raise ValueError(f"Invalid controller: {self.controller}")
         if self.meta_jobs < 1:
             raise ValueError(f"Invalid meta_jobs: {self.meta_jobs}")
         if not (0.0 < self.aspera_efficiency <= 1.0):
             raise ValueError(f"Invalid aspera_efficiency: {self.aspera_efficiency}")
+
+
+# Adaptive controllers (--controller). topdown is the default; bottomup is the
+# original gradient optimizer; budget and greedy are candidates under evaluation.
+CONTROLLERS = ("topdown", "bottomup", "budget", "greedy")
 
 
 @dataclass

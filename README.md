@@ -47,6 +47,24 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.8 (in development)
+- **New** `--controller NAME` (and `fetch(controller=...)`) picks the adaptive
+  controller: `topdown` (the default, unchanged), `bottomup` (the original
+  gradient optimizer), and two candidates under evaluation: `budget`, which
+  keeps every worker active and steers a per-host connection budget (raise
+  while it pays, cut when it does not or on server pushback), and `greedy`,
+  which runs every worker and backs off only on HTTP 429/503. The default will
+  be chosen from a benchmark on every archive adaptiSeq supports.
+- **Fix (GSA)**: GSA's browse page now answers scripts with a browser check and
+  no links, so GSA runs had nothing to download. Links now come from the
+  run-info table GSA's API returns, fetched from `download.cncb.ac.cn` over
+  HTTPS (`-r ftp` keeps `download.big.ac.cn` FTP; Aspera unchanged).
+- **GSA in batch mode**: GSA runs now join the parallel pool with the other
+  archives (they downloaded one file at a time), with md5 checks in the pool
+  from the project's `md5sum.txt`.
+- **Fix (GSA)**: after an md5 mismatch the bad file is deleted before the first
+  retry, so the retry downloads again instead of re-checking the same bytes.
+
 ### 0.1.7 (built for the benchmark; not yet on PyPI)
 - **Fix**: a range probe that gets no answer (refused, reset, timed out) is
   retried, and waits at the host's connection limit like a segment does.

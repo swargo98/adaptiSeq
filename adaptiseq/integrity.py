@@ -305,6 +305,16 @@ def verify_gsa(ctx: RunContext, filename: str, cra: str) -> Optional[bool]:
                 wanted = parts[0].lower()
             break
     fpath = ctx.path(filename)
-    if fpath.is_file() and md5sum(fpath) == wanted:
+    if fpath.is_file() and _md5_cached(ctx, fpath) == wanted:
         return True
     return False
+
+
+def gsa_md5s(md5_text: str) -> Dict[str, str]:
+    """Map each file name in a GSA ``md5sum.txt`` (``md5  /CRA/CRR/name``) to its md5."""
+    out: Dict[str, str] = {}
+    for line in md5_text.splitlines():
+        parts = line.split()
+        if len(parts) >= 2:
+            out[parts[-1].rsplit("/", 1)[-1]] = parts[0].lower()
+    return out

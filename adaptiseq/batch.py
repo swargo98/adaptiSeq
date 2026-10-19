@@ -67,9 +67,19 @@ class AdaptiveController:
     def __init__(self, gate: WorkerGate, meter: ThroughputMeter, *,
                  probe_window: int = 5, cc_penalty: float = 1.01,
                  max_workers: Optional[Callable[[], int]] = None,
-                 history_limit: int = 12):
+                 history_limit: int = 12,
+                 mode: Optional[str] = None,
+                 guard: Optional[HostGuard] = None,
+                 pending: Optional[Callable[[], int]] = None):
         self.gate = gate
         self.meter = meter
+        # Which controller runs (see run()); None -> ASEQ_ADAPTIVE_MODE or topdown.
+        self.mode = mode
+        # The batch's per-host guard and queue length, for the controllers that
+        # steer connections (budget) or react to pushback (greedy).
+        self.guard = guard
+        self.pending = pending
+        self.unit = "worker"
         self.probe_window = max(2, int(probe_window))
         self.cc_penalty = float(cc_penalty)
         # Live cap (files still outstanding); probing above it just measures idle
@@ -132,11 +142,12 @@ class AdaptiveController:
             return ""
         best_w, best_t = self.best_probe or (0, 0.0)
         last_w, last_t = self.last_probe or (0, 0.0)
-        recent = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in self.trajectory)
+        tag = "c" if self.unit == "connection" else "w"
+        recent = ", ".join(f"{w}{tag}@{t:.0f}Mbps" for w, t in self.trajectory)
         return (
             f"{self.probe_count} probe(s); "
-            f"best {best_t:.0f} Mbps at {best_w} worker(s); "
-            f"last {last_t:.0f} Mbps at {last_w} worker(s); "
+            f"best {best_t:.0f} Mbps at {best_w} {self.unit}(s); "
+            f"last {last_t:.0f} Mbps at {last_w} {self.unit}(s); "
             f"recent: {recent}"
         )
 
@@ -145,9 +156,13 @@ class AdaptiveController:
         # worker cap; `bottomup` is the gradient controller that crawls *up* from
         # a low worker count. Legacy aliases: climb/ladder/ee -> topdown,
         # legacy/gradient -> bottomup.
-        mode = os.environ.get("ASEQ_ADAPTIVE_MODE", "topdown").lower()
+        mode = (self.mode or os.environ.get("ASEQ_ADAPTIVE_MODE") or "topdown").lower()
         if mode in ("bottomup", "legacy", "gradient"):
             await self._run_bottomup()
+        elif mode == "budget" and self.guard is not None:
+            await self._run_budget()
+        elif mode == "greedy":
+            await self._run_greedy()
         else:
             await self._run_topdown()
 
@@ -295,6 +310,135 @@ class AdaptiveController:
                     # baseline and turn normal steady throughput into a "drop".
                     committed = 0.8 * committed + 0.2 * t
 
+    # ------------------------------------------------------------------
+    # Connection-budget controller (--controller budget).
+    #
+    # topdown and bottomup choose how many FILES download at once. What limits a
+    # download from ENA is how many CONNECTIONS are open (about 2 MB/s each), and
+    # connections per file run from 1 (small files) to max_segments (large ones),
+    # so one worker more or less is 1 or 8 connections. The worker count also
+    # only changes at file pickup, so a probe at a lower count still measures the
+    # files already in flight. This controller instead keeps every worker active
+    # and steers a per-host connection budget (HostGuard's cap): start at a
+    # moderate budget, raise it by a quarter while the gain is at least half of
+    # proportional; when a raise does not pay, revert, hold, and try cutting by
+    # a quarter instead (kept while it costs under a quarter of proportional),
+    # so it settles near the knee from either side; and cut it by 30 % on
+    # distress (HTTP 429/503, refused connects with nothing open, dropped
+    # streams, or repeated connection-ceiling refusals). Windows in which the
+    # open-connection count did not reach the budget are not used to judge it.
+    # Once nothing is waiting to start, the budget only feeds segment splitting.
+    # ------------------------------------------------------------------
+    DISTRESS_KINDS = ("429", "503", "refused", "pushback", "ftp-error")
+
+    async def _run_budget(self) -> None:
+        guard = self.guard
+        window = self._cfg("ASEQ_BUDGET_WINDOW", max(10.0, 2.0 * self.probe_window))
+        window = window if window > 0 else 10.0
+        settle = max(0.0, self._cfg("ASEQ_BUDGET_SETTLE", 2.0))
+        top = max(1, int(guard.default_cap))           # jobs x max_segments
+        budget = int(self._cfg("ASEQ_BUDGET_START", min(top, max(16, 2 * self.gate.jobs))))
+        budget = max(1, min(top, budget))
+        floor = max(1, min(budget, int(self._cfg("ASEQ_BUDGET_FLOOR", 2))))
+        self.unit = "connection"
+        guard.set_budget(budget)
+        seen = len(guard.trips)
+        probe: Optional[Tuple[int, float, int]] = None  # (base budget, base rate, direction)
+        direction, hold = 1, 0
+        while not self.done:
+            self.gate.set_active(self._worker_cap())
+            conns = []
+            ticks = max(1, int(round(window)))
+            for _ in range(ticks):
+                await asyncio.sleep(window / ticks)
+                if self.done:
+                    return
+                conns.append(guard.total_in_flight())
+            t = self.meter.recent_average(ticks)
+            new = guard.trips[seen:]
+            seen = len(guard.trips)
+            hard = sum(1 for _h, k, _d in new if k in self.DISTRESS_KINDS)
+            ceiling = sum(1 for _h, k, _d in new if k == "ceiling")
+            self._record_probe(budget, t)
+            used = sorted(conns)[len(conns) // 2]
+            log.info("adaptive budget: budget=%d conns=%d throughput=%.1fMbps "
+                     "pushback=%d ceiling=%d", budget, used, t, hard, ceiling)
+            if self.pending is not None and self.pending() == 0:
+                probe = None         # tail: no new files start; nothing to judge
+                continue
+            if hard or ceiling >= 3:
+                budget = max(floor, int(budget * 0.7))
+                guard.set_budget(budget)
+                log.info("adaptive budget: distress, down to %d", budget)
+                probe, direction, hold = None, 1, 2
+                continue
+            if probe is not None:
+                base_budget, base_t, d = probe
+                probe = None
+                rel = abs(budget - base_budget) / base_budget
+                if d > 0:
+                    # a raise must earn at least half its proportional gain
+                    keep = used >= 0.8 * budget and t >= base_t * (1.0 + 0.5 * rel)
+                else:
+                    # a cut is kept if it costs under a quarter of proportional
+                    keep = t >= base_t * (1.0 - 0.25 * rel)
+                if not keep:
+                    budget = base_budget
+                    guard.set_budget(budget)
+                    log.info("adaptive budget: %s to %d not kept, back to %d",
+                             "raise" if d > 0 else "cut", budget, base_budget)
+                    direction, hold = -d, 3
+                    continue
+            if hold > 0:
+                hold -= 1
+                continue
+            if direction > 0 and (budget >= top or used < 0.8 * budget):
+                direction = -1       # at the cap, or the budget is not being filled
+            if direction < 0 and budget <= floor:
+                direction = 1
+            step = max(2, budget // 4)
+            nb = min(top, budget + step) if direction > 0 else max(floor, budget - step)
+            if nb == budget:
+                continue
+            probe = (budget, t, direction)
+            budget = nb
+            guard.set_budget(budget)
+            log.info("adaptive budget: trying %d", budget)
+            if settle:
+                await asyncio.sleep(settle)
+
+    # ------------------------------------------------------------------
+    # Greedy controller (--controller greedy): what fixed -j does, plus a
+    # reaction. Every worker is active from the start; the active count drops by
+    # a quarter when the server pushes back (HTTP 429/503) and climbs back by a
+    # tenth of the cap per quiet window. It never probes downward on throughput
+    # alone, so noise cannot walk it down.
+    # ------------------------------------------------------------------
+    async def _run_greedy(self) -> None:
+        window = self._cfg("ASEQ_GREEDY_WINDOW", 10.0)
+        window = window if window > 0 else 10.0
+        active = self._worker_cap()
+        self.gate.set_active(active)
+        seen = len(self.guard.trips) if self.guard is not None else 0
+        while not self.done:
+            await asyncio.sleep(window)
+            if self.done:
+                return
+            hard = 0
+            if self.guard is not None:
+                new = self.guard.trips[seen:]
+                seen = len(self.guard.trips)
+                hard = sum(1 for _h, k, _d in new if k in ("429", "503"))
+            cap = self._worker_cap()
+            t = self.meter.recent_average(max(1, int(window)))
+            self._record_probe(min(active, cap), t)
+            if hard:
+                active = max(1, (min(active, cap) * 3) // 4)
+                log.info("adaptive greedy: pushback x%d, down to %d workers", hard, active)
+            elif active < cap:
+                active = min(cap, active + max(1, cap // 10))
+            self.gate.set_active(min(active, cap))
+
     def stop(self) -> None:
         self.done = True
 
@@ -356,6 +500,9 @@ class BatchDownloader:
                 probe_window=self.options.probe_window,
                 cc_penalty=self.options.cc_penalty,
                 max_workers=lambda: self._remaining_files(progress),
+                mode=self.options.controller,
+                guard=guard,
+                pending=queue.qsize,
             )
             ctrl_task = asyncio.ensure_future(controller.run())
         repaint_task = asyncio.ensure_future(self._repaint(progress, meter, gate))
@@ -556,6 +703,24 @@ def _save_name_for(url: str, run: str) -> str:
     return run
 
 
+def _gsa_md5_map(ctx: RunContext, csv_text: str) -> dict:
+    """ENA-style md5 map for a GSA project, from its ``md5sum.txt`` (fetched into
+    the work dir, where the per-Run check would fetch it anyway). Empty on any
+    failure: the per-Run check still verifies."""
+    from .integrity import ensure_gsa_md5, gsa_md5s
+    import re as _re
+
+    out: dict = {}
+    for cra in sorted(set(_re.findall(r"CRA[0-9]+", csv_text))):
+        try:
+            p = ensure_gsa_md5(ctx, cra)
+            if p.is_file():
+                out.update(gsa_md5s(p.read_text(errors="replace")))
+        except Exception as e:
+            log.warning("no md5 list for %s: %s", cra, e)
+    return out
+
+
 def _resolve_one(accession: str, options: Options, workdir: Path) -> List[DownloadTask]:
     """Run the Part 1 multi-database resolver for one accession and return tasks.
 
@@ -570,11 +735,14 @@ def _resolve_one(accession: str, options: Options, workdir: Path) -> List[Downlo
             csv = ctx.metadata_csv(accession)
             if not (csv.exists() and csv.stat().st_size > 0):
                 csv = _meta.get_gsa_metadata(ctx, accession)
-            lines = csv.read_text(errors="replace").splitlines()
+            csv_text = csv.read_text(errors="replace")
+            lines = csv_text.splitlines()
             crrs = sorted({ln.split(",")[0] for ln in lines[1:] if ln.split(",")[0]})
+            md5s = {} if options.skip_md5 else _gsa_md5_map(ctx, csv_text)
             for crr in crrs:
                 for url in resolve_gsa_urls(ctx, crr):
-                    tasks.append(DownloadTask(url, url.rsplit("/", 1)[-1], accession))
+                    name = url.rsplit("/", 1)[-1]
+                    tasks.append(DownloadTask(url, name, accession, md5=md5s.get(name)))
         else:
             tsv = ctx.metadata_tsv(accession)
             if (not (tsv.exists() and tsv.stat().st_size > 0) or _meta.has_ena_error(tsv)

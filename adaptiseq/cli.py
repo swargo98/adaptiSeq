@@ -22,7 +22,7 @@ from .console import (
     yellow_bold,
 )
 from .errors import AdaptiSeqError, PreflightError
-from .options import Options, load_accessions, resolve_output_dir
+from .options import CONTROLLERS, Options, load_accessions, resolve_output_dir
 from .preflight import check_software, render_preflight_error
 from .routing import check_merge_guard
 
@@ -114,6 +114,12 @@ def build_parser() -> argparse.ArgumentParser:
                         "(default: on).")
     g.add_argument("--no-adaptive", dest="adaptive", action="store_false",
                    help="Disable adaptivity: run all -j workers with no probing.")
+    g.add_argument("--controller", metavar="name", default=None, dest="controller",
+                   choices=list(CONTROLLERS),
+                   help="Which adaptive controller runs with --adaptive: topdown "
+                        "(default), bottomup, or the candidates under evaluation, "
+                        "budget (steers a per-host connection budget) and greedy "
+                        "(all workers, backs off on 429/503).")
     g.add_argument("--probe-window", metavar="int", default="5", dest="probe_window",
                    help="Adaptive optimizer probe window in seconds (default: 5).")
     g.add_argument("--cc-penalty", metavar="float", default="1.01", dest="cc_penalty",
@@ -336,6 +342,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             adaptive=args.adaptive,
             probe_window=probe_window,
             cc_penalty=cc_penalty,
+            controller=args.controller,
             meta_jobs=meta_jobs,
             aspera_efficiency=aspera_efficiency,
         )
