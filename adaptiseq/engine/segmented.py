@@ -48,6 +48,11 @@ MIN_SPLIT = 64 * 1024 * 1024
 # and the split check runs this often while a file downloads.
 MIN_STEAL = 16 * 1024 * 1024
 SPLIT_POLL_S = 2.0
+PROBE_ATTEMPTS = 4
+
+
+class ProbeError(Exception):
+    """The range probe got no answer from the server after its retries."""
 
 
 class AlwaysRun:
@@ -261,28 +266,55 @@ class SegmentedDownloader:
     # ------------------------------ probing ------------------------------------
 
     async def probe_range_support(self) -> Tuple[Optional[int], bool]:
-        """Single ``Range: bytes=0-0`` GET. 206 -> ranges + size; 200 -> no ranges."""
-        try:
-            headers = {"Range": "bytes=0-0"}
-            async with self.session.get(
-                self.url, headers=headers, allow_redirects=True
-            ) as resp:
-                if resp.status == 206:
-                    file_size = None
-                    content_range = resp.headers.get("Content-Range", "")
-                    if "/" in content_range:
-                        try:
-                            file_size = int(content_range.split("/")[-1])
-                        except Exception:
-                            pass
-                    return file_size, True
-                elif resp.status == 200:
-                    cl = resp.headers.get("Content-Length")
-                    return (int(cl) if cl else None), False
-                return None, False
-        except Exception as e:
-            log.debug("Range probe failed for %s: %s", self.url, e)
-            return None, False
+        """``Range: bytes=0-0`` GET. 206 -> ranges + size; 200 -> no ranges.
+
+        A probe that cannot get an answer at all (refused, reset, timed out) used
+        to report "no ranges", and the whole file then went over one connection:
+        in the 0.1.6 check, ENA refused a few probes and five 1.5 to 2 GB files
+        downloaded single-stream for 15 to 30 min each. Now the probe takes a
+        per-host slot like a segment, waits at the host's connection ceiling, and
+        retries; if it still gets no answer it raises, so the file fails and the
+        batch retries it later instead of degrading it.
+        """
+        headers = {"Range": "bytes=0-0"}
+        attempt = 0
+        ceiling_waits = 0
+        while True:
+            try:
+                async with self.host_guard.connection(self.host):
+                    async with self.session.get(
+                        self.url, headers=headers, allow_redirects=True
+                    ) as resp:
+                        if resp.status == 206:
+                            file_size = None
+                            content_range = resp.headers.get("Content-Range", "")
+                            if "/" in content_range:
+                                try:
+                                    file_size = int(content_range.split("/")[-1])
+                                except Exception:
+                                    pass
+                            return file_size, True
+                        elif resp.status == 200:
+                            cl = resp.headers.get("Content-Length")
+                            return (int(cl) if cl else None), False
+                        return None, False
+            except asyncio.CancelledError:
+                raise
+            except aiohttp.ClientConnectorError as e:
+                if (await self.host_guard.note_refused(self.host)
+                        and ceiling_waits < MAX_CEILING_WAITS):
+                    ceiling_waits += 1
+                    await asyncio.sleep(CEILING_PAUSE_S)
+                    continue
+                err = e
+            except Exception as e:
+                err = e
+            attempt += 1
+            log.warning("Range probe attempt %s/%s failed for %s: %s", attempt,
+                        PROBE_ATTEMPTS, os.path.basename(self.local_path), err)
+            if attempt >= PROBE_ATTEMPTS:
+                raise ProbeError(f"no answer to the range probe for {self.url}: {err}")
+            await asyncio.sleep(2 ** (attempt - 1))
 
     def calculate_segments(self, file_size: int) -> List[Tuple[int, int]]:
         return calculate_segments(

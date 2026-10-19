@@ -28,7 +28,7 @@ from ..console import green
 from .classic import ClassicEngine
 from .ftp import FtpSegmentedDownloader, parse_ftp_url, probe_ftp
 from .ratelimit import HostGuard, TokenBucket
-from .segmented import SegmentedDownloader
+from .segmented import ProbeError, SegmentedDownloader
 
 log = logging.getLogger("adaptiseq.engine.seam")
 
@@ -100,7 +100,7 @@ class SegmentedEngine:
         if rate is None:
             rate = TokenBucket(opts.speed * 1024 * 1024)
 
-        kind, eff_url = await self._select_transport(url, session)
+        kind, eff_url = await self._select_transport(url, session, guard)
         self._log_transport(url, kind, eff_url)
 
         if kind == "classic":
@@ -127,7 +127,8 @@ class SegmentedEngine:
         return await d.download()
 
     async def _select_transport(
-        self, url: str, session: aiohttp.ClientSession
+        self, url: str, session: aiohttp.ClientSession,
+        guard: Optional[HostGuard] = None,
     ) -> Tuple[str, str]:
         p = urlparse(url)
         scheme = p.scheme
@@ -151,7 +152,7 @@ class SegmentedEngine:
         # make every file on a host download the first file's bytes).
         kind = self._verdict.get(host)
         if kind is None:
-            kind = await self._probe_ftp_kind(url, session)
+            kind = await self._probe_ftp_kind(url, session, guard)
             self._verdict[host] = kind
         return (kind, self._eff_url(url, kind))
 
@@ -163,14 +164,19 @@ class SegmentedEngine:
         return url  # ftp-seg / ftp-single / classic keep the original ftp url
 
     async def _probe_ftp_kind(
-        self, url: str, session: aiohttp.ClientSession
+        self, url: str, session: aiohttp.ClientSession,
+        guard: Optional[HostGuard] = None,
     ) -> str:
         """Section 5.1 decision order: HTTPS mirror > segmented FTP > single >
         classic. Returns the transport *kind* only (host-level, URL-independent)."""
         https_url = _to_https(url)
         # 1. HTTPS mirror range-capable?
-        probe = SegmentedDownloader(session, https_url, "/dev/null")
-        size, supports = await probe.probe_range_support()
+        probe = SegmentedDownloader(session, https_url, "/dev/null", host_guard=guard)
+        try:
+            size, supports = await probe.probe_range_support()
+        except ProbeError:
+            # no HTTPS answer at all, even after retries: try FTP, as before
+            size, supports = None, False
         if supports:
             return "http-seg"
 

@@ -47,6 +47,15 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.7 (built for the benchmark; not yet on PyPI)
+- **Fix**: a range probe that gets no answer (refused, reset, timed out) is
+  retried, and waits at the host's connection limit like a segment does.
+  Previously it was read as "the server has no ranges" and the whole file
+  went over one connection; when ENA refused a few probes, 1.5 to 2 GB files
+  downloaded single-stream for 15 to 30 min each. A probe that never gets an
+  answer now fails the file (the batch retries it); transport selection still
+  falls back to FTP when HTTPS never answers.
+
 ### 0.1.6 (built for the benchmark; not yet on PyPI)
 - **Segmented HTTPS** keeps a file's connections busy to the end: when a
   segment finishes, its connection takes over half of the largest remaining

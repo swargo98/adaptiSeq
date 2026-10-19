@@ -75,6 +75,9 @@ class _MultiHandler(http.server.BaseHTTPRequestHandler):
             if srv.delay:
                 time.sleep(srv.delay)
             name = self.path.lstrip("/")
+            if srv.maybe_drop(name):
+                self.close_connection = True   # no response at all
+                return
             data = srv.files.get(name)
             if data is None:
                 self.send_response(404)
@@ -141,6 +144,16 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
         # straggler connection). range_starts records every data request.
         self.throttle = {}
         self.range_starts = []
+        self.drop = {}
+
+    def maybe_drop(self, name: str) -> bool:
+        """``drop[name] = n``: hang up on the next n requests for that file."""
+        with self.lock:
+            left = self.drop.get(name, 0)
+            if left <= 0:
+                return False
+            self.drop[name] = left - 1
+            return True
 
     def rate_for(self, name: str, start: int, length: int):
         if length <= 1 or name not in self.throttle:
