@@ -1,0 +1,19 @@
+date: 2026-10-19T00:59:23-07:00  node: exp-1-49
+=== NCBI .sra locations (srapath) for panel 3b's runs ===
+SRR15852400  2082734993  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852400/SRR15852400
+SRR15852404  2266656857  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852404/SRR15852404
+SRR15852406  2447919965  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852406/SRR15852406
+SRR15852407  1915619757  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852407/SRR15852407
+SRR15852411  2170436687  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852411/SRR15852411
+SRR15852415  2993145439  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852415/SRR15852415
+SRR15852425  2754679059  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852425/SRR15852425
+SRR15852430  3116180155  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852430/SRR15852430
+  NCBI (sra-pub-run-odp.s3.amazonaws.com) P=1  total 32.4 MB/s (32.44 per conn, 1 reported)
+  NCBI (sra-pub-run-odp.s3.amazonaws.com) P=8  total 257.6 MB/s (32.20 per conn, 8 reported)
+=== GSA ===
+  GSA (download.cncb.ac.cn) P=1  total 9.5 MB/s (9.53 per conn, 1 reported)
+  GSA (download.cncb.ac.cn) P=8  total 29.6 MB/s (3.70 per conn, 8 reported)
+=== ENA (reference) ===
+  ENA (ftp.sra.ebi.ac.uk) P=1  total 2.0 MB/s (1.98 per conn, 1 reported)
+  ENA (ftp.sra.ebi.ac.uk) P=8  total 16.3 MB/s (2.03 per conn, 8 reported)
+=== done 2026-10-19T01:00:53-07:00 ===

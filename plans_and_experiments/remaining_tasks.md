@@ -114,7 +114,13 @@ with a JavaScript "browser check" page and no links. Not worked around: adaptiSe
 run-info table that GSA's API returns (`Download_path`) and fetches them from `download.cncb.ac.cn` over HTTPS
 (range-capable; `download.big.ac.cn` has no HTTPS). Also: GSA runs now join the batch pool (they used to download one
 file at a time, though the paper says resolution is concurrent for all five), with in-pool md5 from `md5sum.txt`; and
-the GSA md5 retry now deletes the bad file first (the same fix SRA got in 0.1.4). iSeq 1.9.9 presumably has the same
+the GSA md5 retry now deletes the bad file first (the same fix SRA got in 0.1.4).
+**Source speeds from a compute node (`diag_sources/out_55066512/`, 01:00 PDT 10-19, 20 s ranged GETs):** NCBI's AWS copy
+(`sra-pub-run-odp.s3.amazonaws.com`) 32.4 MB/s on 1 connection, 257.6 on 8 (32 per connection, linear); GSA
+(`download.cncb.ac.cn`) 9.5 on 1, 29.6 on 8 (3.7 per connection: it saturates early); ENA 2.0 on 1, 16.3 on 8 (2 per
+connection, linear). Three different regimes, which is what the tournament needs: where a fixed -j suits one archive,
+it may be far off for another. The 3b runs' .sra files are 1.9 to 3.1 GB (19.7 GB in all); GSA CRA002399 is 6 runs,
+12.1 GB, so the GSA panel uses all 6 (`GSA_RUNS=6`). iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
