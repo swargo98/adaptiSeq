@@ -34,7 +34,7 @@ exec > >(tee -a "$OUT/trace.txt") 2>&1
 LIST="${LIST:-datasets/D2_subset_PRJNA762469.txt}"
 MANIFEST="$REPO_DIR/${LIST%.txt}.manifest"
 echo "date: $(date -Is)  node: $(hostname -s)  list: $LIST"
-python "$REPO_DIR/bench/e3/aseq_fingerprint.py" --wheel "$REPO_DIR/wheels/adaptiseq-0.1.5-py3-none-any.whl"
+python "$REPO_DIR/bench/e3/aseq_fingerprint.py" --wheel "$REPO_DIR/wheels/adaptiseq-${ASEQ_VER:-0.1.6}-py3-none-any.whl"
 for mode in ${MODES:-adaptive fixed}; do
     d="$WORK/$mode"; mkdir -p "$d"; cd "$d" || exit 1
     if [[ "$mode" == adaptive ]]; then flags=(); else flags=(--no-adaptive -j 20); fi

@@ -1,0 +1,4 @@
+date: 2026-10-18T21:06:02-07:00  node: exp-1-01  public ip: 198.202.103.254
+  P=1   total 2.1 MB/s  (2.09 MB/s per connection, 1 reported)
+  P=8   total 16.6 MB/s  (2.08 MB/s per connection, 8 reported)
+  P=20  total 39.3 MB/s  (1.96 MB/s per connection, 20 reported)
