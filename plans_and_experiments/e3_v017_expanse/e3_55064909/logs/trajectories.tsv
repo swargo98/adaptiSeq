@@ -1,0 +1,2 @@
+arm	rep	line
+adaptiseq-default	rep1	[32mNote[0m: adaptive worker summary: 27 probe(s); best 449 Mbps at 4 worker(s); last 397 Mbps at 4 worker(s); recent: 4w@427Mbps, 4w@384Mbps, 4w@444Mbps, 4w@440Mbps, 4w@426Mbps, 4w@420Mbps, 4w@398Mbps, 4w@368Mbps, 4w@392Mbps, 4w@397Mbps, 4w@379Mbps, 4w@397Mbps

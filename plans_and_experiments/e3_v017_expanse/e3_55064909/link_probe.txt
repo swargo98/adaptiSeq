@@ -1,0 +1,4 @@
+date: 2026-10-18T21:57:53-07:00  node: exp-7-44  public ip: 198.202.102.107
+  P=1   total 2.2 MB/s  (2.18 MB/s per connection, 1 reported)
+  P=8   total 16.5 MB/s  (2.07 MB/s per connection, 8 reported)
+  P=20  total 43.2 MB/s  (2.16 MB/s per connection, 20 reported)
