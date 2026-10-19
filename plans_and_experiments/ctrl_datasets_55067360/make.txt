@@ -1,0 +1,18 @@
+date: 2026-10-19T01:32:39-07:00  node: exp-1-05  checkout: c0566a9
+=== S1: NCBI .sra reference copies ===
+  SRR15852400  2082734993  aaf5b2c63d5ef0fa6871810634aa71ad  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852400/SRR15852400
+  SRR15852404  2266656857  41a2df7782a5d7701f7d92ae8f698230  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852404/SRR15852404
+  SRR15852406  2447919965  ec2b42cae5d09b0d052d68b8be82e1b0  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852406/SRR15852406
+  SRR15852407  1915619757  e47d80731dbf53051eaf0840b90468cf  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852407/SRR15852407
+  SRR15852411  2170436687  958bfc2059150b4f99e24dca88b9857a  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852411/SRR15852411
+  SRR15852415  2993145439  d07af01db3200a51fc6be560aba404f6  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852415/SRR15852415
+  SRR15852425  2754679059  b91297c21969a998e4f57acdd274edab  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852425/SRR15852425
+  SRR15852430  3116180155  eeb84c6fabf809aec2ecc354e159039e  https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR15852430/SRR15852430
+=== G1: GSA CRA002399 ===
+  6 runs, 12.1 GB
+=== X1: DDBJ + GEO routing ===
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+  File "<stdin>", line 7, in <listcomp>
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/rswargo/job_55067360/data/*.metadata.tsv'
+=== done 2026-10-19T01:43:08-07:00 ===

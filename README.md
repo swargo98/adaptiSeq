@@ -62,6 +62,11 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 - **GSA in batch mode**: GSA runs now join the parallel pool with the other
   archives (they downloaded one file at a time), with md5 checks in the pool
   from the project's `md5sum.txt`.
+- **Fix (GEO)**: GEO's accession page now answers scripts with a reCAPTCHA
+  page, so every GSE/GSM was rejected as invalid. GSE now resolves to its
+  BioProject through NCBI E-utilities (GEO DataSets), GSM to its BioSample
+  (BioSample lists the GSM), within NCBI's request rate; GEO's plain-text
+  record and the page remain as fallbacks.
 - **Fix (GSA)**: after an md5 mismatch the bad file is deleted before the first
   retry, so the retry downloads again instead of re-checking the same bytes.
 

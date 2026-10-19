@@ -41,6 +41,8 @@ exec > >(tee -a "$OUT/make.txt") 2>&1
 aseq() { python -I -c "import sys; sys.path.insert(0, '$SRC_DIR'); from adaptiseq import cli; sys.exit(cli.main(sys.argv[1:]))" "$@"; }
 echo "date: $(date -Is)  node: $(hostname -s)  checkout: $(git -C "$SRC_DIR" rev-parse --short HEAD)"
 
+STEPS=" ${STEPS:-S1 G1 X1} "   # e.g. STEPS=X1 to redo one dataset
+if [[ "$STEPS" == *" S1 "* ]]; then
 echo "=== S1: NCBI .sra reference copies ==="
 : > "$WORK/S1.manifest"
 for r in $(cat "$DS/D2_subset_PRJNA762469.txt"); do
@@ -55,7 +57,9 @@ for r in $(cat "$DS/D2_subset_PRJNA762469.txt"); do
 done
 cp "$DS/D2_subset_PRJNA762469.txt" "$DS/S1_sra_PRJNA762469.txt"
 { printf 'run_accession\tfile_name\tbytes\tmd5\n'; cat "$WORK/S1.manifest"; } > "$DS/S1_sra_PRJNA762469.manifest"
+fi
 
+if [[ "$STEPS" == *" G1 "* ]]; then
 echo "=== G1: GSA CRA002399 ==="
 ( cd "$WORK" && aseq -i CRA002399 -m -Q -o . >/dev/null 2>&1 )
 curl -sS --retry 5 -o "$WORK/md5sum.txt" https://download.cncb.ac.cn/gsa3/CRA002399/md5sum.txt
@@ -78,7 +82,9 @@ with open(base + ".manifest", "w") as fh:
             fh.write(f"{r['Run']}\t{name}\t{size}\t{md5[name]}\n")
 print(f"  {len(rows)} runs, {sum(int(s) for r in rows for s in r['FileSize'].split('|'))/1e9:.1f} GB")
 PY
+fi
 
+if [[ "$STEPS" == *" X1 "* ]]; then
 echo "=== X1: DDBJ + GEO routing ==="
 printf 'DRR421224\nGSM7417667\n' > "$DS/X1_routing.txt"
 ( cd "$WORK" && aseq -i GSM7417667 -m -Q -o . >/dev/null 2>&1 )
@@ -103,5 +109,6 @@ with open(out, "w") as fh:
         fh.write("\t".join(r) + "\n")
 print(f"  {len(rows)} files: " + ", ".join(r[1] for r in rows))
 PY
-cp "$DS"/S1_sra_PRJNA762469.* "$DS"/G1_gsa_CRA002399.* "$DS"/X1_routing.* "$OUT/"
+fi
+cp "$DS"/S1_sra_PRJNA762469.* "$DS"/G1_gsa_CRA002399.* "$DS"/X1_routing.* "$OUT/" 2>/dev/null
 echo "=== done $(date -Is) ==="

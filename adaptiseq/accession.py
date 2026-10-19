@@ -7,6 +7,8 @@ same anchors and quantifiers.
 
 from __future__ import annotations
 
+import json
+import os
 import re
 from typing import List, Optional
 
@@ -34,6 +36,53 @@ RE_BIOSAMPLE_SCRAPE = re.compile(r"SAM[EDN][A-Z]?[0-9]+")
 RE_CRA_SCRAPE = re.compile(r"CRA[0-9]+")
 
 GEO_URL = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={acc}"
+# GEO's plain-text form of the same record, meant for programs; it is not
+# behind the browser check the HTML page now shows.
+GEO_TEXT_URL = GEO_URL + "&targ=self&form=text&view=brief"
+EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+_NCBI_LIMITER = None
+
+
+def _eutils(query: str):
+    """One E-utilities JSON request (``esearch.fcgi?db=..``), within NCBI's rate
+    limit (3/s, 10/s with ``NCBI_API_KEY``). None when the answer is not JSON."""
+    global _NCBI_LIMITER
+    from .ratelimits import RateLimiter, ncbi_rps
+
+    if _NCBI_LIMITER is None:
+        _NCBI_LIMITER = RateLimiter(ncbi_rps())
+    _NCBI_LIMITER.acquire()
+    key = os.environ.get("NCBI_API_KEY")
+    url = f"{EUTILS}{query}&retmode=json" + (f"&api_key={key}" if key else "")
+    try:
+        return json.loads(wget_capture(url))
+    except (ValueError, TypeError):
+        return None
+
+
+def _esummaries(db: str, term: str) -> List[dict]:
+    found = _eutils(f"esearch.fcgi?db={db}&term={term}")
+    ids = ((found or {}).get("esearchresult") or {}).get("idlist") or []
+    if not ids:
+        return []
+    summ = _eutils(f"esummary.fcgi?db={db}&id={','.join(ids)}") or {}
+    res = summ.get("result") or {}
+    return [res[u] for u in res.get("uids", []) if isinstance(res.get(u), dict)]
+
+
+def geo_to_bioproject(gse: str) -> List[str]:
+    """GEO Series -> BioProject(s) through E-utilities (GEO DataSets)."""
+    recs = _esummaries("gds", f"{gse}%5BACCN%5D+AND+gse%5BETYP%5D")
+    return _uniq_adjacent([r["bioproject"] for r in recs
+                           if r.get("accession") == gse and r.get("bioproject")])
+
+
+def geo_to_biosample(gsm: str) -> List[str]:
+    """GEO Sample -> BioSample(s) through E-utilities (BioSample lists the GSM)."""
+    recs = _esummaries("biosample", gsm)
+    return _uniq_adjacent([r["accession"] for r in recs
+                           if r.get("accession")
+                           and re.search(rf"GEO: {re.escape(gsm)}\b", r.get("identifiers", ""))])
 
 
 def is_gsa(accession: str) -> bool:
@@ -68,9 +117,16 @@ def validate_query(accession: str, reporter: Optional[Reporter] = None) -> str:
         return accession
     if RE_RUN.match(accession):
         return accession
+    # GEO: E-utilities first, then GEO's plain-text record, then the HTML page.
+    # The HTML page (acc.cgi), which iSeq and adaptiSeq used to scrape, answers
+    # scripts with a reCAPTCHA "Checking your browser" page since 2026.
     if RE_GSE.match(accession):
-        html = wget_capture(GEO_URL.format(acc=accession))
-        matches = _uniq_adjacent(RE_BIOPROJECT_SCRAPE.findall(html))
+        matches = geo_to_bioproject(accession)
+        for url in ([] if matches else [GEO_TEXT_URL, GEO_URL]):
+            matches = _uniq_adjacent(RE_BIOPROJECT_SCRAPE.findall(
+                wget_capture(url.format(acc=accession))))
+            if matches:
+                break
         if not matches:
             raise InvalidAccessionError(
                 f"{accession} is not valid GEO Series accession."
@@ -79,8 +135,12 @@ def validate_query(accession: str, reporter: Optional[Reporter] = None) -> str:
         reporter.error(f"{green('Note')}: {accession} belongs to {bioproject}")
         return bioproject
     if RE_GSM.match(accession):
-        html = wget_capture(GEO_URL.format(acc=accession))
-        matches = _uniq_adjacent(RE_BIOSAMPLE_SCRAPE.findall(html))
+        matches = geo_to_biosample(accession)
+        for url in ([] if matches else [GEO_TEXT_URL, GEO_URL]):
+            matches = _uniq_adjacent(RE_BIOSAMPLE_SCRAPE.findall(
+                wget_capture(url.format(acc=accession))))
+            if matches:
+                break
         if not matches:
             raise InvalidAccessionError(
                 f"{accession} is not a valid GEO Sample accession."
