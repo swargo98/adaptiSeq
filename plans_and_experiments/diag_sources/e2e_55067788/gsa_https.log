@@ -1,0 +1,12 @@
+Range probe attempt 1/4 failed for CRR120304.fastq.gz: Cannot connect to host download.cncb.ac.cn:443 ssl:default [Connect call failed ('124.16.164.229', 443)]
+[32mNote[0m: batch downloading 1 file(s) across 1 accession(s) with up to 1 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 3 probe(s); best 404 Mbps at 1 worker(s); last 13 Mbps at 1 worker(s); recent: 1w@311Mbps, 1w@404Mbps, 1w@13Mbps
+[32mNote[0m: CRR120304.metadata.csv exists, skip downloading metadata for CRR120304
+      CRR120304.fastq.gz 1.65G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120304.metadata.csv
+File size: 1.65G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Skip md5 check for CRR120304.fastq.gz, as md5sum command is not available or CRA002399.md5sum.txt is empty
+[92mCRR120304.fastq.gz download successful, save CRR120304.fastq.gz in success.log[0m
+========================CRR120304 download finished========================

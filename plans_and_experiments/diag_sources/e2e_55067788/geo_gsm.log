@@ -1,0 +1,9 @@
+[32mNote[0m: batch downloading 2 file(s) across 1 accession(s) with up to 2 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 2 probe(s); best 72 Mbps at 1 worker(s); last 72 Mbps at 1 worker(s); recent: 2w@70Mbps, 1w@72Mbps
+[32mNote[0m: GSM7417667.metadata.tsv exists, skip downloading metadata for GSM7417667
+      SRR24721990_1.fastq.gz 0.06G 	       SRR24721990_2.fastq.gz 0.07G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in GSM7417667.metadata.tsv
+[92mSRR24721990 download and md5 check successful, save SRR24721990 in success.log[0m
+========================GSM7417667 download finished========================

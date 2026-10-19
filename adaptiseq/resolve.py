@@ -421,8 +421,9 @@ def _gsa_one(ctx, link, crr, cra, *, mode, ftp, aspera):
                     f"Please check the content in {save_name}",
                 )
             reporter.info(
-                f"{_g('Note')}: Skip md5 check for {save_name}, as md5sum command "
-                f"is not available or {cra}.md5sum.txt is empty"
+                f"{_by('Note')}: {save_name} is NOT md5-verified: the md5sum command "
+                f"is not available or {cra}.md5sum.txt could not be fetched (size "
+                "checked against the run-info table where it lists one)"
             )
             reporter.info(
                 bright_green(

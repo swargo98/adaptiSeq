@@ -1,0 +1,29 @@
+date: 2026-10-19T02:42:56-07:00  node: exp-1-01  checkout: 1fb6233
+== gsa_https: rc=0  62 s  files: CRR120304.fastq.gz 
+      1 CRR120304.fastq.gz download successful, save CRR120304.fastq.gz in success.log
+      1 Range probe attempt 1/4 failed for CRR120304.fastq.gz: Cannot connect to host download.cncb.ac.cn:443 ssl:default [Connect call failed ('124.16.164.229', 443)]
+== gsa_ftp: rc=0  103 s  files: CRR120304.fastq.gz 
+      1 CRR120304.fastq.gz download successful, save CRR120304.fastq.gz in success.log
+      1 FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+      1 FTP segment 1 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+      1 FTP segment 2 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+      1 FTP segment 3 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+      1 FTP segment 4 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+      1 FTP segment 5 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+      1 FTP segment 6 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+== mixed_gsa_geo: rc=0  632 s  files: CRR120304.fastq.gz SRR24721990_1.fastq.gz SRR24721990_2.fastq.gz 
+      1 CRR120304.fastq.gz download and md5 check successful, save CRR120304.fastq.gz in success.log
+      1 Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 31489746 of 82120986 bytes).'>
+      1 Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 40795859 of 222011349 bytes).'>
+      1 Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 55574227 of 222011349 bytes).'>
+      1 Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 57605841 of 222011349 bytes).'>
+      1 Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 23527121 of 222011351 bytes).'>
+      1 Segment 7 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 51871441 of 198484230 bytes).'>
+      1 Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 65437396 of 90607745 bytes).'>
+== geo_gsm: rc=0  23 s  files: SRR24721990_1.fastq.gz SRR24721990_2.fastq.gz 
+      1 SRR24721990 download and md5 check successful, save SRR24721990 in success.log
+== geo_gse_meta: rc=0  2 s  files: 
+      1 Note: GSE233000 belongs to PRJNA974701
+== ddbj_drr: rc=0  64 s  files: DRR421224.fastq.gz 
+      1 DRR421224 download and md5 check successful, save DRR421224 in success.log
+=== done 2026-10-19T02:57:42-07:00 ===

@@ -1,0 +1,18 @@
+FTP segment 3 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+FTP segment 0 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+FTP segment 4 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+FTP segment 5 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+FTP segment 1 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+FTP segment 6 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+FTP segment 2 attempt 1/3 failed: Waiting for ('2xx',) but got 426 [' Failure writing network stream.']
+[32mNote[0m: batch downloading 1 file(s) across 1 accession(s) with up to 1 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for download.big.ac.cn: FTP supports REST + concurrency; segmented FTP
+[32mNote[0m: adaptive worker summary: 5 probe(s); best 558 Mbps at 1 worker(s); last 28 Mbps at 1 worker(s); recent: 1w@0Mbps, 1w@558Mbps, 1w@163Mbps, 1w@52Mbps, 1w@28Mbps
+[32mNote[0m: CRR120304.metadata.csv exists, skip downloading metadata for CRR120304
+      CRR120304.fastq.gz 1.65G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120304.metadata.csv
+File size: 1.65G	Database: GSA	Mode: ftp
+[32mNote[0m: Transport for download.big.ac.cn: FTP supports REST + concurrency; segmented FTP
+[32mNote[0m: Skip md5 check for CRR120304.fastq.gz, as md5sum command is not available or CRA002399.md5sum.txt is empty
+[92mCRR120304.fastq.gz download successful, save CRR120304.fastq.gz in success.log[0m
+========================CRR120304 download finished========================

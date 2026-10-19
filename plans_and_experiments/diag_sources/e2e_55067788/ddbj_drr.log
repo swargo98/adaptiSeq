@@ -1,0 +1,8 @@
+[32mNote[0m: batch downloading 1 file(s) across 1 accession(s) with up to 1 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 3 probe(s); best 142 Mbps at 1 worker(s); last 86 Mbps at 1 worker(s); recent: 1w@142Mbps, 1w@121Mbps, 1w@86Mbps
+[32mNote[0m: DRR421224.metadata.tsv exists, skip downloading metadata for DRR421224
+      DRR421224.fastq.gz 0.73G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in DRR421224.metadata.tsv
+[92mDRR421224 download and md5 check successful, save DRR421224 in success.log[0m
+========================DRR421224 download finished========================

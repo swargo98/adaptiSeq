@@ -1,0 +1,8 @@
+date: 2026-10-19T02:43:55-07:00  node: exp-1-01  Version 1.9.9
+== iseq -i CRR120304: rc=0 6 s  files: CRA002399.metadata.xlsx CRR120304.metadata.csv success.log 
+      1 Note: CRR120304 belongs to CRA002399, CRA002399.metadata.xlsx will also be downloaded
+== iseq -i GSM7417667 -g: rc=0 0 s  files: 
+      1 Error: GSM7417667 is not a valid GEO Sample accession.
+== iseq -i GSE233000 -m: rc=0 0 s  files: 
+      1 Error: GSE233000 is not valid GEO Series accession.
+=== done 2026-10-19T02:44:01-07:00 ===

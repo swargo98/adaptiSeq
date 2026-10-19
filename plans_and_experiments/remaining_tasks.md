@@ -120,7 +120,25 @@ the GSA md5 retry now deletes the bad file first (the same fix SRA got in 0.1.4)
 (`download.cncb.ac.cn`) 9.5 on 1, 29.6 on 8 (3.7 per connection: it saturates early); ENA 2.0 on 1, 16.3 on 8 (2 per
 connection, linear). Three different regimes, which is what the tournament needs: where a fixed -j suits one archive,
 it may be far off for another. The 3b runs' .sra files are 1.9 to 3.1 GB (19.7 GB in all); GSA CRA002399 is 6 runs,
-12.1 GB, so the GSA panel uses all 6 (`GSA_RUNS=6`). iSeq 1.9.9 presumably has the same
+12.1 GB, so the GSA panel uses all 6 (`GSA_RUNS=6`).
+**GEO was broken too (2026-10-19):** GEO's accession page (`geo/query/acc.cgi`) answers scripts with a reCAPTCHA
+"Checking your browser" page, so every GSE/GSM was rejected. Fixed (`1fb6233`) through NCBI E-utilities: GSE ->
+BioProject via GEO DataSets, GSM -> BioSample (its identifiers list the GSM). GEO's plain-text record is a fallback
+(it returns 404 to wget's default agent; no user-agent tricks).
+**End-to-end check `diag_sources/e2e_55067788/` (02:43 10-19, checkout `1fb6233`):** GSA CRR120304 (1.65 GB) over
+HTTPS 62 s and over FTP 103 s (seven FTP segments got "426 Failure writing network stream" and recovered); a mixed
+GSA + GEO list in one batch 632 s, both md5 OK (the topdown controller ran it on 1 worker; a mixed-archive list is
+worth a tournament panel); GEO GSM7417667 -> SRR24721990 23 s md5 OK; GSE233000 -> PRJNA974701; DDBJ DRR421224
+64 s md5 OK. **Bug found:** in both single-run GSA cases the md5 was skipped ("md5sum.txt is empty"): GSA refuses
+connections now and then (a range probe was refused in the same minute), the md5 list fetch failed, the empty file
+was never fetched again, and the run was recorded as a success unverified. Fixed (uncommitted, suite `55068312`):
+the md5 list is retried (4 tries) and an empty one refetched; without an md5 list the size must match the run-info
+table, and the note now says "NOT md5-verified".
+**iSeq 1.9.9 cannot download from GSA or GEO now** (`diag_sources/iseq_55067790/`): `iseq -i CRR120304` prints
+"download finished", exits 0 and writes `success.log`, but downloads no data file (the browse page has no links);
+`iseq -i GSM7417667` and `-i GSE233000` fail with "not a valid GEO ... accession". **The paper's Table 1 lists GSA and
+GEO for iSeq**; say that both stopped working when the archives put browser checks on these pages (date it), and that
+iSeq's GSA path fails silently with exit 0. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).

@@ -273,9 +273,22 @@ def _rm_one(ctx: RunContext, name: str) -> None:
 GSA_DOWNLOAD_BASE = "https://download.cncb.ac.cn/"
 
 
+GSA_MD5_ATTEMPTS = 4
+
+
 def ensure_gsa_md5(ctx: RunContext, cra: str) -> Path:
-    """Download ``CRA.md5sum.txt`` if missing (the checkGSA preamble)."""
+    """Download ``CRA.md5sum.txt`` if missing or empty (the checkGSA preamble).
+
+    GSA refuses connections now and then; a refused fetch left an empty file
+    that was never fetched again, and every file of the project was then
+    "verified" without an md5 (seen 2026-10-19, two of three single-run tests).
+    The fetch is now retried (2, 4, 8 s apart) and an empty result removed.
+    """
+    import time
+
     md5_path = ctx.path(f"{cra}.md5sum.txt")
+    if md5_path.is_file() and md5_path.stat().st_size == 0:
+        md5_path.unlink()
     if not md5_path.is_file():
         csv_text = ctx.metadata_csv().read_text(errors="replace")
         matches = re.findall(rf"gsa[0-9]+/{re.escape(cra)}|gsa/{re.escape(cra)}", csv_text)
@@ -285,8 +298,33 @@ def ensure_gsa_md5(ctx: RunContext, cra: str) -> Path:
             seg = m
             break
         md5_url = f"{GSA_DOWNLOAD_BASE}{seg}/md5sum.txt"
-        wget_to_file(md5_url, md5_path, user_agent=USER_AGENT_MOZILLA, quiet=True)
+        for attempt in range(1, GSA_MD5_ATTEMPTS + 1):
+            wget_to_file(md5_url, md5_path, user_agent=USER_AGENT_MOZILLA, quiet=True)
+            if md5_path.is_file() and md5_path.stat().st_size > 0:
+                break
+            if md5_path.is_file():
+                md5_path.unlink()
+            if attempt < GSA_MD5_ATTEMPTS:
+                time.sleep(2 ** attempt)
     return md5_path
+
+
+def _gsa_listed_size(ctx: RunContext, filename: str) -> Optional[int]:
+    """The file's size in the GSA run-info table (FileName/FileSize, ``|``-split)."""
+    import csv
+    import io
+
+    try:
+        text = ctx.metadata_csv().read_text(errors="replace")
+    except OSError:
+        return None
+    for row in csv.DictReader(io.StringIO(text)):
+        names = (row.get("FileName") or "").split("|")
+        sizes = (row.get("FileSize") or "").split("|")
+        for n, sz in zip(names, sizes):
+            if n == filename and sz.strip().isdigit():
+                return int(sz)
+    return None
 
 
 def verify_gsa(ctx: RunContext, filename: str, cra: str) -> Optional[bool]:
@@ -296,6 +334,11 @@ def verify_gsa(ctx: RunContext, filename: str, cra: str) -> Optional[bool]:
     if shutil.which("md5sum") is None or not (
         md5_path.is_file() and md5_path.stat().st_size > 0
     ):
+        # No md5 to compare: at least the size must match the run-info table.
+        listed = _gsa_listed_size(ctx, filename)
+        fpath = ctx.path(filename)
+        if listed is not None and fpath.is_file() and fpath.stat().st_size != listed:
+            return False
         return None
     wanted = ""
     for line in md5_path.read_text(errors="replace").splitlines():

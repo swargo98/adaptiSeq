@@ -67,6 +67,11 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   BioProject through NCBI E-utilities (GEO DataSets), GSM to its BioSample
   (BioSample lists the GSM), within NCBI's request rate; GEO's plain-text
   record and the page remain as fallbacks.
+- **Fix (GSA)**: the project's `md5sum.txt` is fetched with retries, and an empty
+  one (left by a refused connection) is fetched again. Previously a failed fetch
+  meant every file of the project was recorded as downloaded without an md5
+  check. Without an md5 list the file's size must match the run-info table, and
+  the note says the file is not md5-verified.
 - **Fix (GSA)**: after an md5 mismatch the bad file is deleted before the first
   retry, so the retry downloads again instead of re-checking the same bytes.
 

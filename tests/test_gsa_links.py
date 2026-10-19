@@ -107,3 +107,31 @@ def test_gsa_is_not_reported_as_an_sra_fallback():
 def test_gsa_md5s_parses_the_listing():
     assert integrity.gsa_md5s("ABC  /CRA1/CRR1/CRR1.fastq.gz\nxyz /CRA1/CRR1/CRR1.sra\n") == {
         "CRR1.fastq.gz": "abc", "CRR1.sra": "xyz"}
+
+
+def test_md5_list_fetch_is_retried_and_an_empty_file_refetched(tmp_path, monkeypatch):
+    """A refused md5sum.txt fetch used to leave an empty file that was never
+    fetched again, so the project's files were 'verified' without an md5."""
+    ctx = _ctx(tmp_path)
+    (tmp_path / "CRA002399.md5sum.txt").write_text("")       # left by a failed fetch
+    calls = []
+
+    def fake_wget(url, out, **kw):
+        calls.append(url)
+        open(out, "w").write("" if len(calls) < 3 else "abc  /CRA002399/CRR120307/x.gz\n")
+        return 0 if len(calls) >= 3 else 4
+    monkeypatch.setattr(integrity, "wget_to_file", fake_wget)
+    monkeypatch.setattr("time.sleep", lambda s: None)
+    p = integrity.ensure_gsa_md5(ctx, "CRA002399")
+    assert len(calls) == 3 and calls[0].endswith("gsa3/CRA002399/md5sum.txt")
+    assert "abc" in p.read_text()
+
+
+def test_without_an_md5_list_the_size_must_match(tmp_path, monkeypatch):
+    ctx = _ctx(tmp_path)
+    monkeypatch.setattr(integrity, "ensure_gsa_md5", lambda c, cra: tmp_path / "none.txt")
+    f = tmp_path / "CRR120307.fastq.gz"
+    f.write_bytes(b"x" * 10)                                   # table lists 10 bytes
+    assert integrity.verify_gsa(ctx, "CRR120307.fastq.gz", "CRA002399") is None
+    f.write_bytes(b"x" * 9)
+    assert integrity.verify_gsa(ctx, "CRR120307.fastq.gz", "CRA002399") is False
