@@ -209,6 +209,10 @@ Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa6
 | 3jr | fixed-j2 | 3264 | 241/241 | clean; 2 connections |
 | 3jr | fixed-j16 | 440 | 241/241 | clean; connections mean 13.7, max 25 |
 | 3jb | fixed-j1 | 9708 | 8/8 | clean; one file at a time |
+| 3jb | adaptiseq-default | 581 | 8/8 | clean; topdown committed 16 workers ("best 1732 Mbps at 16"); connections mean 23.3, max 25 |
+| 3jb | fixed-j2 | 3291 | 8/8 | 3 cut-short responses, recovered; connections mean 5 |
+| 3jb | fixed-j8 | 731 | 8/8 | 1 md5 mismatch and 1 probe retry, both recovered; connections mean 22.2 |
+| 3jb | fixed-j16 | 469 | 8/8 | 2 md5 mismatches, recovered in the pool; connections mean 35.1, max 50 |
 
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
