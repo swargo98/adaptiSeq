@@ -70,8 +70,8 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   On a 26 GB, 16-file list with several corrupt transfers, the serial retries
   had taken 1.5 to 2.5 h of a 2 to 3 h run.
 - **Fix**: a refused connect while other connections to the same host are open
-  is treated as the host's connection limit (ENA refuses beyond about 25 per
-  client address). The per-host cap is held at the number of open connections
+  is treated as the host's connection limit (ENA refuses some connects once a
+  client has many open). The per-host cap is held at the number of open connections
   and the segment waits for a slot. Previously each refusal halved the cap,
   blocked the host for a backoff, and used up one of the segment's three
   attempts, so a few refusals could fail a whole file.

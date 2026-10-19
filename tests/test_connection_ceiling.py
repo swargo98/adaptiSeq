@@ -1,7 +1,8 @@
 """A refused connect while other connections are open is a ceiling, not distress.
 
-Full run, every adaptiSeq arm: connections to ftp.sra.ebi.ac.uk peaked at exactly
-25, and each panel-3b arm logged 6 to 8 refused connects. A refusal used to halve
+Full run, panel 3b: each adaptiSeq arm logged 6 to 8 refused connects to
+ftp.sra.ebi.ac.uk, and connections never rose past 25, the level the old breaker
+settled at (0.1.5, with this change, held up to 45). A refusal used to halve
 the process-wide per-host cap and block the host for a backoff, and each one cost
 the segment an attempt (three refusals failed the whole file). Now the guard
 holds the cap at the number of open connections and the segment waits for a free

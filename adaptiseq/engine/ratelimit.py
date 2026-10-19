@@ -157,8 +157,8 @@ class HostGuard:
         """A connect to ``host`` was refused. Returns True if it looks like a
         connection ceiling rather than distress.
 
-        ENA, for one, accepts about 25 connections per client address and refuses
-        the rest (full run, every adaptiSeq arm peaked at exactly 25). When other
+        ENA, for one, refuses some connects once a client has many open (6 to 8
+        per panel-3b arm of the full run, at 20 to 45 connections). When other
         connections to the host are open, hold the cap at that number -- the next
         clean response nudges it up by one, which re-tests the ceiling now and
         then -- and let the caller wait for a free slot. Halving the cap and

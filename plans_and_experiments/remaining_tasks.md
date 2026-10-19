@@ -127,8 +127,9 @@ From the concurrency samples (`conc_3b_*`, 5-min bins) every adaptiSeq 3b arm ha
 moves all 26 GB in 25 to 35 min at 18 to 25 connections, about the same time as iseq-p8 (24 min) and faster than
 kingfisher (42 min). Phase B, the per-Run md5 check, then re-downloads each corrupt file serially, one file at a time
 on its 3 segments (1.5 to 3 connections), for 1 to 2.5 h. That is the whole gap. Two more things showed up:
-- Connections to `ftp.sra.ebi.ac.uk` peak at exactly 25 in every adaptiSeq arm: ENA accepts about 25 per client
-  address and refuses the rest (the 6 to 8 "Connect call failed" lines per arm). Each refusal halved adaptiSeq's
+- Connections to `ftp.sra.ebi.ac.uk` peak at exactly 25 in every adaptiSeq arm, and ENA refuses some connects
+  (the 6 to 8 "Connect call failed" lines per arm). **Correction (0.1.5 check):** 25 was not a hard ENA limit; with
+  fix 2 the 0.1.5 default arm held up to 45. It was where the old breaker settled after halving. Each refusal halved adaptiSeq's
   per-host cap, blocked the host, and spent one of the segment's 3 attempts.
 - A 1.6 GB file is split into 3 segments of 512 MB, fixed at its start, so a lone file (the batch tail, or a
   re-fetch) uses 3 of the 25 connections ENA allows.
