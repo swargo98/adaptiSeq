@@ -307,6 +307,13 @@ Rep 2 (`55064912`, `exp-12-48`, probe 1.2/11.9/71.0 MB/s, GATE PASS, wheel 0.1.7
 3jr rep 2 complete: j1 10554, j2 3104, j4 2176, j8 639, j16 723, j32 593, default 556, j64 **298** s (rep 1: j32 163 best,
 default 363). ENA was about half as fast as in rep 1 for every arm.
 
+| panel | arm | wall_s | runs | notes |
+|---|---|---|---|---|
+| 3jb | fixed-j1 | 11112 | 8/8 | 1 md5 mismatch re-fetched; connections mean 2.4 (the lone file splits now) |
+| 3jb | adaptiseq-default | 1126 | 8/8 | 2 md5 mismatches re-fetched; connections mean 21.8, max 25 |
+| 3jb | fixed-j4 | 2301 | 8/8 | 1 md5 mismatch re-fetched; connections mean 10.7 |
+| 3jb | fixed-j16 | 1106 | 8/8 | 1 md5 mismatch re-fetched; connections mean 20.4, max 25 |
+
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
 bigger than the connection counts suggest (mean 13.7 vs 20.9), so wait for reps 2 and 3 before reading the curve. Rep 3: GATE PASS, wheel `2a0a6f5c...`, link probe **7.2/55.7/99.7 MB/s** at 1/8/20 connections, 3.4x rep 2's per-connection rate (2.1 MB/s) on the same node, Saturday morning PDT. Either ENA's per-connection limit was raised or eased at the weekend; it changes the absolute times for rep 3, so the paper should say the reps saw different ENA rates and lean on paired ratios. Rep 3 3r order starts with iseq. Rep 2: GATE PASS, wheel `2a0a6f5c...`, link probe 2.1/15.6/21.2 MB/s at 1/8/20 connections (20-connection rate about half of rep 1's). Rep 1: GATE PASS, `versions_e3.txt` shows wheel sha256 `2a0a6f5c...` (the rebuilt one), link probe 2.2/15.6/36.7 MB/s at 1/8/20 connections. The other three are PENDING (Dependency). **Rep 1 re-run (Decision C, user chose re-run, 2026-10-16 22:50 PDT):** `54997452`, `E3_REP_FIRST=1 REPS=1`, same env, wheel (sha256 checked `2a0a6f5c...` at submit), timeouts and `RESULTS_ROOT`, `afterany:54927011`, so it runs last. Same rep number, so the same seeded arm order as rep 1. For the analysis, pass `e3_54997452/e3_results.tsv` in place of `e3_54927001`; keep `e3_54927001` as the outage record. The first waited `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
