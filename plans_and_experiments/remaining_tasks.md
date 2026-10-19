@@ -175,7 +175,13 @@ reached GSA's limit). The spread (411 to 1852 s) follows the run order as much a
 faster, so GSA's own load was falling through the evening in Beijing. With these swings, 3 reps per panel may not
 separate the controllers on GSA; the selection rule stays as written, but the tournament should interleave the
 reps over different hours. **These rows are 0.1.8 and do not count for the selection** (the budget queue-empty bug,
-and none of the 0.1.9 retry fixes); the official tournament runs on 0.1.9. iSeq 1.9.9 presumably has the same
+and none of the 0.1.9 retry fixes); the official tournament runs on 0.1.9.
+
+**Official tournament on 0.1.9 (candidates frozen 05:15 PDT 10-19, commit `4a6051f`, wheel `cfa3acbd...`,
+`setup_expanse_55071444`, env `adaptiseq_e3_dev`).** Non-ENA panels: jobs 55071526 55071527 55071528 (`PANELS="4s 4g"`, one rep each,
+chained, `RESULTS_ROOT=e3_tournament_expanse`, `E3_TIMEOUT_CTRL=3600`). ENA panels 4r, 4b and the 4x routing check
+are submitted after the sweep, with `E3_CTRL_FIXED` = 20 plus the sweep's best fixed -j per panel. 0.1.8 jobs
+`55068447`/`48` cancelled (never ran). No code changes to the candidates from here until the tournament ends. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).

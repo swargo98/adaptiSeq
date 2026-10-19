@@ -1,0 +1,62 @@
+=== setup on exp-1-30 at 2026-10-19T05:01:59-07:00 ===
+checkout : /home/rswargo/adaptiSeq  (cfb30d7, 42 uncommitted paths)
+env      : adaptiseq_e3_dev  from  /home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/env_adaptiseq_e3.yml
+output   : /home/rswargo/adaptiSeq/plans_and_experiments/setup_expanse_55071444
+
+=== environment ===
+  OK   adaptiseq     
+  OK   iseq          
+  OK   kingfisher    
+  OK   fastq-dl      
+  OK   srapath       
+  OK   vdb-validate  
+  OK   aria2c        
+  OK   axel          
+  OK   pigz          
+=== env ready: conda activate adaptiseq_e3_dev ===
+
+=== building adaptiSeq 0.1.9 ===
+Checking /scratch/rswargo/job_55071444/dist/adaptiseq-0.1.9-py3-none-any.whl: [32mPASSED[0m
+Checking /scratch/rswargo/job_55071444/dist/adaptiseq-0.1.9.tar.gz: [32mPASSED[0m
+cfa3acbdf377efdb3286c87f314de3e51fa2a605e2108b27f4103ebfd85e5eb1  adaptiseq-0.1.9-py3-none-any.whl
+c7343074ce914c9a5bb55f7e0a6e7d3c2cf469d169f64fb3cc5ad247b5f499ba  adaptiseq-0.1.9.tar.gz
+date: 2026-10-19T05:02:37-07:00
+node: exp-1-30
+aseq_version=0.1.9 aseq_sha256=cfa3acbdf377efdb3286c87f314de3e51fa2a605e2108b27f4103ebfd85e5eb1
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+sra-tools: 3.4.1
+aria2c: aria2 version 1.37.0
+axel: Axel 2.17.13 (linux-gnu)
+wget: GNU Wget 1.25.0 built on linux-gnu.
+curl: curl 8.22.0 (x86_64-conda-linux-gnu) libcurl/8.22.0 OpenSSL/3.6.5 zlib/1.3.2 zstd/1.5.7 libpsl/0.23.1 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
+Python 3.11.17
+
+=== tests, offline (ADAPTISEQ_NO_NETWORK=1) ===
+...............................................sss...................... [ 58%]
+........................................................................ [ 87%]
+.................s............                                           [100%]
+
+=== tests, with network ===
+.............................................s.......................... [ 29%]
+........................................................................ [ 58%]
+........................................................................ [ 87%]
+..............................                                           [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_aspera_live.py:65: live aspera opt-in: set ADAPTISEQ_LIVE_ASPERA=1 with a real ascp + ENA key
+
+=== README examples in a clean venv ===
+README examples: PASS
+adaptiseq         0.1.9
+cli exit: 0
+cli verify: runs_complete=3 runs_partial=0 runs_expected=3 files_verified=3 files_expected=3 bytes_verified=47948 bytes_expected=47948 bytes_on_disk=47948 files_on_disk=3 extra_files=0 format=gz runs_
+fetch: ['SRR22904390', 'SRR22904370', 'SRR22904387'] [] False
+api exit: 0
+api verify: runs_complete=3 runs_partial=0 runs_expected=3 files_verified=3 files_expected=3 bytes_verified=47948 bytes_expected=47948 bytes_on_disk=47948 files_on_disk=3 extra_files=0 format=gz runs_
+
+=== ENA probe (1 / 8 / 20 connections, 20 s each) ===
+date: 2026-10-19T05:06:25-07:00  node: exp-1-30  public ip: 198.202.103.225
+  P=1   total 2.3 MB/s  (2.25 MB/s per connection, 1 reported)
+  P=8   total 15.5 MB/s  (1.93 MB/s per connection, 8 reported)
+  P=20  total 33.6 MB/s  (1.68 MB/s per connection, 20 reported)
