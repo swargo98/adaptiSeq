@@ -44,6 +44,10 @@ CEILING_PAUSE_S = 0.5
 MAX_CEILING_WAITS = 120
 # Smallest segment a batch-tail split will make (see calculate_segments).
 MIN_SPLIT = 64 * 1024 * 1024
+# A running segment is split only if each half would get at least this much,
+# and the split check runs this often while a file downloads.
+MIN_STEAL = 16 * 1024 * 1024
+SPLIT_POLL_S = 2.0
 
 
 class AlwaysRun:
@@ -170,8 +174,10 @@ def plan_from_meta(
         plan = [(int(a), int(b)) for a, b in raw]
     except (TypeError, ValueError):
         return None
+    # Split segments are appended, so the stored order is not the byte order;
+    # the indices must stay as stored (completed_indices refers to them).
     pos = 0
-    for a, b in plan:
+    for a, b in sorted(plan):
         if a != pos or b < a:
             return None
         pos = b + 1
@@ -207,10 +213,16 @@ class SegmentedDownloader:
         rate: Optional[TokenBucket] = None,
         free_space_margin: int = 0,
         target_segments: int = 0,
+        spare_slots: Optional[Callable[[], int]] = None,
     ):
         self.session = session
         self.url = url
         self.target_segments = max(0, int(target_segments))
+        # Unused connection budget the batch could give this file (None: never
+        # split for spare budget, only to replace a finished segment).
+        self.spare_slots = spare_slots
+        self.splits = 0
+        self._ends: Dict[int, int] = {}
         self.local_path = local_path
         self.part_path = local_path + ".part"
         self.meta_path = local_path + ".part.meta"
@@ -291,17 +303,27 @@ class SegmentedDownloader:
         fd: int,
         progress_offsets: Dict[int, int],
     ) -> Tuple[int, int]:
-        """One ranged GET written at the right offset; strict 206 validation."""
+        """One ranged GET written at the right offset; strict 206 validation.
+
+        The segment's end can move down while it runs: a split hands the second
+        half of what is left to a new connection (see ``_split_largest``). The
+        response was asked for the old range, so writes are clipped at the new
+        end and the rest of the body is not read.
+        """
         bytes_written = 0
         current_offset = start
         progress_offsets[segment_id] = start
+        self._ends.setdefault(segment_id, end)
 
         attempt = 0
         ceiling_waits = 0
         while attempt < self.max_retries:
+            end = self._ends[segment_id]
+            if current_offset > end:
+                progress_offsets[segment_id] = end + 1
+                return segment_id, bytes_written
             req_start = current_offset
             req_end = end
-            expected_bytes = req_end - req_start + 1
             headers = {"Range": f"bytes={req_start}-{req_end}"}
             try:
                 async with self.host_guard.connection(self.host):
@@ -339,18 +361,24 @@ class SegmentedDownloader:
                                 raise asyncio.CancelledError("paused")
                             if self.rate is not None:
                                 await self.rate.acquire(len(chunk))
-                            os.pwrite(fd, chunk, current_offset)
+                            end = self._ends[segment_id]
+                            if current_offset + len(chunk) > end + 1:
+                                chunk = chunk[:max(0, end + 1 - current_offset)]
                             n = len(chunk)
-                            current_offset += n
-                            bytes_written += n
-                            progress_offsets[segment_id] = current_offset
-                            self.on_bytes(n)
+                            if n:
+                                os.pwrite(fd, chunk, current_offset)
+                                current_offset += n
+                                bytes_written += n
+                                progress_offsets[segment_id] = current_offset
+                                self.on_bytes(n)
+                            if current_offset > end:
+                                break   # the rest now belongs to another segment
 
-                bytes_received = current_offset - req_start
-                if bytes_received != expected_bytes:
+                end = self._ends[segment_id]
+                if current_offset != end + 1:
                     raise Exception(
-                        f"Incomplete segment: expected {expected_bytes}, "
-                        f"got {bytes_received}"
+                        f"Incomplete segment: expected {end - req_start + 1}, "
+                        f"got {current_offset - req_start}"
                     )
                 progress_offsets[segment_id] = end + 1
                 return segment_id, bytes_written
@@ -517,15 +545,20 @@ class SegmentedDownloader:
         os.makedirs(os.path.dirname(self.part_path) or ".", exist_ok=True)
         num_connections = len(remaining_segments)
         progress_offsets: Dict[int, int] = {i: s for i, s, _ in remaining_segments}
+        # The plan grows when a segment is split; it always tiles the file, so
+        # .part.meta written from it resumes correctly (plan_from_meta).
+        segments = [list(x) for x in segments]
+        self._ends = {i: e for i, (_s, e) in enumerate(segments)}
 
         fd = None
+        running: Dict["asyncio.Future", int] = {}
         try:
             fd = os.open(self.part_path, os.O_CREAT | os.O_RDWR)
-            tasks = [
-                self.download_segment_streaming(i, s, e, fd, progress_offsets)
-                for i, s, e in remaining_segments
-            ]
-            results = await asyncio.gather(*tasks, return_exceptions=True)
+            for i, s0, e0 in remaining_segments:
+                running[asyncio.ensure_future(
+                    self.download_segment_streaming(i, s0, e0, fd, progress_offsets))] = i
+            results = await self._run_segments(running, segments, remaining_segments,
+                                               progress_offsets, fd)
 
             paused = any(isinstance(r, asyncio.CancelledError) for r in results)
             errors = [
@@ -573,6 +606,9 @@ class SegmentedDownloader:
                 )
             return False, False, num_connections
         except asyncio.CancelledError:
+            for t in running:
+                t.cancel()
+            await asyncio.gather(*running, return_exceptions=True)
             latest = self._partials(remaining_segments, progress_offsets, completed)
             self.write_metadata(file_size, segments, completed, latest)
             return False, True, num_connections
@@ -584,6 +620,69 @@ class SegmentedDownloader:
         finally:
             if fd is not None:
                 os.close(fd)
+
+    async def _run_segments(self, running, segments, remaining_segments,
+                            progress_offsets, fd) -> list:
+        """Wait for the segment tasks like ``gather(return_exceptions=True)``, but
+        keep the file's connections busy while it runs.
+
+        A file's split is fixed at its start, so its last bytes used to arrive on
+        one slow connection while the others sat idle (panel 3b of the full run:
+        the last 5 files on about 5 connections for 15 min). Now, when a segment
+        finishes, its connection takes over the second half of the largest
+        remainder. And when ``spare_slots`` (the batch) reports unused connection
+        budget, the file splits again, up to ``max_segments`` connections.
+        """
+        results = []
+        failed = False
+        while running:
+            done, _ = await asyncio.wait(list(running), timeout=SPLIT_POLL_S,
+                                         return_when=asyncio.FIRST_COMPLETED)
+            for t in done:
+                running.pop(t)
+                try:
+                    results.append(t.result())
+                except BaseException as exc:   # CancelledError included, as gather would
+                    results.append(exc)
+                    failed = True
+                    continue
+                if not failed:
+                    self._split_largest(running, segments, remaining_segments,
+                                        progress_offsets, fd)
+            if (not failed and running and self.spare_slots is not None
+                    and len(running) < self.max_segments and self.spare_slots() > 0):
+                self._split_largest(running, segments, remaining_segments,
+                                    progress_offsets, fd)
+        return results
+
+    def _split_largest(self, running, segments, remaining_segments, progress_offsets,
+                       fd) -> bool:
+        """Give the second half of the largest running remainder to a new segment."""
+        best, best_left = None, 0
+        for i in running.values():
+            left = self._ends[i] + 1 - progress_offsets.get(i, segments[i][0])
+            if left > best_left:
+                best, best_left = i, left
+        if best is None or best_left < 2 * MIN_STEAL:
+            return False
+        cut = progress_offsets.get(best, segments[best][0]) + best_left // 2
+        new_end = self._ends[best]
+        self._ends[best] = cut - 1
+        segments[best][1] = cut - 1
+        j = len(segments)
+        segments.append([cut, new_end])
+        self._ends[j] = new_end
+        for k, (i, s0, _e0) in enumerate(remaining_segments):
+            if i == best:
+                remaining_segments[k] = (i, s0, cut - 1)
+        remaining_segments.append((j, cut, new_end))
+        progress_offsets[j] = cut
+        running[asyncio.ensure_future(
+            self.download_segment_streaming(j, cut, new_end, fd, progress_offsets))] = j
+        self.splits += 1
+        log.info("Split segment %s of %s at %s (%s MiB to a new connection)", best,
+                 os.path.basename(self.local_path), cut, (new_end - cut + 1) >> 20)
+        return True
 
     @staticmethod
     def _partials(remaining_segments, progress_offsets, completed) -> Dict[int, int]:

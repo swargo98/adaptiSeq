@@ -47,6 +47,14 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.6 (built for the benchmark; not yet on PyPI)
+- **Segmented HTTPS** keeps a file's connections busy to the end: when a
+  segment finishes, its connection takes over half of the largest remaining
+  piece of the same file, and once the batch queue is empty, unused per-host
+  connection budget splits in-flight files further (up to `--max-segments`).
+  Previously the last bytes of each file arrived on one connection; on a
+  16-file, 26 GB list that tail took 15 of 26 minutes.
+
 ### 0.1.5 (built for the benchmark; not yet on PyPI)
 - **Fix**: an ENA metadata query that fails (HTTP 500, timeout, network error)
   or comes back with no rows is no longer read as "not in ENA". Previously such

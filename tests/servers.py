@@ -87,11 +87,20 @@ class _MultiHandler(http.server.BaseHTTPRequestHandler):
                 b = int(b) if b else len(data) - 1
                 b = min(b, len(data) - 1)
                 body = srv.maybe_corrupt(name, data[a:b + 1])
+                with srv.lock:
+                    srv.range_starts.append((name, a))
                 self.send_response(206)
                 self.send_header("Content-Range", f"bytes {a}-{b}/{len(data)}")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
-                self.wfile.write(body)
+                rate = srv.rate_for(name, a, len(body))
+                if rate:
+                    piece = 64 * 1024
+                    for k in range(0, len(body), piece):
+                        self.wfile.write(body[k:k + piece])
+                        time.sleep(len(body[k:k + piece]) / rate)
+                else:
+                    self.wfile.write(body)
             else:
                 body = srv.maybe_corrupt(name, data)
                 self.send_response(200)
@@ -127,6 +136,17 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
         # probes) have one byte flipped -- a transfer that arrives intact in
         # length but fails the md5 check, as ENA's sometimes do.
         self.corrupt = {}
+        # {name: (bytes_per_s, start or None)}: stream that file's range responses
+        # at this rate -- all of them, or only the one starting at ``start`` (a
+        # straggler connection). range_starts records every data request.
+        self.throttle = {}
+        self.range_starts = []
+
+    def rate_for(self, name: str, start: int, length: int):
+        if length <= 1 or name not in self.throttle:
+            return None
+        rate, only = self.throttle[name]
+        return rate if only is None or only == start else None
 
     def maybe_corrupt(self, name: str, body: bytes) -> bytes:
         if len(body) <= 1:

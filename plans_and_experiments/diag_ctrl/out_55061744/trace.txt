@@ -1,0 +1,7 @@
+date: 2026-10-18T19:36:23-07:00  node: exp-1-41  list: datasets/D2_subset_PRJNA762469.txt
+aseq_version=0.1.5 aseq_sha256=1a1aeeca007d55464fa71e4c88432865de2e4fc0278d9a18b0f6ea3b56f0a7bf
+== adaptive: rc=0 wall=1581.649075053 s
+runs_complete=8 runs_partial=0 runs_expected=8 files_verified=16 files_expected=16 bytes_verified=25875090172 bytes_expected=25875090172 bytes_on_disk=25875090172 files_on_disk=16 extra_files=0 format=gz runs_complete_3file=0 runs_expected_3file=0 runs_present_unverified=0
+== fixed: rc=0 wall=787.825563048 s
+runs_complete=8 runs_partial=0 runs_expected=8 files_verified=16 files_expected=16 bytes_verified=25875090172 bytes_expected=25875090172 bytes_on_disk=25875090172 files_on_disk=16 extra_files=0 format=gz runs_complete_3file=0 runs_expected_3file=0 runs_present_unverified=0
+=== done 2026-10-18T20:16:07-07:00 ===

@@ -47,6 +47,9 @@ def test_plan_from_meta_accepts_only_a_tiling_of_this_file():
     assert plan_from_meta({"file_size": 100, "segments": [[0, 49], [51, 99]]}, 100) is None
     assert plan_from_meta({"file_size": 100, "segments": [[0, 120]]}, 100) is None
     assert plan_from_meta(None, 100) is None
+    # a grown plan (splits appended out of byte order) keeps its stored order
+    grown = {"file_size": 100, "segments": [[0, 24], [50, 99], [25, 49]]}
+    assert plan_from_meta(grown, 100) == [(0, 24), (50, 99), (25, 49)]
 
 
 def test_resume_keeps_the_plan_it_started_with(tmp_path):

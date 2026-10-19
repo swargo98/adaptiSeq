@@ -88,6 +88,7 @@ class SegmentedEngine:
         pause: Optional[object] = None,
         on_bytes: Optional[object] = None,
         target_segments: int = 0,
+        spare_slots=None,
     ) -> bool:
         """Download one URL in the *current* event loop, with injected session,
         per-host guard, rate limiter, pause token (the worker gate), and byte
@@ -113,6 +114,7 @@ class SegmentedEngine:
                 max_segments=1 if kind == "http-single" else opts.max_segments,
                 host_guard=guard, rate=rate, pause=pause, on_bytes=on_bytes,
                 target_segments=target_segments,
+                spare_slots=None if kind == "http-single" else spare_slots,
             )
             return await d.download()
         d = FtpSegmentedDownloader(

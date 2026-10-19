@@ -453,6 +453,7 @@ class BatchDownloader:
                         task.url, task.save_path, session=session,
                         host_guard=guard, rate=rate, on_bytes=meter.on_bytes,
                         target_segments=self._tail_segments(queue, guard, task),
+                        spare_slots=self._spare_slots(queue, guard, task),
                     )
                 except asyncio.CancelledError:
                     raise
@@ -494,6 +495,19 @@ class BatchDownloader:
         files_left = queue.qsize() + self._in_flight   # this one is in flight
         budget = min(guard.cap_of(host_of(task.url)), self.jobs * self.options.max_segments)
         return max(1, budget // max(1, files_left))
+
+    @staticmethod
+    def _spare_slots(queue, guard, task: DownloadTask):
+        """Unused per-host connection budget, offered to in-flight files once the
+        queue is empty (nothing else could use it): they split their largest
+        remainders onto new connections instead of finishing on one or two."""
+        host = host_of(task.url)
+
+        def spare() -> int:
+            if not queue.empty():
+                return 0
+            return max(0, guard.cap_of(host) - guard.in_flight_of(host))
+        return spare
 
     async def _verify(self, task: DownloadTask) -> bool:
         """Check a finished file against ENA's md5 while the pool is still running.

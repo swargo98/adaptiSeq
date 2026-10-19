@@ -1,0 +1,38 @@
+.............................................s.......................... [ 33%]
+........................................................................ [ 66%]
+........................................F............................... [100%]
+=================================== FAILURES ===================================
+_________ test_interrupted_split_download_resumes_from_its_grown_plan __________
+
+tmp_path = PosixPath('/scratch/rswargo/job_55062938/pytest-of-rswargo/pytest-1/test_interrupted_split_downloa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x15552e5b3c50>
+
+    def test_interrupted_split_download_resumes_from_its_grown_plan(tmp_path, monkeypatch):
+        """A .part.meta written after splits holds the grown plan; a resume reads it
+        back (plan_from_meta) and fetches only what is missing."""
+        _fast_split(monkeypatch)
+        data = os.urandom(8 * MB)
+        dest = tmp_path / "f.bin"
+        with MultiFileRangeServer({"f.bin": data}) as srv:
+            srv.throttle["f.bin"] = (1 * MB, 0)
+    
+            async def interrupted():
+                async with aiohttp.ClientSession() as s:
+                    d = SegmentedDownloader(s, srv.url("f.bin"), str(dest),
+                                            segment_size=4 * MB, max_segments=2)
+                    task = asyncio.ensure_future(d.download_with_resume())
+                    await asyncio.sleep(2.5)       # segment 1 done, a split under way
+                    task.cancel()
+                    try:
+                        return await task
+                    except asyncio.CancelledError:
+                        return None
+            asyncio.run(interrupted())
+>           meta = json.load(open(str(dest) + ".part.meta"))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/scratch/rswargo/job_55062938/pytest-of-rswargo/pytest-1/test_interrupted_split_downloa0/f.bin.part.meta'
+
+tests/test_segment_steal.py:109: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_segment_steal.py::test_interrupted_split_download_resumes_from_its_grown_plan
+SKIPPED [1] tests/test_aspera_live.py:65: live aspera opt-in: set ADAPTISEQ_LIVE_ASPERA=1 with a real ascp + ENA key
