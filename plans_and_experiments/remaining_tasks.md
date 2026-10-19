@@ -249,7 +249,18 @@ Rep 3 (job `55071528`, 09:07 to 10:18 PDT). **Score after the NCBI and GSA panel
 
 Caveats: on NCBI all arms are within 13 % (the link is the limit); on GSA the same arm moves 3x to 4x between reps
 (bottomup 482, 2187, 511 s), so a 3-rep median there is fragile, and bottomup's GSA lead rests on two good reps of
-three. The ENA panels (4r, 4b) are still to run; the decision waits for them. iSeq 1.9.9 presumably has the same
+three. The ENA panels (4r, 4b) are still to run; the decision waits for them.
+
+**Round 2 (user, 2026-10-19: "I want a controller that beat others in most of the cases for every experiment.
+maintaining as low connection as possible.") Criterion, fixed before any round-2 data** (`bench/e3/score_round2.py`):
+a case = one (panel, rep); an arm wins a case when within 10 % of the fastest arm in that case; rank by cases won,
+ties by lower mean archive connections (`conc_*.tsv` column 4); disqualified if any run is not md5-verified, or if its
+median ratio to the fastest on any panel is above 1.5 (per panel, not per case: on round-1 GSA every arm had one case
+above 1.5x). Candidates: knee (new, 0.1.10, `9eb5bca`), topdown, bottomup, budget, greedy; references fixed-j20 and
+fixed-j64 (the sweep's best on 3b and close to best on 3r). Panels: 4r, 4b (ENA), 4s (NCBI), 4g (GSA), 4h (held-out
+ENA, D3_seg, 2 x 11.5 GB, not used in designing knee), 4m (mixed: 13 ENA runs + 2 GSA runs in one list). 3 reps, one job
+each, after the sweep. Round 1 by this criterion (NCBI and GSA only, for reference): bottomup 3 wins of 6 (qualifies),
+topdown 4 wins but a GSA panel median of 1.89x, greedy 3, budget 2, fixed-j20 2. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
