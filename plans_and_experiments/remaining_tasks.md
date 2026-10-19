@@ -288,6 +288,13 @@ Rep 2 (`55064912`, `exp-12-48`, probe 1.2/11.9/71.0 MB/s, GATE PASS, wheel 0.1.7
 | 3jr | fixed-j4 | 2176 | 241/241 | 5 md5 mismatches re-fetched in the pool; connections mean 4.2 |
 | 3jr | fixed-j64 | 298 | 241/241 | clean; connections mean 10.1, max 50 |
 | 3jr | fixed-j8 | 639 | 241/241 | clean; connections mean 7.4 |
+| 3jr | fixed-j2 | 3104 | 241/241 | 1 md5 mismatch re-fetched; connections mean 2.1 |
+| 3jr | fixed-j1 | 10554 | 241/241 | clean; 246 s inside the 10800 s limit (rep 1: 4197 s): ENA's single-connection rate fell to about 0.7 MB/s |
+| 3jr | fixed-j16 | 723 | 241/241 | 1 md5 mismatch re-fetched; connections mean 13.7, max 25 |
+| 3jr | fixed-j32 | 593 | 241/241 | clean; connections mean 16.3, max 25 |
+
+3jr rep 2 complete: j1 10554, j2 3104, j4 2176, j8 639, j16 723, j32 593, default 556, j64 **298** s (rep 1: j32 163 best,
+default 363). ENA was about half as fast as in rep 1 for every arm.
 
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
