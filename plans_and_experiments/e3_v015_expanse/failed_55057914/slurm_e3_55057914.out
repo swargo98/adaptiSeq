@@ -1,0 +1,15 @@
+=== adaptiSeq E3 (batch download, Fig 3) ===
+node        : exp-10-14
+repo        : /home/rswargo/adaptiSeq/plans_and_experiments
+python      : /home/rswargo/.conda/envs/adaptiseq_e3_sub/bin/python3  (Python 3.11.17)
+payload     : /scratch/rswargo/job_55057914/e3_payload   (870G free)
+results     : /home/rswargo/adaptiSeq/plans_and_experiments/e3_v015_expanse/e3_55057914
+panels      : 3b  (reps=1 from rep 1, arm set=aseq)
+wheel       : /home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.5-py3-none-any.whl
+
+=== egress check ===
+  OK   https://ftp.sra.ebi.ac.uk -> 200
+  OK   https://www.ebi.ac.uk -> 200
+  FAIL https://ftp.ncbi.nlm.nih.gov (curl: (6) Could not resolve host: ftp.ncbi.nlm.nih.gov
+000)
+[cleanup] removing payload /scratch/rswargo/job_55057914/e3_payload (4.0K)

@@ -1,0 +1,4 @@
+[ERROR] Compute node cannot reach the public archives.
+        Every E3 number would be an artefact of the proxy, not the tools.
+        Fix before running: set https_proxy/ftp_proxy IDENTICALLY for all tools
+        (fairness, §13) and document it, or move to a node/DTN with egress.
