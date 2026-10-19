@@ -1,0 +1,14 @@
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+==============================================================================
+3b  Byte-dominated (D2_subset: 8 runs, 25.9 GB, ~1.6 GB/file)
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                     n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                       
+adaptiseq-fixed-j20  1     379.1       0.0     68.25       0.0          8.0         8        102.0         39.0      50.0        50             50            0         0           0      gz        100.0
+adaptiseq-default    1    1610.6       0.0     16.07       0.0          8.0         8         96.0         11.0       5.0        45             45            0         0           0      gz        100.0
+
+Wrote summaries + fig3_*.png to /home/rswargo/adaptiSeq/plans_and_experiments/e3_v015_expanse/e3_55061121
