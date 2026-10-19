@@ -20,6 +20,7 @@
 #                       GSA_RUNS (default 3) limits how many runs go in.
 #   X1_routing          a DDBJ run (DRR421224) and a GEO sample (GSM7417667):
 #                       both resolve to ENA files, so this checks routing only.
+#   M1_mixed            (STEPS=M1) 12 ENA runs of the 3r project + 2 GSA runs, one list.
 # Submit from plans_and_experiments/:  sbatch bench/e3/make_ctrl_datasets.sbatch
 set -uo pipefail
 module purge
@@ -110,5 +111,16 @@ with open(out, "w") as fh:
 print(f"  {len(rows)} files: " + ", ".join(r[1] for r in rows))
 PY
 fi
-cp "$DS"/S1_sra_PRJNA762469.* "$DS"/G1_gsa_CRA002399.* "$DS"/X1_routing.* "$OUT/" 2>/dev/null
+if [[ "$STEPS" == *" M1 "* ]]; then
+# M1: one list across two archives (ENA + GSA), for the controllers on a mixed batch:
+# every 20th run of the 3r project (12 ENA runs, small files) and two GSA runs.
+echo "=== M1: mixed ENA + GSA ==="
+awk 'NR % 20 == 1' "$DS/D1_full_PRJNA916347.txt" > "$WORK/m1_ena.txt"
+{ cat "$WORK/m1_ena.txt"; printf 'CRR120304\nCRR120306\n'; } > "$DS/M1_mixed.txt"
+{ head -1 "$DS/D1_full_PRJNA916347.manifest"
+  grep -wFf "$WORK/m1_ena.txt" "$DS/D1_full_PRJNA916347.manifest"
+  grep -P "^(CRR120304|CRR120306)\t" "$DS/G1_gsa_CRA002399.manifest"; } > "$DS/M1_mixed.manifest"
+echo "  $(wc -l < "$DS/M1_mixed.txt") runs, $(($(wc -l < "$DS/M1_mixed.manifest") - 1)) files"
+fi
+cp "$DS"/S1_sra_PRJNA762469.* "$DS"/G1_gsa_CRA002399.* "$DS"/X1_routing.* "$DS"/M1_mixed.* "$OUT/" 2>/dev/null
 echo "=== done $(date -Is) ==="

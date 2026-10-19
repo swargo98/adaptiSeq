@@ -101,7 +101,7 @@ if ! _fp="$(e3_aseq_fingerprint)"; then
     exit 1
 fi
 case "$PANEL" in
-  3r|3b|3jr|3jb|4r|4b|4s|4g)
+  3r|3b|3jr|3jb|4r|4b|4s|4g|4h|4m)
     if [[ "$ARM_SET" != "legacy" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
         echo "[ERROR] E3_ASEQ_WHEEL is not set. The paper panels must run the released wheel:" >&2
         echo "          pip download adaptiseq==0.1.4 --no-deps -d wheels/" >&2
@@ -235,7 +235,7 @@ build_jsweep_arms() {
 build_ctrl_arms() {
     local flags="$1"
     ARMS=()
-    for c in ${E3_CONTROLLERS:-topdown bottomup budget greedy}; do
+    for c in ${E3_CONTROLLERS:-topdown bottomup budget greedy knee}; do
         ARMS+=("adaptiseq-ctrl-${c}|adaptiseq|$ASEQ_CLI -i \$LIST ${flags} --adaptive --controller ${c} -o .")
     done
     for j in ${E3_CTRL_FIXED:-20}; do
@@ -325,6 +325,10 @@ case "$PANEL" in
   4b)  build_ctrl_arms "-g"; run_panel 4b "D2_subset_PRJNA762469" "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
   4s)  build_ctrl_arms "-d sra"; run_panel 4s "S1_sra_PRJNA762469" "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
   4g)  build_ctrl_arms ""; run_panel 4g "G1_gsa_CRA002399"     "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
+  # round 2 adds a held-out panel (ENA, 2 files of about 11.5 GB, not used in
+  # designing knee) and a mixed list (12 ENA runs + 2 GSA runs in one batch)
+  4h)  build_ctrl_arms "-g"; run_panel 4h "D3_seg_PRJNA540705"   "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
+  4m)  build_ctrl_arms "-g"; run_panel 4m "M1_mixed"             "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
   4x)  ARMS=("adaptiseq-default|adaptiseq|$ASEQ_CLI -i \$LIST -g -o .")
        run_panel 4x "X1_routing"                                 "${REPS_ARG:-1}" "${E3_TIMEOUT_CTRL:-7200}" ;;
   all)
@@ -332,7 +336,7 @@ case "$PANEL" in
           bash "$E3_DIR/run_e3.sh" "$p" "$REPS_ARG"
       done
       ;;
-  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|3jr|3jb|4r|4b|4s|4g|4x|all)" >&2; exit 2 ;;
+  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|3jr|3jb|4r|4b|4s|4g|4h|4m|4x|all)" >&2; exit 2 ;;
 esac
 
 echo >&2
