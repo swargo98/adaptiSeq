@@ -147,7 +147,15 @@ limit hitting plain tools: 6 of the 16 curl FTP streams got "Could not connect t
 data connection each), and one transfer was cut short (curl 18). adaptiSeq segmented HTTPS in the same hour: 16/16
 md5 OK in 1491 s (17.4 MB/s, against 11.0 MB/s for the 10 curl FTP streams that connected, about 1 MB/s each), with
 13 refused connects that drove the old breaker's cap to 1. So the right response is detection and fast re-fetch,
-which is fix 1; the block-by-block comparison at the end of the job will show what the damage looks like.
+which is fix 1. **Third pass, adaptiSeq segmented FTP (`-r ftp`), 16:30 to 18:37: 1 of 16 files in 2 h.** ENA's FTP
+server reset most data connections ("Connection reset by peer", "426 Failure writing network stream", refused data
+ports), so segmented FTP is unusable at ENA under its connection limit. The default (`-r auto`) picks HTTPS there,
+so the benchmark arms are not affected, but `-r ftp` users would be; worth a note in the docs, or a fallback to
+HTTPS when FTP segments keep failing. **I cancelled the diagnostic at 18:37** (3 h 11 min) because it held up the
+0.1.5 check and the sweep (`afterany`) and the remaining passes (curl HTTPS, round 2) were not going to change the
+conclusion. The block-by-block comparison never ran (it runs at the end, and the bad copies were on node-local
+scratch); rerun `diag_batch` with `METHODS=curl-ftp,curl-https,aseq-https ROUNDS=1` after the sweep if the damage
+pattern is wanted for the paper.
 
 **ENA portal outage on 2026-10-15 (about 09:00 PDT, possibly earlier and partial).**
 `ena_portal_status_20261015.tsv` probes one `filereport` query every 5 min from

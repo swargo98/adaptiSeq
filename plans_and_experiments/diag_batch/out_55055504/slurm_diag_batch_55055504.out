@@ -1,0 +1,14 @@
+date: 2026-10-18T15:25:30-07:00  node: exp-1-01  public ip: 198.202.103.254
+checkout: f0c39ef  (adaptiSeq imported from the checkout, not the wheel)
+scratch free: 868G
+files: 3
+[2026-10-18T15:25:34] round 1 aseq-https: start
+  aseq-https round 1: 2 s, 0.0 MB/s, 3/3 md5 OK, 0 mismatched, {"failed": [], "guard_trips": 0, "guard_trip_kinds": [], "guard_min_cap": 24, "guard_default_cap": 24}
+[2026-10-18T15:25:36] round 1 curl-ftp: start
+  curl-ftp round 1: 3 s, 0.0 MB/s, 3/3 md5 OK, 0 mismatched, {"failed": []}
+[2026-10-18T15:25:38] round 1 aseq-ftp: start
+  aseq-ftp round 1: 2 s, 0.0 MB/s, 3/3 md5 OK, 0 mismatched, {"failed": [], "guard_trips": 0, "guard_trip_kinds": [], "guard_min_cap": 24, "guard_default_cap": 24}
+[2026-10-18T15:25:40] round 1 curl-https: start
+  curl-https round 1: 1 s, 0.1 MB/s, 3/3 md5 OK, 0 mismatched, {"failed": []}
+done: 0 mismatching copies examined
+=== done 2026-10-18T15:25:41-07:00 ===

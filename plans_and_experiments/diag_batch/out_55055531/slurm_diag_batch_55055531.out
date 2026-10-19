@@ -1,0 +1,10 @@
+date: 2026-10-18T15:26:15-07:00  node: exp-1-01  public ip: 198.202.103.254
+checkout: f0c39ef  (adaptiSeq imported from the checkout, not the wheel)
+scratch free: 868G
+files: 16
+[2026-10-18T15:26:21] round 1 aseq-https: start
+  aseq-https round 1: 1491 s, 17.4 MB/s, 16/16 md5 OK, 0 mismatched, {"failed": [], "guard_trips": 13, "guard_trip_kinds": ["refused"], "guard_min_cap": 1, "guard_default_cap": 128}
+[2026-10-18T15:51:19] round 1 curl-ftp: start
+  curl-ftp round 1: 2357 s, 11.0 MB/s, 7/16 md5 OK, 2 mismatched, {"failed": ["SRR15852406_1.fastq.gz", "SRR15852406_2.fastq.gz", "SRR15852407_1.fastq.gz", "SRR15852411_2.fastq.gz", "SRR15852415_1.fastq.gz", "SRR15852425_2.fastq.gz", "SRR15852430_1.fastq.gz", "SRR15852430_2.fastq.gz"]}
+[2026-10-18T16:30:43] round 1 aseq-ftp: start
+slurmstepd: error: *** JOB 55055531 ON exp-1-01 CANCELLED AT 2026-10-18T18:37:27 ***
