@@ -101,7 +101,7 @@ if ! _fp="$(e3_aseq_fingerprint)"; then
     exit 1
 fi
 case "$PANEL" in
-  3r|3b|3jr|3jb)
+  3r|3b|3jr|3jb|4r|4b|4s|4g)
     if [[ "$ARM_SET" != "legacy" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
         echo "[ERROR] E3_ASEQ_WHEEL is not set. The paper panels must run the released wheel:" >&2
         echo "          pip download adaptiseq==0.1.4 --no-deps -d wheels/" >&2
@@ -222,6 +222,27 @@ build_jsweep_arms() {
     ARMS+=("${ARMS_SUBMISSION[0]}")   # adaptiseq-default, untuned
 }
 
+# ---- 4r / 4b / 4s / 4g: controller tournament -------------------------------
+#
+# Which adaptive controller should be the default? Every candidate runs with
+# --adaptive and the released defaults otherwise, next to fixed -j 20 (and the
+# best fixed value from the 3jr/3jb sweep, E3_CTRL_FIXED), on each archive the
+# paper says adaptiSeq reaches: ENA many small files (4r, D1_full) and large
+# files (4b, D2_subset), NCBI's .sra copies on AWS (4s: the 3b runs with -d sra,
+# .sra kept, checked against reference copies), and GSA (4g, download.cncb.ac.cn).
+# DDBJ and GEO accessions resolve to ENA/NCBI files, so they add no new server;
+# they get a routing check (4x), not a tournament panel.
+build_ctrl_arms() {
+    local flags="$1"
+    ARMS=()
+    for c in ${E3_CONTROLLERS:-topdown bottomup budget greedy}; do
+        ARMS+=("adaptiseq-ctrl-${c}|adaptiseq|$ASEQ_CLI -i \$LIST ${flags} --adaptive --controller ${c} -o .")
+    done
+    for j in ${E3_CTRL_FIXED:-20}; do
+        ARMS+=("adaptiseq-fixed-j${j}|adaptiseq|$ASEQ_CLI -i \$LIST ${flags} --no-adaptive -j ${j} -o .")
+    done
+}
+
 # ---- 3s: connections-per-worker sweep (--max-segments) ----------------------
 #
 # Runs on D3_seg (2 files x ~11.5 GB), NOT D0. segments/file =
@@ -300,12 +321,18 @@ case "$PANEL" in
   3s)  build_seg_arms;   run_panel 3s "D3_seg_PRJNA540705"    "${REPS_ARG:-3}"  "${E3_TIMEOUT_3S:-5400}" ;;
   3jr) build_jsweep_arms; run_panel 3jr "D1_full_PRJNA916347"  "${REPS_ARG:-3}"  "${E3_TIMEOUT_3R:-5400}" ;;
   3jb) build_jsweep_arms; run_panel 3jb "D2_subset_PRJNA762469" "${REPS_ARG:-3}" "${E3_TIMEOUT_3B:-7200}" ;;
+  4r)  build_ctrl_arms "-g"; run_panel 4r "D1_full_PRJNA916347"  "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
+  4b)  build_ctrl_arms "-g"; run_panel 4b "D2_subset_PRJNA762469" "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
+  4s)  build_ctrl_arms "-d sra"; run_panel 4s "S1_sra_PRJNA762469" "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
+  4g)  build_ctrl_arms ""; run_panel 4g "G1_gsa_CRA002399"     "${REPS_ARG:-3}" "${E3_TIMEOUT_CTRL:-7200}" ;;
+  4x)  ARMS=("adaptiseq-default|adaptiseq|$ASEQ_CLI -i \$LIST -g -o .")
+       run_panel 4x "X1_routing"                                 "${REPS_ARG:-1}" "${E3_TIMEOUT_CTRL:-7200}" ;;
   all)
       for p in ${PANELS:-3a 3r 3b 3c 3d 3s}; do
           bash "$E3_DIR/run_e3.sh" "$p" "$REPS_ARG"
       done
       ;;
-  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|3jr|3jb|all)" >&2; exit 2 ;;
+  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|3jr|3jb|4r|4b|4s|4g|4x|all)" >&2; exit 2 ;;
 esac
 
 echo >&2

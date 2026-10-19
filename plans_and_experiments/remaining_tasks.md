@@ -85,6 +85,38 @@ held sweep jobs carry the 0.1.6 wheel and will be resubmitted on 0.1.7. **Done 2
 The default is now 1.05x (trace) to 1.66x (check) of fixed -j 20; the remaining gap is the controller committing to 4
 workers (25 connections) in the check. **Sweep released 22:30 10-18** (`55064911`-`13`), so the fixed-j sweep runs on 0.1.7.
 
+**Controller tournament (user, 2026-10-19: "add this new controller logic (and maybe one or two more) using some
+name; do not make it default; test on every source the paper claims; whichever performs best becomes the default").**
+Code (uncommitted until the suite passes): `--controller topdown|bottomup|budget|greedy` (Options.controller /
+`fetch(controller=)`; default unchanged, `None` -> `ASEQ_ADAPTIVE_MODE` -> topdown).
+- `budget` (new): every worker active; steers a per-host *connection* budget (HostGuard.set_budget) instead of a worker
+  count. Starts at min(cap, max(16, 2 x jobs)) (40 at -j 20), raises by a quarter while the gain is at least half of
+  proportional, otherwise reverts, holds and tries a quarter cut (kept if it costs under a quarter of proportional);
+  cuts 30 % on distress (429/503, refused with nothing open, dropped streams, >= 3 ceiling refusals per window);
+  windows of 10 s; no judging once the queue is empty (the budget then only feeds segment splitting).
+- `greedy` (new): what fixed -j does plus a reaction: all workers active, -25 % on 429/503, +10 % of the cap per quiet window.
+- `topdown` (current default) and `bottomup` (original gradient) unchanged.
+Sources the paper claims (Summary: "GSA, SRA, ENA, DDBJ, and GEO"); DDBJ and GEO accessions resolve to ENA/NCBI files, so
+the distinct servers are ENA, NCBI's AWS copies (.sra) and GSA. Harness (`run_e3.sh`, replaced atomically while the
+sweep runs; old panels unchanged): 4r ENA small (D1_full), 4b ENA large (D2_subset), 4s NCBI (.sra of the 3b runs, `-d sra`),
+4g GSA (CRA002399, 3 runs), 4x DDBJ+GEO routing (default only). Arms: the 4 controllers + fixed -j 20 (+ best fixed
+from the sweep via `E3_CTRL_FIXED`). Datasets: `bench/e3/make_ctrl_datasets.sbatch` (NCBI has no md5 for its AWS copy,
+so reference copies are fetched and hashed once).
+**Selection rule, fixed before any tournament data:** 3 reps per panel, arm order shuffled per rep, after the sweep.
+(1) A candidate must complete every run (md5-verified) in every rep of every panel, or it is out. (2) Per panel, score
+= median wall_s / the best arm's median wall_s in that panel (fixed references included). (3) Pick the lowest
+worst-case score over the 4 panels; within 5 %, the lower geometric mean; still tied, the simpler / current one.
+(4) The winner then becomes `adaptiseq-default` and is measured fresh in the paper's 5-rep chain; tournament numbers
+are not reused as paper results (they go in the supplement, all candidates shown).
+**Found while preparing GSA (2026-10-19): GSA downloads were broken.** GSA's browse page
+(`ngdc.cncb.ac.cn/gsa/browse/CRA/CRR`), which adaptiSeq and iSeq read the download links from, now answers scripts
+with a JavaScript "browser check" page and no links. Not worked around: adaptiSeq now takes the links from the
+run-info table that GSA's API returns (`Download_path`) and fetches them from `download.cncb.ac.cn` over HTTPS
+(range-capable; `download.big.ac.cn` has no HTTPS). Also: GSA runs now join the batch pool (they used to download one
+file at a time, though the paper says resolution is concurrent for all five), with in-pool md5 from `md5sum.txt`; and
+the GSA md5 retry now deletes the bad file first (the same fix SRA got in 0.1.4). iSeq 1.9.9 presumably has the same
+GSA problem; check before the paper's Table 1 claims GSA support for it.
+
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
 Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa62d66`):
