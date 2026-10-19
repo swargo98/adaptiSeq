@@ -233,6 +233,14 @@ Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa6
 | 3jb | fixed-j2 | 3291 | 8/8 | 3 cut-short responses, recovered; connections mean 5 |
 | 3jb | fixed-j8 | 731 | 8/8 | 1 md5 mismatch and 1 probe retry, both recovered; connections mean 22.2 |
 | 3jb | fixed-j16 | 469 | 8/8 | 2 md5 mismatches, recovered in the pool; connections mean 35.1, max 50 |
+| 3jb | fixed-j4 | 1627 | 8/8 | clean; connections mean 10.6 |
+| 3jb | fixed-j64 | **428** | 8/8 | 5 cut short, recovered; connections mean 36.1, max 50 |
+| 3jb | fixed-j32 | 859 | 8/8 | 1 cut short; connections mean 22.6, max 25 |
+
+**Sweep rep 1 done** (`55064911`, 23:21 10-18 to 07:12 10-19, 7 h 51 min, every arm complete and md5-verified).
+3jr: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 163, j64 235 s. 3jb: j1 9708, j2 3291, j4 1627,
+j8 731, j32 859, default 581, j16 469, j64 428 s. Not monotonic past j8 on 3b (j32 859 s held 25 connections at most
+while j16 and j64 reached 50), so ENA's state at the time matters as much as -j; reps 2 and 3 are needed.
 
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
