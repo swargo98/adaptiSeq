@@ -1,0 +1,12 @@
+note    adaptiSeq 0.1.8  wheel sha256 63fe4b824dbfbb7350aa5d890624956e34f9faddd66e00c392e506e8eef8377a
+PROBLEM 4s adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4s iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4s iseq rep1: 0 rows (want 1)
+PROBLEM 4s kingfisher rep1: 0 rows (want 1)
+PROBLEM 4s fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4g adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4g iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4g iseq rep1: 0 rows (want 1)
+PROBLEM 4g kingfisher rep1: 0 rows (want 1)
+PROBLEM 4g fastq-dl rep1: 0 rows (want 1)
+CHECK FAIL

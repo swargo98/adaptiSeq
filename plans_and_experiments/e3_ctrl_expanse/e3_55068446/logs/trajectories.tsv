@@ -1,0 +1,9 @@
+arm	rep	line
+adaptiseq-ctrl-topdown	rep1	[32mNote[0m: adaptive worker summary: 2 probe(s); best 4221 Mbps at 4 worker(s); last 4221 Mbps at 4 worker(s); recent: 8w@4141Mbps, 4w@4221Mbps
+adaptiseq-ctrl-bottomup	rep1	[32mNote[0m: adaptive worker summary: 7 probe(s); best 4161 Mbps at 1 worker(s); last 4031 Mbps at 1 worker(s); recent: 1w@4161Mbps, 2w@3993Mbps, 1w@3337Mbps, 2w@4069Mbps, 3w@4146Mbps, 2w@4106Mbps, 1w@4031Mbps
+adaptiseq-ctrl-greedy	rep1	[32mNote[0m: adaptive worker summary: 3 probe(s); best 4536 Mbps at 6 worker(s); last 4536 Mbps at 6 worker(s); recent: 8w@4180Mbps, 8w@4518Mbps, 6w@4536Mbps
+adaptiseq-ctrl-budget	rep1	[32mNote[0m: adaptive worker summary: 3 probe(s); best 4626 Mbps at 16 connection(s); last 4626 Mbps at 16 connection(s); recent: 16c@4262Mbps, 16c@4594Mbps, 16c@4626Mbps
+adaptiseq-ctrl-greedy	rep1	[32mNote[0m: adaptive worker summary: 166 probe(s); best 767 Mbps at 6 worker(s); last 3 Mbps at 1 worker(s); recent: 2w@3Mbps, 2w@3Mbps, 1w@28Mbps, 1w@3Mbps, 1w@4Mbps, 1w@9Mbps, 1w@9Mbps, 1w@5Mbps, 1w@1Mbps, 1w@1Mbps, 1w@2Mbps, 1w@3Mbps
+adaptiseq-ctrl-bottomup	rep1	[32mNote[0m: adaptive worker summary: 364 probe(s); best 874 Mbps at 5 worker(s); last 1 Mbps at 1 worker(s); recent: 1w@2Mbps, 1w@1Mbps, 1w@2Mbps, 1w@1Mbps, 1w@1Mbps, 1w@1Mbps, 1w@1Mbps, 1w@1Mbps, 1w@1Mbps, 1w@1Mbps, 1w@2Mbps, 1w@1Mbps
+adaptiseq-ctrl-budget	rep1	[32mNote[0m: adaptive worker summary: 120 probe(s); best 639 Mbps at 16 connection(s); last 36 Mbps at 16 connection(s); recent: 16c@236Mbps, 16c@325Mbps, 16c@125Mbps, 16c@87Mbps, 16c@25Mbps, 16c@30Mbps, 16c@44Mbps, 16c@33Mbps, 16c@21Mbps, 16c@31Mbps, 16c@203Mbps, 16c@36Mbps
+adaptiseq-ctrl-topdown	rep1	[32mNote[0m: adaptive worker summary: 14 probe(s); best 954 Mbps at 6 worker(s); last 2 Mbps at 1 worker(s); recent: 6w@334Mbps, 6w@205Mbps, 6w@954Mbps, 6w@829Mbps, 6w@380Mbps, 6w@809Mbps, 1w@3Mbps, 1w@2Mbps, 1w@2Mbps, 1w@3Mbps, 1w@2Mbps, 1w@2Mbps

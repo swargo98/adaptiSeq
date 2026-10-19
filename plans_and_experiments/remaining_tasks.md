@@ -157,7 +157,25 @@ Tournament rows (`e3_ctrl_expanse/`; download phase = until the last archive con
 4s rep 1 (job `55068446`, `exp-9-37`, 03:12 to 03:20): every arm 8/8 md5-verified against the reference copies,
 19.7 GB in 80 to 86 s, all within 8 %: about 4.4 Gbit/s while downloading (NCBI's AWS copy or the node's link is
 the limit), then about 35 s of `vdb-validate`. `budget` matched the fastest with a quarter of fixed -j 20's
-connections (16 max against 64). iSeq 1.9.9 presumably has the same
+connections (16 max against 64).
+
+GSA panel, 0.1.8 rep 1 (same job, 03:20 to 05:00 PDT = 18:20 to 20:00 in Beijing; run order greedy, bottomup, budget,
+topdown, fixed-j20). All 6/6 md5-verified, 12.1 GB:
+
+| arm | wall_s | cut-short responses | segments out of attempts | connections mean / max | controller |
+|---|---|---|---|---|---|
+| greedy | 1696 | 95 | 13 | 12.3 / 48 | ended at 1 worker |
+| bottomup | 1852 | 95 | 17 | 7.3 / 47 | 364 probes |
+| budget | 1320 | 38 | 4 | 5.0 / 16 | never left 16 (the queue-empty rule) |
+| topdown | **411** | 43 | 0 | 15.5 / 48 | 6 workers |
+| fixed-j20 | 714 | 68 | - | 18.8 / 48 | - |
+
+GSA cut 38 to 95 responses short in every arm (12.1 GB / 411 s = 29 MB/s, the probe's 8-connection rate, so topdown
+reached GSA's limit). The spread (411 to 1852 s) follows the run order as much as the controller: the later arms were
+faster, so GSA's own load was falling through the evening in Beijing. With these swings, 3 reps per panel may not
+separate the controllers on GSA; the selection rule stays as written, but the tournament should interleave the
+reps over different hours. **These rows are 0.1.8 and do not count for the selection** (the budget queue-empty bug,
+and none of the 0.1.9 retry fixes); the official tournament runs on 0.1.9. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
