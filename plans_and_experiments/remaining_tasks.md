@@ -138,7 +138,11 @@ table, and the note now says "NOT md5-verified".
 "download finished", exits 0 and writes `success.log`, but downloads no data file (the browse page has no links);
 `iseq -i GSM7417667` and `-i GSE233000` fail with "not a valid GEO ... accession". **The paper's Table 1 lists GSA and
 GEO for iSeq**; say that both stopped working when the archives put browser checks on these pages (date it), and that
-iSeq's GSA path fails silently with exit 0. iSeq 1.9.9 presumably has the same
+iSeq's GSA path fails silently with exit 0.
+**Tournament started on the non-ENA panels (03:20 10-19):** 0.1.8 wheel `63fe4b82...` (`setup_expanse_55068362`,
+env `adaptiseq_e3_dev`, so the sweep's env is untouched; includes the GSA, GEO and GSA-md5 fixes). Jobs 55068446 55068447 55068448:
+`PANELS="4s 4g"`, one rep each, chained, `RESULTS_ROOT=e3_ctrl_expanse`, `E3_TIMEOUT_CTRL=3600`. NCBI's AWS copies
+and GSA are not ENA, so these run alongside the sweep; 4r and 4b (ENA) and 4x wait for the sweep to finish. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
