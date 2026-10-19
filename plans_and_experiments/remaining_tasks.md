@@ -1081,6 +1081,25 @@ Remaining:
       `plans_and_experiments/datasets/` on this branch and on `e8`; nothing has
       been pushed. Decide between the `e8` branch and a small separate
       repository, then put the URL and commit into the manuscript.
+- [ ] **conda / Bioconda package (not started; added 2026-10-18 at the user's request).**
+      What exists: `environment.yml` (a dev environment: external tools plus
+      `pip install -e .`), and `docs/installation.md` says "A dedicated bioconda
+      package is **TBD**"; the manuscript (Limitations) says "distributed through
+      PyPI and not yet through Bioconda". There is no recipe anywhere. To do:
+      1. Release to PyPI first (Bioconda recipes build from the PyPI sdist;
+         **note PyPI has only 0.1.3**: 0.1.4 to 0.1.7 were built locally and
+         never uploaded). Needs the user's go-ahead.
+      2. Write `recipes/adaptiseq/meta.yaml`: `noarch: python`, source = the
+         PyPI sdist URL + sha256, `script: {{ PYTHON }} -m pip install . -vv
+         --no-deps`, `entry_points: adaptiseq = adaptiseq.cli:main`; run deps
+         `python >=3.8`, `aiohttp >=3.8`, `aioftp >=0.21`, `numpy >=1.21`,
+         `wget`, `pigz`, `sra-tools >=2.11.0` (Aspera optional, so not a hard
+         dependency); `test: commands: adaptiseq --version, adaptiseq --help`
+         and `imports: adaptiseq`.
+      3. Check it locally with `bioconda-utils build` (or `conda build` +
+         `conda-forge`/`bioconda` channels) on a compute node, then open a PR
+         to `bioconda/bioconda-recipes`; after it is merged, update
+         `docs/installation.md`, the README and the manuscript sentence.
 
 ## Housekeeping
 
