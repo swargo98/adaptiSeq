@@ -1,0 +1,12 @@
+date: 2026-10-18T21:08:14-07:00
+node: exp-9-14
+kernel: 4.18.0-513.24.1.el8_9.x86_64
+CPU(s):              128
+Thread(s) per core:  1
+Core(s) per socket:  64
+Socket(s):           2
+Model name:          AMD EPYC 7742 64-Core Processor
+free: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+memory: 251 GB
+local scratch: 916G total, 870G free, /dev/nvme0n1p1
+os: Rocky Linux 8.9 (Green Obsidian)

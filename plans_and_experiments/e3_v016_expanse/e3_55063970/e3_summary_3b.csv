@@ -1,0 +1,3 @@
+arm,n,wall_med,wall_iqr,MBps_med,MBps_iqr,runs_ok_med,runs_exp,peak_rss_MB,cpu_pct_med,conc_med,conc_max,conc_host_max,workers_max,timeouts,nonzero_rc,formats,success_pct
+adaptiseq-fixed-j20,1,288.1,0.0,89.81,0.0,8.0,8,105.0,61.0,49.0,50,50,0,0,0,gz,100.0
+adaptiseq-default,1,1774.2,0.0,14.58,0.0,8.0,8,96.0,9.0,5.0,50,50,0,0,0,gz,100.0

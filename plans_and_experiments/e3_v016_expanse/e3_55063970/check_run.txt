@@ -1,0 +1,6 @@
+note    adaptiSeq 0.1.6  wheel sha256 c7db4012d9e985726070f32a57f0cb1e089a148c142d93693e94eb9829eb2493
+PROBLEM 3b iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 3b iseq rep1: 0 rows (want 1)
+PROBLEM 3b kingfisher rep1: 0 rows (want 1)
+PROBLEM 3b fastq-dl rep1: 0 rows (want 1)
+CHECK FAIL
