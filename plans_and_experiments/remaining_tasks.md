@@ -211,7 +211,17 @@ competes as built; if it otherwise does well, the follow-up is a `budget` withou
 | 2 | 4s NCBI | greedy | 85.7 | 8/8 | 25.3 / 64 | 49 s | 6 workers |
 | 2 | 4s NCBI | bottomup | 83.0 | 8/8 | 10.7 / 32 | 46 s | best at 3 workers |
 | 2 | 4s NCBI | budget | 91.5 | 8/8 | 7.2 / 20 | 55 s | 16 connections |
-| 2 | 4s NCBI | topdown | 78.9 | 8/8 | 22.1 / 64 | 42 s | 4 workers | iSeq 1.9.9 presumably has the same
+| 2 | 4s NCBI | topdown | 78.9 | 8/8 | 22.1 / 64 | 42 s | 4 workers |
+| 2 | 4g GSA | budget | 1184 | 6/6 | 11.2 / 25 | 35 cut short, 0 out | 17 to 18 connections (ran first) |
+| 2 | 4g GSA | bottomup | 2187 | 6/6 | 13.4 / 48 | 106 cut short, 20 out | best at 2 workers |
+| 2 | 4g GSA | greedy | 1652 | 6/6 | 16.1 / 48 | 112 cut short, 23 out | 6 workers |
+| 2 | 4g GSA | fixed-j20 | 1247 | 6/6 | 21.5 / 48 | 60 cut short, 3 out | - |
+| 2 | 4g GSA | topdown | **654** | 6/6 | 17.8 / 48 | 63 cut short, 0 out | 3 workers |
+
+Rep 2 (job `55071527`, 06:59 to 09:06 PDT). **GSA is mostly noise so far:** fixed-j20 385 then 1247 s, topdown 1761 then
+654, budget 2694 then 1184; the arm order changes per rep, and the same arm moves 3x between reps. Three reps will
+give a median, but the GSA panel's verdict should be read as "no controller is reliably better at GSA" unless rep 3
+changes the picture. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).

@@ -1,0 +1,131 @@
+=== adaptiSeq E3 (batch download, Fig 3) ===
+node        : exp-5-21
+repo        : /home/rswargo/adaptiSeq/plans_and_experiments
+python      : /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/python3  (Python 3.11.17)
+payload     : /scratch/rswargo/job_55071527/e3_payload   (870G free)
+results     : /home/rswargo/adaptiSeq/plans_and_experiments/e3_tournament_expanse/e3_55071527
+panels      : 4s 4g  (reps=1 from rep 2, arm set=submission)
+wheel       : /home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.9-py3-none-any.whl
+
+=== egress check ===
+  OK   https://ftp.sra.ebi.ac.uk -> 200
+  OK   https://www.ebi.ac.uk -> 200
+  OK   https://ftp.ncbi.nlm.nih.gov -> 200
+
+=== tool check ===
+  OK   adaptiseq      /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/adaptiseq
+  OK   iseq           /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/iseq
+  OK   kingfisher     /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/kingfisher
+  OK   fastq-dl       /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/fastq-dl
+  OK   axel           /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/axel
+  OK   wget           /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/wget
+  OK   aria2c         /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/aria2c
+  OK   srapath        /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/srapath
+  OK   vdb-validate   /home/rswargo/.conda/envs/adaptiseq_e3_dev/bin/vdb-validate
+  OK   md5sum         /usr/bin/md5sum
+date: 2026-10-19T06:59:18-07:00
+node: exp-5-21
+kernel: 4.18.0-513.24.1.el8_9.x86_64
+CPU(s):              128
+Thread(s) per core:  1
+Core(s) per socket:  64
+Socket(s):           2
+Model name:          AMD EPYC 7742 64-Core Processor
+free: /cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/lib/libuuid.so.1: no version information available (required by /lib64/libblkid.so.1)
+memory: 251 GB
+local scratch: 916G total, 870G free, /dev/nvme0n1p1
+os: Rocky Linux 8.9 (Green Obsidian)
+
+=== versions (pinned for the paper) ===
+date: 2026-10-19T06:59:18-07:00
+node: exp-5-21
+adaptiSeq 0.1.9
+aseq_version=0.1.9 aseq_sha256=cfa3acbdf377efdb3286c87f314de3e51fa2a605e2108b27f4103ebfd85e5eb1
+Version 1.9.9
+0.5.0
+fastq-dl, version 4.0.1
+Python 3.11.17
+
+=== datasets ===
+D1  PRJNA916347 (overhead-dominated)
+  D1_full_PRJNA916347    runs=  241 files=  321 total=    7.59 GB  avg=   23.6 MB/file   robustness panel (3a-robust): runs-completed per tool
+  D1_fair_PRJNA916347    runs=  201 files=  201 total=    4.42 GB  avg=   22.0 MB/file   fair timing panel (3a): all tools can complete
+  D1_threefile_PRJNA916347 runs=   40 files=  120 total=    3.17 GB  avg=   26.4 MB/file   the runs iseq drops (E3 robustness call-out / E7e)
+D2  PRJNA762469 (byte-dominated, seeded subset)
+  D2_full_PRJNA762469    runs=   60 files=  120 total=  205.97 GB  avg= 1716.4 MB/file   reference only -- NOT run at 10 reps
+  D2_subset_PRJNA762469  runs=    8 files=   16 total=   25.88 GB  avg= 1617.2 MB/file   byte-dominated panel (3b), seed=20260717
+D3  PRJNA540705 (large per-file)
+  D3_full_PRJNA540705    runs=    6 files=    6 total=   69.35 GB  avg=11557.5 MB/file   large-file arm (3b-large / feeds E4a)
+  D3_seg_PRJNA540705     runs=    2 files=    2 total=   23.07 GB  avg=11534.8 MB/file   connections-per-worker sweep (3s): --max-segments 4/8/16
+D4  mixed cross-database
+  D4_mixed               runs=   20 (ENA=12 SRA-only=6 GSA=2)  manifest covers the ENA rows only
+D0  sweep workload (D2 subset, 4 runs)
+  D0_sweep_PRJNA762469   runs=    4 files=    8 total=   11.86 GB  avg= 1482.0 MB/file   concurrency sweep (3d): bounded
+SMOKE  (3 smallest D1 runs)
+  SMOKE_D1               runs=    3 files=    3 total=    0.00 GB  avg=    0.0 MB/file   harness validation only -- NOT a result
+
+Wrote lists + manifests to /home/rswargo/adaptiSeq/plans_and_experiments/datasets
+
+=== link ceiling probe (ENA, 1 / 8 / 20 connections, 20 s each) ===
+date: 2026-10-19T07:00:10-07:00  node: exp-5-21  public ip: 198.202.102.250
+  P=1   total 1.3 MB/s  (1.27 MB/s per connection, 1 reported)
+  P=8   total 17.3 MB/s  (2.16 MB/s per connection, 8 reported)
+  P=20  total 39.0 MB/s  (1.95 MB/s per connection, 20 reported)
+
+=== manual md5 check ===
+SRR22904482  SRR22904482.fastq.gz  got=c48d3ba53ffbc09f378413e01d059393  ena=c48d3ba53ffbc09f378413e01d059393  manifest=c48d3ba53ffbc09f378413e01d059393  ok
+SRR22904482  SRR22904482_1.fastq.gz  got=b091e1e2594fecf65b968c9b72b047a7  ena=b091e1e2594fecf65b968c9b72b047a7  manifest=b091e1e2594fecf65b968c9b72b047a7  ok
+SRR22904482  SRR22904482_2.fastq.gz  got=26ed1ec400746ebbf5012eb98ddb22f8  ena=26ed1ec400746ebbf5012eb98ddb22f8  manifest=26ed1ec400746ebbf5012eb98ddb22f8  ok
+SRR22904404  SRR22904404.fastq.gz  got=b24d2e07d9bfc605d6eaa684a3010f15  ena=b24d2e07d9bfc605d6eaa684a3010f15  manifest=b24d2e07d9bfc605d6eaa684a3010f15  ok
+SRR22904321  SRR22904321.fastq.gz  got=0319180f6f5569d188f4e2f50bfe83ec  ena=0319180f6f5569d188f4e2f50bfe83ec  manifest=0319180f6f5569d188f4e2f50bfe83ec  ok
+verify_output.py: runs_complete=3 (expected 3)  extra_files=0  agrees
+GATE PASS
+
+=== running panels ===
+
+=== aggregating ===
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+==============================================================================
+4g
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-ctrl-topdown   1     654.4       0.0     18.53       0.0          6.0         6         96.0         13.0      14.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-budget    1    1183.7       0.0     10.25       0.0          6.0         6         72.0          7.0      11.0        25             25            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1    1247.1       0.0      9.73       0.0          6.0         6         91.0          7.0      26.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1    1651.9       0.0      7.34       0.0          6.0         6         87.0          5.0      15.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-bottomup  1    2186.8       0.0      5.55       0.0          6.0         6         88.0          4.0      12.0        48             48            0         0           0      gz        100.0
+
+==============================================================================
+4s
+==============================================================================
+
+-- SEGREGATED: fetched a different format/size; NOT wall-time comparable (§12.2) --
+                         n  wall_med  MBps_med formats  runs_ok_med  runs_exp
+arm                                                                          
+adaptiseq-ctrl-topdown   1      78.9    250.35    none          8.0         8
+adaptiseq-ctrl-bottomup  1      83.0    238.03    none          8.0         8
+adaptiseq-ctrl-greedy    1      85.7    230.48    none          8.0         8
+adaptiseq-ctrl-budget    1      91.5    215.84    none          8.0         8
+adaptiseq-fixed-j20      1     110.1    179.39    none          8.0         8
+
+Wrote summaries + fig3_*.png to /home/rswargo/adaptiSeq/plans_and_experiments/e3_tournament_expanse/e3_55071527
+note    adaptiSeq 0.1.9  wheel sha256 cfa3acbdf377efdb3286c87f314de3e51fa2a605e2108b27f4103ebfd85e5eb1
+PROBLEM 4s adaptiseq-default rep2: 0 rows (want 1)
+PROBLEM 4s iseq-p8 rep2: 0 rows (want 1)
+PROBLEM 4s iseq rep2: 0 rows (want 1)
+PROBLEM 4s kingfisher rep2: 0 rows (want 1)
+PROBLEM 4s fastq-dl rep2: 0 rows (want 1)
+PROBLEM 4g adaptiseq-default rep2: 0 rows (want 1)
+PROBLEM 4g iseq-p8 rep2: 0 rows (want 1)
+PROBLEM 4g iseq rep2: 0 rows (want 1)
+PROBLEM 4g kingfisher rep2: 0 rows (want 1)
+PROBLEM 4g fastq-dl rep2: 0 rows (want 1)
+CHECK FAIL
+=== done (status=0). Results: /home/rswargo/adaptiSeq/plans_and_experiments/e3_tournament_expanse/e3_55071527 ===
+kept: TSV + logs + manifests + versions (a few MB). Downloaded fastq: discarded.
+[cleanup] removing payload /scratch/rswargo/job_55071527/e3_payload (4.0K)

@@ -1,0 +1,30 @@
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+==============================================================================
+4g
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-ctrl-topdown   1     654.4       0.0     18.53       0.0          6.0         6         96.0         13.0      14.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-budget    1    1183.7       0.0     10.25       0.0          6.0         6         72.0          7.0      11.0        25             25            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1    1247.1       0.0      9.73       0.0          6.0         6         91.0          7.0      26.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1    1651.9       0.0      7.34       0.0          6.0         6         87.0          5.0      15.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-bottomup  1    2186.8       0.0      5.55       0.0          6.0         6         88.0          4.0      12.0        48             48            0         0           0      gz        100.0
+
+==============================================================================
+4s
+==============================================================================
+
+-- SEGREGATED: fetched a different format/size; NOT wall-time comparable (§12.2) --
+                         n  wall_med  MBps_med formats  runs_ok_med  runs_exp
+arm                                                                          
+adaptiseq-ctrl-topdown   1      78.9    250.35    none          8.0         8
+adaptiseq-ctrl-bottomup  1      83.0    238.03    none          8.0         8
+adaptiseq-ctrl-greedy    1      85.7    230.48    none          8.0         8
+adaptiseq-ctrl-budget    1      91.5    215.84    none          8.0         8
+adaptiseq-fixed-j20      1     110.1    179.39    none          8.0         8
+
+Wrote summaries + fig3_*.png to /home/rswargo/adaptiSeq/plans_and_experiments/e3_tournament_expanse/e3_55071527
