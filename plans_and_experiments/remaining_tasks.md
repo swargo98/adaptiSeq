@@ -181,7 +181,17 @@ and none of the 0.1.9 retry fixes); the official tournament runs on 0.1.9.
 `setup_expanse_55071444`, env `adaptiseq_e3_dev`).** Non-ENA panels: jobs 55071526 55071527 55071528 (`PANELS="4s 4g"`, one rep each,
 chained, `RESULTS_ROOT=e3_tournament_expanse`, `E3_TIMEOUT_CTRL=3600`). ENA panels 4r, 4b and the 4x routing check
 are submitted after the sweep, with `E3_CTRL_FIXED` = 20 plus the sweep's best fixed -j per panel. 0.1.8 jobs
-`55068447`/`48` cancelled (never ran). No code changes to the candidates from here until the tournament ends. iSeq 1.9.9 presumably has the same
+`55068447`/`48` cancelled (never ran). No code changes to the candidates from here until the tournament ends.
+
+Official tournament rows (0.1.9):
+
+| rep | panel | arm | wall_s | runs | connections mean / max | download phase | controller |
+|---|---|---|---|---|---|---|---|
+| 1 | 4s NCBI | topdown | 79.7 | 8/8 | 21.9 / 64 | 43 s | 4 workers |
+| 1 | 4s NCBI | bottomup | 89.6 | 8/8 | 8.8 / 24 | 53 s | 1 worker |
+| 1 | 4s NCBI | greedy | 79.3 | 8/8 | 28.0 / 64 | 42 s | 6 to 8 workers |
+| 1 | 4s NCBI | budget | 81.6 | 8/8 | 7.8 / 20 | 45 s | tried 20, back to 16 |
+| 1 | 4s NCBI | fixed-j20 | 90.2 | 8/8 | 24.7 / 64 | 53 s | - | iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
