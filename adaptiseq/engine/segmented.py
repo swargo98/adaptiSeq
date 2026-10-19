@@ -683,10 +683,15 @@ class SegmentedDownloader:
                 if not failed:
                     self._split_largest(running, segments, remaining_segments,
                                         progress_offsets, fd)
-            if (not failed and running and self.spare_slots is not None
-                    and len(running) < self.max_segments and self.spare_slots() > 0):
-                self._split_largest(running, segments, remaining_segments,
-                                    progress_offsets, fd)
+            if not failed and running and self.spare_slots is not None:
+                # fill the spare budget now, not one split per poll: a raised
+                # budget (knee/budget controllers) should be in use within one
+                # poll, or the controller measures a budget that is not used yet
+                spare = self.spare_slots()
+                while (spare > 0 and len(running) < self.max_segments
+                       and self._split_largest(running, segments, remaining_segments,
+                                               progress_offsets, fd)):
+                    spare -= 1
         return results
 
     def _split_largest(self, running, segments, remaining_segments, progress_offsets,

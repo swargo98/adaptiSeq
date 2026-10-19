@@ -55,6 +55,9 @@ class Options:
 
     # Part 3 adaptive/batch knobs.
     jobs: int = 20                  # -j/--jobs (worker-pool size)
+    # False when -j was not given (CLI) or jobs=None (API): the knee controller
+    # may then grow the pool past 20 (it steers connections, not workers).
+    jobs_explicit: bool = True
     adaptive: bool = True           # --adaptive/--no-adaptive
     probe_window: int = 5           # --probe-window (seconds)
     cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
@@ -111,7 +114,18 @@ class Options:
 
 # Adaptive controllers (--controller). topdown is the default; bottomup is the
 # original gradient optimizer; budget and greedy are candidates under evaluation.
-CONTROLLERS = ("topdown", "bottomup", "budget", "greedy")
+CONTROLLERS = ("topdown", "bottomup", "budget", "greedy", "knee")
+
+# The pool the knee controller may use when -j was not set: on ENA's many small
+# files the sweep's best fixed -j was 32 to 64, above the default 20 workers.
+KNEE_POOL = 64
+
+
+def controller_mode(options: "Options") -> str:
+    """The controller that runs: --controller, else ASEQ_ADAPTIVE_MODE, else topdown."""
+    import os
+
+    return (options.controller or os.environ.get("ASEQ_ADAPTIVE_MODE") or "topdown").lower()
 
 
 @dataclass

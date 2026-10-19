@@ -40,7 +40,7 @@ from .errors import (
 from .logs import FAIL_LOG, SUCCESS_LOG
 from .options import Options, RunContext, load_accessions, resolve_output_dir
 
-__version__ = "0.1.9"
+__version__ = "0.1.10"
 __all__ = [
     "fetch",
     "resolve",
@@ -181,7 +181,7 @@ def fetch(
     segment_size_mb: int = 512,
     max_segments: int = 8,
     max_conns_per_host: int = 0,   # 0 = auto (jobs * max_segments)
-    jobs: int = 20,
+    jobs: Optional[int] = None,    # None = 20 (the knee controller may use more)
     adaptive: bool = True,
     probe_window: int = 5,
     cc_penalty: float = 1.01,
@@ -224,7 +224,8 @@ def fetch(
         segment_size=segment_size_mb * 1024 * 1024,
         max_segments=max_segments,
         max_conns_per_host=max_conns_per_host,
-        jobs=jobs,
+        jobs=20 if jobs is None else jobs,
+        jobs_explicit=jobs is not None,
         adaptive=adaptive,
         probe_window=probe_window,
         cc_penalty=cc_penalty,

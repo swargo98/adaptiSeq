@@ -43,7 +43,7 @@ from .engine.ratelimit import HostGuard, TokenBucket, host_of
 from .engine.throughput import ThroughputMeter
 from .integrity import fastq_md5s, md5sum
 from .logs import in_success
-from .options import Options, RunContext
+from .options import KNEE_POOL, Options, RunContext, controller_mode
 from .ratelimits import EndpointLimiters, set_active
 
 log = logging.getLogger("adaptiseq.batch")
@@ -188,6 +188,8 @@ class AdaptiveController:
             await self._run_budget()
         elif mode == "greedy":
             await self._run_greedy()
+        elif mode == "knee" and self.guard is not None:
+            await self._run_knee()
         else:
             await self._run_topdown()
 
@@ -473,6 +475,153 @@ class AdaptiveController:
                 active = min(cap, active + max(1, cap // 10))
             self.gate.set_active(min(active, cap))
 
+    # ------------------------------------------------------------------
+    # Knee controller (--controller knee): the fewest connections that give
+    # near-full speed.
+    #
+    # The tournament's first round showed each archive's knee in a different
+    # place: NCBI's AWS copy tops out near 16 connections (the link), GSA gains
+    # little past about 12 and cuts streams short at any load, and ENA gives
+    # about 2 MB/s per connection, so its knee is far higher. Like `budget` it
+    # steers the per-host connection budget with every worker active, but it
+    # finds the knee from below: start at 4 connections and double while each
+    # doubling earns at least half its proportional gain (3 s windows); when one
+    # does not, try the midpoint, settle on the smaller budget that paid, and
+    # from then on hold, re-testing a quarter up or down every third 8 s window
+    # (a raise is kept if it earns half its share, a cut if it costs under a
+    # quarter). Cut-short responses are not treated as distress (GSA cuts them at
+    # every load); 429/503, refused connects with nothing open and dropped
+    # connections are, and cut the budget by 30 %. A budget that is not filled
+    # with the queue empty is the tail: nothing to judge.
+    # ------------------------------------------------------------------
+    KNEE_DISTRESS = ("429", "503", "refused", "pushback", "ftp-error")
+
+    async def _run_knee(self) -> None:
+        guard = self.guard
+        top = max(1, int(guard.default_cap))
+        fast = max(0.01, self._cfg("ASEQ_KNEE_FAST", 3.0))
+        hold_w = max(0.01, self._cfg("ASEQ_KNEE_WINDOW", 8.0))
+        settle = max(0.0, self._cfg("ASEQ_KNEE_SETTLE", 1.0))
+        budget = max(1, min(top, int(self._cfg("ASEQ_KNEE_START", 4))))
+        floor = max(1, min(budget, int(self._cfg("ASEQ_KNEE_FLOOR", 2))))
+        self.unit = "connection"
+        guard.set_budget(budget)
+        state = {"seen": len(guard.trips)}
+
+        async def window(w: float):
+            self.gate.set_active(self._worker_cap())
+            conns = []
+            ticks = max(1, int(round(w)))
+            for _ in range(ticks):
+                await asyncio.sleep(w / ticks)
+                if self.done:
+                    return None
+                conns.append(guard.total_in_flight())
+            new = guard.trips[state["seen"]:]
+            state["seen"] = len(guard.trips)
+            hard = sum(1 for _h, k, _d in new if k in self.KNEE_DISTRESS)
+            t = self.meter.recent_average(ticks)
+            self._record_probe(budget, t)
+            return t, sorted(conns)[len(conns) // 2], hard
+
+        def tail(used: int, b: int) -> bool:
+            return self.pending is not None and self.pending() == 0 and used < 0.8 * b
+
+        def set_budget(n: int) -> None:
+            guard.set_budget(n)
+            log.info("adaptive knee: budget %d", n)
+
+        # --- phase 1: double from below until a doubling stops paying -------
+        if settle:
+            await asyncio.sleep(settle)
+        got = await window(fast)
+        if got is None:
+            return
+        t, used, hard = got
+        while not self.done and budget < top and not hard:
+            if used < 0.8 * budget:
+                got = await window(fast)          # pickup/splitting lag: one more look
+                if got is None:
+                    return
+                t, used, hard = got
+                if hard or used < 0.8 * budget:
+                    break                          # not filled: no more work to spread
+            nb = min(top, budget * 2)
+            set_budget(nb)
+            if settle:
+                await asyncio.sleep(settle)
+            got = await window(fast)
+            if got is None:
+                return
+            t2, used2, hard = got
+            if hard:
+                budget = max(floor, int(nb * 0.7))
+                set_budget(budget)
+                break
+            if used2 >= 0.8 * budget and t2 >= t * (1.0 + 0.5 * (nb - budget) / budget):
+                budget, t, used = nb, t2, used2
+                continue
+            mid = budget + (nb - budget) // 2
+            if budget < mid < nb:
+                set_budget(mid)
+                if settle:
+                    await asyncio.sleep(settle)
+                got = await window(fast)
+                if got is None:
+                    return
+                t3, _u, hard = got
+                if not hard and t3 >= t * (1.0 + 0.5 * (mid - budget) / budget):
+                    budget, t = mid, t3
+            set_budget(budget)
+            break
+        log.info("adaptive knee: settled at %d connection(s)", budget)
+
+        # --- phase 2: hold, re-test a quarter up or down every third window ---
+        probe: Optional[Tuple[int, float, int]] = None
+        direction, wait = 1, 2
+        while not self.done:
+            got = await window(hold_w)
+            if got is None:
+                return
+            t, used, hard = got
+            if tail(used, budget):
+                probe = None
+                continue
+            if hard:
+                budget = max(floor, int(budget * 0.7))
+                set_budget(budget)
+                probe, direction, wait = None, 1, 2
+                continue
+            if probe is not None:
+                base_b, base_t, d = probe
+                probe = None
+                rel = abs(budget - base_b) / base_b
+                keep = (used >= 0.8 * budget and t >= base_t * (1.0 + 0.5 * rel)) if d > 0 \
+                    else t >= base_t * (1.0 - 0.25 * rel)
+                if not keep:
+                    budget = base_b
+                    set_budget(budget)
+                    direction = -d
+                wait = 2
+                continue
+            if wait > 0:
+                wait -= 1
+                continue
+            if direction > 0 and (budget >= top or used < 0.8 * budget):
+                direction = -1
+            if direction < 0 and budget <= floor:
+                direction = 1
+            step = max(1, budget // 4)
+            nb = min(top, budget + step) if direction > 0 else max(floor, budget - step)
+            if nb == budget:
+                wait = 2
+                continue
+            probe = (budget, t, direction)
+            budget = nb
+            set_budget(budget)
+            if settle:
+                await asyncio.sleep(settle)
+
     def stop(self) -> None:
         self.done = True
 
@@ -491,6 +640,11 @@ class BatchDownloader:
         self.reporter = reporter or NullReporter()
         self.jobs = max(1, int(options.jobs))
         self.adaptive = bool(options.adaptive)
+        if (self.adaptive and not options.jobs_explicit
+                and controller_mode(options) == "knee"):
+            # knee steers connections, not workers; let it reach ENA's knee on
+            # many small files (one connection each) when -j was not set
+            self.jobs = max(self.jobs, KNEE_POOL)
         # save_path -> md5 of every file this batch verified against ENA's md5;
         # the per-Run check reuses these instead of hashing the files again.
         self.verified: dict = {}

@@ -142,7 +142,7 @@ def test_greedy_runs_every_worker_and_backs_off_on_429(fast):
 
 
 def test_controller_option_validates_and_reaches_the_cli():
-    assert set(CONTROLLERS) == {"topdown", "bottomup", "budget", "greedy"}
+    assert set(CONTROLLERS) == {"topdown", "bottomup", "budget", "greedy", "knee"}
     with pytest.raises(ValueError):
         Options(controller="nope")
     assert Options().controller is None          # default unchanged: topdown
@@ -159,6 +159,92 @@ def test_batch_downloads_correctly_under_each_candidate(tmp_path, monkeypatch, f
     with MultiFileRangeServer(files, delay=0.05) as srv:
         opts = Options(engine="segmented", segment_size=MB, max_segments=3, quiet=True,
                        adaptive=True, jobs=4, controller=mode)
+        bd = BatchDownloader(SegmentedEngine(opts, str(tmp_path)), opts, tmp_path)
+        failed = asyncio.run(bd.run([DownloadTask(srv.url(n), n, "ACC") for n in files]))
+    assert not failed
+    for n, b in files.items():
+        assert (tmp_path / n).read_bytes() == b
+
+
+# ------------------------------ knee ------------------------------------------
+
+@pytest.fixture
+def fast_knee(monkeypatch):
+    monkeypatch.setenv("ASEQ_KNEE_FAST", "0.02")
+    monkeypatch.setenv("ASEQ_KNEE_WINDOW", "0.02")
+    monkeypatch.setenv("ASEQ_KNEE_SETTLE", "0")
+
+
+def _knee_run(link, seconds=1.0, **kw):
+    gate, ctrl = _controller(link, "knee", **kw)
+    seen = []
+    orig = link.guard.set_budget
+    link.guard.set_budget = lambda n: (seen.append(n), orig(n))[1]
+    _run_for(ctrl, seconds)
+    return gate, ctrl, seen
+
+
+@pytest.mark.parametrize("knee", [12, 30, 70])
+def test_knee_climbs_from_below_and_holds_near_the_knee(fast_knee, knee):
+    link = FakeLink(knee)
+    gate, ctrl, seen = _knee_run(link)
+    assert seen[0] == 4                                 # starts low
+    # doubles up to the knee in a handful of steps, never far past it
+    assert max(seen) <= 2 * knee + 8
+    tail = seen[-10:]
+    assert min(tail) >= 0.6 * knee and max(tail) <= 1.5 * knee + 4, (knee, seen)
+    assert gate.active == 20 and "connection(s)" in ctrl.summary()
+
+
+def test_knee_stays_low_when_the_link_saturates_early(fast_knee):
+    # NCBI-like: 4 connections already fill the link
+    link = FakeLink(knee=4)
+    gate, ctrl, seen = _knee_run(link)
+    assert max(seen[-10:]) <= 8, seen
+
+
+def test_knee_ignores_cut_short_responses_but_cuts_on_429(fast_knee):
+    link = FakeLink(knee=40)
+    gate, ctrl = _controller(link, "knee")
+    seen = []
+    orig = link.guard.set_budget
+    link.guard.set_budget = lambda n: (seen.append(n), orig(n))[1]
+
+    async def main():
+        task = asyncio.ensure_future(ctrl.run())
+        await asyncio.sleep(0.5)
+        link.guard.trips.extend([("h", "truncated", 0.0)] * 10)   # GSA does this at any load
+        await asyncio.sleep(0.2)
+        mark = len(seen)
+        link.guard.trips.append(("h", "429", 1.0))
+        await asyncio.sleep(0.1)
+        ctrl.stop()
+        await asyncio.wait_for(task, 5)
+        return mark
+    mark = asyncio.run(main())
+    before = seen[:mark]
+    assert min(before[-5:]) >= 24, seen                 # truncations did not push it down
+    after = seen[mark - 1:]
+    assert any(b <= int(a * 0.7) for a, b in zip(after, after[1:])), seen
+
+
+def test_knee_pool_grows_only_when_jobs_was_not_set(tmp_path):
+    def slots(**kw):
+        return BatchDownloader(object(), Options(quiet=True, **kw), tmp_path).jobs
+    assert slots(controller="knee", jobs_explicit=False) == 64
+    assert slots(controller="knee", jobs_explicit=True, jobs=20) == 20
+    assert slots(controller="topdown", jobs_explicit=False) == 20
+    assert slots(controller="knee", jobs_explicit=False, adaptive=False) == 20
+    p = cli.build_parser()
+    assert p.parse_args(["-i", "SRR1"]).jobs is None
+    assert p.parse_args(["-i", "SRR1", "-j", "8"]).jobs == "8"
+
+
+def test_batch_downloads_correctly_under_knee(tmp_path, fast_knee):
+    files = {f"f{i}.bin": os.urandom(3 * MB) for i in range(6)}
+    with MultiFileRangeServer(files, delay=0.05) as srv:
+        opts = Options(engine="segmented", segment_size=MB, max_segments=3, quiet=True,
+                       adaptive=True, jobs=4, controller="knee")
         bd = BatchDownloader(SegmentedEngine(opts, str(tmp_path)), opts, tmp_path)
         failed = asyncio.run(bd.run([DownloadTask(srv.url(n), n, "ACC") for n in files]))
     assert not failed

@@ -47,6 +47,18 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.10 (in development)
+- **New controller candidate** `--controller knee`: keeps every worker active and
+  finds the fewest connections that give near-full speed. It starts at 4,
+  doubles while each doubling still earns at least half its proportional gain,
+  settles on the smallest budget that paid, then holds and re-tests a quarter
+  up or down now and then. Server pushback (429/503, refused connects with
+  nothing else open, dropped connections) cuts it by 30 %; responses cut short
+  of their length do not (GSA cuts streams at any load). With `-j` not given,
+  it may use up to 64 workers, since it limits connections, not workers.
+- A raised connection budget is filled at once: in-flight files split onto all
+  the spare connections in one step instead of one per poll.
+
 ### 0.1.9 (in development)
 - **Batch mode**: a download that fails but moves its resume point on (the
   bytes are kept) no longer uses up one of the file's three retries (capped

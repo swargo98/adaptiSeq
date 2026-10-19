@@ -105,7 +105,7 @@ def build_parser() -> argparse.ArgumentParser:
                         "truncate the requested concurrency; the circuit breaker "
                         "still lowers it on 429/503). Set a lower value to be "
                         "gentler on a host.")
-    g.add_argument("-j", "--jobs", metavar="int", default="20",
+    g.add_argument("-j", "--jobs", metavar="int", default=None,
                    help="Max worker-pool size for batch download (default: 20). "
                         "With --adaptive, the gradient optimizer chooses how many "
                         "of these are active at once.")
@@ -117,9 +117,10 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("--controller", metavar="name", default=None, dest="controller",
                    choices=list(CONTROLLERS),
                    help="Which adaptive controller runs with --adaptive: topdown "
-                        "(default), bottomup, or the candidates under evaluation, "
-                        "budget (steers a per-host connection budget) and greedy "
-                        "(all workers, backs off on 429/503).")
+                        "(default), bottomup, or the candidates under evaluation: "
+                        "budget (steers a per-host connection budget), greedy "
+                        "(all workers, backs off on 429/503) and knee (finds the "
+                        "fewest connections that give near-full speed).")
     g.add_argument("--probe-window", metavar="int", default="5", dest="probe_window",
                    help="Adaptive optimizer probe window in seconds (default: 5).")
     g.add_argument("--cc-penalty", metavar="float", default="1.01", dest="cc_penalty",
@@ -257,7 +258,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         )
 
     # Part 3 adaptive/batch knobs.
-    jobs = _posint("jobs", "-j", args.jobs, 20,
+    jobs_explicit = args.jobs is not None
+    jobs = _posint("jobs", "-j", args.jobs if jobs_explicit else "20", 20,
                    'Please use a positive integer for the "-j" option')
     probe_window = _posint("probe-window", "--probe-window", args.probe_window, 5,
                            'Please use an integer >= 2 for the "--probe-window" option')
@@ -339,6 +341,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             max_segments=max_segments,
             max_conns_per_host=max_conns_per_host,
             jobs=jobs,
+            jobs_explicit=jobs_explicit,
             adaptive=args.adaptive,
             probe_window=probe_window,
             cc_penalty=cc_penalty,
