@@ -19,7 +19,7 @@ from . import resolve, integrity, convert, merge
 from ._async import run_sync
 from .accession import is_gsa
 from .console import bright_yellow, green, green_bold, red_bold
-from .errors import AdaptiSeqError
+from .errors import AdaptiSeqError, MetadataError
 from .engine import get_engine
 from .logs import ensure_success_log, in_success, mark_fail
 from .net import file_nonempty
@@ -56,7 +56,7 @@ def _process_gsa(ctx: RunContext, accession: str) -> None:
     opts = ctx.options
     csv = ctx.metadata_csv(accession)
 
-    if file_nonempty(csv):
+    if file_nonempty(csv) and meta.gsa_csv_has_rows(csv):
         reporter.info(
             f"{green('Note')}: {csv.name} exists, skip downloading metadata "
             f"for {accession}"
@@ -82,6 +82,13 @@ def _process_gsa(ctx: RunContext, accession: str) -> None:
     csv_lines = csv_text.splitlines()
     crrs = sorted({_csv_field(ln, 1) for ln in csv_lines[1:] if _csv_field(ln, 1)})
     cra_list = resolve._uniq_adjacent(resolve._RE_CRA.findall(csv_text))
+    if not crrs:
+        # Never report "download finished" for an accession that resolved to
+        # nothing (iSeq 1.9.9's GSA failure mode: exit 0 with no data).
+        raise MetadataError(
+            f"No GSA Run found for {accession} in {csv.name}",
+            f"Remove {csv.name} and retry; GSA may have answered with a partial table",
+        )
 
     for crr in crrs:
         ensure_success_log(ctx.workdir)

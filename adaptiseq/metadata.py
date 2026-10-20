@@ -82,6 +82,16 @@ ENA_RETRY_BASE_S = 2.0    # sleep 2, 4, 8 s between tries
 # extra query.
 ENA_EMPTY_ATTEMPTS = 2
 _sleep = time.sleep       # patched in tests
+# GSA's getRunInfoByCra can answer with a table that lacks a Run (round 2 rep 1,
+# 2026-10-20: CRR120307's table had only the header). Filtered to that Run, the
+# CSV then held no rows and the Run was skipped with exit 0. Retry, then fail.
+GSA_ATTEMPTS = 4
+GSA_RETRY_BASE_S = 2.0
+
+
+def gsa_csv_has_rows(path: Path) -> bool:
+    """True if a GSA metadata CSV has at least one Run row under its header."""
+    return bool(_row2_field1(path, ","))
 
 
 def has_ena_error(path: Path) -> bool:
@@ -271,18 +281,34 @@ def get_gsa_metadata(ctx: RunContext, accession: str) -> Path:
                 f"2. Check the format of {accession}.",
             )
         tmp = ctx.path(f"{accession}.tmp")
-        wget_to_file(
-            GSA_RUNINFO_BY_CRA,
-            tmp,
-            post_data=f"searchTerm={cra}&totalDatas=9999&downLoadCount=9999",
-            user_agent=USER_AGENT_MOZILLA,
-            quiet=True,
-        )
-        _filter_rows_containing(tmp, csv, accession)
-        try:
-            tmp.unlink()
-        except FileNotFoundError:
-            pass
+        for attempt in range(1, GSA_ATTEMPTS + 1):
+            wget_to_file(
+                GSA_RUNINFO_BY_CRA,
+                tmp,
+                post_data=f"searchTerm={cra}&totalDatas=9999&downLoadCount=9999",
+                user_agent=USER_AGENT_MOZILLA,
+                quiet=True,
+            )
+            _filter_rows_containing(tmp, csv, accession)
+            _unlink(tmp)
+            if gsa_csv_has_rows(csv):
+                break
+            if attempt < GSA_ATTEMPTS:
+                delay = GSA_RETRY_BASE_S * 2 ** (attempt - 1)
+                reporter.info(
+                    f"{bright_yellow('Note')}: GSA run-info for {cra} has no row "
+                    f"for {accession} (attempt {attempt}/{GSA_ATTEMPTS}), "
+                    f"retrying in {delay:.0f} s"
+                )
+                _sleep(delay)
+        if not gsa_csv_has_rows(csv):
+            _unlink(csv)
+            raise MetadataError(
+                f"GSA's run-info table for {cra} has no row for {accession} "
+                f"after {GSA_ATTEMPTS} tries",
+                "GSA may be answering with a partial table: retry later, or "
+                f"check that {accession} is public in {cra}",
+            )
 
         if not ctx.path(f"{cra}.metadata.xlsx").is_file():
             reporter.info(

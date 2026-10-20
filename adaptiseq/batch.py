@@ -931,7 +931,7 @@ def _resolve_one(accession: str, options: Options, workdir: Path) -> List[Downlo
     try:
         if is_gsa(accession):
             csv = ctx.metadata_csv(accession)
-            if not (csv.exists() and csv.stat().st_size > 0):
+            if not (csv.exists() and _meta.gsa_csv_has_rows(csv)):
                 csv = _meta.get_gsa_metadata(ctx, accession)
             csv_text = csv.read_text(errors="replace")
             lines = csv_text.splitlines()

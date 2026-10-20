@@ -47,6 +47,15 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.12 (in development)
+- A GSA Run that GSA's run-info table leaves out is no longer skipped with exit 0.
+  The table for a project sometimes comes back without one of its Runs; the
+  Run's metadata CSV then held only a header, nothing was downloaded, and the
+  tool printed "download finished". The run-info query is now retried (4 tries,
+  2/4/8 s apart); if the Run is still missing, the accession fails, goes to
+  `fail.log`, and the exit status is non-zero. A header-only CSV left on disk is
+  fetched again instead of trusted.
+
 ### 0.1.11 (in development)
 - A connect that times out is now handled like a refused connect: while other
   connections to the host are open it marks the host's connection ceiling and
