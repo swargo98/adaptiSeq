@@ -347,6 +347,24 @@ default 363). ENA was about half as fast as in rep 1 for every arm.
 submission arms a sweep job does not run). 3jb: j1 11112, j2 3922, j4 2301, j32 805, j8 939, j64 1105, j16 1106,
 default 1126 s. ENA ran at about half of rep 1's rate all day, and above j8 the 3b times are within 40 % of each other.
 
+Rep 3 (`55064913`, `exp-12-46`, started 21:26 10-19, probe 2.3/26.3/31.4 MB/s, GATE PASS, wheel 0.1.7 `2fa62d66`). ENA's
+portal was down (HTTP 500) 21:18 to 21:24 and again 23:18 to 23:34 (500, 500, then a 60 s timeout):
+
+| panel | arm | wall_s | runs | notes |
+|---|---|---|---|---|
+| 3jr | fixed-j64 | 688 | 238/241 md5-verified, 3 present unverified | ran first, 21:26, as the portal came back: 3 runs "no FASTQ files in the ENA database", fetched as .sra from NCBI's AWS copy; connections mean 10.3, max 53. Rep 1 235, rep 2 298 |
+| 3jr | fixed-j4 | 1111 | 241/241 | clean; connections mean 3.9 |
+| 3jr | fixed-j8 | 522 | 241/241 | clean; connections mean 7.2 |
+| 3jr | fixed-j16 | 316 | 241/241 | clean; connections mean 10.3, max 25 |
+| 3jr | adaptiseq-default | 447 | 241/241 | clean; topdown best 1215 Mbps at 10 workers, held 10; connections mean 9.8, max 20 |
+| 3jr | fixed-j1 | 3727 | 241/241 | 1 md5 mismatch re-fetched in the pool |
+| 3jr | fixed-j2 | 3296 | 228/241 md5-verified, 13 present unverified | started about 23:20, in the second portal outage: 13 runs had no usable ENA metadata and came from SRA; 1 range probe retried, 1 cut-short response; connections mean 2.1 |
+| 3jr | fixed-j32 | **271** | 241/241 | clean; connections mean 16.7, max 25 |
+
+3jr rep 3: j1 3727, j2 3296, j4 1111, j8 522, j16 316, default 447, j32 **271**, j64 688 s. The two arms with SRA
+fallbacks still have every run present (the portal, not the download, failed); their wall times include the
+.sra conversions, so read j64 rep 3 with care.
+
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
 bigger than the connection counts suggest (mean 13.7 vs 20.9), so wait for reps 2 and 3 before reading the curve. Rep 3: GATE PASS, wheel `2a0a6f5c...`, link probe **7.2/55.7/99.7 MB/s** at 1/8/20 connections, 3.4x rep 2's per-connection rate (2.1 MB/s) on the same node, Saturday morning PDT. Either ENA's per-connection limit was raised or eased at the weekend; it changes the absolute times for rep 3, so the paper should say the reps saw different ENA rates and lean on paired ratios. Rep 3 3r order starts with iseq. Rep 2: GATE PASS, wheel `2a0a6f5c...`, link probe 2.1/15.6/21.2 MB/s at 1/8/20 connections (20-connection rate about half of rep 1's). Rep 1: GATE PASS, `versions_e3.txt` shows wheel sha256 `2a0a6f5c...` (the rebuilt one), link probe 2.2/15.6/36.7 MB/s at 1/8/20 connections. The other three are PENDING (Dependency). **Rep 1 re-run (Decision C, user chose re-run, 2026-10-16 22:50 PDT):** `54997452`, `E3_REP_FIRST=1 REPS=1`, same env, wheel (sha256 checked `2a0a6f5c...` at submit), timeouts and `RESULTS_ROOT`, `afterany:54927011`, so it runs last. Same rep number, so the same seeded arm order as rep 1. For the analysis, pass `e3_54997452/e3_results.tsv` in place of `e3_54927001`; keep `e3_54927001` as the outage record. The first waited `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |
