@@ -1,0 +1,29 @@
+D1  PRJNA916347 (overhead-dominated)
+Traceback (most recent call last):
+  File "/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/make_datasets.py", line 202, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/make_datasets.py", line 109, in main
+    d1 = fetch_report("PRJNA916347")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/make_datasets.py", line 55, in fetch_report
+    with urllib.request.urlopen(url, timeout=180) as fh:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rswargo/.conda/envs/adaptiseq_e3_sub/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rswargo/.conda/envs/adaptiseq_e3_sub/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/rswargo/.conda/envs/adaptiseq_e3_sub/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/rswargo/.conda/envs/adaptiseq_e3_sub/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rswargo/.conda/envs/adaptiseq_e3_sub/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/home/rswargo/.conda/envs/adaptiseq_e3_sub/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 500: Internal Server Error

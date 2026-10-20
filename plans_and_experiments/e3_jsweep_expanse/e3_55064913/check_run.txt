@@ -1,0 +1,14 @@
+note    adaptiSeq 0.1.7  wheel sha256 2fa62d66d0217fc8510b0be89bdfb0ab70dfb14b5661ab54d9f18c36560c8572
+note    3jr adaptiseq-fixed-j64 rep3: exit 0, 238/241 runs verified, 3 present but not byte-identical to ENA
+note    3jr adaptiseq-fixed-j2 rep3: exit 0, 228/241 runs verified, 13 present but not byte-identical to ENA
+PROBLEM 3jr adaptiseq-fixed-j20 rep3: 0 rows (want 1)
+PROBLEM 3jr iseq-p8 rep3: 0 rows (want 1)
+PROBLEM 3jr iseq rep3: 0 rows (want 1)
+PROBLEM 3jr kingfisher rep3: 0 rows (want 1)
+PROBLEM 3jr fastq-dl rep3: 0 rows (want 1)
+PROBLEM 3jb adaptiseq-fixed-j20 rep3: 0 rows (want 1)
+PROBLEM 3jb iseq-p8 rep3: 0 rows (want 1)
+PROBLEM 3jb iseq rep3: 0 rows (want 1)
+PROBLEM 3jb kingfisher rep3: 0 rows (want 1)
+PROBLEM 3jb fastq-dl rep3: 0 rows (want 1)
+CHECK FAIL

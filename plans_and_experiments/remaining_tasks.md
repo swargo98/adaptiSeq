@@ -385,6 +385,40 @@ portal was down (HTTP 500) 21:18 to 21:24 and again 23:18 to 23:34 (500, 500, th
 fallbacks still have every run present (the portal, not the download, failed); their wall times include the
 .sra conversions, so read j64 rep 3 with care.
 
+| panel | arm | wall_s | runs | notes |
+|---|---|---|---|---|
+| 3jb | fixed-j2 | 2304 | 8/8 | clean; connections mean 5.0 |
+| 3jb | fixed-j8 | 381 | 8/8 | clean; connections mean 23.0, max 25 |
+| 3jb | fixed-j4 | 1303 | 8/8 | 4 cut short and 3 refused connects, recovered; connections mean 9.4 |
+| 3jb | fixed-j16 | 294 | 8/8 | clean; connections mean 39.8, max 50 |
+| 3jb | fixed-j64 | **240** | 8/8 | clean; connections mean 46.0, max 50 |
+| 3jb | adaptiseq-default | 440 | 8/8 | 1 md5 mismatch re-fetched in the pool; topdown best 1640 Mbps at 8 workers, ended at 1 worker; connections mean 20.4, max 25 |
+| 3jb | fixed-j1 | 6679 | 8/8 | clean; connections mean 2.4 |
+| 3jb | fixed-j32 | 672 | 8/8 | 1 cut short; connections mean 21.4, max 25 |
+
+**Sweep rep 3 done** (`55064913`, 21:26 10-19 to 03:48 10-20, 6 h 22 min; `check_run` "CHECK FAIL" again only lists
+submission arms). 3jb: j1 6679, j2 2304, j4 1303, j8 381, j16 294, j32 672, default 440, j64 **240** s.
+
+**Fixed-j sweep summary, 0.1.7, median of 3 reps (seconds; ratio to the panel's best median):**
+
+| -j | 3jr reps | 3jr median | 3jb reps | 3jb median |
+|---|---|---|---|---|
+| 1 | 4197 / 10554 / 3727 | 4197 (15.5x) | 9708 / 11112 / 6679 | 9708 (22.7x) |
+| 2 | 3264 / 3104 / 3296 | 3264 (12.0x) | 3291 / 3922 / 2304 | 3291 (7.7x) |
+| 4 | 1250 / 2176 / 1111 | 1250 (4.6x) | 1627 / 2301 / 1303 | 1627 (3.8x) |
+| 8 | 505 / 639 / 522 | 522 (1.9x) | 731 / 939 / 381 | 731 (1.7x) |
+| 16 | 440 / 723 / 316 | 440 (1.6x) | 469 / 1106 / 294 | 469 (1.1x) |
+| 32 | 163 / 593 / 271 | **271 (1.0x)** | 859 / 805 / 672 | 805 (1.9x) |
+| 64 | 235 / 298 / 688 | 298 (1.1x) | 428 / 1105 / 240 | **428 (1.0x)** |
+| default (topdown) | 363 / 556 / 447 | 447 (1.6x) | 581 / 1126 / 440 | 581 (1.4x) |
+
+Every run present in every arm; md5-verified everywhere except 3jr rep 3 j2 (13 runs) and j64 (3 runs), which came
+from SRA during ENA portal outages. Reading: below -j 8 time falls roughly in proportion to -j on both panels
+(ENA gives about 2 MB/s per connection). Above it the curve is flat and noisy: on 3jr j32 and j64 are within 10 %,
+on 3jb j16 and j64 are, and j32 lost 3jb in all three reps (it held 25 connections, while j16 and j64 reached 50).
+ENA moved every arm about 2x between reps (rep 2 was the slow day), so the order above j16 is not reliable from
+3 reps. The topdown default sits at 1.4x to 1.6x of the best fixed -j on both panels.
+
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
 bigger than the connection counts suggest (mean 13.7 vs 20.9), so wait for reps 2 and 3 before reading the curve. Rep 3: GATE PASS, wheel `2a0a6f5c...`, link probe **7.2/55.7/99.7 MB/s** at 1/8/20 connections, 3.4x rep 2's per-connection rate (2.1 MB/s) on the same node, Saturday morning PDT. Either ENA's per-connection limit was raised or eased at the weekend; it changes the absolute times for rep 3, so the paper should say the reps saw different ENA rates and lean on paired ratios. Rep 3 3r order starts with iseq. Rep 2: GATE PASS, wheel `2a0a6f5c...`, link probe 2.1/15.6/21.2 MB/s at 1/8/20 connections (20-connection rate about half of rep 1's). Rep 1: GATE PASS, `versions_e3.txt` shows wheel sha256 `2a0a6f5c...` (the rebuilt one), link probe 2.2/15.6/36.7 MB/s at 1/8/20 connections. The other three are PENDING (Dependency). **Rep 1 re-run (Decision C, user chose re-run, 2026-10-16 22:50 PDT):** `54997452`, `E3_REP_FIRST=1 REPS=1`, same env, wheel (sha256 checked `2a0a6f5c...` at submit), timeouts and `RESULTS_ROOT`, `afterany:54927011`, so it runs last. Same rep number, so the same seeded arm order as rep 1. For the analysis, pass `e3_54997452/e3_results.tsv` in place of `e3_54927001`; keep `e3_54927001` as the outage record. The first waited `afterok` on `54908326` (so a failed rebuild or test stops the whole chain); each later one `afterany` on the one before, so no two overlap. Results: `e3_submission_expanse/e3_<jobid>/` |

@@ -1,0 +1,17 @@
+panel	rep	seed	order_idx	arm
+3jr	3	20261013:3jr:3	1	adaptiseq-fixed-j64
+3jr	3	20261013:3jr:3	2	adaptiseq-fixed-j4
+3jr	3	20261013:3jr:3	3	adaptiseq-fixed-j8
+3jr	3	20261013:3jr:3	4	adaptiseq-fixed-j16
+3jr	3	20261013:3jr:3	5	adaptiseq-default
+3jr	3	20261013:3jr:3	6	adaptiseq-fixed-j1
+3jr	3	20261013:3jr:3	7	adaptiseq-fixed-j2
+3jr	3	20261013:3jr:3	8	adaptiseq-fixed-j32
+3jb	3	20261013:3jb:3	1	adaptiseq-fixed-j2
+3jb	3	20261013:3jb:3	2	adaptiseq-fixed-j8
+3jb	3	20261013:3jb:3	3	adaptiseq-fixed-j4
+3jb	3	20261013:3jb:3	4	adaptiseq-fixed-j16
+3jb	3	20261013:3jb:3	5	adaptiseq-fixed-j64
+3jb	3	20261013:3jb:3	6	adaptiseq-default
+3jb	3	20261013:3jb:3	7	adaptiseq-fixed-j1
+3jb	3	20261013:3jb:3	8	adaptiseq-fixed-j32
