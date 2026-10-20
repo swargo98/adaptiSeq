@@ -1,4 +1,4 @@
-# Handoff (written 2026-10-19 for a fresh Claude Code session)
+# Handoff (updated 18:55 PDT 2026-10-19 for a fresh Claude Code session)
 
 Read this, then `plans_and_experiments/remaining_tasks.md` (the running log: every
 job, result row and decision, newest material near the top of each section).
@@ -22,8 +22,8 @@ job, result row and decision, newest material near the top of each section).
   `datasets/`, or the conda env it uses. To change `bench/e3/run_e3.sh` while jobs run,
   copy, edit the copy, and `mv` it over (new inode; running bash keeps the old file).
 - Two conda envs: `adaptiseq_e3_sub` holds the 0.1.7 wheel the **sweep** uses (do not
-  reinstall it until the sweep ends); `adaptiseq_e3_dev` holds the newest build (0.1.9
-  now; the tournament uses it). Build a wheel with
+  reinstall it until the sweep ends); `adaptiseq_e3_dev` holds the newest build
+  (0.1.10 `25d13c2f`; the knee smoke and round 2 use it: do not rebuild it until round 2 ends). Build a wheel with
   `ENV_NAME=adaptiseq_e3_dev sbatch --export=ALL bench/e3/setup_expanse.sbatch`
   (builds from the checkout's `__version__`, installs into that env, runs both test
   suites and the README examples). Only rebuild the dev env when no tournament job is
@@ -51,82 +51,77 @@ job, result row and decision, newest material near the top of each section).
   paper's Table 1 needs a dated note.
 - 0.1.7 on panel 3b: fixed -j 20 288 to 379 s, default 378 to 529 s (0.1.4: 1515 to 10586).
 
-## 3. Running and queued (as of writing)
+## 3. Running and queued (as of 18:50 PDT 2026-10-19)
 
-| job | what | results | on finish |
-|---|---|---|---|
-| `55064912` | fixed-j sweep rep 2 (0.1.7, env `_sub`), panels 3jr, 3jb | `e3_jsweep_expanse/e3_55064912/` | record rows, move `slurm_e3_<id>.*` into the dir, commit the dir (exclude >20 MB raw logs) |
-| `55064913` | sweep rep 3, `afterany:55064912` | `e3_jsweep_expanse/e3_55064913/` | same; check gate + wheel sha `2fa62d66` at start |
-| tournament round 2 | see section 5; submit after the knee tests pass, chained `afterany:55064913` | `e3_round2_expanse/` | record rows, score |
+| job | what | env / wheel | results | on finish |
+|---|---|---|---|---|
+| `55064913` | fixed-j sweep **rep 3** (last), panels 3jr + 3jb | `adaptiseq_e3_sub`, 0.1.7 `2fa62d66` | `e3_jsweep_expanse/e3_55064913/` | record rows (as reps 1-2 in `remaining_tasks.md`), move `slurm_e3_<id>.*` into the dir, commit the dir (gzip raw logs >20 MB), then summarise the sweep (median per -j per panel over 3 reps) |
+| `55090015` | **knee smoke**: knee alone on 4s (NCBI) and 4g (GSA), runs beside the sweep | `adaptiseq_e3_dev`, 0.1.10 `25d13c2f` | `e3_knee_smoke/e3_55090015/` | check knee completes 8/8 and 6/6, its `adaptive worker summary` (connections it settled at) and connection counts; compare with round-1 arms. If knee misbehaves: `scancel` round 2 before it starts, fix, rebuild, resubmit |
+| `55090016`, `55090017`, `55090018` | **round 2** reps 1-3, chained, first `afterany:55064913` | `adaptiseq_e3_dev`, 0.1.10 | `e3_round2_expanse/e3_<id>/` | record rows per panel, then score (section 5) |
+
+Sweep reps take 8 to 11.5 h (ENA was half as fast on 10-19); round 2 is about 5 to 6 h per rep (6 panels x 7 arms).
+Expect sweep rep 3 to end around 06:00 to 09:00 PDT 10-20 and round 2 around 01:00 to 03:00 PDT 10-21.
 
 Watch a job with `ROOT=<results root> MIN_NEW=<n> bash tools/watch_rows.sh <jobid>`
-(run_in_background). Per-row routine: inspect the arm's log
-(`sed 's/\x1b\[[0-9;]*m//g'`, grep for `MD5 mismatch|probe attempt|Single-conn|failed
-after|ContentLengthError|adaptive worker summary`) and its `conc_*.tsv` (column 4 =
-archive connections), add a row to the right table in `remaining_tasks.md` (python
-`str.replace` on a unique anchor), commit, push.
+(run_in_background; it returns on a gate line, on n new rows, or at job end, and appends
+an ENA portal probe to `ena_portal_status_20261015.tsv` every 5 min). Per-row routine:
+inspect the arm's log (`sed 's/\x1b\[[0-9;]*m//g'`, grep `MD5 mismatch|probe attempt|Single-conn|failed
+after|ContentLengthError|attempt 3/3 failed|adaptive worker summary`) and its `conc_*.tsv`
+(column 4 = archive connections; mean/max), add rows to the right table in
+`remaining_tasks.md` (python `str.replace` on a unique anchor), commit, push. Batch rows
+(e.g. MIN_NEW=4 or a whole panel) rather than one commit per row.
 
 ## 4. Results so far
 
-Sweep (0.1.7, all arms complete and md5-verified):
+Sweep (0.1.7, every arm complete and md5-verified; seconds):
 
-| -j | 3r rep 1 | 3r rep 2 | 3b rep 1 |
-|---|---|---|---|
-| 1 | 4197 | 10554 | 9708 |
-| 2 | 3264 | 3104 | 3291 |
-| 4 | 1250 | 2176 | 1627 |
-| 8 | 505 | 639 | 731 |
-| 16 | 440 | 723 | 469 |
-| 32 | 163 | 593 | 859 |
-| 64 | 235 | 298 | 428 |
-| default (topdown) | 363 | 556 | 581 |
+| -j | 3r rep 1 | 3r rep 2 | 3b rep 1 | 3b rep 2 |
+|---|---|---|---|---|
+| 1 | 4197 | 10554 | 9708 | 11112 |
+| 2 | 3264 | 3104 | 3291 | 3922 |
+| 4 | 1250 | 2176 | 1627 | 2301 |
+| 8 | 505 | 639 | 731 | 939 |
+| 16 | 440 | 723 | 469 | 1106 |
+| 32 | 163 | 593 | 859 | 805 |
+| 64 | 235 | 298 | 428 | 1105 |
+| default (topdown) | 363 | 556 | 581 | 1126 |
 
-Tournament round 1 (0.1.9, frozen candidates, 3 reps, `e3_tournament_expanse/`,
-`python bench/e3/score_tournament.py e3_tournament_expanse/e3_*/e3_results.tsv`):
-NCBI (`.sra`, link-limited, all within 13 %) and GSA (3-4x noise between reps). Score
-(median / best median; worst over panels): bottomup 1.045, greedy 1.351, fixed-j20 1.868,
-topdown 1.885, budget 2.318. `budget` lost GSA partly to my mistake (its 0.1.9
-"3 cut-short responses = distress" rule; GSA cuts streams at any load). ENA panels of
-round 1 were never run: they are folded into round 2.
+Tournament round 1 (0.1.9, NCBI + GSA only, 3 reps, `e3_tournament_expanse/`): NCBI is
+link-limited (all arms within 13 %); GSA swings 3-4x between reps. By the round-2 rule
+(`python bench/e3/score_round2.py e3_tournament_expanse/e3_*/e3_results.tsv`): bottomup 3
+wins of 6 and the only one qualifying, topdown 4 wins (GSA panel median 1.89x), greedy 3,
+budget 2, fixed-j20 2. `budget` lost GSA partly to my mistake (its "3 cut-short responses =
+distress" rule; GSA cuts streams at any load). An exploratory 0.1.8 rep is in
+`e3_ctrl_expanse/` (does not count).
 
 Source speeds (`diag_sources/out_55066512/`): NCBI AWS 32 MB/s per connection (link-
-limited near 16 connections), GSA 9.5 on 1 / 30 on 8 (saturates), ENA about 2 per
-connection.
+limited near 16), GSA 9.5 on 1 / 30 on 8 (saturates), ENA about 2 per connection.
 
 ## 5. The current task: a controller that wins most cases with few connections
 
 User, 2026-10-19: "I want a controller that beat others in most of the cases for every
 experiment. maintaining as low connection as possible."
 
-- New controller `knee` (uncommitted when this was written; see `git status`):
-  `adaptiseq/batch.py` `_run_knee`, `--controller knee`. Starts at 4 connections, doubles
-  while each doubling earns half its proportional gain (3 s windows), tries the midpoint,
-  settles on the smallest budget that paid, then holds and re-tests +-25 % every third
-  8 s window; distress = 429/503/refused-with-nothing-open/dropped (not cut-short); no
-  judging in the tail. With `-j` unset it may use a pool of 64 workers
-  (`Options.jobs_explicit`, `KNEE_POOL`). `segmented._run_segments` now fills spare
-  budget at once. Tests: `tests/test_controllers.py` (knee section). Suite job
-  `55082561`; mixed dataset job `55082563` (`datasets/M1_mixed.*`).
-- Next steps:
-  1. If `55082561` passes: commit (bump `__version__` to 0.1.10, README "0.1.10" notes),
-     push, build 0.1.10 in `adaptiseq_e3_dev`.
-  2. Optional quick smoke of knee alone on 4s and 4g (non-ENA, can run beside the
-     sweep): `E3_CONTROLLERS=knee E3_CTRL_FIXED= PANELS="4s 4g" REPS=1 ...`.
-  3. Round 2, 3 reps, one job per rep, chained `afterany:55064913` (after the sweep),
-     `ENV_NAME=adaptiseq_e3_dev E3_ASEQ_WHEEL=<0.1.10 wheel> E3_TIMEOUT_CTRL=7200
-     RESULTS_ROOT=$PWD/e3_round2_expanse PANELS="4r 4b 4s 4g 4h 4m" E3_REP_FIRST=r REPS=1
-     E3_CTRL_FIXED="20 64" sbatch --export=ALL --exclude=exp-10-14 bench/e3/e3_expanse.sbatch`.
-     Arms: knee, topdown, bottomup, budget, greedy + fixed-j20, fixed-j64. About 5 h per rep.
-     4h = held-out ENA panel (D3_seg, 2 x 11.5 GB), 4m = mixed ENA + GSA list.
-  4. Score with the user's criterion (write it into `remaining_tasks.md` before the data):
-     a case = (panel, rep); an arm wins a case if within 10 % of the fastest arm in it;
-     rank by cases won, ties by lower mean archive connections (`conc_*.tsv` column 4);
-     disqualify an arm more than 1.5x the fastest in any case, or with any run not
-     md5-verified. Extend `bench/e3/score_tournament.py` for this.
-  5. The winner becomes the default, then the paper's 5-rep chain (3r + 3b, all tools)
-     runs on that build.
-- Caveat to keep in the paper: knee was designed on the round-1 panels; round 2 uses
-  fresh reps, a held-out panel and a mixed list.
+- `knee` controller, 0.1.10 (`9eb5bca`; `adaptiseq/batch.py` `_run_knee`,
+  `--controller knee`): starts at 4 connections, doubles while each doubling earns half its
+  proportional gain (3 s windows), tries the midpoint, settles on the smallest budget that
+  paid, then holds and re-tests +-25 % every third 8 s window; distress = 429/503 /
+  refused-with-nothing-open / dropped (not cut-short); no judging in the tail; with `-j`
+  unset the pool may grow to 64 (`Options.jobs_explicit`, `KNEE_POOL`). Not the default.
+- Round 2 (submitted): arms knee, topdown, bottomup, budget, greedy + fixed-j20, fixed-j64;
+  panels 4r, 4b (ENA), 4s (NCBI), 4g (GSA), 4h (held-out ENA, D3_seg 2 x 11.5 GB), 4m
+  (mixed: 13 ENA + 2 GSA runs). Criterion fixed before the data, in `remaining_tasks.md`
+  and `bench/e3/score_round2.py`: a case = (panel, rep); a win = within 10 % of the
+  fastest arm in that case; rank by wins, ties by lower mean archive connections;
+  disqualified if any run is not md5-verified or the median ratio on any panel > 1.5.
+  Score with `python bench/e3/score_round2.py e3_round2_expanse/e3_*/e3_results.tsv`.
+- After round 2: report the ranking to the user and recommend. Making the winner the
+  default (`Options`/`controller_mode` default and README) is the user's decision; then
+  the paper's 5-rep chain (3r + 3b, all tools, `ARM_SET=submission`) on that build,
+  results root `e3_submission_<version>_expanse`. Don't change a candidate while a round
+  runs; a fix means a new round with fresh reps.
+- Caveat for the paper: knee was designed on the round-1 panels; round 2 uses fresh reps,
+  a held-out panel and a mixed list.
 
 ## 6. Open items for the user (not yours to decide)
 
