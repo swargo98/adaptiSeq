@@ -57,7 +57,7 @@ job, result row and decision, newest material near the top of each section).
 |---|---|---|---|---|
 | `55064913` | fixed-j sweep **rep 3** (last), panels 3jr + 3jb | `adaptiseq_e3_sub`, 0.1.7 `2fa62d66` | `e3_jsweep_expanse/e3_55064913/` | record rows (as reps 1-2 in `remaining_tasks.md`), move `slurm_e3_<id>.*` into the dir, commit the dir (gzip raw logs >20 MB), then summarise the sweep (median per -j per panel over 3 reps) |
 | `55090015` | knee smoke on 0.1.10 (done): 4s 8/8 94 s at 16 connections; 4g 6/6 1408 s, fell to 2-5 connections because GSA connect timeouts counted as pushback. Fixed in 0.1.11 (`011a314`); old round 2 `55090016`-`18` cancelled before starting | `adaptiseq_e3_dev`, 0.1.10 | `e3_knee_smoke/e3_55090015/` | done |
-| `55096326` | **knee smoke on 0.1.11**: knee alone on 4s and 4g, beside the sweep | `adaptiseq_e3_dev`, 0.1.11 `1b9ce128` | `e3_knee_smoke/e3_55096326/` | check 8/8 and 6/6, the connections it holds on GSA (should stay near 8, not drift to 2-5), "attempt n refused" lines; if knee misbehaves, `scancel` round 2 before it starts |
+| `55096326` | **knee smoke on 0.1.11**: knee alone on 4s and 4g, beside the sweep | `adaptiseq_e3_dev`, 0.1.11 `1b9ce128` | `e3_knee_smoke/e3_55096326/` | **done, passed**: 4s 8/8 87 s at 16; 4g 6/6 331 s, budget 64, 26 mean / 48 max connections |
 | `55096327`, `55096328`, `55096329` | **round 2** reps 1-3 on 0.1.11, chained, first `afterany:55064913` and the smoke | `adaptiseq_e3_dev`, 0.1.11 | `e3_round2_expanse/e3_<id>/` | record rows per panel, then score (section 5) |
 
 Sweep reps take 8 to 11.5 h (ENA was half as fast on 10-19); round 2 is about 5 to 6 h per rep (6 panels x 7 arms).

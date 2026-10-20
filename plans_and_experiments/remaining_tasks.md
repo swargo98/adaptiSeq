@@ -294,6 +294,20 @@ network suites and README examples pass). **Resubmitted:** knee smoke `55096326`
 first `afterany` on the sweep and the smoke, the others chained. If the new smoke shows a knee problem, cancel them
 before they start.
 
+**Knee smoke on 0.1.11 `55096326` (`exp-7-52`, 03:02 to 03:11 PDT 10-20 = 18:00 Beijing, `e3_knee_smoke/e3_55096326/`):**
+
+| panel | arm | wall_s | runs | connections mean / max | controller |
+|---|---|---|---|---|---|
+| 4s NCBI | knee | 87.0 | 8/8 | 15.3 / 32 while downloading | 4c 893 Mbps, 8c 3832, 16c 4600: settled at 16 again |
+| 4g GSA | knee | **331** | 6/6 | 26.1 / 48 (per minute 28, 45, 42, 27, then the tail) | doubled to a budget of 64 (best 1452 Mbps); 34 cut-short responses, no connect timeouts, no refusals |
+
+Knee passes: everything verified; on GSA every doubling paid this time (GSA was fast: 331 s beats every round-1 GSA
+arm, best 385), and actual connections were bounded by 6 files x 8 segments = 48, about what fixed -j 20 used in
+round 1. The connect-timeout fix was not exercised (none occurred); the unit tests cover it. Noted, not changed
+(a candidate change would need another rebuild on one sample): phase 1 keeps a doubling when the *old* budget is
+filled (`used2 >= 0.8 * budget`, `batch.py:561`), not the new one, which is how the budget reached 64 with 48 open;
+it opens no extra connections. Round 2 (`55096327`-`29`) left to run.
+
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
 Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa62d66`):
