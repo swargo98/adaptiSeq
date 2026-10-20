@@ -239,7 +239,7 @@ dependencies:
   - zlib-ng=2.3.3=hce19668_1
   - zstd=1.5.7=hb78ec9c_7
   - pip:
-    - adaptiseq==0.1.9
+    - adaptiseq==0.1.10
     - aioftp==0.28.0
     - aiohappyeyeballs==2.7.1
     - aiohttp==3.14.5

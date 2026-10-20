@@ -260,7 +260,12 @@ above 1.5x). Candidates: knee (new, 0.1.10, `9eb5bca`), topdown, bottomup, budge
 fixed-j64 (the sweep's best on 3b and close to best on 3r). Panels: 4r, 4b (ENA), 4s (NCBI), 4g (GSA), 4h (held-out
 ENA, D3_seg, 2 x 11.5 GB, not used in designing knee), 4m (mixed: 13 ENA runs + 2 GSA runs in one list). 3 reps, one job
 each, after the sweep. Round 1 by this criterion (NCBI and GSA only, for reference): bottomup 3 wins of 6 (qualifies),
-topdown 4 wins but a GSA panel median of 1.89x, greedy 3, budget 2, fixed-j20 2. iSeq 1.9.9 presumably has the same
+topdown 4 wins but a GSA panel median of 1.89x, greedy 3, budget 2, fixed-j20 2.
+**Submitted 18:50 10-19:** 0.1.10 wheel `25d13c2f...` (`setup_expanse_55085659`, env `adaptiseq_e3_dev`; suites and
+README pass). Smoke `55090015`: knee alone on 4s and 4g (`e3_knee_smoke/`), beside the sweep (non-ENA). Round 2 jobs 55090016 55090017 55090018:
+`PANELS="4r 4b 4s 4g 4h 4m"`, `E3_CTRL_FIXED="20 64"`, `E3_TIMEOUT_CTRL=7200`, one rep each, chained after sweep rep 3
+(`afterany:55064913`), `RESULTS_ROOT=e3_round2_expanse`. If the smoke shows a knee problem, cancel these before
+they start, fix, rebuild, resubmit. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
