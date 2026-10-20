@@ -268,6 +268,26 @@ README pass). Smoke `55090015`: knee alone on 4s and 4g (`e3_knee_smoke/`), besi
 they start, fix, rebuild, resubmit. iSeq 1.9.9 presumably has the same
 GSA problem; check before the paper's Table 1 claims GSA support for it.
 
+**Knee smoke `55090015` (0.1.10 `25d13c2f`, `exp-2-23`, 21:46 to 22:13 PDT 10-19, `e3_knee_smoke/e3_55090015/`):**
+
+| panel | arm | wall_s | runs | connections mean / max | controller |
+|---|---|---|---|---|---|
+| 4s NCBI | knee | 93.7 | 8/8 | 16.2 / 32 while downloading | 4c 1286 Mbps, 4c 2425, 8c 3761, 16c 4037: settled at 16, the link's knee. Round 1: 79 to 110 s |
+| 4g GSA | knee | 1408 | 6/6 | 4.9 / 16 | best 641 Mbps at 8, then down to 4 to 6 for the rest (per-minute mean 11.5, 10.6, 8.7, 7.8, then 2 to 5). Round 1 GSA medians 511 to 1184 s |
+
+**Knee misbehaved on GSA, cause found:** 22 cut-short responses (ignored, as designed) and 9 "Segment n attempt 1
+refused: Connection timeout to host" at 2 to 11 open connections. `aiohttp.ConnectionTimeoutError` is not a
+`ClientConnectorError`, so a connect timeout skipped the ceiling path (`note_refused`) and fell into the generic
+`ClientConnectionError` branch of `download_segment_streaming`, which called `note_pushback(host, "refused")`
+unconditionally: the host's cap halved, the host blocked for a backoff, and knee (and budget) read the "refused"
+trip as distress and cut the budget 30 %. Knee's design says distress is a refusal *with nothing open*, so this
+was a deviation from its own spec, and it applied to every arm's engine. **Fix (0.1.11):** `CONNECT_ERRORS` =
+`ClientConnectorError` + `ConnectionTimeoutError` takes the refused-connect path in both the range probe and the
+segment loop (ceiling while others are open, pushback with nothing open); dropped streams
+(`ServerDisconnectedError`) are still distress. Tests in `tests/test_connection_ceiling.py`. **Round 2 jobs
+55090016-18 cancelled 22:25 10-19 before they started** (they waited on the sweep). Rebuild `55094163`
+(`ENV_NAME=adaptiseq_e3_dev`); then a fresh knee smoke and round 2 on 0.1.11, all arms on the new engine.
+
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
 Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa62d66`):

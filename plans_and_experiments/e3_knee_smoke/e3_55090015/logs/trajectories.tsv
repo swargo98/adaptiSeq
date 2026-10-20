@@ -1,0 +1,3 @@
+arm	rep	line
+adaptiseq-ctrl-knee	rep1	[32mNote[0m: adaptive worker summary: 8 probe(s); best 4088 Mbps at 16 connection(s); last 3571 Mbps at 16 connection(s); recent: 4c@1286Mbps, 4c@2425Mbps, 8c@3761Mbps, 16c@4037Mbps, 16c@4042Mbps, 16c@4035Mbps, 16c@4088Mbps, 16c@3571Mbps
+adaptiseq-ctrl-knee	rep1	[32mNote[0m: adaptive worker summary: 165 probe(s); best 641 Mbps at 8 connection(s); last 43 Mbps at 6 connection(s); recent: 5c@13Mbps, 5c@13Mbps, 6c@12Mbps, 5c@11Mbps, 5c@149Mbps, 5c@144Mbps, 4c@19Mbps, 5c@33Mbps, 5c@34Mbps, 5c@113Mbps, 6c@22Mbps, 6c@43Mbps

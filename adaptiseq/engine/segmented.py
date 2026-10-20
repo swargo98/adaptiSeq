@@ -42,6 +42,13 @@ PUSHBACK_STATUSES = (429, 503)
 # and this many times before it counts as a failed attempt.
 CEILING_PAUSE_S = 0.5
 MAX_CEILING_WAITS = 120
+# A connect that timed out never reached the server, like a refused one, so it
+# takes the same path: a ceiling while other connections to the host are open,
+# pushback with nothing open. GSA times connects out now and then at any load
+# (knee smoke 55090015: nine in 23 min at 2 to 11 connections), and as plain
+# pushback each one halved the host's cap. aiohttp < 3.10 has no separate class.
+CONNECT_ERRORS = (aiohttp.ClientConnectorError,
+                  getattr(aiohttp, "ConnectionTimeoutError", aiohttp.ClientConnectorError))
 # Smallest segment a batch-tail split will make (see calculate_segments).
 MIN_SPLIT = 64 * 1024 * 1024
 # A running segment is split only if each half would get at least this much,
@@ -300,7 +307,7 @@ class SegmentedDownloader:
                         return None, False
             except asyncio.CancelledError:
                 raise
-            except aiohttp.ClientConnectorError as e:
+            except CONNECT_ERRORS as e:
                 if (await self.host_guard.note_refused(self.host)
                         and ceiling_waits < MAX_CEILING_WAITS):
                     ceiling_waits += 1
@@ -416,7 +423,7 @@ class SegmentedDownloader:
                 return segment_id, bytes_written
             except asyncio.CancelledError:
                 raise
-            except aiohttp.ClientConnectorError as e:
+            except CONNECT_ERRORS as e:
                 # Refused at connect: nothing was written. If other connections to
                 # the host are open this is its connection ceiling; the guard now
                 # holds the cap there, so wait for a slot without spending one of

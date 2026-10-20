@@ -1,0 +1,2 @@
+arm,n,wall_med,wall_iqr,MBps_med,MBps_iqr,runs_ok_med,runs_exp,peak_rss_MB,cpu_pct_med,conc_med,conc_max,conc_host_max,workers_max,timeouts,nonzero_rc,formats,success_pct
+adaptiseq-ctrl-knee,1,1408.3,0.0,8.61,0.0,6.0,6,67.0,6.0,4.0,16,16,0,0,0,gz,100.0

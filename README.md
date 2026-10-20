@@ -47,6 +47,15 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
+### 0.1.11 (in development)
+- A connect that times out is now handled like a refused connect: while other
+  connections to the host are open it marks the host's connection ceiling and
+  the segment waits for a free slot; with nothing open it is pushback, as
+  before. It used to count as pushback every time, halving the host's
+  connection cap and blocking the host for a backoff. GSA times connects out
+  now and then at any load, so each timeout cut the `knee` and `budget`
+  controllers' connection budget by 30 %.
+
 ### 0.1.10 (in development)
 - **New controller candidate** `--controller knee`: keeps every worker active and
   finds the fewest connections that give near-full speed. It starts at 4,

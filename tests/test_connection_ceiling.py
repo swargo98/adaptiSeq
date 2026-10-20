@@ -94,3 +94,60 @@ def test_ceiling_refusals_do_not_spend_segment_attempts(monkeypatch, tmp_path):
     run(main())
     # 4 waits at the ceiling, then the 2 real attempts
     assert guard.refusals == 4 + 2
+
+
+class _TimeoutSession:
+    """A session whose every connect times out (GSA, knee smoke 55090015)."""
+
+    def get(self, *args, **kwargs):
+        raise aiohttp.ConnectionTimeoutError("Connection timeout to host")
+
+
+needs_timeout_class = pytest.mark.skipif(
+    not hasattr(aiohttp, "ConnectionTimeoutError"),
+    reason="aiohttp < 3.10 has no ConnectionTimeoutError")
+
+
+@needs_timeout_class
+def test_connect_timeouts_wait_at_the_ceiling_like_refusals(monkeypatch, tmp_path):
+    monkeypatch.setattr(segmented, "MAX_CEILING_WAITS", 4)
+    monkeypatch.setattr(segmented, "CEILING_PAUSE_S", 0.0)
+    guard = _CeilingGuard()
+
+    async def main():
+        d = SegmentedDownloader(_TimeoutSession(), "https://h.example/f.bin",
+                                str(tmp_path / "f.bin"), host_guard=guard, max_retries=2)
+        fd = os.open(tmp_path / "f.part", os.O_CREAT | os.O_RDWR)
+        try:
+            with pytest.raises(aiohttp.ConnectionTimeoutError):
+                await d.download_segment_streaming(0, 0, 99, fd, {})
+        finally:
+            os.close(fd)
+
+    run(main())
+    assert guard.refusals == 4 + 2
+
+
+@needs_timeout_class
+def test_connect_timeout_with_connections_open_is_not_pushback(monkeypatch, tmp_path):
+    # Used to be plain pushback: the host's cap halved and the host blocked, and
+    # the knee and budget controllers read it as distress and cut 30 %.
+    monkeypatch.setattr(segmented, "MAX_CEILING_WAITS", 0)
+    guard = HostGuard(default_cap=40, base_backoff=0.05)
+
+    async def main():
+        d = SegmentedDownloader(_TimeoutSession(), "https://h.example/f.bin",
+                                str(tmp_path / "f.bin"), host_guard=guard, max_retries=1)
+        for _ in range(5):
+            await guard.acquire(d.host)
+        fd = os.open(tmp_path / "f.part", os.O_CREAT | os.O_RDWR)
+        try:
+            with pytest.raises(aiohttp.ConnectionTimeoutError):
+                await d.download_segment_streaming(0, 0, 99, fd, {})
+        finally:
+            os.close(fd)
+        assert [k for _h, k, _d in guard.trips] == ["ceiling"]
+        assert guard.cap_of(d.host) == 5
+        assert not guard.is_tripped(d.host)
+
+    run(main())
