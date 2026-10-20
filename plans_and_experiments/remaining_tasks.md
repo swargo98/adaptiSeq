@@ -345,6 +345,33 @@ workers like all adaptive arms) meet an occasional refusal near 25 and stay ther
 log.info, so the warning-level run logs cannot show it. It applies to all candidates equally, so round 2 stays
 as is; check afterwards with an info-level knee run on 4b (one job, not beside an ENA job).
 
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 1 | 4s NCBI | bottomup | 84 | 1.06 | 8/8 | 11.1 / 32 | best at 2 workers |
+| 1 | 4s NCBI | greedy | 80 | 1.01 | 8/8 | 27.3 / 64 | |
+| 1 | 4s NCBI | topdown | **79** | 1.00 | 8/8 | 22.3 / 64 | 4 workers |
+| 1 | 4s NCBI | fixed-j20 | 79 | 1.00 | 8/8 | 27.7 / 64 | |
+| 1 | 4s NCBI | fixed-j64 | 86 | 1.09 | 8/8 | 29.3 / 64 | |
+| 1 | 4s NCBI | budget | 87 | 1.10 | 8/8 | 8.3 / 20 | held 16 |
+| 1 | 4s NCBI | knee | 86 | 1.09 | 8/8 | 10.6 / 32 | settled at 16 |
+| 1 | 4g GSA | fixed-j20 | **358** | 1.00 | 6/6 | 23.1 / 48 | 48 cut short |
+| 1 | 4g GSA | bottomup | 479 | 1.34 | 6/6 | 10.7 / 25 | best at 1 worker; 21 cut short, 1 probe retry |
+| 1 | 4g GSA | budget | 1543 | 4.31 | 6/6 | 6.4 / 25 | down to 7 connections; 42 cut short, 3 segments out of attempts |
+| 1 | 4g GSA | greedy | 421 | 1.18 | 6/6 | 21.3 / 48 | 36 cut short |
+| 1 | 4g GSA | topdown | 670 | 1.87 | **5/6**, exit 0 | 16.2 / 40 | **CRR120307 never downloaded**; see below |
+| 1 | 4g GSA | knee | 524 | 1.46 | 6/6 | 16.7 / 33 | best 743 Mbps at 16, budget 33 at the end; 38 cut short |
+| 1 | 4g GSA | fixed-j64 | 519 | 1.45 | 6/6 | 20.9 / 48 | 54 cut short |
+
+**Silent GSA failure (adaptiSeq bug, found in 4g rep 1 topdown):** "batch downloading 5 file(s) across 6
+accession(s)"; CRR120307's metadata CSV existed but held no row for it (GSA's `getRunInfoByCra` answer evidently
+lacked the run), so `_process_gsa` (`core.py:54`) found no CRRs, looped zero times, printed "CRR120307 download
+finished" and the process exited 0 with the run missing. Nothing checks that a requested GSA accession resolved
+to at least one run. The same class of fault the paper reports for iSeq (exit 0 with no data). Not controller
+behaviour: it happened at resolution, before topdown chose anything. **By the fixed criterion topdown is
+disqualified** (a run not md5-verified); report it with this cause. Fix after the round (no build changes during
+it): a GSA accession that resolves to no runs is refetched (the run-info query retried, like the md5 list), and
+fails with a non-zero exit if it still has none; add a test.
+
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
 Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa62d66`):
