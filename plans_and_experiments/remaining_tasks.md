@@ -308,6 +308,22 @@ round 1. The connect-timeout fix was not exercised (none occurred); the unit tes
 filled (`used2 >= 0.8 * budget`, `batch.py:561`), not the new one, which is how the budget reached 64 with 48 open;
 it opens no extra connections. Round 2 (`55096327`-`29`) left to run.
 
+**Round 2 rows (0.1.11 `1b9ce128`, `e3_round2_expanse/`).** Rep 1 `55096327` (`exp-12-53`, from 04:28 PDT 10-20,
+probe 1.8/14.8/25.2 MB/s, GATE PASS). Ratio = wall / fastest in the case; a win is <= 1.10.
+
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 1 | 4r ENA small | topdown | 689 | 1.86 | 241/241 | 12.0 / 20 | best 392 Mbps at 5 workers, last 3; 1 md5 mismatch re-fetched |
+| 1 | 4r ENA small | budget | 404 | 1.09 | 241/241 | 15.4 / 23 | best at 30 connections, held 23 |
+| 1 | 4r ENA small | fixed-j20 | **371** | 1.00 | 241/241 | 16.2 / 25 | - |
+| 1 | 4r ENA small | bottomup | 815 | 2.19 | 241/241 | 8.2 / 25 | 148 probes, best at 13 workers, ended at 1 |
+| 1 | 4r ENA small | greedy | 384 | 1.03 | 241/241 | 15.9 / 25 | 20 workers |
+| 1 | 4r ENA small | fixed-j64 | 411 | 1.11 | 241/241 | 17.9 / 25 | - |
+| 1 | 4r ENA small | knee | 427 | 1.15 | 241/241 | 15.9 / 25 | best 729 Mbps at a budget of 32; 21 at the end |
+
+4r rep 1: every arm clean (no fallbacks, refusals or cut-short responses) and capped at 25 open connections, so ENA
+held a 25-connection ceiling today; arms that reached it in time tie within 15 %.
+
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
 Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa62d66`):
