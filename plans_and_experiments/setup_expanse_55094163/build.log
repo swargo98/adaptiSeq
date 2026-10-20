@@ -1,0 +1,279 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=77.0
+* Getting build dependencies for sdist...
+running egg_info
+creating adaptiseq.egg-info
+writing adaptiseq.egg-info/PKG-INFO
+writing dependency_links to adaptiseq.egg-info/dependency_links.txt
+writing entry points to adaptiseq.egg-info/entry_points.txt
+writing requirements to adaptiseq.egg-info/requires.txt
+writing top-level names to adaptiseq.egg-info/top_level.txt
+writing manifest file 'adaptiseq.egg-info/SOURCES.txt'
+reading manifest file 'adaptiseq.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'adaptiseq.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.0
+* Building sdist...
+running sdist
+running egg_info
+writing adaptiseq.egg-info/PKG-INFO
+writing dependency_links to adaptiseq.egg-info/dependency_links.txt
+writing entry points to adaptiseq.egg-info/entry_points.txt
+writing requirements to adaptiseq.egg-info/requires.txt
+writing top-level names to adaptiseq.egg-info/top_level.txt
+reading manifest file 'adaptiseq.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'adaptiseq.egg-info/SOURCES.txt'
+running check
+creating adaptiseq-0.1.11
+creating adaptiseq-0.1.11/adaptiseq
+creating adaptiseq-0.1.11/adaptiseq.egg-info
+creating adaptiseq-0.1.11/adaptiseq/engine
+creating adaptiseq-0.1.11/tests
+creating adaptiseq-0.1.11/tests/fixtures/CRR311377
+creating adaptiseq-0.1.11/tests/fixtures/SRR7706354
+copying files to adaptiseq-0.1.11...
+copying LICENSE -> adaptiseq-0.1.11
+copying MANIFEST.in -> adaptiseq-0.1.11
+copying README.md -> adaptiseq-0.1.11
+copying pyproject.toml -> adaptiseq-0.1.11
+copying adaptiseq/__init__.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/__main__.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/_async.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/accession.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/aspera.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/batch.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/cli.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/console.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/convert.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/core.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/errors.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/integrity.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/logs.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/merge.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/metadata.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/net.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/options.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/preflight.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/progress.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/py.typed -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/ratelimits.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/resolve.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq/routing.py -> adaptiseq-0.1.11/adaptiseq
+copying adaptiseq.egg-info/PKG-INFO -> adaptiseq-0.1.11/adaptiseq.egg-info
+copying adaptiseq.egg-info/SOURCES.txt -> adaptiseq-0.1.11/adaptiseq.egg-info
+copying adaptiseq.egg-info/dependency_links.txt -> adaptiseq-0.1.11/adaptiseq.egg-info
+copying adaptiseq.egg-info/entry_points.txt -> adaptiseq-0.1.11/adaptiseq.egg-info
+copying adaptiseq.egg-info/requires.txt -> adaptiseq-0.1.11/adaptiseq.egg-info
+copying adaptiseq.egg-info/top_level.txt -> adaptiseq-0.1.11/adaptiseq.egg-info
+copying adaptiseq/engine/__init__.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/classic.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/ftp.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/gate.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/optimize.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/ratelimit.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/seam.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/segmented.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying adaptiseq/engine/throughput.py -> adaptiseq-0.1.11/adaptiseq/engine
+copying tests/__init__.py -> adaptiseq-0.1.11/tests
+copying tests/conftest.py -> adaptiseq-0.1.11/tests
+copying tests/harness.py -> adaptiseq-0.1.11/tests
+copying tests/servers.py -> adaptiseq-0.1.11/tests
+copying tests/test_accession.py -> adaptiseq-0.1.11/tests
+copying tests/test_api_drift.py -> adaptiseq-0.1.11/tests
+copying tests/test_aspera.py -> adaptiseq-0.1.11/tests
+copying tests/test_aspera_live.py -> adaptiseq-0.1.11/tests
+copying tests/test_async_loop.py -> adaptiseq-0.1.11/tests
+copying tests/test_batch.py -> adaptiseq-0.1.11/tests
+copying tests/test_batch_verify.py -> adaptiseq-0.1.11/tests
+copying tests/test_classic_engine.py -> adaptiseq-0.1.11/tests
+copying tests/test_cli.py -> adaptiseq-0.1.11/tests
+copying tests/test_connection_ceiling.py -> adaptiseq-0.1.11/tests
+copying tests/test_controllers.py -> adaptiseq-0.1.11/tests
+copying tests/test_differential.py -> adaptiseq-0.1.11/tests
+copying tests/test_ftp_segmented.py -> adaptiseq-0.1.11/tests
+copying tests/test_geo_eutils.py -> adaptiseq-0.1.11/tests
+copying tests/test_gsa_links.py -> adaptiseq-0.1.11/tests
+copying tests/test_list_resilience.py -> adaptiseq-0.1.11/tests
+copying tests/test_logs_integrity.py -> adaptiseq-0.1.11/tests
+copying tests/test_merge.py -> adaptiseq-0.1.11/tests
+copying tests/test_metadata_parse.py -> adaptiseq-0.1.11/tests
+copying tests/test_meter_gate.py -> adaptiseq-0.1.11/tests
+copying tests/test_no_sra_fallback.py -> adaptiseq-0.1.11/tests
+copying tests/test_optimize.py -> adaptiseq-0.1.11/tests
+copying tests/test_phaseb_present.py -> adaptiseq-0.1.11/tests
+copying tests/test_preflight_lazy.py -> adaptiseq-0.1.11/tests
+copying tests/test_probe_retry.py -> adaptiseq-0.1.11/tests
+copying tests/test_progress.py -> adaptiseq-0.1.11/tests
+copying tests/test_resolution.py -> adaptiseq-0.1.11/tests
+copying tests/test_routing.py -> adaptiseq-0.1.11/tests
+copying tests/test_segment_steal.py -> adaptiseq-0.1.11/tests
+copying tests/test_segmented.py -> adaptiseq-0.1.11/tests
+copying tests/test_segmented_finalize.py -> adaptiseq-0.1.11/tests
+copying tests/test_segmented_live.py -> adaptiseq-0.1.11/tests
+copying tests/test_segmented_stale_meta.py -> adaptiseq-0.1.11/tests
+copying tests/test_tail_split.py -> adaptiseq-0.1.11/tests
+copying tests/test_truncation_retry.py -> adaptiseq-0.1.11/tests
+copying tests/fixtures/CRR311377/CRR311377.metadata.csv -> adaptiseq-0.1.11/tests/fixtures/CRR311377
+copying tests/fixtures/CRR311377/expected.json -> adaptiseq-0.1.11/tests/fixtures/CRR311377
+copying tests/fixtures/SRR7706354/SRR7706354.metadata.tsv -> adaptiseq-0.1.11/tests/fixtures/SRR7706354
+copying tests/fixtures/SRR7706354/expected.json -> adaptiseq-0.1.11/tests/fixtures/SRR7706354
+Writing adaptiseq-0.1.11/setup.cfg
+Creating tar archive
+removing 'adaptiseq-0.1.11' (and everything under it)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=77.0
+* Getting build dependencies for wheel...
+running egg_info
+writing adaptiseq.egg-info/PKG-INFO
+writing dependency_links to adaptiseq.egg-info/dependency_links.txt
+writing entry points to adaptiseq.egg-info/entry_points.txt
+writing requirements to adaptiseq.egg-info/requires.txt
+writing top-level names to adaptiseq.egg-info/top_level.txt
+reading manifest file 'adaptiseq.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'adaptiseq.egg-info/SOURCES.txt'
+* Installed build dependency versions:
+  - setuptools==84.2.0
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/adaptiseq
+copying adaptiseq/options.py -> build/lib/adaptiseq
+copying adaptiseq/__main__.py -> build/lib/adaptiseq
+copying adaptiseq/core.py -> build/lib/adaptiseq
+copying adaptiseq/batch.py -> build/lib/adaptiseq
+copying adaptiseq/integrity.py -> build/lib/adaptiseq
+copying adaptiseq/accession.py -> build/lib/adaptiseq
+copying adaptiseq/__init__.py -> build/lib/adaptiseq
+copying adaptiseq/routing.py -> build/lib/adaptiseq
+copying adaptiseq/metadata.py -> build/lib/adaptiseq
+copying adaptiseq/progress.py -> build/lib/adaptiseq
+copying adaptiseq/logs.py -> build/lib/adaptiseq
+copying adaptiseq/console.py -> build/lib/adaptiseq
+copying adaptiseq/net.py -> build/lib/adaptiseq
+copying adaptiseq/convert.py -> build/lib/adaptiseq
+copying adaptiseq/resolve.py -> build/lib/adaptiseq
+copying adaptiseq/cli.py -> build/lib/adaptiseq
+copying adaptiseq/aspera.py -> build/lib/adaptiseq
+copying adaptiseq/errors.py -> build/lib/adaptiseq
+copying adaptiseq/merge.py -> build/lib/adaptiseq
+copying adaptiseq/preflight.py -> build/lib/adaptiseq
+copying adaptiseq/ratelimits.py -> build/lib/adaptiseq
+copying adaptiseq/_async.py -> build/lib/adaptiseq
+creating build/lib/adaptiseq/engine
+copying adaptiseq/engine/throughput.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/__init__.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/ftp.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/optimize.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/ratelimit.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/gate.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/seam.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/segmented.py -> build/lib/adaptiseq/engine
+copying adaptiseq/engine/classic.py -> build/lib/adaptiseq/engine
+running egg_info
+writing adaptiseq.egg-info/PKG-INFO
+writing dependency_links to adaptiseq.egg-info/dependency_links.txt
+writing entry points to adaptiseq.egg-info/entry_points.txt
+writing requirements to adaptiseq.egg-info/requires.txt
+writing top-level names to adaptiseq.egg-info/top_level.txt
+reading manifest file 'adaptiseq.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no previously-included files matching '*.py[cod]' found anywhere in distribution
+adding license file 'LICENSE'
+writing manifest file 'adaptiseq.egg-info/SOURCES.txt'
+copying adaptiseq/py.typed -> build/lib/adaptiseq
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/adaptiseq
+copying build/lib/adaptiseq/options.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/__main__.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/core.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/batch.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/integrity.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+creating build/bdist.linux-x86_64/wheel/adaptiseq/engine
+copying build/lib/adaptiseq/engine/throughput.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/__init__.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/ftp.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/optimize.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/ratelimit.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/gate.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/seam.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/segmented.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/engine/classic.py -> build/bdist.linux-x86_64/wheel/./adaptiseq/engine
+copying build/lib/adaptiseq/accession.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/__init__.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/routing.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/metadata.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/progress.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/logs.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/console.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/net.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/convert.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/resolve.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/cli.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/aspera.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/errors.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/py.typed -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/merge.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/preflight.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/ratelimits.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+copying build/lib/adaptiseq/_async.py -> build/bdist.linux-x86_64/wheel/./adaptiseq
+running install_egg_info
+Copying adaptiseq.egg-info to build/bdist.linux-x86_64/wheel/./adaptiseq-0.1.11-py3.11.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/adaptiseq-0.1.11.dist-info/WHEEL
+creating '/scratch/rswargo/job_55094163/dist/.tmp-x_9nhalo/adaptiseq-0.1.11-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'adaptiseq/__init__.py'
+adding 'adaptiseq/__main__.py'
+adding 'adaptiseq/_async.py'
+adding 'adaptiseq/accession.py'
+adding 'adaptiseq/aspera.py'
+adding 'adaptiseq/batch.py'
+adding 'adaptiseq/cli.py'
+adding 'adaptiseq/console.py'
+adding 'adaptiseq/convert.py'
+adding 'adaptiseq/core.py'
+adding 'adaptiseq/errors.py'
+adding 'adaptiseq/integrity.py'
+adding 'adaptiseq/logs.py'
+adding 'adaptiseq/merge.py'
+adding 'adaptiseq/metadata.py'
+adding 'adaptiseq/net.py'
+adding 'adaptiseq/options.py'
+adding 'adaptiseq/preflight.py'
+adding 'adaptiseq/progress.py'
+adding 'adaptiseq/py.typed'
+adding 'adaptiseq/ratelimits.py'
+adding 'adaptiseq/resolve.py'
+adding 'adaptiseq/routing.py'
+adding 'adaptiseq/engine/__init__.py'
+adding 'adaptiseq/engine/classic.py'
+adding 'adaptiseq/engine/ftp.py'
+adding 'adaptiseq/engine/gate.py'
+adding 'adaptiseq/engine/optimize.py'
+adding 'adaptiseq/engine/ratelimit.py'
+adding 'adaptiseq/engine/seam.py'
+adding 'adaptiseq/engine/segmented.py'
+adding 'adaptiseq/engine/throughput.py'
+adding 'adaptiseq-0.1.11.dist-info/licenses/LICENSE'
+adding 'adaptiseq-0.1.11.dist-info/METADATA'
+adding 'adaptiseq-0.1.11.dist-info/WHEEL'
+adding 'adaptiseq-0.1.11.dist-info/entry_points.txt'
+adding 'adaptiseq-0.1.11.dist-info/top_level.txt'
+adding 'adaptiseq-0.1.11.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built adaptiseq-0.1.11.tar.gz and adaptiseq-0.1.11-py3-none-any.whl

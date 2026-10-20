@@ -287,6 +287,12 @@ segment loop (ceiling while others are open, pushback with nothing open); droppe
 (`ServerDisconnectedError`) are still distress. Tests in `tests/test_connection_ceiling.py`. **Round 2 jobs
 55090016-18 cancelled 22:25 10-19 before they started** (they waited on the sweep). Rebuild `55094163`
 (`ENV_NAME=adaptiseq_e3_dev`); then a fresh knee smoke and round 2 on 0.1.11, all arms on the new engine.
+**0.1.11 built (00:48 10-20):** wheel `1b9ce128...` (`setup_expanse_55094163`, env `adaptiseq_e3_dev`; offline and
+network suites and README examples pass). **Resubmitted:** knee smoke `55096326` (`E3_CONTROLLERS=knee`, 4s + 4g,
+`e3_knee_smoke/`), beside the sweep; round 2 reps 1-3 `55096327`, `55096328`, `55096329` (same settings as before:
+`PANELS="4r 4b 4s 4g 4h 4m"`, `E3_CTRL_FIXED="20 64"`, `E3_TIMEOUT_CTRL=7200`, `RESULTS_ROOT=e3_round2_expanse`), the
+first `afterany` on the sweep and the smoke, the others chained. If the new smoke shows a knee problem, cancel them
+before they start.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 

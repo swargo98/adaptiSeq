@@ -1,4 +1,4 @@
-# Handoff (updated 18:55 PDT 2026-10-19 for a fresh Claude Code session)
+# Handoff (updated 01:00 PDT 2026-10-20 for a fresh Claude Code session)
 
 Read this, then `plans_and_experiments/remaining_tasks.md` (the running log: every
 job, result row and decision, newest material near the top of each section).
@@ -23,7 +23,7 @@ job, result row and decision, newest material near the top of each section).
   copy, edit the copy, and `mv` it over (new inode; running bash keeps the old file).
 - Two conda envs: `adaptiseq_e3_sub` holds the 0.1.7 wheel the **sweep** uses (do not
   reinstall it until the sweep ends); `adaptiseq_e3_dev` holds the newest build
-  (0.1.10 `25d13c2f`; the knee smoke and round 2 use it: do not rebuild it until round 2 ends). Build a wheel with
+  (0.1.11 `1b9ce128`; the knee smoke and round 2 use it: do not rebuild it until round 2 ends). Build a wheel with
   `ENV_NAME=adaptiseq_e3_dev sbatch --export=ALL bench/e3/setup_expanse.sbatch`
   (builds from the checkout's `__version__`, installs into that env, runs both test
   suites and the README examples). Only rebuild the dev env when no tournament job is
@@ -56,8 +56,9 @@ job, result row and decision, newest material near the top of each section).
 | job | what | env / wheel | results | on finish |
 |---|---|---|---|---|
 | `55064913` | fixed-j sweep **rep 3** (last), panels 3jr + 3jb | `adaptiseq_e3_sub`, 0.1.7 `2fa62d66` | `e3_jsweep_expanse/e3_55064913/` | record rows (as reps 1-2 in `remaining_tasks.md`), move `slurm_e3_<id>.*` into the dir, commit the dir (gzip raw logs >20 MB), then summarise the sweep (median per -j per panel over 3 reps) |
-| `55090015` | **knee smoke**: knee alone on 4s (NCBI) and 4g (GSA), runs beside the sweep | `adaptiseq_e3_dev`, 0.1.10 `25d13c2f` | `e3_knee_smoke/e3_55090015/` | check knee completes 8/8 and 6/6, its `adaptive worker summary` (connections it settled at) and connection counts; compare with round-1 arms. If knee misbehaves: `scancel` round 2 before it starts, fix, rebuild, resubmit |
-| `55090016`, `55090017`, `55090018` | **round 2** reps 1-3, chained, first `afterany:55064913` | `adaptiseq_e3_dev`, 0.1.10 | `e3_round2_expanse/e3_<id>/` | record rows per panel, then score (section 5) |
+| `55090015` | knee smoke on 0.1.10 (done): 4s 8/8 94 s at 16 connections; 4g 6/6 1408 s, fell to 2-5 connections because GSA connect timeouts counted as pushback. Fixed in 0.1.11 (`011a314`); old round 2 `55090016`-`18` cancelled before starting | `adaptiseq_e3_dev`, 0.1.10 | `e3_knee_smoke/e3_55090015/` | done |
+| `55096326` | **knee smoke on 0.1.11**: knee alone on 4s and 4g, beside the sweep | `adaptiseq_e3_dev`, 0.1.11 `1b9ce128` | `e3_knee_smoke/e3_55096326/` | check 8/8 and 6/6, the connections it holds on GSA (should stay near 8, not drift to 2-5), "attempt n refused" lines; if knee misbehaves, `scancel` round 2 before it starts |
+| `55096327`, `55096328`, `55096329` | **round 2** reps 1-3 on 0.1.11, chained, first `afterany:55064913` and the smoke | `adaptiseq_e3_dev`, 0.1.11 | `e3_round2_expanse/e3_<id>/` | record rows per panel, then score (section 5) |
 
 Sweep reps take 8 to 11.5 h (ENA was half as fast on 10-19); round 2 is about 5 to 6 h per rep (6 panels x 7 arms).
 Expect sweep rep 3 to end around 06:00 to 09:00 PDT 10-20 and round 2 around 01:00 to 03:00 PDT 10-21.
