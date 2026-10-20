@@ -313,6 +313,14 @@ default 363). ENA was about half as fast as in rep 1 for every arm.
 | 3jb | adaptiseq-default | 1126 | 8/8 | 2 md5 mismatches re-fetched; connections mean 21.8, max 25 |
 | 3jb | fixed-j4 | 2301 | 8/8 | 1 md5 mismatch re-fetched; connections mean 10.7 |
 | 3jb | fixed-j16 | 1106 | 8/8 | 1 md5 mismatch re-fetched; connections mean 20.4, max 25 |
+| 3jb | fixed-j64 | 1105 | 8/8 | |
+| 3jb | fixed-j8 | 939 | 8/8 | |
+| 3jb | fixed-j32 | **805** | 8/8 | connections 25 max |
+| 3jb | fixed-j2 | 3922 | 8/8 | |
+
+**Sweep rep 2 done** (`55064912`, 07:13 to 18:40 10-19, 11 h 27 min; `check_run` "CHECK FAIL" only lists the
+submission arms a sweep job does not run). 3jb: j1 11112, j2 3922, j4 2301, j32 805, j8 939, j64 1105, j16 1106,
+default 1126 s. ENA ran at about half of rep 1's rate all day, and above j8 the 3b times are within 40 % of each other.
 
 3jr rep 1 complete: j1 4197, j2 3264, j4 1250, j8 505, j16 440, default 363, j32 **163**, j64 235 s. Every arm 241/241,
 no fallbacks or md5 mismatches. One rep only, and ENA varies about 2x in an hour; the j16 to j32 drop (440 to 163 s) is
