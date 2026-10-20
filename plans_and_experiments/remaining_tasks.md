@@ -324,6 +324,27 @@ probe 1.8/14.8/25.2 MB/s, GATE PASS). Ratio = wall / fastest in the case; a win 
 4r rep 1: every arm clean (no fallbacks, refusals or cut-short responses) and capped at 25 open connections, so ENA
 held a 25-connection ceiling today; arms that reached it in time tie within 15 %.
 
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 1 | 4b ENA large | fixed-j64 | 506 | 1.45 | 8/8 | 32.4 / 50 | 1 md5 mismatch re-fetched |
+| 1 | 4b ENA large | fixed-j20 | **349** | 1.00 | 8/8 | 30.3 / 50 | 47-50 open from 60 s to 240 s |
+| 1 | 4b ENA large | topdown | 556 | 1.59 | 8/8 | 23.6 / 25 | best 1310 Mbps at 8 workers |
+| 1 | 4b ENA large | budget | 723 | 2.07 | 8/8 | 23.0 / 25 | budget 32; 1 md5 mismatch, 3 cut short |
+| 1 | 4b ENA large | knee | 902 | 2.58 | 8/8 | 22.8 / 25 | budget 32 (best 1448 Mbps), held exactly 24-25 open for 800 s |
+| 1 | 4b ENA large | greedy | 892 | 2.56 | 8/8 | 20.7 / 25 | 1 md5 mismatch, 4 cut short |
+| 1 | 4b ENA large | bottomup | 872 | 2.50 | 8/8 | 21.1 / 25 | best at 2 workers |
+
+**4b rep 1 finding: every controller was held at 25 open connections; both fixed arms reached 50.** Not ENA's
+limit (fixed-j20 held 40 to one ENA address, 193.62.193.165) and not the client's cap (knee's budget was 32; the
+host cap is jobs x max_segments). The sweep showed the same split (3jb j32 and topdown at 25 in all reps, j16 and
+j64 at 50). Likely mechanism, not yet confirmed: the 0.1.5 ceiling rule. A refused connect with others open holds
+the host's cap at the open count; spare-budget splitting (`_spare_slots`) only fills up to that cap; a clean
+response raises it by one and the next refusal drops it back. Fixed arms open all 16 files' 2-3 segments in the
+first seconds, before ENA refuses anything; arms that ramp up (every controller, and greedy, which starts at 2
+workers like all adaptive arms) meet an occasional refusal near 25 and stay there. The ceiling message is
+log.info, so the warning-level run logs cannot show it. It applies to all candidates equally, so round 2 stays
+as is; check afterwards with an info-level knee run on 4b (one job, not beside an ENA job).
+
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
 Rep 1 (`55064911`, `exp-14-52`, probe 2.1/16.9/42.2 MB/s, GATE PASS, wheel `2fa62d66`):
