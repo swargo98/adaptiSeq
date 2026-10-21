@@ -417,6 +417,28 @@ Rep 2 `55096328` (`exp-6-02`, from 20:31 PDT 10-20, probe 1.4/12.4/29.7 MB/s, GA
 4g rep 2 is GSA's hour again: the first three arms (budget, j20, knee; 23:48-01:09) took 1295-1930 s, the last four
 292-963 s. Fixed-j20 went from fastest (rep 1, 358 s) to 4.4x. Every arm saw dozens of cut streams.
 
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 2 | 4h ENA held-out | greedy | 1816 | 1.12 | 2/2 | 15.2 / 16 | 01:44-02:15 |
+| 2 | 4h ENA held-out | budget | 3797 | 2.35 | 2/2 | 11.6 / 16 | 1 md5 mismatch (re-fetch) |
+| 2 | 4h ENA held-out | knee | 4275 | 2.64 | 2/2 | 11.2 / 16 | 1 md5 mismatch (re-fetch); best 944 Mbps at 32 |
+| 2 | 4h ENA held-out | topdown | 2229 | 1.38 | 2/2 | 15.4 / 16 | |
+| 2 | 4h ENA held-out | fixed-j20 | 4313 | 2.67 | 2/2 | 11.7 / 16 | 1 md5 mismatch (re-fetch), 2 cut short |
+| 2 | 4h ENA held-out | bottomup | **1618** | 1.00 | 2/2 | 15.0 / 16 | |
+| 2 | 4h ENA held-out | fixed-j64 | 1864 | 1.15 | 2/2 | 13.7 / 16 | |
+| 2 | 4m mixed | topdown | **228** | 1.00 | 15/15 | 11.5 / 35 | 4 workers |
+| 2 | 4m mixed | budget | 543 | 2.38 | 15/15 | 8.1 / 35 | 24 cut short |
+| 2 | 4m mixed | fixed-j20 | 1818 | 7.97 | 15/15 | 3.3 / 33 | 37 cut short, 4 segments out of attempts: the GSA tail on a few connections |
+| 2 | 4m mixed | fixed-j64 | 267 | 1.17 | 15/15 | 9.5 / 36 | 18 cut short |
+| 2 | 4m mixed | knee | 505 | 2.21 | 15/15 | 8.1 / 28 | best 420 Mbps at 12; 19 cut short, 3 out of attempts |
+| 2 | 4m mixed | greedy | 294 | 1.29 | 15/15 | 8.1 / 41 | 8 cut short, 1 refused |
+| 2 | 4m mixed | bottomup | 1496 | 6.56 | 15/15 | 4.9 / 27 | 31 cut short, 4 out of attempts |
+
+**Rep 2 done** (`55096328`, 20:31 10-20 to 08:45 10-21, 12 h 14 min; all 42 arm-cases complete and md5-verified).
+On 4h every arm was again held at 16 connections; the three with an md5 mismatch (a full 11.5 GB file re-fetched)
+are the three slowest, so 4h measures ENA's corruption luck more than control. 4m is again decided by the GSA tail
+(fixed-j20 fastest in rep 1, slowest in rep 2).
+
 **4b rep 2 sharpens the 25-connection finding:** fixed-j64 was also held at 25 this time, so the hold is not a
 controller property; it lands on any arm. Knee shows the worse form: its budget stayed 33 while open
 connections drained to 5 as segments finished and were not replaced. Both fit the 0.1.5 ceiling rule (a

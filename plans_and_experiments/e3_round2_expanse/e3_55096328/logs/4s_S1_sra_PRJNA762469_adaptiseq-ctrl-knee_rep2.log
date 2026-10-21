@@ -1,0 +1,50 @@
+[32mNote[0m: batch downloading 8 file(s) across 8 accession(s) with up to 8 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for sra-pub-run-odp.s3.amazonaws.com: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 7 probe(s); best 4649 Mbps at 16 connection(s); last 4645 Mbps at 16 connection(s); recent: 4c@1275Mbps, 4c@2573Mbps, 8c@4290Mbps, 16c@4600Mbps, 16c@4541Mbps, 16c@4649Mbps, 16c@4645Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430	0.00G
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================
