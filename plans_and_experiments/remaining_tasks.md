@@ -439,6 +439,32 @@ On 4h every arm was again held at 16 connections; the three with an md5 mismatch
 are the three slowest, so 4h measures ENA's corruption luck more than control. 4m is again decided by the GSA tail
 (fixed-j20 fastest in rep 1, slowest in rep 2).
 
+Rep 3 `55096329` (`exp-6-02`, from 08:46 PDT 10-21, probe 3.6/21.5/89.7 MB/s, GATE PASS):
+
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 3 | 4r ENA small | knee | 995 | 2.71 | 241/241 | 13.5 / 25 | best 397 Mbps at 32; 1 refused |
+| 3 | 4r ENA small | topdown | 983 | 2.68 | 241/241 | 12.5 / 20 | best at 5 workers |
+| 3 | 4r ENA small | budget | 678 | 1.85 | 241/241 | 17.2 / 25 | 2 probe retries |
+| 3 | 4r ENA small | fixed-j64 | **367** | 1.00 | 241/241 | 31.0 / 50 | reached 50 |
+| 3 | 4r ENA small | fixed-j20 | 798 | 2.17 | 241/241 | 14.8 / 25 | 1 md5 mismatch |
+| 3 | 4r ENA small | bottomup | 2856 | 7.78 | 241/241 | 5.6 / 20 | 1 md5 mismatch |
+| 3 | 4r ENA small | greedy | 907 | 2.47 | 241/241 | 17.0 / 25 | 1 md5 mismatch |
+| 3 | 4b ENA large | knee | 1936 | 1.33 | 8/8 | 22.0 / 25 | 1 md5 mismatch |
+| 3 | 4b ENA large | fixed-j20 | 1925 | 1.32 | **6/8** (2 from SRA, unverified) | 14.2 / 41 | ENA portal answering in 24-37 s at the start (11:19-11:25): SRR15852415 and SRR15852425 fell back to SRA |
+| 3 | 4b ENA large | bottomup | 2604 | 1.78 | 8/8 | 18.8 / 25 | 4 md5 mismatches |
+| 3 | 4b ENA large | greedy | 2365 | 1.62 | 8/8 | 18.5 / 25 | 2 md5 mismatches |
+| 3 | 4b ENA large | fixed-j64 | 1772 | 1.21 | 8/8 | 23.2 / 25 | 3 md5 mismatches |
+| 3 | 4b ENA large | topdown | 1532 | 1.05 | **7/8** (1 from SRA, unverified) | 18.0 / 33 | portal at 7-45 s (13:50-14:22): SRR15852415 fell back to SRA |
+| 3 | 4b ENA large | budget | **1459** | 1.00 | 8/8 | 23.1 / 25 | |
+
+**4b rep 3: by the fixed criterion fixed-j20 and topdown are disqualified** (runs from SRA, not md5-verified). Cause: the
+ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11:19 and 14:30). adaptiSeq's ENA
+retry budget (4 tries, 2/4/8 s apart, `metadata.ENA_ATTEMPTS`) is about 15 s plus the request time, short against a
+portal answering in 30-45 s. Candidate fix after the round: a longer budget before the SRA fallback (minutes,
+not seconds), with the fallback still announced. 4b also ran at a third of rep 1's speed (1459-2604 s against
+349-902) with 13 md5 mismatches over 7 arms: a bad ENA day.
+
 **4b rep 2 sharpens the 25-connection finding:** fixed-j64 was also held at 25 this time, so the hold is not a
 controller property; it lands on any arm. Knee shows the worse form: its budget stayed 33 while open
 connections drained to 5 as segments finished and were not replaced. Both fit the 0.1.5 ceiling rule (a
