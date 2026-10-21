@@ -378,6 +378,9 @@ behaviour: it happened at resolution, before topdown chose anything. **By the fi
 disqualified** (a run not md5-verified); report it with this cause. Fix after the round (no build changes during
 it): a GSA accession that resolves to no runs is refetched (the run-info query retried, like the md5 list), and
 fails with a non-zero exit if it still has none; add a test.
+**Done in source, `9c66849` (0.1.12, not built until round 2 ends):** the run-info query is retried 4 times
+(2/4/8 s), then the accession raises `MetadataError` (fail.log, exit 1); a header-only CSV on disk is refetched
+(`core._process_gsa`, `batch._resolve_one`). `tests/test_gsa_no_runs.py`, 5 tests; offline suite passes (`55113093`).
 
 **4h rep 1: four arms timed out at 7200 s, and the panel cannot tell the arms apart.** Every arm held 16
 connections to one ENA address (193.62.193.165) from start to finish: 2 files x `max_segments` 8 = 16, so no
