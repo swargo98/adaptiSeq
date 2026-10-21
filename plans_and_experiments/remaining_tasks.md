@@ -463,7 +463,7 @@ ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11
 retry budget (4 tries, 2/4/8 s apart, `metadata.ENA_ATTEMPTS`) is about 15 s plus the request time, short against a
 portal answering in 30-45 s. Candidate fix after the round: a longer budget before the SRA fallback (minutes,
 not seconds), with the fallback still announced. 4b also ran at a third of rep 1's speed (1459-2604 s against
-349-902) with 13 md5 mismatches over 7 arms: a bad ENA day.
+349-902) with 11 md5 mismatches over 7 arms: a bad ENA day.
 
 **4b rep 2 sharpens the 25-connection finding:** fixed-j64 was also held at 25 this time, so the hold is not a
 controller property; it lands on any arm. Knee shows the worse form: its budget stayed 33 while open
