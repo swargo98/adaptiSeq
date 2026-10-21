@@ -407,6 +407,18 @@ refused connect pins the host cap at the current open count; `_spare_slots` refi
 clean response raises it by one). Not confirmed (info-level logs needed). This rule, not the controllers, is
 probably the largest source of 4b variance.
 
+*Code reading (no change during the round):* the per-host cap starts at `jobs x max_segments` (160 at -j 20), so
+neither 25 nor 50 is a configured limit. `_tail_segments` lets each of the 8 files open up to 8 segments at once, so
+the open count first reaches about 25-50 depending on how fast the first segments start. `note_refused`
+(`engine/ratelimit.py:156`) then pins `cap = in_flight` at the first refused connect, wherever that happens to
+be. Recovery is `note_success` (+1 per *new* clean response), but a new response on a 1.6 GB panel only comes from
+a split, and `_spare_slots` (`batch.py`) offers splits only while `cap > in_flight`: with the cap pinned at the
+open count, nothing new starts, so nothing raises the cap. The cap stays at the first refusal's open count for the
+rest of the run (25 or 50 by luck, for fixed arms and controllers alike). `knee`/`budget` reset the cap with
+`set_budget` only when their budget changes. Candidate fix after the round: let a ceiling pin decay (raise
+the cap by one every few seconds without a refusal, not only per response), and test that the open count
+recovers after a single refusal. Confirm first with one info-level run on 4b ("connection ceiling" lines).
+
 **Silent GSA failure (adaptiSeq bug, found in 4g rep 1 topdown):** "batch downloading 5 file(s) across 6
 accession(s)"; CRR120307's metadata CSV existed but held no row for it (GSA's `getRunInfoByCra` answer evidently
 lacked the run), so `_process_gsa` (`core.py:54`) found no CRRs, looped zero times, printed "CRR120307 download
