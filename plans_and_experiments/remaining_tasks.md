@@ -361,6 +361,13 @@ as is; check afterwards with an info-level knee run on 4b (one job, not beside a
 | 1 | 4g GSA | topdown | 670 | 1.87 | **5/6**, exit 0 | 16.2 / 40 | **CRR120307 never downloaded**; see below |
 | 1 | 4g GSA | knee | 524 | 1.46 | 6/6 | 16.7 / 33 | best 743 Mbps at 16, budget 33 at the end; 38 cut short |
 | 1 | 4g GSA | fixed-j64 | 519 | 1.45 | 6/6 | 20.9 / 48 | 54 cut short |
+| 1 | 4h ENA held-out | knee | **1723** | 1.00 | 2/2 | 15.4 / 16 | 08:15-08:44; best 205 Mbps at 16 |
+| 1 | 4h ENA held-out | fixed-j64 | 7200 | TIMEOUT | 0/2 | 15.4 / 16 | 08:45-10:45; 1 cut short, SRR9001768 out of retries |
+| 1 | 4h ENA held-out | topdown | 7200 | TIMEOUT | 0/2 | 15.7 / 16 | 10:45-12:45; log empty (killed before flush) |
+| 1 | 4h ENA held-out | fixed-j20 | 7200 | TIMEOUT | 0/2 | 14.9 / 16 | 12:45-14:45; 3 cut short (connection reset), both files out of retries |
+| 1 | 4h ENA held-out | bottomup | 7200 | TIMEOUT | 1/2 | 12.9 / 16 | 14:45-16:45; SRR9001769 done (1.64 MB/s overall), SRR9001768 out of retries |
+| 1 | 4h ENA held-out | budget | 2017 | 1.17 | 2/2 | 15.2 / 16 | 16:45-17:19; best 618 Mbps at 20 |
+| 1 | 4h ENA held-out | greedy | 1832 | 1.06 | 2/2 | 15.6 / 16 | 17:19-17:50; 2 workers |
 
 **Silent GSA failure (adaptiSeq bug, found in 4g rep 1 topdown):** "batch downloading 5 file(s) across 6
 accession(s)"; CRR120307's metadata CSV existed but held no row for it (GSA's `getRunInfoByCra` answer evidently
@@ -371,6 +378,18 @@ behaviour: it happened at resolution, before topdown chose anything. **By the fi
 disqualified** (a run not md5-verified); report it with this cause. Fix after the round (no build changes during
 it): a GSA accession that resolves to no runs is refetched (the run-info query retried, like the md5 list), and
 fails with a non-zero exit if it still has none; add a test.
+
+**4h rep 1: four arms timed out at 7200 s, and the panel cannot tell the arms apart.** Every arm held 16
+connections to one ENA address (193.62.193.165) from start to finish: 2 files x `max_segments` 8 = 16, so no
+controller or `-j` could open more and the arms differed only in *when* they ran. The three that finished (11-13
+MB/s) ran first (08:15) and last (16:45-17:50); the four that ran 08:45-16:45 back to back got under 3.2 MB/s
+on the same 16 connections, with connection resets, and ran out of segment retries. The ENA portal probe shows
+the same day degrading: mean answer 6-12 s with non-200s from 09:00 to 13:59 (under 1.2 s before and after),
+though bottomup's slot (14:45-16:45) had a normal portal and still crawled, so the portal is only partial
+evidence. **By the fixed criterion fixed-j20, fixed-j64, topdown and bottomup are disqualified on this rep**
+(runs not verified). I apply it as written and report it with this cause: it measures ENA's hour, not the
+arms. Also: the round runs far longer than planned (rep 1 is 13.5 h in; 4h alone took 9.5 h), so reps 2-3 end
+around midday 10-22 if 4h behaves the same.
 
 **Fixed-j sweep on 0.1.7** (`e3_jsweep_expanse/`; panels 3jr = D1_full 241 runs, 3jb = D2_subset 8 runs; -j 1 2 4 8 16 32 64 + adaptiseq-default; arm order shuffled per panel and rep).
 
