@@ -1,0 +1,41 @@
+note    adaptiSeq 0.1.11  wheel sha256 1b9ce1280f7ebf7618ade28aceeeffe7787f729bcc48d3d4bd8f3b177817cf25
+note    4g adaptiseq-ctrl-topdown rep1: exit 0, 5/6 runs verified
+note    4h adaptiseq-fixed-j64 rep1: exit 124, 0/2 runs verified
+note    4h adaptiseq-ctrl-topdown rep1: exit 124, 0/2 runs verified
+note    4h adaptiseq-fixed-j20 rep1: exit 124, 0/2 runs verified
+note    4h adaptiseq-ctrl-bottomup rep1: exit 124, 1/2 runs verified
+PROBLEM 4r adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4r iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4r iseq rep1: 0 rows (want 1)
+PROBLEM 4r kingfisher rep1: 0 rows (want 1)
+PROBLEM 4r fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4b adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4b iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4b iseq rep1: 0 rows (want 1)
+PROBLEM 4b kingfisher rep1: 0 rows (want 1)
+PROBLEM 4b fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4s adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4s iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4s iseq rep1: 0 rows (want 1)
+PROBLEM 4s kingfisher rep1: 0 rows (want 1)
+PROBLEM 4s fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4g adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4g iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4g iseq rep1: 0 rows (want 1)
+PROBLEM 4g kingfisher rep1: 0 rows (want 1)
+PROBLEM 4g fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4h adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4h iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4h iseq rep1: 0 rows (want 1)
+PROBLEM 4h kingfisher rep1: 0 rows (want 1)
+PROBLEM 4h fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4m adaptiseq-default rep1: 0 rows (want 1)
+PROBLEM 4m iseq-p8 rep1: 0 rows (want 1)
+PROBLEM 4m iseq rep1: 0 rows (want 1)
+PROBLEM 4m kingfisher rep1: 0 rows (want 1)
+PROBLEM 4m fastq-dl rep1: 0 rows (want 1)
+PROBLEM 4h adaptiseq-fixed-j64 rep1: TIMEOUT after 7200.01s
+PROBLEM 4h adaptiseq-ctrl-topdown rep1: TIMEOUT after 7200.02s
+PROBLEM 4h adaptiseq-fixed-j20 rep1: TIMEOUT after 7200.01s
+PROBLEM 4h adaptiseq-ctrl-bottomup rep1: TIMEOUT after 7200.01s
+CHECK FAIL

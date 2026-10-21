@@ -368,6 +368,18 @@ as is; check afterwards with an info-level knee run on 4b (one job, not beside a
 | 1 | 4h ENA held-out | bottomup | 7200 | TIMEOUT | 1/2 | 12.9 / 16 | 14:45-16:45; SRR9001769 done (1.64 MB/s overall), SRR9001768 out of retries |
 | 1 | 4h ENA held-out | budget | 2017 | 1.17 | 2/2 | 15.2 / 16 | 16:45-17:19; best 618 Mbps at 20 |
 | 1 | 4h ENA held-out | greedy | 1832 | 1.06 | 2/2 | 15.6 / 16 | 17:19-17:50; 2 workers |
+| 1 | 4m mixed | knee | 414 | 3.70 | 15/15 | 5.1 / 14 | best 418 Mbps at 6; 7 connections on GSA, then ~90 s at 1 Mbps and the last GSA file ~140 s on 1 connection; 8 cut short |
+| 1 | 4m mixed | bottomup | 520 | 4.64 | 15/15 | 6.8 / 17 | best at 1 worker; 9 cut short |
+| 1 | 4m mixed | fixed-j20 | **112** | 1.00 | 15/15 | 14.7 / 33 | 16 on GSA from the start; 12 cut short |
+| 1 | 4m mixed | topdown | 203 | 1.81 | 15/15 | 8.6 / 33 | best 809 Mbps at 4 workers, fell to 1 worker; 10 cut short |
+| 1 | 4m mixed | budget | 158 | 1.41 | 15/15 | 13.1 / 25 | best 557 Mbps at 38; 11 cut short, 2 probe retries |
+| 1 | 4m mixed | greedy | 339 | 3.03 | 15/15 | 7.8 / 34 | 2 workers; 27 cut short, 2 segments out of attempts (recovered) |
+| 1 | 4m mixed | fixed-j64 | 136 | 1.21 | 15/15 | 14.2 / 33 | 14 cut short |
+
+**Rep 1 done** (`55096327`, 04:28-18:19 PDT 10-20, 13 h 51 min; 4h alone 9.5 h). 4m is short (about 2 min at
+best) and GSA decides it: the 13 ENA runs are small, the two GSA runs (1.65 and 1.74 GB) are the tail. Arms that
+open many GSA connections at once (fixed j20/j64, budget) win; controllers that ramp and judge on GSA's cut
+streams settle low (knee 6-7, bottomup and greedy 1-2 workers) and then wait on one connection. Same pattern as 4g.
 
 **Silent GSA failure (adaptiSeq bug, found in 4g rep 1 topdown):** "batch downloading 5 file(s) across 6
 accession(s)"; CRR120307's metadata CSV existed but held no row for it (GSA's `getRunInfoByCra` answer evidently
