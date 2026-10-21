@@ -381,6 +381,32 @@ best) and GSA decides it: the 13 ENA runs are small, the two GSA runs (1.65 and 
 open many GSA connections at once (fixed j20/j64, budget) win; controllers that ramp and judge on GSA's cut
 streams settle low (knee 6-7, bottomup and greedy 1-2 workers) and then wait on one connection. Same pattern as 4g.
 
+Rep 2 `55096328` (`exp-6-02`, from 20:31 PDT 10-20, probe 1.4/12.4/29.7 MB/s, GATE PASS):
+
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 2 | 4r ENA small | greedy | 498 | 1.68 | 241/241 | 15.7 / 25 | best 287 Mbps at 10 workers |
+| 2 | 4r ENA small | knee | **296** | 1.00 | 241/241 | 25.3 / 50 | best 898 Mbps at 48, budget 36 at the end |
+| 2 | 4r ENA small | topdown | 786 | 2.66 | 241/241 | 13.4 / 20 | best at 2 workers |
+| 2 | 4r ENA small | fixed-j20 | 563 | 1.90 | 241/241 | 15.2 / 25 | |
+| 2 | 4r ENA small | bottomup | 1661 | 5.61 | 241/241 | 5.3 / 14 | best 335 Mbps at 7, ended on 1 worker |
+| 2 | 4r ENA small | fixed-j64 | 508 | 1.72 | 241/241 | 15.6 / 25 | 1 md5 mismatch, recovered |
+| 2 | 4r ENA small | budget | 544 | 1.84 | 241/241 | 15.2 / 21 | best 521 Mbps at 30 |
+| 2 | 4b ENA large | budget | 896 | 2.09 | 8/8 | 23.5 / 25 | budget 32 |
+| 2 | 4b ENA large | greedy | 495 | 1.15 | 8/8 | 39.8 / 50 | best 1354 Mbps at 16 workers |
+| 2 | 4b ENA large | fixed-j64 | 764 | 1.78 | 8/8 | 24.1 / 25 | **held at 25, like the controllers** |
+| 2 | 4b ENA large | fixed-j20 | **429** | 1.00 | 8/8 | 37.7 / 50 | |
+| 2 | 4b ENA large | knee | 1497 | 3.49 | 8/8 | 11.5 / 25 | budget 33, but open connections fell 23 -> 5 over minutes 1-8 and stayed 5-7 to minute 18 |
+| 2 | 4b ENA large | topdown | 985 | 2.30 | 8/8 | 22.9 / 25 | best 1274 Mbps at 16 workers |
+| 2 | 4b ENA large | bottomup | 1056 | 2.46 | 8/8 | 22.1 / 25 | 1 md5 mismatch, 4 cut short |
+
+**4b rep 2 sharpens the 25-connection finding:** fixed-j64 was also held at 25 this time, so the hold is not a
+controller property; it lands on any arm. Knee shows the worse form: its budget stayed 33 while open
+connections drained to 5 as segments finished and were not replaced. Both fit the 0.1.5 ceiling rule (a
+refused connect pins the host cap at the current open count; `_spare_slots` refills only up to the cap; one
+clean response raises it by one). Not confirmed (info-level logs needed). This rule, not the controllers, is
+probably the largest source of 4b variance.
+
 **Silent GSA failure (adaptiSeq bug, found in 4g rep 1 topdown):** "batch downloading 5 file(s) across 6
 accession(s)"; CRR120307's metadata CSV existed but held no row for it (GSA's `getRunInfoByCra` answer evidently
 lacked the run), so `_process_gsa` (`core.py:54`) found no CRRs, looped zero times, printed "CRR120307 download
