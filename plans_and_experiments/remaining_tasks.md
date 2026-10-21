@@ -399,6 +399,23 @@ Rep 2 `55096328` (`exp-6-02`, from 20:31 PDT 10-20, probe 1.4/12.4/29.7 MB/s, GA
 | 2 | 4b ENA large | knee | 1497 | 3.49 | 8/8 | 11.5 / 25 | budget 33, but open connections fell 23 -> 5 over minutes 1-8 and stayed 5-7 to minute 18 |
 | 2 | 4b ENA large | topdown | 985 | 2.30 | 8/8 | 22.9 / 25 | best 1274 Mbps at 16 workers |
 | 2 | 4b ENA large | bottomup | 1056 | 2.46 | 8/8 | 22.1 / 25 | 1 md5 mismatch, 4 cut short |
+| 2 | 4s NCBI | bottomup | 84 | 1.08 | 8/8 | 8.5 / 24 | 2 workers |
+| 2 | 4s NCBI | fixed-j64 | 84 | 1.08 | 8/8 | 29.7 / 64 | 1 refused, recovered |
+| 2 | 4s NCBI | greedy | **78** | 1.00 | 8/8 | 27.7 / 64 | |
+| 2 | 4s NCBI | knee | 84 | 1.08 | 8/8 | 10.3 / 32 | settled 16 |
+| 2 | 4s NCBI | fixed-j20 | 79 | 1.01 | 8/8 | 27.7 / 64 | |
+| 2 | 4s NCBI | budget | 80 | 1.03 | 8/8 | 9.0 / 25 | |
+| 2 | 4s NCBI | topdown | 78 | 1.00 | 8/8 | 21.8 / 64 | |
+| 2 | 4g GSA | budget | 1646 | 5.64 | 6/6 | 7.4 / 40 | ran first (00:47); 18 cut short |
+| 2 | 4g GSA | fixed-j20 | 1295 | 4.43 | 6/6 | 8.8 / 47 | 46 cut short, 1 segment out of attempts |
+| 2 | 4g GSA | knee | 1930 | 6.61 | 6/6 | 6.0 / 25 | best 411 Mbps at 15; 35 cut short |
+| 2 | 4g GSA | greedy | 475 | 1.63 | 6/6 | 19.5 / 48 | 68 cut short, 4 out of attempts |
+| 2 | 4g GSA | bottomup | 347 | 1.19 | 6/6 | 21.3 / 44 | 51 cut short |
+| 2 | 4g GSA | fixed-j64 | 963 | 3.30 | 6/6 | 11.1 / 48 | 84 cut short, 8 out of attempts, 1 probe retry |
+| 2 | 4g GSA | topdown | **292** | 1.00 | 6/6 | 22.9 / 48 | best 846 Mbps at 3 workers; 42 cut short |
+
+4g rep 2 is GSA's hour again: the first three arms (budget, j20, knee; 00:47-02:00) took 1295-1930 s, the last four
+292-963 s. Fixed-j20 went from fastest (rep 1, 358 s) to 4.4x. Every arm saw dozens of cut streams.
 
 **4b rep 2 sharpens the 25-connection finding:** fixed-j64 was also held at 25 this time, so the hold is not a
 controller property; it lands on any arm. Knee shows the worse form: its budget stayed 33 while open
