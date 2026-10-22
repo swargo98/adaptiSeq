@@ -490,6 +490,31 @@ Rep 3 `55096329` (`exp-6-02`, from 08:46 PDT 10-21, probe 3.6/21.5/89.7 MB/s, GA
 Knee's 4h rep 3 is the one 4h loss a controller caused: no md5 mismatch, but it averaged 6.5 of 16 possible
 connections (every other arm 12-15.5).
 
+**Round 2 score** (`python bench/e3/score_round2.py e3_round2_expanse/e3_*/e3_results.tsv`, output in
+`e3_round2_expanse/score_round2.txt`). **No arm qualifies**: every arm has a panel median above 1.5x, and four
+also lost runs to md5 verification. Ranking by wins (ties by connections):
+
+| arm | wins / 18 | mean conns | panel medians 4b / 4g / 4h / 4m / 4r / 4s | panels <= 1.5x | geomean ratio | runs lost |
+|---|---|---|---|---|---|---|
+| topdown (default) | **8** | 17.1 | 1.59 / 1.00 / 1.78 / 1.07 / 2.65 / 1.01 | 3 | 1.53 | 4g r1 (GSA bug), 4h r1 (timeout), 4b r3 (SRA fallback) |
+| fixed-j20 | 7 | 18.4 | 1.00 / 1.52 / 2.67 / 1.58 / 1.90 / 1.00 | 2 | 1.63 | 4h r1 (timeout), 4b r3 (SRA fallback) |
+| budget | 6 | 13.6 | 2.07 / 4.31 / 1.17 / 1.40 / 1.84 / 1.02 | 3 | 1.66 | none |
+| knee | 5 | 13.2 | 2.59 / 1.47 / 2.55 / 2.22 / 1.15 / 1.09 | 3 | 1.82 | none |
+| greedy | 5 | 18.5 | 1.62 / 1.63 / 1.12 / 1.32 / 1.68 / 1.01 | 3 | 1.47 | none |
+| fixed-j64 | 5 | 19.8 | 1.45 / 1.45 / 2.23 / 1.17 / 1.11 / 1.07 | **5** | **1.44** | 4h r1 (timeout) |
+| bottomup | 4 | 11.9 | 2.46 / 1.34 / 1.10 / 4.62 / 5.61 / 1.07 | 3 | 2.12 | 4h r1 (timeout) |
+
+Without the two cases decided by ENA outages (4h rep 1, 4b rep 3): topdown 7/16, fixed-j20 7/16, budget 5,
+fixed-j64 5, bottomup 4, knee 4, greedy 4; still no arm qualifies.
+
+Reading: the same arm's ratio swings more between reps than arms differ within one (fixed-j20 on 4m: 1.00, 7.98,
+1.58; on 4g: 1.00, 4.43, 1.52). What decides a case is mostly the source's hour (GSA speed, ENA portal and
+throughput), md5 re-fetches of whole files, and the ceiling pin (25 vs 50 connections on 4b), not the controller.
+Knee meets the connection goal (13.2 mean, with budget and bottomup the lowest) and wins NCBI and small-ENA cases,
+but loses large ENA (drains below its budget, the ceiling pin) and the GSA tail. None of the candidates meets the
+user's goal ("beat others in most of the cases for every experiment"). Reported to the user 10-21 with a
+recommendation; default choice is theirs.
+
 **4b rep 3: by the fixed criterion fixed-j20 and topdown are disqualified** (runs from SRA, not md5-verified). Cause: the
 ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11:19 and 14:30). adaptiSeq's ENA
 retry budget (4 tries, 2/4/8 s apart, `metadata.ENA_ATTEMPTS`) is about 15 s plus the request time, short against a

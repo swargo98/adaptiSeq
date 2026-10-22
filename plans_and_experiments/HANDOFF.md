@@ -1,4 +1,4 @@
-# Handoff (updated 01:00 PDT 2026-10-20 for a fresh Claude Code session)
+# Handoff (updated 22:40 PDT 2026-10-21 for a fresh Claude Code session)
 
 Read this, then `plans_and_experiments/remaining_tasks.md` (the running log: every
 job, result row and decision, newest material near the top of each section).
@@ -23,7 +23,7 @@ job, result row and decision, newest material near the top of each section).
   copy, edit the copy, and `mv` it over (new inode; running bash keeps the old file).
 - Two conda envs: `adaptiseq_e3_sub` holds the 0.1.7 wheel the **sweep** uses (do not
   reinstall it until the sweep ends); `adaptiseq_e3_dev` holds the newest build
-  (0.1.11 `1b9ce128`; the knee smoke and round 2 use it: do not rebuild it until round 2 ends). Build a wheel with
+  (0.1.11 `1b9ce128`; round 2 has ended, so it may be rebuilt). The checkout is at 0.1.12 (source only, `9c66849`: GSA Run missing from the run-info table now fails instead of exiting 0). Build a wheel with
   `ENV_NAME=adaptiseq_e3_dev sbatch --export=ALL bench/e3/setup_expanse.sbatch`
   (builds from the checkout's `__version__`, installs into that env, runs both test
   suites and the README examples). Only rebuild the dev env when no tournament job is
@@ -58,7 +58,7 @@ job, result row and decision, newest material near the top of each section).
 | `55064913` | fixed-j sweep **rep 3** (last): **done** 03:48 10-20; summary in `remaining_tasks.md` | `adaptiseq_e3_sub`, 0.1.7 | `e3_jsweep_expanse/e3_55064913/` | done (the sweep env may now be rebuilt) |
 | `55090015` | knee smoke on 0.1.10 (done): 4s 8/8 94 s at 16 connections; 4g 6/6 1408 s, fell to 2-5 connections because GSA connect timeouts counted as pushback. Fixed in 0.1.11 (`011a314`); old round 2 `55090016`-`18` cancelled before starting | `adaptiseq_e3_dev`, 0.1.10 | `e3_knee_smoke/e3_55090015/` | done |
 | `55096326` | **knee smoke on 0.1.11**: knee alone on 4s and 4g, beside the sweep | `adaptiseq_e3_dev`, 0.1.11 `1b9ce128` | `e3_knee_smoke/e3_55096326/` | **done, passed**: 4s 8/8 87 s at 16; 4g 6/6 331 s, budget 64, 26 mean / 48 max connections |
-| `55096327`, `55096328`, `55096329` | **round 2** reps 1-3 on 0.1.11, chained, first `afterany:55064913` and the smoke | `adaptiseq_e3_dev`, 0.1.11 | `e3_round2_expanse/e3_<id>/` | record rows per panel, then score (section 5) |
+| `55096327`, `55096328`, `55096329` | **round 2** reps 1-3 on 0.1.11: **done** 22:19 10-21; scored, no arm qualifies (`remaining_tasks.md` "Round 2 score", `e3_round2_expanse/score_round2.txt`) | `adaptiseq_e3_dev`, 0.1.11 | `e3_round2_expanse/e3_<id>/` | reported to the user; waiting for their decision on the default and the next build |
 
 Sweep reps take 8 to 11.5 h (ENA was half as fast on 10-19); round 2 is about 5 to 6 h per rep (6 panels x 7 arms).
 Expect sweep rep 3 to end around 06:00 to 09:00 PDT 10-20 and round 2 around 01:00 to 03:00 PDT 10-21.
@@ -123,6 +123,16 @@ experiment. maintaining as low connection as possible."
   runs; a fix means a new round with fresh reps.
 - Caveat for the paper: knee was designed on the round-1 panels; round 2 uses fresh reps,
   a held-out panel and a mixed list.
+
+### Round 2 result and pending fixes (10-21)
+
+No arm qualifies by the fixed rule; topdown (the default) has the most wins (8/18). Fixes found during the round,
+for the next build (each needs a test; none is built yet): (1) GSA no-runs exit 0, done in source `9c66849`;
+(2) the ceiling pin: `note_refused` pins the host cap at the open count at the first refused connect and nothing
+raises it again on large files (25 vs 50 connections on 4b, knee draining to 5): confirm with one info-level 4b
+run, then let the pin decay over time; (3) the ENA metadata retry budget (about 15 s) is short against a portal
+answering in 30-45 s, which sends runs to SRA unverified (4b rep 3): retry for minutes before the fallback.
+Ask the user before choosing the default or starting the 5-rep chain.
 
 ## 6. Open items for the user (not yours to decide)
 
