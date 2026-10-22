@@ -515,6 +515,28 @@ but loses large ENA (drains below its budget, the ceiling pin) and the GSA tail.
 user's goal ("beat others in most of the cases for every experiment"). Reported to the user 10-21 with a
 recommendation; default choice is theirs.
 
+**Why topdown lost its 10 cases** (user asked 10-22; `python bench/e3/td_losses.py` compares topdown's connections
+by decile of its run, and its probe trail, with the case winner's):
+
+| cases | topdown vs winner | cause | topdown's own? |
+|---|---|---|---|
+| 4r r1-r3 (1.86, 2.65, 2.68x) | 12-13 mean connections vs 16-31; committed at 2-5 workers | biased ladder: it measures a lower worker count while the files started at the higher count are still running (the gate acts only at file pickup), and the first probe at the cap falls in the ramp-up, so each step down reads faster (r1: 20w@27, 10w@73, 5w@122 Mbps) | **yes** |
+| 4g r1 (1.87x, 5/6), 4m r1 (1.81x) | walked down to 1 worker; tail on 1 connection for half the run (4m: deciles 6-10 = 1) | GSA's cut streams make each window noisy, the ladder steps down on noise; at 1 worker the other GSA file waits in the queue, and `_spare_slots` offers splits only when the queue is empty, so the running file cannot add connections. 4g r1 also lost CRR120307 to the GSA resolution bug | **yes** (plus the bug) |
+| 4b r1, r2 (1.59, 2.29x) | exactly 25 connections from the first decile to the last vs 49-50 (r1) and 41-48 (r2) for fixed-j20 | the 25/50 hold (ceiling pin or initial plan; budget, knee and fixed-j64 r2/r3 held 25 too) | no: engine |
+| 4h r1-r3 (4.18, 1.38, 1.78x) | 16 connections like every arm (2 files x 8 segments) | r1: ENA slow window (timeout); r2: same connections, a slower ENA hour; r3: md5 mismatch, an 11.5 GB file re-fetched on 8 connections | no: source / md5 |
+
+So 5 of the 10 losses are topdown's logic, 2 are the shared connection hold, 3 are the source.
+
+**Routing workloads to controllers (tested, does not help on this data).** Per-panel winners change every rep (4r:
+j20, knee, j64; 4m: j20, topdown, j64; 4h: knee, bottomup, budget). Leave-one-rep-out (`python
+bench/e3/route_loo.py`: pick each panel's arm on two reps, score it on the third), geomean ratio to the fastest:
+always fixed-j64 1.44, always greedy 1.47, always topdown 1.53, **routed per panel 1.60**, always fixed-j20 1.63.
+The routed picks do not transfer: per-panel selection fits the noise. What does carry over is a source-level
+pattern: within a case, more connections ran faster on ENA and GSA (Spearman of mean connections vs wall time
+-0.6 to -1.0 in 11 of 12 ENA/GSA cases), and hardly mattered on NCBI (link-limited near 16; knee/budget matched
+the fastest at 8-10). A per-source connection policy (low on NCBI, high and early on ENA, held high through
+GSA's noise) is a candidate for a later round, not a router over today's controllers.
+
 **4b rep 3: by the fixed criterion fixed-j20 and topdown are disqualified** (runs from SRA, not md5-verified). Cause: the
 ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11:19 and 14:30). adaptiSeq's ENA
 retry budget (4 tries, 2/4/8 s apart, `metadata.ENA_ATTEMPTS`) is about 15 s plus the request time, short against a
