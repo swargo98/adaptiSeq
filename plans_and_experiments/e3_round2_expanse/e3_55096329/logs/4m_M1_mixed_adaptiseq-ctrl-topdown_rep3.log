@@ -1,0 +1,105 @@
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 27000531 of 233681198 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 25329363 of 233681198 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 53968603 of 222011349 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 48398033 of 233681198 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 53706459 of 233681198 bytes).'>
+[32mNote[0m: batch downloading 19 file(s) across 15 accession(s) with up to 19 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 8 probe(s); best 652 Mbps at 8 worker(s); last 14 Mbps at 2 worker(s); recent: 8w@652Mbps, 5w@441Mbps, 2w@214Mbps, 2w@18Mbps, 2w@14Mbps, 2w@17Mbps, 1w@16Mbps, 2w@14Mbps
+[32mNote[0m: SRR22904253.metadata.tsv exists, skip downloading metadata for SRR22904253
+      SRR22904253.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904253.metadata.tsv
+[92mSRR22904253 download and md5 check successful, save SRR22904253 in success.log[0m
+=======================SRR22904253 download finished=======================
+[32mNote[0m: SRR22904273.metadata.tsv exists, skip downloading metadata for SRR22904273
+      SRR22904273.fastq.gz 0.15G 	       SRR22904273_1.fastq.gz 0.00G 	       SRR22904273_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904273.metadata.tsv
+[92mSRR22904273 download and md5 check successful, save SRR22904273 in success.log[0m
+=======================SRR22904273 download finished=======================
+[32mNote[0m: SRR22904293.metadata.tsv exists, skip downloading metadata for SRR22904293
+      SRR22904293.fastq.gz 0.14G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904293.metadata.tsv
+[92mSRR22904293 download and md5 check successful, save SRR22904293 in success.log[0m
+=======================SRR22904293 download finished=======================
+[32mNote[0m: SRR22904313.metadata.tsv exists, skip downloading metadata for SRR22904313
+      SRR22904313.fastq.gz 0.00G 	       SRR22904313_1.fastq.gz 0.00G 	       SRR22904313_2.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904313.metadata.tsv
+[92mSRR22904313 download and md5 check successful, save SRR22904313 in success.log[0m
+=======================SRR22904313 download finished=======================
+[32mNote[0m: SRR22904333.metadata.tsv exists, skip downloading metadata for SRR22904333
+      SRR22904333.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904333.metadata.tsv
+[92mSRR22904333 download and md5 check successful, save SRR22904333 in success.log[0m
+=======================SRR22904333 download finished=======================
+[32mNote[0m: SRR22904353.metadata.tsv exists, skip downloading metadata for SRR22904353
+      SRR22904353.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904353.metadata.tsv
+[92mSRR22904353 download and md5 check successful, save SRR22904353 in success.log[0m
+=======================SRR22904353 download finished=======================
+[32mNote[0m: SRR22904373.metadata.tsv exists, skip downloading metadata for SRR22904373
+      SRR22904373.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904373.metadata.tsv
+[92mSRR22904373 download and md5 check successful, save SRR22904373 in success.log[0m
+=======================SRR22904373 download finished=======================
+[32mNote[0m: SRR22904393.metadata.tsv exists, skip downloading metadata for SRR22904393
+      SRR22904393.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904393.metadata.tsv
+[92mSRR22904393 download and md5 check successful, save SRR22904393 in success.log[0m
+=======================SRR22904393 download finished=======================
+[32mNote[0m: SRR22904414.metadata.tsv exists, skip downloading metadata for SRR22904414
+      SRR22904414.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904414.metadata.tsv
+[92mSRR22904414 download and md5 check successful, save SRR22904414 in success.log[0m
+=======================SRR22904414 download finished=======================
+[32mNote[0m: SRR22904434.metadata.tsv exists, skip downloading metadata for SRR22904434
+      SRR22904434.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904434.metadata.tsv
+[92mSRR22904434 download and md5 check successful, save SRR22904434 in success.log[0m
+=======================SRR22904434 download finished=======================
+[32mNote[0m: SRR22904454.metadata.tsv exists, skip downloading metadata for SRR22904454
+      SRR22904454.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904454.metadata.tsv
+[92mSRR22904454 download and md5 check successful, save SRR22904454 in success.log[0m
+=======================SRR22904454 download finished=======================
+[32mNote[0m: SRR22904474.metadata.tsv exists, skip downloading metadata for SRR22904474
+      SRR22904474.fastq.gz 0.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904474.metadata.tsv
+[92mSRR22904474 download and md5 check successful, save SRR22904474 in success.log[0m
+=======================SRR22904474 download finished=======================
+[32mNote[0m: SRR22904495.metadata.tsv exists, skip downloading metadata for SRR22904495
+      SRR22904495.fastq.gz 0.02G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR22904495.metadata.tsv
+[92mSRR22904495 download and md5 check successful, save SRR22904495 in success.log[0m
+=======================SRR22904495 download finished=======================
+[32mNote[0m: CRR120304.metadata.csv exists, skip downloading metadata for CRR120304
+      CRR120304.fastq.gz 1.65G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120304.metadata.csv
+File size: 	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120304.fastq.gz download and md5 check successful, save CRR120304.fastq.gz in success.log[0m
+========================CRR120304 download finished========================
+[32mNote[0m: CRR120306.metadata.csv exists, skip downloading metadata for CRR120306
+      CRR120306.fastq.gz 1.74G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120306.metadata.csv
+File size: 1.74G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120306.fastq.gz download and md5 check successful, save CRR120306.fastq.gz in success.log[0m
+========================CRR120306 download finished========================

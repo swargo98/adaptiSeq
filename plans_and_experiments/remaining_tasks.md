@@ -471,6 +471,24 @@ Rep 3 `55096329` (`exp-6-02`, from 08:46 PDT 10-21, probe 3.6/21.5/89.7 MB/s, GA
 | 3 | 4g GSA | topdown | **358** | 1.00 | 6/6 | 21.1 / 48 | best 1062 Mbps at 6 workers; 73 cut short |
 | 3 | 4g GSA | greedy | 710 | 1.98 | 6/6 | 9.8 / 48 | 44 cut short, 2 probe retries |
 | 3 | 4g GSA | budget | 659 | 1.84 | 6/6 | 8.7 / 21 | 68 cut short, 6 out of attempts |
+| 3 | 4h ENA held-out | budget | **1785** | 1.00 | 2/2 | 15.5 / 16 | |
+| 3 | 4h ENA held-out | bottomup | 1957 | 1.10 | 2/2 | 15.5 / 16 | |
+| 3 | 4h ENA held-out | fixed-j64 | 3978 | 2.23 | 2/2 | 11.9 / 16 | 1 md5 mismatch (11.5 GB re-fetch) |
+| 3 | 4h ENA held-out | topdown | 3175 | 1.78 | 2/2 | 12.2 / 16 | 1 md5 mismatch |
+| 3 | 4h ENA held-out | knee | 4554 | 2.55 | 2/2 | **6.5** / 16 | no mismatch; budget fell, best 358 Mbps at 18 |
+| 3 | 4h ENA held-out | fixed-j20 | 2012 | 1.13 | 2/2 | 15.4 / 16 | |
+| 3 | 4h ENA held-out | greedy | 3531 | 1.98 | 2/2 | 15.3 / 16 | 2 md5 mismatches |
+| 3 | 4m mixed | topdown | 193 | 1.07 | 15/15 | 13.2 / 39 | |
+| 3 | 4m mixed | bottomup | 237 | 1.31 | 15/15 | 7.6 / 23 | |
+| 3 | 4m mixed | budget | 228 | 1.26 | 15/15 | 15.7 / 36 | |
+| 3 | 4m mixed | fixed-j64 | **181** | 1.00 | 15/15 | 13.3 / 41 | |
+| 3 | 4m mixed | fixed-j20 | 285 | 1.57 | 15/15 | 9.5 / 35 | |
+| 3 | 4m mixed | greedy | 239 | 1.32 | 15/15 | 10.3 / 40 | |
+| 3 | 4m mixed | knee | 245 | 1.35 | 15/15 | 11.6 / 32 | best 509 Mbps at 12 |
+
+**Rep 3 done** (`55096329`, 08:46-22:19 PDT 10-21, 13 h 33 min). **Round 2 complete**: 3 reps x 6 panels x 7 arms.
+Knee's 4h rep 3 is the one 4h loss a controller caused: no md5 mismatch, but it averaged 6.5 of 16 possible
+connections (every other arm 12-15.5).
 
 **4b rep 3: by the fixed criterion fixed-j20 and topdown are disqualified** (runs from SRA, not md5-verified). Cause: the
 ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11:19 and 14:30). adaptiSeq's ENA

@@ -1,0 +1,14 @@
+[32mNote[0m: batch downloading 2 file(s) across 2 accession(s) with up to 2 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 177 probe(s); best 259 Mbps at 25 connection(s); last 1 Mbps at 25 connection(s); recent: 25c@82Mbps, 25c@79Mbps, 25c@124Mbps, 25c@113Mbps, 25c@69Mbps, 25c@95Mbps, 25c@102Mbps, 25c@79Mbps, 25c@13Mbps, 25c@10Mbps, 25c@10Mbps, 25c@1Mbps
+[32mNote[0m: SRR9001768.metadata.tsv exists, skip downloading metadata for SRR9001768
+      SRR9001768_subreads.fastq.gz 10.49G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR9001768.metadata.tsv
+[92mSRR9001768 download and md5 check successful, save SRR9001768 in success.log[0m
+========================SRR9001768 download finished========================
+[32mNote[0m: SRR9001769.metadata.tsv exists, skip downloading metadata for SRR9001769
+      SRR9001769_subreads.fastq.gz 11.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR9001769.metadata.tsv
+[92mSRR9001769 download and md5 check successful, save SRR9001769 in success.log[0m
+========================SRR9001769 download finished========================
