@@ -1,0 +1,3 @@
+arm	rep	line
+adaptiseq-ctrl-knee	rep1	[32mNote[0m: adaptive worker summary: 126 probe(s); best 390 Mbps at 32 connection(s); last 5 Mbps at 32 connection(s); recent: 32c@230Mbps, 32c@232Mbps, 32c@187Mbps, 32c@123Mbps, 32c@70Mbps, 32c@20Mbps, 32c@17Mbps, 32c@9Mbps, 32c@9Mbps, 32c@0Mbps, 32c@0Mbps, 32c@5Mbps
+adaptiseq-ctrl-budget	rep1	[32mNote[0m: adaptive worker summary: 157 probe(s); best 958 Mbps at 32 connection(s); last 6 Mbps at 32 connection(s); recent: 32c@36Mbps, 32c@30Mbps, 32c@63Mbps, 32c@49Mbps, 32c@49Mbps, 32c@50Mbps, 32c@47Mbps, 32c@53Mbps, 32c@27Mbps, 32c@24Mbps, 32c@26Mbps, 32c@6Mbps

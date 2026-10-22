@@ -1,0 +1,2 @@
+arm	rep	line
+adaptiseq-ctrl-knee	rep1	[32mNote[0m: adaptive worker summary: 600 probe(s); best 555 Mbps at 15 connection(s); last 68 Mbps at 22 connection(s); recent: 22c@223Mbps, 22c@307Mbps, 22c@273Mbps, 22c@11Mbps, 22c@4Mbps, 22c@3Mbps, 22c@3Mbps, 22c@2Mbps, 22c@3Mbps, 22c@2Mbps, 22c@3Mbps, 22c@68Mbps

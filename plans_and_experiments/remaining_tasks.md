@@ -552,6 +552,13 @@ Diagnosis behind the cap fix (info-level 4b run on 0.1.11, `e3_diag_ceiling/e3_5
 `bench/e3/aseq_info.sh`): knee raised its budget to 32 at 10:36:23 and ENA refused 14 connects within 2 s at 24-25
 open, then again at 10:37:46, 10:37:52, 10:38:09. So the 25 is often ENA refusing connections at that moment; the
 fault was that the pin never lifted. 0.1.12 re-tests one connection per 5 s (a refusal costs a 0.5 s wait).
+GSA tails on one connection, same cause (info-level 4g run on 0.1.11, `e3_diag_ceiling/e3_55197661`, knee, 4860 s):
+at 10:38-10:39 GSA cut 28 streams and refused 14 reconnects while others were open; each refusal pinned the cap at
+the shrinking open count, down to 1. Knee then ran on 1 connection for 18 min with nothing logged (segments parked
+in `HostGuard.acquire`, which had no timeout; the cap rose only on a new response, and none could start), again at
+10:58 and 11:24-11:31. The 0.1.12 time-based recovery (and the timed wait in `acquire`) covers this. Both diagnostic
+jobs were cancelled after this (55197661 after knee's 4g arm, 55197662 after knee's 4b arm); a 0.1.12 check with the
+same logging (`e3_smoke_0112/`, job `55201029`: 4b + 4g, topdown and knee) runs before round 3.
 
 **Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
 arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job

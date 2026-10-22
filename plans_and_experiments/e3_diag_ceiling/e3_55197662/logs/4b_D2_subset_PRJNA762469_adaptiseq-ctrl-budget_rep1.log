@@ -1,0 +1,425 @@
+2026-10-22 11:09:47,755 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:47,804 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:47,920 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:47,943 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:47,970 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:48,356 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:48,807 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:49,133 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:49,414 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:49,431 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:49,711 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:49,712 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:49,817 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:50,227 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:50,365 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:50,544 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:50,647 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:51,034 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:51,105 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:51,877 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:52,046 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:52,894 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:52,932 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:53,129 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:53,186 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:53,316 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:09:53,432 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:09:53,711 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=297.6Mbps pushback=0 ceiling=11 truncated=0
+2026-10-22 11:09:53,856 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:10:03,714 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=958.1Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:10:13,717 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=343.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:10:23,720 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=173.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:10:33,724 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=146.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:10:43,728 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=132.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:10:53,731 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=128.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:11:03,735 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=192.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:11:13,739 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=143.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:11:23,742 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=93.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:11:33,748 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=136.3Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:11:43,751 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=153.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:11:53,755 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=148.3Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:12:03,758 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=183.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:12:13,761 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=139.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:12:23,765 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=141.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:12:33,769 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=158.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:12:43,772 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=154.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:12:53,776 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=130.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:13:03,779 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=173.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:13:13,783 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=202.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:13:23,787 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=170.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:13:33,790 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=131.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:13:43,794 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=145.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:13:53,797 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=140.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:14:03,800 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=145.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:14:13,804 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=142.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:14:23,808 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=136.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:14:33,813 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=155.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:14:43,816 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=142.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:14:53,821 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=135.3Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:15:03,823 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=146.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:15:13,829 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=116.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:15:23,832 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=158.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:15:33,835 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=198.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:15:43,840 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=148.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:15:53,842 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=160.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:16:03,846 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=134.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:16:13,849 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=141.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:16:23,853 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=153.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:16:33,857 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=156.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:16:43,859 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=182.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:16:53,861 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=156.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:17:03,863 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=157.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:17:13,865 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=151.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:17:23,869 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=150.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:17:33,872 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=159.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:17:43,875 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=177.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:17:53,878 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=161.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:18:03,882 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=173.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:18:13,887 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=130.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:18:23,892 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=181.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:18:33,896 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=137.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:18:43,898 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=124.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:18:53,903 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=127.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:19:03,906 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=146.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:19:12,645 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852406_2.fastq.gz at 274093577 (261 MiB to a new connection)
+2026-10-22 11:19:13,733 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:19:13,911 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=174.2Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:19:23,914 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=132.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:19:33,919 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=135.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:19:43,923 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=159.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:19:53,928 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=148.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:20:03,932 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=189.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:20:13,934 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=142.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:20:23,938 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=102.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:20:33,942 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=121.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:20:43,946 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=196.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:20:47,461 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852415_1.fastq.gz at 563357265 (81 MiB to a new connection)
+2026-10-22 11:20:50,010 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_2.fastq.gz at 1969928162 (80 MiB to a new connection)
+2026-10-22 11:20:53,607 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:20:53,950 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=144.0Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:20:54,349 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 1642705095 (313 MiB to a new connection)
+2026-10-22 11:20:55,300 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:20:59,722 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:21:03,956 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=127.4Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:21:13,959 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=134.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:21:23,962 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=122.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:21:33,968 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=101.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:21:43,973 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=119.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:21:46,529 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852415_2.fastq.gz at 1667094691 (317 MiB to a new connection)
+2026-10-22 11:21:51,055 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:21:53,977 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=122.4Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:22:03,980 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=141.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:22:08,838 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852400_1.fastq.gz at 993240747 (315 MiB to a new connection)
+2026-10-22 11:22:13,330 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:22:13,983 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=143.2Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:22:17,915 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852415_2.fastq.gz at 1500385221 (158 MiB to a new connection)
+2026-10-22 11:22:19,652 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:22:23,986 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=183.7Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:22:24,091 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852415_1.fastq.gz at 1245764102 (48 MiB to a new connection)
+2026-10-22 11:22:24,233 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:22:31,519 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_2.fastq.gz at 641890404 (40 MiB to a new connection)
+2026-10-22 11:22:33,989 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=149.4Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:22:39,737 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:22:43,992 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=226.4Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:22:49,996 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852415_1.fastq.gz at 1271228893 (24 MiB to a new connection)
+2026-10-22 11:22:52,475 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:22:53,996 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=196.4Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:22:57,171 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852430_1.fastq.gz at 1806975604 (156 MiB to a new connection)
+2026-10-22 11:22:58,641 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852404_2.fastq.gz at 1389806488 (63 MiB to a new connection)
+2026-10-22 11:23:01,314 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:03,236 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:04,001 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=174.3Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:23:10,143 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852411_2.fastq.gz at 701382948 (19 MiB to a new connection)
+2026-10-22 11:23:14,004 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=153.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:23:14,359 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:21,708 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:24,007 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=178.9Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:23:29,212 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:33,537 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:34,010 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=138.0Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:23:35,376 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852430_2.fastq.gz at 2012279763 (40 MiB to a new connection)
+2026-10-22 11:23:42,376 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:42,518 adaptiseq.engine.segmented INFO Completed SRR15852407_1.fastq.gz
+2026-10-22 11:23:43,199 adaptiseq.engine.segmented INFO Completed SRR15852400_2.fastq.gz
+2026-10-22 11:23:44,012 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:44,013 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=153.0Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:23:44,408 adaptiseq.batch INFO downloaded SRR15852407_1.fastq.gz
+2026-10-22 11:23:44,989 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:45,226 adaptiseq.batch INFO downloaded SRR15852400_2.fastq.gz
+2026-10-22 11:23:46,453 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:47,736 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852430_2.fastq.gz at 663383762 (20 MiB to a new connection)
+2026-10-22 11:23:47,875 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:52,789 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:23:54,016 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=190.1Mbps pushback=0 ceiling=4 truncated=0
+2026-10-22 11:24:04,019 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=154.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:24:14,024 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=155.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:24:24,025 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=126.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:24:24,810 adaptiseq.engine.segmented INFO Completed SRR15852415_1.fastq.gz
+2026-10-22 11:24:24,951 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:27,749 adaptiseq.batch INFO downloaded SRR15852415_1.fastq.gz
+2026-10-22 11:24:28,797 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852430_2.fastq.gz at 2033455564 (20 MiB to a new connection)
+2026-10-22 11:24:31,662 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:34,030 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=155.9Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:24:34,665 adaptiseq.engine.segmented INFO Completed SRR15852411_2.fastq.gz
+2026-10-22 11:24:35,845 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:36,866 adaptiseq.batch INFO downloaded SRR15852411_2.fastq.gz
+2026-10-22 11:24:40,678 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_1.fastq.gz at 1496749296 (86 MiB to a new connection)
+2026-10-22 11:24:42,138 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:42,975 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:44,032 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=178.6Mbps pushback=0 ceiling=3 truncated=0
+2026-10-22 11:24:49,901 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:53,415 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:24:54,036 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=200.3Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:25:04,039 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=152.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:25:14,042 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=111.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:25:16,667 adaptiseq.engine.segmented INFO Completed SRR15852404_2.fastq.gz
+2026-10-22 11:25:18,890 adaptiseq.batch INFO downloaded SRR15852404_2.fastq.gz
+2026-10-22 11:25:24,047 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=124.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:25:25,948 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852415_2.fastq.gz at 1884595999 (110 MiB to a new connection)
+2026-10-22 11:25:26,089 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:25:26,730 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:25:29,993 adaptiseq.engine.segmented INFO Completed SRR15852404_1.fastq.gz
+2026-10-22 11:25:32,127 adaptiseq.batch INFO downloaded SRR15852404_1.fastq.gz
+2026-10-22 11:25:34,050 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=228.2Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:25:36,688 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_1.fastq.gz at 1470409639 (25 MiB to a new connection)
+2026-10-22 11:25:36,829 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:25:44,054 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=155.5Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:25:45,233 adaptiseq.engine.segmented INFO Completed SRR15852430_2.fastq.gz
+2026-10-22 11:25:47,741 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852411_1.fastq.gz at 1113827521 (273 MiB to a new connection)
+2026-10-22 11:25:47,882 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:25:48,559 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:25:53,877 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852407_2.fastq.gz at 985803053 (269 MiB to a new connection)
+2026-10-22 11:25:54,058 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=146.2Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:26:04,062 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=122.3Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:26:14,066 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=132.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:26:18,775 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:26:24,070 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=136.7Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:26:25,375 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 1585990424 (54 MiB to a new connection)
+2026-10-22 11:26:30,772 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:26:34,072 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=197.7Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:26:34,586 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:26:36,298 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 1559701089 (25 MiB to a new connection)
+2026-10-22 11:26:36,579 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:26:41,169 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852415_2.fastq.gz at 1440170325 (57 MiB to a new connection)
+2026-10-22 11:26:42,876 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:26:44,076 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=176.8Mbps pushback=0 ceiling=3 truncated=0
+2026-10-22 11:26:54,080 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=177.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:26:54,577 adaptiseq.engine.segmented INFO Completed SRR15852406_1.fastq.gz
+2026-10-22 11:26:57,147 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 11:27:00,282 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:27:04,159 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=143.2Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:27:11,783 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_2.fastq.gz at 901008572 (186 MiB to a new connection)
+2026-10-22 11:27:11,923 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:27:14,163 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=171.9Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:27:17,453 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:27:20,127 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:27:20,968 adaptiseq.engine.segmented INFO Completed SRR15852430_1.fastq.gz
+2026-10-22 11:27:22,542 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852406_1.fastq.gz at 402118996 (373 MiB to a new connection)
+2026-10-22 11:27:22,684 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:27:23,977 adaptiseq.batch INFO downloaded SRR15852430_1.fastq.gz
+2026-10-22 11:27:24,167 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=196.5Mbps pushback=0 ceiling=3 truncated=0
+2026-10-22 11:27:25,171 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852415_2.fastq.gz at 1477729612 (21 MiB to a new connection)
+2026-10-22 11:27:25,311 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:27:34,171 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=203.7Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:27:44,175 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=199.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:27:54,179 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=146.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:27:58,548 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_1.fastq.gz at 1246577296 (325 MiB to a new connection)
+2026-10-22 11:27:59,899 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852407_2.fastq.gz at 892715770 (88 MiB to a new connection)
+2026-10-22 11:28:02,207 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852425_1.fastq.gz at 1715826727 (160 MiB to a new connection)
+2026-10-22 11:28:02,221 adaptiseq.engine.segmented INFO Completed SRR15852415_2.fastq.gz
+2026-10-22 11:28:02,348 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:28:03,763 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852411_1.fastq.gz at 481255738 (208 MiB to a new connection)
+2026-10-22 11:28:03,903 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:28:04,182 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=144.4Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:28:05,249 adaptiseq.batch INFO downloaded SRR15852415_2.fastq.gz
+2026-10-22 11:28:08,765 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:28:14,186 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=258.5Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:28:24,189 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=162.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:28:34,192 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=132.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:28:44,196 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=139.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:28:54,199 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=151.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:29:04,203 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=163.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:29:14,208 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=163.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:29:24,213 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=147.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:29:32,308 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852407_2.fastq.gz at 865868129 (25 MiB to a new connection)
+2026-10-22 11:29:34,217 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=163.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:29:34,471 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:29:44,221 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=165.1Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:29:44,567 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_1.fastq.gz at 1106947639 (133 MiB to a new connection)
+2026-10-22 11:29:44,708 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:29:47,262 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852425_1.fastq.gz at 516930021 (106 MiB to a new connection)
+2026-10-22 11:29:50,899 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:29:54,223 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=146.0Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:30:04,225 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=141.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:30:14,228 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=133.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:30:17,788 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852411_1.fastq.gz at 606691603 (89 MiB to a new connection)
+2026-10-22 11:30:17,929 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:30:18,993 adaptiseq.engine.segmented INFO Completed SRR15852400_1.fastq.gz
+2026-10-22 11:30:19,134 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:30:20,998 adaptiseq.batch INFO downloaded SRR15852400_1.fastq.gz
+2026-10-22 11:30:24,234 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=121.7Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:30:24,573 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852406_1.fastq.gz at 278451342 (117 MiB to a new connection)
+2026-10-22 11:30:25,278 adaptiseq.engine.segmented INFO Completed SRR15852407_2.fastq.gz
+2026-10-22 11:30:25,457 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_2.fastq.gz at 1780455394 (261 MiB to a new connection)
+2026-10-22 11:30:27,209 adaptiseq.batch INFO downloaded SRR15852407_2.fastq.gz
+2026-10-22 11:30:27,252 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_2.fastq.gz at 1133196535 (140 MiB to a new connection)
+2026-10-22 11:30:27,252 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852425_2.fastq.gz at 1790076999 (124 MiB to a new connection)
+2026-10-22 11:30:27,392 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:30:27,392 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:30:34,235 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=214.4Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:30:44,238 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=196.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:30:54,241 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=172.3Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:31:04,246 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=131.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:31:09,923 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:31:14,249 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=125.4Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:31:22,466 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:31:24,252 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=138.7Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:31:34,255 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=145.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:31:44,004 adaptiseq.engine.segmented INFO Completed SRR15852406_2.fastq.gz
+2026-10-22 11:31:44,259 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=112.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:31:46,490 adaptiseq.batch INFO downloaded SRR15852406_2.fastq.gz
+2026-10-22 11:31:49,803 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852411_1.fastq.gz at 1360161387 (38 MiB to a new connection)
+2026-10-22 11:31:51,916 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852411_1.fastq.gz at 582473510 (23 MiB to a new connection)
+2026-10-22 11:31:51,916 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852411_1.fastq.gz at 1380232481 (19 MiB to a new connection)
+2026-10-22 11:31:52,057 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:31:54,263 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=93.8Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:31:54,949 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:31:56,829 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852411_1.fastq.gz at 681553536 (17 MiB to a new connection)
+2026-10-22 11:31:56,969 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:31:57,773 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852411_1.fastq.gz at 1342390293 (16 MiB to a new connection)
+2026-10-22 11:32:04,269 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=160.1Mbps pushback=0 ceiling=2 truncated=0
+2026-10-22 11:32:07,270 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852425_2.fastq.gz at 1864523034 (53 MiB to a new connection)
+2026-10-22 11:32:07,416 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:09,053 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:09,134 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_1.fastq.gz at 1206974372 (46 MiB to a new connection)
+2026-10-22 11:32:09,134 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_1.fastq.gz at 1182337203 (23 MiB to a new connection)
+2026-10-22 11:32:09,282 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:14,273 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=146.9Mbps pushback=0 ceiling=3 truncated=0
+2026-10-22 11:32:14,592 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852406_1.fastq.gz at 1510106791 (73 MiB to a new connection)
+2026-10-22 11:32:14,738 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:15,135 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852425_1.fastq.gz at 1231831380 (23 MiB to a new connection)
+2026-10-22 11:32:15,283 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:21,430 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:24,277 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=150.9Mbps pushback=0 ceiling=3 truncated=0
+2026-10-22 11:32:29,170 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852406_1.fastq.gz at 1548827700 (36 MiB to a new connection)
+2026-10-22 11:32:31,482 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_2.fastq.gz at 443794404 (229 MiB to a new connection)
+2026-10-22 11:32:33,170 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852406_1.fastq.gz at 1475397882 (33 MiB to a new connection)
+2026-10-22 11:32:33,483 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852430_2.fastq.gz at 1194394945 (167 MiB to a new connection)
+2026-10-22 11:32:33,624 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:34,281 adaptiseq.batch INFO adaptive budget: budget=32 conns=24 throughput=165.4Mbps pushback=0 ceiling=1 truncated=0
+2026-10-22 11:32:34,779 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852406_1.fastq.gz at 762634490 (29 MiB to a new connection)
+2026-10-22 11:32:34,919 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:37,449 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852406_1.fastq.gz at 258829515 (18 MiB to a new connection)
+2026-10-22 11:32:37,590 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:38,603 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:39,273 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:39,915 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:40,945 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852406_1.fastq.gz at 1568567994 (18 MiB to a new connection)
+2026-10-22 11:32:41,344 adaptiseq.engine.segmented INFO Completed SRR15852411_1.fastq.gz
+2026-10-22 11:32:43,276 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_2.fastq.gz at 1084846339 (46 MiB to a new connection)
+2026-10-22 11:32:43,277 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852425_2.fastq.gz at 1245250570 (33 MiB to a new connection)
+2026-10-22 11:32:43,461 adaptiseq.batch INFO downloaded SRR15852411_1.fastq.gz
+2026-10-22 11:32:43,484 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_2.fastq.gz at 323253046 (114 MiB to a new connection)
+2026-10-22 11:32:43,624 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:44,283 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=217.7Mbps pushback=0 ceiling=6 truncated=0
+2026-10-22 11:32:47,485 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852430_2.fastq.gz at 571735602 (107 MiB to a new connection)
+2026-10-22 11:32:47,625 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:48,266 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:48,906 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 11:32:53,022 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852425_2.fastq.gz at 1764622802 (24 MiB to a new connection)
+2026-10-22 11:32:54,287 adaptiseq.batch INFO adaptive budget: budget=32 conns=25 throughput=208.9Mbps pushback=0 ceiling=3 truncated=0
+2026-10-22 11:32:58,235 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_2.fastq.gz at 1065515241 (18 MiB to a new connection)
+2026-10-22 11:33:01,652 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852425_2.fastq.gz at 1903178052 (16 MiB to a new connection)
+2026-10-22 11:33:04,289 adaptiseq.batch INFO adaptive budget: budget=32 conns=22 throughput=164.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:33:14,155 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852430_2.fastq.gz at 1122443936 (68 MiB to a new connection)
+2026-10-22 11:33:14,294 adaptiseq.batch INFO adaptive budget: budget=32 conns=19 throughput=104.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:33:24,298 adaptiseq.batch INFO adaptive budget: budget=32 conns=16 throughput=103.5Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:33:31,219 adaptiseq.engine.segmented INFO Completed SRR15852425_1.fastq.gz
+2026-10-22 11:33:34,074 adaptiseq.batch INFO downloaded SRR15852425_1.fastq.gz
+2026-10-22 11:33:34,303 adaptiseq.batch INFO adaptive budget: budget=32 conns=13 throughput=68.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:33:35,786 adaptiseq.engine.segmented INFO Completed SRR15852406_1.fastq.gz
+2026-10-22 11:33:38,179 adaptiseq.batch INFO downloaded SRR15852406_1.fastq.gz
+2026-10-22 11:33:44,309 adaptiseq.batch INFO adaptive budget: budget=32 conns=9 throughput=43.1Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:33:47,924 adaptiseq.engine.segmented INFO Completed SRR15852425_2.fastq.gz
+2026-10-22 11:33:50,844 adaptiseq.batch INFO downloaded SRR15852425_2.fastq.gz
+2026-10-22 11:33:54,314 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=37.2Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:04,319 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=36.0Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:14,324 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=29.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:19,805 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852430_2.fastq.gz at 1313242432 (53 MiB to a new connection)
+2026-10-22 11:34:24,328 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=62.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:34,333 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=48.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:44,338 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=48.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:54,343 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=50.4Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:34:58,255 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_2.fastq.gz at 1753582577 (25 MiB to a new connection)
+2026-10-22 11:35:03,798 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_2.fastq.gz at 304194367 (18 MiB to a new connection)
+2026-10-22 11:35:04,347 adaptiseq.batch INFO adaptive budget: budget=32 conns=8 throughput=46.9Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:35:14,351 adaptiseq.batch INFO adaptive budget: budget=32 conns=6 throughput=52.6Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:35:24,355 adaptiseq.batch INFO adaptive budget: budget=32 conns=6 throughput=26.7Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:35:34,358 adaptiseq.batch INFO adaptive budget: budget=32 conns=5 throughput=23.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:35:44,364 adaptiseq.batch INFO adaptive budget: budget=32 conns=4 throughput=25.8Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:35:54,370 adaptiseq.batch INFO adaptive budget: budget=32 conns=1 throughput=6.3Mbps pushback=0 ceiling=0 truncated=0
+2026-10-22 11:35:59,759 adaptiseq.engine.segmented INFO Completed SRR15852430_2.fastq.gz
+2026-10-22 11:36:02,862 adaptiseq.batch INFO downloaded SRR15852430_2.fastq.gz
+[32mNote[0m: batch downloading 16 file(s) across 8 accession(s) with up to 16 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852430_2.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852406_1.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 157 probe(s); best 958 Mbps at 32 connection(s); last 6 Mbps at 32 connection(s); recent: 32c@36Mbps, 32c@30Mbps, 32c@63Mbps, 32c@49Mbps, 32c@49Mbps, 32c@50Mbps, 32c@47Mbps, 32c@53Mbps, 32c@27Mbps, 32c@24Mbps, 32c@26Mbps, 32c@6Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================

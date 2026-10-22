@@ -1,0 +1,7 @@
+############################################################
+# panel 4g  dataset=G1_gsa_CRA002399  reps=1 (from rep 1)  arms=3  timeout=7200s
+############################################################
+[10:36:08] rep=1 order=1 arm=adaptiseq-ctrl-knee dataset=G1_gsa_CRA002399 (timeout 7200s)
+    -> 4860.30s  2.50 MB/s  runs=6/6  fmt=gz  conc=1/22 w=0/0  ok
+[11:57:13] rep=1 order=2 arm=adaptiseq-ctrl-topdown dataset=G1_gsa_CRA002399 (timeout 7200s)
+slurmstepd: error: *** JOB 55197661 ON exp-5-09 CANCELLED AT 2026-10-22T11:57:58 ***

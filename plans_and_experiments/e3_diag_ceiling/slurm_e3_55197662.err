@@ -1,0 +1,11 @@
+############################################################
+# panel 4b  dataset=D2_subset_PRJNA762469  reps=1 (from rep 1)  arms=5  timeout=7200s
+############################################################
+[10:36:04] rep=1 order=1 arm=adaptiseq-ctrl-knee dataset=D2_subset_PRJNA762469 (timeout 7200s)
+    -> 999.62s  25.88 MB/s  runs=8/8  fmt=gz  conc=25/25 w=0/0  ok
+[10:52:51] rep=1 order=2 arm=adaptiseq-fixed-j64 dataset=D2_subset_PRJNA762469 (timeout 7200s)
+    -> 1003.12s  25.79 MB/s  runs=8/8  fmt=gz  conc=25/25 w=0/0  ok
+[11:09:40] rep=1 order=3 arm=adaptiseq-ctrl-budget dataset=D2_subset_PRJNA762469 (timeout 7200s)
+    -> 1582.30s  16.35 MB/s  runs=8/8  fmt=gz  conc=25/25 w=0/0  ok
+[11:36:09] rep=1 order=4 arm=adaptiseq-fixed-j20 dataset=D2_subset_PRJNA762469 (timeout 7200s)
+slurmstepd: error: *** JOB 55197662 ON exp-6-24 CANCELLED AT 2026-10-22T11:57:58 ***
