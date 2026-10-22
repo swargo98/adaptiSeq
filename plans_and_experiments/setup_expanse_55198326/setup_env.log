@@ -1,0 +1,24 @@
+env adaptiseq_e3_sub already exists; activating.
+=== installing adaptiSeq 0.1.4 (release wheel) ===
+Processing ./wheels/adaptiseq-0.1.11-py3-none-any.whl
+Installing collected packages: adaptiseq
+  Attempting uninstall: adaptiseq
+    Found existing installation: adaptiseq 0.1.7
+    Uninstalling adaptiseq-0.1.7:
+      Successfully uninstalled adaptiseq-0.1.7
+Successfully installed adaptiseq-0.1.11
+aseq_version=0.1.11 aseq_sha256=1b9ce1280f7ebf7618ade28aceeeffe7787f729bcc48d3d4bd8f3b177817cf25
+export E3_ASEQ_WHEEL=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.11-py3-none-any.whl
+=== verifying ===
+  OK   adaptiseq     
+  OK   iseq          
+  OK   kingfisher    
+  OK   fastq-dl      
+  OK   srapath       
+  OK   vdb-validate  
+  OK   aria2c        
+  OK   axel          
+  OK   pigz          
+=== pinning versions for the paper ===
+wrote bench/e3/env_adaptiseq_e3_sub.yml
+=== env ready: conda activate adaptiseq_e3_sub ===
