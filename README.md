@@ -55,6 +55,27 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   2/4/8 s apart); if the Run is still missing, the accession fails, goes to
   `fail.log`, and the exit status is non-zero. A header-only CSV left on disk is
   fetched again instead of trusted.
+- A per-host connection cap lowered by a refused connect or by pushback now
+  climbs back by one connection every 5 s without a new refusal. It used to climb
+  only on a clean new response, and on large files none comes while the cap is
+  held at the open count: in the 0.1.11 controller tournament, runs that met an
+  early refusal from ENA stayed at 25 connections where others reached 50, and
+  GSA tails sank to one connection.
+- When a controller holds files back in the queue and every active worker is
+  busy, the running files may use the spare connection budget (as they already
+  did once the queue was empty). Fixed `-j` runs are unchanged.
+- `topdown` (the default controller) measures a worker count only once the files
+  in flight have come down (or up) to it, waits 5 s after a step up for the new
+  files to connect, keeps the higher count when large files do not drain within
+  60 s, and steps down only when the lower count wins over two windows. It used
+  to read the higher count's throughput right after a step down, and step down
+  on it (many small ENA files: 2-5 workers where 20-50 connections were faster).
+- ENA metadata retries are bounded by time rather than a count: a run waits up
+  to 3 minutes of portal failure before it falls back to SRA, and the 3 minutes
+  are shared by all accessions of a list (one outage costs a list about 3
+  minutes, not 3 minutes per run). An empty answer that took more than 5 s is
+  retried as a failure, not read as "not in ENA". With 0.1.11 the portal's slow
+  hours sent runs to SRA, whose files cannot be checked against ENA's md5.
 
 ### 0.1.11 (in development)
 - A connect that times out is now handled like a refused connect: while other

@@ -64,14 +64,23 @@ class TokenBucket:
                 await asyncio.sleep(deficit / self.rate)
 
 
+# A cap lowered by a refusal or by pushback climbs back one connection per
+# RECOVER_S without a new one. It used to climb only on a clean *new* response,
+# and on large files no new response comes while the cap is held at the open
+# count: round 2 panel 4b held every arm that met an early refusal at 25
+# connections for the whole run (others reached 50), and GSA tails sank to 1.
+RECOVER_S = 5.0
+
+
 class _HostState:
-    __slots__ = ("cap", "in_flight", "blocked_until", "backoff_level")
+    __slots__ = ("cap", "in_flight", "blocked_until", "backoff_level", "lowered_at")
 
     def __init__(self, cap: int):
         self.cap = cap
         self.in_flight = 0
         self.blocked_until = 0.0
         self.backoff_level = 0
+        self.lowered_at = 0.0     # last refusal/pushback, or last recovery step
 
 
 class HostGuard:
@@ -90,8 +99,10 @@ class HostGuard:
         min_cap: int = 1,
         base_backoff: float = 1.0,
         max_backoff: float = 60.0,
+        recover_s: float = RECOVER_S,
     ):
         self.default_cap = max(1, int(default_cap))
+        self.recover_s = float(recover_s)
         self.min_cap = max(1, int(min_cap))
         self.base_backoff = base_backoff
         self.max_backoff = max_backoff
@@ -104,7 +115,21 @@ class HostGuard:
         if st is None:
             st = _HostState(self.default_cap)
             self._hosts[host] = st
+        self._recover(st)
         return st
+
+    def _recover(self, st: _HostState) -> None:
+        """Raise a lowered cap by one per ``recover_s`` since it was last lowered
+        (or last raised this way), up to ``default_cap``."""
+        if st.cap >= self.default_cap or self.recover_s <= 0:
+            return
+        now = time.monotonic()
+        if st.blocked_until > now:
+            return
+        steps = int((now - st.lowered_at) // self.recover_s)
+        if steps > 0:
+            st.cap = min(self.default_cap, st.cap + steps)
+            st.lowered_at += steps * self.recover_s
 
     async def acquire(self, host: str) -> None:
         async with self._cond:
@@ -123,7 +148,14 @@ class HostGuard:
                 if st.in_flight < st.cap:
                     st.in_flight += 1
                     return
-                await self._cond.wait()
+                if st.cap < self.default_cap and self.recover_s > 0:
+                    # the cap may recover with time, not only on a release
+                    try:
+                        await asyncio.wait_for(self._cond.wait(), self.recover_s)
+                    except asyncio.TimeoutError:
+                        pass
+                else:
+                    await self._cond.wait()
 
     async def release(self, host: str) -> None:
         async with self._cond:
@@ -150,6 +182,8 @@ class HostGuard:
             )
             st.blocked_until = time.monotonic() + delay
             st.cap = max(self.min_cap, st.cap // 2)
+            # recovery starts once the backoff is over
+            st.lowered_at = st.blocked_until
             self.trips.append((host, kind, delay))
             self._cond.notify_all()
 
@@ -170,6 +204,7 @@ class HostGuard:
             st = self._state(host)
             if st.in_flight >= 1:
                 st.cap = max(self.min_cap, st.in_flight)
+                st.lowered_at = time.monotonic()
                 self.trips.append((host, "ceiling", 0.0))
                 self._cond.notify_all()
                 return True
@@ -213,7 +248,10 @@ class HostGuard:
 
     def cap_of(self, host: str) -> int:
         st = self._hosts.get(host)
-        return st.cap if st else self.default_cap
+        if st is None:
+            return self.default_cap
+        self._recover(st)
+        return st.cap
 
     def is_tripped(self, host: str) -> bool:
         st = self._hosts.get(host)

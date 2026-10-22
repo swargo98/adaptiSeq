@@ -95,7 +95,8 @@ class AdaptiveController:
                  history_limit: int = 12,
                  mode: Optional[str] = None,
                  guard: Optional[HostGuard] = None,
-                 pending: Optional[Callable[[], int]] = None):
+                 pending: Optional[Callable[[], int]] = None,
+                 in_flight: Optional[Callable[[], int]] = None):
         self.gate = gate
         self.meter = meter
         # Which controller runs (see run()); None -> ASEQ_ADAPTIVE_MODE or topdown.
@@ -104,6 +105,9 @@ class AdaptiveController:
         # steer connections (budget) or react to pushback (greedy).
         self.guard = guard
         self.pending = pending
+        # Files being fetched right now (topdown waits for the pool to reach a
+        # new worker count before it measures that count).
+        self.in_flight = in_flight
         self.unit = "worker"
         self.probe_window = max(2, int(probe_window))
         self.cc_penalty = float(cc_penalty)
@@ -229,12 +233,48 @@ class AdaptiveController:
         except (TypeError, ValueError):
             return float(default)
 
-    async def _measure(self, w: int, window: float, settle: float) -> float:
-        """Set the pool to ``w`` workers, let it settle, return smoothed Mbps."""
+    async def _await_pool(self, w: int, prev: int, limit: float) -> bool:
+        """Wait until the files in flight match ``w`` workers; False on timeout.
+
+        The gate acts only at file pickup, so after a step down the files the
+        higher count started keep running: measured at once, the lower count
+        reads the higher count's throughput (and the first probe at the cap
+        reads the ramp-up). Round 2, panel 4r: 20w@27, 10w@73, 5w@122 Mbps, and
+        topdown committed at 2-5 workers while 20-50 connections won.
+        """
+        if self.in_flight is None or w == prev:
+            return True
+        deadline = asyncio.get_event_loop().time() + limit
+        while not self.done:
+            n = self.in_flight()
+            if w < prev and n <= w:
+                return True
+            if w > prev and (n >= min(w, self._worker_cap())
+                             or (self.pending is not None and self.pending() == 0)):
+                return True
+            if asyncio.get_event_loop().time() >= deadline:
+                return False
+            await asyncio.sleep(0.5)
+        return False
+
+    async def _measure(self, w: int, window: float, settle: float,
+                       drain: float = 0.0, settle_up: float = 0.0) -> float:
+        """Set the pool to ``w`` workers, let it settle, return smoothed Mbps.
+
+        With ``drain`` > 0, first wait up to that long for the pool to reach
+        ``w``; if it does not, return -1 (no clean reading at ``w``). After a
+        step up, wait ``settle_up`` more: the new files are still opening
+        connections, and a reading taken then is low.
+        """
         if self.done:
             return -1.0
         w = self._cap_workers(w)
+        prev = self.gate.active
         self.gate.set_active(w)
+        if drain > 0 and not await self._await_pool(w, prev, drain):
+            return -1.0
+        if w > prev and settle_up > 0:
+            await asyncio.sleep(settle_up)
         await asyncio.sleep(settle)
         if self.done:
             return -1.0
@@ -258,6 +298,8 @@ class AdaptiveController:
                            self._cfg("ASEQ_CLIMB_THRESHOLD", 0.10))
         reprobe_s = self._cfg("ASEQ_EXPLOIT_REPROBE_S", 20.0)
         redo = self._cfg("ASEQ_EXPLOIT_REDO", 0.35)        # sustained frac drop => re-explore
+        drain = self._cfg("ASEQ_TOPDOWN_DRAIN_S", 60.0)    # wait for the pool to reach a count
+        settle_up = self._cfg("ASEQ_TOPDOWN_SETTLE_UP", 5.0)  # ramp-up after a step up
 
         await asyncio.sleep(window)  # let the meter fill
 
@@ -272,17 +314,32 @@ class AdaptiveController:
             """
             cap = self._worker_cap()
             best_w = cap
-            best_t = await self._measure(cap, window, settle)
+            best_t = await self._measure(cap, window, settle, drain, settle_up)
+            if best_t < 0 and not self.done:
+                best_t = await self._measure(cap, window, settle)  # read it anyway
             w = cap
             while w > 1 and not self.done:
                 lower = max(1, w // 2)
                 if lower == w:
                     break
-                t = await self._measure(lower, window, settle)
+                t = await self._measure(lower, window, settle, drain)
+                if t < 0:
+                    # The files started at the higher count did not finish in
+                    # time (large files): there is no clean reading at the lower
+                    # count, so keep the higher one.
+                    break
                 if t > best_t * (1.0 + thresh):
-                    # Fewer workers is clearly better -> the knee is below here.
-                    best_w, best_t, w = lower, t, lower
-                    continue
+                    # Fewer workers looks clearly better: confirm over a second
+                    # window before stepping down (GSA's cut streams make one
+                    # window noisy).
+                    await asyncio.sleep(window)
+                    t2 = self.meter.recent_average(max(1, int(round(window))))
+                    self._record_probe(self._cap_workers(lower), t2)
+                    t = (t + t2) / 2
+                    if t > best_t * (1.0 + thresh):
+                        best_w, best_t, w = lower, t, lower
+                        continue
+                    break
                 if t > best_t:
                     best_w, best_t = lower, t   # mild improvement, record but stop
                 break
@@ -691,6 +748,7 @@ class BatchDownloader:
                 mode=self.options.controller,
                 guard=guard,
                 pending=queue.qsize,
+                in_flight=lambda: self._in_flight,
             )
             ctrl_task = asyncio.ensure_future(controller.run())
         repaint_task = asyncio.ensure_future(self._repaint(progress, meter, gate))
@@ -789,7 +847,7 @@ class BatchDownloader:
                         task.url, task.save_path, session=session,
                         host_guard=guard, rate=rate, on_bytes=meter.on_bytes,
                         target_segments=self._tail_segments(queue, guard, task),
-                        spare_slots=self._spare_slots(queue, guard, task),
+                        spare_slots=self._spare_slots(queue, guard, task, gate),
                     )
                 except asyncio.CancelledError:
                     raise
@@ -841,15 +899,21 @@ class BatchDownloader:
         budget = min(guard.cap_of(host_of(task.url)), self.jobs * self.options.max_segments)
         return max(1, budget // max(1, files_left))
 
-    @staticmethod
-    def _spare_slots(queue, guard, task: DownloadTask):
-        """Unused per-host connection budget, offered to in-flight files once the
-        queue is empty (nothing else could use it): they split their largest
-        remainders onto new connections instead of finishing on one or two."""
+    def _spare_slots(self, queue, guard, task: DownloadTask, gate=None):
+        """Unused per-host connection budget, offered to in-flight files when no
+        other file can start: the queue is empty, or a controller holds the pool
+        below its size and every active worker is busy. They split their largest
+        remainders onto new connections instead of finishing on one or two.
+
+        The second case is new in 0.1.12: topdown at 1 worker left the second
+        GSA file of panel 4m waiting, and the running one, offered nothing while
+        the queue was not empty, ran on one connection for half the run."""
         host = host_of(task.url)
 
         def spare() -> int:
-            if not queue.empty():
+            held = (gate is not None and gate.active < gate.jobs
+                    and self._in_flight >= gate.active)
+            if not queue.empty() and not held:
                 return 0
             return max(0, guard.cap_of(host) - guard.in_flight_of(host))
         return spare

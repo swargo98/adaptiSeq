@@ -1,0 +1,24 @@
+
+[notice] A new release of pip is available: 24.0 -> 26.2.2
+[notice] To update, run: python -m pip install --upgrade pip
+checkout: 4b1172e + uncommitted changes  node: exp-1-12
+adaptiseq imported from /home/rswargo/adaptiSeq/adaptiseq/__init__.py
+
+=== tests, offline (ADAPTISEQ_NO_NETWORK=1) ===
+E         
+E         - ena
+E         + auto
+
+tests/test_ena_patience.py:110: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_ena_patience.py::test_portal_back_within_the_budget_keeps_the_run_on_ena
+FAILED tests/test_ena_patience.py::test_slow_empty_answer_is_retried_not_read_as_missing
+SKIPPED [1] tests/test_api_drift.py:23: offline: API-drift canary skipped
+SKIPPED [1] tests/test_api_drift.py:33: offline: API-drift canary skipped
+SKIPPED [1] tests/test_aspera_live.py:65: live aspera opt-in: set ADAPTISEQ_LIVE_ASPERA=1 with a real ascp + ENA key
+SKIPPED [1] tests/test_differential.py:74: offline: live differential test skipped (fixture mode covers CI)
+SKIPPED [1] tests/test_differential.py:86: offline: live differential test skipped
+SKIPPED [1] tests/test_differential.py:96: offline: cannot diff against live iseq
+SKIPPED [1] tests/test_segmented_live.py:32: offline: live segmented byte-identity test skipped
+=== pytest done (status=1). Output: /home/rswargo/adaptiSeq/plans_and_experiments/pytest_expanse_55197957 ===
+rm: cannot remove '/scratch/rswargo/job_55197957': Permission denied

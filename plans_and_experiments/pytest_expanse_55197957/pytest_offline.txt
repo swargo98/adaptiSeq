@@ -1,0 +1,58 @@
+...............................ss............s.......................... [ 25%]
+.............................................................sss.F.F.... [ 51%]
+........................................................................ [ 77%]
+..........................................s...................           [100%]
+=================================== FAILURES ===================================
+___________ test_portal_back_within_the_budget_keeps_the_run_on_ena ____________
+
+tmp_path = PosixPath('/scratch/rswargo/job_55197957/pytest-of-rswargo/pytest-0/test_portal_back_within_the_bu0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x15552e4e8310>
+
+    def test_portal_back_within_the_budget_keeps_the_run_on_ena(tmp_path, monkeypatch):
+        clock = _clock(monkeypatch)
+        calls = []
+        answers = [("", 8, 1.0)] * 6 + [(GOOD, 0, 1.0)]   # about 90 s of HTTP 500
+        monkeypatch.setattr(meta, "wget_to_file", _fake(answers, calls, clock))
+        ctx = _ctx(tmp_path)
+    
+        tsv = meta.get_sra_metadata(ctx, "SRR22904251")
+    
+>       assert ctx.database == "ena"
+E       AssertionError: assert 'auto' == 'ena'
+E         
+E         - ena
+E         + auto
+
+tests/test_ena_patience.py:81: AssertionError
+____________ test_slow_empty_answer_is_retried_not_read_as_missing _____________
+
+tmp_path = PosixPath('/scratch/rswargo/job_55197957/pytest-of-rswargo/pytest-0/test_slow_empty_answer_is_retr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x15552e55d010>
+
+    def test_slow_empty_answer_is_retried_not_read_as_missing(tmp_path, monkeypatch):
+        clock = _clock(monkeypatch)
+        calls = []
+        answers = [(HEADER_ONLY, 0, 30.0), (HEADER_ONLY, 0, 30.0), (GOOD, 0, 1.0)]
+        monkeypatch.setattr(meta, "wget_to_file", _fake(answers, calls, clock))
+        ctx = _ctx(tmp_path)
+    
+        tsv = meta.get_sra_metadata(ctx, "SRR22904251")
+    
+>       assert ctx.database == "ena"          # 0.1.11 sent it to SRA after two
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'auto' == 'ena'
+E         
+E         - ena
+E         + auto
+
+tests/test_ena_patience.py:110: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_ena_patience.py::test_portal_back_within_the_budget_keeps_the_run_on_ena
+FAILED tests/test_ena_patience.py::test_slow_empty_answer_is_retried_not_read_as_missing
+SKIPPED [1] tests/test_api_drift.py:23: offline: API-drift canary skipped
+SKIPPED [1] tests/test_api_drift.py:33: offline: API-drift canary skipped
+SKIPPED [1] tests/test_aspera_live.py:65: live aspera opt-in: set ADAPTISEQ_LIVE_ASPERA=1 with a real ascp + ENA key
+SKIPPED [1] tests/test_differential.py:74: offline: live differential test skipped (fixture mode covers CI)
+SKIPPED [1] tests/test_differential.py:86: offline: live differential test skipped
+SKIPPED [1] tests/test_differential.py:96: offline: cannot diff against live iseq
+SKIPPED [1] tests/test_segmented_live.py:32: offline: live segmented byte-identity test skipped
