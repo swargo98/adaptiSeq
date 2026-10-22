@@ -457,6 +457,20 @@ Rep 3 `55096329` (`exp-6-02`, from 08:46 PDT 10-21, probe 3.6/21.5/89.7 MB/s, GA
 | 3 | 4b ENA large | fixed-j64 | 1772 | 1.21 | 8/8 | 23.2 / 25 | 3 md5 mismatches |
 | 3 | 4b ENA large | topdown | 1532 | 1.05 | **7/8** (1 from SRA, unverified) | 18.0 / 33 | portal at 7-45 s (13:50-14:22): SRR15852415 fell back to SRA |
 | 3 | 4b ENA large | budget | **1459** | 1.00 | 8/8 | 23.1 / 25 | |
+| 3 | 4s NCBI | fixed-j20 | 87 | 1.12 | 8/8 | 29.7 / 64 | |
+| 3 | 4s NCBI | fixed-j64 | **78** | 1.00 | 8/8 | 27.4 / 64 | |
+| 3 | 4s NCBI | budget | 79 | 1.01 | 8/8 | 7.7 / 20 | held 16 |
+| 3 | 4s NCBI | knee | 85 | 1.09 | 8/8 | 10.1 / 32 | settled 16 |
+| 3 | 4s NCBI | greedy | 78 | 1.00 | 8/8 | 27.7 / 64 | |
+| 3 | 4s NCBI | topdown | 84 | 1.08 | 8/8 | 23.7 / 64 | |
+| 3 | 4s NCBI | bottomup | 94 | 1.21 | 8/8 | 7.6 / 16 | best at 1 worker |
+| 3 | 4g GSA | fixed-j64 | 503 | 1.41 | 6/6 | 15.8 / 48 | 80 cut short, 3 out of attempts |
+| 3 | 4g GSA | fixed-j20 | 543 | 1.52 | 6/6 | 16.3 / 48 | 107 cut short, 10 out of attempts |
+| 3 | 4g GSA | knee | 473 | 1.32 | 6/6 | 14.5 / 25 | best 559 Mbps at 25; 33 cut short |
+| 3 | 4g GSA | bottomup | 649 | 1.81 | 6/6 | 12.0 / 41 | 63 cut short |
+| 3 | 4g GSA | topdown | **358** | 1.00 | 6/6 | 21.1 / 48 | best 1062 Mbps at 6 workers; 73 cut short |
+| 3 | 4g GSA | greedy | 710 | 1.98 | 6/6 | 9.8 / 48 | 44 cut short, 2 probe retries |
+| 3 | 4g GSA | budget | 659 | 1.84 | 6/6 | 8.7 / 21 | 68 cut short, 6 out of attempts |
 
 **4b rep 3: by the fixed criterion fixed-j20 and topdown are disqualified** (runs from SRA, not md5-verified). Cause: the
 ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11:19 and 14:30). adaptiSeq's ENA
