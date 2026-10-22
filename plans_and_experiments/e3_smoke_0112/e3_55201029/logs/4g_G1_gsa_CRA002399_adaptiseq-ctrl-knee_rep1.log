@@ -1,0 +1,314 @@
+2026-10-22 13:17:28,281 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:17:28,282 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:17:29,337 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:17:29,338 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:17:29,338 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:17:29,338 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:17:32,283 adaptiseq.batch INFO adaptive knee: budget 8
+2026-10-22 13:17:32,958 adaptiseq.engine.segmented INFO Split segment 1 of CRR120304.fastq.gz at 898252477 (272 MiB to a new connection)
+2026-10-22 13:17:32,958 adaptiseq.engine.segmented INFO Split segment 2 of CRR120304.fastq.gz at 1491216629 (271 MiB to a new connection)
+2026-10-22 13:17:32,958 adaptiseq.engine.segmented INFO Split segment 0 of CRR120304.fastq.gz at 311268489 (267 MiB to a new connection)
+2026-10-22 13:17:32,958 adaptiseq.engine.segmented INFO Split segment 1 of CRR120304.fastq.gz at 755348451 (136 MiB to a new connection)
+2026-10-22 13:17:36,285 adaptiseq.batch INFO adaptive knee: budget 16
+2026-10-22 13:17:36,959 adaptiseq.engine.segmented INFO Split segment 4 of CRR120304.fastq.gz at 1637962552 (131 MiB to a new connection)
+2026-10-22 13:17:36,979 adaptiseq.engine.segmented INFO Split segment 2 of CRR120305.fastq.gz at 1678612573 (320 MiB to a new connection)
+2026-10-22 13:17:36,979 adaptiseq.engine.segmented INFO Split segment 1 of CRR120305.fastq.gz at 1007167543 (320 MiB to a new connection)
+2026-10-22 13:17:36,979 adaptiseq.engine.segmented INFO Split segment 0 of CRR120305.fastq.gz at 347404160 (309 MiB to a new connection)
+2026-10-22 13:17:36,979 adaptiseq.engine.segmented INFO Split segment 3 of CRR120305.fastq.gz at 1846473831 (160 MiB to a new connection)
+2026-10-22 13:17:36,979 adaptiseq.engine.segmented INFO Split segment 2 of CRR120305.fastq.gz at 1510751315 (160 MiB to a new connection)
+2026-10-22 13:17:40,287 adaptiseq.batch INFO adaptive knee: budget 12
+2026-10-22 13:17:44,288 adaptiseq.batch INFO adaptive knee: budget 12
+2026-10-22 13:17:44,288 adaptiseq.batch INFO adaptive knee: settled at 12 connection(s)
+2026-10-22 13:17:48,369 adaptiseq.engine.segmented INFO Split segment 5 of CRR120304.fastq.gz at 469704394 (116 MiB to a new connection)
+2026-10-22 13:17:51,964 adaptiseq.engine.segmented INFO Split segment 3 of CRR120304.fastq.gz at 1083492607 (95 MiB to a new connection)
+2026-10-22 13:18:02,036 adaptiseq.engine.segmented WARNING Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 246120155 of 592030264 bytes).'>
+2026-10-22 13:18:02,037 adaptiseq.engine.segmented WARNING Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 158400211 of 324040869 bytes).'>
+2026-10-22 13:18:02,100 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 120782546 of 285808051 bytes).'>
+2026-10-22 13:18:02,184 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 150732497 of 167861258 bytes).'>
+2026-10-22 13:18:02,185 adaptiseq.engine.segmented WARNING Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 145587921 of 671445031 bytes).'>
+2026-10-22 13:18:02,194 adaptiseq.engine.segmented WARNING Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 76971729 of 284874165 bytes).'>
+2026-10-22 13:18:02,194 adaptiseq.engine.segmented WARNING Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 61800145 of 335722515 bytes).'>
+2026-10-22 13:18:02,194 adaptiseq.engine.segmented WARNING Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 76480211 of 280761775 bytes).'>
+2026-10-22 13:18:02,195 adaptiseq.engine.segmented WARNING Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 61472465 of 167861258 bytes).'>
+2026-10-22 13:18:02,387 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:18:02,387 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:18:03,012 adaptiseq.engine.segmented WARNING Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 187399889 of 592030266 bytes).'>
+2026-10-22 13:18:03,275 adaptiseq.engine.segmented WARNING Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 123109074 of 671445029 bytes).'>
+2026-10-22 13:18:03,281 adaptiseq.engine.segmented WARNING Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 85933787 of 671445029 bytes).'>
+2026-10-22 13:18:20,423 adaptiseq.engine.segmented INFO Split segment 4 of CRR120305.fastq.gz at 1205928873 (130 MiB to a new connection)
+2026-10-22 13:18:23,125 adaptiseq.engine.segmented INFO Split segment 0 of CRR120305.fastq.gz at 251452055 (91 MiB to a new connection)
+2026-10-22 13:18:23,733 adaptiseq.engine.segmented INFO Split segment 2 of CRR120304.fastq.gz at 1431338523 (57 MiB to a new connection)
+2026-10-22 13:18:24,305 adaptiseq.batch INFO adaptive knee: budget 15
+2026-10-22 13:18:25,100 adaptiseq.engine.segmented INFO Split segment 3 of CRR120308.fastq.gz at 1904202445 (259 MiB to a new connection)
+2026-10-22 13:18:25,100 adaptiseq.engine.segmented INFO Split segment 0 of CRR120308.fastq.gz at 272028920 (259 MiB to a new connection)
+2026-10-22 13:18:25,100 adaptiseq.engine.segmented INFO Split segment 1 of CRR120308.fastq.gz at 816086761 (259 MiB to a new connection)
+2026-10-22 13:18:26,721 adaptiseq.engine.segmented INFO Split segment 7 of CRR120304.fastq.gz at 1733257305 (40 MiB to a new connection)
+2026-10-22 13:18:33,177 adaptiseq.engine.segmented INFO Split segment 10 of CRR120304.fastq.gz at 1461277576 (28 MiB to a new connection)
+2026-10-22 13:18:33,309 adaptiseq.batch INFO adaptive knee: budget 12
+2026-10-22 13:18:33,933 adaptiseq.engine.segmented INFO Split segment 3 of CRR120304.fastq.gz at 1054982832 (27 MiB to a new connection)
+2026-10-22 13:18:36,610 adaptiseq.engine.segmented INFO Split segment 5 of CRR120305.fastq.gz at 593629861 (74 MiB to a new connection)
+2026-10-22 13:18:37,751 adaptiseq.engine.segmented INFO Split segment 8 of CRR120305.fastq.gz at 1274409465 (65 MiB to a new connection)
+2026-10-22 13:18:52,523 adaptiseq.engine.segmented INFO Split segment 4 of CRR120304.fastq.gz at 1609653480 (26 MiB to a new connection)
+2026-10-22 13:18:52,850 adaptiseq.engine.segmented INFO Split segment 9 of CRR120305.fastq.gz at 299428107 (45 MiB to a new connection)
+2026-10-22 13:18:53,417 adaptiseq.engine.segmented INFO Split segment 7 of CRR120305.fastq.gz at 1636018624 (40 MiB to a new connection)
+2026-10-22 13:18:57,317 adaptiseq.batch INFO adaptive knee: budget 9
+2026-10-22 13:19:01,257 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 76185297 of 544057844 bytes).'>
+2026-10-22 13:19:01,275 adaptiseq.engine.segmented WARNING Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 154369747 of 272028921 bytes).'>
+2026-10-22 13:19:01,406 adaptiseq.engine.segmented WARNING Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 55082705 of 544057841 bytes).'>
+2026-10-22 13:19:01,930 adaptiseq.engine.segmented WARNING Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 120159963 of 544057841 bytes).'>
+2026-10-22 13:19:02,122 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:02,193 adaptiseq.engine.segmented WARNING Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 42303186 of 544057841 bytes).'>
+2026-10-22 13:19:02,251 adaptiseq.engine.segmented WARNING Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 206601937 of 272028922 bytes).'>
+2026-10-22 13:19:02,386 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:02,443 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:02,641 adaptiseq.engine.segmented INFO Split segment 11 of CRR120304.fastq.gz at 1754674049 (20 MiB to a new connection)
+2026-10-22 13:19:02,834 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:03,348 adaptiseq.engine.segmented WARNING Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 84098770 of 272028921 bytes).'>
+2026-10-22 13:19:05,378 adaptiseq.engine.segmented WARNING Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 7438034 of 64457584 bytes).'>
+2026-10-22 13:19:05,378 adaptiseq.engine.segmented WARNING Segment 5 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 10010323 of 165640658 bytes).'>
+2026-10-22 13:19:05,379 adaptiseq.engine.segmented WARNING Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 13156050 of 69774194 bytes).'>
+2026-10-22 13:19:05,571 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:05,571 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:05,572 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:19:06,323 adaptiseq.batch INFO adaptive knee: budget 12
+2026-10-22 13:19:24,229 adaptiseq.engine.segmented INFO Split segment 5 of CRR120305.fastq.gz at 554722277 (37 MiB to a new connection)
+2026-10-22 13:19:30,334 adaptiseq.batch INFO adaptive knee: budget 15
+2026-10-22 13:19:30,956 adaptiseq.engine.segmented INFO Split segment 2 of CRR120306.fastq.gz at 1581287242 (274 MiB to a new connection)
+2026-10-22 13:19:30,957 adaptiseq.engine.segmented INFO Split segment 0 of CRR120306.fastq.gz at 343384321 (266 MiB to a new connection)
+2026-10-22 13:19:30,957 adaptiseq.engine.segmented INFO Split segment 1 of CRR120306.fastq.gz at 1001628707 (233 MiB to a new connection)
+2026-10-22 13:19:46,560 adaptiseq.engine.segmented INFO Split segment 10 of CRR120305.fastq.gz at 632627407 (37 MiB to a new connection)
+2026-10-22 13:19:51,358 adaptiseq.engine.segmented INFO Split segment 8 of CRR120305.fastq.gz at 1240169169 (32 MiB to a new connection)
+2026-10-22 13:19:56,159 adaptiseq.engine.segmented INFO Split segment 9 of CRR120305.fastq.gz at 275440081 (22 MiB to a new connection)
+2026-10-22 13:20:01,409 adaptiseq.engine.segmented WARNING Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 368017105 of 540173257 bytes).'>
+2026-10-22 13:20:01,414 adaptiseq.engine.segmented WARNING Segment 5 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 30965459 of 117659174 bytes).'>
+2026-10-22 13:20:01,418 adaptiseq.engine.segmented WARNING Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 105774801 of 244671019 bytes).'>
+2026-10-22 13:20:01,450 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 173375185 of 540173260 bytes).'>
+2026-10-22 13:20:01,495 adaptiseq.engine.segmented WARNING Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 104824531 of 279765542 bytes).'>
+2026-10-22 13:20:01,603 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:01,607 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:01,610 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:01,644 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:01,688 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:01,758 adaptiseq.engine.segmented WARNING Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 181272274 of 540173257 bytes).'>
+2026-10-22 13:20:01,817 adaptiseq.engine.segmented WARNING Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 294649554 of 623149863 bytes).'>
+2026-10-22 13:20:01,875 adaptiseq.engine.segmented WARNING Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 110362321 of 623149863 bytes).'>
+2026-10-22 13:20:01,951 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:02,011 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:02,047 adaptiseq.engine.segmented WARNING Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 32177873 of 195843625 bytes).'>
+2026-10-22 13:20:02,068 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:02,229 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 104103633 of 288162347 bytes).'>
+2026-10-22 13:20:02,240 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:02,248 adaptiseq.engine.segmented WARNING Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 118537947 of 623149863 bytes).'>
+2026-10-22 13:20:02,422 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:02,440 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:03,348 adaptiseq.batch INFO adaptive knee: budget 18
+2026-10-22 13:20:03,406 adaptiseq.engine.segmented INFO Split segment 0 of CRR120309.fastq.gz at 285815122 (242 MiB to a new connection)
+2026-10-22 13:20:03,406 adaptiseq.engine.segmented INFO Split segment 3 of CRR120309.fastq.gz at 1977293993 (174 MiB to a new connection)
+2026-10-22 13:20:03,406 adaptiseq.engine.segmented INFO Split segment 1 of CRR120309.fastq.gz at 900896022 (171 MiB to a new connection)
+2026-10-22 13:20:03,406 adaptiseq.engine.segmented INFO Split segment 0 of CRR120309.fastq.gz at 158636054 (121 MiB to a new connection)
+2026-10-22 13:20:03,834 adaptiseq.engine.segmented WARNING Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 31456987 of 540173257 bytes).'>
+2026-10-22 13:20:03,840 adaptiseq.engine.segmented WARNING Segment 12 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98002 of 29939053 bytes).'>
+2026-10-22 13:20:03,840 adaptiseq.engine.segmented WARNING Segment 13 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 81618 of 28509775 bytes).'>
+2026-10-22 13:20:03,840 adaptiseq.engine.segmented WARNING Segment 10 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 179924 of 77815168 bytes).'>
+2026-10-22 13:20:04,026 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,028 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,033 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,033 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:04,034 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:20:12,352 adaptiseq.batch INFO adaptive knee: budget 15
+2026-10-22 13:20:17,956 adaptiseq.engine.segmented INFO Split segment 2 of CRR120308.fastq.gz at 1387685955 (233 MiB to a new connection)
+2026-10-22 13:20:22,664 adaptiseq.engine.segmented INFO Split segment 0 of CRR120306.fastq.gz at 230961134 (107 MiB to a new connection)
+2026-10-22 13:20:36,362 adaptiseq.batch INFO adaptive knee: budget 12
+2026-10-22 13:20:42,803 adaptiseq.engine.segmented INFO Split segment 2 of CRR120306.fastq.gz at 1469023645 (107 MiB to a new connection)
+2026-10-22 13:20:45,366 adaptiseq.batch INFO adaptive knee: budget 15
+2026-10-22 13:20:45,962 adaptiseq.engine.segmented INFO Split segment 2 of CRR120308.fastq.gz at 1265442171 (116 MiB to a new connection)
+2026-10-22 13:20:57,440 adaptiseq.engine.segmented INFO Split segment 7 of CRR120308.fastq.gz at 1509929739 (116 MiB to a new connection)
+2026-10-22 13:21:01,575 adaptiseq.engine.segmented WARNING Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 12877531 of 710624987 bytes).'>
+2026-10-22 13:21:01,581 adaptiseq.engine.segmented WARNING Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 145751762 of 358900983 bytes).'>
+2026-10-22 13:21:01,638 adaptiseq.engine.segmented WARNING Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 160988883 of 229725734 bytes).'>
+2026-10-22 13:21:01,664 adaptiseq.engine.segmented WARNING Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 74514129 of 122243784 bytes).'>
+2026-10-22 13:21:03,529 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:03,529 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:03,530 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:03,646 adaptiseq.engine.segmented WARNING Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 69107411 of 127179068 bytes).'>
+2026-10-22 13:21:03,647 adaptiseq.engine.segmented WARNING Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 68026067 of 254358135 bytes).'>
+2026-10-22 13:21:03,649 adaptiseq.engine.segmented WARNING Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 67796689 of 183399038 bytes).'>
+2026-10-22 13:21:03,651 adaptiseq.engine.segmented WARNING Segment 5 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 68517588 of 86693715 bytes).'>
+2026-10-22 13:21:03,816 adaptiseq.engine.segmented WARNING Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 67567314 of 179450492 bytes).'>
+2026-10-22 13:21:04,859 adaptiseq.engine.segmented WARNING Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98001 of 224625195 bytes).'>
+2026-10-22 13:21:04,868 adaptiseq.engine.segmented WARNING Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98001 of 172156152 bytes).'>
+2026-10-22 13:21:04,868 adaptiseq.engine.segmented WARNING Segment 5 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 65233 of 138896218 bytes).'>
+2026-10-22 13:21:04,868 adaptiseq.engine.segmented WARNING Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 81617 of 366798075 bytes).'>
+2026-10-22 13:21:04,869 adaptiseq.engine.segmented WARNING Segment 10 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98002 of 29939053 bytes).'>
+2026-10-22 13:21:04,869 adaptiseq.engine.segmented WARNING Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98003 of 151868957 bytes).'>
+2026-10-22 13:21:04,869 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:05,052 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:05,060 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:05,061 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:05,062 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:05,063 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:05,063 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:21:09,377 adaptiseq.batch INFO adaptive knee: budget 18
+2026-10-22 13:21:10,709 adaptiseq.engine.segmented INFO Split segment 8 of CRR120305.fastq.gz at 1223049021 (16 MiB to a new connection)
+2026-10-22 13:21:22,222 adaptiseq.engine.segmented INFO Split segment 3 of CRR120309.fastq.gz at 1885635283 (87 MiB to a new connection)
+2026-10-22 13:21:29,430 adaptiseq.engine.segmented INFO Split segment 5 of CRR120306.fastq.gz at 1176884233 (66 MiB to a new connection)
+2026-10-22 13:21:32,697 adaptiseq.engine.segmented INFO Split segment 2 of CRR120309.fastq.gz at 1534490695 (82 MiB to a new connection)
+2026-10-22 13:21:42,394 adaptiseq.batch INFO adaptive knee: budget 22
+2026-10-22 13:21:43,203 adaptiseq.engine.segmented INFO Split segment 0 of CRR120307.fastq.gz at 361800261 (332 MiB to a new connection)
+2026-10-22 13:21:43,203 adaptiseq.engine.segmented INFO Split segment 1 of CRR120307.fastq.gz at 1094592945 (311 MiB to a new connection)
+2026-10-22 13:21:43,204 adaptiseq.engine.segmented INFO Split segment 2 of CRR120307.fastq.gz at 1829810317 (288 MiB to a new connection)
+2026-10-22 13:21:43,204 adaptiseq.engine.segmented INFO Split segment 0 of CRR120307.fastq.gz at 187387898 (166 MiB to a new connection)
+2026-10-22 13:21:44,136 adaptiseq.engine.segmented INFO Completed CRR120304.fastq.gz
+2026-10-22 13:21:46,841 adaptiseq.batch INFO downloaded CRR120304.fastq.gz
+2026-10-22 13:21:51,370 adaptiseq.engine.segmented INFO Split segment 8 of CRR120309.fastq.gz at 1931464638 (43 MiB to a new connection)
+2026-10-22 13:21:52,469 adaptiseq.engine.segmented INFO Split segment 4 of CRR120309.fastq.gz at 495536480 (42 MiB to a new connection)
+2026-10-22 13:21:53,317 adaptiseq.engine.segmented INFO Split segment 9 of CRR120309.fastq.gz at 1577505233 (41 MiB to a new connection)
+2026-10-22 13:21:56,642 adaptiseq.engine.segmented INFO Completed CRR120305.fastq.gz
+2026-10-22 13:21:58,352 adaptiseq.engine.segmented INFO Split segment 10 of CRR120309.fastq.gz at 1954379315 (21 MiB to a new connection)
+2026-10-22 13:21:59,702 adaptiseq.batch INFO downloaded CRR120305.fastq.gz
+2026-10-22 13:21:59,921 adaptiseq.engine.segmented INFO Split segment 6 of CRR120306.fastq.gz at 287778785 (53 MiB to a new connection)
+2026-10-22 13:22:01,708 adaptiseq.engine.segmented WARNING Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 60817106 of 69415493 bytes).'>
+2026-10-22 13:22:01,774 adaptiseq.engine.segmented WARNING Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 16285394 of 86029076 bytes).'>
+2026-10-22 13:22:01,775 adaptiseq.engine.segmented WARNING Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 31358674 of 91658710 bytes).'>
+2026-10-22 13:22:01,775 adaptiseq.engine.segmented WARNING Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 157908689 of 710624989 bytes).'>
+2026-10-22 13:22:01,775 adaptiseq.engine.segmented WARNING Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 123240146 of 710624987 bytes).'>
+2026-10-22 13:22:01,793 adaptiseq.engine.segmented WARNING Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 157581009 of 184058714 bytes).'>
+2026-10-22 13:22:01,797 adaptiseq.engine.segmented WARNING Segment 2 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 100695761 of 112263597 bytes).'>
+2026-10-22 13:22:01,812 adaptiseq.engine.segmented WARNING Segment 10 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 5439186 of 45829355 bytes).'>
+2026-10-22 13:22:01,812 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 57081555 of 348824726 bytes).'>
+2026-10-22 13:22:01,812 adaptiseq.engine.segmented WARNING Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 57179857 of 326657029 bytes).'>
+2026-10-22 13:22:01,820 adaptiseq.engine.segmented WARNING Segment 3 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 72122065 of 183317420 bytes).'>
+2026-10-22 13:22:01,824 adaptiseq.engine.segmented WARNING Segment 0 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 16154323 of 151770954 bytes).'>
+2026-10-22 13:22:01,824 adaptiseq.engine.segmented WARNING Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 55312081 of 244487568 bytes).'>
+2026-10-22 13:22:01,901 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:01,928 adaptiseq.engine.segmented WARNING Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1834708 of 44636777 bytes).'>
+2026-10-22 13:22:01,967 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:01,968 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:02,152 adaptiseq.engine.segmented WARNING Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 134086355 of 186332068 bytes).'>
+2026-10-22 13:22:02,594 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:04,834 adaptiseq.engine.segmented WARNING Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 39190227 of 174412363 bytes).'>
+2026-10-22 13:22:04,837 adaptiseq.engine.segmented WARNING Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1212115 of 112423187 bytes).'>
+2026-10-22 13:22:04,838 adaptiseq.engine.segmented WARNING Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1375953 of 112263597 bytes).'>
+2026-10-22 13:22:04,839 adaptiseq.engine.segmented WARNING Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1179345 of 122243784 bytes).'>
+2026-10-22 13:22:04,839 adaptiseq.engine.segmented WARNING Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98004 of 697747456 bytes).'>
+2026-10-22 13:22:04,839 adaptiseq.engine.segmented WARNING Segment 8 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 179922 of 47729655 bytes).'>
+2026-10-22 13:22:05,027 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:05,030 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:05,031 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:05,031 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:05,031 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:22:13,211 adaptiseq.engine.segmented INFO Split segment 5 of CRR120307.fastq.gz at 1996374520 (129 MiB to a new connection)
+2026-10-22 13:22:22,607 adaptiseq.engine.segmented ERROR Segment errors for CRR120309.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 72122065 of 183317420 bytes).'>
+2026-10-22 13:22:22,690 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:22:22,935 adaptiseq.engine.segmented INFO Resume: 13/14 segments complete for CRR120309.fastq.gz
+2026-10-22 13:22:27,494 adaptiseq.engine.segmented ERROR Segment errors for CRR120306.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 100695761 of 112263597 bytes).'>
+2026-10-22 13:22:27,494 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:22:27,794 adaptiseq.engine.segmented INFO Resume: 9/10 segments complete for CRR120306.fastq.gz
+2026-10-22 13:22:27,965 adaptiseq.engine.segmented INFO Completed CRR120309.fastq.gz
+2026-10-22 13:22:30,911 adaptiseq.engine.segmented INFO Completed CRR120306.fastq.gz
+2026-10-22 13:22:31,236 adaptiseq.batch INFO downloaded CRR120309.fastq.gz
+2026-10-22 13:22:33,733 adaptiseq.batch INFO downloaded CRR120306.fastq.gz
+2026-10-22 13:22:39,233 adaptiseq.engine.segmented ERROR Segment errors for CRR120308.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 68517588 of 86693715 bytes).'>
+2026-10-22 13:22:39,265 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:22:39,472 adaptiseq.engine.segmented INFO Resume: 8/10 segments complete for CRR120308.fastq.gz
+2026-10-22 13:22:39,533 adaptiseq.engine.segmented INFO Split segment 3 of CRR120307.fastq.gz at 584823651 (119 MiB to a new connection)
+2026-10-22 13:22:41,473 adaptiseq.engine.segmented INFO Split segment 0 of CRR120308.fastq.gz at 207677478 (61 MiB to a new connection)
+2026-10-22 13:22:41,473 adaptiseq.engine.segmented INFO Split segment 0 of CRR120308.fastq.gz at 175501757 (30 MiB to a new connection)
+2026-10-22 13:22:41,473 adaptiseq.engine.segmented INFO Split segment 10 of CRR120308.fastq.gz at 239853199 (30 MiB to a new connection)
+2026-10-22 13:22:44,534 adaptiseq.engine.segmented INFO Split segment 4 of CRR120307.fastq.gz at 1348426372 (69 MiB to a new connection)
+2026-10-22 13:22:45,599 adaptiseq.engine.segmented INFO Split segment 1 of CRR120307.fastq.gz at 1023211288 (68 MiB to a new connection)
+2026-10-22 13:22:54,148 adaptiseq.engine.segmented INFO Split segment 3 of CRR120307.fastq.gz at 521922983 (59 MiB to a new connection)
+2026-10-22 13:22:59,048 adaptiseq.engine.segmented INFO Split segment 5 of CRR120307.fastq.gz at 1951430827 (42 MiB to a new connection)
+2026-10-22 13:23:01,250 adaptiseq.engine.segmented WARNING Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 30179028 of 62900668 bytes).'>
+2026-10-22 13:23:01,276 adaptiseq.engine.segmented WARNING Segment 12 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 7634642 of 44943693 bytes).'>
+2026-10-22 13:23:01,751 adaptiseq.engine.segmented WARNING Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 114753235 of 125801336 bytes).'>
+2026-10-22 13:23:02,247 adaptiseq.engine.segmented WARNING Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 174866129 of 269477172 bytes).'>
+2026-10-22 13:23:02,399 adaptiseq.engine.segmented WARNING Segment 0 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 168836820 of 174412363 bytes).'>
+2026-10-22 13:23:02,702 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:23:02,814 adaptiseq.engine.segmented WARNING Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 143392466 of 260727812 bytes).'>
+2026-10-22 13:23:03,006 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:23:04,896 adaptiseq.engine.segmented WARNING Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 40140499 of 291743171 bytes).'>
+2026-10-22 13:23:04,906 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:23:05,088 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:23:05,088 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:23:05,089 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:23:19,859 adaptiseq.engine.segmented INFO Completed CRR120308.fastq.gz
+2026-10-22 13:23:23,128 adaptiseq.batch INFO downloaded CRR120308.fastq.gz
+2026-10-22 13:23:52,155 adaptiseq.engine.segmented ERROR Segment errors for CRR120307.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 168836820 of 174412363 bytes).'>
+2026-10-22 13:23:52,183 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:23:52,794 adaptiseq.engine.segmented INFO Resume: 12/13 segments complete for CRR120307.fastq.gz
+2026-10-22 13:23:54,735 adaptiseq.engine.segmented INFO Completed CRR120307.fastq.gz
+2026-10-22 13:23:57,939 adaptiseq.batch INFO downloaded CRR120307.fastq.gz
+2026-10-22 13:23:58,756 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:23:59,411 adaptiseq.engine.segmented INFO Already complete: CRR120304.fastq.gz
+2026-10-22 13:24:00,226 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:24:00,849 adaptiseq.engine.segmented INFO Already complete: CRR120305.fastq.gz
+2026-10-22 13:24:10,586 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:24:11,184 adaptiseq.engine.segmented INFO Already complete: CRR120306.fastq.gz
+2026-10-22 13:24:12,807 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:24:13,398 adaptiseq.engine.segmented INFO Already complete: CRR120307.fastq.gz
+2026-10-22 13:25:06,674 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:25:07,310 adaptiseq.engine.segmented INFO Already complete: CRR120308.fastq.gz
+2026-10-22 13:25:08,962 adaptiseq.engine.seam INFO Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:25:09,572 adaptiseq.engine.segmented INFO Already complete: CRR120309.fastq.gz
+[32mNote[0m: batch downloading 6 file(s) across 6 accession(s) with up to 6 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 49 probe(s); best 568 Mbps at 8 connection(s); last 15 Mbps at 22 connection(s); recent: 22c@537Mbps, 22c@339Mbps, 22c@232Mbps, 22c@232Mbps, 22c@250Mbps, 22c@162Mbps, 22c@14Mbps, 22c@269Mbps, 22c@11Mbps, 22c@1Mbps, 22c@2Mbps, 22c@15Mbps
+[32mNote[0m: CRR120304.metadata.csv exists, skip downloading metadata for CRR120304
+      CRR120304.fastq.gz 1.65G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120304.metadata.csv
+File size: 1.65G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120304.fastq.gz download and md5 check successful, save CRR120304.fastq.gz in success.log[0m
+========================CRR120304 download finished========================
+[32mNote[0m: CRR120305.metadata.csv exists, skip downloading metadata for CRR120305
+      CRR120305.fastq.gz 1.88G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120305.metadata.csv
+File size: 1.88G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120305.fastq.gz download and md5 check successful, save CRR120305.fastq.gz in success.log[0m
+========================CRR120305 download finished========================
+[32mNote[0m: CRR120306.metadata.csv exists, skip downloading metadata for CRR120306
+      CRR120306.fastq.gz 1.74G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120306.metadata.csv
+File size: 1.74G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120306.fastq.gz download and md5 check successful, save CRR120306.fastq.gz in success.log[0m
+========================CRR120306 download finished========================
+[32mNote[0m: CRR120307.metadata.csv exists, skip downloading metadata for CRR120307
+      CRR120307.fastq.gz 1.99G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120307.metadata.csv
+File size: 1.99G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120307.fastq.gz download and md5 check successful, save CRR120307.fastq.gz in success.log[0m
+========================CRR120307 download finished========================
+[32mNote[0m: CRR120308.metadata.csv exists, skip downloading metadata for CRR120308
+      CRR120308.fastq.gz 2.03G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120308.metadata.csv
+File size: 2.03G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120308.fastq.gz download and md5 check successful, save CRR120308.fastq.gz in success.log[0m
+========================CRR120308 download finished========================
+[32mNote[0m: CRR120309.metadata.csv exists, skip downloading metadata for CRR120309
+      CRR120309.fastq.gz 2.01G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120309.metadata.csv
+File size: 2.01G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120309.fastq.gz download and md5 check successful, save CRR120309.fastq.gz in success.log[0m
+========================CRR120309 download finished========================

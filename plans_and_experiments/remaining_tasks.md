@@ -560,6 +560,24 @@ in `HostGuard.acquire`, which had no timeout; the cap rose only on a new respons
 jobs were cancelled after this (55197661 after knee's 4g arm, 55197662 after knee's 4b arm); a 0.1.12 check with the
 same logging (`e3_smoke_0112/`, job `55201029`: 4b + 4g, topdown and knee) runs before round 3.
 
+**0.1.12 check** (`e3_smoke_0112/e3_55201029`, first 0.1.12 build `47ddbb94`, info logs; probe 1.8/10.2/22.7 MB/s):
+
+| panel | arm | wall_s | runs | connections mean / max | what the log shows |
+|---|---|---|---|---|---|
+| 4b | knee | 1923 | 8/8 | 20.8 / 25 | 485 ceiling refusals: the cap re-tested 26 every few seconds and ENA refused each time |
+| 4b | topdown | 2299 | 8/8 | 24.0 / 25 | 572 refusals; held 25 for 33 min; kept all 8 files |
+| 4g | knee | 473 | 6/6 | 11.4 / 22 | no 1-connection stretch until the last minute |
+| 4g | topdown | 372 | 6/6 | 18.3 / 48 | no clean reading at 3 workers after the 60 s drain: kept 6 (0.1.11 walked down to 1-2) |
+
+So on 4b the 25 was ENA's limit that day, and the engine now probes it rather than freezing below it. On 4g the
+tail still dropped to about 4 connections for the last 2-3 min: 4 file passes ended with a segment out of attempts,
+and a failed segment stopped its file's splitting for the rest of the pass. Fixed in `10f9d44` (a segment out of
+attempts that made progress continues on a new connection in the same pass; `RELAUNCH_STALLS` = 2 failures without
+progress still end it; `tests/test_segment_relaunch.py`; offline suite passes in `55203183`).
+
+**Round 3 submitted** on the rebuilt 0.1.12 (build `55203206` into `adaptiseq_e3_sub`): reps `55203207` (afterok on the
+build), `55203208`, `55203209` (afterany chain), `e3_round3_expanse/`, protocol as above.
+
 **Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
 arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job
 each; `E3_TIMEOUT_CTRL=7200`; results `e3_round3_expanse/`; scored with `bench/e3/score_round2.py` unchanged.

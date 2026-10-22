@@ -1,0 +1,917 @@
+2026-10-22 12:38:55,083 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,718 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,719 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,719 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,719 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,720 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,720 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,720 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,720 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,721 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,721 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,721 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,721 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,722 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:57,722 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:59,587 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:38:59,869 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:38:59,869 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:38:59,869 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:38:59,870 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:38:59,870 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:01,704 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:02,891 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:03,000 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:03,740 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:04,032 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:05,062 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:05,648 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:06,393 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:07,478 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:07,537 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:07,666 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:08,501 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:08,742 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:08,889 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:09,219 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:09,600 adaptiseq.batch INFO adaptive probe: workers=16 throughput=320.2Mbps score=-320
+2026-10-22 12:39:14,114 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:14,127 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:14,308 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:14,991 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:15,679 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:17,085 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:22,226 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:27,370 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:32,513 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:37,657 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:42,799 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:47,942 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:53,085 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:39:58,228 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:03,370 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:08,513 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:09,645 adaptiseq.batch INFO adaptive commit: workers=16
+2026-10-22 12:40:13,655 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:18,798 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:23,939 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:29,082 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:34,224 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:39,367 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:44,510 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:49,653 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:54,795 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:40:59,939 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:05,080 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:10,224 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:15,365 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:20,509 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:25,651 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:30,795 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:35,937 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:41,081 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:46,223 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:48,376 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852404_2.fastq.gz at 1046969265 (42 MiB to a new connection)
+2026-10-22 12:41:50,897 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:41:56,039 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:01,180 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:06,323 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:11,465 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:16,609 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:21,751 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:26,893 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:29,776 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852404_1.fastq.gz at 1321143871 (83 MiB to a new connection)
+2026-10-22 12:42:31,747 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852404_1.fastq.gz at 1365182001 (41 MiB to a new connection)
+2026-10-22 12:42:33,398 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:33,402 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:36,015 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:40,303 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852404_1.fastq.gz at 1277105741 (41 MiB to a new connection)
+2026-10-22 12:42:44,032 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852411_1.fastq.gz at 87518973 (83 MiB to a new connection)
+2026-10-22 12:42:44,111 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:44,114 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:47,142 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:52,284 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:42:53,980 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852404_1.fastq.gz at 148196102 (26 MiB to a new connection)
+2026-10-22 12:42:59,123 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:00,076 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:04,476 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852404_2.fastq.gz at 1069467955 (21 MiB to a new connection)
+2026-10-22 12:43:07,028 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:07,031 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:07,154 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852404_2.fastq.gz at 525697942 (19 MiB to a new connection)
+2026-10-22 12:43:07,294 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:14,864 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:20,005 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:25,148 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:30,289 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:36,063 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:36,067 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:41,714 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852404_1.fastq.gz at 1343162936 (20 MiB to a new connection)
+2026-10-22 12:43:41,855 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:41,858 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:45,597 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:50,742 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:56,428 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:56,431 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:59,069 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:43:59,671 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852404_1.fastq.gz at 1387201066 (20 MiB to a new connection)
+2026-10-22 12:44:04,815 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:05,257 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:10,400 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:15,545 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:20,573 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852415_2.fastq.gz at 125032101 (119 MiB to a new connection)
+2026-10-22 12:44:20,686 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:25,828 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:30,968 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:36,113 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:41,255 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:42,250 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852404_1.fastq.gz at 1299124806 (20 MiB to a new connection)
+2026-10-22 12:44:46,937 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:46,940 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:52,082 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:44:57,224 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:02,367 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:07,509 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:12,651 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:14,402 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:19,614 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852415_2.fastq.gz at 1125288913 (119 MiB to a new connection)
+2026-10-22 12:45:22,357 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:23,906 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:25,939 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:26,715 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852415_2.fastq.gz at 187548152 (59 MiB to a new connection)
+2026-10-22 12:45:28,788 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_2.fastq.gz at 360135261 (114 MiB to a new connection)
+2026-10-22 12:45:29,595 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:34,736 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:36,363 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:41,509 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:42,488 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852425_2.fastq.gz at 600225435 (114 MiB to a new connection)
+2026-10-22 12:45:46,034 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:51,176 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:45:56,320 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:01,462 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:03,208 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852415_2.fastq.gz at 1187804964 (59 MiB to a new connection)
+2026-10-22 12:46:05,559 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:07,136 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852425_2.fastq.gz at 840315609 (114 MiB to a new connection)
+2026-10-22 12:46:12,280 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:14,827 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:19,970 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:25,112 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:30,254 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:35,398 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:40,539 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:45,682 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:47,579 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852411_2.fastq.gz at 1353926641 (86 MiB to a new connection)
+2026-10-22 12:46:51,725 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:51,729 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:46:56,871 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:00,931 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852415_2.fastq.gz at 1062772862 (59 MiB to a new connection)
+2026-10-22 12:47:05,106 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:05,110 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:10,254 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:13,237 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852407_1.fastq.gz at 77268021 (73 MiB to a new connection)
+2026-10-22 12:47:15,996 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:15,999 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:21,142 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:26,284 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:31,428 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:36,571 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:41,714 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:46,855 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:51,996 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:47:57,137 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:02,281 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:07,422 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:12,567 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:17,709 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:19,033 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852415_2.fastq.gz at 88399894 (34 MiB to a new connection)
+2026-10-22 12:48:24,176 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:24,600 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:29,742 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:34,887 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:40,030 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:45,175 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:50,316 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:55,459 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:48:55,744 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_1.fastq.gz at 386340107 (73 MiB to a new connection)
+2026-10-22 12:48:59,810 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:04,952 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:07,127 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852411_2.fastq.gz at 90261776 (86 MiB to a new connection)
+2026-10-22 12:49:08,141 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:13,282 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:17,119 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852407_1.fastq.gz at 540876150 (73 MiB to a new connection)
+2026-10-22 12:49:22,264 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:24,523 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:26,350 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852415_1.fastq.gz at 364695099 (115 MiB to a new connection)
+2026-10-22 12:49:29,773 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:29,776 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:34,918 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:40,059 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:40,313 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852407_1.fastq.gz at 1004484279 (73 MiB to a new connection)
+2026-10-22 12:49:45,211 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:50,405 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:55,609 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:49:59,946 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_1.fastq.gz at 123202882 (117 MiB to a new connection)
+2026-10-22 12:50:01,615 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:01,618 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:06,796 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:09,919 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852415_2.fastq.gz at 156290126 (29 MiB to a new connection)
+2026-10-22 12:50:10,060 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:20,204 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:25,345 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:25,958 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:31,102 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:35,919 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852425_2.fastq.gz at 1560586131 (114 MiB to a new connection)
+2026-10-22 12:50:41,062 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:44,576 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:49,718 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:50:54,862 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:00,005 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:02,650 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852430_1.fastq.gz at 369608646 (117 MiB to a new connection)
+2026-10-22 12:51:07,792 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:08,728 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:13,871 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:19,013 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:21,965 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852411_2.fastq.gz at 270785328 (86 MiB to a new connection)
+2026-10-22 12:51:22,319 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:22,975 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852400_1.fastq.gz at 1241550932 (78 MiB to a new connection)
+2026-10-22 12:51:23,499 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:27,085 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852400_1.fastq.gz at 82770062 (78 MiB to a new connection)
+2026-10-22 12:51:32,230 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:35,560 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:36,870 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852406_2.fastq.gz at 102785091 (98 MiB to a new connection)
+2026-10-22 12:51:40,582 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:45,724 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:50,866 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:53,514 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_2.fastq.gz at 308355274 (98 MiB to a new connection)
+2026-10-22 12:51:58,253 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852415_1.fastq.gz at 607825165 (115 MiB to a new connection)
+2026-10-22 12:51:58,396 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:51:58,805 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:03,755 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:08,899 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:14,040 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:19,182 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:24,323 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:29,464 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:34,606 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:36,827 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852406_2.fastq.gz at 719495640 (98 MiB to a new connection)
+2026-10-22 12:52:41,857 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852430_2.fastq.gz at 385243380 (122 MiB to a new connection)
+2026-10-22 12:52:41,972 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:46,329 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:46,677 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:48,769 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852406_2.fastq.gz at 1130636006 (98 MiB to a new connection)
+2026-10-22 12:52:53,912 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:54,122 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:52:59,263 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:04,345 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852415_1.fastq.gz at 850955231 (115 MiB to a new connection)
+2026-10-22 12:53:04,404 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:07,056 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_2.fastq.gz at 642072300 (122 MiB to a new connection)
+2026-10-22 12:53:07,975 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:10,697 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:15,839 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:20,981 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:26,125 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:28,069 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:37,571 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:42,712 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:47,853 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:48,690 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852404_1.fastq.gz at 1255086676 (20 MiB to a new connection)
+2026-10-22 12:53:48,831 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:51,365 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852430_2.fastq.gz at 898901220 (122 MiB to a new connection)
+2026-10-22 12:53:53,174 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_2.fastq.gz at 396213005 (75 MiB to a new connection)
+2026-10-22 12:53:54,937 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852406_1.fastq.gz at 1488326820 (94 MiB to a new connection)
+2026-10-22 12:53:56,480 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:58,298 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:53:59,604 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:00,763 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:05,623 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:10,768 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:15,910 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:18,912 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852407_2.fastq.gz at 713183409 (75 MiB to a new connection)
+2026-10-22 12:54:23,224 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:23,227 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:27,810 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852407_2.fastq.gz at 871668611 (75 MiB to a new connection)
+2026-10-22 12:54:31,846 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:31,849 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:36,990 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:41,551 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852430_2.fastq.gz at 1155730140 (122 MiB to a new connection)
+2026-10-22 12:54:45,248 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:45,252 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:49,765 adaptiseq.engine.segmented INFO Completed SRR15852404_2.fastq.gz
+2026-10-22 12:54:52,135 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 12:54:55,372 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:54:57,677 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852406_1.fastq.gz at 496108940 (94 MiB to a new connection)
+2026-10-22 12:54:58,120 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:03,262 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:08,403 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:14,354 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:14,357 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:15,660 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852411_2.fastq.gz at 631832432 (86 MiB to a new connection)
+2026-10-22 12:55:16,038 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852406_1.fastq.gz at 694552516 (94 MiB to a new connection)
+2026-10-22 12:55:17,855 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:18,250 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:23,391 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:23,790 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 616014410 (117 MiB to a new connection)
+2026-10-22 12:55:23,932 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:31,853 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:33,245 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852407_1.fastq.gz at 115902032 (36 MiB to a new connection)
+2026-10-22 12:55:33,386 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:39,340 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:44,481 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:49,627 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:54,827 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:55:59,868 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852411_2.fastq.gz at 1399057530 (43 MiB to a new connection)
+2026-10-22 12:56:00,035 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:02,586 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:07,769 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:12,913 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:12,966 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852411_1.fastq.gz at 437594867 (83 MiB to a new connection)
+2026-10-22 12:56:17,897 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:21,435 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852415_2.fastq.gz at 1156546938 (29 MiB to a new connection)
+2026-10-22 12:56:21,869 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:27,013 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:32,154 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:32,669 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852425_1.fastq.gz at 117773316 (112 MiB to a new connection)
+2026-10-22 12:56:34,884 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:40,029 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:42,708 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 123311680 of 158485202 bytes).'>. ConnectionResetError(104, 'Connection reset by peer')
+2026-10-22 12:56:46,580 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:46,584 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:51,727 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:56,798 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852411_2.fastq.gz at 1308795752 (43 MiB to a new connection)
+2026-10-22 12:56:56,868 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:56:57,776 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:02,920 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:08,062 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:11,016 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852400_2.fastq.gz at 1245276918 (79 MiB to a new connection)
+2026-10-22 12:57:15,410 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:15,414 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:16,807 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852400_2.fastq.gz at 83018461 (79 MiB to a new connection)
+2026-10-22 12:57:19,935 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:20,898 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852407_1.fastq.gz at 579510161 (36 MiB to a new connection)
+2026-10-22 12:57:21,039 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:24,413 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852406_2.fastq.gz at 154177637 (49 MiB to a new connection)
+2026-10-22 12:57:24,770 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852400_2.fastq.gz at 249055383 (79 MiB to a new connection)
+2026-10-22 12:57:25,514 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_2.fastq.gz at 300112717 (57 MiB to a new connection)
+2026-10-22 12:57:26,753 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852407_1.fastq.gz at 1043118290 (36 MiB to a new connection)
+2026-10-22 12:57:27,422 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852406_2.fastq.gz at 359747820 (49 MiB to a new connection)
+2026-10-22 12:57:27,563 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:29,338 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:30,431 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:30,658 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:31,351 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852406_2.fastq.gz at 770888186 (49 MiB to a new connection)
+2026-10-22 12:57:31,490 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:34,028 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:36,674 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_1.fastq.gz at 347706096 (36 MiB to a new connection)
+2026-10-22 12:57:40,292 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:40,295 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:40,787 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:45,929 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:47,967 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852411_1.fastq.gz at 612632814 (83 MiB to a new connection)
+2026-10-22 12:57:52,369 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:52,372 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:57:57,515 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:01,839 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852425_2.fastq.gz at 1500563587 (57 MiB to a new connection)
+2026-10-22 12:58:01,980 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:02,902 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852400_1.fastq.gz at 579390434 (78 MiB to a new connection)
+2026-10-22 12:58:08,155 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:08,158 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:13,303 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:18,445 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:23,589 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:24,888 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_2.fastq.gz at 577865070 (61 MiB to a new connection)
+2026-10-22 12:58:25,028 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:29,690 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852425_1.fastq.gz at 1295506481 (112 MiB to a new connection)
+2026-10-22 12:58:33,112 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:37,270 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852425_1.fastq.gz at 1542512953 (101 MiB to a new connection)
+2026-10-22 12:58:38,640 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:38,642 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:41,605 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:42,586 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852430_2.fastq.gz at 449450610 (61 MiB to a new connection)
+2026-10-22 12:58:43,274 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:48,416 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:48,533 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_1.fastq.gz at 390147789 (77 MiB to a new connection)
+2026-10-22 12:58:51,078 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:51,159 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852400_1.fastq.gz at 744930558 (78 MiB to a new connection)
+2026-10-22 12:58:51,488 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:58:56,629 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:01,771 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:06,914 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:12,058 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:13,993 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852406_2.fastq.gz at 256962728 (49 MiB to a new connection)
+2026-10-22 12:59:14,133 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:16,421 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852425_2.fastq.gz at 420157804 (57 MiB to a new connection)
+2026-10-22 12:59:19,896 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852430_2.fastq.gz at 706279530 (61 MiB to a new connection)
+2026-10-22 12:59:20,036 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:22,333 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:22,457 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852406_1.fastq.gz at 1091439668 (94 MiB to a new connection)
+2026-10-22 12:59:22,554 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852411_1.fastq.gz at 1137746655 (83 MiB to a new connection)
+2026-10-22 12:59:22,597 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:24,197 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852407_1.fastq.gz at 502242139 (36 MiB to a new connection)
+2026-10-22 12:59:24,574 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:25,162 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:25,906 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:28,255 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:33,400 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:38,557 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:45,695 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:45,697 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:50,840 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:55,983 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 12:59:57,441 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852411_2.fastq.gz at 586701544 (43 MiB to a new connection)
+2026-10-22 12:59:59,167 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_2.fastq.gz at 356591704 (37 MiB to a new connection)
+2026-10-22 12:59:59,309 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:02,504 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852411_1.fastq.gz at 481354354 (41 MiB to a new connection)
+2026-10-22 13:00:03,980 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:07,913 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:13,055 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:14,576 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852406_1.fastq.gz at 1537937714 (47 MiB to a new connection)
+2026-10-22 13:00:22,819 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:26,047 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852407_2.fastq.gz at 832047310 (37 MiB to a new connection)
+2026-10-22 13:00:28,145 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:30,743 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:35,890 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:36,638 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852430_2.fastq.gz at 1219937370 (61 MiB to a new connection)
+2026-10-22 13:00:41,792 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:44,141 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:46,098 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852430_1.fastq.gz at 862420174 (117 MiB to a new connection)
+2026-10-22 13:00:50,009 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852404_2.fastq.gz at 363988883 (347 MiB to a new connection)
+2026-10-22 13:00:50,186 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:52,175 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852430_1.fastq.gz at 1639357305 (81 MiB to a new connection)
+2026-10-22 13:00:52,466 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:55,701 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852415_1.fastq.gz at 1580345429 (115 MiB to a new connection)
+2026-10-22 13:00:56,390 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852400_1.fastq.gz at 1076010806 (78 MiB to a new connection)
+2026-10-22 13:00:56,538 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852407_2.fastq.gz at 752804709 (37 MiB to a new connection)
+2026-10-22 13:00:56,762 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:57,401 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:00:57,498 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:00,087 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:05,228 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:06,293 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852411_1.fastq.gz at 656392301 (41 MiB to a new connection)
+2026-10-22 13:01:09,718 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:13,985 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852415_2.fastq.gz at 1094030887 (29 MiB to a new connection)
+2026-10-22 13:01:16,017 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852404_2.fastq.gz at 1091966649 (347 MiB to a new connection)
+2026-10-22 13:01:16,157 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:18,597 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:23,738 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:23,795 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852400_2.fastq.gz at 581129227 (79 MiB to a new connection)
+2026-10-22 13:01:23,935 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:28,954 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852430_2.fastq.gz at 1187833755 (30 MiB to a new connection)
+2026-10-22 13:01:29,095 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:37,105 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852407_2.fastq.gz at 376402354 (18 MiB to a new connection)
+2026-10-22 13:01:37,262 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852425_1.fastq.gz at 176659974 (56 MiB to a new connection)
+2026-10-22 13:01:37,402 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:39,453 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852407_1.fastq.gz at 560193155 (18 MiB to a new connection)
+2026-10-22 13:01:39,802 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852425_1.fastq.gz at 1354393139 (56 MiB to a new connection)
+2026-10-22 13:01:39,912 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:42,551 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:44,096 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:44,226 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:45,150 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852411_1.fastq.gz at 1181506142 (41 MiB to a new connection)
+2026-10-22 13:01:45,858 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852415_2.fastq.gz at 1031514837 (29 MiB to a new connection)
+2026-10-22 13:01:46,567 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:46,841 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:47,256 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852425_1.fastq.gz at 1236619823 (56 MiB to a new connection)
+2026-10-22 13:01:47,278 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:47,398 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:50,406 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852406_2.fastq.gz at 128481364 (24 MiB to a new connection)
+2026-10-22 13:01:51,734 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852407_1.fastq.gz at 1062435295 (18 MiB to a new connection)
+2026-10-22 13:01:52,149 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:54,838 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852406_2.fastq.gz at 745191913 (24 MiB to a new connection)
+2026-10-22 13:01:54,860 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:54,979 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:01:58,384 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852415_1.fastq.gz at 1862947334 (78 MiB to a new connection)
+2026-10-22 13:01:59,979 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:00,323 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:02,891 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:04,091 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852425_1.fastq.gz at 1595669692 (50 MiB to a new connection)
+2026-10-22 13:02:04,733 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852425_2.fastq.gz at 1620608674 (57 MiB to a new connection)
+2026-10-22 13:02:05,788 adaptiseq.engine.segmented INFO Split segment 16 of SRR15852407_1.fastq.gz at 521559144 (18 MiB to a new connection)
+2026-10-22 13:02:07,249 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852411_1.fastq.gz at 393835380 (41 MiB to a new connection)
+2026-10-22 13:02:08,029 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852404_2.fastq.gz at 181994441 (173 MiB to a new connection)
+2026-10-22 13:02:08,169 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:13,313 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:13,438 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:14,394 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:14,552 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:17,164 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:18,037 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:22,040 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852430_2.fastq.gz at 609968685 (30 MiB to a new connection)
+2026-10-22 13:02:23,284 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_1.fastq.gz at 328389091 (18 MiB to a new connection)
+2026-10-22 13:02:25,563 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:25,670 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:26,052 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:27,114 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852430_2.fastq.gz at 481554225 (30 MiB to a new connection)
+2026-10-22 13:02:29,070 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852407_2.fastq.gz at 851857960 (18 MiB to a new connection)
+2026-10-22 13:02:32,034 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852404_2.fastq.gz at 909972207 (173 MiB to a new connection)
+2026-10-22 13:02:32,174 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:32,818 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852400_1.fastq.gz at 41385031 (39 MiB to a new connection)
+2026-10-22 13:02:33,402 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:34,132 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:36,089 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:39,198 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852425_2.fastq.gz at 678879818 (39 MiB to a new connection)
+2026-10-22 13:02:39,338 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:46,037 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852404_2.fastq.gz at 545983324 (173 MiB to a new connection)
+2026-10-22 13:02:46,178 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:46,259 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852406_1.fastq.gz at 744163410 (47 MiB to a new connection)
+2026-10-22 13:02:46,939 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:47,102 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:50,119 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852406_1.fastq.gz at 1143422401 (45 MiB to a new connection)
+2026-10-22 13:02:53,588 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:53,592 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:54,046 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852407_2.fastq.gz at 772615359 (18 MiB to a new connection)
+2026-10-22 13:02:54,188 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:02:59,888 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852411_2.fastq.gz at 676963320 (43 MiB to a new connection)
+2026-10-22 13:03:00,029 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:03,120 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852411_2.fastq.gz at 1376492085 (21 MiB to a new connection)
+2026-10-22 13:03:04,029 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:05,224 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:08,538 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852425_2.fastq.gz at 330123989 (28 MiB to a new connection)
+2026-10-22 13:03:12,043 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852404_2.fastq.gz at 1273961090 (173 MiB to a new connection)
+2026-10-22 13:03:12,185 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:12,725 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:17,220 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:19,615 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852411_2.fastq.gz at 1421622974 (21 MiB to a new connection)
+2026-10-22 13:03:19,851 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852406_2.fastq.gz at 385444093 (24 MiB to a new connection)
+2026-10-22 13:03:22,788 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:22,791 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:23,180 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852430_1.fastq.gz at 924021615 (58 MiB to a new connection)
+2026-10-22 13:03:23,269 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:28,411 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:28,490 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852406_1.fastq.gz at 1562743161 (23 MiB to a new connection)
+2026-10-22 13:03:28,552 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 570164809 (43 MiB to a new connection)
+2026-10-22 13:03:28,631 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:32,696 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_2.fastq.gz at 336781054 (18 MiB to a new connection)
+2026-10-22 13:03:32,840 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:36,300 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:38,480 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:45,983 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:45,986 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:51,065 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:51,277 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852411_2.fastq.gz at 1331361196 (21 MiB to a new connection)
+2026-10-22 13:03:57,272 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:57,516 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852400_2.fastq.gz at 1286786150 (39 MiB to a new connection)
+2026-10-22 13:03:58,556 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:03:59,140 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852411_1.fastq.gz at 1093987168 (41 MiB to a new connection)
+2026-10-22 13:04:00,732 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:00,899 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:01,678 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:06,313 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852425_2.fastq.gz at 450169076 (28 MiB to a new connection)
+2026-10-22 13:04:10,573 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852411_2.fastq.gz at 1286230308 (21 MiB to a new connection)
+2026-10-22 13:04:10,713 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:10,716 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:13,658 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852430_2.fastq.gz at 1252040985 (30 MiB to a new connection)
+2026-10-22 13:04:13,799 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:15,376 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852407_2.fastq.gz at 732994059 (18 MiB to a new connection)
+2026-10-22 13:04:16,982 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:18,009 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:19,208 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852406_1.fastq.gz at 1513132267 (23 MiB to a new connection)
+2026-10-22 13:04:19,348 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:20,153 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852400_1.fastq.gz at 1117395837 (39 MiB to a new connection)
+2026-10-22 13:04:21,584 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:21,924 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:22,293 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:24,011 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852400_2.fastq.gz at 41509230 (39 MiB to a new connection)
+2026-10-22 13:04:25,177 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852425_1.fastq.gz at 430620527 (38 MiB to a new connection)
+2026-10-22 13:04:25,317 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:30,359 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:30,582 adaptiseq.engine.segmented INFO Segment 3 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:31,008 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:31,290 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:32,103 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852400_1.fastq.gz at 547337243 (30 MiB to a new connection)
+2026-10-22 13:04:36,218 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852406_2.fastq.gz at 796584459 (24 MiB to a new connection)
+2026-10-22 13:04:36,339 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:36,765 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:38,458 adaptiseq.engine.segmented INFO Split segment 10 of SRR15852411_1.fastq.gz at 634512557 (20 MiB to a new connection)
+2026-10-22 13:04:38,660 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:43,803 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:44,287 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:46,457 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852430_1.fastq.gz at 1682098826 (40 MiB to a new connection)
+2026-10-22 13:04:46,597 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:48,080 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852430_1.fastq.gz at 893220894 (29 MiB to a new connection)
+2026-10-22 13:04:52,309 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852415_1.fastq.gz at 547042648 (57 MiB to a new connection)
+2026-10-22 13:04:52,449 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:52,452 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:53,391 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852406_1.fastq.gz at 768968857 (23 MiB to a new connection)
+2026-10-22 13:04:55,678 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:57,879 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852425_1.fastq.gz at 206103303 (28 MiB to a new connection)
+2026-10-22 13:04:58,679 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:04:59,490 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:01,364 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:01,961 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_2.fastq.gz at 270101445 (28 MiB to a new connection)
+2026-10-22 13:05:02,101 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:02,317 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852400_1.fastq.gz at 20692515 (19 MiB to a new connection)
+2026-10-22 13:05:04,022 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852406_1.fastq.gz at 1167041928 (22 MiB to a new connection)
+2026-10-22 13:05:04,165 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:06,122 adaptiseq.engine.segmented INFO Segment 8 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:06,484 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:08,122 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:08,789 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:12,843 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:12,912 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852425_2.fastq.gz at 1659671785 (19 MiB to a new connection)
+2026-10-22 13:05:13,054 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:21,345 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:21,348 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:22,172 adaptiseq.engine.segmented INFO Split segment 12 of SRR15852400_1.fastq.gz at 1096703321 (19 MiB to a new connection)
+2026-10-22 13:05:22,442 adaptiseq.engine.segmented INFO Split segment 16 of SRR15852425_2.fastq.gz at 699575170 (19 MiB to a new connection)
+2026-10-22 13:05:22,528 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:22,582 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:24,181 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852430_1.fastq.gz at 954822335 (29 MiB to a new connection)
+2026-10-22 13:05:26,068 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:27,050 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852411_1.fastq.gz at 678272044 (20 MiB to a new connection)
+2026-10-22 13:05:28,301 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:32,458 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:32,973 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852400_1.fastq.gz at 62077546 (19 MiB to a new connection)
+2026-10-22 13:05:33,114 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:35,449 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852400_2.fastq.gz at 539619996 (39 MiB to a new connection)
+2026-10-22 13:05:37,580 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852430_1.fastq.gz at 1703469587 (20 MiB to a new connection)
+2026-10-22 13:05:41,041 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:43,427 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:45,808 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:47,562 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:49,273 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852400_1.fastq.gz at 1138088352 (19 MiB to a new connection)
+2026-10-22 13:05:50,592 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:51,577 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:52,475 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852411_2.fastq.gz at 699528764 (21 MiB to a new connection)
+2026-10-22 13:05:52,623 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:05:54,131 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852411_1.fastq.gz at 1203385885 (20 MiB to a new connection)
+2026-10-22 13:05:59,278 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:01,856 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:06,412 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:07,323 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852415_1.fastq.gz at 668607681 (57 MiB to a new connection)
+2026-10-22 13:06:12,594 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:12,598 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:15,895 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852415_1.fastq.gz at 1543098751 (35 MiB to a new connection)
+2026-10-22 13:06:16,195 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852425_1.fastq.gz at 1324949810 (28 MiB to a new connection)
+2026-10-22 13:06:16,336 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:17,393 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:17,962 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:20,932 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:22,020 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:22,675 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:25,846 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:30,988 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:35,396 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:39,915 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:43,300 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:43,518 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:44,527 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:45,207 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:46,944 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852400_2.fastq.gz at 124527691 (39 MiB to a new connection)
+2026-10-22 13:06:48,162 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852425_1.fastq.gz at 1629463901 (18 MiB to a new connection)
+2026-10-22 13:06:49,285 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852406_2.fastq.gz at 282659001 (24 MiB to a new connection)
+2026-10-22 13:06:51,178 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:51,180 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:53,273 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:58,277 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:06:58,295 adaptiseq.engine.segmented INFO Split segment 11 of SRR15852400_2.fastq.gz at 622638457 (39 MiB to a new connection)
+2026-10-22 13:06:59,813 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:00,775 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:03,672 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852400_2.fastq.gz at 560374611 (19 MiB to a new connection)
+2026-10-22 13:07:06,281 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:06,283 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:07,691 adaptiseq.engine.segmented INFO Segment 20 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:11,223 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:14,339 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852404_2.fastq.gz at 285167502 (75 MiB to a new connection)
+2026-10-22 13:07:16,154 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:21,064 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:22,749 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:25,337 adaptiseq.engine.segmented INFO Split segment 13 of SRR15852415_1.fastq.gz at 577433906 (28 MiB to a new connection)
+2026-10-22 13:07:25,477 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:26,182 adaptiseq.engine.segmented INFO Split segment 14 of SRR15852415_1.fastq.gz at 698998939 (28 MiB to a new connection)
+2026-10-22 13:07:27,328 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:28,035 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:28,040 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:28,136 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:28,210 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852415_1.fastq.gz at 516651390 (28 MiB to a new connection)
+2026-10-22 13:07:30,331 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:31,259 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:31,459 adaptiseq.engine.segmented INFO Segment 11 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:33,895 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:34,884 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:35,432 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:36,113 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:37,542 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:37,638 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:39,159 adaptiseq.engine.segmented INFO Completed SRR15852415_2.fastq.gz
+2026-10-22 13:07:39,676 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852400_2.fastq.gz at 145282306 (19 MiB to a new connection)
+2026-10-22 13:07:39,817 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:42,348 adaptiseq.batch INFO downloaded SRR15852415_2.fastq.gz
+2026-10-22 13:07:42,985 adaptiseq.engine.segmented INFO Segment 0 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:44,091 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:50,015 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852415_1.fastq.gz at 638216423 (28 MiB to a new connection)
+2026-10-22 13:07:50,156 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:50,158 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:52,139 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:53,203 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:53,287 adaptiseq.engine.segmented INFO Segment 20 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:54,147 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:07:55,760 adaptiseq.engine.segmented INFO Completed SRR15852407_1.fastq.gz
+2026-10-22 13:07:57,716 adaptiseq.batch INFO downloaded SRR15852407_1.fastq.gz
+2026-10-22 13:07:59,499 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:00,607 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:00,633 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:02,261 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:03,700 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:04,194 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852400_2.fastq.gz at 20754615 (19 MiB to a new connection)
+2026-10-22 13:08:04,335 adaptiseq.engine.segmented INFO Segment 20 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:10,641 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:10,911 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:12,595 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:13,123 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:13,668 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:16,422 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:18,298 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:18,940 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:19,968 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:22,332 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:24,107 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:26,543 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:30,162 adaptiseq.engine.segmented INFO Split segment 6 of SRR15852404_2.fastq.gz at 681412385 (44 MiB to a new connection)
+2026-10-22 13:08:30,303 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:30,396 adaptiseq.engine.segmented INFO Split segment 15 of SRR15852415_1.fastq.gz at 1561722090 (17 MiB to a new connection)
+2026-10-22 13:08:30,536 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:32,366 adaptiseq.engine.segmented INFO Segment 20 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:32,443 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:33,146 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:33,729 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:39,576 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:42,126 adaptiseq.engine.segmented INFO Completed SRR15852407_2.fastq.gz
+2026-10-22 13:08:42,715 adaptiseq.engine.segmented INFO Segment 16 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:42,808 adaptiseq.engine.segmented INFO Split segment 8 of SRR15852404_2.fastq.gz at 331694033 (30 MiB to a new connection)
+2026-10-22 13:08:43,468 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:44,297 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:08:45,210 adaptiseq.engine.segmented INFO Segment 18 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:48,168 adaptiseq.engine.segmented INFO Segment 19 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:48,476 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:48,558 adaptiseq.engine.segmented INFO Completed SRR15852430_2.fastq.gz
+2026-10-22 13:08:49,666 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:51,756 adaptiseq.batch INFO downloaded SRR15852430_2.fastq.gz
+2026-10-22 13:08:52,518 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852404_2.fastq.gz at 1427298086 (27 MiB to a new connection)
+2026-10-22 13:08:53,258 adaptiseq.engine.segmented INFO Segment 9 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:54,370 adaptiseq.engine.segmented INFO Segment 10 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:55,459 adaptiseq.engine.segmented INFO Segment 20 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:55,519 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:57,650 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:08:58,962 adaptiseq.engine.segmented INFO Segment 15 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:02,591 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:06,291 adaptiseq.engine.segmented INFO Split segment 9 of SRR15852404_2.fastq.gz at 707722916 (19 MiB to a new connection)
+2026-10-22 13:09:06,432 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:09,641 adaptiseq.engine.segmented INFO Segment 20 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:10,213 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:11,551 adaptiseq.engine.segmented INFO Segment 17 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:14,169 adaptiseq.engine.segmented INFO Segment 14 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:17,578 adaptiseq.engine.segmented INFO Segment 12 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:19,525 adaptiseq.engine.segmented INFO Completed SRR15852430_1.fastq.gz
+2026-10-22 13:09:22,266 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:22,916 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:09:25,444 adaptiseq.engine.segmented INFO Completed SRR15852425_1.fastq.gz
+2026-10-22 13:09:25,871 adaptiseq.engine.segmented INFO Completed SRR15852406_1.fastq.gz
+2026-10-22 13:09:27,835 adaptiseq.engine.segmented INFO Segment 13 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:28,093 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:28,097 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:28,241 adaptiseq.engine.segmented INFO Completed SRR15852425_2.fastq.gz
+2026-10-22 13:09:28,360 adaptiseq.batch INFO downloaded SRR15852406_1.fastq.gz
+2026-10-22 13:09:28,655 adaptiseq.engine.seam INFO Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+2026-10-22 13:09:28,796 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:31,276 adaptiseq.batch INFO downloaded SRR15852425_2.fastq.gz
+2026-10-22 13:09:33,312 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:34,319 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:35,949 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852430_1.fastq.gz at 985902896 (313 MiB to a new connection)
+2026-10-22 13:09:35,949 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 1643256934 (312 MiB to a new connection)
+2026-10-22 13:09:36,091 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:36,470 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:36,873 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:38,053 adaptiseq.engine.segmented INFO Segment 1 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:39,950 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_1.fastq.gz at 332440863 (309 MiB to a new connection)
+2026-10-22 13:09:40,090 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:40,733 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:41,950 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852430_1.fastq.gz at 1807623363 (156 MiB to a new connection)
+2026-10-22 13:09:42,091 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:43,628 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:45,950 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852430_1.fastq.gz at 824200306 (154 MiB to a new connection)
+2026-10-22 13:09:46,659 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852407_2.fastq.gz at 955863053 (297 MiB to a new connection)
+2026-10-22 13:09:46,799 adaptiseq.engine.segmented INFO Segment 2 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:50,332 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852425_1.fastq.gz at 318262021 (295 MiB to a new connection)
+2026-10-22 13:09:50,332 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_1.fastq.gz at 948554372 (293 MiB to a new connection)
+2026-10-22 13:09:50,473 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:55,759 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:09:57,684 adaptiseq.engine.segmented INFO Completed SRR15852411_2.fastq.gz
+2026-10-22 13:09:58,248 adaptiseq.engine.segmented INFO Completed SRR15852406_2.fastq.gz
+2026-10-22 13:09:58,332 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852425_1.fastq.gz at 1589570727 (281 MiB to a new connection)
+2026-10-22 13:09:59,932 adaptiseq.batch INFO downloaded SRR15852411_2.fastq.gz
+2026-10-22 13:10:00,854 adaptiseq.batch INFO downloaded SRR15852406_2.fastq.gz
+2026-10-22 13:10:02,333 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852425_1.fastq.gz at 473193188 (147 MiB to a new connection)
+2026-10-22 13:10:02,444 adaptiseq.engine.segmented INFO Completed SRR15852404_1.fastq.gz
+2026-10-22 13:10:02,661 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852407_2.fastq.gz at 331246248 (288 MiB to a new connection)
+2026-10-22 13:10:04,333 adaptiseq.engine.segmented INFO Split segment 4 of SRR15852425_1.fastq.gz at 1102401541 (146 MiB to a new connection)
+2026-10-22 13:10:04,662 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852407_2.fastq.gz at 482593528 (144 MiB to a new connection)
+2026-10-22 13:10:04,662 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852407_2.fastq.gz at 180538968 (143 MiB to a new connection)
+2026-10-22 13:10:04,703 adaptiseq.batch INFO downloaded SRR15852404_1.fastq.gz
+2026-10-22 13:10:04,802 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:04,802 adaptiseq.engine.segmented INFO Segment 5 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:05,444 adaptiseq.engine.segmented INFO Segment 4 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:05,690 adaptiseq.engine.segmented INFO Completed SRR15852411_1.fastq.gz
+2026-10-22 13:10:05,840 adaptiseq.engine.segmented INFO Completed SRR15852400_2.fastq.gz
+2026-10-22 13:10:07,897 adaptiseq.batch INFO downloaded SRR15852411_1.fastq.gz
+2026-10-22 13:10:07,906 adaptiseq.batch INFO downloaded SRR15852400_2.fastq.gz
+2026-10-22 13:10:08,663 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852407_2.fastq.gz at 809157770 (139 MiB to a new connection)
+2026-10-22 13:10:08,663 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852407_2.fastq.gz at 1132648175 (128 MiB to a new connection)
+2026-10-22 13:10:08,803 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:08,804 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:09,444 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:13,079 adaptiseq.engine.segmented INFO Segment 7 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:18,219 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:20,528 adaptiseq.engine.segmented INFO Completed SRR15852404_2.fastq.gz
+2026-10-22 13:10:22,745 adaptiseq.batch INFO downloaded SRR15852404_2.fastq.gz
+2026-10-22 13:10:23,051 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:24,853 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:30,494 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:36,136 adaptiseq.engine.segmented INFO Segment 6 refused at the host's connection ceiling; waiting for a slot
+2026-10-22 13:10:38,264 adaptiseq.engine.segmented INFO Completed SRR15852415_1.fastq.gz
+2026-10-22 13:10:41,288 adaptiseq.batch INFO downloaded SRR15852415_1.fastq.gz
+2026-10-22 13:11:05,532 adaptiseq.engine.segmented INFO Completed SRR15852400_1.fastq.gz
+2026-10-22 13:11:07,596 adaptiseq.batch INFO downloaded SRR15852400_1.fastq.gz
+2026-10-22 13:13:27,801 adaptiseq.engine.segmented WARNING Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 36167680 of 302694561 bytes).'>. ConnectionResetError(104, 'Connection reset by peer')
+2026-10-22 13:13:34,560 adaptiseq.engine.segmented INFO Split segment 1 of SRR15852425_1.fastq.gz at 850663203 (93 MiB to a new connection)
+2026-10-22 13:13:43,575 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852425_1.fastq.gz at 1792963736 (87 MiB to a new connection)
+2026-10-22 13:13:51,758 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852407_2.fastq.gz at 438711568 (41 MiB to a new connection)
+2026-10-22 13:13:58,481 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852430_1.fastq.gz at 250852275 (77 MiB to a new connection)
+2026-10-22 13:14:03,040 adaptiseq.engine.segmented INFO Split segment 7 of SRR15852407_2.fastq.gz at 1250600735 (16 MiB to a new connection)
+2026-10-22 13:14:31,083 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852425_1.fastq.gz at 246130854 (68 MiB to a new connection)
+2026-10-22 13:14:48,574 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852430_1.fastq.gz at 1251161325 (60 MiB to a new connection)
+2026-10-22 13:14:51,134 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852430_1.fastq.gz at 1593614344 (47 MiB to a new connection)
+2026-10-22 13:14:55,446 adaptiseq.engine.segmented INFO Split segment 2 of SRR15852425_1.fastq.gz at 1537725557 (49 MiB to a new connection)
+2026-10-22 13:15:16,901 adaptiseq.engine.segmented INFO Split segment 5 of SRR15852430_1.fastq.gz at 611605290 (43 MiB to a new connection)
+2026-10-22 13:15:30,575 adaptiseq.engine.segmented INFO Split segment 3 of SRR15852430_1.fastq.gz at 1229295950 (20 MiB to a new connection)
+2026-10-22 13:15:48,721 adaptiseq.engine.segmented INFO Completed SRR15852407_2.fastq.gz
+2026-10-22 13:15:50,645 adaptiseq.batch INFO downloaded SRR15852407_2.fastq.gz
+2026-10-22 13:15:51,952 adaptiseq.engine.segmented INFO Split segment 0 of SRR15852425_1.fastq.gz at 227041271 (18 MiB to a new connection)
+2026-10-22 13:16:50,973 adaptiseq.engine.segmented INFO Completed SRR15852430_1.fastq.gz
+2026-10-22 13:16:53,957 adaptiseq.batch INFO downloaded SRR15852430_1.fastq.gz
+2026-10-22 13:17:05,484 adaptiseq.engine.segmented INFO Completed SRR15852425_1.fastq.gz
+2026-10-22 13:17:08,337 adaptiseq.batch INFO downloaded SRR15852425_1.fastq.gz
+[32mNote[0m: batch downloading 16 file(s) across 8 accession(s) with up to 16 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852404_2.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852407_2.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852430_1.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852425_1.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 101 probe(s); best 320 Mbps at 16 worker(s); last 16 Mbps at 2 worker(s); recent: 3w@115Mbps, 3w@104Mbps, 3w@98Mbps, 3w@127Mbps, 3w@94Mbps, 3w@117Mbps, 3w@98Mbps, 3w@67Mbps, 3w@94Mbps, 3w@71Mbps, 2w@33Mbps, 2w@16Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================

@@ -1,0 +1,7 @@
+arm	rep	line
+adaptiseq-ctrl-knee	rep1	[32mNote[0m: adaptive worker summary: 242 probe(s); best 320 Mbps at 32 connection(s); last 2 Mbps at 48 connection(s); recent: 48c@40Mbps, 48c@29Mbps, 48c@35Mbps, 48c@14Mbps, 48c@10Mbps, 48c@15Mbps, 48c@10Mbps, 48c@0Mbps, 48c@0Mbps, 48c@1Mbps, 48c@2Mbps, 48c@2Mbps
+adaptiseq-ctrl-topdown	rep1	2026-10-22 12:39:09,600 adaptiseq.batch INFO adaptive probe: workers=16 throughput=320.2Mbps score=-320
+adaptiseq-ctrl-topdown	rep1	[32mNote[0m: adaptive worker summary: 101 probe(s); best 320 Mbps at 16 worker(s); last 16 Mbps at 2 worker(s); recent: 3w@115Mbps, 3w@104Mbps, 3w@98Mbps, 3w@127Mbps, 3w@94Mbps, 3w@117Mbps, 3w@98Mbps, 3w@67Mbps, 3w@94Mbps, 3w@71Mbps, 2w@33Mbps, 2w@16Mbps
+adaptiseq-ctrl-knee	rep1	[32mNote[0m: adaptive worker summary: 49 probe(s); best 568 Mbps at 8 connection(s); last 15 Mbps at 22 connection(s); recent: 22c@537Mbps, 22c@339Mbps, 22c@232Mbps, 22c@232Mbps, 22c@250Mbps, 22c@162Mbps, 22c@14Mbps, 22c@269Mbps, 22c@11Mbps, 22c@1Mbps, 22c@2Mbps, 22c@15Mbps
+adaptiseq-ctrl-topdown	rep1	2026-10-22 13:25:44,413 adaptiseq.batch INFO adaptive probe: workers=6 throughput=485.1Mbps score=-485
+adaptiseq-ctrl-topdown	rep1	[32mNote[0m: adaptive worker summary: 11 probe(s); best 1190 Mbps at 6 worker(s); last 0 Mbps at 3 worker(s); recent: 6w@485Mbps, 6w@423Mbps, 6w@1190Mbps, 6w@633Mbps, 6w@69Mbps, 5w@3Mbps, 5w@0Mbps, 3w@0Mbps, 3w@0Mbps, 3w@0Mbps, 3w@0Mbps

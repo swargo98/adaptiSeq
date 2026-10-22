@@ -1,0 +1,12 @@
+# 2026-10-22T12:06:37-07:00  host=exp-9-43  panel=4b  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=47ddbb944357925515f010d7c37ec901709f9437a99f12fcdaf2a99e96f9cb42  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
+# 2026-10-22T13:17:15-07:00  host=exp-9-43  panel=4g  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=47ddbb944357925515f010d7c37ec901709f9437a99f12fcdaf2a99e96f9cb42  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
