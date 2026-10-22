@@ -55,6 +55,13 @@ MIN_SPLIT = 64 * 1024 * 1024
 # and the split check runs this often while a file downloads.
 MIN_STEAL = 16 * 1024 * 1024
 SPLIT_POLL_S = 2.0
+# A segment that runs out of its attempts but moved its offset since it was
+# (re)started continues on a new connection within the same pass; one that fails
+# this many times in a row without progress ends the pass as before. GSA cuts
+# streams at any load: in 0.1.11 each segment that ran out of attempts stopped
+# the file's splitting for the rest of the pass, and the file's last minutes ran
+# on a few connections before it was queued again.
+RELAUNCH_STALLS = 2
 PROBE_ATTEMPTS = 4
 
 
@@ -234,6 +241,7 @@ class SegmentedDownloader:
         # split for spare budget, only to replace a finished segment).
         self.spare_slots = spare_slots
         self.splits = 0
+        self.relaunches = 0
         self._ends: Dict[int, int] = {}
         self.local_path = local_path
         self.part_path = local_path + ".part"
@@ -590,6 +598,8 @@ class SegmentedDownloader:
         # .part.meta written from it resumes correctly (plan_from_meta).
         segments = [list(x) for x in segments]
         self._ends = {i: e for i, (_s, e) in enumerate(segments)}
+        self._launched_at = dict(progress_offsets)   # offset each task started at
+        self._stalls: Dict[int, int] = {}
 
         fd = None
         running: Dict["asyncio.Future", int] = {}
@@ -680,10 +690,16 @@ class SegmentedDownloader:
             done, _ = await asyncio.wait(list(running), timeout=SPLIT_POLL_S,
                                          return_when=asyncio.FIRST_COMPLETED)
             for t in done:
-                running.pop(t)
+                seg = running.pop(t)
                 try:
                     results.append(t.result())
-                except BaseException as exc:   # CancelledError included, as gather would
+                except asyncio.CancelledError as exc:   # as gather would
+                    results.append(exc)
+                    failed = True
+                    continue
+                except Exception as exc:
+                    if not failed and self._relaunch(seg, running, progress_offsets, fd):
+                        continue
                     results.append(exc)
                     failed = True
                     continue
@@ -700,6 +716,27 @@ class SegmentedDownloader:
                                                progress_offsets, fd)):
                     spare -= 1
         return results
+
+    def _relaunch(self, seg, running, progress_offsets, fd) -> bool:
+        """Continue a segment that ran out of attempts on a new connection, if it
+        made progress since it was (re)started or has not yet stalled
+        ``RELAUNCH_STALLS`` times in a row. False: let the pass fail."""
+        start = progress_offsets.get(seg, self._launched_at.get(seg, 0))
+        end = self._ends.get(seg)
+        if end is None or start > end:
+            return False
+        moved = start > self._launched_at.get(seg, start)
+        stalls = 0 if moved else self._stalls.get(seg, 0) + 1
+        if stalls >= RELAUNCH_STALLS:
+            return False
+        self._stalls[seg] = stalls
+        self._launched_at[seg] = start
+        running[asyncio.ensure_future(
+            self.download_segment_streaming(seg, start, end, fd, progress_offsets))] = seg
+        self.relaunches += 1
+        log.info("Segment %s of %s out of attempts; continuing at %s on a new connection",
+                 seg, os.path.basename(self.local_path), start)
+        return True
 
     def _split_largest(self, running, segments, remaining_segments, progress_offsets,
                        fd) -> bool:
@@ -723,6 +760,7 @@ class SegmentedDownloader:
                 remaining_segments[k] = (i, s0, cut - 1)
         remaining_segments.append((j, cut, new_end))
         progress_offsets[j] = cut
+        self._launched_at[j] = cut
         running[asyncio.ensure_future(
             self.download_segment_streaming(j, cut, new_end, fd, progress_offsets))] = j
         self.splits += 1

@@ -76,6 +76,11 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   minutes, not 3 minutes per run). An empty answer that took more than 5 s is
   retried as a failure, not read as "not in ENA". With 0.1.11 the portal's slow
   hours sent runs to SRA, whose files cannot be checked against ENA's md5.
+- A segment that runs out of its attempts but made progress continues on a new
+  connection in the same pass; only one that keeps failing without progress ends
+  the pass. On GSA, which cuts streams at any load, each segment that ran out of
+  attempts used to stop its file from splitting for the rest of the pass, and the
+  last minutes of a GSA download ran on a few connections.
 
 ### 0.1.11 (in development)
 - A connect that times out is now handled like a refused connect: while other
