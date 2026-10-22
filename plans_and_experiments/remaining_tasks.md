@@ -537,6 +537,31 @@ pattern: within a case, more connections ran faster on ENA and GSA (Spearman of 
 the fastest at 8-10). A per-source connection policy (low on NCBI, high and early on ENA, held high through
 GSA's noise) is a candidate for a later round, not a router over today's controllers.
 
+**0.1.12 and round 3 (user, 10-22: "make these fixes on 0.1.12 and test them. I am inclined to topdown as default.
+Proceed to run all the remaining tasks with topdown as default if topdown still leads after the fixes.")**
+
+Fixes (`9c66849`, `c89cd5a`; README 0.1.12): GSA run missing from the run-info table fails instead of exiting 0;
+a lowered per-host cap climbs back 1 per 5 s; spare connection budget offered while a controller holds files back;
+topdown waits for the pool to reach a count before measuring it (60 s, else keeps the higher count), settles 5 s after
+a step up, and steps down only on two winning windows; ENA metadata retries bounded by 3 min of portal failure shared
+by a list, slow empty answers retried. Tests: `test_gsa_no_runs`, `test_cap_recovery`, `test_topdown_drain`,
+`test_ena_patience` (offline suite on the edited tree: only my two wrong assertions failed in `55197957`, fixed;
+targeted suites pass in `55198007`).
+
+Diagnosis behind the cap fix (info-level 4b run on 0.1.11, `e3_diag_ceiling/e3_55197662`, via
+`bench/e3/aseq_info.sh`): knee raised its budget to 32 at 10:36:23 and ENA refused 14 connects within 2 s at 24-25
+open, then again at 10:37:46, 10:37:52, 10:38:09. So the 25 is often ENA refusing connections at that moment; the
+fault was that the pin never lifted. 0.1.12 re-tests one connection per 5 s (a refusal costs a 0.5 s wait).
+
+**Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
+arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job
+each; `E3_TIMEOUT_CTRL=7200`; results `e3_round3_expanse/`; scored with `bench/e3/score_round2.py` unchanged.
+**"Topdown still leads"** = topdown is first in that script's ranking (qualifying arms first, then most wins, ties
+to fewer mean connections), the basis on which it led round 2. If it leads: it stays the default (it already is; no
+code change), and the paper's 5-rep chain runs on 0.1.12 (`ARM_SET=submission`, 3r + 3b, 5 chained jobs of one
+rep, `e3_submission_0.1.12_expanse/`), then `analyze_submission.py` on the Expanse TSV. If it does not lead: stop
+and report to the user.
+
 **4b rep 3: by the fixed criterion fixed-j20 and topdown are disqualified** (runs from SRA, not md5-verified). Cause: the
 ENA portal, not the arms (probe log: 24-45 s answers and one HTTP 500 between 11:19 and 14:30). adaptiSeq's ENA
 retry budget (4 tries, 2/4/8 s apart, `metadata.ENA_ATTEMPTS`) is about 15 s plus the request time, short against a
