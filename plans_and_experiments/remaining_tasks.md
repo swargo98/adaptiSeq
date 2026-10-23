@@ -634,6 +634,25 @@ build), `55203208`, `55203209` (afterany chain), `e3_round3_expanse/`, protocol 
 **Round 3 rep 1 done** (`55203207`, 14:25 10-22 to 01:06 10-23, 10 h 41 min; all 42 arm-cases complete and
 md5-verified, no timeouts, no SRA fallbacks).
 
+Rep 2 `55203208` (`exp-13-11`, from 03:23 PDT 10-23, probe 1.0/9.0/24.1 MB/s, GATE PASS):
+
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 2 | 4r ENA small | greedy | 743 | 1.19 | 241/241 | 18.2 / 25 | |
+| 2 | 4r ENA small | knee | 935 | 1.49 | 241/241 | 17.2 / 25 | 4 refused, 1 single-connection fallback |
+| 2 | 4r ENA small | topdown | **626** | 1.00 | 241/241 | 18.9 / 25 | best 233 Mbps at 20 workers (kept the cap) |
+| 2 | 4r ENA small | fixed-j20 | 737 | 1.18 | 241/241 | 16.7 / 25 | |
+| 2 | 4r ENA small | bottomup | 757 | 1.21 | 241/241 | 15.2 / 25 | 25 cut short |
+| 2 | 4r ENA small | fixed-j64 | 655 | 1.05 | 241/241 | 20.6 / 25 | |
+| 2 | 4r ENA small | budget | 880 | 1.41 | 241/241 | 16.8 / 20 | |
+| 2 | 4b ENA large | budget | 1674 | 1.36 | 8/8 | 23.7 / 25 | |
+| 2 | 4b ENA large | greedy | **1229** | 1.00 | 8/8 | 30.6 / 50 | 1 md5 mismatch |
+| 2 | 4b ENA large | fixed-j64 | 2064 | 1.68 | 8/8 | 23.4 / 25 | 4 md5 mismatches |
+| 2 | 4b ENA large | fixed-j20 | 2461 | 2.00 | 8/8 | 20.4 / 25 | 4 md5 mismatches |
+| 2 | 4b ENA large | knee | 2038 | 1.66 | 8/8 | 23.5 / 25 | 3 md5 mismatches |
+| 2 | 4b ENA large | topdown | 1610 | 1.31 | 8/8 | 22.9 / 25 | no mismatch |
+| 2 | 4b ENA large | bottomup | 2604 | 2.12 | 8/8 | 17.3 / 25 | 4 md5 mismatches |
+
 **Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
 arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job
 each; `E3_TIMEOUT_CTRL=7200`; results `e3_round3_expanse/`; scored with `bench/e3/score_round2.py` unchanged.
