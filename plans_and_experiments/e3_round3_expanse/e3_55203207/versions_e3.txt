@@ -1,0 +1,36 @@
+# 2026-10-22T14:26:48-07:00  host=exp-13-20  panel=4r  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
+# 2026-10-22T16:54:06-07:00  host=exp-13-20  panel=4b  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
+# 2026-10-22T19:22:56-07:00  host=exp-13-20  panel=4s  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
+# 2026-10-22T19:33:59-07:00  host=exp-13-20  panel=4g  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
+# 2026-10-22T20:27:25-07:00  host=exp-13-20  panel=4h  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17
+# 2026-10-23T00:24:37-07:00  host=exp-13-20  panel=4m  arm_set=submission  seed=20261013
+adaptiseq: aseq_version=0.1.12 aseq_sha256=0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09  wheel=/home/rswargo/adaptiSeq/plans_and_experiments/wheels/adaptiseq-0.1.12-py3-none-any.whl
+iseq: Version 1.9.9
+kingfisher: 0.5.0
+fastq-dl: fastq-dl, version 4.0.1
+python: Python 3.11.17

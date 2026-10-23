@@ -1,0 +1,8 @@
+arm,n,wall_med,wall_iqr,MBps_med,MBps_iqr,runs_ok_med,runs_exp,peak_rss_MB,cpu_pct_med,conc_med,conc_max,conc_host_max,workers_max,timeouts,nonzero_rc,formats,success_pct
+adaptiseq-ctrl-knee,1,244.7,0.0,16.28,0.0,15.0,15,77.0,17.0,10.0,32,16,0,0,0,gz,100.0
+adaptiseq-ctrl-topdown,1,298.2,0.0,13.35,0.0,15.0,15,76.0,13.0,9.0,39,23,0,0,0,gz,100.0
+adaptiseq-ctrl-greedy,1,299.9,0.0,13.28,0.0,15.0,15,78.0,14.0,15.0,37,21,0,0,0,gz,100.0
+adaptiseq-fixed-j64,1,303.2,0.0,13.14,0.0,15.0,15,80.0,14.0,15.0,41,25,0,0,0,gz,100.0
+adaptiseq-fixed-j20,1,413.2,0.0,9.64,0.0,15.0,15,78.0,9.0,9.0,36,20,0,0,0,gz,100.0
+adaptiseq-ctrl-budget,1,419.3,0.0,9.5,0.0,15.0,15,81.0,9.0,2.0,35,19,0,0,0,gz,100.0
+adaptiseq-ctrl-bottomup,1,502.1,0.0,7.93,0.0,15.0,15,71.0,9.0,7.0,24,16,0,0,0,gz,100.0

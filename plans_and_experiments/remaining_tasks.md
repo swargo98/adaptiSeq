@@ -616,6 +616,23 @@ build), `55203208`, `55203209` (afterany chain), `e3_round3_expanse/`, protocol 
 | 1 | 4g GSA | topdown | 303 | 1.25 | 6/6 | 23.6 / 48 | kept 5-6 workers; 96 cut short |
 | 1 | 4g GSA | knee | 951 | 3.93 | 6/6 | **4.3 / 8** | best 404 Mbps at 4 connections; never above 8 |
 | 1 | 4g GSA | fixed-j64 | **242** | 1.00 | 6/6 | 23.7 / 48 | 81 cut short |
+| 1 | 4h ENA held-out | knee | 3957 | 2.81 | 2/2 | **5.5 / 12** | best 160 Mbps at 6 |
+| 1 | 4h ENA held-out | fixed-j64 | 1629 | 1.16 | 2/2 | 15.4 / 16 | |
+| 1 | 4h ENA held-out | topdown | 1562 | 1.11 | 2/2 | 14.2 / 16 | |
+| 1 | 4h ENA held-out | fixed-j20 | 1435 | 1.02 | 2/2 | 14.4 / 16 | |
+| 1 | 4h ENA held-out | bottomup | 2452 | 1.74 | 2/2 | 11.8 / 16 | 1 md5 mismatch (11.5 GB re-fetch) |
+| 1 | 4h ENA held-out | budget | **1409** | 1.00 | 2/2 | 15.1 / 16 | |
+| 1 | 4h ENA held-out | greedy | 1630 | 1.16 | 2/2 | 15.2 / 16 | |
+| 1 | 4m mixed | knee | **245** | 1.00 | 15/15 | 11.6 / 32 | best 818 Mbps at 12 |
+| 1 | 4m mixed | bottomup | 502 | 2.05 | 15/15 | 8.0 / 24 | |
+| 1 | 4m mixed | fixed-j20 | 413 | 1.69 | 15/15 | 12.7 / 36 | |
+| 1 | 4m mixed | topdown | 298 | 1.22 | 15/15 | 13.2 / 39 | |
+| 1 | 4m mixed | budget | 419 | 1.71 | 15/15 | 8.1 / 35 | |
+| 1 | 4m mixed | greedy | 300 | 1.22 | 15/15 | 16.5 / 37 | |
+| 1 | 4m mixed | fixed-j64 | 303 | 1.24 | 15/15 | 16.5 / 41 | |
+
+**Round 3 rep 1 done** (`55203207`, 14:25 10-22 to 01:06 10-23, 10 h 41 min; all 42 arm-cases complete and
+md5-verified, no timeouts, no SRA fallbacks).
 
 **Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
 arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job

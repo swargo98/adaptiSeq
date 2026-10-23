@@ -1,0 +1,102 @@
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+==============================================================================
+4b
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-ctrl-bottomup  1    1030.8       0.0     25.10       0.0          8.0         8         82.0         23.0      25.0        25             25            0         0           0      gz        100.0
+adaptiseq-ctrl-budget    1    1087.4       0.0     23.80       0.0          8.0         8         85.0         22.0      25.0        25             25            0         0           0      gz        100.0
+adaptiseq-ctrl-topdown   1    1155.2       0.0     22.40       0.0          8.0         8        104.0         23.0      16.0        50             50            0         0           0      gz        100.0
+adaptiseq-ctrl-knee      1    1252.7       0.0     20.65       0.0          8.0         8         81.0         22.0      25.0        25             25            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1    1350.1       0.0     19.17       0.0          8.0         8         86.0         21.0      25.0        25             25            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1    1380.9       0.0     18.74       0.0          8.0         8         82.0         21.0      25.0        25             25            0         0           0      gz        100.0
+adaptiseq-fixed-j64      1    1618.1       0.0     15.99       0.0          8.0         8         85.0         19.0      25.0        25             25            0         0           0      gz        100.0
+
+==============================================================================
+4g
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-fixed-j64      1     242.5       0.0     50.02       0.0          6.0         6         90.0         31.0      26.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-bottomup  1     248.7       0.0     48.78       0.0          6.0         6         86.0         33.0      16.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-topdown   1     303.3       0.0     39.99       0.0          6.0         6         89.0         29.0      16.0        48             48            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1     435.0       0.0     27.88       0.0          6.0         6         89.0         20.0      17.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-budget    1     451.1       0.0     26.89       0.0          6.0         6         80.0         18.0      10.0        31             31            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1     533.9       0.0     22.72       0.0          6.0         6         90.0         17.0      14.0        48             48            0         0           0      gz        100.0
+adaptiseq-ctrl-knee      1     950.7       0.0     12.76       0.0          6.0         6         69.0          9.0       5.0         8              8            0         0           0      gz        100.0
+
+==============================================================================
+4h
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-ctrl-budget    1    1409.2       0.0     16.37       0.0          2.0         2         72.0         18.0      16.0        16             16            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1    1435.0       0.0     16.08       0.0          2.0         2         74.0         17.0      16.0        16             16            0         0           0      gz        100.0
+adaptiseq-ctrl-topdown   1    1561.6       0.0     14.77       0.0          2.0         2         72.0         17.0      16.0        16             16            0         0           0      gz        100.0
+adaptiseq-fixed-j64      1    1629.4       0.0     14.16       0.0          2.0         2         70.0         15.0      16.0        16             16            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1    1630.0       0.0     14.15       0.0          2.0         2         71.0         16.0      16.0        16             16            0         0           0      gz        100.0
+adaptiseq-ctrl-bottomup  1    2451.8       0.0      9.41       0.0          2.0         2         74.0         16.0       9.0        16             16            0         0           0      gz        100.0
+adaptiseq-ctrl-knee      1    3957.4       0.0      5.83       0.0          2.0         2         66.0          4.0       4.0        12             12            0         0           0      gz        100.0
+
+==============================================================================
+4m
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-ctrl-knee      1     244.7       0.0     16.28       0.0         15.0        15         77.0         17.0      10.0        32             16            0         0           0      gz        100.0
+adaptiseq-ctrl-topdown   1     298.2       0.0     13.35       0.0         15.0        15         76.0         13.0       9.0        39             23            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1     299.9       0.0     13.28       0.0         15.0        15         78.0         14.0      15.0        37             21            0         0           0      gz        100.0
+adaptiseq-fixed-j64      1     303.2       0.0     13.14       0.0         15.0        15         80.0         14.0      15.0        41             25            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1     413.2       0.0      9.64       0.0         15.0        15         78.0          9.0       9.0        36             20            0         0           0      gz        100.0
+adaptiseq-ctrl-budget    1     419.3       0.0      9.50       0.0         15.0        15         81.0          9.0       2.0        35             19            0         0           0      gz        100.0
+adaptiseq-ctrl-bottomup  1     502.1       0.0      7.93       0.0         15.0        15         71.0          9.0       7.0        24             16            0         0           0      gz        100.0/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+/home/rswargo/adaptiSeq/plans_and_experiments/bench/e3/aggregate.py:103: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  bp = ax.boxplot(data, vert=False, patch_artist=True, widths=0.6, **{lab_kw: order})
+
+
+==============================================================================
+4r
+==============================================================================
+
+-- comparable arms (fetched .fastq.gz; MB/s is apples-to-apples) --
+                         n  wall_med  wall_iqr  MBps_med  MBps_iqr  runs_ok_med  runs_exp  peak_rss_MB  cpu_pct_med  conc_med  conc_max  conc_host_max  workers_max  timeouts  nonzero_rc formats  success_pct
+arm                                                                                                                                                                                                           
+adaptiseq-fixed-j64      1     438.2       0.0     17.31       0.0        241.0       241         97.0         18.0      29.0        50             50            0         0           0      gz        100.0
+adaptiseq-ctrl-topdown   1     623.8       0.0     12.16       0.0        241.0       241         80.0         12.0      24.0        25             25            0         0           0      gz        100.0
+adaptiseq-fixed-j20      1     704.6       0.0     10.77       0.0        241.0       241         79.0         14.0      20.0        25             25            0         0           0      gz        100.0
+adaptiseq-ctrl-greedy    1     726.1       0.0     10.45       0.0        241.0       241         80.0         14.0      20.0        25             25            0         0           0      gz        100.0
+adaptiseq-ctrl-budget    1     896.8       0.0      8.46       0.0        241.0       241         76.0         11.0      15.0        20             20            0         0           0      gz        100.0
+adaptiseq-ctrl-bottomup  1    1029.8       0.0      7.37       0.0        241.0       241         83.0          8.0       7.0        25             25            0         0           0      gz        100.0
+adaptiseq-ctrl-knee      1    4401.8       0.0      1.72       0.0        241.0       241         68.0          2.0       3.0         7              7            0         0           0      gz        100.0
+
+==============================================================================
+4s
+==============================================================================
+
+-- SEGREGATED: fetched a different format/size; NOT wall-time comparable (§12.2) --
+                         n  wall_med  MBps_med formats  runs_ok_med  runs_exp
+arm                                                                          
+adaptiseq-ctrl-greedy    1      78.5    251.59    none          8.0         8
+adaptiseq-ctrl-topdown   1      78.5    251.53    none          8.0         8
+adaptiseq-fixed-j64      1      79.8    247.37    none          8.0         8
+adaptiseq-fixed-j20      1      79.9    247.15    none          8.0         8
+adaptiseq-ctrl-knee      1      90.6    217.94    none          8.0         8
+adaptiseq-ctrl-bottomup  1      94.4    209.17    none          8.0         8
+adaptiseq-ctrl-budget    1     108.5    181.97    none          8.0         8
+
+Wrote summaries + fig3_*.png to /home/rswargo/adaptiSeq/plans_and_experiments/e3_round3_expanse/e3_55203207
