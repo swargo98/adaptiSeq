@@ -146,6 +146,13 @@ Rep 2 `55203208` (`exp-13-11`, from 03:23 PDT 10-23, probe 1.0/9.0/24.1 MB/s, GA
 | 2 | 4b ENA large | knee | 2038 | 1.66 | 8/8 | 23.5 / 25 | 3 md5 mismatches |
 | 2 | 4b ENA large | topdown | 1610 | 1.31 | 8/8 | 22.9 / 25 | no mismatch |
 | 2 | 4b ENA large | bottomup | 2604 | 2.12 | 8/8 | 17.3 / 25 | 4 md5 mismatches |
+| 2 | 4s NCBI | bottomup | 95 | 1.23 | 8/8 | 7.3 / 16 | best at 1 worker |
+| 2 | 4s NCBI | fixed-j64 | 78 | 1.01 | 8/8 | 27.6 / 64 | |
+| 2 | 4s NCBI | greedy | 78 | 1.01 | 8/8 | 27.7 / 64 | |
+| 2 | 4s NCBI | knee | 84 | 1.09 | 8/8 | 8.4 / 32 | settled 16 |
+| 2 | 4s NCBI | fixed-j20 | **78** | 1.00 | 8/8 | 27.4 / 64 | |
+| 2 | 4s NCBI | budget | 78 | 1.00 | 8/8 | 7.7 / 20 | held 16 |
+| 2 | 4s NCBI | topdown | 88 | 1.14 | 8/8 | 21.6 / 64 | best 4782 Mbps at 8 workers; last file on 1 |
 
 ---
 
