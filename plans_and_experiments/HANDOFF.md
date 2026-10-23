@@ -35,6 +35,8 @@ record of everything done: every job, result row and decision, in dated sections
 - Ask before: PyPI/Zenodo release or tags, merging `origin/app-notes` `6ae2fd3` (its
   ENA fix conflicts with ours), deleting anything, cancelling jobs the user did not ask
   about. Making a different controller the default is the user's decision.
+- **Active session: `rswargo-39` (tmux 4), from 10:30 PDT 10-23**, records round 3 rows and runs the chain;
+  `rswargo-5a` (tmux 3) handed off to it and is idle.
 - Other Claude sessions on this machine: `rswargo-85` and `rswargo-ba` (idle; message them
   before editing `adaptiseq/` or `tests/`). `rswargo-99` (tmux pane %2) is a second process
   of this same conversation; it was asked to stand down on 10-20 and agreed. Check
@@ -45,7 +47,7 @@ record of everything done: every job, result row and decision, in dated sections
 | job | what | results | on finish |
 |---|---|---|---|
 | `55203207` | round 3 rep 1 on 0.1.12: **done** 01:06 10-23, all 42 arm-cases verified | `e3_round3_expanse/e3_55203207/` (committed) | recorded |
-| `55203208` | round 3 rep 2: **running** since 03:23 on `exp-13-11`; 4r and 4b recorded | `e3_round3_expanse/e3_55203208/` | record 4s, 4g, 4h, 4m; move `slurm_e3_55203208.*` into the dir and commit it |
+| `55203208` | round 3 rep 2: **running** since 03:23 on `exp-13-11`; 4r, 4b, 4s recorded | `e3_round3_expanse/e3_55203208/` | record 4g, 4h, 4m; move `slurm_e3_55203208.*` into the dir and commit it |
 | `55203209` | round 3 rep 3: queued `afterany` | `e3_round3_expanse/e3_55203209/` | same, then score round 3 |
 
 A round 3 rep takes about 11 to 14 h. Then (user's instruction, 10-22): if topdown ranks first
