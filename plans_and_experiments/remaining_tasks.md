@@ -578,6 +578,28 @@ progress still end it; `tests/test_segment_relaunch.py`; offline suite passes in
 **Round 3 submitted** on the rebuilt 0.1.12 (build `55203206` into `adaptiseq_e3_sub`): reps `55203207` (afterok on the
 build), `55203208`, `55203209` (afterany chain), `e3_round3_expanse/`, protocol as above.
 
+**Round 3 rows (0.1.12 `0c5e6a82`, `e3_round3_expanse/`).** Rep 1 `55203207` (`exp-13-20`, from 14:25 PDT 10-22, probe
+1.6/12.4/30.2 MB/s, GATE PASS):
+
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 1 | 4r ENA small | topdown | 624 | 1.42 | 241/241 | 18.3 / 25 | best 209 Mbps at 10 workers (0.1.11 r1-r3: 12-13 mean, committed at 2-5) |
+| 1 | 4r ENA small | budget | 897 | 2.05 | 241/241 | 13.8 / 20 | |
+| 1 | 4r ENA small | fixed-j20 | 705 | 1.61 | 241/241 | 15.2 / 25 | |
+| 1 | 4r ENA small | bottomup | 1030 | 2.35 | 241/241 | 10.7 / 25 | |
+| 1 | 4r ENA small | greedy | 726 | 1.66 | 241/241 | 17.9 / 25 | |
+| 1 | 4r ENA small | fixed-j64 | **438** | 1.00 | 241/241 | 25.5 / 50 | |
+| 1 | 4r ENA small | knee | 4402 | 10.05 | 241/241 | **3.1 / 7** | ran 15:41-16:54 in a slow ENA spell (fixed-j64 on 4b right after: 0.7 MB/s per connection); read under 15 Mbps and settled at 2-5 connections for an hour |
+| 1 | 4b ENA large | fixed-j64 | 1618 | 1.57 | 8/8 | 23.6 / 25 | 3 md5 mismatches |
+| 1 | 4b ENA large | fixed-j20 | 1381 | 1.34 | 8/8 | 20.9 / 25 | 1 md5 mismatch |
+| 1 | 4b ENA large | topdown | 1155 | 1.12 | 8/8 | 25.3 / 50 | 3 md5 mismatches |
+| 1 | 4b ENA large | budget | 1087 | 1.05 | 8/8 | 23.8 / 25 | 23 cut short |
+| 1 | 4b ENA large | knee | 1253 | 1.22 | 8/8 | 23.3 / 25 | |
+| 1 | 4b ENA large | greedy | 1350 | 1.31 | 8/8 | 22.6 / 25 | 3 md5 mismatches, 16 segment retries out (relaunched) |
+| 1 | 4b ENA large | bottomup | **1031** | 1.00 | 8/8 | 23.7 / 25 | 11 cut short |
+
+4b: every arm at ENA's 25 (the 0.1.12 check showed ENA refusing the 26th); spread 1031-1618 s, mostly md5 re-fetches.
+
 **Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
 arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job
 each; `E3_TIMEOUT_CTRL=7200`; results `e3_round3_expanse/`; scored with `bench/e3/score_round2.py` unchanged.
