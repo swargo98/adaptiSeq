@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score the controller tournament by the rule fixed before it ran (remaining_tasks.md).
+"""Score the controller tournament by the rule fixed before it ran (progress_log.md, section 4: "Selection rule").
 
 For every panel: median wall_s over reps per arm; score = median / the best arm's
 median in that panel (fixed references included). An arm that missed a run (not
