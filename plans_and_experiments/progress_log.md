@@ -153,6 +153,13 @@ Rep 2 `55203208` (`exp-13-11`, from 03:23 PDT 10-23, probe 1.0/9.0/24.1 MB/s, GA
 | 2 | 4s NCBI | fixed-j20 | **78** | 1.00 | 8/8 | 27.4 / 64 | |
 | 2 | 4s NCBI | budget | 78 | 1.00 | 8/8 | 7.7 / 20 | held 16 |
 | 2 | 4s NCBI | topdown | 88 | 1.14 | 8/8 | 21.6 / 64 | best 4782 Mbps at 8 workers; last file on 1 |
+| 2 | 4g GSA | budget | 2042 | 3.43 | 6/6 | **7.7 / 20** | 131 cut short; best 380 Mbps at 20, ended at 5 Mbps on 6 |
+| 2 | 4g GSA | fixed-j20 | 606 | 1.02 | 6/6 | 28.3 / 48 | 238 cut short |
+| 2 | 4g GSA | knee | 991 | 1.66 | 6/6 | 19.5 / 38 | 199 cut short; best 362 Mbps at 27 |
+| 2 | 4g GSA | greedy | 666 | 1.12 | 6/6 | 30.5 / 48 | 150 cut short |
+| 2 | 4g GSA | bottomup | 778 | 1.31 | 6/6 | 22.0 / 48 | 188 cut short |
+| 2 | 4g GSA | fixed-j64 | **596** | 1.00 | 6/6 | 28.2 / 48 | 144 cut short |
+| 2 | 4g GSA | topdown | 656 | 1.10 | 6/6 | 25.4 / 48 | 163 cut short; best 444 Mbps at 6 workers |
 
 ---
 
