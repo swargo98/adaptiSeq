@@ -600,6 +600,23 @@ build), `55203208`, `55203209` (afterany chain), `e3_round3_expanse/`, protocol 
 
 4b: every arm at ENA's 25 (the 0.1.12 check showed ENA refusing the 26th); spread 1031-1618 s, mostly md5 re-fetches.
 
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
+| 1 | 4s NCBI | bottomup | 94 | 1.21 | 8/8 | 7.2 / 16 | |
+| 1 | 4s NCBI | greedy | **78** | 1.00 | 8/8 | 27.8 / 64 | |
+| 1 | 4s NCBI | topdown | 79 | 1.01 | 8/8 | 21.9 / 64 | |
+| 1 | 4s NCBI | fixed-j20 | 80 | 1.03 | 8/8 | 28.1 / 64 | |
+| 1 | 4s NCBI | fixed-j64 | 80 | 1.03 | 8/8 | 28.1 / 64 | |
+| 1 | 4s NCBI | budget | 109 | 1.40 | 8/8 | 7.0 / 20 | |
+| 1 | 4s NCBI | knee | 91 | 1.17 | 8/8 | 8.8 / 32 | settled 16 |
+| 1 | 4g GSA | fixed-j20 | 435 | 1.80 | 6/6 | 22.9 / 48 | 64 cut short |
+| 1 | 4g GSA | bottomup | 249 | 1.03 | 6/6 | 22.2 / 48 | 43 cut short |
+| 1 | 4g GSA | budget | 451 | 1.86 | 6/6 | 10.8 / 31 | 53 cut short |
+| 1 | 4g GSA | greedy | 534 | 2.21 | 6/6 | 23.5 / 48 | 173 cut short |
+| 1 | 4g GSA | topdown | 303 | 1.25 | 6/6 | 23.6 / 48 | kept 5-6 workers; 96 cut short |
+| 1 | 4g GSA | knee | 951 | 3.93 | 6/6 | **4.3 / 8** | best 404 Mbps at 4 connections; never above 8 |
+| 1 | 4g GSA | fixed-j64 | **242** | 1.00 | 6/6 | 23.7 / 48 | 81 cut short |
+
 **Round 3 protocol (fixed before the data):** identical to round 2 except the build: 0.1.12 in `adaptiseq_e3_sub`,
 arms topdown, bottomup, budget, greedy, knee, fixed-j20, fixed-j64; panels 4r 4b 4s 4g 4h 4m; 3 reps, one chained job
 each; `E3_TIMEOUT_CTRL=7200`; results `e3_round3_expanse/`; scored with `bench/e3/score_round2.py` unchanged.
