@@ -17,8 +17,9 @@ the fixes."
    "Round 3 protocol". Reps: `55203207` done (01:06 10-23, all 42 arm-cases verified); `55203208`
    running (4r and 4b recorded); `55203209` queued (`afterany`). Record rows per panel in
    `progress_log.md` section 1 (after the last "Rep N" table), then score from `plans_and_experiments/`:
-   `python bench/e3/score_round2.py e3_round3_expanse/e3_*/e3_results.tsv`.
-2. **If topdown ranks first:** it stays the default (no code change; `Options.controller` is `None`, so
+   `python bench/e3/score_round2.py --timeout-censored e3_round3_expanse/e3_*/e3_results.tsv` (the amended rule,
+   user 10-23 19:00: a timeout is scored at the limit, not disqualified; report the unflagged scoring too).
+2. **If topdown ranks first** (under `--timeout-censored`)**:** it stays the default (no code change; `Options.controller` is `None`, so
    topdown). Run the paper's 5-rep chain on 0.1.12, one rep per 48 h job, chained so no two overlap
    (about 24.5 h each, about 120 h in all):
    ```bash

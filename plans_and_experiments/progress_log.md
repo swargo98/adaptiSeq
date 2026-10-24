@@ -54,6 +54,21 @@ code change), and the paper's 5-rep chain runs on 0.1.12 (`ARM_SET=submission`, 
 rep, `e3_submission_0.1.12_expanse/`), then `analyze_submission.py` on the Expanse TSV. If it does not lead: stop
 and report to the user.
 
+**Round 3 amendment (user's choice, 19:00 PDT 10-23, rep 3 `55203209` still queued, so before any rep 3 data;
+seen when fixed: rep 1, rep 2 panels 4r-4g, and 4h rep 2's first four arms, all TIMEOUT).** In rep 2's 4h, an ENA
+slow spell (under 0.3 MB/s per connection for hours) timed out greedy, budget, knee and topdown at 7200 s with 1 of
+2 runs each. On 4h every arm opens the same 16 connections (2 files x 8 segments), so the panel records ENA's hour,
+not the controller; round 2 lost four arms on 4h the same way. As written, the test then fails for topdown (any
+unverified run disqualifies; ranking falls to wins, where fixed-j64 leads 6 to 3). The user chose to revise the rule
+rather than apply it or pick the default directly. **Revised rule:** a case where an arm hit the time limit
+(status `TIMEOUT`, exit 124) scores that arm at wall = the limit (a lower bound, so its ratio is understated) and
+does not disqualify it; disqualification stays for correctness (runs missing or unverified when the arm exited by
+itself). Panel medians, the 1.5 limit, the 10 % win tolerance and the ranking order are unchanged; every panel and
+rep. Implemented as `score_round2.py --timeout-censored` (default unchanged). **"Topdown leads" is now judged under
+this rule;** both scorings are reported. This is decided after seeing rep 2, so it must be reported as an amendment,
+not as the original protocol. At the time: as written, fixed-j64 > budget > fixed-j20 > greedy > knee > topdown >
+bottomup (no arm qualifies); revised, topdown (the only arm qualifying) > fixed-j64 > ...
+
 **0.1.12 check** (`e3_smoke_0112/e3_55201029`, first 0.1.12 build `47ddbb94`, info logs; probe 1.8/10.2/22.7 MB/s):
 
 | panel | arm | wall_s | runs | connections mean / max | what the log shows |

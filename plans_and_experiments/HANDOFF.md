@@ -54,8 +54,9 @@ record of everything done: every job, result row and decision, in dated sections
 with 1 of 2 runs (one 11 GB file finished, the other crawled at under 0.3 MB/s per connection on 8 connections);
 fixed-j20, fixed-j64, bottomup still to run 4h. The scoring script disqualifies an arm with any unverified run, so
 topdown is now disqualified for round 3, and by the fixed test it can rank first only if every arm is disqualified
-and it then has the most wins (it has 2, fixed-j64 6). Reported to the user; **waiting on their decision**
-(apply the test as written and stop, or something else). Keep recording rows meanwhile; do not submit the chain.
+and it then has the most wins (it has 2, fixed-j64 6). The user chose (19:00) to amend the rule before rep 3: a TIMEOUT is
+scored at the limit instead of disqualifying (`score_round2.py --timeout-censored`; `progress_log.md` section 1,
+"Round 3 amendment"). The test is judged under that rule; report both scorings.
 A round 3 rep takes about 11 to 14 h. Then (user's instruction, 10-22): if topdown ranks first
 by `bench/e3/score_round2.py`, run the paper's 5-rep chain on 0.1.12 with topdown as the
 default; otherwise stop and report. The commands are in `remaining_tasks.md` section 1.

@@ -13,6 +13,11 @@ MAX_RATIO (default 1.5), or any run was not md5-verified complete. (Per panel,
 not per case: on GSA every arm of round 1 had one case above 1.5x, so a per-case
 floor would only measure GSA's luck.)
 
+--timeout-censored (round 3 amendment, user 2026-10-23, fixed before rep 3's
+data): an arm that hit the time limit (status TIMEOUT) is scored at wall = the
+limit, a lower bound on its time, instead of being disqualified. Runs missing
+when the arm exited by itself still disqualify it.
+
     python bench/e3/score_round2.py e3_round2_expanse/e3_*/e3_results.tsv
 """
 import argparse
@@ -46,12 +51,16 @@ def main():
     ap.add_argument("tsv", nargs="+")
     ap.add_argument("--tol", type=float, default=0.10)
     ap.add_argument("--max-ratio", type=float, default=1.5)
+    ap.add_argument("--timeout-censored", action="store_true",
+                    help="score a TIMEOUT at the limit instead of disqualifying")
     a = ap.parse_args()
     cases = defaultdict(dict)          # (panel, rep) -> arm -> (wall, ok, conns)
     for path in a.tsv:
         for r in csv.DictReader(open(path), delimiter="\t"):
             arm = r["arm"]
             ok = r["exit_code"] == "0" and r["runs_complete"] == r["runs_expected"]
+            if a.timeout_censored and r["status"] == "TIMEOUT":
+                ok = True
             cases[(r["panel"], r["rep"])][arm] = (
                 float(r["wall_s"]), ok, mean_conns(path, r["panel"], arm, r["rep"]))
     arms = sorted({arm for c in cases.values() for arm in c})
@@ -78,7 +87,8 @@ def main():
             cells.append(f"{ratio:.2f}{'*' if ratio <= 1 + a.tol else ''}"
                          f"{'' if ok else '!'}")
         print(f"{panel}\t{rep}\t{best:.0f}s\t" + "\t".join(cells))
-    print(f"\n(* = within {a.tol:.0%} of the fastest: a win; ! = a run not md5-verified)")
+    print(f"\n(* = within {a.tol:.0%} of the fastest: a win; ! = a run not md5-verified"
+          + ("; timeouts scored at the limit" if a.timeout_censored else "") + ")")
     panel_med = {}
     for (arm, panel), ratios in per_panel.items():
         panel_med[(arm, panel)] = statistics.median(ratios)
