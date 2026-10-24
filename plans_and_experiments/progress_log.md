@@ -221,6 +221,20 @@ Rep 3 `55203209` (`exp-12-22`, from 00:30 PDT 10-24, probe 1.2/30.1/36.9 MB/s, G
 | 3 | 4b ENA large | fixed-j64 | 1354 | 1.16 | 8/8 | 22.0 / 25 | 1 md5 mismatch |
 | 3 | 4b ENA large | topdown | 1755 | 1.51 | 8/8 | 21.4 / 25 | 2 md5 mismatches re-fetched |
 | 3 | 4b ENA large | budget | 1330 | 1.14 | 8/8 | 23.3 / 25 |  |
+| 3 | 4s NCBI | fixed-j20 | 82 | 1.05 | 8/8 | 27.8 / 64 |  |
+| 3 | 4s NCBI | fixed-j64 | 78 | 1.01 | 8/8 | 27.6 / 64 |  |
+| 3 | 4s NCBI | budget | **78** | 1.00 | 8/8 | 7.8 / 20 | held 16 |
+| 3 | 4s NCBI | knee | 91 | 1.18 | 8/8 | 9.4 / 32 | best at 8 connections |
+| 3 | 4s NCBI | greedy | 83 | 1.07 | 8/8 | 29.1 / 64 |  |
+| 3 | 4s NCBI | topdown | 84 | 1.09 | 8/8 | 23.9 / 64 |  |
+| 3 | 4s NCBI | bottomup | 93 | 1.19 | 8/8 | 7.4 / 16 |  |
+| 3 | 4g GSA | fixed-j64 | **333** | 1.00 | 6/6 | 25.6 / 48 | 63 cut short |
+| 3 | 4g GSA | fixed-j20 | 409 | 1.23 | 6/6 | 24.0 / 48 | 59 cut short |
+| 3 | 4g GSA | knee | 418 | 1.26 | 6/6 | 11.6 / 22 | 57 cut short, 3 refused |
+| 3 | 4g GSA | bottomup | 367 | 1.10 | 6/6 | 19.9 / 40 | 74 cut short |
+| 3 | 4g GSA | topdown | 401 | 1.20 | 6/6 | 20.2 / 48 | 73 cut short; kept 5-6 workers |
+| 3 | 4g GSA | greedy | 422 | 1.27 | 6/6 | 22.3 / 48 | 56 cut short |
+| 3 | 4g GSA | budget | 1306 | 3.93 | 6/6 | 7.7 / 31 | 73 cut short; down to 7 connections at the end |
 
 ---
 
