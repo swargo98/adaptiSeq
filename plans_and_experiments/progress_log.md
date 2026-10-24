@@ -184,6 +184,24 @@ Rep 2 `55203208` (`exp-13-11`, from 03:23 PDT 10-23, probe 1.0/9.0/24.1 MB/s, GA
 | 2 | 4g GSA | bottomup | 778 | 1.31 | 6/6 | 22.0 / 48 | 188 cut short |
 | 2 | 4g GSA | fixed-j64 | **596** | 1.00 | 6/6 | 28.2 / 48 | 144 cut short |
 | 2 | 4g GSA | topdown | 656 | 1.10 | 6/6 | 25.4 / 48 | 163 cut short; best 444 Mbps at 6 workers |
+| 2 | 4h ENA held-out | greedy | 7200 | TIMEOUT (3.80) | 1/2 | 12.7 / 16 | 10:40-12:40; ENA slow spell |
+| 2 | 4h ENA held-out | budget | 7200 | TIMEOUT (3.80) | 1/2 | 10.7 / 16 | 12:40-14:40 |
+| 2 | 4h ENA held-out | knee | 7200 | TIMEOUT (3.80) | 1/2 | 7.3 / 16 | 14:41-16:41 |
+| 2 | 4h ENA held-out | topdown | 7200 | TIMEOUT (3.80) | 1/2 | 13.0 / 16 | 16:41-18:41; second file under 0.3 MB/s per connection on 8 |
+| 2 | 4h ENA held-out | fixed-j20 | **1896** | 1.00 | 2/2 | 15.4 / 16 | 18:41-19:13; ENA recovered (12.2 MB/s) |
+| 2 | 4h ENA held-out | bottomup | 7200 | TIMEOUT (3.80) | 1/2 | 9.8 / 16 | 19:13-21:13; slow again |
+| 2 | 4h ENA held-out | fixed-j64 | 5257 | 2.77 | 2/2 | 7.5 / 17 | 21:14-22:42; 1 md5 mismatch re-fetched, 3 single-connection fallbacks |
+| 2 | 4m mixed | topdown | 360 | 1.47 | 15/15 | 12.3 / 41 | best 539 Mbps at 5 workers, last file on 1; 29 cut short |
+| 2 | 4m mixed | budget | 291 | 1.19 | 15/15 | 11.5 / 33 | 24 cut short |
+| 2 | 4m mixed | fixed-j20 | 456 | 1.87 | 15/15 | 12.7 / 35 | |
+| 2 | 4m mixed | fixed-j64 | 265 | 1.09 | 15/15 | 10.6 / 32 | |
+| 2 | 4m mixed | knee | **244** | 1.00 | 15/15 | 10.7 / 38 | best 665 Mbps at 32 |
+| 2 | 4m mixed | greedy | 279 | 1.14 | 15/15 | 9.6 / 31 | |
+| 2 | 4m mixed | bottomup | 415 | 1.70 | 15/15 | 7.4 / 17 | best at 1 worker |
+
+**Round 3 rep 2 done** (`55203208`, 03:23 to 23:20 PDT 10-23, 19 h 57 min; 4h alone 12 h). 37 of 42 arm-cases
+complete and md5-verified; 5 TIMEOUTs, all on 4h (an ENA slow spell, see the amendment above). `check_run`: CHECK FAIL
+(the 5 timeouts). Rep 3 `55203209` queued (Priority; Slurm's estimate 08:21 10-24).
 
 ---
 

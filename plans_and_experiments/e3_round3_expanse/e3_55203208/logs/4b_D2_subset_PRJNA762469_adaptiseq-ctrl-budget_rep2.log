@@ -1,0 +1,68 @@
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 332073846 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 618144173 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 399503360 of 727977766 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 370924223 of 684877121 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 391427454 of 684877123 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 69827001 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 59831679 of 309072087 bytes).'>. ConnectionResetError(104, 'Connection reset by peer')
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 77268021 bytes).'>
+Segment 10 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 41509231 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 113015679 of 704610066 bytes).'>. ConnectionResetError(104, 'Connection reset by peer')
+[32mNote[0m: batch downloading 16 file(s) across 8 accession(s) with up to 16 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 167 probe(s); best 1052 Mbps at 32 connection(s); last 4 Mbps at 32 connection(s); recent: 32c@160Mbps, 32c@98Mbps, 32c@70Mbps, 32c@50Mbps, 32c@37Mbps, 32c@28Mbps, 32c@31Mbps, 32c@25Mbps, 32c@13Mbps, 32c@7Mbps, 32c@7Mbps, 32c@4Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================

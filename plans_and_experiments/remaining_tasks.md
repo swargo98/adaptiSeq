@@ -19,7 +19,7 @@ user's choice of default.
 1. **Round 3 on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
    Protocol and the "topdown still leads" test were fixed before the data: `progress_log.md` section 1,
    "Round 3 protocol". Reps: `55203207` done (01:06 10-23, all 42 arm-cases verified); `55203208`
-   running (4r, 4b, 4s, 4g recorded); `55203209` queued (`afterany`). Record rows per panel in
+   done (23:20 10-23; 5 TIMEOUTs on 4h); `55203209` queued (`afterany`). Record rows per panel in
    `progress_log.md` section 1 (after the last "Rep N" table), then score from `plans_and_experiments/`:
    `python bench/e3/score_round2.py e3_round3_expanse/e3_*/e3_results.tsv`. The output ends with the **three
    criteria** to report: (1) as written (any unverified run disqualifies); (2) best worst case (highest ratio to

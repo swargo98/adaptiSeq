@@ -1,0 +1,181 @@
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 119537361 of 540173257 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 170065618 of 540173257 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 107052763 of 671445029 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 150011611 of 544057841 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 267681499 of 710624987 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 96796370 of 311574932 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 168361681 of 710624989 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 93241042 of 544057841 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 129597137 of 544057841 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 61963986 of 671445029 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 540370 of 710624987 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 14909137 of 540173260 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 40697563 of 311574931 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 111673043 of 564392266 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 47218385 of 592030266 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 151453395 of 155787466 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 104496849 of 311574931 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 88440529 of 155787466 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 47627987 of 311574931 bytes).'>
+Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 69517009 of 420635896 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 91848402 of 370107639 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 150683345 of 155787466 bytes).'>
+Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 70074065 of 414460704 bytes).'>
+Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 87768785 of 214778562 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 112426706 of 609481043 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 88424146 of 450816799 bytes).'>
+Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 64749265 of 542263308 bytes).'>
+Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 74546897 of 525264123 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 98827986 of 710084617 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 48955089 of 305628316 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 127827665 of 238757022 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 32095955 of 221471744 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 16989906 of 152814158 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 23690961 of 143409894 bytes).'>
+Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 60653265 of 207078082 bytes).'>
+Segment 4 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 79609553 of 127009777 bytes).'>
+Segment 1 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 65683154 of 278259237 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 40779473 of 248527169 bytes).'>
+Segment 2 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 128745169 of 344386639 bytes).'>
+Segment 2 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 234471121 of 351118887 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 111869651 of 263946944 bytes).'>
+Segment 0 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 109199059 of 452719223 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 30916305 of 137157718 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 5963473 of 168892095 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 3800786 of 181196327 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 5799633 of 278771883 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 13893331 of 196590034 bytes).'>
+Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 71663313 of 544811881 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 38846164 of 270877368 bytes).'>
+Segment 7 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 36191953 of 119718933 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 54460115 of 197023115 bytes).'>
+Segment 6 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 39829202 of 135824252 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 42893009 of 218600850 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 39501523 of 197023115 bytes).'>
+Segment 5 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 46431955 of 189375789 bytes).'>
+Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 40795857 of 110929357 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 29425362 of 46749375 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 17841873 of 136486125 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 9862866 of 212576083 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 55819985 of 116647766 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 52051667 of 146930130 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 3866321 of 118287142 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 8093393 of 236574284 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 20250321 of 225358613 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 47087315 of 137753207 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1818321 of 158504371 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 8421075 of 160748975 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 23658193 of 112679307 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 47005393 of 114240446 bytes).'>
+Segment 2 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 88391377 of 238757021 bytes).'>
+Segment 3 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 104169169 of 450717226 bytes).'>
+Segment 1 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 79986387 of 181196326 bytes).'>
+Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 30129873 of 113263333 bytes).'>
+Segment 1 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 100777683 of 152814157 bytes).'>
+Segment 6 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 97631954 of 177395541 bytes).'>
+Segment 10 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 10829522 of 73212409 bytes).'>
+Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 13909713 of 272972250 bytes).'>
+Segment 5 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 5865171 of 182696703 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 42499795 of 105849335 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 48398035 of 221471744 bytes).'>
+Segment 0 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 65519315 of 142563000 bytes).'>
+Segment 6 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 44203730 of 95995050 bytes).'>
+Segment 5 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 31866579 of 142943834 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 18317010 of 47400224 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 36011732 of 94878463 bytes).'>
+Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 15269585 of 207747696 bytes).'>
+Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 32407252 of 67719342 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 60948178 of 202713217 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 58851026 of 124263584 bytes).'>
+Segment 6 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 81526481 of 114420821 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 32751314 of 101356609 bytes).'>
+Segment 6 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 37551826 of 89021114 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 37355219 of 101209939 bytes).'>
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 73432785 of 150365644 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 39026386 of 87853921 bytes).'>
+Segment 6 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 29949650 of 79763587 bytes).'>
+Segment 7 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 43564754 of 67235053 bytes).'>
+Segment 3 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 48643794 of 83133460 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1638100 of 52036474 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 2129620 of 67719342 bytes).'>
+Segment 0 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1801940 of 84890262 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 66125524 of 77043685 bytes).'>
+Segment 5 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 81018579 of 176831532 bytes).'>
+Segment 3 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 56803025 of 122576412 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 6684370 of 51791320 bytes).'>
+Segment 4 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 26312402 of 94321186 bytes).'>
+Segment 5 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 19922644 of 90665892 bytes).'>
+Segment 0 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 14286548 of 58866731 bytes).'>
+Segment 6 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 52756177 of 106241413 bytes).'>
+Segment 11 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 16776916 of 35312090 bytes).'>
+Segment 7 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 69762769 of 118644252 bytes).'>
+Segment 3 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 44039889 of 114240445 bytes).'>
+Segment 1 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 8191699 of 124263584 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 70155988 of 78760796 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 5373652 of 76163950 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 4701908 of 10918161 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 2948820 of 95812953 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 13090516 of 55538627 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 8158930 of 65773387 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 35536596 of 83088322 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 27852500 of 50398374 bytes).'>
+Segment 6 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 7945938 of 45106950 bytes).'>
+Segment 8 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 21528276 of 31730051 bytes).'>
+Segment 2 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 7192274 of 17324013 bytes).'>
+Segment 12 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 16449234 of 28807229 bytes).'>
+Segment 14 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 4816594 of 18943898 bytes).'>
+Segment 1 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1605332 of 40408430 bytes).'>
+Segment 14 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 22544082 of 31191444 bytes).'>
+Segment 16 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 16809684 of 17394471 bytes).'>
+Segment 12 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 2621138 of 12357995 bytes).'>
+Segment 14 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 2621138 of 14127304 bytes).'>
+[32mNote[0m: batch downloading 6 file(s) across 6 accession(s) with up to 6 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 190 probe(s); best 380 Mbps at 20 connection(s); last 5 Mbps at 6 connection(s); recent: 12c@123Mbps, 12c@128Mbps, 9c@49Mbps, 6c@16Mbps, 6c@12Mbps, 6c@6Mbps, 6c@4Mbps, 6c@4Mbps, 6c@2Mbps, 6c@5Mbps, 6c@6Mbps, 6c@5Mbps
+[32mNote[0m: CRR120304.metadata.csv exists, skip downloading metadata for CRR120304
+      CRR120304.fastq.gz 1.65G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120304.metadata.csv
+File size: 1.65G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120304.fastq.gz download and md5 check successful, save CRR120304.fastq.gz in success.log[0m
+========================CRR120304 download finished========================
+[32mNote[0m: CRR120305.metadata.csv exists, skip downloading metadata for CRR120305
+      CRR120305.fastq.gz 1.88G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120305.metadata.csv
+File size: 1.88G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120305.fastq.gz download and md5 check successful, save CRR120305.fastq.gz in success.log[0m
+========================CRR120305 download finished========================
+[32mNote[0m: CRR120306.metadata.csv exists, skip downloading metadata for CRR120306
+      CRR120306.fastq.gz 1.74G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120306.metadata.csv
+File size: 1.74G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120306.fastq.gz download and md5 check successful, save CRR120306.fastq.gz in success.log[0m
+========================CRR120306 download finished========================
+[32mNote[0m: CRR120307.metadata.csv exists, skip downloading metadata for CRR120307
+      CRR120307.fastq.gz 1.99G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120307.metadata.csv
+File size: 1.99G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120307.fastq.gz download and md5 check successful, save CRR120307.fastq.gz in success.log[0m
+========================CRR120307 download finished========================
+[32mNote[0m: CRR120308.metadata.csv exists, skip downloading metadata for CRR120308
+      CRR120308.fastq.gz 2.03G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120308.metadata.csv
+File size: 2.03G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120308.fastq.gz download and md5 check successful, save CRR120308.fastq.gz in success.log[0m
+========================CRR120308 download finished========================
+[32mNote[0m: CRR120309.metadata.csv exists, skip downloading metadata for CRR120309
+      CRR120309.fastq.gz 2.01G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in CRR120309.metadata.csv
+File size: 2.01G	Database: GSA	Mode: https
+[32mNote[0m: Transport for download.cncb.ac.cn: HTTPS mirror is range-capable; segmented HTTPS
+[92mCRR120309.fastq.gz download and md5 check successful, save CRR120309.fastq.gz in success.log[0m
+========================CRR120309 download finished========================
