@@ -50,6 +50,12 @@ record of everything done: every job, result row and decision, in dated sections
 | `55203208` | round 3 rep 2: **running** since 03:23 on `exp-13-11`; 4r, 4b, 4s, 4g recorded | `e3_round3_expanse/e3_55203208/` | record 4h, 4m; move `slurm_e3_55203208.*` into the dir and commit it |
 | `55203209` | round 3 rep 3: queued `afterany` | `e3_round3_expanse/e3_55203209/` | same, then score round 3 |
 
+**18:55 10-23: rep 2's 4h hit an ENA slow spell.** greedy, budget, knee and topdown each timed out at 7200 s
+with 1 of 2 runs (one 11 GB file finished, the other crawled at under 0.3 MB/s per connection on 8 connections);
+fixed-j20, fixed-j64, bottomup still to run 4h. The scoring script disqualifies an arm with any unverified run, so
+topdown is now disqualified for round 3, and by the fixed test it can rank first only if every arm is disqualified
+and it then has the most wins (it has 2, fixed-j64 6). Reported to the user; **waiting on their decision**
+(apply the test as written and stop, or something else). Keep recording rows meanwhile; do not submit the chain.
 A round 3 rep takes about 11 to 14 h. Then (user's instruction, 10-22): if topdown ranks first
 by `bench/e3/score_round2.py`, run the paper's 5-rep chain on 0.1.12 with topdown as the
 default; otherwise stop and report. The commands are in `remaining_tasks.md` section 1.
