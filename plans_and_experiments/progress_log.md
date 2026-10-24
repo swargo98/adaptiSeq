@@ -235,6 +235,24 @@ Rep 3 `55203209` (`exp-12-22`, from 00:30 PDT 10-24, probe 1.2/30.1/36.9 MB/s, G
 | 3 | 4g GSA | topdown | 401 | 1.20 | 6/6 | 20.2 / 48 | 73 cut short; kept 5-6 workers |
 | 3 | 4g GSA | greedy | 422 | 1.27 | 6/6 | 22.3 / 48 | 56 cut short |
 | 3 | 4g GSA | budget | 1306 | 3.93 | 6/6 | 7.7 / 31 | 73 cut short; down to 7 connections at the end |
+| 3 | 4h ENA held-out | budget | 3374 | 2.69 | 2/2 | 11.8 / 16 | 1 md5 mismatch (11 GB re-fetch), 1 refused |
+| 3 | 4h ENA held-out | bottomup | **1255** | 1.00 | 2/2 | 15.0 / 16 |  |
+| 3 | 4h ENA held-out | fixed-j64 | 1410 | 1.12 | 2/2 | 14.8 / 16 |  |
+| 3 | 4h ENA held-out | topdown | 1421 | 1.13 | 2/2 | 15.3 / 16 |  |
+| 3 | 4h ENA held-out | knee | 1631 | 1.30 | 2/2 | 14.5 / 16 |  |
+| 3 | 4h ENA held-out | fixed-j20 | 3201 | 2.55 | 2/2 | 11.1 / 16 | 1 md5 mismatch (11 GB re-fetch) |
+| 3 | 4h ENA held-out | greedy | 1749 | 1.39 | 2/2 | 14.6 / 16 |  |
+| 3 | 4m mixed | topdown | 249 | 1.81 | 15/15 | 10.7 / 41 | best 516 Mbps at 7 workers, last file on 1 |
+| 3 | 4m mixed | bottomup | 301 | 2.18 | 15/15 | 10.1 / 17 |  |
+| 3 | 4m mixed | budget | 186 | 1.35 | 15/15 | 13.1 / 35 |  |
+| 3 | 4m mixed | fixed-j64 | 402 | 2.91 | 15/15 | 9.1 / 35 |  |
+| 3 | 4m mixed | fixed-j20 | 526 | 3.81 | 15/15 | 6.7 / 35 |  |
+| 3 | 4m mixed | greedy | **138** | 1.00 | 15/15 | 13.2 / 35 | best 742 Mbps at 4 workers |
+| 3 | 4m mixed | knee | 284 | 2.06 | 15/15 | 6.2 / 16 | settled at 7-8 connections |
+
+**Round 3 rep 3 done** (`55203209`, 00:30 to 09:56 PDT 10-24, 9 h 26 min; all 42 arm-cases complete and md5-verified,
+no timeouts, no SRA fallbacks). `check_run` prints CHECK FAIL only because it expects the submission arms (iseq,
+kingfisher, fastq-dl, adaptiseq-default), which a controller round does not run.
 
 ---
 

@@ -1,0 +1,22 @@
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 611623675 of 1476356398 bytes).'>
+Segment 4 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 546925384 of 1476356398 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 674743674 of 1476356398 bytes).'>. ConnectionResetError(104, 'Connection reset by peer')
+Segment 2 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1413767675 of 1476356398 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 907351158 of 1476356398 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1196979922 of 1476356398 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 1354783675 of 1476356398 bytes).'>
+[32mNote[0m: batch downloading 2 file(s) across 2 accession(s) with up to 2 worker(s) (configured max 20) (fixed concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR9001769_subreads.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: SRR9001768.metadata.tsv exists, skip downloading metadata for SRR9001768
+      SRR9001768_subreads.fastq.gz 10.49G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR9001768.metadata.tsv
+[92mSRR9001768 download and md5 check successful, save SRR9001768 in success.log[0m
+========================SRR9001768 download finished========================
+[32mNote[0m: SRR9001769.metadata.tsv exists, skip downloading metadata for SRR9001769
+      SRR9001769_subreads.fastq.gz 11.00G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR9001769.metadata.tsv
+[92mSRR9001769 download and md5 check successful, save SRR9001769 in success.log[0m
+========================SRR9001769 download finished========================
