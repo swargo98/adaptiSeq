@@ -12,18 +12,21 @@ The user's instruction (2026-10-22): "make these fixes on 0.1.12 and test them. 
 as default. Proceed to run all the remaining tasks with topdown as default if topdown still leads after
 the fixes."
 **Superseded 2026-10-23 19:20 (user):** "lets provide 3 criterions. the previous one, current one, and mean
-connection. Let the runs finish, then we'll decide who'll be the default." So round 3 no longer triggers the chain
-by itself: report the three rankings and wait for the user's choice of default.
+connection. Let the runs finish, then we'll decide who'll be the default." Then: "The second rule is 'the best
+worst case'". So round 3 no longer triggers the chain by itself: report the three rankings and wait for the
+user's choice of default.
 
 1. **Round 3 on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
    Protocol and the "topdown still leads" test were fixed before the data: `progress_log.md` section 1,
    "Round 3 protocol". Reps: `55203207` done (01:06 10-23, all 42 arm-cases verified); `55203208`
    running (4r, 4b, 4s, 4g recorded); `55203209` queued (`afterany`). Record rows per panel in
    `progress_log.md` section 1 (after the last "Rep N" table), then score from `plans_and_experiments/`:
-   `python bench/e3/score_round2.py --timeout-censored e3_round3_expanse/e3_*/e3_results.tsv`. The output ends
-   with the **three criteria** to report: (1) as written (any unverified run disqualifies), (2) timeouts censored
-   at the limit (the 19:00 amendment), (3) mean connections, fewest first. Add worst case and worst panel median
-   per arm (same output) and say which arms are adaptive. **Then wait for the user to choose the default.**
+   `python bench/e3/score_round2.py e3_round3_expanse/e3_*/e3_results.tsv`. The output ends with the **three
+   criteria** to report: (1) as written (any unverified run disqualifies); (2) best worst case (highest ratio to
+   the fastest arm in any one case, lowest first; a timeout counted at the limit; a run missing or unverified
+   without a timeout ranks last); (3) mean connections, fewest first. Say which arms are adaptive. The 19:00
+   amendment (`--timeout-censored`, a timeout does not disqualify) was replaced by criterion 2; report it only
+   if asked. **Then wait for the user to choose the default.**
 2. **After the user chooses the default:** if topdown, no code change (`Options.controller` is `None`, so
    topdown); otherwise change the default in code, add a test, rebuild `adaptiseq_e3_sub` (allowed once round 3
    has ended) and check the wheel. Run the paper's 5-rep chain on 0.1.12 (or the rebuilt version), one rep per

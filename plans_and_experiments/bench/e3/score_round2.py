@@ -19,8 +19,11 @@ limit, a lower bound on its time, instead of being disqualified. Runs missing
 when the arm exited by itself still disqualify it.
 
 The output ends with three rankings (user, 2026-10-23: report all three, then
-choose the default): as written, with timeouts censored, and by mean connections
-(fewest first; ties to more wins).
+choose the default): (1) as written; (2) best worst case: the highest ratio to
+the fastest arm in any one case, lowest first, a TIMEOUT counted at the limit
+(a lower bound), arms with a run missing or unverified when they exited by
+themselves last; ties to the worst panel median, then fewer connections;
+(3) mean connections, fewest first (ties to more wins).
 
     python bench/e3/score_round2.py e3_round2_expanse/e3_*/e3_results.tsv
 """
@@ -120,7 +123,6 @@ def main():
     # median above MAX_RATIO) is the same under both rules; they differ only in
     # whether a TIMEOUT disqualifies.
     ratio_bad = {arm for (arm, _p), v in panel_med.items() if v > a.max_ratio}
-    censored_bad = ratio_bad | fail_bad
     def rank(dq):
         r = sorted((arm in dq, -wins[arm],
                     statistics.mean(conns[arm]) if conns[arm] else float("nan"), arm)
@@ -131,9 +133,16 @@ def main():
                        -wins[arm], arm) for arm in arms)
     print("\ncriteria (wins counted with" + (" timeouts at the limit" if a.timeout_censored
                                             else "out censoring") + "):")
-    print("  1 as written:      ", rank(ratio_bad | strict_bad))
-    print("  2 timeouts censored:", rank(censored_bad))
-    print("  3 mean connections:", " < ".join(
+    print("  1 as written:       ", rank(ratio_bad | strict_bad))
+    wpm_of = lambda arm: max((v for (x, _p), v in panel_med.items() if x == arm),
+                             default=float("inf"))
+    by_worst = sorted((arm in fail_bad, worst[arm], wpm_of(arm),
+                       statistics.mean(conns[arm]) if conns[arm] else float("inf"), arm)
+                      for arm in arms)
+    print("  2 best worst case: ", " < ".join(
+        f"{x[-1].replace('adaptiseq-', '')} {x[1]:.2f}" + ("(failed run)" if x[0] else "")
+        for x in by_worst))
+    print("  3 mean connections: ", " < ".join(
         f"{x[-1].replace('adaptiseq-', '')} {x[0]:.1f}" for x in by_conns))
 
 

@@ -68,9 +68,12 @@ rep. Implemented as `score_round2.py --timeout-censored` (default unchanged). **
 this rule;** both scorings are reported. This is decided after seeing rep 2, so it must be reported as an amendment,
 not as the original protocol. At the time: as written, fixed-j64 > budget > fixed-j20 > greedy > knee > topdown >
 bottomup (no arm qualifies); revised, topdown (the only arm qualifying) > fixed-j64 > ...
-**Then (user, 19:20 10-23):** report three criteria when the runs finish (as written, timeouts censored, mean
-connections) and the user chooses the default; no automatic "topdown leads" test any more. `score_round2.py`
-now prints all three. At 19:20 fixed-j20 finished 4h rep 2 in 1896 s (ENA recovered about 18:41), so the four
+**Then (user, 19:20 10-23):** report three criteria when the runs finish and the user chooses the default; no
+automatic "topdown leads" test any more. The criteria (user: "The second rule is 'the best worst case'"): (1) as
+written; (2) best worst case: highest ratio to the fastest arm in any one case, lowest first, a timeout counted at
+the limit, an arm with a run missing or unverified without a timeout last, ties to worst panel median then fewer
+connections; (3) mean connections, fewest first. `score_round2.py` prints all three; the timeout-censored rule above
+is replaced by (2) and kept only as the `--timeout-censored` option. At 19:20 fixed-j20 finished 4h rep 2 in 1896 s (ENA recovered about 18:41), so the four
 timed-out arms score 3.80 there; with two 4h reps the panel median is their mean, so topdown (1.11, 3.80) is
 over 1.5 under rule 2 as well until rep 3.
 
