@@ -18,6 +18,10 @@ data): an arm that hit the time limit (status TIMEOUT) is scored at wall = the
 limit, a lower bound on its time, instead of being disqualified. Runs missing
 when the arm exited by itself still disqualify it.
 
+The output ends with three rankings (user, 2026-10-23: report all three, then
+choose the default): as written, with timeouts censored, and by mean connections
+(fewest first; ties to more wins).
+
     python bench/e3/score_round2.py e3_round2_expanse/e3_*/e3_results.tsv
 """
 import argparse
@@ -55,10 +59,16 @@ def main():
                     help="score a TIMEOUT at the limit instead of disqualifying")
     a = ap.parse_args()
     cases = defaultdict(dict)          # (panel, rep) -> arm -> (wall, ok, conns)
+    strict_bad = set()                 # arms with any run not verified, as written
+    fail_bad = set()                   # the same, leaving out TIMEOUTs
     for path in a.tsv:
         for r in csv.DictReader(open(path), delimiter="\t"):
             arm = r["arm"]
             ok = r["exit_code"] == "0" and r["runs_complete"] == r["runs_expected"]
+            if not ok:
+                strict_bad.add(arm)
+                if r["status"] != "TIMEOUT":
+                    fail_bad.add(arm)
             if a.timeout_censored and r["status"] == "TIMEOUT":
                 ok = True
             cases[(r["panel"], r["rep"])][arm] = (
@@ -105,6 +115,26 @@ def main():
         print(f"{arm}\t{wins[arm]}\t{n}\t{worst[arm]:.2f}\t{wpm:.2f}\t{mc:.1f}\t{q}")
     ranked.sort()
     print("\nranking:", " > ".join(x[-1].replace("adaptiseq-", "") for x in ranked))
+
+    # The three criteria side by side. Ratio-based disqualification (panel
+    # median above MAX_RATIO) is the same under both rules; they differ only in
+    # whether a TIMEOUT disqualifies.
+    ratio_bad = {arm for (arm, _p), v in panel_med.items() if v > a.max_ratio}
+    censored_bad = ratio_bad | fail_bad
+    def rank(dq):
+        r = sorted((arm in dq, -wins[arm],
+                    statistics.mean(conns[arm]) if conns[arm] else float("nan"), arm)
+                   for arm in arms)
+        return " > ".join(x[-1].replace("adaptiseq-", "") + ("" if not x[0] else "(dq)")
+                          for x in r)
+    by_conns = sorted((statistics.mean(conns[arm]) if conns[arm] else float("inf"),
+                       -wins[arm], arm) for arm in arms)
+    print("\ncriteria (wins counted with" + (" timeouts at the limit" if a.timeout_censored
+                                            else "out censoring") + "):")
+    print("  1 as written:      ", rank(ratio_bad | strict_bad))
+    print("  2 timeouts censored:", rank(censored_bad))
+    print("  3 mean connections:", " < ".join(
+        f"{x[-1].replace('adaptiseq-', '')} {x[0]:.1f}" for x in by_conns))
 
 
 if __name__ == "__main__":

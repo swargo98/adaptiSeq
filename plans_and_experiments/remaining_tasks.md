@@ -11,17 +11,23 @@ done, add a dated note to `progress_log.md` and delete it here.
 The user's instruction (2026-10-22): "make these fixes on 0.1.12 and test them. I am inclined to topdown
 as default. Proceed to run all the remaining tasks with topdown as default if topdown still leads after
 the fixes."
+**Superseded 2026-10-23 19:20 (user):** "lets provide 3 criterions. the previous one, current one, and mean
+connection. Let the runs finish, then we'll decide who'll be the default." So round 3 no longer triggers the chain
+by itself: report the three rankings and wait for the user's choice of default.
 
 1. **Round 3 on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
    Protocol and the "topdown still leads" test were fixed before the data: `progress_log.md` section 1,
    "Round 3 protocol". Reps: `55203207` done (01:06 10-23, all 42 arm-cases verified); `55203208`
-   running (4r and 4b recorded); `55203209` queued (`afterany`). Record rows per panel in
+   running (4r, 4b, 4s, 4g recorded); `55203209` queued (`afterany`). Record rows per panel in
    `progress_log.md` section 1 (after the last "Rep N" table), then score from `plans_and_experiments/`:
-   `python bench/e3/score_round2.py --timeout-censored e3_round3_expanse/e3_*/e3_results.tsv` (the amended rule,
-   user 10-23 19:00: a timeout is scored at the limit, not disqualified; report the unflagged scoring too).
-2. **If topdown ranks first** (under `--timeout-censored`)**:** it stays the default (no code change; `Options.controller` is `None`, so
-   topdown). Run the paper's 5-rep chain on 0.1.12, one rep per 48 h job, chained so no two overlap
-   (about 24.5 h each, about 120 h in all):
+   `python bench/e3/score_round2.py --timeout-censored e3_round3_expanse/e3_*/e3_results.tsv`. The output ends
+   with the **three criteria** to report: (1) as written (any unverified run disqualifies), (2) timeouts censored
+   at the limit (the 19:00 amendment), (3) mean connections, fewest first. Add worst case and worst panel median
+   per arm (same output) and say which arms are adaptive. **Then wait for the user to choose the default.**
+2. **After the user chooses the default:** if topdown, no code change (`Options.controller` is `None`, so
+   topdown); otherwise change the default in code, add a test, rebuild `adaptiseq_e3_sub` (allowed once round 3
+   has ended) and check the wheel. Run the paper's 5-rep chain on 0.1.12 (or the rebuilt version), one rep per
+   48 h job, chained so no two overlap (about 24.5 h each, about 120 h in all):
    ```bash
    cd plans_and_experiments
    export ENV_NAME=adaptiseq_e3_sub E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.12-py3-none-any.whl
@@ -34,13 +40,38 @@ the fixes."
    done
    ```
    Record rows per rep as for the tournament; check `check_run.txt` after each rep.
-   **If topdown does not rank first:** stop and report to the user (the default is their decision).
 3. **Numbers and figure** once the chain is done:
    `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
    (Expanse only unless the user decides on a Fabric half, item 3.3).
 4. **Fill the manuscript placeholders** (`[[...]]` in `paper/manuscript_draft.md`) from `paper/numbers/`;
    the table at the end of the draft maps each to a file and field. Mark anything that depends on an
    open decision in section 3.
+5. **Concurrency benchmark: more connections do not always help** (user, 2026-10-23; not done before). A
+   medium workload, preferably: a new ENA list between 4r and 4b, e.g. 40-60 runs of 0.2-1 GB (20-30 GB in
+   all), with an md5 manifest in `datasets/`. Arms: fixed `-j` 1, 2, 4, 8, 16, 32, 64, 128, plus the chosen
+   default for reference; lift the host cap (`--max-conns-per-host`) on the fixed arms so the increase is
+   really blind. At least 3 reps, arm order shuffled per rep, one job per rep on one node. Report wall time,
+   MB/s, mean/max connections, md5 re-fetches, refused connects, cut-short responses, CPU and memory per
+   arm; plot throughput against connections. Repeat on GSA and NCBI if time allows (their limits differ).
+   Existing hints only, not a designed test: the fixed-j sweep (`progress_log.md` section 5) had j32 faster
+   than j64 on 3jr rep 1 (163 vs 235 s) and on 3jb rep 2 (805 vs 1105 s), and ENA refuses connections beyond
+   about 25 at times (section 1, 0.1.12 check).
+6. **Full factorial benchmark** (user, 2026-10-23): every method x workload x transfer protocol x source,
+   leaving out combinations that cannot exist.
+   - Methods: topdown, bottomup, budget, greedy, knee (adaptive) and fixed-j20, fixed-j64.
+   - Workloads: many small files (4r-like), few large (4b-like), medium (item 5's list), mixed (4m-like).
+   - Protocol x source: ENA {HTTPS, FTP (`-r ftp`), Aspera (`-a`)}; GSA {HTTPS, FTP, Aspera}; NCBI SRA {HTTPS}.
+     GEO and DDBJ accessions resolve to ENA or SRA, so they are accession types, not sources (add as extra
+     rows only if wanted).
+   - Not possible, leave out: NCBI x FTP (no FTP path in the code), NCBI x Aspera (`-a` falls back to HTTPS,
+     `resolve.py`; do not label it Aspera). Check first: Aspera uses its own pool controller (`aspera.py`), so
+     the five segmented controllers and `-j` may not apply to Aspera cells; if not, Aspera is one method
+     (its controller) plus fixed counts. Needs a real `ascp` on Expanse (`bench/setup_real_ascp.sh`) and the
+     Aspera ports reachable from compute nodes. `-r ftp` stalls at ENA (section 2), so expect timeouts there.
+   - Size: up to 7 methods x 4 workloads x 7 protocol-source pairs = 196 cells per rep, a day or more each;
+     3 reps. Pilot one rep on the medium workload first and size the rest from it. `run_e3.sh` needs a
+     protocol axis in its arm definitions. One job at a time per source (jobs at the same archive interfere).
+     Not blocking the paper.
 
 ## 2. Engineering follow-ups (not blocking the paper)
 

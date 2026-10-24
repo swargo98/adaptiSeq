@@ -47,7 +47,7 @@ record of everything done: every job, result row and decision, in dated sections
 | job | what | results | on finish |
 |---|---|---|---|
 | `55203207` | round 3 rep 1 on 0.1.12: **done** 01:06 10-23, all 42 arm-cases verified | `e3_round3_expanse/e3_55203207/` (committed) | recorded |
-| `55203208` | round 3 rep 2: **running** since 03:23 on `exp-13-11`; 4r, 4b, 4s, 4g recorded | `e3_round3_expanse/e3_55203208/` | record 4h, 4m; move `slurm_e3_55203208.*` into the dir and commit it |
+| `55203208` | round 3 rep 2: **running** since 03:23 on `exp-13-11`; 4r, 4b, 4s, 4g recorded; 4h in progress | `e3_round3_expanse/e3_55203208/` | record 4h, 4m; move `slurm_e3_55203208.*` into the dir and commit it |
 | `55203209` | round 3 rep 3: queued `afterany` | `e3_round3_expanse/e3_55203209/` | same, then score round 3 |
 
 **18:55 10-23: rep 2's 4h hit an ENA slow spell.** greedy, budget, knee and topdown each timed out at 7200 s
@@ -56,10 +56,12 @@ fixed-j20, fixed-j64, bottomup still to run 4h. The scoring script disqualifies 
 topdown is now disqualified for round 3, and by the fixed test it can rank first only if every arm is disqualified
 and it then has the most wins (it has 2, fixed-j64 6). The user chose (19:00) to amend the rule before rep 3: a TIMEOUT is
 scored at the limit instead of disqualifying (`score_round2.py --timeout-censored`; `progress_log.md` section 1,
-"Round 3 amendment"). The test is judged under that rule; report both scorings.
-A round 3 rep takes about 11 to 14 h. Then (user's instruction, 10-22): if topdown ranks first
-by `bench/e3/score_round2.py`, run the paper's 5-rep chain on 0.1.12 with topdown as the
-default; otherwise stop and report. The commands are in `remaining_tasks.md` section 1.
+"Round 3 amendment"). **19:20 (user): report three criteria (as written, timeouts
+censored, mean connections) when the runs finish; the user then chooses the default. Do not submit the
+chain until they do.** New benchmarks requested: `remaining_tasks.md` section 1, items 5 and 6.
+A round 3 rep takes about 11 to 14 h. Then score round 3 and report the three criteria; the user
+chooses the default; then the paper's 5-rep chain (commands in `remaining_tasks.md` section 1). This
+replaces the 10-22 rule "if topdown ranks first, run the chain".
 
 **Per-panel routine.** Watch with `ROOT=e3_round3_expanse MIN_NEW=14 bash tools/watch_rows.sh <jobid>`
 (run in the background with an absolute path to the script; it returns on the gate line, on
