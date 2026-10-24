@@ -48,7 +48,7 @@ record of everything done: every job, result row and decision, in dated sections
 |---|---|---|---|
 | `55203207` | round 3 rep 1 on 0.1.12: **done** 01:06 10-23, all 42 arm-cases verified | `e3_round3_expanse/e3_55203207/` (committed) | recorded |
 | `55203208` | round 3 rep 2: **done** 23:20 10-23; 5 TIMEOUTs on 4h (ENA slow spell), rest verified | `e3_round3_expanse/e3_55203208/` (committed) | recorded |
-| `55203209` | round 3 rep 3: queued (Priority; estimate 08:21 10-24) | `e3_round3_expanse/e3_55203209/` | same, then score round 3 |
+| `55203209` | round 3 rep 3: **running** since 00:30 10-24 on `exp-12-22`, GATE PASS | `e3_round3_expanse/e3_55203209/` | same, then score round 3 |
 
 **18:55 10-23: rep 2's 4h hit an ENA slow spell.** greedy, budget, knee and topdown each timed out at 7200 s
 with 1 of 2 runs (one 11 GB file finished, the other crawled at under 0.3 MB/s per connection on 8 connections);

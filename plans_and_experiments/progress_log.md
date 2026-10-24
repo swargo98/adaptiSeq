@@ -201,7 +201,12 @@ Rep 2 `55203208` (`exp-13-11`, from 03:23 PDT 10-23, probe 1.0/9.0/24.1 MB/s, GA
 
 **Round 3 rep 2 done** (`55203208`, 03:23 to 23:20 PDT 10-23, 19 h 57 min; 4h alone 12 h). 37 of 42 arm-cases
 complete and md5-verified; 5 TIMEOUTs, all on 4h (an ENA slow spell, see the amendment above). `check_run`: CHECK FAIL
-(the 5 timeouts). Rep 3 `55203209` queued (Priority; Slurm's estimate 08:21 10-24).
+(the 5 timeouts).
+
+Rep 3 `55203209` (`exp-12-22`, from 00:30 PDT 10-24, probe 1.2/30.1/36.9 MB/s, GATE PASS):
+
+| rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
+|---|---|---|---|---|---|---|---|
 
 ---
 
