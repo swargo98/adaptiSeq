@@ -72,7 +72,8 @@ bottomup (no arm qualifies); revised, topdown (the only arm qualifying) > fixed-
 automatic "topdown leads" test any more. The criteria (user: "The second rule is 'the best worst case'"): (1) as
 written; (2) best worst case: highest ratio to the fastest arm in any one case, lowest first, a timeout counted at
 the limit, an arm with a run missing or unverified without a timeout last, ties to worst panel median then fewer
-connections; (3) mean connections, fewest first. `score_round2.py` prints all three; the timeout-censored rule above
+connections; (3) mean connections, fewest first; (4, added by the user) mean ratio to the fastest arm over all cases, "so that
+one particular bad run does not hamper the overall performance", counted like (2). `score_round2.py` prints all four; the timeout-censored rule above
 is replaced by (2) and kept only as the `--timeout-censored` option. At 19:20 fixed-j20 finished 4h rep 2 in 1896 s (ENA recovered about 18:41), so the four
 timed-out arms score 3.80 there; with two 4h reps the panel median is their mean, so topdown (1.11, 3.80) is
 over 1.5 under rule 2 as well until rep 3.

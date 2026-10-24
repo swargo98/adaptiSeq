@@ -23,7 +23,9 @@ choose the default): (1) as written; (2) best worst case: the highest ratio to
 the fastest arm in any one case, lowest first, a TIMEOUT counted at the limit
 (a lower bound), arms with a run missing or unverified when they exited by
 themselves last; ties to the worst panel median, then fewer connections;
-(3) mean connections, fewest first (ties to more wins).
+(3) mean connections, fewest first (ties to more wins); (4) mean ratio to the
+fastest arm over all cases, lowest first (user: "so that one particular bad run
+does not hamper the overall performance"), counted like (2).
 
     python bench/e3/score_round2.py e3_round2_expanse/e3_*/e3_results.tsv
 """
@@ -144,6 +146,13 @@ def main():
         for x in by_worst))
     print("  3 mean connections: ", " < ".join(
         f"{x[-1].replace('adaptiseq-', '')} {x[0]:.1f}" for x in by_conns))
+    all_ratios = defaultdict(list)
+    for (arm, _p), ratios in per_panel.items():
+        all_ratios[arm].extend(ratios)
+    by_mean = sorted((arm in fail_bad, statistics.mean(all_ratios[arm]), arm) for arm in arms)
+    print("  4 mean ratio:       ", " < ".join(
+        f"{x[-1].replace('adaptiseq-', '')} {x[1]:.2f}" + ("(failed run)" if x[0] else "")
+        for x in by_mean))
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ as default. Proceed to run all the remaining tasks with topdown as default if to
 the fixes."
 **Superseded 2026-10-23 19:20 (user):** "lets provide 3 criterions. the previous one, current one, and mean
 connection. Let the runs finish, then we'll decide who'll be the default." Then: "The second rule is 'the best
-worst case'". So round 3 no longer triggers the chain by itself: report the three rankings and wait for the
+worst case'", and added a fourth, the mean ratio to the fastest. So round 3 no longer triggers the chain by itself: report the three rankings and wait for the
 user's choice of default.
 
 1. **Round 3 on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
@@ -24,7 +24,9 @@ user's choice of default.
    `python bench/e3/score_round2.py e3_round3_expanse/e3_*/e3_results.tsv`. The output ends with the **three
    criteria** to report: (1) as written (any unverified run disqualifies); (2) best worst case (highest ratio to
    the fastest arm in any one case, lowest first; a timeout counted at the limit; a run missing or unverified
-   without a timeout ranks last); (3) mean connections, fewest first. Say which arms are adaptive. The 19:00
+   without a timeout ranks last); (3) mean connections, fewest first; (4) mean ratio to the fastest arm over
+   all cases, lowest first (user: "so that one particular bad run does not hamper the overall performance"),
+   counted like (2). Say which arms are adaptive. The 19:00
    amendment (`--timeout-censored`, a timeout does not disqualify) was replaced by criterion 2; report it only
    if asked. **Then wait for the user to choose the default.**
 2. **After the user chooses the default:** if topdown, no code change (`Options.controller` is `None`, so

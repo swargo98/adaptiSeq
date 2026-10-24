@@ -57,7 +57,7 @@ topdown is now disqualified for round 3, and by the fixed test it can rank first
 and it then has the most wins (it has 2, fixed-j64 6). The user chose (19:00) to amend the rule before rep 3: a TIMEOUT is
 scored at the limit instead of disqualifying (`score_round2.py --timeout-censored`; `progress_log.md` section 1,
 "Round 3 amendment"). **19:20 (user): report three criteria (as written, best worst
-case, mean connections; `score_round2.py` prints them) when the runs finish; the user then chooses the default. Do not submit the
+case, mean connections, mean ratio to the fastest; `score_round2.py` prints them) when the runs finish; the user then chooses the default. Do not submit the
 chain until they do.** New benchmarks requested: `remaining_tasks.md` section 1, items 5 and 6.
 A round 3 rep takes about 11 to 14 h. Then score round 3 and report the three criteria; the user
 chooses the default; then the paper's 5-rep chain (commands in `remaining_tasks.md` section 1). This
