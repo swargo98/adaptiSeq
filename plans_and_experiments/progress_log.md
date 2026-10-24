@@ -207,6 +207,20 @@ Rep 3 `55203209` (`exp-12-22`, from 00:30 PDT 10-24, probe 1.2/30.1/36.9 MB/s, G
 
 | rep | panel | arm | wall_s | ratio | runs | connections mean / max | controller / notes |
 |---|---|---|---|---|---|---|---|
+| 3 | 4r ENA small | knee | **347** | 1.00 | 241/241 | 22.4 / 45 | best 680 Mbps at 48 connections; 9 cut short |
+| 3 | 4r ENA small | topdown | 480 | 1.38 | 241/241 | 17.2 / 25 | best 219 Mbps at 20 workers (kept the cap) |
+| 3 | 4r ENA small | budget | 603 | 1.74 | 241/241 | 16.1 / 22 |  |
+| 3 | 4r ENA small | fixed-j64 | 509 | 1.47 | 241/241 | 18.1 / 25 |  |
+| 3 | 4r ENA small | fixed-j20 | 577 | 1.66 | 241/241 | 16.6 / 25 |  |
+| 3 | 4r ENA small | bottomup | 690 | 1.99 | 241/241 | 13.4 / 25 |  |
+| 3 | 4r ENA small | greedy | 607 | 1.75 | 241/241 | 17.9 / 25 |  |
+| 3 | 4b ENA large | knee | 1194 | 1.03 | 8/8 | 23.4 / 25 |  |
+| 3 | 4b ENA large | fixed-j20 | 1232 | 1.06 | 8/8 | 23.9 / 25 |  |
+| 3 | 4b ENA large | bottomup | **1163** | 1.00 | 8/8 | 22.5 / 25 | best 956 Mbps at 2 workers |
+| 3 | 4b ENA large | greedy | 1259 | 1.08 | 8/8 | 24.3 / 25 |  |
+| 3 | 4b ENA large | fixed-j64 | 1354 | 1.16 | 8/8 | 22.0 / 25 | 1 md5 mismatch |
+| 3 | 4b ENA large | topdown | 1755 | 1.51 | 8/8 | 21.4 / 25 | 2 md5 mismatches re-fetched |
+| 3 | 4b ENA large | budget | 1330 | 1.14 | 8/8 | 23.3 / 25 |  |
 
 ---
 
