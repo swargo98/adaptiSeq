@@ -254,6 +254,27 @@ Rep 3 `55203209` (`exp-12-22`, from 00:30 PDT 10-24, probe 1.2/30.1/36.9 MB/s, G
 no timeouts, no SRA fallbacks). `check_run` prints CHECK FAIL only because it expects the submission arms (iseq,
 kingfisher, fastq-dl, adaptiseq-default), which a controller round does not run.
 
+**Round 3 scored** (`score_round2.py e3_round3_expanse/e3_*/e3_results.tsv`, 18 cases = 6 panels x 3 reps, 10-24):
+
+| arm | wins | worst case | worst panel median | mean connections | mean ratio |
+|---|---|---|---|---|---|
+| topdown | 3 | 3.80 (4h r2, TIMEOUT) | **1.47** | 18.9 | 1.39 |
+| greedy | 6 | 3.80 (4h r2, TIMEOUT) | 1.66 | 20.8 | 1.41 |
+| bottomup | 4 | 3.80 (4h r2, TIMEOUT) | 2.05 | 13.9 | 1.62 |
+| budget | 4 | 3.93 (4g r3) | 3.43 | 13.1 | 1.84 |
+| knee | 5 | 10.04 (4r r1) | 2.81 | **12.8** | 2.15 |
+| fixed-j64 | **9** | **2.91** (4m r3) | 1.57 | 20.4 | **1.35** |
+| fixed-j20 | 7 | 3.81 (4m r3) | 1.87 | 19.2 | 1.55 |
+
+Criteria: (1) as written: no arm qualifies (the five controllers by the 4h r2 timeouts; fixed-j64 by its 4b median
+1.57, fixed-j20 by 4g/4m medians); by wins fixed-j64 > fixed-j20 > greedy > knee > budget > bottomup > topdown.
+(2) best worst case: fixed-j64 2.91 < topdown 3.80 < greedy 3.80 < bottomup 3.80 (ties by worst panel median) <
+fixed-j20 3.81 < budget 3.93 < knee 10.04. (3) mean connections: knee 12.8 < budget 13.1 < bottomup 13.9 < topdown
+18.9 < fixed-j20 19.2 < fixed-j64 20.4 < greedy 20.8. (4) mean ratio: fixed-j64 1.35 < topdown 1.39 < greedy 1.41 <
+fixed-j20 1.55 < bottomup 1.62 < budget 1.84 < knee 2.15. For the record, with `--timeout-censored`: topdown the only
+arm qualifying (worst panel median 1.47, the lowest of all arms), then fixed-j64. Among the five controllers topdown
+is first on (2) and (4) and fourth on (3). Reported to the user; waiting on their choice of default.
+
 ---
 
 ## 2. Controller round 2 on 0.1.11, and what followed (2026-10-20 to 10-22)

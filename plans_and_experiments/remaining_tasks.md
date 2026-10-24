@@ -16,7 +16,8 @@ connection. Let the runs finish, then we'll decide who'll be the default." Then:
 worst case'", and added a fourth, the mean ratio to the fastest. So round 3 no longer triggers the chain by itself: report the three rankings and wait for the
 user's choice of default.
 
-1. **Round 3 on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
+1. **Round 3: done and scored 10-24** (`progress_log.md` section 1, "Round 3 scored"); **waiting on the user to
+   choose the default.** Round 3 on 0.1.12 (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
    Protocol and the "topdown still leads" test were fixed before the data: `progress_log.md` section 1,
    "Round 3 protocol". Reps: `55203207` done (01:06 10-23, all 42 arm-cases verified); `55203208`
    done (23:20 10-23; 5 TIMEOUTs on 4h); `55203209` queued (`afterany`). Record rows per panel in
