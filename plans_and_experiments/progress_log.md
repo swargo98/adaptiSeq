@@ -22,6 +22,14 @@ Sections, newest first:
 
 ## 1. 0.1.12 and controller round 3 (2026-10-22 onward)
 
+**Default chosen (user, 2026-10-26): topdown.** The recommendation: among the adaptive controllers, topdown is
+first on criterion 2 (best worst case) and criterion 4 (mean ratio), and the only arm qualifying with
+`--timeout-censored`, so its case does not depend on which criterion a reviewer prefers. It is already the default
+(`Options.controller` is `None` -> `controller_mode` -> topdown), so no code change or rebuild. The user also asked to
+keep `budget` as a separate option focused on minimizing connections, for the paper's discussion. The paper's 5-rep
+chain was submitted on 0.1.12 (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, `ARM_SET=submission`, panels 3r/3b, results
+`e3_submission_0.1.12_expanse/`): `55290250`-`55290254`, each `afterany` the previous, excluding exp-10-14 and exp-3-51.
+
 **0.1.12 and round 3 (user, 10-22: "make these fixes on 0.1.12 and test them. I am inclined to topdown as default.
 Proceed to run all the remaining tasks with topdown as default if topdown still leads after the fixes.")**
 

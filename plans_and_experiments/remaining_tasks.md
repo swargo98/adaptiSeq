@@ -1,6 +1,6 @@
 # Remaining tasks (open items only)
 
-Updated 2026-10-23. What has been done, with every job, result row and decision, is in
+Updated 2026-10-26. What has been done, with every job, result row and decision, is in
 `progress_log.md` (sections newest first). This file lists only what is still open. When an item is
 done, add a dated note to `progress_log.md` and delete it here.
 
@@ -16,24 +16,16 @@ connection. Let the runs finish, then we'll decide who'll be the default." Then:
 worst case'", and added a fourth, the mean ratio to the fastest. So round 3 no longer triggers the chain by itself: report the three rankings and wait for the
 user's choice of default.
 
-1. **Round 3: done and scored 10-24** (`progress_log.md` section 1, "Round 3 scored"); **waiting on the user to
-   choose the default.** Round 3 on 0.1.12 (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results `e3_round3_expanse/`).
-   Protocol and the "topdown still leads" test were fixed before the data: `progress_log.md` section 1,
-   "Round 3 protocol". Reps: `55203207` done (01:06 10-23, all 42 arm-cases verified); `55203208`
-   done (23:20 10-23; 5 TIMEOUTs on 4h); `55203209` queued (`afterany`). Record rows per panel in
-   `progress_log.md` section 1 (after the last "Rep N" table), then score from `plans_and_experiments/`:
-   `python bench/e3/score_round2.py e3_round3_expanse/e3_*/e3_results.tsv`. The output ends with the **three
-   criteria** to report: (1) as written (any unverified run disqualifies); (2) best worst case (highest ratio to
-   the fastest arm in any one case, lowest first; a timeout counted at the limit; a run missing or unverified
-   without a timeout ranks last); (3) mean connections, fewest first; (4) mean ratio to the fastest arm over
-   all cases, lowest first (user: "so that one particular bad run does not hamper the overall performance"),
-   counted like (2). Say which arms are adaptive. The 19:00
-   amendment (`--timeout-censored`, a timeout does not disqualify) was replaced by criterion 2; report it only
-   if asked. **Then wait for the user to choose the default.**
-2. **After the user chooses the default:** if topdown, no code change (`Options.controller` is `None`, so
-   topdown); otherwise change the default in code, add a test, rebuild `adaptiseq_e3_sub` (allowed once round 3
-   has ended) and check the wheel. Run the paper's 5-rep chain on 0.1.12 (or the rebuilt version), one rep per
-   48 h job, chained so no two overlap (about 24.5 h each, about 120 h in all):
+1. **Round 3: done; default chosen 10-26 (user): topdown**, already the default, so no code change or rebuild
+   (`progress_log.md` section 1, "Default chosen"). **Keep `budget`** (user, 10-26): "keep 'budget' as a separate
+   option focused on minimizing connections. Will include it in the discussions later." Do not remove or
+   rename it; in the paper's discussion, present it as the fewest-connections option (round 3 mean
+   connections 13.1, second only to knee 12.8; mean ratio 1.84). Its description in `options.py`, `cli.py`
+   and the README still says "candidate under evaluation"; reword it when the user takes up the discussion.
+2. **In progress: the paper's 5-rep chain on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results
+   `e3_submission_0.1.12_expanse/`), submitted 10-26: rep 1 `55290250`, rep 2 `55290251`, rep 3 `55290252`,
+   rep 4 `55290253`, rep 5 `55290254` (each `afterany` the previous). One rep per 48 h job, chained so no two
+   overlap (about 24.5 h each, about 120 h in all). Submitted with:
    ```bash
    cd plans_and_experiments
    export ENV_NAME=adaptiseq_e3_sub E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.12-py3-none-any.whl
