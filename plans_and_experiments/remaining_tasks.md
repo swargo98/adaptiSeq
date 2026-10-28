@@ -38,6 +38,8 @@ user's choice of default.
    done
    ```
    Record rows per rep as for the tournament; check `check_run.txt` after each rep.
+   **Status 10-27 22:20:** rep 1 done (30.6 h, longer than the 24.5 h estimate; rows and result dir committed),
+   rep 2 running (3r recorded, 3b in progress), reps 3-5 queued. At about 30 h a rep, the chain ends around 11-01.
 3. **Numbers and figure** once the chain is done:
    `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
    (Expanse only unless the user decides on a Fabric half, item 3.3).
@@ -80,6 +82,12 @@ user's choice of default.
   cut streams): the one pattern that held across round 2 (`progress_log.md` section 2, "Routing"). A
   candidate for a later round with more reps, not a router over today's controllers.
 - **`-r ftp` stalls at ENA**: add a docs note, or fall back to HTTPS.
+- **One failed HTTPS probe sends a whole list to FTP under `-r auto`** (paper chain rep 2, 3r, default arm: all
+  353 files on segmented FTP, 2927 s at 3.1 mean connections against fixed-j20's 1132 s on HTTPS;
+  `progress_log.md` section 1, "Rep 2 default on segmented FTP"). `Seam._select_transport` caches the per-host
+  verdict for the whole run after one probe. Candidates: retry the HTTPS range probe before choosing FTP, re-probe
+  after N files or on FTP errors, and log why the probe failed. A code change means a new version, so not during the
+  0.1.12 chain; the user decides whether it goes into the paper's build.
 - **Optional:** block-by-block corruption diagnostic of ENA's bad copies (`diag_batch` with
   `METHODS=curl-ftp,curl-https,aseq-https ROUNDS=1`).
 - **Old harness scripts** `submit_e3.sh` and `status.sh` still assume the six-panel layout.

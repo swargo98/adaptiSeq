@@ -30,6 +30,59 @@ keep `budget` as a separate option focused on minimizing connections, for the pa
 chain was submitted on 0.1.12 (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, `ARM_SET=submission`, panels 3r/3b, results
 `e3_submission_0.1.12_expanse/`): `55290250`-`55290254`, each `afterany` the previous, excluding exp-10-14 and exp-3-51.
 
+**Paper chain rows (0.1.12 `0c5e6a82`, `e3_submission_0.1.12_expanse/`).** `ARM_SET=submission` is adaptiSeq against
+the other tools: `adaptiseq-default` (topdown), `adaptiseq-fixed-j20`, iseq, iseq-p8, kingfisher, fastq-dl. The other
+controllers (budget, greedy, knee, bottomup) are not in it; they were compared in rounds 1-3. Ratio = wall / fastest arm in
+the case (`>=` for a TIMEOUT, scored at the limit). Connections mean / max are from `logs/conc_*.tsv` (archive
+connections, `tools/check_panel.sh`). MB/s is verified bytes over wall.
+
+Rep 1 `55290250` (`exp-8-06`, 02:48 10-26 to 09:27 10-27, 30.6 h; probe 0.9/12.6/25.9 MB/s at P=1/8/20, GATE PASS):
+
+| rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 3r ENA small | adaptiseq-fixed-j20 | **596** | 1.00 | 241/241 | 12.73 | 15.6 / 25 | ran 2nd; 1 cut-short response, 1 refused connect |
+| 1 | 3r ENA small | adaptiseq-default | 952 | 1.60 | 241/241 | 7.97 | 20.1 / 25 | ran 6th; topdown 26 probes, best 177 Mbps at 10 workers, last 52 Mbps at 20 |
+| 1 | 3r ENA small | kingfisher | 5825 | 9.77 | 241/241 | 1.30 | 2.1 / 5 | |
+| 1 | 3r ENA small | fastq-dl | 8742 | 14.67 | 241/241 | 0.87 | 1.0 / 1 | |
+| 1 | 3r ENA small | iseq | 8951 | 15.02 | 233/241 | 0.77 | 1.0 / 1 | 8 runs present but not byte-identical to ENA |
+| 1 | 3r ENA small | iseq-p8 | 10800 | >=18.12 | 37/241 | 0.40 | 4.7 / 8 | TIMEOUT |
+| 1 | 3b ENA large | adaptiseq-fixed-j20 | **699** | 1.00 | 8/8 | 37.03 | 22.1 / 25 | 1 cut-short response |
+| 1 | 3b ENA large | adaptiseq-default | 850 | 1.22 | 8/8 | 30.43 | 20.5 / 25 | topdown 33 probes, best 1165 Mbps at 16 workers |
+| 1 | 3b ENA large | iseq-p8 | 5288 | 7.57 | 8/8 | 4.89 | 5.6 / 8 | |
+| 1 | 3b ENA large | kingfisher | 9039 | 12.94 | 5/8 | 1.56 | 2.0 / 5 | 3 runs present but not byte-identical |
+| 1 | 3b ENA large | iseq | 28310 | 40.52 | 8/8 | 0.91 | 1.0 / 1 | log 40 MB, committed as `.log.gz` |
+| 1 | 3b ENA large | fastq-dl | 30000 | >=42.94 | 6/8 | 0.60 | 1.0 / 1 | TIMEOUT |
+
+`check_run.txt` says CHECK FAIL because of the two TIMEOUTs (iseq-p8 3r, fastq-dl 3b), both in other tools. Both adaptiSeq
+arms verified every run with no md5 mismatch, and the default is 6x faster than the next tool on 3r and 6x on 3b. Topdown
+is 1.60x fixed-j20 on 3r (over the 1.5 used in the tournament; the two arms ran about 3.5 h apart, 2nd and 6th) and 1.22x
+on 3b.
+
+Rep 2 `55290251` (`exp-1-36`, from 09:27 10-27; probe 1.5/11.1/36.2 MB/s, GATE PASS), 3r done, 3b in progress:
+
+| rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
+|---|---|---|---|---|---|---|---|---|
+| 2 | 3r ENA small | adaptiseq-fixed-j20 | **1132** | 1.00 | 240/241 | 6.69 | 17.1 / 25 | rc=1: SRR22904330 md5 mismatch 3 times (HTTPS); 1 more mismatch re-fetched |
+| 2 | 3r ENA small | adaptiseq-default | 2927 | 2.59 | 240/241 | 2.59 | **3.1 / 23** | rc=1: SRR22904330 550 "Failed to open file"; **segmented FTP for all files** (below) |
+| 2 | 3r ENA small | kingfisher | 4856 | 4.29 | 233/241 | 1.29 | 1.7 / 5 | 8 runs present but not byte-identical |
+| 2 | 3r ENA small | iseq-p8 | 6852 | 6.05 | 239/241 | 1.11 | 3.9 / 8 | rc=1 |
+| 2 | 3r ENA small | iseq | 9628 | 8.50 | 239/241 | 0.79 | 1.0 / 1 | rc=1; SRR22904330_1 md5 mismatch |
+| 2 | 3r ENA small | fastq-dl | 10800 | >=9.54 | 43/241 | 0.54 | 1.0 / 1 | TIMEOUT |
+| 2 | 3b ENA large | kingfisher | 1302 | (panel running) | 2/8 | 5.46 | 4.0 / 5 | rc=1 |
+
+**SRR22904330 on 10-27:** `SRR22904330_1.fastq.gz` failed md5 in fixed-j20 (3 attempts, HTTPS) and iseq, and the default
+got FTP 550 for it. Every adaptiSeq arm fetched it in rep 1, so ENA's copy was bad or unavailable that day. Under decision
+A this is a source failure, not an engine one, but the run is missing.
+
+**Rep 2 default on segmented FTP.** Both adaptiSeq arms in rep 1, and fixed-j20 in rep 2, logged "HTTPS mirror is
+range-capable; segmented HTTPS" for every file. Rep 2's default logged "FTP supports REST + concurrency; segmented FTP" for
+all 353 files. `Seam._select_transport` (`adaptiseq/engine/seam.py`) probes the HTTPS mirror once per host under `-r auto`
+and caches the verdict in `self._verdict[host]` for the whole list, so one failed HTTPS range probe at the start sent
+every file to FTP. Why the probe failed is not logged at the default level. On FTP the arm held 0-4 archive connections for
+the first ~1450 s, 4-13 until ~2550 s, then 1 for the last ~350 s, with 20 FTP 426 "Failure writing network stream"
+errors. Topdown's last probes read 3-7 Mbps at 3 workers (107 probes; best 182 Mbps at 20). This is the known
+`-r ftp` stall at ENA (`remaining_tasks.md` section 2) reached under `auto`. Follow-up added there.
+
 **0.1.12 and round 3 (user, 10-22: "make these fixes on 0.1.12 and test them. I am inclined to topdown as default.
 Proceed to run all the remaining tasks with topdown as default if topdown still leads after the fixes.")**
 

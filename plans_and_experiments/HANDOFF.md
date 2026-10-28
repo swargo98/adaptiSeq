@@ -44,6 +44,14 @@ record of everything done: every job, result row and decision, in dated sections
 
 ## 2. Current state (09:45 PDT 2026-10-23)
 
+**Update 22:20 PDT 10-27:** round 3 is done and the user chose topdown as the default (10-26). The paper's 5-rep
+chain on 0.1.12 is running: `55290250` (rep 1) done and recorded, `55290251` (rep 2) running with 3r recorded,
+`55290252`-`55290254` queued. Results go to `e3_submission_0.1.12_expanse/` in the main checkout; notes are committed from
+the worktree `.claude/worktrees/notes-topdown-chain` (branch `notes-topdown-chain`, pushed to `expanse-app-notes`),
+and each finished rep's dir is copied there (logs over 20 MB as `.gz`). Same per-rep routine: `tools/check_panel.sh`,
+rows in `progress_log.md` section 1 ("Paper chain rows"), move `slurm_e3_<id>.*` into the rep dir when it ends.
+The table below is round 3's history.
+
 | job | what | results | on finish |
 |---|---|---|---|
 | `55203207` | round 3 rep 1 on 0.1.12: **done** 01:06 10-23, all 42 arm-cases verified | `e3_round3_expanse/e3_55203207/` (committed) | recorded |
