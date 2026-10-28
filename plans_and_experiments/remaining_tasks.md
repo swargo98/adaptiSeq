@@ -39,7 +39,7 @@ user's choice of default.
    ```
    Record rows per rep as for the tournament; check `check_run.txt` after each rep.
    **Status 10-27 22:20:** rep 1 done (30.6 h, longer than the 24.5 h estimate; rows and result dir committed),
-   rep 2 running (3r recorded, 3b in progress), reps 3-5 queued. At about 30 h a rep, the chain ends around 11-01.
+   rep 2 running (3r and 4 of 6 3b arms recorded 10-28 12:05; fastq-dl then the default left), reps 3-5 queued. At about 30 h a rep, the chain ends around 11-01.
 3. **Numbers and figure** once the chain is done:
    `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
    (Expanse only unless the user decides on a Fabric half, item 3.3).
