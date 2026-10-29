@@ -88,6 +88,7 @@ of the chain so far; GATE PASS), 3r done, 3b running:
 | 3 | 3r ENA small | iseq-p8 | 10223 | 12.88 | 240/241 | 0.74 | 3.6 / 8 | rc=1 |
 | 3 | 3r ENA small | iseq | 10800 | >=13.61 | 103/241 | 0.61 | 1.0 / 1 | TIMEOUT |
 | 3 | 3b ENA large | fastq-dl | 30000 | (panel running) | 4/8 | 0.42 | 1.0 / 1 | TIMEOUT; ran 1st, 1 run present but not byte-identical |
+| 3 | 3b ENA large | kingfisher | 1115 | - | 0/8 | 1.19 | 4.3 / 5 | rc=1: "Download verification failed ... pigz -t returned non-zero" on the first file, and kingfisher stops the list at the first failure (rep 2: 2/8 the same way) |
 
 SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on it; the default fetched it. So ENA's copy of
 `SRR22904330_1.fastq.gz` has been unreliable on both 10-27 and 10-28 (fine on 10-26 in rep 1).
