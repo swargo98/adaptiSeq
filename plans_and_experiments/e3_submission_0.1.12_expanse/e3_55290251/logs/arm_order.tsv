@@ -1,0 +1,13 @@
+panel	rep	seed	order_idx	arm
+3r	2	20261013:3r:2	1	kingfisher
+3r	2	20261013:3r:2	2	adaptiseq-fixed-j20
+3r	2	20261013:3r:2	3	iseq-p8
+3r	2	20261013:3r:2	4	fastq-dl
+3r	2	20261013:3r:2	5	adaptiseq-default
+3r	2	20261013:3r:2	6	iseq
+3b	2	20261013:3b:2	1	kingfisher
+3b	2	20261013:3b:2	2	iseq
+3b	2	20261013:3b:2	3	iseq-p8
+3b	2	20261013:3b:2	4	adaptiseq-fixed-j20
+3b	2	20261013:3b:2	5	fastq-dl
+3b	2	20261013:3b:2	6	adaptiseq-default

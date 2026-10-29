@@ -58,8 +58,8 @@ arms verified every run with no md5 mismatch, and the default is 6x faster than 
 is 1.60x fixed-j20 on 3r (over the 1.5 used in the tournament; the two arms ran about 3.5 h apart, 2nd and 6th) and 1.22x
 on 3b.
 
-Rep 2 `55290251` (`exp-1-36`, from 09:27 10-27; probe 1.5/11.1/36.2 MB/s, GATE PASS), 3r done, 3b in progress (fastq-dl
-running from 05:34 10-28, then the default last). On 3b the ratio is to fixed-j20, the fastest arm with every run verified:
+Rep 2 `55290251` (`exp-1-36`, 09:27 10-27 to 14:37 10-28, 29.2 h; probe 1.5/11.1/36.2 MB/s, GATE PASS; CHECK FAIL on
+the two fastq-dl TIMEOUTs). On 3b the ratio is to fixed-j20, the fastest arm with every run verified:
 
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
@@ -72,11 +72,35 @@ running from 05:34 10-28, then the default last). On 3b the ratio is to fixed-j2
 | 2 | 3b ENA large | adaptiseq-fixed-j20 | **1307** | 1.00 | 8/8 | 19.80 | 23.8 / 25 | 3 md5 mismatches (SRR15852400_1/_2, SRR15852411_1), each re-fetched and verified; 1 cut-short response; rep 1 699 s |
 | 2 | 3b ENA large | kingfisher | 1302 | - | 2/8 | 5.46 | 4.0 / 5 | rc=1; failed 6 of 8 runs, so no ratio |
 | 2 | 3b ENA large | iseq-p8 | 5245 | 4.01 | 7/8 | 4.21 | 6.4 / 8 | rc=1; 9 md5 mismatches on 4 files; gave up on SRR15852425 after 3 tries |
-| 2 | 3b ENA large | iseq | 28053 | 21.46 | 7/8 | 0.81 | 1.0 / 1 | rc=1; 7 md5 mismatches on 4 files; gave up on SRR15852406; log 54 MB, commit as `.log.gz` when the rep ends |
+| 2 | 3b ENA large | adaptiseq-default | 2561 | 1.96 | 8/8 | 10.10 | 27.8 / 50 | ran last; HTTPS for all 21 files; 5 md5 re-fetches (SRR15852406_2 and SRR15852425_1 twice, SRR15852411_2), 144 cut-short responses, 2 refused; below |
+| 2 | 3b ENA large | iseq | 28053 | 21.46 | 7/8 | 0.81 | 1.0 / 1 | rc=1; 7 md5 mismatches on 4 files; gave up on SRR15852406; log 54 MB, committed as `.log.gz` |
+| 2 | 3b ENA large | fastq-dl | 30000 | >=22.95 | 5/8 | 0.53 | 1.0 / 1 | TIMEOUT |
+
+Rep 3 `55290252` (`exp-7-04`, from 20:38 10-28 after 6 h in the queue; probe 0.7/3.9/12.3 MB/s, the slowest probe
+of the chain so far; GATE PASS), 3r done, 3b running:
+
+| rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
+|---|---|---|---|---|---|---|---|---|
+| 3 | 3r ENA small | adaptiseq-fixed-j20 | **794** | 1.00 | 240/241 | 9.54 | 14.2 / 25 | rc=1: SRR22904330 md5 check failed after 3 tries (HTTPS); 8 mismatches in all |
+| 3 | 3r ENA small | adaptiseq-default | 855 | 1.08 | **241/241** | 8.87 | 16.5 / 25 | HTTPS for all files; 9 md5 re-fetches, all recovered; topdown 16 probes, best 224 Mbps at 20 workers |
+| 3 | 3r ENA small | kingfisher | 7835 | 9.87 | 240/241 | 0.97 | 1.7 / 5 | 1 run present but not byte-identical |
+| 3 | 3r ENA small | fastq-dl | 9778 | 12.32 | 240/241 | 0.78 | 1.0 / 1 | |
+| 3 | 3r ENA small | iseq-p8 | 10223 | 12.88 | 240/241 | 0.74 | 3.6 / 8 | rc=1 |
+| 3 | 3r ENA small | iseq | 10800 | >=13.61 | 103/241 | 0.61 | 1.0 / 1 | TIMEOUT |
+
+SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on it; the default fetched it. So ENA's copy of
+`SRR22904330_1.fastq.gz` has been unreliable on both 10-27 and 10-28 (fine on 10-26 in rep 1).
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
 re-fetched each one and verified all 8 runs; both iseq arms gave up on one run after 3 tries.
+
+**Rep 2 default on 3b (2561 s, 1.96x fixed-j20).** Unlike 3r, the transport was HTTPS for every file. It held 25
+archive connections for the first ~850 s, then the 0.1.12 cap recovery climbed to 50 and stayed at 44-50 until ~1500 s,
+then 24 to ~1900 s and down to 1 over the last ~600 s (topdown: 110 probes, best 302 Mbps at 16 workers). ENA cut 144
+responses short and five files failed md5 and were downloaded again whole (multi-GB files), so most of the extra time is
+ENA's bad copies on 10-28, which also hit fixed-j20 (3) and both iseq arms. Whether the climb past 25 helped or fed the
+cut streams cannot be told from one run.
 
 **SRR22904330 on 10-27:** `SRR22904330_1.fastq.gz` failed md5 in fixed-j20 (3 attempts, HTTPS) and iseq, and the default
 got FTP 550 for it. Every adaptiSeq arm fetched it in rep 1, so ENA's copy was bad or unavailable that day. Under decision
