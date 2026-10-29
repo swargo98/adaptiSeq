@@ -87,7 +87,6 @@ of the chain so far; GATE PASS), 3r done, 3b running:
 | 3 | 3r ENA small | fastq-dl | 9778 | 12.32 | 240/241 | 0.78 | 1.0 / 1 | |
 | 3 | 3r ENA small | iseq-p8 | 10223 | 12.88 | 240/241 | 0.74 | 3.6 / 8 | rc=1 |
 | 3 | 3r ENA small | iseq | 10800 | >=13.61 | 103/241 | 0.61 | 1.0 / 1 | TIMEOUT |
-
 | 3 | 3b ENA large | fastq-dl | 30000 | (panel running) | 4/8 | 0.42 | 1.0 / 1 | TIMEOUT; ran 1st, 1 run present but not byte-identical |
 
 SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on it; the default fetched it. So ENA's copy of
