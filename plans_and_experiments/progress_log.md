@@ -105,6 +105,7 @@ than unreachable; GATE PASS), running:
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
 | 4 | 3r ENA small | iseq | 10800 | (panel running) | 174/241 | 0.66 | 1.0 / 1 | TIMEOUT; ran 1st; 6 md5 mismatches, 1 run present but not byte-identical |
+| 4 | 3r ENA small | adaptiseq-default | 825 | (panel running) | **241/241** | 9.19 | 15.6 / 33 | ran 2nd; HTTPS for all files; no md5 mismatch; ENA rough: 73 cut-short responses, 15 refused connects, 21 segment failures and 52 single-connection fallbacks, all recovered; topdown 23 probes, best 230 Mbps at 20 workers |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
