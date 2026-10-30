@@ -106,22 +106,25 @@ pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 
 ## Installation
 
-### 1. From PyPI (once published)
+### 1. Conda (recommended: installs every external tool too)
 ```bash
-pip install adaptiseq            # not yet on PyPI — see "From source" below
+conda install -c conda-forge -c bioconda adaptiseq     # once accepted into bioconda
+```
+Until the bioconda package is live, build it from the in-repo recipe
+([`recipe/meta.yaml`](recipe/meta.yaml)); see [docs/installation.md](docs/installation.md).
+
+### 2. From PyPI
+```bash
+pip install adaptiseq
 ```
 
-### 2. From source
+### 3. From source (development)
 ```bash
 git clone https://github.com/swargo98/adaptiSeq.git
 cd adaptiSeq
-pip install -e .
+conda env create -f environment.yml && conda activate adaptiseq   # tools + editable install
+# or, if the external tools are already installed: pip install -e .
 adaptiseq --version
-```
-
-### 3. Conda environment
-```bash
-conda env create -f environment.yml && conda activate adaptiseq
 ```
 
 External tools: `wget` (always), `sra-tools`, `pigz`, `md5sum`,
@@ -343,7 +346,7 @@ adaptiSeq apart.
 
 | Software | Languages | Databases | Accessions | Formats | Methods | Metadata | MD5 | Resumable | Parallel | Batch | Adaptive | Python API | Merge | Skip done | Conda |
 | -------- | --------- | --------- | ---------- | ------- | ------- | :------: | :-: | :-------: | :------: | :---: | :------: | :--------: | :---: | :-------: | :---: |
-| **adaptiSeq** | Python | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | segmented http(s)/ftp, aspera, wget/axel | ✔ | ✔ | ✔ | ✔ | **✔** | **✔** | **✔** | ✔ | ✔ | TBD (pip ✔) |
+| **adaptiSeq** | Python | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | segmented http(s)/ftp, aspera, wget/axel | ✔ | ✔ | ✔ | ✔ | **✔** | **✔** | **✔** | ✔ | ✔ | recipe ✔ (bioconda pending) |
 | [iSeq](https://github.com/BioOmics/iSeq) | Shell | GSA, SRA, ENA, DDBJ, GEO | All | fq, fq.gz, sra, bam | wget, axel, aspera | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ✔ | ✔ | ✔ |
 | [SRA Toolkit](https://github.com/ncbi/sra-tools) | C | SRA, ENA, DDBJ | All except Run | fq, fq.gz, sra | prefetch | ❌ | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |
 | [enaBrowserTools](https://github.com/enasequence/enaBrowserTools) | Python | SRA, ENA, DDBJ | All except GSA/GEO | fq, fq.gz, sra | urllib, aspera | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | ❌ | ❌ | ✔ | ✔ |

@@ -58,3 +58,39 @@ jobs:
         with:
           name: dist
           path: dist/*
+
+  # recipe/meta.yaml builds the released PyPI sdist (the bioconda submission),
+  # so this job checks that the recipe and its bioconda/conda-forge dependencies
+  # still resolve and install. environment.yml is checked against this commit.
+  conda:
+    name: conda recipe + environment.yml
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          channels: conda-forge,bioconda
+          channel-priority: strict
+          conda-remove-defaults: "true"
+      - name: Build the conda package (runs the recipe's tests, incl. the offline suite)
+        run: |
+          conda install -y -n base conda-build
+          conda build recipe --no-anaconda-upload --output-folder "$RUNNER_TEMP/conda-bld"
+      - name: Install the built package in a clean env
+        run: conda create -y -n pkgtest -c "$RUNNER_TEMP/conda-bld" -c conda-forge -c bioconda adaptiseq
+      - name: Every external tool is on PATH and the Aspera key is found
+        run: |
+          conda activate pkgtest
+          cd "$RUNNER_TEMP"   # outside the source tree so the conda package is imported
+          adaptiseq --version
+          python -c "from adaptiseq.preflight import preflight; preflight(need_fasterq_dump=True, need_axel=True)"
+          python -c "from adaptiseq.engine.classic import find_ena_aspera_key as f; assert f(), 'no ENA Aspera key'"
+      - name: Development environment from environment.yml
+        run: |
+          conda env create -f environment.yml
+          conda activate adaptiseq
+          python -m pytest -q
