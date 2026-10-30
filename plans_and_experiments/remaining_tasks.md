@@ -38,9 +38,9 @@ user's choice of default.
    done
    ```
    Record rows per rep as for the tournament; check `check_run.txt` after each rep.
-   **Status 10-29 11:00:** reps 1 and 2 done (30.6 h, 29.2 h; rows and result dirs committed); rep 3 running (3r
-   recorded, 3b running); reps 4-5 queued. Rep 3 waited 6 h in the queue after rep 2. At about 30 h a rep plus queue
-   waits, the chain ends around 11-02.
+   **Status 10-30 03:40:** reps 1-3 done (30.6, 29.2, 30.9 h; rows and result dirs committed); rep 4 `55290253`
+   waiting in the queue (Priority), rep 5 after it. Rep 3 waited 6 h in the queue after rep 2. At about 30 h a rep
+   plus queue waits, the chain ends around 11-02.
 3. **Numbers and figure** once the chain is done:
    `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
    (Expanse only unless the user decides on a Fabric half, item 3.3).

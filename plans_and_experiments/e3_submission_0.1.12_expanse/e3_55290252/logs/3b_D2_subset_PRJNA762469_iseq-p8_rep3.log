@@ -1,0 +1,998 @@
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.23G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/000/SRR15852400/SRR15852400_1.fastq.gz
+File size: 1.23337 Gigabyte(s) (1324320996 bytes)
+Opening output file SRR15852400_1.fastq.gz
+Starting download
+
+Connection 3 timed out
+Connection 2 finished
+Connection 1 finished
+Connection 2 finished
+Connection 5 finished
+Connection 2 finished
+Connection 3 finished
+Connection 5 finished
+Connection 6 finished
+Connection 2 finished
+Connection 1 finished
+Connection 3 finished
+Connection 7 finished
+Connection 1 finished
+Connection 2 finished
+Connection 3 finished
+Connection 5 finished
+Connection 6 finished
+Connection 4 finished
+Connection 3 finished
+Connection 2 finished
+Connection 3 finished
+Connection 4 finished
+Connection 7 finished
+Connection 1 finished
+Connection 5 finished
+Connection 6 finished
+Connection 3 finished
+Connection 7 finished
+Connection 1 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 4 finished
+Connection 6 finished
+Connection 3 finished
+
+Downloaded 1.23337 Gigabyte(s) in 4:18 minute(s). (5009.76 KB/s)
+File size: 1.24G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/000/SRR15852400/SRR15852400_2.fastq.gz
+File size: 1.23707 Gigabyte(s) (1328295383 bytes)
+Opening output file SRR15852400_2.fastq.gz
+Starting download
+
+Connection 3 finished
+Connection 5 timed out
+Connection 3 finished
+Connection 5 timed out
+Connection 4 finished
+Connection 1 finished
+Connection 0 finished
+Connection 4 finished
+Connection 4 finished
+Connection 0 finished
+Connection 7 finished
+Connection 3 finished
+Connection 2 finished
+Connection 4 finished
+Connection 5 timed out
+Connection 7 finished
+Connection 6 finished
+Connection 0 finished
+Connection 4 finished
+Connection 7 finished
+Connection 0 finished
+Connection 2 finished
+Connection 4 finished
+Connection 7 finished
+Connection 3 finished
+Connection 6 finished
+Connection 1 finished
+Connection 4 finished
+Connection 7 finished
+Connection 3 finished
+Connection 6 finished
+Connection 4 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+Connection 7 finished
+Connection 1 finished
+Connection 2 finished
+Connection 3 finished
+Connection 6 finished
+Connection 0 finished
+Connection 5 finished
+Connection 4 timed out
+Connection 4 finished
+
+Downloaded 1.23707 Gigabyte(s) in 5:30 minute(s). (3930.01 KB/s)
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.31G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/004/SRR15852404/SRR15852404_1.fastq.gz
+File size: 1.31244 Gigabyte(s) (1409220131 bytes)
+Opening output file SRR15852404_1.fastq.gz
+Starting download
+
+Connection 3 timed out
+Connection 7 finished
+Connection 7 finished
+Connection 7 finished
+Connection 2 finished
+Connection 0 finished
+Connection 7 finished
+Connection 7 finished
+Connection 4 finished
+Connection 0 finished
+Connection 2 finished
+Connection 4 finished
+Connection 7 finished
+Connection 6 finished
+Connection 1 finished
+Connection 5 finished
+Connection 0 finished
+Connection 3 finished
+Connection 7 finished
+Connection 1 finished
+Connection 3 finished
+Connection 0 finished
+Connection 1 finished
+Connection 4 finished
+Connection 2 finished
+Connection 7 finished
+Connection 2 finished
+Connection 6 finished
+Connection 3 finished
+Connection 4 finished
+Connection 6 finished
+Connection 5 finished
+Connection 1 finished
+Connection 4 finished
+Connection 2 finished
+Connection 0 finished
+Connection 6 finished
+Connection 7 finished
+Connection 3 finished
+
+Downloaded 1.31244 Gigabyte(s) in 5:39 minute(s). (4059.22 KB/s)
+File size: 1.36G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/004/SRR15852404/SRR15852404_2.fastq.gz
+File size: 1.35596 Gigabyte(s) (1455955532 bytes)
+Opening output file SRR15852404_2.fastq.gz
+Starting download
+
+Connection 5 finished
+Connection 0 finished
+Connection 0 finished
+Connection 1 finished
+Connection 5 finished
+Connection 7 finished
+Connection 5 finished
+Connection 7 finished
+Connection 1 finished
+Connection 4 finished
+Connection 5 finished
+Connection 6 finished
+Connection 1 finished
+Connection 4 finished
+Connection 7 finished
+Connection 6 finished
+Connection 3 finished
+Connection 7 finished
+Connection 6 finished
+Connection 0 finished
+Connection 7 finished
+Connection 4 finished
+Connection 7 finished
+Connection 0 finished
+Connection 7 finished
+Connection 6 finished
+Connection 2 finished
+Connection 3 finished
+Connection 0 finished
+Connection 6 finished
+Connection 4 finished
+Connection 2 finished
+Connection 1 finished
+Connection 3 finished
+Connection 5 finished
+Connection 0 finished
+Connection 7 finished
+
+Downloaded 1.35596 Gigabyte(s) in 4:47 minute(s). (4941.22 KB/s)
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.48G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/006/SRR15852406/SRR15852406_1.fastq.gz
+File size: 1.47852 Gigabyte(s) (1587548609 bytes)
+Opening output file SRR15852406_1.fastq.gz
+Starting download
+
+Connection 0 timed out
+Connection 1 timed out
+Connection 5 timed out
+Connection 7 finished
+Connection 3 finished
+Connection 1 finished
+Connection 1 finished
+Connection 3 finished
+Connection 1 finished
+Connection 7 finished
+Connection 3 finished
+Connection 6 finished
+Connection 6 finished
+Connection 5 timed out
+Connection 1 finished
+Connection 7 finished
+Connection 3 finished
+Connection 6 finished
+Connection 4 finished
+Connection 7 finished
+Connection 2 finished
+Connection 3 finished
+Connection 1 finished
+Connection 7 finished
+Connection 4 finished
+Connection 7 finished
+Connection 0 finished
+Connection 2 finished
+Connection 7 finished
+Connection 6 finished
+Connection 0 finished
+Connection 4 finished
+Connection 2 finished
+Connection 3 finished
+Connection 0 finished
+Connection 6 finished
+Connection 2 finished
+Connection 3 finished
+Connection 4 finished
+Connection 5 timed out
+Connection 7 timed out
+Connection 1 timed out
+Connection 7 finished
+Connection 0 timed out
+Connection 5 finished
+Connection 1 timed out
+Connection 0 timed out
+Connection 1 finished
+Connection 0 finished
+
+Downloaded 1.47852 Gigabyte(s) in 7:50 minute(s). (3294.33 KB/s)
+File size: 1.53G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/006/SRR15852406/SRR15852406_2.fastq.gz
+File size: 1.53162 Gigabyte(s) (1644561466 bytes)
+Opening output file SRR15852406_2.fastq.gz
+Starting download
+
+Connection 7 finished
+Connection 4 timed out
+Connection 7 finished
+Connection 2 finished
+Connection 3 finished
+Connection 0 finished
+Connection 6 finished
+Connection 1 timed out
+Connection 5 finished
+Connection 6 finished
+Connection 2 finished
+Connection 3 finished
+Connection 7 finished
+Connection 4 finished
+Connection 5 finished
+Connection 0 finished
+Connection 7 finished
+Connection 6 finished
+Connection 3 finished
+Connection 4 finished
+Connection 0 finished
+Connection 4 finished
+Connection 2 finished
+Connection 7 finished
+Connection 5 finished
+Connection 0 finished
+Connection 4 finished
+Connection 2 finished
+Connection 7 finished
+Connection 5 finished
+Connection 6 finished
+Connection 0 finished
+Connection 2 finished
+Connection 7 finished
+Connection 6 finished
+Connection 2 finished
+Connection 3 finished
+Connection 0 finished
+Connection 4 finished
+Connection 1 finished
+Connection 5 finished
+
+Downloaded 1.53162 Gigabyte(s) in 7:03 minute(s). (3789.71 KB/s)
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.15G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_1.fastq.gz
+File size: 1.15138 Gigabyte(s) (1236288346 bytes)
+Opening output file SRR15852407_1.fastq.gz
+Starting download
+
+Connection 2 finished
+Connection 2 finished
+Connection 2 finished
+Connection 4 finished
+Connection 2 finished
+Connection 4 finished
+Connection 2 finished
+Connection 0 finished
+Connection 4 finished
+Connection 1 finished
+Connection 5 finished
+Connection 0 finished
+Connection 4 finished
+Connection 7 finished
+Connection 3 finished
+Connection 2 finished
+Connection 6 finished
+Connection 2 finished
+Connection 0 finished
+Connection 3 finished
+Connection 6 finished
+Connection 1 finished
+Connection 0 finished
+Connection 3 finished
+Connection 5 finished
+Connection 4 finished
+Connection 2 finished
+Connection 5 finished
+Connection 0 finished
+Connection 4 finished
+Connection 7 finished
+Connection 6 finished
+Connection 1 finished
+Connection 3 finished
+
+Downloaded 1.15138 Gigabyte(s) in 4:20 minute(s). (4637.94 KB/s)
+File size: 1.18G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_2.fastq.gz
+File size: 1.18081 Gigabyte(s) (1267881618 bytes)
+Opening output file SRR15852407_2.fastq.gz
+Starting download
+
+Connection 2 timed out
+Connection 0 finished
+Connection 3 finished
+Connection 6 finished
+Connection 7 finished
+Connection 1 finished
+Connection 7 finished
+Connection 2 finished
+Connection 6 finished
+Connection 7 finished
+Connection 3 finished
+Connection 6 finished
+Connection 7 finished
+Connection 4 finished
+Connection 5 finished
+Connection 3 finished
+Connection 0 finished
+Connection 4 finished
+Connection 1 finished
+Connection 2 finished
+Connection 6 finished
+Connection 0 finished
+Connection 7 finished
+Connection 6 finished
+Connection 1 finished
+Connection 2 finished
+Connection 3 finished
+Connection 0 finished
+Connection 5 finished
+Connection 7 finished
+Connection 4 finished
+
+Downloaded 1.18081 Gigabyte(s) in 4:59 minute(s). (4140.87 KB/s)
+[91mMD5 mismatch for:[0m SRR15852407_2.fastq.gz
+[93mNote[0m: SRR15852407 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.15G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_1.fastq.gz
+File 'SRR15852407_1.fastq.gz' already there; not retrieving.
+File size: 1.18G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_2.fastq.gz
+File 'SRR15852407_2.fastq.gz' already there; not retrieving.
+[91mMD5 mismatch for:[0m SRR15852407_2.fastq.gz
+[93mNote[0m: SRR15852407 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.15G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_1.fastq.gz
+File size: 1.15138 Gigabyte(s) (1236288346 bytes)
+Opening output file SRR15852407_1.fastq.gz
+Starting download
+
+Connection 4 finished
+Connection 5 finished
+Connection 4 finished
+Connection 0 timed out
+Connection 2 finished
+Connection 4 finished
+Connection 2 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+Connection 7 finished
+Connection 7 finished
+Connection 4 finished
+Connection 3 finished
+Connection 6 finished
+Connection 0 finished
+Connection 4 finished
+Connection 0 finished
+Connection 6 finished
+Connection 1 finished
+Connection 3 finished
+Connection 7 finished
+Connection 5 finished
+Connection 0 finished
+Connection 7 finished
+Connection 0 finished
+Connection 6 finished
+Connection 5 finished
+Connection 2 finished
+Connection 7 finished
+Connection 3 finished
+Connection 1 finished
+Connection 4 finished
+Connection 0 finished
+Connection 6 finished
+Connection 5 finished
+Connection 2 finished
+Connection 7 finished
+Connection 1 finished
+Connection 4 finished
+Connection 3 finished
+
+Downloaded 1.15138 Gigabyte(s) in 3:51 minute(s). (5220.45 KB/s)
+File size: 1.18G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_2.fastq.gz
+File size: 1.18081 Gigabyte(s) (1267881618 bytes)
+Opening output file SRR15852407_2.fastq.gz
+Starting download
+
+Connection 1 timed out
+Connection 7 timed out
+Connection 1 timed out
+Connection 6 finished
+Connection 7 timed out
+Connection 0 timed out
+Connection 7 finished
+Connection 0 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 7 finished
+Connection 5 finished
+Connection 1 finished
+Connection 0 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+Connection 5 finished
+Connection 2 finished
+Connection 4 finished
+Connection 3 finished
+Connection 1 finished
+Connection 4 finished
+Connection 6 finished
+Connection 7 finished
+Connection 4 finished
+Connection 6 finished
+Connection 3 finished
+Connection 4 finished
+Connection 5 finished
+Connection 0 finished
+Connection 3 finished
+Connection 4 finished
+Connection 6 finished
+Connection 2 finished
+Connection 1 finished
+Connection 3 finished
+Connection 7 finished
+Connection 6 finished
+Connection 5 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+
+Downloaded 1.18081 Gigabyte(s) in 4:36 minute(s). (4478.07 KB/s)
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.30G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_1.fastq.gz
+File size: 1.30413 Gigabyte(s) (1400303576 bytes)
+Opening output file SRR15852411_1.fastq.gz
+Starting download
+
+Connection 7 timed out
+Connection 6 finished
+Connection 7 finished
+Connection 6 finished
+Connection 5 finished
+Connection 7 finished
+Connection 5 finished
+Connection 6 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 3 timed out
+Connection 5 finished
+Connection 7 finished
+Connection 1 finished
+Connection 4 finished
+Connection 5 finished
+Connection 2 finished
+Connection 7 finished
+Connection 4 finished
+Connection 1 finished
+Connection 0 finished
+Connection 2 finished
+Connection 4 finished
+Connection 1 finished
+Connection 7 finished
+Connection 1 finished
+Connection 3 finished
+Connection 7 finished
+Connection 5 finished
+Connection 4 finished
+Connection 0 finished
+Connection 6 finished
+Connection 2 finished
+Connection 3 finished
+Connection 1 finished
+
+Downloaded 1.30413 Gigabyte(s) in 4:35 minute(s). (4964.95 KB/s)
+File size: 1.35G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_2.fastq.gz
+File size: 1.34501 Gigabyte(s) (1444188419 bytes)
+Opening output file SRR15852411_2.fastq.gz
+Starting download
+
+Connection 2 finished
+Connection 2 finished
+Connection 7 finished
+Connection 2 finished
+Connection 3 finished
+Connection 7 finished
+Connection 2 finished
+Connection 1 finished
+Connection 3 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+Connection 7 finished
+Connection 5 finished
+Connection 6 finished
+Connection 1 finished
+Connection 3 finished
+Connection 7 finished
+Connection 3 finished
+Connection 3 finished
+Connection 0 finished
+Connection 7 finished
+Connection 4 finished
+Connection 2 finished
+Connection 4 finished
+Connection 1 finished
+Connection 0 finished
+Connection 5 finished
+Connection 6 finished
+Connection 1 finished
+Connection 7 finished
+Connection 4 finished
+Connection 3 finished
+Connection 2 finished
+
+Downloaded 1.34501 Gigabyte(s) in 4:54 minute(s). (4789.83 KB/s)
+[91mMD5 mismatch for:[0m SRR15852411_1.fastq.gz
+[93mNote[0m: SRR15852411 validate failed, retry 1 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.30G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_1.fastq.gz
+File 'SRR15852411_1.fastq.gz' already there; not retrieving.
+File size: 1.35G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_2.fastq.gz
+File 'SRR15852411_2.fastq.gz' already there; not retrieving.
+[91mMD5 mismatch for:[0m SRR15852411_1.fastq.gz
+[93mNote[0m: SRR15852411 validate failed, remove the files and retry 2 times
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.30G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_1.fastq.gz
+File size: 1.30413 Gigabyte(s) (1400303576 bytes)
+Opening output file SRR15852411_1.fastq.gz
+Starting download
+
+Connection 1 finished
+Connection 0 finished
+Connection 7 finished
+Connection 1 finished
+Connection 0 finished
+Connection 3 finished
+Connection 7 finished
+Connection 6 finished
+Connection 5 finished
+Connection 3 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 0 finished
+Connection 1 finished
+Connection 6 finished
+Connection 5 finished
+Connection 4 finished
+Connection 3 finished
+Connection 1 finished
+Connection 6 finished
+Connection 3 finished
+Connection 0 finished
+Connection 0 finished
+Connection 5 finished
+Connection 4 finished
+Connection 3 finished
+Connection 0 finished
+Connection 0 finished
+Connection 7 finished
+Connection 2 finished
+Connection 6 finished
+Connection 3 finished
+Connection 1 finished
+Connection 4 finished
+Connection 5 finished
+
+Downloaded 1.30413 Gigabyte(s) in 4:20 minute(s). (5258.69 KB/s)
+File size: 1.35G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_2.fastq.gz
+File size: 1.34501 Gigabyte(s) (1444188419 bytes)
+Opening output file SRR15852411_2.fastq.gz
+Starting download
+
+Connection 3 timed out
+Connection 1 finished
+Connection 0 finished
+Connection 4 finished
+Connection 5 finished
+Connection 1 finished
+Connection 4 finished
+Connection 5 finished
+Connection 1 finished
+Connection 0 finished
+Connection 1 finished
+Connection 0 finished
+Connection 7 finished
+Connection 4 finished
+Connection 3 finished
+Connection 5 finished
+Connection 6 finished
+Connection 3 finished
+Connection 7 finished
+Connection 2 finished
+Connection 2 finished
+Connection 1 finished
+Connection 3 finished
+Connection 0 finished
+Connection 6 finished
+Connection 5 finished
+Connection 1 finished
+Connection 6 finished
+Connection 4 finished
+Connection 1 finished
+Connection 3 finished
+Connection 7 finished
+Connection 2 finished
+Connection 1 finished
+Connection 4 finished
+Connection 5 finished
+Connection 0 timed out
+Connection 0 finished
+Connection 6 finished
+
+Downloaded 1.34501 Gigabyte(s) in 4:33 minute(s). (5159.94 KB/s)
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.81G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/015/SRR15852415/SRR15852415_1.fastq.gz
+File size: 1.81146 Gigabyte(s) (1945040528 bytes)
+Opening output file SRR15852415_1.fastq.gz
+Starting download
+
+Connection 7 timed out
+Connection 1 timed out
+Connection 4 finished
+Connection 4 finished
+Connection 1 finished
+Connection 0 timed out
+Connection 1 finished
+Connection 4 finished
+Connection 4 finished
+Connection 2 finished
+Connection 6 finished
+Connection 1 finished
+Connection 2 finished
+Connection 2 finished
+Connection 4 finished
+Connection 1 finished
+Connection 7 finished
+Connection 7 finished
+Connection 6 finished
+Connection 2 finished
+Connection 5 finished
+Connection 7 finished
+Connection 6 finished
+Connection 7 finished
+Connection 3 finished
+Connection 1 finished
+Connection 4 finished
+Connection 3 finished
+Connection 7 finished
+Connection 1 finished
+Connection 6 finished
+Connection 2 finished
+Connection 0 timed out
+Connection 5 finished
+Connection 3 finished
+Connection 0 finished
+Connection 4 finished
+
+Downloaded 1.81146 Gigabyte(s) in 7:07 minute(s). (4444.15 KB/s)
+File size: 1.86G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/015/SRR15852415/SRR15852415_2.fastq.gz
+File size: 1.86312 Gigabyte(s) (2000513630 bytes)
+Opening output file SRR15852415_2.fastq.gz
+Starting download
+
+Connection 2 finished
+Connection 1 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 1 finished
+Connection 5 finished
+Connection 7 finished
+Connection 4 finished
+Connection 1 finished
+Connection 0 finished
+Connection 2 finished
+Connection 0 finished
+Connection 3 finished
+Connection 4 finished
+Connection 5 finished
+Connection 1 finished
+Connection 6 finished
+Connection 3 finished
+Connection 5 finished
+Connection 6 finished
+Connection 4 finished
+Connection 3 finished
+Connection 7 finished
+Connection 2 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+Connection 5 finished
+Connection 3 finished
+Connection 4 finished
+Connection 1 finished
+Connection 6 finished
+Connection 2 finished
+Connection 7 finished
+
+Downloaded 1.86312 Gigabyte(s) in 6:12 minute(s). (5238.42 KB/s)
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.75G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/025/SRR15852425/SRR15852425_1.fastq.gz
+File size: 1.75496 Gigabyte(s) (1884373067 bytes)
+Opening output file SRR15852425_1.fastq.gz
+Starting download
+
+Connection 5 finished
+Connection 0 timed out
+Connection 4 finished
+Connection 1 finished
+Connection 5 finished
+Connection 4 finished
+Connection 0 finished
+Connection 5 finished
+Connection 2 finished
+Connection 4 finished
+Connection 0 finished
+Connection 2 finished
+Connection 5 finished
+Connection 1 finished
+Connection 5 finished
+Connection 0 finished
+Connection 3 finished
+Connection 5 finished
+Connection 4 finished
+Connection 7 finished
+Connection 7 finished
+Connection 1 finished
+Connection 4 finished
+Connection 3 finished
+Connection 0 finished
+Connection 6 finished
+Connection 5 finished
+Connection 2 finished
+Connection 7 finished
+Connection 5 finished
+Connection 7 finished
+Connection 4 finished
+Connection 2 finished
+Connection 1 finished
+Connection 7 finished
+Connection 3 finished
+Connection 0 finished
+Connection 6 finished
+Connection 5 finished
+
+Downloaded 1.75496 Gigabyte(s) in 6:09 minute(s). (4980.09 KB/s)
+File size: 1.79G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/025/SRR15852425/SRR15852425_2.fastq.gz
+File size: 1.78881 Gigabyte(s) (1920721392 bytes)
+Opening output file SRR15852425_2.fastq.gz
+Starting download
+
+Connection 3 finished
+Connection 5 finished
+Connection 7 finished
+Connection 5 finished
+Connection 7 finished
+Connection 3 finished
+Connection 5 finished
+Connection 3 finished
+Connection 0 finished
+Connection 7 finished
+Connection 3 finished
+Connection 5 finished
+Connection 2 finished
+Connection 5 finished
+Connection 7 finished
+Connection 1 finished
+Connection 4 finished
+Connection 5 finished
+Connection 3 finished
+Connection 1 finished
+Connection 5 finished
+Connection 4 finished
+Connection 2 finished
+Connection 0 finished
+Connection 5 finished
+Connection 4 finished
+Connection 7 finished
+Connection 7 finished
+Connection 3 finished
+Connection 4 finished
+Connection 5 finished
+Connection 6 finished
+Connection 1 finished
+Connection 0 finished
+Connection 2 finished
+
+Downloaded 1.78881 Gigabyte(s) in 7:27 minute(s). (4188.94 KB/s)
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 1.84G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/030/SRR15852430/SRR15852430_1.fastq.gz
+File size: 1.83587 Gigabyte(s) (1971246114 bytes)
+Opening output file SRR15852430_1.fastq.gz
+Starting download
+
+Connection 1 timed out
+Connection 5 finished
+Connection 0 finished
+Connection 0 finished
+Connection 2 timed out
+Connection 5 finished
+Connection 0 finished
+Connection 5 finished
+Connection 0 finished
+Connection 2 finished
+Connection 4 finished
+Connection 3 finished
+Connection 0 finished
+Connection 7 finished
+Connection 5 finished
+Connection 6 finished
+Connection 1 finished
+Connection 5 finished
+Connection 0 finished
+Connection 3 finished
+Connection 2 finished
+Connection 4 finished
+Connection 1 finished
+Connection 0 finished
+Connection 4 finished
+Connection 1 finished
+Connection 7 finished
+Connection 2 finished
+Connection 0 finished
+Connection 7 finished
+Connection 1 finished
+Connection 1 finished
+Connection 3 finished
+Connection 5 finished
+Connection 4 finished
+Connection 7 finished
+Connection 2 finished
+Connection 0 finished
+Connection 6 finished
+
+Downloaded 1.83587 Gigabyte(s) in 8:52 minute(s). (3616.48 KB/s)
+File size: 1.91G	Database: ENA	Mode: ftp
+Initializing download: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/030/SRR15852430/SRR15852430_2.fastq.gz
+File size: 1.91352 Gigabyte(s) (2054631365 bytes)
+Opening output file SRR15852430_2.fastq.gz
+Starting download
+
+Connection 5 timed out
+Connection 1 finished
+Connection 3 finished
+Connection 4 finished
+Connection 7 finished
+Connection 4 finished
+Connection 3 finished
+Connection 7 finished
+Connection 2 finished
+Connection 4 finished
+Connection 2 finished
+Connection 3 finished
+Connection 4 finished
+Connection 0 finished
+Connection 7 finished
+Connection 3 finished
+Connection 5 finished
+Connection 1 finished
+Connection 6 finished
+Connection 7 finished
+Connection 2 finished
+Connection 0 finished
+Connection 1 finished
+Connection 5 finished
+Connection 3 finished
+Connection 1 finished
+Connection 0 finished
+Connection 3 finished
+Connection 6 finished
+Connection 4 finished
+Connection 1 finished
+Connection 0 finished
+Connection 1 finished
+Connection 6 finished
+Connection 4 finished
+Connection 3 finished
+Connection 2 finished
+Connection 7 timed out
+Connection 5 timed out
+Connection 0 timed out
+Connection 7 timed out
+Connection 5 finished
+Connection 0 finished
+Connection 7 finished
+
+Downloaded 1.91352 Gigabyte(s) in 9:04 minute(s). (3688.32 KB/s)
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================
+[strip_progress: removed 7797261 progress-bar redraws]

@@ -1,0 +1,13 @@
+note    adaptiSeq 0.1.12  wheel sha256 0c5e6a8218899a555f60cfa936903e2c4bf1a4cfe9b6a1025fb0f907545a6d09
+note    3r iseq rep3: exit 124, 103/241 runs verified
+note    3r kingfisher rep3: exit 0, 240/241 runs verified, 1 present but not byte-identical to ENA
+note    3r iseq-p8 rep3: exit 1, 240/241 runs verified
+note    3r fastq-dl rep3: exit 0, 240/241 runs verified
+note    3r adaptiseq-fixed-j20 rep3: exit 1, 240/241 runs verified
+note    3b fastq-dl rep3: exit 124, 4/8 runs verified, 1 present but not byte-identical to ENA
+note    3b kingfisher rep3: exit 1, 0/8 runs verified, 1 present but not byte-identical to ENA
+note    3b iseq rep3: exit 124, 5/8 runs verified, 1 present but not byte-identical to ENA
+PROBLEM 3r iseq rep3: TIMEOUT after 10800.01s
+PROBLEM 3b fastq-dl rep3: TIMEOUT after 30000.01s
+PROBLEM 3b iseq rep3: TIMEOUT after 30000.01s
+CHECK FAIL

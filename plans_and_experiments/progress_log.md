@@ -76,8 +76,9 @@ the two fastq-dl TIMEOUTs). On 3b the ratio is to fixed-j20, the fastest arm wit
 | 2 | 3b ENA large | iseq | 28053 | 21.46 | 7/8 | 0.81 | 1.0 / 1 | rc=1; 7 md5 mismatches on 4 files; gave up on SRR15852406; log 54 MB, committed as `.log.gz` |
 | 2 | 3b ENA large | fastq-dl | 30000 | >=22.95 | 5/8 | 0.53 | 1.0 / 1 | TIMEOUT |
 
-Rep 3 `55290252` (`exp-7-04`, from 20:38 10-28 after 6 h in the queue; probe 0.7/3.9/12.3 MB/s, the slowest probe
-of the chain so far; GATE PASS), 3r done, 3b running:
+Rep 3 `55290252` (`exp-7-04`, 20:38 10-28 after 6 h in the queue, to 03:33 10-30, 30.9 h; probe 0.7/3.9/12.3 MB/s, the
+slowest probe of the chain so far; GATE PASS; CHECK FAIL on three TIMEOUTs, iseq 3r and 3b, fastq-dl 3b). On 3b the ratio
+is to fixed-j20:
 
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
@@ -87,11 +88,12 @@ of the chain so far; GATE PASS), 3r done, 3b running:
 | 3 | 3r ENA small | fastq-dl | 9778 | 12.32 | 240/241 | 0.78 | 1.0 / 1 | |
 | 3 | 3r ENA small | iseq-p8 | 10223 | 12.88 | 240/241 | 0.74 | 3.6 / 8 | rc=1 |
 | 3 | 3r ENA small | iseq | 10800 | >=13.61 | 103/241 | 0.61 | 1.0 / 1 | TIMEOUT |
-| 3 | 3b ENA large | fastq-dl | 30000 | (panel running) | 4/8 | 0.42 | 1.0 / 1 | TIMEOUT; ran 1st, 1 run present but not byte-identical |
+| 3 | 3b ENA large | fastq-dl | 30000 | >=29.41 | 4/8 | 0.42 | 1.0 / 1 | TIMEOUT; ran 1st, 1 run present but not byte-identical |
 | 3 | 3b ENA large | kingfisher | 1115 | - | 0/8 | 1.19 | 4.3 / 5 | rc=1: "Download verification failed ... pigz -t returned non-zero" on the first file, and kingfisher stops the list at the first failure (rep 2: 2/8 the same way) |
-| 3 | 3b ENA large | iseq-p8 | 7208 | (panel running) | 8/8 | 3.59 | 7.3 / 8 | 4 md5 mismatches (SRR15852407_2, SRR15852411_1, twice each), recovered on retry |
-| 3 | 3b ENA large | iseq | 30000 | (panel running) | 5/8 | 0.47 | 1.0 / 1 | TIMEOUT; 4 md5 mismatches (SRR15852404_1, SRR15852415_1, twice each); log 35 MB, commit as `.log.gz` when the rep ends |
-| 3 | 3b ENA large | adaptiseq-default | 1253 | (panel running) | 8/8 | 20.64 | 22.3 / 25 | HTTPS for all files; 2 md5 re-fetches (SRR15852404_1, SRR15852415_1, the files iseq also hit); topdown 52 probes, best 337 Mbps at 16 workers |
+| 3 | 3b ENA large | iseq-p8 | 7208 | 7.07 | 8/8 | 3.59 | 7.3 / 8 | 4 md5 mismatches (SRR15852407_2, SRR15852411_1, twice each), recovered on retry |
+| 3 | 3b ENA large | iseq | 30000 | >=29.41 | 5/8 | 0.47 | 1.0 / 1 | TIMEOUT; 4 md5 mismatches (SRR15852404_1, SRR15852415_1, twice each); log 35 MB, committed as `.log.gz` |
+| 3 | 3b ENA large | adaptiseq-default | 1253 | 1.23 | 8/8 | 20.64 | 22.3 / 25 | HTTPS for all files; 2 md5 re-fetches (SRR15852404_1, SRR15852415_1, the files iseq also hit); topdown 52 probes, best 337 Mbps at 16 workers |
+| 3 | 3b ENA large | adaptiseq-fixed-j20 | **1020** | 1.00 | 8/8 | 25.36 | 24.0 / 25 | ran last; 1 cut-short response, no md5 mismatch |
 
 SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on it; the default fetched it. So ENA's copy of
 `SRR22904330_1.fastq.gz` has been unreliable on both 10-27 and 10-28 (fine on 10-26 in rep 1).
