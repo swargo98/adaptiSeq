@@ -100,15 +100,16 @@ SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on i
 
 Rep 4 `55290253` (`exp-3-04`, from 04:32 10-30 after 1 h in the queue; probe 0.5/0.1/0.0 MB/s, near zero at 8 and 20
 connections, but iseq's payload grew 24.5 MB in 60 s on one connection at 04:53, about 0.41 MB/s, so ENA was slow rather
-than unreachable; GATE PASS), running:
+than unreachable; GATE PASS), 3r done (the default fastest for the first time in the chain), 3b running:
 
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
-| 4 | 3r ENA small | iseq | 10800 | (panel running) | 174/241 | 0.66 | 1.0 / 1 | TIMEOUT; ran 1st; 6 md5 mismatches, 1 run present but not byte-identical |
-| 4 | 3r ENA small | adaptiseq-default | 825 | (panel running) | **241/241** | 9.19 | 15.6 / 33 | ran 2nd; HTTPS for all files; no md5 mismatch; ENA rough: 73 cut-short responses, 15 refused connects, 21 segment failures and 52 single-connection fallbacks, all recovered; topdown 23 probes, best 230 Mbps at 20 workers |
-| 4 | 3r ENA small | kingfisher | 6276 | (panel running) | 166/241 | 0.77 | 1.4 / 5 | rc=1; 34 runs present but not byte-identical: ena-ftp failed on 35 runs (29 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5", transient portal answers kingfisher does not retry), which then came from aws-http (SRA), unverifiable against ENA's md5 (decision B) |
-| 4 | 3r ENA small | fastq-dl | 10800 | (panel running) | 37/241 | 0.40 | 1.0 / 1 | TIMEOUT; 1 run present but not byte-identical |
-| 4 | 3r ENA small | iseq-p8 | 10800 | (panel running) | 220/241 | 0.70 | 4.1 / 8 | TIMEOUT |
+| 4 | 3r ENA small | iseq | 10800 | >=13.08 | 174/241 | 0.66 | 1.0 / 1 | TIMEOUT; ran 1st; 6 md5 mismatches, 1 run present but not byte-identical |
+| 4 | 3r ENA small | adaptiseq-default | **825** | 1.00 | **241/241** | 9.19 | 15.6 / 33 | ran 2nd; HTTPS for all files; no md5 mismatch; ENA rough: 73 cut-short responses, 15 refused connects, 21 segment failures and 52 single-connection fallbacks, all recovered; topdown 23 probes, best 230 Mbps at 20 workers |
+| 4 | 3r ENA small | kingfisher | 6276 | 7.60 | 166/241 | 0.77 | 1.4 / 5 | rc=1; 34 runs present but not byte-identical: ena-ftp failed on 35 runs (29 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5", transient portal answers kingfisher does not retry), which then came from aws-http (SRA), unverifiable against ENA's md5 (decision B) |
+| 4 | 3r ENA small | fastq-dl | 10800 | >=13.08 | 37/241 | 0.40 | 1.0 / 1 | TIMEOUT; 1 run present but not byte-identical |
+| 4 | 3r ENA small | iseq-p8 | 10800 | >=13.08 | 220/241 | 0.70 | 4.1 / 8 | TIMEOUT |
+| 4 | 3r ENA small | adaptiseq-fixed-j20 | 1317 | 1.60 | 241/241 | 5.76 | 18.3 / 25 | ran last; HTTPS; 3 md5 re-fetches (SRR22904291, SRR22904293, SRR22904431), all recovered |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
