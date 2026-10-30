@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -351,10 +351,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-with-pip-recommended" class="md-nav__link">
+  <a href="#1-install-with-conda-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Install with pip (recommended)
+        1. Install with conda (recommended)
       
     </span>
   </a>
@@ -362,10 +362,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-install-from-source" class="md-nav__link">
+  <a href="#2-install-with-pip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Install from source
+        2. Install with pip
       
     </span>
   </a>
@@ -373,10 +373,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-conda-environment" class="md-nav__link">
+  <a href="#3-install-from-source-development" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Conda environment
+        3. Install from source (development)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packaging-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packaging notes
       
     </span>
   </a>
@@ -814,10 +825,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-with-pip-recommended" class="md-nav__link">
+  <a href="#1-install-with-conda-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Install with pip (recommended)
+        1. Install with conda (recommended)
       
     </span>
   </a>
@@ -825,10 +836,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-install-from-source" class="md-nav__link">
+  <a href="#2-install-with-pip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Install from source
+        2. Install with pip
       
     </span>
   </a>
@@ -836,10 +847,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-conda-environment" class="md-nav__link">
+  <a href="#3-install-from-source-development" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Conda environment
+        3. Install from source (development)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packaging-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Packaging notes
       
     </span>
   </a>
@@ -902,27 +924,47 @@
 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
 <p>adaptiSeq is a Python package (Python <strong>≥ 3.10</strong>) plus a small set of external
 command-line tools it shells out to.</p>
-<h2 id="1-install-with-pip-recommended">1. Install with pip (recommended)<a class="headerlink" href="#1-install-with-pip-recommended" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>adaptiseq<span class="w">            </span><span class="c1"># once published to PyPI</span>
+<h2 id="1-install-with-conda-recommended">1. Install with conda (recommended)<a class="headerlink" href="#1-install-with-conda-recommended" title="Permanent link">&para;</a></h2>
+<p>The conda package pulls the Python dependencies <strong>and</strong> every external tool
+(<code>wget</code>, <code>axel</code>, <code>pigz</code>, <code>coreutils</code>, <code>sra-tools</code>, and <code>aspera-cli</code> for <code>ascp</code>
+plus its ENA key), so all modes work without further setup:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>adaptiseq<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>adaptiseq
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>adaptiseq
 </code></pre></div>
 <blockquote>
 <p><strong>Note</strong>
-adaptiSeq is not yet on PyPI/bioconda. Until then, install from source (below).</p>
+The bioconda submission is pending. Until it is accepted, build the package
+locally from the recipe in this repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>conda-build
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>conda<span class="w"> </span>build<span class="w"> </span>recipe<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>adaptiseq<span class="w"> </span>-c<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>adaptiseq
+</code></pre></div>
+<p><code>aspera-cli</code> ships a Linux x86_64 <code>ascp</code>; on other platforms <code>-a</code> is
+unavailable and the remaining modes work as usual.</p>
 </blockquote>
-<h2 id="2-install-from-source">2. Install from source<a class="headerlink" href="#2-install-from-source" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/swargo98/adaptiSeq.git
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>adaptiSeq
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="w">                 </span><span class="c1"># editable / development install</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.[test]&#39;</span><span class="w">         </span><span class="c1"># + pytest, to run the test suite</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>adaptiseq<span class="w"> </span>--version
+<h2 id="2-install-with-pip">2. Install with pip<a class="headerlink" href="#2-install-with-pip" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>adaptiseq
 </code></pre></div>
-<h2 id="3-conda-environment">3. Conda environment<a class="headerlink" href="#3-conda-environment" title="Permanent link">&para;</a></h2>
-<p>A conda environment file (<a href="https://github.com/swargo98/adaptiSeq/blob/main/environment.yml"><code>environment.yml</code></a>) is provided
-that pulls both the external tools and the Python dependencies:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>adaptiseq
+<p>pip installs only the Python package. Install the external tools (below)
+yourself, or use conda.</p>
+<h2 id="3-install-from-source-development">3. Install from source (development)<a class="headerlink" href="#3-install-from-source-development" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/swargo98/adaptiSeq.git
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>adaptiSeq
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w">   </span><span class="c1"># external tools + editable install + pytest</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>conda<span class="w"> </span>activate<span class="w"> </span>adaptiseq
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-q
 </code></pre></div>
-<p>A dedicated <code>bioconda</code> package is <strong>TBD</strong>.</p>
+<p>Without conda, <code>pip install -e '.[test]'</code> gives the editable install and pytest;
+the external tools must then come from elsewhere.</p>
+<h2 id="packaging-notes">Packaging notes<a class="headerlink" href="#packaging-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/swargo98/adaptiSeq/blob/main/recipe/meta.yaml"><code>recipe/meta.yaml</code></a>
+  is the bioconda recipe. It builds the released PyPI sdist, and its test step
+  runs the offline test suite shipped in that sdist.</li>
+<li><a href="https://github.com/swargo98/adaptiSeq/blob/main/environment.yml"><code>environment.yml</code></a>
+  is the development environment for a checkout.</li>
+<li>CI builds the recipe and creates the development environment on every push.</li>
+</ul>
 <h2 id="python-dependencies">Python dependencies<a class="headerlink" href="#python-dependencies" title="Permanent link">&para;</a></h2>
 <p>Installed automatically by pip:</p>
 <table>
@@ -989,8 +1031,8 @@ only <code>wget</code> — <code>sra-tools</code> and the rest are required (wit
 when a run actually takes a path that uses them. See the <a href="../faq/">FAQ</a> for the
 exact messages and how to resolve them.</p>
 <h2 id="verifying-the-install">Verifying the install<a class="headerlink" href="#verifying-the-install" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>adaptiseq<span class="w"> </span>--version
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-m<span class="w">          </span><span class="c1"># metadata-only smoke test</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>adaptiseq<span class="w"> </span>--version
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-m<span class="w">          </span><span class="c1"># metadata-only smoke test</span>
 </code></pre></div>
 
 
@@ -1106,10 +1148,10 @@ exact messages and how to resolve them.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

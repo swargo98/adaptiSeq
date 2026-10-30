@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -887,24 +887,24 @@ script, notebook, or pipeline.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">adaptiseq</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch</span><span class="p">,</span> <span class="n">resolve</span><span class="p">,</span> <span class="n">get_metadata</span>
 </code></pre></div>
 <h2 id="get_metadata-parsed-metadata-rows"><code>get_metadata</code> — parsed metadata rows<a class="headerlink" href="#get_metadata-parsed-metadata-rows" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="s2">&quot;SRR7706354&quot;</span><span class="p">)</span>                 <span class="c1"># list[dict] (TSV columns)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="s2">&quot;CRR311377&quot;</span><span class="p">)</span>                  <span class="c1"># GSA -&gt; list[dict] (CSV columns)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="s2">&quot;SRR7706354&quot;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;ena&quot;</span><span class="p">)</span> <span class="c1"># force a database</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="s2">"SRR7706354"</span><span class="p">)</span>                 <span class="c1"># list[dict] (TSV columns)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="s2">"CRR311377"</span><span class="p">)</span>                  <span class="c1"># GSA -&gt; list[dict] (CSV columns)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">rows</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="s2">"SRR7706354"</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">"ena"</span><span class="p">)</span> <span class="c1"># force a database</span>
 </code></pre></div>
 <p>Writes the same <code>*.metadata.*</code> files the CLI writes; with no <code>outdir</code> it uses a
 temporary directory and cleans up.</p>
 <h2 id="resolve-urls-without-downloading"><code>resolve</code> — URLs without downloading<a class="headerlink" href="#resolve-urls-without-downloading" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">urls</span> <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="s2">&quot;SRR7706354&quot;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;ena&quot;</span><span class="p">)</span>      <span class="c1"># list[str] of download URLs</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">urls</span> <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="s2">&quot;SRR7706354&quot;</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>            <span class="c1"># the *.fastq.gz links</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">urls</span> <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="s2">"SRR7706354"</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">"ena"</span><span class="p">)</span>      <span class="c1"># list[str] of download URLs</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">urls</span> <span class="o">=</span> <span class="n">resolve</span><span class="p">(</span><span class="s2">"SRR7706354"</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>            <span class="c1"># the *.fastq.gz links</span>
 </code></pre></div>
 <p>Fetches metadata, then returns the URLs the engine <em>would</em> fetch — useful for
 auditing or feeding another downloader.</p>
 <h2 id="fetch-download-and-verify"><code>fetch</code> — download and verify<a class="headerlink" href="#fetch-download-and-verify" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># a single accession</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;SRR1553469&quot;</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">"SRR1553469"</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">"data/"</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># a whole batch (same -i semantics as the CLI: a file of accessions)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;accessions.txt&quot;</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fetch</span><span class="p">(</span><span class="s2">"accessions.txt"</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">"data/"</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>               <span class="n">jobs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">adaptive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">accession</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">outdir</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">failed</span><span class="p">)</span>
@@ -997,11 +997,11 @@ an optional <code>reporter</code> to capture progress.</p>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">adaptiseq.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">PreflightError</span><span class="p">,</span> <span class="n">MetadataError</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;SRR1553469&quot;</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">&quot;data/&quot;</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">fetch</span><span class="p">(</span><span class="s2">"SRR1553469"</span><span class="p">,</span> <span class="n">outdir</span><span class="o">=</span><span class="s2">"data/"</span><span class="p">,</span> <span class="n">gzip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">except</span> <span class="n">PreflightError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;missing tool:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">solution</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"missing tool:"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">solution</span><span class="p">)</span>
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">except</span> <span class="n">MetadataError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;metadata problem:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"metadata problem:"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p><strong>Note</strong>
@@ -1126,10 +1126,10 @@ annotations.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
