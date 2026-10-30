@@ -98,6 +98,14 @@ is to fixed-j20:
 SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on it; the default fetched it. So ENA's copy of
 `SRR22904330_1.fastq.gz` has been unreliable on both 10-27 and 10-28 (fine on 10-26 in rep 1).
 
+Rep 4 `55290253` (`exp-3-04`, from 04:32 10-30 after 1 h in the queue; probe 0.5/0.1/0.0 MB/s, near zero at 8 and 20
+connections, but iseq's payload grew 24.5 MB in 60 s on one connection at 04:53, about 0.41 MB/s, so ENA was slow rather
+than unreachable; GATE PASS), running:
+
+| rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
+|---|---|---|---|---|---|---|---|---|
+| 4 | 3r ENA small | iseq | 10800 | (panel running) | 174/241 | 0.66 | 1.0 / 1 | TIMEOUT; ran 1st; 6 md5 mismatches, 1 run present but not byte-identical |
+
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
 re-fetched each one and verified all 8 runs; both iseq arms gave up on one run after 3 tries.
