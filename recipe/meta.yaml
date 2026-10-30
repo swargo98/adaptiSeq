@@ -57,7 +57,7 @@ test:
 
 about:
   home: https://github.com/swargo98/adaptiSeq
-  summary: "Fast, importable downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO) with a segmented, resumable, self-tuning batch engine."
+  summary: "Fast, resumable, adaptive batch downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO)."
   description: |
     adaptiSeq downloads sequencing data and metadata from GSA, SRA, ENA, DDBJ
     and GEO. It is a tested Python reimplementation of iSeq, extended with
