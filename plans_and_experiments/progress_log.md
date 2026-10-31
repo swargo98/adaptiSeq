@@ -110,6 +110,7 @@ than unreachable; GATE PASS), 3r done (the default fastest for the first time in
 | 4 | 3r ENA small | fastq-dl | 10800 | >=13.08 | 37/241 | 0.40 | 1.0 / 1 | TIMEOUT; 1 run present but not byte-identical |
 | 4 | 3r ENA small | iseq-p8 | 10800 | >=13.08 | 220/241 | 0.70 | 4.1 / 8 | TIMEOUT |
 | 4 | 3r ENA small | adaptiseq-fixed-j20 | 1317 | 1.60 | 241/241 | 5.76 | 18.3 / 25 | ran last; HTTPS; 3 md5 re-fetches (SRR22904291, SRR22904293, SRR22904431), all recovered |
+| 4 | 3b ENA large | adaptiseq-default | 3789 | (panel running) | 8/8 | 6.83 | 21.7 / 49 | ran 1st on 3b (from ~16:00 10-30); HTTPS; ENA answered 178 range requests with 403 and 29 with 416, cut 62 responses short, and 7 md5 mismatches (SRR15852400_1 three times) forced whole-file re-fetches; held 25 for ~2200 s, 35-47 for ~300 s, then a tail at 12.3 mean; topdown 156 probes, best 367 Mbps at 16 workers |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
