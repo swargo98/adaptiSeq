@@ -114,6 +114,7 @@ than unreachable; GATE PASS), 3r done (the default fastest for the first time in
 | 4 | 3b ENA large | iseq | 25890 | (panel running) | 8/8 | 1.00 | 1.0 / 1 | 1 md5 mismatch (SRR15852406_1), recovered; log 40 MB, commit as `.log.gz` when the rep ends |
 | 4 | 3b ENA large | iseq-p8 | 3286 | (panel running) | 8/8 | 7.87 | 6.1 / 8 | ran 00:14-01:09 10-31; no md5 mismatch; **faster than the default's 3789 s** (which ran ~8 h earlier under 403/416 range errors), the first time another tool beat it in the chain |
 | 4 | 3b ENA large | adaptiseq-fixed-j20 | **323** | (panel running) | 8/8 | **80.05** | 41.5 / 50 | ran 01:09-01:14 10-31; no md5 mismatch, no 403, 10 cut-short responses; the fastest 3b of the whole chain (rep 1-3: 699-1307 s), so ENA was healthy by then and the default's 3789 s at ~16:00 10-30 records ENA's state, not the controller (one rep; the 5-rep medians decide) |
+| 4 | 3b ENA large | fastq-dl | 22446 | (panel running) | 8/8 | 1.15 | 1.0 / 1 | first fastq-dl 3b without a TIMEOUT in the chain |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
