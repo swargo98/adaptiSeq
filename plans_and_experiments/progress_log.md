@@ -100,7 +100,10 @@ SRR22904330 again: fixed-j20 failed it on md5, and kingfisher logged errors on i
 
 Rep 4 `55290253` (`exp-3-04`, from 04:32 10-30 after 1 h in the queue; probe 0.5/0.1/0.0 MB/s, near zero at 8 and 20
 connections, but iseq's payload grew 24.5 MB in 60 s on one connection at 04:53, about 0.41 MB/s, so ENA was slow rather
-than unreachable; GATE PASS), 3r done (the default fastest for the first time in the chain), 3b running:
+than unreachable; GATE PASS), to 08:47 10-31, 28.3 h; CHECK FAIL on three 3r TIMEOUTs (iseq, fastq-dl, iseq-p8). The
+default was fastest on 3r for the first time in the chain. On 3b the ratio is to fixed-j20, and ENA changed over the
+panel: bad at ~16:00 10-30 when the default ran (403/416 on ranges), healthy by 01:00 10-31 (fixed-j20 at 80 MB/s, and
+fastq-dl and kingfisher verified every run for the first time):
 
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
@@ -110,11 +113,12 @@ than unreachable; GATE PASS), 3r done (the default fastest for the first time in
 | 4 | 3r ENA small | fastq-dl | 10800 | >=13.08 | 37/241 | 0.40 | 1.0 / 1 | TIMEOUT; 1 run present but not byte-identical |
 | 4 | 3r ENA small | iseq-p8 | 10800 | >=13.08 | 220/241 | 0.70 | 4.1 / 8 | TIMEOUT |
 | 4 | 3r ENA small | adaptiseq-fixed-j20 | 1317 | 1.60 | 241/241 | 5.76 | 18.3 / 25 | ran last; HTTPS; 3 md5 re-fetches (SRR22904291, SRR22904293, SRR22904431), all recovered |
-| 4 | 3b ENA large | adaptiseq-default | 3789 | (panel running) | 8/8 | 6.83 | 21.7 / 49 | ran 1st on 3b (from ~16:00 10-30); HTTPS; ENA answered 178 range requests with 403 and 29 with 416, cut 62 responses short, and 7 md5 mismatches (SRR15852400_1 three times) forced whole-file re-fetches; held 25 for ~2200 s, 35-47 for ~300 s, then a tail at 12.3 mean; topdown 156 probes, best 367 Mbps at 16 workers |
-| 4 | 3b ENA large | iseq | 25890 | (panel running) | 8/8 | 1.00 | 1.0 / 1 | 1 md5 mismatch (SRR15852406_1), recovered; log 40 MB, commit as `.log.gz` when the rep ends |
-| 4 | 3b ENA large | iseq-p8 | 3286 | (panel running) | 8/8 | 7.87 | 6.1 / 8 | ran 00:14-01:09 10-31; no md5 mismatch; **faster than the default's 3789 s** (which ran ~8 h earlier under 403/416 range errors), the first time another tool beat it in the chain |
-| 4 | 3b ENA large | adaptiseq-fixed-j20 | **323** | (panel running) | 8/8 | **80.05** | 41.5 / 50 | ran 01:09-01:14 10-31; no md5 mismatch, no 403, 10 cut-short responses; the fastest 3b of the whole chain (rep 1-3: 699-1307 s), so ENA was healthy by then and the default's 3789 s at ~16:00 10-30 records ENA's state, not the controller (one rep; the 5-rep medians decide) |
-| 4 | 3b ENA large | fastq-dl | 22446 | (panel running) | 8/8 | 1.15 | 1.0 / 1 | first fastq-dl 3b without a TIMEOUT in the chain |
+| 4 | 3b ENA large | adaptiseq-default | 3789 | 11.72 | 8/8 | 6.83 | 21.7 / 49 | ran 1st on 3b (from ~16:00 10-30); HTTPS; ENA answered 178 range requests with 403 and 29 with 416, cut 62 responses short, and 7 md5 mismatches (SRR15852400_1 three times) forced whole-file re-fetches; held 25 for ~2200 s, 35-47 for ~300 s, then a tail at 12.3 mean; topdown 156 probes, best 367 Mbps at 16 workers |
+| 4 | 3b ENA large | iseq | 25890 | 80.09 | 8/8 | 1.00 | 1.0 / 1 | 1 md5 mismatch (SRR15852406_1), recovered; log 40 MB, committed as `.log.gz` |
+| 4 | 3b ENA large | iseq-p8 | 3286 | 10.16 | 8/8 | 7.87 | 6.1 / 8 | ran 00:14-01:09 10-31; no md5 mismatch; **faster than the default's 3789 s** (which ran ~8 h earlier under 403/416 range errors), the first time another tool beat it in the chain |
+| 4 | 3b ENA large | adaptiseq-fixed-j20 | **323** | 1.00 | 8/8 | **80.05** | 41.5 / 50 | ran 01:09-01:14 10-31; no md5 mismatch, no 403, 10 cut-short responses; the fastest 3b of the whole chain (rep 1-3: 699-1307 s), so ENA was healthy by then and the default's 3789 s at ~16:00 10-30 records ENA's state, not the controller (one rep; the 5-rep medians decide) |
+| 4 | 3b ENA large | fastq-dl | 22446 | 69.44 | 8/8 | 1.15 | 1.0 / 1 | first fastq-dl 3b without a TIMEOUT in the chain |
+| 4 | 3b ENA large | kingfisher | 4759 | 14.72 | 8/8 | 5.44 | 4.0 / 5 | ran last; first kingfisher 3b with every run verified in the chain |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq

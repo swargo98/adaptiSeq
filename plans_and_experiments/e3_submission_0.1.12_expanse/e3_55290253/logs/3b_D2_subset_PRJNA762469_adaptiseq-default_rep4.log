@@ -1,0 +1,350 @@
+Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 11263679 of 58886659 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 74391680 of 125032102 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 29607678 of 123202883 bytes).'>
+Segment 12 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 37511681 of 41509231 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 225823678 of 250064203 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 10967679 of 44038129 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 64103678 of 125032102 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 21718396 of 61601441 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 6407681 of 87518973 bytes).'>
+Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 5175681 of 90261776 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 26951682 of 79242601 bytes).'>
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 117703678 of 117773316 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 14815681 of 44038129 bytes).'>
+Segment 11 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 67583678 of 128414460 bytes).'>
+Segment 13 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 36287679 of 44038129 bytes).'>
+Segment 15 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 18655637 of 44038129 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 77268021 bytes).'>
+Segment 12 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 82770062 bytes).'>
+Segment 15 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 39621301 bytes).'>
+Segment 16 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 30011272 bytes).'>
+Segment 8 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 82770062 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 125032101 bytes).'>
+Segment 17 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 30011272 bytes).'>
+Segment 17 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 30391259 bytes).'>
+Segment 16 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 39621301 bytes).'>
+Segment 6 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 19 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 14 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 4 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 3 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 0 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 14 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 6 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 3 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 19 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Single-conn attempt 1/3 failed: Expected 200 OK, got 403
+Segment 14 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 19 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 6 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 14 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 19 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 4 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 3 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 0 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 14 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 20 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 6 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 19 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 3 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Single-conn attempt 2/3 failed: Expected 200 OK, got 403
+Segment 14 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 18 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 19 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 15 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 16 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 11 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 12 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 5 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 17 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 9 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 1 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 10 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 13 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 403. Server may not support ranges.
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 6 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 17 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 19317006 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 19317005 bytes).'>
+Segment 15 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 19810650 bytes).'>
+Segment 15 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 18 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 16 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 12 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 8 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 13 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 7558328 of 7750450 bytes).'>
+Segment 18 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 3903681 of 30391259 bytes).'>
+Segment 13 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 51392546 bytes).'>
+Segment 16 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 30011272 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 31258025 bytes).'>
+Segment 9 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 41509230 bytes).'>
+Segment 14 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 51392546 bytes).'>
+Segment 17 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 30011272 bytes).'>
+Segment 8 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 19 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 12 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 8 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 48423679 of 51392546 bytes).'>
+Segment 8 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 19 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 6 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 17 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 30011272 bytes).'>
+Segment 16 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 4189534 of 30800721 bytes).'>
+Segment 1 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 40555646 bytes).'>
+Segment 6 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 20 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 15 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 8 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 12 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 19317006 bytes).'>
+Segment 21 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 20 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 15 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 18 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 551681 of 26487578 bytes).'>
+Segment 6 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 21 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 20 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 15 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 18 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 20277823 bytes).'>
+Segment 21 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 17 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 25696273 bytes).'>
+Segment 6 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 120349036 bytes).'>
+Segment 16 attempt 1/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 16 attempt 2/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment 16 attempt 3/3 failed: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Segment errors for SRR15852400_1.fastq.gz: Expected 206 Partial Content for Range request, got 416. Server may not support ranges.
+Metadata mismatch, restarting: SRR15852400_1.fastq.gz
+failed after retries: SRR15852400_1.fastq.gz
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 85039679 of 264591435 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 115639678 of 132295718 bytes).'>
+Segment 0 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 103335688 of 529182869 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 114631678 of 171219281 bytes).'>
+Segment 7 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 16656040 bytes).'>
+Segment 0 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 58651873 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 61403878 bytes).'>
+Segment 7 attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 12774707 of 16656040 bytes).'>
+Single-conn attempt 3/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 253591745 of 1455955532 bytes).'>
+Failed SRR15852404_2.fastq.gz: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 253591745 of 1455955532 bytes).'>
+Segment 3 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 128535680 of 181994441 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 96949633 of 181994445 bytes).'>
+Segment 1 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 56699790 of 662160498 bytes).'>
+Segment 1 attempt 2 refused: Server disconnected
+Segment 5 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 39749689 of 165540125 bytes).'>
+Segment 7 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 146543680 of 164332203 bytes).'>
+Segment 9 attempt 1/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 23202101 bytes).'>
+Segment 7 attempt 2/3 failed: Response payload is not completed: <ContentLengthError: 400, message='Not enough data to satisfy content length header (received 0 of 17788523 bytes).'>
+[32mNote[0m: batch downloading 16 file(s) across 8 accession(s) with up to 16 worker(s) (configured max 20) (adaptive concurrency)
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852404_2.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852411_2.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852430_2.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852406_1.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852400_1.fastq.gz (attempt 1); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852400_1.fastq.gz (attempt 2); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[93mNote[0m: MD5 mismatch for SRR15852400_1.fastq.gz (attempt 3); removed, it will be downloaded again
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[32mNote[0m: adaptive worker summary: 156 probe(s); best 367 Mbps at 16 worker(s); last 0 Mbps at 2 worker(s); recent: 2w@24Mbps, 2w@25Mbps, 2w@29Mbps, 2w@20Mbps, 2w@30Mbps, 2w@28Mbps, 2w@19Mbps, 2w@6Mbps, 2w@9Mbps, 2w@7Mbps, 1w@4Mbps, 2w@0Mbps
+[32mNote[0m: SRR15852400.metadata.tsv exists, skip downloading metadata for SRR15852400
+      SRR15852400_1.fastq.gz 1.23G 	       SRR15852400_2.fastq.gz 1.24G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852400.metadata.tsv
+[32mNote[0m: -g used, download FASTQ files in gzip format directly
+File size: 0.00G	Database: ENA	Mode: ftp
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+File size: 1.24G	Database: ENA	Mode: ftp
+[32mNote[0m: Transport for ftp.sra.ebi.ac.uk: HTTPS mirror is range-capable; segmented HTTPS
+[92mSRR15852400 download and md5 check successful, save SRR15852400 in success.log[0m
+=======================SRR15852400 download finished=======================
+[32mNote[0m: SRR15852404.metadata.tsv exists, skip downloading metadata for SRR15852404
+      SRR15852404_1.fastq.gz 1.31G 	       SRR15852404_2.fastq.gz 1.36G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852404.metadata.tsv
+[92mSRR15852404 download and md5 check successful, save SRR15852404 in success.log[0m
+=======================SRR15852404 download finished=======================
+[32mNote[0m: SRR15852406.metadata.tsv exists, skip downloading metadata for SRR15852406
+      SRR15852406_1.fastq.gz 1.48G 	       SRR15852406_2.fastq.gz 1.53G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852406.metadata.tsv
+[92mSRR15852406 download and md5 check successful, save SRR15852406 in success.log[0m
+=======================SRR15852406 download finished=======================
+[32mNote[0m: SRR15852407.metadata.tsv exists, skip downloading metadata for SRR15852407
+      SRR15852407_1.fastq.gz 1.15G 	       SRR15852407_2.fastq.gz 1.18G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852407.metadata.tsv
+[92mSRR15852407 download and md5 check successful, save SRR15852407 in success.log[0m
+=======================SRR15852407 download finished=======================
+[32mNote[0m: SRR15852411.metadata.tsv exists, skip downloading metadata for SRR15852411
+      SRR15852411_1.fastq.gz 1.30G 	       SRR15852411_2.fastq.gz 1.35G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852411.metadata.tsv
+[92mSRR15852411 download and md5 check successful, save SRR15852411 in success.log[0m
+=======================SRR15852411 download finished=======================
+[32mNote[0m: SRR15852415.metadata.tsv exists, skip downloading metadata for SRR15852415
+      SRR15852415_1.fastq.gz 1.81G 	       SRR15852415_2.fastq.gz 1.86G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852415.metadata.tsv
+[92mSRR15852415 download and md5 check successful, save SRR15852415 in success.log[0m
+=======================SRR15852415 download finished=======================
+[32mNote[0m: SRR15852425.metadata.tsv exists, skip downloading metadata for SRR15852425
+      SRR15852425_1.fastq.gz 1.75G 	       SRR15852425_2.fastq.gz 1.79G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852425.metadata.tsv
+[92mSRR15852425 download and md5 check successful, save SRR15852425 in success.log[0m
+=======================SRR15852425 download finished=======================
+[32mNote[0m: SRR15852430.metadata.tsv exists, skip downloading metadata for SRR15852430
+      SRR15852430_1.fastq.gz 1.84G 	       SRR15852430_2.fastq.gz 1.91G 	 
+[32mNote[0m: Above Run will be downloaded. You can see the details in SRR15852430.metadata.tsv
+[92mSRR15852430 download and md5 check successful, save SRR15852430 in success.log[0m
+=======================SRR15852430 download finished=======================

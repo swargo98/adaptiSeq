@@ -1,0 +1,7 @@
+SRR22904482  SRR22904482.fastq.gz  got=c48d3ba53ffbc09f378413e01d059393  ena=c48d3ba53ffbc09f378413e01d059393  manifest=c48d3ba53ffbc09f378413e01d059393  ok
+SRR22904482  SRR22904482_1.fastq.gz  got=b091e1e2594fecf65b968c9b72b047a7  ena=b091e1e2594fecf65b968c9b72b047a7  manifest=b091e1e2594fecf65b968c9b72b047a7  ok
+SRR22904482  SRR22904482_2.fastq.gz  got=26ed1ec400746ebbf5012eb98ddb22f8  ena=26ed1ec400746ebbf5012eb98ddb22f8  manifest=26ed1ec400746ebbf5012eb98ddb22f8  ok
+SRR22904404  SRR22904404.fastq.gz  got=b24d2e07d9bfc605d6eaa684a3010f15  ena=b24d2e07d9bfc605d6eaa684a3010f15  manifest=b24d2e07d9bfc605d6eaa684a3010f15  ok
+SRR22904321  SRR22904321.fastq.gz  got=0319180f6f5569d188f4e2f50bfe83ec  ena=0319180f6f5569d188f4e2f50bfe83ec  manifest=0319180f6f5569d188f4e2f50bfe83ec  ok
+verify_output.py: runs_complete=3 (expected 3)  extra_files=0  agrees
+GATE PASS
