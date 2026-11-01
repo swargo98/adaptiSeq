@@ -38,9 +38,9 @@ user's choice of default.
    done
    ```
    Record rows per rep as for the tournament; check `check_run.txt` after each rep.
-   **Status 10-31 08:50:** reps 1-4 done (30.6, 29.2, 30.9, 28.3 h; rows and result dirs committed); rep 5 `55290254`
-   failed to launch on a bad node (`exp-4-49`) at 08:49 10-31 and sat held until 18:40, when I excluded the node and
-   released it. At 28-31 h a rep plus the queue wait, the chain ends around 11-02 morning.
+   **Done 11-01 02:54 PST.** All five reps finished (30.6, 29.2, 30.9, 28.3, 9.2 h); rows and result dirs committed.
+   CHECK FAIL on reps 1-4 (TIMEOUTs, all in other tools), PASS on rep 5. Rep 5 was held 10 h after a launch failure
+   on `exp-4-49` (excluded, released 18:40 10-31). Delete this item once items 3-4 are under way.
 3. **Numbers and figure** once the chain is done:
    `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
    (Expanse only unless the user decides on a Fabric half, item 3.3).

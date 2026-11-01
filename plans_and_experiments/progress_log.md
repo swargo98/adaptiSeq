@@ -124,7 +124,8 @@ Rep 5 `55290254`: launched 08:49 10-31 on `exp-4-49` and failed within a second 
 requeued it held, so it sat for ~10 h unnoticed (the watcher only returns on rows, the gate line or job end). The node
 was drained at 15:30 ("Bright: memory usage 246 GB is high on idle node"). At 18:40 I added `exp-4-49` to its
 `ExcNodeList` and released it (`scontrol release`). It started at 18:42 on `exp-7-50` (probe 2.1/16.9/38.7 MB/s, the
-best of the chain; GATE PASS).
+best of the chain; GATE PASS), to 02:54 PST 11-01 (clocks fell back at 02:00), 9.2 h; **CHECK PASS**, the first
+in the chain: no TIMEOUT on either panel. On both panels the ratio is to fixed-j20, the fastest arm:
 
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
@@ -139,6 +140,7 @@ best of the chain; GATE PASS).
 | 5 | 3b ENA large | fastq-dl | 5154 | 15.36 | 7/8 | 4.24 | 1.0 / 26 | exit 0 but SRR15852430 present and not byte-identical: its ENA wget failed 3 times in the last minute, so fastq-dl fetched it from SRA (decision B); the 26-connection max is that SRA fetch (~13 s); its fastest 3b of the chain (rep 4: 22446 s) |
 | 5 | 3b ENA large | adaptiseq-fixed-j20 | **335** | **1.00** | 8/8 | **77.13** | 20.3 / 25 | ran 4th on 3b, 2 h after the default; HTTPS for all 16 files (the probe the default failed passed here); no md5 mismatch; 39 cut-short responses |
 | 5 | 3b ENA large | kingfisher | 1715 | 5.11 | 8/8 | 15.08 | 2.8 / 5 | ran 5th on 3b; all 16 files from ENA, no SRA fallback, no md5 mismatch; its fastest 3b with every run verified (rep 4: 4759 s) |
+| 5 | 3b ENA large | iseq-p8 | 1071 | 3.19 | 8/8 | 24.17 | 5.0 / 8 | ran last; no md5 mismatch; its fastest 3b of the chain (reps 1-4: 3286-7208 s); **faster than the default's 3129 s**, as in rep 4 |
 
 **Rep 5 default on 3r: 20 workers, about 3 connections.** For the first ~610 s the arm held 0-3 archive connections, all
 to one ENA HTTPS address (193.62.193.80), and finished 65 runs that way; 20 single-connection attempts got 403 in this

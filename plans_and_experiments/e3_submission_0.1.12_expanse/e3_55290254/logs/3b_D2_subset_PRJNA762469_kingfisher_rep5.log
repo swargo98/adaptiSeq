@@ -1,0 +1,1664 @@
+2026/11/01 02:07:33 AM INFO: Kingfisher v0.5.0
+2026/11/01 02:07:33 AM INFO: Attempting download method ena-ftp for run SRR15852400 ..
+2026/11/01 02:07:33 AM INFO: Querying ENA for FTP paths for SRR15852400..
+2026/11/01 02:07:35 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/000/SRR15852400/SRR15852400_1.fastq.gz ..
+
+11/01 02:07:35 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#fcd1c8 0B/0B CN:1 DL:0B]
+[#fcd1c8 0B/1.2GiB(0%) CN:5 DL:0B]
+[#fcd1c8 208KiB/1.2GiB(0%) CN:5 DL:424KiB ETA:50m48s]
+[#fcd1c8 10MiB/1.2GiB(0%) CN:5 DL:6.6MiB ETA:3m8s]
+[#fcd1c8 26MiB/1.2GiB(2%) CN:5 DL:10MiB ETA:1m58s]
+[#fcd1c8 79MiB/1.2GiB(6%) CN:5 DL:22MiB ETA:52s]
+[#fcd1c8 143MiB/1.2GiB(11%) CN:5 DL:31MiB ETA:35s]
+[#fcd1c8 185MiB/1.2GiB(14%) CN:5 DL:33MiB ETA:32s]
+[#fcd1c8 239MiB/1.2GiB(18%) CN:5 DL:36MiB ETA:27s]
+[#fcd1c8 301MiB/1.2GiB(23%) CN:5 DL:40MiB ETA:24s]
+[#fcd1c8 365MiB/1.2GiB(28%) CN:5 DL:42MiB ETA:20s]
+[#fcd1c8 425MiB/1.2GiB(33%) CN:5 DL:44MiB ETA:18s]
+[#fcd1c8 488MiB/1.2GiB(38%) CN:5 DL:51MiB ETA:14s]
+[#fcd1c8 550MiB/1.2GiB(43%) CN:5 DL:56MiB ETA:12s]
+[#fcd1c8 606MiB/1.2GiB(48%) CN:5 DL:58MiB ETA:11s]
+[#fcd1c8 636MiB/1.2GiB(50%) CN:5 DL:55MiB ETA:11s]
+[#fcd1c8 675MiB/1.2GiB(53%) CN:5 DL:54MiB ETA:10s]
+[#fcd1c8 707MiB/1.2GiB(56%) CN:5 DL:52MiB ETA:10s]
+[#fcd1c8 735MiB/1.2GiB(58%) CN:5 DL:48MiB ETA:10s]
+[#fcd1c8 782MiB/1.2GiB(61%) CN:5 DL:47MiB ETA:10s]
+[#fcd1c8 839MiB/1.2GiB(66%) CN:5 DL:46MiB ETA:9s]
+[#fcd1c8 897MiB/1.2GiB(71%) CN:5 DL:46MiB ETA:7s]
+[#fcd1c8 0.9GiB/1.2GiB(75%) CN:5 DL:45MiB ETA:6s]
+[#fcd1c8 0.9GiB/1.2GiB(79%) CN:5 DL:44MiB ETA:5s]
+[#fcd1c8 1.0GiB/1.2GiB(82%) CN:5 DL:44MiB ETA:5s]
+[#fcd1c8 1.0GiB/1.2GiB(84%) CN:5 DL:43MiB ETA:4s]
+[#fcd1c8 1.0GiB/1.2GiB(88%) CN:5 DL:44MiB ETA:3s]
+[#fcd1c8 1.1GiB/1.2GiB(91%) CN:5 DL:46MiB ETA:2s]
+[#fcd1c8 1.1GiB/1.2GiB(94%) CN:4 DL:45MiB ETA:1s]
+[#fcd1c8 1.1GiB/1.2GiB(96%) CN:2 DL:41MiB ETA:1s]
+[#fcd1c8 1.2GiB/1.2GiB(97%) CN:2 DL:37MiB]
+[#fcd1c8 1.2GiB/1.2GiB(99%) CN:1 DL:33MiB]
+
+11/01 02:08:08 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852400_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+fcd1c8|OK  |    41MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852400_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:08:11 AM INFO: MD5sum OK for SRR15852400_1.fastq.gz
+2026/11/01 02:08:11 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/000/SRR15852400/SRR15852400_2.fastq.gz ..
+
+11/01 02:08:11 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#09cc55 0B/0B CN:1 DL:0B]
+[#09cc55 0B/1.2GiB(0%) CN:5 DL:0B]
+[#09cc55 208KiB/1.2GiB(0%) CN:5 DL:392KiB ETA:55m1s]
+[#09cc55 9.6MiB/1.2GiB(0%) CN:5 DL:6.2MiB ETA:3m21s]
+[#09cc55 23MiB/1.2GiB(1%) CN:5 DL:9.4MiB ETA:2m12s]
+[#09cc55 75MiB/1.2GiB(5%) CN:5 DL:21MiB ETA:55s]
+[#09cc55 137MiB/1.2GiB(10%) CN:5 DL:30MiB ETA:37s]
+[#09cc55 197MiB/1.2GiB(15%) CN:5 DL:35MiB ETA:29s]
+[#09cc55 261MiB/1.2GiB(20%) CN:5 DL:40MiB ETA:24s]
+[#09cc55 327MiB/1.2GiB(25%) CN:5 DL:43MiB ETA:21s]
+[#09cc55 398MiB/1.2GiB(31%) CN:5 DL:46MiB ETA:18s]
+[#09cc55 455MiB/1.2GiB(35%) CN:5 DL:47MiB ETA:16s]
+[#09cc55 494MiB/1.2GiB(39%) CN:5 DL:52MiB ETA:14s]
+[#09cc55 556MiB/1.2GiB(43%) CN:5 DL:57MiB ETA:12s]
+[#09cc55 612MiB/1.2GiB(48%) CN:5 DL:59MiB ETA:10s]
+[#09cc55 666MiB/1.2GiB(52%) CN:5 DL:59MiB ETA:10s]
+[#09cc55 719MiB/1.2GiB(56%) CN:5 DL:58MiB ETA:9s]
+[#09cc55 772MiB/1.2GiB(61%) CN:5 DL:56MiB ETA:8s]
+[#09cc55 820MiB/1.2GiB(64%) CN:5 DL:55MiB ETA:8s]
+[#09cc55 862MiB/1.2GiB(68%) CN:5 DL:51MiB ETA:7s]
+[#09cc55 901MiB/1.2GiB(71%) CN:5 DL:49MiB ETA:7s]
+[#09cc55 0.9GiB/1.2GiB(73%) CN:5 DL:49MiB ETA:6s]
+[#09cc55 0.9GiB/1.2GiB(76%) CN:5 DL:46MiB ETA:6s]
+[#09cc55 0.9GiB/1.2GiB(80%) CN:5 DL:44MiB ETA:5s]
+[#09cc55 1.0GiB/1.2GiB(83%) CN:5 DL:43MiB ETA:4s]
+[#09cc55 1.0GiB/1.2GiB(86%) CN:5 DL:42MiB ETA:3s]
+[#09cc55 1.1GiB/1.2GiB(89%) CN:5 DL:40MiB ETA:3s]
+[#09cc55 1.1GiB/1.2GiB(92%) CN:5 DL:40MiB ETA:2s]
+[#09cc55 1.1GiB/1.2GiB(95%) CN:4 DL:39MiB ETA:1s]
+[#09cc55 1.2GiB/1.2GiB(97%) CN:3 DL:37MiB]
+[#09cc55 1.2GiB/1.2GiB(98%) CN:2 DL:35MiB]
+[#09cc55 1.2GiB/1.2GiB(99%) CN:1 DL:31MiB]
+
+11/01 02:08:45 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852400_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+09cc55|OK  |    40MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852400_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:08:47 AM INFO: MD5sum OK for SRR15852400_2.fastq.gz
+2026/11/01 02:08:47 AM INFO: Verifying gzip file ./SRR15852400_1.fastq.gz ..
+2026/11/01 02:09:03 AM INFO: Verifying gzip file ./SRR15852400_2.fastq.gz ..
+2026/11/01 02:09:20 AM INFO: Method ena-ftp worked.
+2026/11/01 02:09:20 AM INFO: Output files: ./SRR15852400_1.fastq.gz, ./SRR15852400_2.fastq.gz
+2026/11/01 02:09:20 AM INFO: Attempting download method ena-ftp for run SRR15852404 ..
+2026/11/01 02:09:20 AM INFO: Querying ENA for FTP paths for SRR15852404..
+2026/11/01 02:09:21 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/004/SRR15852404/SRR15852404_1.fastq.gz ..
+
+11/01 02:09:21 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#b18336 0B/0B CN:1 DL:0B]
+[#b18336 0B/1.3GiB(0%) CN:5 DL:0B]
+[#b18336 208KiB/1.3GiB(0%) CN:5 DL:436KiB ETA:52m32s]
+[#b18336 7.9MiB/1.3GiB(0%) CN:5 DL:5.2MiB ETA:4m12s]
+[#b18336 22MiB/1.3GiB(1%) CN:5 DL:8.9MiB ETA:2m27s]
+[#b18336 50MiB/1.3GiB(3%) CN:5 DL:14MiB ETA:1m30s]
+[#b18336 83MiB/1.3GiB(6%) CN:5 DL:18MiB ETA:1m8s]
+[#b18336 127MiB/1.3GiB(9%) CN:5 DL:23MiB ETA:52s]
+[#b18336 178MiB/1.3GiB(13%) CN:5 DL:27MiB ETA:42s]
+[#b18336 218MiB/1.3GiB(16%) CN:5 DL:29MiB ETA:38s]
+[#b18336 238MiB/1.3GiB(17%) CN:5 DL:27MiB ETA:39s]
+[#b18336 261MiB/1.3GiB(19%) CN:5 DL:27MiB ETA:39s]
+[#b18336 282MiB/1.3GiB(20%) CN:5 DL:29MiB ETA:36s]
+[#b18336 310MiB/1.3GiB(23%) CN:5 DL:31MiB ETA:33s]
+[#b18336 365MiB/1.3GiB(27%) CN:5 DL:34MiB ETA:28s]
+[#b18336 414MiB/1.3GiB(30%) CN:5 DL:36MiB ETA:25s]
+[#b18336 469MiB/1.3GiB(34%) CN:5 DL:38MiB ETA:22s]
+[#b18336 524MiB/1.3GiB(39%) CN:5 DL:39MiB ETA:20s]
+[#b18336 556MiB/1.3GiB(41%) CN:5 DL:36MiB ETA:21s]
+[#b18336 560MiB/1.3GiB(41%) CN:5 DL:35MiB ETA:22s]
+[#b18336 565MiB/1.3GiB(42%) CN:5 DL:33MiB ETA:23s]
+[#b18336 569MiB/1.3GiB(42%) CN:5 DL:31MiB ETA:24s]
+[#b18336 597MiB/1.3GiB(44%) CN:5 DL:31MiB ETA:23s]
+[#b18336 639MiB/1.3GiB(47%) CN:5 DL:31MiB ETA:22s]
+[#b18336 682MiB/1.3GiB(50%) CN:5 DL:30MiB ETA:21s]
+[#b18336 725MiB/1.3GiB(53%) CN:5 DL:29MiB ETA:21s]
+[#b18336 767MiB/1.3GiB(57%) CN:5 DL:28MiB ETA:20s]
+[#b18336 811MiB/1.3GiB(60%) CN:5 DL:28MiB ETA:18s]
+[#b18336 855MiB/1.3GiB(63%) CN:5 DL:32MiB ETA:14s]
+[#b18336 895MiB/1.3GiB(66%) CN:5 DL:36MiB ETA:12s]
+[#b18336 0.9GiB/1.3GiB(69%) CN:5 DL:36MiB ETA:11s]
+[#b18336 0.9GiB/1.3GiB(70%) CN:5 DL:38MiB ETA:10s]
+[#b18336 0.9GiB/1.3GiB(71%) CN:5 DL:37MiB ETA:10s]
+[#b18336 0.9GiB/1.3GiB(73%) CN:5 DL:34MiB ETA:10s]
+[#b18336 0.9GiB/1.3GiB(75%) CN:5 DL:32MiB ETA:10s]
+[#b18336 1.0GiB/1.3GiB(78%) CN:5 DL:32MiB ETA:8s]
+[#b18336 1.0GiB/1.3GiB(82%) CN:5 DL:34MiB ETA:6s]
+[#b18336 1.1GiB/1.3GiB(86%) CN:5 DL:35MiB ETA:5s]
+[#b18336 1.1GiB/1.3GiB(89%) CN:5 DL:35MiB ETA:3s]
+[#b18336 1.2GiB/1.3GiB(92%) CN:4 DL:35MiB ETA:2s]
+[#b18336 1.2GiB/1.3GiB(94%) CN:4 DL:33MiB ETA:2s]
+[#b18336 1.2GiB/1.3GiB(96%) CN:2 DL:34MiB ETA:1s]
+[#b18336 1.2GiB/1.3GiB(97%) CN:2 DL:34MiB]
+[#b18336 1.2GiB/1.3GiB(98%) CN:2 DL:34MiB]
+[#b18336 1.2GiB/1.3GiB(98%) CN:1 DL:31MiB]
+[#b18336 1.3GiB/1.3GiB(99%) CN:1 DL:27MiB]
+
+11/01 02:10:08 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852404_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+b18336|OK  |    30MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852404_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:10:10 AM INFO: MD5sum OK for SRR15852404_1.fastq.gz
+2026/11/01 02:10:10 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/004/SRR15852404/SRR15852404_2.fastq.gz ..
+
+11/01 02:10:10 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#12dfb4 0B/0B CN:1 DL:0B]
+[#12dfb4 0B/1.3GiB(0%) CN:5 DL:0B]
+[#12dfb4 208KiB/1.3GiB(0%) CN:5 DL:466KiB ETA:50m49s]
+[#12dfb4 1.6MiB/1.3GiB(0%) CN:5 DL:1.1MiB ETA:20m8s]
+[#12dfb4 2.2MiB/1.3GiB(0%) CN:5 DL:913KiB ETA:25m54s]
+[#12dfb4 31MiB/1.3GiB(2%) CN:5 DL:8.9MiB ETA:2m32s]
+[#12dfb4 85MiB/1.3GiB(6%) CN:5 DL:18MiB ETA:1m8s]
+[#12dfb4 140MiB/1.3GiB(10%) CN:5 DL:25MiB ETA:48s]
+[#12dfb4 193MiB/1.3GiB(13%) CN:5 DL:29MiB ETA:40s]
+[#12dfb4 256MiB/1.3GiB(18%) CN:5 DL:34MiB ETA:33s]
+[#12dfb4 321MiB/1.3GiB(23%) CN:5 DL:37MiB ETA:28s]
+[#12dfb4 374MiB/1.3GiB(26%) CN:5 DL:39MiB ETA:25s]
+[#12dfb4 434MiB/1.3GiB(31%) CN:5 DL:49MiB ETA:19s]
+[#12dfb4 492MiB/1.3GiB(35%) CN:5 DL:50MiB ETA:17s]
+[#12dfb4 536MiB/1.3GiB(38%) CN:5 DL:54MiB ETA:15s]
+[#12dfb4 546MiB/1.3GiB(39%) CN:5 DL:50MiB ETA:16s]
+[#12dfb4 559MiB/1.3GiB(40%) CN:5 DL:46MiB ETA:17s]
+[#12dfb4 576MiB/1.3GiB(41%) CN:5 DL:43MiB ETA:18s]
+[#12dfb4 633MiB/1.3GiB(45%) CN:5 DL:42MiB ETA:17s]
+[#12dfb4 688MiB/1.3GiB(49%) CN:5 DL:41MiB ETA:16s]
+[#12dfb4 746MiB/1.3GiB(53%) CN:5 DL:41MiB ETA:15s]
+[#12dfb4 805MiB/1.3GiB(58%) CN:5 DL:41MiB ETA:13s]
+[#12dfb4 855MiB/1.3GiB(61%) CN:5 DL:40MiB ETA:13s]
+[#12dfb4 913MiB/1.3GiB(65%) CN:5 DL:41MiB ETA:11s]
+[#12dfb4 0.9GiB/1.3GiB(69%) CN:5 DL:44MiB ETA:9s]
+[#12dfb4 0.9GiB/1.3GiB(70%) CN:5 DL:46MiB ETA:8s]
+[#12dfb4 0.9GiB/1.3GiB(72%) CN:5 DL:47MiB ETA:8s]
+[#12dfb4 1.0GiB/1.3GiB(74%) CN:5 DL:45MiB ETA:7s]
+[#12dfb4 1.0GiB/1.3GiB(77%) CN:5 DL:43MiB ETA:7s]
+[#12dfb4 1.0GiB/1.3GiB(80%) CN:5 DL:41MiB ETA:6s]
+[#12dfb4 1.1GiB/1.3GiB(83%) CN:5 DL:39MiB ETA:5s]
+[#12dfb4 1.1GiB/1.3GiB(86%) CN:5 DL:38MiB ETA:4s]
+[#12dfb4 1.2GiB/1.3GiB(89%) CN:5 DL:36MiB ETA:4s]
+[#12dfb4 1.2GiB/1.3GiB(90%) CN:5 DL:33MiB ETA:3s]
+[#12dfb4 1.2GiB/1.3GiB(91%) CN:5 DL:31MiB ETA:3s]
+[#12dfb4 1.2GiB/1.3GiB(91%) CN:5 DL:29MiB ETA:3s]
+[#12dfb4 1.2GiB/1.3GiB(91%) CN:5 DL:26MiB ETA:4s]
+[#12dfb4 1.2GiB/1.3GiB(92%) CN:5 DL:23MiB ETA:4s]
+[#12dfb4 1.2GiB/1.3GiB(93%) CN:5 DL:19MiB ETA:4s]
+[#12dfb4 1.2GiB/1.3GiB(94%) CN:4 DL:17MiB ETA:4s]
+[#12dfb4 1.3GiB/1.3GiB(97%) CN:4 DL:16MiB ETA:2s]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:2 DL:17MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:13MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:11MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:11MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:10MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:10MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:9.9MiB]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:8.4MiB ETA:1s]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:5.3MiB ETA:1s]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+ *** Download Progress Summary as of Sun Nov  1 02:11:11 2026 *** 
+===============================================================================
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852404_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+ *** Download Progress Summary as of Sun Nov  1 02:12:11 2026 *** 
+===============================================================================
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852404_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0B]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:50KiB ETA:2m54s]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:28KiB ETA:5m10s]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:31KiB ETA:4m30s]
+[#12dfb4 1.3GiB/1.3GiB(99%) CN:1 DL:0.9MiB ETA:3s]
+
+11/01 02:12:27 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852404_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+12dfb4|OK  |    10MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852404_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:12:30 AM INFO: MD5sum OK for SRR15852404_2.fastq.gz
+2026/11/01 02:12:30 AM INFO: Verifying gzip file ./SRR15852404_1.fastq.gz ..
+2026/11/01 02:12:47 AM INFO: Verifying gzip file ./SRR15852404_2.fastq.gz ..
+2026/11/01 02:13:06 AM INFO: Method ena-ftp worked.
+2026/11/01 02:13:06 AM INFO: Output files: ./SRR15852404_1.fastq.gz, ./SRR15852404_2.fastq.gz
+2026/11/01 02:13:06 AM INFO: Attempting download method ena-ftp for run SRR15852406 ..
+2026/11/01 02:13:06 AM INFO: Querying ENA for FTP paths for SRR15852406..
+2026/11/01 02:13:06 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/006/SRR15852406/SRR15852406_1.fastq.gz ..
+
+11/01 02:13:06 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#63c562 0B/0B CN:1 DL:0B]
+[#63c562 0B/0B CN:1 DL:0B]
+[#63c562 0B/1.4GiB(0%) CN:5 DL:0B]
+[#63c562 96KiB/1.4GiB(0%) CN:5 DL:242KiB ETA:1h46m45s]
+[#63c562 5.0MiB/1.4GiB(0%) CN:5 DL:3.5MiB ETA:7m]
+[#63c562 20MiB/1.4GiB(1%) CN:5 DL:8.4MiB ETA:2m57s]
+[#63c562 41MiB/1.4GiB(2%) CN:5 DL:12MiB ETA:1m59s]
+[#63c562 101MiB/1.4GiB(6%) CN:5 DL:23MiB ETA:1m]
+[#63c562 157MiB/1.4GiB(10%) CN:5 DL:29MiB ETA:46s]
+[#63c562 219MiB/1.4GiB(14%) CN:5 DL:34MiB ETA:37s]
+[#63c562 276MiB/1.4GiB(18%) CN:5 DL:37MiB ETA:32s]
+[#63c562 336MiB/1.4GiB(22%) CN:5 DL:40MiB ETA:29s]
+[#63c562 392MiB/1.4GiB(25%) CN:5 DL:42MiB ETA:26s]
+[#63c562 438MiB/1.4GiB(28%) CN:5 DL:46MiB ETA:22s]
+[#63c562 500MiB/1.4GiB(33%) CN:5 DL:52MiB ETA:19s]
+[#63c562 551MiB/1.4GiB(36%) CN:5 DL:56MiB ETA:17s]
+[#63c562 619MiB/1.4GiB(40%) CN:5 DL:57MiB ETA:15s]
+[#63c562 667MiB/1.4GiB(44%) CN:5 DL:56MiB ETA:14s]
+[#63c562 721MiB/1.4GiB(47%) CN:5 DL:55MiB ETA:14s]
+[#63c562 772MiB/1.4GiB(51%) CN:5 DL:54MiB ETA:13s]
+[#63c562 822MiB/1.4GiB(54%) CN:5 DL:53MiB ETA:12s]
+[#63c562 868MiB/1.4GiB(57%) CN:5 DL:52MiB ETA:12s]
+[#63c562 904MiB/1.4GiB(59%) CN:5 DL:51MiB ETA:11s]
+[#63c562 917MiB/1.4GiB(60%) CN:5 DL:46MiB ETA:12s]
+[#63c562 0.9GiB/1.4GiB(61%) CN:5 DL:42MiB ETA:13s]
+[#63c562 0.9GiB/1.4GiB(61%) CN:5 DL:36MiB ETA:15s]
+[#63c562 0.9GiB/1.4GiB(63%) CN:5 DL:32MiB ETA:16s]
+[#63c562 0.9GiB/1.4GiB(66%) CN:5 DL:31MiB ETA:16s]
+[#63c562 1.0GiB/1.4GiB(68%) CN:5 DL:29MiB ETA:15s]
+[#63c562 1.0GiB/1.4GiB(71%) CN:5 DL:31MiB ETA:13s]
+[#63c562 1.1GiB/1.4GiB(74%) CN:5 DL:31MiB ETA:12s]
+[#63c562 1.1GiB/1.4GiB(77%) CN:5 DL:28MiB ETA:12s]
+[#63c562 1.1GiB/1.4GiB(78%) CN:5 DL:29MiB ETA:11s]
+[#63c562 1.1GiB/1.4GiB(78%) CN:5 DL:29MiB ETA:10s]
+[#63c562 1.1GiB/1.4GiB(79%) CN:5 DL:29MiB ETA:10s]
+[#63c562 1.1GiB/1.4GiB(80%) CN:5 DL:29MiB ETA:9s]
+[#63c562 1.2GiB/1.4GiB(82%) CN:5 DL:27MiB ETA:9s]
+[#63c562 1.2GiB/1.4GiB(84%) CN:5 DL:26MiB ETA:8s]
+[#63c562 1.2GiB/1.4GiB(86%) CN:5 DL:24MiB ETA:8s]
+[#63c562 1.2GiB/1.4GiB(87%) CN:5 DL:20MiB ETA:9s]
+[#63c562 1.3GiB/1.4GiB(88%) CN:5 DL:18MiB ETA:9s]
+[#63c562 1.3GiB/1.4GiB(88%) CN:5 DL:17MiB ETA:10s]
+[#63c562 1.3GiB/1.4GiB(88%) CN:5 DL:16MiB ETA:10s]
+[#63c562 1.3GiB/1.4GiB(90%) CN:5 DL:18MiB ETA:7s]
+[#63c562 1.3GiB/1.4GiB(92%) CN:5 DL:19MiB ETA:5s]
+[#63c562 1.4GiB/1.4GiB(95%) CN:4 DL:21MiB ETA:3s]
+[#63c562 1.4GiB/1.4GiB(96%) CN:3 DL:20MiB ETA:2s]
+[#63c562 1.4GiB/1.4GiB(98%) CN:2 DL:20MiB]
+
+11/01 02:13:56 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852406_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+63c562|OK  |    32MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852406_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:13:58 AM INFO: MD5sum OK for SRR15852406_1.fastq.gz
+2026/11/01 02:13:58 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/006/SRR15852406/SRR15852406_2.fastq.gz ..
+
+11/01 02:13:58 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#4b2c04 0B/0B CN:1 DL:0B]
+[#4b2c04 0B/1.5GiB(0%) CN:5 DL:0B]
+[#4b2c04 0B/1.5GiB(0%) CN:5 DL:0B]
+[#4b2c04 0B/1.5GiB(0%) CN:5 DL:0B]
+[#4b2c04 1.6MiB/1.5GiB(0%) CN:5 DL:2.2MiB ETA:11m30s]
+[#4b2c04 31MiB/1.5GiB(1%) CN:5 DL:17MiB ETA:1m27s]
+[#4b2c04 50MiB/1.5GiB(3%) CN:5 DL:18MiB ETA:1m23s]
+[#4b2c04 65MiB/1.5GiB(4%) CN:5 DL:17MiB ETA:1m27s]
+[#4b2c04 84MiB/1.5GiB(5%) CN:5 DL:17MiB ETA:1m24s]
+[#4b2c04 118MiB/1.5GiB(7%) CN:5 DL:20MiB ETA:1m11s]
+[#4b2c04 164MiB/1.5GiB(10%) CN:5 DL:24MiB ETA:58s]
+[#4b2c04 218MiB/1.5GiB(13%) CN:5 DL:27MiB ETA:48s]
+[#4b2c04 284MiB/1.5GiB(18%) CN:5 DL:32MiB ETA:39s]
+[#4b2c04 337MiB/1.5GiB(21%) CN:5 DL:34MiB ETA:35s]
+[#4b2c04 395MiB/1.5GiB(25%) CN:5 DL:39MiB ETA:29s]
+[#4b2c04 450MiB/1.5GiB(28%) CN:5 DL:42MiB ETA:26s]
+[#4b2c04 505MiB/1.5GiB(32%) CN:5 DL:46MiB ETA:22s]
+[#4b2c04 532MiB/1.5GiB(33%) CN:5 DL:47MiB ETA:21s]
+[#4b2c04 560MiB/1.5GiB(35%) CN:5 DL:48MiB ETA:20s]
+[#4b2c04 595MiB/1.5GiB(37%) CN:5 DL:47MiB ETA:20s]
+[#4b2c04 637MiB/1.5GiB(40%) CN:5 DL:46MiB ETA:19s]
+[#4b2c04 676MiB/1.5GiB(43%) CN:5 DL:45MiB ETA:19s]
+[#4b2c04 717MiB/1.5GiB(45%) CN:5 DL:42MiB ETA:19s]
+[#4b2c04 761MiB/1.5GiB(48%) CN:5 DL:41MiB ETA:19s]
+[#4b2c04 807MiB/1.5GiB(51%) CN:5 DL:40MiB ETA:18s]
+[#4b2c04 849MiB/1.5GiB(54%) CN:5 DL:39MiB ETA:18s]
+[#4b2c04 856MiB/1.5GiB(54%) CN:5 DL:34MiB ETA:20s]
+[#4b2c04 856MiB/1.5GiB(54%) CN:5 DL:32MiB ETA:21s]
+[#4b2c04 856MiB/1.5GiB(54%) CN:5 DL:29MiB ETA:24s]
+[#4b2c04 880MiB/1.5GiB(56%) CN:5 DL:27MiB ETA:24s]
+[#4b2c04 0.9GiB/1.5GiB(58%) CN:5 DL:28MiB ETA:22s]
+[#4b2c04 0.9GiB/1.5GiB(62%) CN:5 DL:29MiB ETA:20s]
+[#4b2c04 1.0GiB/1.5GiB(66%) CN:5 DL:31MiB ETA:17s]
+[#4b2c04 1.0GiB/1.5GiB(69%) CN:5 DL:31MiB ETA:15s]
+[#4b2c04 1.0GiB/1.5GiB(71%) CN:5 DL:31MiB ETA:14s]
+[#4b2c04 1.1GiB/1.5GiB(72%) CN:5 DL:37MiB ETA:11s]
+[#4b2c04 1.1GiB/1.5GiB(73%) CN:5 DL:34MiB ETA:12s]
+[#4b2c04 1.1GiB/1.5GiB(74%) CN:5 DL:32MiB ETA:12s]
+[#4b2c04 1.1GiB/1.5GiB(74%) CN:5 DL:33MiB ETA:11s]
+[#4b2c04 1.1GiB/1.5GiB(76%) CN:5 DL:31MiB ETA:11s]
+[#4b2c04 1.1GiB/1.5GiB(78%) CN:5 DL:28MiB ETA:12s]
+[#4b2c04 1.2GiB/1.5GiB(79%) CN:5 DL:24MiB ETA:12s]
+[#4b2c04 1.2GiB/1.5GiB(80%) CN:5 DL:20MiB ETA:14s]
+[#4b2c04 1.2GiB/1.5GiB(80%) CN:5 DL:16MiB ETA:18s]
+[#4b2c04 1.2GiB/1.5GiB(81%) CN:5 DL:15MiB ETA:18s]
+[#4b2c04 1.2GiB/1.5GiB(82%) CN:5 DL:15MiB ETA:18s]
+[#4b2c04 1.2GiB/1.5GiB(82%) CN:5 DL:15MiB ETA:17s]
+[#4b2c04 1.2GiB/1.5GiB(83%) CN:5 DL:14MiB ETA:17s]
+[#4b2c04 1.2GiB/1.5GiB(84%) CN:5 DL:13MiB ETA:17s]
+[#4b2c04 1.3GiB/1.5GiB(85%) CN:5 DL:12MiB ETA:18s]
+[#4b2c04 1.3GiB/1.5GiB(86%) CN:5 DL:11MiB ETA:18s]
+[#4b2c04 1.3GiB/1.5GiB(86%) CN:5 DL:10MiB ETA:20s]
+[#4b2c04 1.3GiB/1.5GiB(87%) CN:5 DL:10MiB ETA:18s]
+[#4b2c04 1.3GiB/1.5GiB(87%) CN:5 DL:11MiB ETA:17s]
+[#4b2c04 1.3GiB/1.5GiB(88%) CN:5 DL:10MiB ETA:18s]
+[#4b2c04 1.3GiB/1.5GiB(88%) CN:5 DL:9.8MiB ETA:18s]
+[#4b2c04 1.3GiB/1.5GiB(89%) CN:5 DL:10MiB ETA:16s]
+[#4b2c04 1.3GiB/1.5GiB(90%) CN:5 DL:10MiB ETA:14s]
+[#4b2c04 1.3GiB/1.5GiB(91%) CN:5 DL:10MiB ETA:13s]
+ *** Download Progress Summary as of Sun Nov  1 02:14:59 2026 *** 
+===============================================================================
+[#4b2c04 1.4GiB/1.5GiB(91%) CN:5 DL:9.5MiB ETA:13s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852406_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#4b2c04 1.4GiB/1.5GiB(91%) CN:5 DL:9.5MiB ETA:13s]
+[#4b2c04 1.4GiB/1.5GiB(92%) CN:5 DL:9.8MiB ETA:12s]
+[#4b2c04 1.4GiB/1.5GiB(93%) CN:5 DL:10MiB ETA:10s]
+[#4b2c04 1.4GiB/1.5GiB(93%) CN:4 DL:9.9MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(93%) CN:4 DL:10MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(94%) CN:4 DL:9.8MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(94%) CN:4 DL:8.9MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(94%) CN:4 DL:8.0MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(95%) CN:4 DL:7.3MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(96%) CN:3 DL:7.5MiB ETA:8s]
+[#4b2c04 1.4GiB/1.5GiB(96%) CN:2 DL:6.8MiB ETA:8s]
+[#4b2c04 1.4GiB/1.5GiB(96%) CN:2 DL:6.2MiB ETA:9s]
+[#4b2c04 1.4GiB/1.5GiB(96%) CN:2 DL:5.7MiB ETA:8s]
+[#4b2c04 1.4GiB/1.5GiB(97%) CN:2 DL:5.8MiB ETA:6s]
+[#4b2c04 1.4GiB/1.5GiB(97%) CN:2 DL:6.3MiB ETA:5s]
+[#4b2c04 1.5GiB/1.5GiB(98%) CN:3 DL:6.9MiB ETA:3s]
+[#4b2c04 1.5GiB/1.5GiB(98%) CN:2 DL:6.9MiB ETA:2s]
+[#4b2c04 1.5GiB/1.5GiB(99%) CN:1 DL:7.1MiB ETA:1s]
+
+11/01 02:15:17 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852406_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+4b2c04|OK  |    20MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852406_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:15:19 AM INFO: MD5sum OK for SRR15852406_2.fastq.gz
+2026/11/01 02:15:19 AM INFO: Verifying gzip file ./SRR15852406_1.fastq.gz ..
+2026/11/01 02:15:39 AM INFO: Verifying gzip file ./SRR15852406_2.fastq.gz ..
+2026/11/01 02:15:59 AM INFO: Method ena-ftp worked.
+2026/11/01 02:15:59 AM INFO: Output files: ./SRR15852406_1.fastq.gz, ./SRR15852406_2.fastq.gz
+2026/11/01 02:15:59 AM INFO: Attempting download method ena-ftp for run SRR15852407 ..
+2026/11/01 02:15:59 AM INFO: Querying ENA for FTP paths for SRR15852407..
+2026/11/01 02:16:00 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_1.fastq.gz ..
+
+11/01 02:16:00 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#1afb4a 0B/0B CN:1 DL:0B]
+[#1afb4a 0B/1.1GiB(0%) CN:5 DL:0B]
+[#1afb4a 0B/1.1GiB(0%) CN:5 DL:0B]
+[#1afb4a 432KiB/1.1GiB(0%) CN:5 DL:648KiB ETA:31m1s]
+[#1afb4a 13MiB/1.1GiB(1%) CN:5 DL:8.0MiB ETA:2m24s]
+[#1afb4a 48MiB/1.1GiB(4%) CN:5 DL:18MiB ETA:1m1s]
+[#1afb4a 79MiB/1.1GiB(6%) CN:5 DL:21MiB ETA:51s]
+[#1afb4a 121MiB/1.1GiB(10%) CN:5 DL:26MiB ETA:40s]
+[#1afb4a 156MiB/1.1GiB(13%) CN:5 DL:27MiB ETA:37s]
+[#1afb4a 197MiB/1.1GiB(16%) CN:5 DL:29MiB ETA:33s]
+[#1afb4a 241MiB/1.1GiB(20%) CN:5 DL:31MiB ETA:29s]
+[#1afb4a 294MiB/1.1GiB(25%) CN:5 DL:34MiB ETA:25s]
+[#1afb4a 341MiB/1.1GiB(28%) CN:5 DL:35MiB ETA:23s]
+[#1afb4a 359MiB/1.1GiB(30%) CN:5 DL:37MiB ETA:22s]
+[#1afb4a 381MiB/1.1GiB(32%) CN:5 DL:37MiB ETA:21s]
+[#1afb4a 415MiB/1.1GiB(35%) CN:5 DL:37MiB ETA:20s]
+[#1afb4a 449MiB/1.1GiB(38%) CN:5 DL:37MiB ETA:19s]
+[#1afb4a 481MiB/1.1GiB(40%) CN:5 DL:36MiB ETA:19s]
+[#1afb4a 511MiB/1.1GiB(43%) CN:5 DL:35MiB ETA:18s]
+[#1afb4a 539MiB/1.1GiB(45%) CN:5 DL:33MiB ETA:18s]
+[#1afb4a 561MiB/1.1GiB(47%) CN:5 DL:30MiB ETA:20s]
+[#1afb4a 566MiB/1.1GiB(48%) CN:5 DL:25MiB ETA:23s]
+[#1afb4a 585MiB/1.1GiB(49%) CN:5 DL:24MiB ETA:24s]
+[#1afb4a 611MiB/1.1GiB(51%) CN:5 DL:25MiB ETA:22s]
+[#1afb4a 633MiB/1.1GiB(53%) CN:5 DL:24MiB ETA:22s]
+[#1afb4a 661MiB/1.1GiB(56%) CN:5 DL:23MiB ETA:21s]
+[#1afb4a 688MiB/1.1GiB(58%) CN:5 DL:23MiB ETA:21s]
+[#1afb4a 717MiB/1.1GiB(60%) CN:5 DL:23MiB ETA:19s]
+[#1afb4a 733MiB/1.1GiB(62%) CN:5 DL:21MiB ETA:20s]
+[#1afb4a 746MiB/1.1GiB(63%) CN:5 DL:20MiB ETA:21s]
+[#1afb4a 763MiB/1.1GiB(64%) CN:5 DL:21MiB ETA:19s]
+[#1afb4a 779MiB/1.1GiB(66%) CN:5 DL:21MiB ETA:18s]
+[#1afb4a 802MiB/1.1GiB(68%) CN:5 DL:21MiB ETA:17s]
+[#1afb4a 834MiB/1.1GiB(70%) CN:5 DL:22MiB ETA:15s]
+[#1afb4a 861MiB/1.1GiB(73%) CN:5 DL:22MiB ETA:14s]
+[#1afb4a 890MiB/1.1GiB(75%) CN:5 DL:22MiB ETA:12s]
+[#1afb4a 906MiB/1.1GiB(76%) CN:5 DL:20MiB ETA:13s]
+[#1afb4a 913MiB/1.1GiB(77%) CN:5 DL:19MiB ETA:13s]
+[#1afb4a 0.9GiB/1.1GiB(78%) CN:5 DL:19MiB ETA:12s]
+[#1afb4a 0.9GiB/1.1GiB(81%) CN:5 DL:21MiB ETA:10s]
+[#1afb4a 0.9GiB/1.1GiB(83%) CN:5 DL:22MiB ETA:8s]
+[#1afb4a 0.9GiB/1.1GiB(85%) CN:5 DL:22MiB ETA:7s]
+[#1afb4a 0.9GiB/1.1GiB(86%) CN:5 DL:20MiB ETA:8s]
+[#1afb4a 1.0GiB/1.1GiB(87%) CN:5 DL:18MiB ETA:8s]
+[#1afb4a 1.0GiB/1.1GiB(88%) CN:5 DL:16MiB ETA:8s]
+[#1afb4a 1.0GiB/1.1GiB(88%) CN:5 DL:15MiB ETA:8s]
+[#1afb4a 1.0GiB/1.1GiB(90%) CN:5 DL:15MiB ETA:7s]
+[#1afb4a 1.0GiB/1.1GiB(92%) CN:5 DL:18MiB ETA:4s]
+[#1afb4a 1.0GiB/1.1GiB(95%) CN:4 DL:19MiB ETA:3s]
+[#1afb4a 1.1GiB/1.1GiB(95%) CN:3 DL:17MiB ETA:2s]
+[#1afb4a 1.1GiB/1.1GiB(96%) CN:3 DL:14MiB ETA:3s]
+[#1afb4a 1.1GiB/1.1GiB(96%) CN:3 DL:13MiB ETA:3s]
+[#1afb4a 1.1GiB/1.1GiB(96%) CN:2 DL:11MiB ETA:3s]
+[#1afb4a 1.1GiB/1.1GiB(96%) CN:2 DL:9.8MiB ETA:4s]
+[#1afb4a 1.1GiB/1.1GiB(96%) CN:2 DL:9.7MiB ETA:4s]
+[#1afb4a 1.1GiB/1.1GiB(97%) CN:2 DL:8.3MiB ETA:3s]
+[#1afb4a 1.1GiB/1.1GiB(98%) CN:1 DL:5.2MiB ETA:4s]
+[#1afb4a 1.1GiB/1.1GiB(99%) CN:1 DL:4.6MiB ETA:2s]
+ *** Download Progress Summary as of Sun Nov  1 02:17:00 2026 *** 
+===============================================================================
+[#1afb4a 1.1GiB/1.1GiB(99%) CN:1 DL:4.7MiB]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_1.fastq.gz
+-------------------------------------------------------------------------------
+
+[#1afb4a 1.1GiB/1.1GiB(99%) CN:1 DL:4.7MiB]
+
+11/01 02:17:00 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1afb4a|OK  |    20MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:17:02 AM INFO: MD5sum OK for SRR15852407_1.fastq.gz
+2026/11/01 02:17:02 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/007/SRR15852407/SRR15852407_2.fastq.gz ..
+
+11/01 02:17:02 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#47ad33 0B/0B CN:1 DL:0B]
+[#47ad33 0B/1.1GiB(0%) CN:5 DL:0B]
+[#47ad33 0B/1.1GiB(0%) CN:5 DL:0B]
+[#47ad33 0B/1.1GiB(0%) CN:5 DL:0B]
+[#47ad33 1.4MiB/1.1GiB(0%) CN:5 DL:1.8MiB ETA:11m5s]
+[#47ad33 32MiB/1.1GiB(2%) CN:5 DL:17MiB ETA:1m6s]
+[#47ad33 51MiB/1.1GiB(4%) CN:5 DL:17MiB ETA:1m4s]
+[#47ad33 75MiB/1.1GiB(6%) CN:5 DL:19MiB ETA:58s]
+[#47ad33 100MiB/1.1GiB(8%) CN:5 DL:20MiB ETA:54s]
+[#47ad33 131MiB/1.1GiB(10%) CN:5 DL:22MiB ETA:48s]
+[#47ad33 166MiB/1.1GiB(13%) CN:5 DL:24MiB ETA:43s]
+[#47ad33 212MiB/1.1GiB(17%) CN:5 DL:26MiB ETA:37s]
+[#47ad33 274MiB/1.1GiB(22%) CN:5 DL:31MiB ETA:30s]
+[#47ad33 324MiB/1.1GiB(26%) CN:5 DL:32MiB ETA:26s]
+[#47ad33 335MiB/1.1GiB(27%) CN:5 DL:33MiB ETA:26s]
+[#47ad33 337MiB/1.1GiB(27%) CN:5 DL:30MiB ETA:28s]
+[#47ad33 347MiB/1.1GiB(28%) CN:5 DL:29MiB ETA:29s]
+[#47ad33 378MiB/1.1GiB(31%) CN:5 DL:30MiB ETA:27s]
+[#47ad33 418MiB/1.1GiB(34%) CN:5 DL:32MiB ETA:24s]
+[#47ad33 454MiB/1.1GiB(37%) CN:5 DL:32MiB ETA:23s]
+[#47ad33 500MiB/1.1GiB(41%) CN:5 DL:33MiB ETA:21s]
+[#47ad33 509MiB/1.1GiB(42%) CN:5 DL:28MiB ETA:24s]
+[#47ad33 540MiB/1.1GiB(44%) CN:5 DL:25MiB ETA:26s]
+[#47ad33 579MiB/1.1GiB(47%) CN:5 DL:26MiB ETA:23s]
+[#47ad33 620MiB/1.1GiB(51%) CN:5 DL:31MiB ETA:18s]
+[#47ad33 667MiB/1.1GiB(55%) CN:5 DL:35MiB ETA:15s]
+[#47ad33 711MiB/1.1GiB(58%) CN:5 DL:36MiB ETA:13s]
+[#47ad33 755MiB/1.1GiB(62%) CN:5 DL:38MiB ETA:11s]
+[#47ad33 785MiB/1.1GiB(64%) CN:5 DL:36MiB ETA:11s]
+[#47ad33 791MiB/1.1GiB(65%) CN:5 DL:31MiB ETA:13s]
+[#47ad33 805MiB/1.1GiB(66%) CN:5 DL:32MiB ETA:12s]
+[#47ad33 832MiB/1.1GiB(68%) CN:5 DL:31MiB ETA:11s]
+[#47ad33 868MiB/1.1GiB(71%) CN:5 DL:31MiB ETA:10s]
+[#47ad33 904MiB/1.1GiB(74%) CN:5 DL:30MiB ETA:10s]
+[#47ad33 0.9GiB/1.1GiB(77%) CN:5 DL:30MiB ETA:8s]
+[#47ad33 0.9GiB/1.1GiB(79%) CN:5 DL:28MiB ETA:8s]
+[#47ad33 0.9GiB/1.1GiB(82%) CN:5 DL:27MiB ETA:7s]
+[#47ad33 1.0GiB/1.1GiB(85%) CN:5 DL:26MiB ETA:6s]
+[#47ad33 1.0GiB/1.1GiB(87%) CN:5 DL:28MiB ETA:5s]
+[#47ad33 1.0GiB/1.1GiB(90%) CN:5 DL:30MiB ETA:3s]
+[#47ad33 1.0GiB/1.1GiB(92%) CN:5 DL:30MiB ETA:3s]
+[#47ad33 1.1GiB/1.1GiB(93%) CN:5 DL:30MiB ETA:2s]
+[#47ad33 1.1GiB/1.1GiB(94%) CN:3 DL:26MiB ETA:2s]
+[#47ad33 1.1GiB/1.1GiB(94%) CN:3 DL:22MiB ETA:2s]
+[#47ad33 1.1GiB/1.1GiB(94%) CN:3 DL:19MiB ETA:3s]
+[#47ad33 1.1GiB/1.1GiB(94%) CN:3 DL:15MiB ETA:4s]
+[#47ad33 1.1GiB/1.1GiB(95%) CN:3 DL:12MiB ETA:3s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:9.6MiB ETA:4s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:6.7MiB ETA:6s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:4.7MiB ETA:8s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:2.6MiB ETA:15s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:2.4MiB ETA:16s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:2.3MiB ETA:17s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:2.0MiB ETA:19s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:2.0MiB ETA:20s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:634KiB ETA:1m6s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+ *** Download Progress Summary as of Sun Nov  1 02:18:03 2026 *** 
+===============================================================================
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:625KiB ETA:1m6s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:711KiB ETA:57s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:450KiB ETA:1m30s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:341KiB ETA:1m59s]
+[#47ad33 1.1GiB/1.1GiB(96%) CN:2 DL:786KiB ETA:48s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:2 DL:2.8MiB ETA:8s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:2.4MiB ETA:8s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:2.1MiB ETA:9s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:1.9MiB ETA:10s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:2.5MiB ETA:8s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:2.2MiB ETA:9s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:1.9MiB ETA:10s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:1.8MiB ETA:11s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:303KiB ETA:1m12s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:273KiB ETA:1m20s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:0B]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:101KiB ETA:3m36s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:50KiB ETA:7m18s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:28KiB ETA:13m2s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:19KiB ETA:18m45s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:18KiB ETA:20m2s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:23KiB ETA:15m27s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:20KiB ETA:18m1s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:17KiB ETA:20m55s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:15KiB ETA:24m2s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:13KiB ETA:26m53s]
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:12KiB ETA:29m19s]
+ *** Download Progress Summary as of Sun Nov  1 02:19:03 2026 *** 
+===============================================================================
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:711KiB ETA:23s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#47ad33 1.1GiB/1.1GiB(98%) CN:1 DL:711KiB ETA:23s]
+[#47ad33 1.1GiB/1.1GiB(99%) CN:1 DL:2.1MiB ETA:1s]
+[#47ad33 1.1GiB/1.1GiB(99%) CN:1 DL:2.4MiB]
+[#47ad33 1.1GiB/1.1GiB(99%) CN:1 DL:2.2MiB]
+
+11/01 02:19:07 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+47ad33|OK  |   9.8MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852407_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:19:09 AM INFO: MD5sum OK for SRR15852407_2.fastq.gz
+2026/11/01 02:19:09 AM INFO: Verifying gzip file ./SRR15852407_1.fastq.gz ..
+2026/11/01 02:19:24 AM INFO: Verifying gzip file ./SRR15852407_2.fastq.gz ..
+2026/11/01 02:19:40 AM INFO: Method ena-ftp worked.
+2026/11/01 02:19:40 AM INFO: Output files: ./SRR15852407_1.fastq.gz, ./SRR15852407_2.fastq.gz
+2026/11/01 02:19:40 AM INFO: Attempting download method ena-ftp for run SRR15852411 ..
+2026/11/01 02:19:40 AM INFO: Querying ENA for FTP paths for SRR15852411..
+2026/11/01 02:19:40 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_1.fastq.gz ..
+
+11/01 02:19:40 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#d9c19a 0B/0B CN:1 DL:0B]
+[#d9c19a 0B/1.3GiB(0%) CN:5 DL:0B]
+[#d9c19a 96KiB/1.3GiB(0%) CN:5 DL:259KiB ETA:1h27m57s]
+[#d9c19a 8.1MiB/1.3GiB(0%) CN:5 DL:5.9MiB ETA:3m44s]
+[#d9c19a 21MiB/1.3GiB(1%) CN:5 DL:9.1MiB ETA:2m23s]
+[#d9c19a 45MiB/1.3GiB(3%) CN:5 DL:13MiB ETA:1m36s]
+[#d9c19a 47MiB/1.3GiB(3%) CN:5 DL:10MiB ETA:2m3s]
+[#d9c19a 47MiB/1.3GiB(3%) CN:5 DL:8.5MiB ETA:2m31s]
+[#d9c19a 57MiB/1.3GiB(4%) CN:5 DL:8.7MiB ETA:2m26s]
+[#d9c19a 67MiB/1.3GiB(5%) CN:5 DL:8.9MiB ETA:2m20s]
+[#d9c19a 82MiB/1.3GiB(6%) CN:5 DL:9.7MiB ETA:2m9s]
+[#d9c19a 122MiB/1.3GiB(9%) CN:5 DL:12MiB ETA:1m34s]
+[#d9c19a 181MiB/1.3GiB(13%) CN:5 DL:18MiB ETA:1m1s]
+[#d9c19a 221MiB/1.3GiB(16%) CN:5 DL:21MiB ETA:51s]
+[#d9c19a 268MiB/1.3GiB(20%) CN:5 DL:24MiB ETA:44s]
+[#d9c19a 310MiB/1.3GiB(23%) CN:5 DL:31MiB ETA:32s]
+[#d9c19a 333MiB/1.3GiB(24%) CN:5 DL:30MiB ETA:32s]
+[#d9c19a 357MiB/1.3GiB(26%) CN:5 DL:32MiB ETA:29s]
+[#d9c19a 381MiB/1.3GiB(28%) CN:5 DL:34MiB ETA:27s]
+[#d9c19a 405MiB/1.3GiB(30%) CN:5 DL:35MiB ETA:26s]
+[#d9c19a 432MiB/1.3GiB(32%) CN:5 DL:35MiB ETA:25s]
+[#d9c19a 461MiB/1.3GiB(34%) CN:5 DL:31MiB ETA:27s]
+[#d9c19a 489MiB/1.3GiB(36%) CN:5 DL:29MiB ETA:28s]
+[#d9c19a 512MiB/1.3GiB(38%) CN:5 DL:27MiB ETA:29s]
+[#d9c19a 534MiB/1.3GiB(40%) CN:5 DL:25MiB ETA:31s]
+[#d9c19a 552MiB/1.3GiB(41%) CN:5 DL:24MiB ETA:32s]
+[#d9c19a 579MiB/1.3GiB(43%) CN:5 DL:24MiB ETA:30s]
+[#d9c19a 606MiB/1.3GiB(45%) CN:5 DL:25MiB ETA:28s]
+[#d9c19a 639MiB/1.3GiB(47%) CN:5 DL:25MiB ETA:26s]
+[#d9c19a 676MiB/1.3GiB(50%) CN:5 DL:27MiB ETA:24s]
+[#d9c19a 704MiB/1.3GiB(52%) CN:5 DL:27MiB ETA:23s]
+[#d9c19a 725MiB/1.3GiB(54%) CN:5 DL:26MiB ETA:23s]
+[#d9c19a 743MiB/1.3GiB(55%) CN:5 DL:25MiB ETA:23s]
+[#d9c19a 757MiB/1.3GiB(56%) CN:5 DL:24MiB ETA:23s]
+[#d9c19a 769MiB/1.3GiB(57%) CN:5 DL:23MiB ETA:23s]
+[#d9c19a 781MiB/1.3GiB(58%) CN:5 DL:22MiB ETA:24s]
+[#d9c19a 791MiB/1.3GiB(59%) CN:5 DL:21MiB ETA:25s]
+[#d9c19a 805MiB/1.3GiB(60%) CN:5 DL:19MiB ETA:27s]
+[#d9c19a 824MiB/1.3GiB(61%) CN:5 DL:17MiB ETA:28s]
+[#d9c19a 844MiB/1.3GiB(63%) CN:5 DL:16MiB ETA:29s]
+[#d9c19a 880MiB/1.3GiB(65%) CN:5 DL:17MiB ETA:25s]
+[#d9c19a 909MiB/1.3GiB(68%) CN:5 DL:18MiB ETA:23s]
+[#d9c19a 0.9GiB/1.3GiB(69%) CN:5 DL:18MiB ETA:21s]
+[#d9c19a 0.9GiB/1.3GiB(71%) CN:5 DL:19MiB ETA:19s]
+[#d9c19a 0.9GiB/1.3GiB(72%) CN:5 DL:20MiB ETA:17s]
+[#d9c19a 0.9GiB/1.3GiB(73%) CN:5 DL:20MiB ETA:16s]
+[#d9c19a 0.9GiB/1.3GiB(74%) CN:5 DL:21MiB ETA:15s]
+[#d9c19a 1.0GiB/1.3GiB(77%) CN:5 DL:22MiB ETA:13s]
+[#d9c19a 1.0GiB/1.3GiB(80%) CN:5 DL:24MiB ETA:10s]
+[#d9c19a 1.0GiB/1.3GiB(82%) CN:5 DL:24MiB ETA:9s]
+[#d9c19a 1.0GiB/1.3GiB(82%) CN:5 DL:20MiB ETA:11s]
+[#d9c19a 1.0GiB/1.3GiB(82%) CN:5 DL:19MiB ETA:11s]
+[#d9c19a 1.0GiB/1.3GiB(83%) CN:5 DL:17MiB ETA:12s]
+[#d9c19a 1.1GiB/1.3GiB(85%) CN:5 DL:18MiB ETA:10s]
+[#d9c19a 1.1GiB/1.3GiB(87%) CN:5 DL:19MiB ETA:8s]
+[#d9c19a 1.1GiB/1.3GiB(89%) CN:4 DL:21MiB ETA:6s]
+[#d9c19a 1.1GiB/1.3GiB(91%) CN:4 DL:21MiB ETA:5s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:3 DL:19MiB ETA:4s]
+ *** Download Progress Summary as of Sun Nov  1 02:20:40 2026 *** 
+===============================================================================
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:14MiB ETA:5s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852411_1.fastq.gz
+-------------------------------------------------------------------------------
+
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:14MiB ETA:5s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:16MiB ETA:4s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:14MiB ETA:5s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:14MiB ETA:5s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:11MiB ETA:6s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:8.5MiB ETA:9s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:5.2MiB ETA:15s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:2.3MiB ETA:35s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:547KiB ETA:2m32s]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:0B]
+[#d9c19a 1.2GiB/1.3GiB(93%) CN:2 DL:1.1MiB ETA:1m8s]
+[#d9c19a 1.2GiB/1.3GiB(94%) CN:2 DL:3.2MiB ETA:23s]
+[#d9c19a 1.2GiB/1.3GiB(94%) CN:2 DL:4.6MiB ETA:14s]
+[#d9c19a 1.2GiB/1.3GiB(95%) CN:2 DL:5.2MiB ETA:11s]
+[#d9c19a 1.2GiB/1.3GiB(95%) CN:2 DL:5.6MiB ETA:9s]
+[#d9c19a 1.2GiB/1.3GiB(96%) CN:2 DL:5.9MiB ETA:7s]
+[#d9c19a 1.2GiB/1.3GiB(96%) CN:1 DL:5.1MiB ETA:8s]
+[#d9c19a 1.2GiB/1.3GiB(96%) CN:1 DL:5.0MiB ETA:8s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:1 DL:4.6MiB ETA:8s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:1 DL:4.3MiB ETA:9s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:1 DL:3.8MiB ETA:10s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:2 DL:3.3MiB ETA:11s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:2 DL:2.8MiB ETA:12s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:2 DL:2.3MiB ETA:13s]
+[#d9c19a 1.2GiB/1.3GiB(97%) CN:2 DL:1.9MiB ETA:14s]
+[#d9c19a 1.2GiB/1.3GiB(98%) CN:2 DL:2.1MiB ETA:11s]
+[#d9c19a 1.2GiB/1.3GiB(99%) CN:2 DL:3.6MiB ETA:2s]
+[#d9c19a 1.2GiB/1.3GiB(99%) CN:1 DL:4.3MiB ETA:1s]
+[#d9c19a 1.2GiB/1.3GiB(99%) CN:1 DL:3.9MiB ETA:1s]
+[#d9c19a 1.3GiB/1.3GiB(99%) CN:1 DL:4.1MiB]
+[#d9c19a 1.3GiB/1.3GiB(99%) CN:1 DL:3.8MiB]
+[#d9c19a 1.3GiB/1.3GiB(99%) CN:1 DL:3.5MiB]
+[#d9c19a 1.3GiB/1.3GiB(99%) CN:1 DL:3.2MiB]
+
+11/01 02:21:21 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852411_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+d9c19a|OK  |    13MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852411_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:21:23 AM INFO: MD5sum OK for SRR15852411_1.fastq.gz
+2026/11/01 02:21:23 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/011/SRR15852411/SRR15852411_2.fastq.gz ..
+
+11/01 02:21:23 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#af154b 0B/0B CN:1 DL:0B]
+[#af154b 0B/1.3GiB(0%) CN:5 DL:0B]
+[#af154b 208KiB/1.3GiB(0%) CN:5 DL:381KiB ETA:1h1m36s]
+[#af154b 9.6MiB/1.3GiB(0%) CN:5 DL:6.2MiB ETA:3m38s]
+[#af154b 22MiB/1.3GiB(1%) CN:5 DL:8.7MiB ETA:2m35s]
+[#af154b 50MiB/1.3GiB(3%) CN:5 DL:14MiB ETA:1m32s]
+[#af154b 109MiB/1.3GiB(7%) CN:5 DL:24MiB ETA:52s]
+[#af154b 177MiB/1.3GiB(12%) CN:5 DL:32MiB ETA:37s]
+[#af154b 211MiB/1.3GiB(15%) CN:5 DL:32MiB ETA:36s]
+[#af154b 252MiB/1.3GiB(18%) CN:5 DL:33MiB ETA:33s]
+[#af154b 299MiB/1.3GiB(21%) CN:5 DL:35MiB ETA:30s]
+[#af154b 351MiB/1.3GiB(25%) CN:5 DL:36MiB ETA:27s]
+[#af154b 400MiB/1.3GiB(29%) CN:5 DL:42MiB ETA:23s]
+[#af154b 448MiB/1.3GiB(32%) CN:5 DL:45MiB ETA:20s]
+[#af154b 500MiB/1.3GiB(36%) CN:5 DL:49MiB ETA:17s]
+[#af154b 541MiB/1.3GiB(39%) CN:5 DL:48MiB ETA:17s]
+[#af154b 597MiB/1.3GiB(43%) CN:5 DL:47MiB ETA:16s]
+[#af154b 644MiB/1.3GiB(46%) CN:5 DL:47MiB ETA:15s]
+[#af154b 686MiB/1.3GiB(49%) CN:5 DL:48MiB ETA:14s]
+[#af154b 729MiB/1.3GiB(53%) CN:5 DL:47MiB ETA:13s]
+[#af154b 767MiB/1.3GiB(55%) CN:5 DL:46MiB ETA:13s]
+[#af154b 800MiB/1.3GiB(58%) CN:5 DL:44MiB ETA:12s]
+[#af154b 830MiB/1.3GiB(60%) CN:5 DL:42MiB ETA:12s]
+[#af154b 843MiB/1.3GiB(61%) CN:5 DL:38MiB ETA:13s]
+[#af154b 865MiB/1.3GiB(62%) CN:5 DL:36MiB ETA:14s]
+[#af154b 901MiB/1.3GiB(65%) CN:5 DL:33MiB ETA:14s]
+[#af154b 0.9GiB/1.3GiB(67%) CN:5 DL:32MiB ETA:13s]
+[#af154b 0.9GiB/1.3GiB(71%) CN:5 DL:32MiB ETA:12s]
+[#af154b 1.0GiB/1.3GiB(75%) CN:5 DL:34MiB ETA:9s]
+[#af154b 1.0GiB/1.3GiB(78%) CN:5 DL:34MiB ETA:8s]
+[#af154b 1.0GiB/1.3GiB(81%) CN:5 DL:35MiB ETA:7s]
+[#af154b 1.1GiB/1.3GiB(84%) CN:5 DL:37MiB ETA:5s]
+[#af154b 1.1GiB/1.3GiB(87%) CN:5 DL:40MiB ETA:4s]
+[#af154b 1.2GiB/1.3GiB(89%) CN:5 DL:39MiB ETA:3s]
+[#af154b 1.2GiB/1.3GiB(91%) CN:5 DL:39MiB ETA:2s]
+[#af154b 1.2GiB/1.3GiB(92%) CN:4 DL:37MiB ETA:2s]
+[#af154b 1.2GiB/1.3GiB(93%) CN:4 DL:35MiB ETA:2s]
+[#af154b 1.2GiB/1.3GiB(95%) CN:4 DL:33MiB ETA:1s]
+[#af154b 1.2GiB/1.3GiB(96%) CN:3 DL:29MiB ETA:1s]
+[#af154b 1.3GiB/1.3GiB(97%) CN:3 DL:26MiB ETA:1s]
+[#af154b 1.3GiB/1.3GiB(98%) CN:2 DL:22MiB ETA:1s]
+[#af154b 1.3GiB/1.3GiB(98%) CN:1 DL:16MiB ETA:1s]
+[#af154b 1.3GiB/1.3GiB(99%) CN:1 DL:13MiB ETA:1s]
+
+11/01 02:22:07 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852411_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+af154b|OK  |    32MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852411_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:22:10 AM INFO: MD5sum OK for SRR15852411_2.fastq.gz
+2026/11/01 02:22:10 AM INFO: Verifying gzip file ./SRR15852411_1.fastq.gz ..
+2026/11/01 02:22:27 AM INFO: Verifying gzip file ./SRR15852411_2.fastq.gz ..
+2026/11/01 02:22:44 AM INFO: Method ena-ftp worked.
+2026/11/01 02:22:44 AM INFO: Output files: ./SRR15852411_1.fastq.gz, ./SRR15852411_2.fastq.gz
+2026/11/01 02:22:44 AM INFO: Attempting download method ena-ftp for run SRR15852415 ..
+2026/11/01 02:22:44 AM INFO: Querying ENA for FTP paths for SRR15852415..
+2026/11/01 02:22:45 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/015/SRR15852415/SRR15852415_1.fastq.gz ..
+
+11/01 02:22:45 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#d4b56f 0B/0B CN:1 DL:0B]
+[#d4b56f 0B/1.8GiB(0%) CN:5 DL:0B]
+[#d4b56f 32KiB/1.8GiB(0%) CN:5 DL:181KiB ETA:2h54m37s]
+[#d4b56f 6.4MiB/1.8GiB(0%) CN:5 DL:5.2MiB ETA:5m55s]
+[#d4b56f 18MiB/1.8GiB(1%) CN:5 DL:8.2MiB ETA:3m41s]
+[#d4b56f 44MiB/1.8GiB(2%) CN:5 DL:13MiB ETA:2m11s]
+[#d4b56f 78MiB/1.8GiB(4%) CN:5 DL:18MiB ETA:1m35s]
+[#d4b56f 108MiB/1.8GiB(5%) CN:5 DL:20MiB ETA:1m25s]
+[#d4b56f 140MiB/1.8GiB(7%) CN:5 DL:22MiB ETA:1m16s]
+[#d4b56f 174MiB/1.8GiB(9%) CN:5 DL:23MiB ETA:1m10s]
+[#d4b56f 216MiB/1.8GiB(11%) CN:5 DL:26MiB ETA:1m2s]
+[#d4b56f 258MiB/1.8GiB(13%) CN:5 DL:27MiB ETA:57s]
+[#d4b56f 303MiB/1.8GiB(16%) CN:5 DL:32MiB ETA:47s]
+[#d4b56f 344MiB/1.8GiB(18%) CN:5 DL:35MiB ETA:42s]
+[#d4b56f 388MiB/1.8GiB(20%) CN:5 DL:38MiB ETA:38s]
+[#d4b56f 411MiB/1.8GiB(22%) CN:5 DL:36MiB ETA:39s]
+[#d4b56f 445MiB/1.8GiB(24%) CN:5 DL:37MiB ETA:37s]
+[#d4b56f 475MiB/1.8GiB(25%) CN:5 DL:37MiB ETA:36s]
+[#d4b56f 500MiB/1.8GiB(26%) CN:5 DL:36MiB ETA:37s]
+[#d4b56f 523MiB/1.8GiB(28%) CN:5 DL:34MiB ETA:38s]
+[#d4b56f 549MiB/1.8GiB(29%) CN:5 DL:32MiB ETA:40s]
+[#d4b56f 576MiB/1.8GiB(31%) CN:5 DL:30MiB ETA:41s]
+[#d4b56f 604MiB/1.8GiB(32%) CN:5 DL:28MiB ETA:43s]
+[#d4b56f 632MiB/1.8GiB(34%) CN:5 DL:27MiB ETA:44s]
+[#d4b56f 662MiB/1.8GiB(35%) CN:5 DL:28MiB ETA:42s]
+[#d4b56f 680MiB/1.8GiB(36%) CN:5 DL:27MiB ETA:43s]
+[#d4b56f 709MiB/1.8GiB(38%) CN:5 DL:26MiB ETA:43s]
+[#d4b56f 736MiB/1.8GiB(39%) CN:5 DL:26MiB ETA:42s]
+[#d4b56f 774MiB/1.8GiB(41%) CN:5 DL:27MiB ETA:39s]
+[#d4b56f 812MiB/1.8GiB(43%) CN:5 DL:28MiB ETA:36s]
+[#d4b56f 852MiB/1.8GiB(45%) CN:5 DL:30MiB ETA:32s]
+[#d4b56f 887MiB/1.8GiB(47%) CN:5 DL:31MiB ETA:30s]
+[#d4b56f 0.9GiB/1.8GiB(49%) CN:5 DL:32MiB ETA:28s]
+[#d4b56f 0.9GiB/1.8GiB(51%) CN:5 DL:32MiB ETA:27s]
+[#d4b56f 0.9GiB/1.8GiB(53%) CN:5 DL:33MiB ETA:26s]
+[#d4b56f 0.9GiB/1.8GiB(54%) CN:5 DL:33MiB ETA:24s]
+[#d4b56f 1.0GiB/1.8GiB(56%) CN:5 DL:33MiB ETA:24s]
+[#d4b56f 1.0GiB/1.8GiB(57%) CN:5 DL:33MiB ETA:23s]
+[#d4b56f 1.0GiB/1.8GiB(59%) CN:5 DL:31MiB ETA:23s]
+[#d4b56f 1.0GiB/1.8GiB(60%) CN:5 DL:30MiB ETA:24s]
+[#d4b56f 1.1GiB/1.8GiB(61%) CN:5 DL:29MiB ETA:24s]
+[#d4b56f 1.1GiB/1.8GiB(63%) CN:5 DL:28MiB ETA:24s]
+[#d4b56f 1.1GiB/1.8GiB(64%) CN:5 DL:27MiB ETA:24s]
+[#d4b56f 1.1GiB/1.8GiB(65%) CN:5 DL:26MiB ETA:24s]
+[#d4b56f 1.2GiB/1.8GiB(66%) CN:5 DL:25MiB ETA:24s]
+[#d4b56f 1.2GiB/1.8GiB(67%) CN:5 DL:23MiB ETA:26s]
+[#d4b56f 1.2GiB/1.8GiB(68%) CN:5 DL:22MiB ETA:26s]
+[#d4b56f 1.2GiB/1.8GiB(69%) CN:5 DL:21MiB ETA:26s]
+[#d4b56f 1.2GiB/1.8GiB(70%) CN:5 DL:20MiB ETA:26s]
+[#d4b56f 1.2GiB/1.8GiB(71%) CN:5 DL:19MiB ETA:27s]
+[#d4b56f 1.3GiB/1.8GiB(72%) CN:5 DL:18MiB ETA:27s]
+[#d4b56f 1.3GiB/1.8GiB(72%) CN:5 DL:18MiB ETA:27s]
+[#d4b56f 1.3GiB/1.8GiB(73%) CN:5 DL:17MiB ETA:28s]
+[#d4b56f 1.3GiB/1.8GiB(74%) CN:5 DL:16MiB ETA:29s]
+[#d4b56f 1.3GiB/1.8GiB(75%) CN:5 DL:16MiB ETA:26s]
+[#d4b56f 1.3GiB/1.8GiB(76%) CN:5 DL:16MiB ETA:26s]
+[#d4b56f 1.3GiB/1.8GiB(76%) CN:5 DL:15MiB ETA:27s]
+[#d4b56f 1.4GiB/1.8GiB(77%) CN:5 DL:15MiB ETA:27s]
+[#d4b56f 1.4GiB/1.8GiB(78%) CN:5 DL:15MiB ETA:26s]
+[#d4b56f 1.4GiB/1.8GiB(79%) CN:5 DL:15MiB ETA:25s]
+ *** Download Progress Summary as of Sun Nov  1 02:23:46 2026 *** 
+===============================================================================
+[#d4b56f 1.4GiB/1.8GiB(80%) CN:5 DL:14MiB ETA:24s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852415_1.fastq.gz
+-------------------------------------------------------------------------------
+
+[#d4b56f 1.4GiB/1.8GiB(80%) CN:5 DL:14MiB ETA:24s]
+[#d4b56f 1.4GiB/1.8GiB(80%) CN:5 DL:14MiB ETA:24s]
+[#d4b56f 1.4GiB/1.8GiB(81%) CN:5 DL:14MiB ETA:23s]
+[#d4b56f 1.5GiB/1.8GiB(82%) CN:5 DL:15MiB ETA:20s]
+[#d4b56f 1.5GiB/1.8GiB(84%) CN:5 DL:16MiB ETA:17s]
+[#d4b56f 1.5GiB/1.8GiB(85%) CN:5 DL:17MiB ETA:15s]
+[#d4b56f 1.5GiB/1.8GiB(86%) CN:5 DL:17MiB ETA:14s]
+[#d4b56f 1.5GiB/1.8GiB(87%) CN:5 DL:17MiB ETA:13s]
+[#d4b56f 1.5GiB/1.8GiB(87%) CN:5 DL:17MiB ETA:12s]
+[#d4b56f 1.6GiB/1.8GiB(88%) CN:5 DL:17MiB ETA:11s]
+[#d4b56f 1.6GiB/1.8GiB(89%) CN:5 DL:17MiB ETA:10s]
+[#d4b56f 1.6GiB/1.8GiB(90%) CN:5 DL:17MiB ETA:10s]
+[#d4b56f 1.6GiB/1.8GiB(91%) CN:5 DL:17MiB ETA:8s]
+[#d4b56f 1.6GiB/1.8GiB(93%) CN:5 DL:18MiB ETA:6s]
+[#d4b56f 1.7GiB/1.8GiB(94%) CN:5 DL:18MiB ETA:5s]
+[#d4b56f 1.7GiB/1.8GiB(95%) CN:3 DL:19MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(96%) CN:3 DL:19MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(96%) CN:2 DL:18MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(96%) CN:2 DL:16MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:15MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:14MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:12MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:9.0MiB ETA:4s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:6.6MiB ETA:6s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:4.0MiB ETA:9s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:2 DL:2.3MiB ETA:16s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:1.9MiB ETA:20s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:1.7MiB ETA:23s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:1.3MiB ETA:29s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:1.0MiB ETA:36s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:806KiB ETA:50s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:462KiB ETA:1m28s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:218KiB ETA:3m7s]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:0B]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:0B]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:0B]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:0B]
+[#d4b56f 1.7GiB/1.8GiB(97%) CN:1 DL:1.7MiB ETA:21s]
+[#d4b56f 1.7GiB/1.8GiB(98%) CN:1 DL:7.4MiB ETA:3s]
+[#d4b56f 1.7GiB/1.8GiB(99%) CN:2 DL:9.2MiB ETA:1s]
+[#d4b56f 1.7GiB/1.8GiB(99%) CN:2 DL:7.3MiB ETA:1s]
+[#d4b56f 1.7GiB/1.8GiB(99%) CN:2 DL:5.7MiB ETA:1s]
+[#d4b56f 1.8GiB/1.8GiB(99%) CN:1 DL:5.9MiB]
+
+11/01 02:24:30 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852415_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+d4b56f|OK  |    18MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852415_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:24:33 AM INFO: MD5sum OK for SRR15852415_1.fastq.gz
+2026/11/01 02:24:33 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/015/SRR15852415/SRR15852415_2.fastq.gz ..
+
+11/01 02:24:33 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#8b93a8 0B/0B CN:1 DL:0B]
+[#8b93a8 0B/1.8GiB(0%) CN:5 DL:0B]
+[#8b93a8 0B/1.8GiB(0%) CN:5 DL:0B]
+[#8b93a8 432KiB/1.8GiB(0%) CN:5 DL:647KiB ETA:50m16s]
+[#8b93a8 13MiB/1.8GiB(0%) CN:5 DL:8.0MiB ETA:3m56s]
+[#8b93a8 66MiB/1.8GiB(3%) CN:5 DL:24MiB ETA:1m15s]
+[#8b93a8 126MiB/1.8GiB(6%) CN:5 DL:34MiB ETA:52s]
+[#8b93a8 181MiB/1.8GiB(9%) CN:5 DL:38MiB ETA:44s]
+[#8b93a8 235MiB/1.8GiB(12%) CN:5 DL:41MiB ETA:40s]
+[#8b93a8 283MiB/1.8GiB(14%) CN:5 DL:42MiB ETA:38s]
+[#8b93a8 311MiB/1.8GiB(16%) CN:5 DL:40MiB ETA:39s]
+[#8b93a8 347MiB/1.8GiB(18%) CN:5 DL:40MiB ETA:38s]
+[#8b93a8 390MiB/1.8GiB(20%) CN:5 DL:40MiB ETA:37s]
+[#8b93a8 430MiB/1.8GiB(22%) CN:5 DL:44MiB ETA:33s]
+[#8b93a8 471MiB/1.8GiB(24%) CN:5 DL:45MiB ETA:31s]
+[#8b93a8 523MiB/1.8GiB(27%) CN:5 DL:45MiB ETA:30s]
+[#8b93a8 576MiB/1.8GiB(30%) CN:5 DL:45MiB ETA:29s]
+[#8b93a8 626MiB/1.8GiB(32%) CN:5 DL:44MiB ETA:28s]
+[#8b93a8 657MiB/1.8GiB(34%) CN:5 DL:41MiB ETA:30s]
+[#8b93a8 676MiB/1.8GiB(35%) CN:5 DL:39MiB ETA:30s]
+[#8b93a8 694MiB/1.8GiB(36%) CN:5 DL:38MiB ETA:31s]
+[#8b93a8 723MiB/1.8GiB(37%) CN:5 DL:37MiB ETA:31s]
+[#8b93a8 756MiB/1.8GiB(39%) CN:5 DL:36MiB ETA:31s]
+[#8b93a8 789MiB/1.8GiB(41%) CN:5 DL:35MiB ETA:31s]
+[#8b93a8 817MiB/1.8GiB(42%) CN:5 DL:33MiB ETA:32s]
+[#8b93a8 840MiB/1.8GiB(44%) CN:5 DL:30MiB ETA:35s]
+[#8b93a8 863MiB/1.8GiB(45%) CN:5 DL:27MiB ETA:38s]
+[#8b93a8 886MiB/1.8GiB(46%) CN:5 DL:24MiB ETA:41s]
+[#8b93a8 906MiB/1.8GiB(47%) CN:5 DL:25MiB ETA:39s]
+[#8b93a8 918MiB/1.8GiB(48%) CN:5 DL:24MiB ETA:40s]
+[#8b93a8 921MiB/1.8GiB(48%) CN:5 DL:22MiB ETA:44s]
+[#8b93a8 0.9GiB/1.8GiB(48%) CN:5 DL:19MiB ETA:50s]
+[#8b93a8 0.9GiB/1.8GiB(49%) CN:5 DL:17MiB ETA:54s]
+[#8b93a8 0.9GiB/1.8GiB(50%) CN:5 DL:17MiB ETA:54s]
+[#8b93a8 0.9GiB/1.8GiB(52%) CN:5 DL:18MiB ETA:48s]
+[#8b93a8 1.0GiB/1.8GiB(54%) CN:5 DL:20MiB ETA:42s]
+[#8b93a8 1.0GiB/1.8GiB(56%) CN:5 DL:22MiB ETA:37s]
+[#8b93a8 1.0GiB/1.8GiB(57%) CN:5 DL:20MiB ETA:39s]
+[#8b93a8 1.0GiB/1.8GiB(58%) CN:5 DL:19MiB ETA:40s]
+[#8b93a8 1.1GiB/1.8GiB(59%) CN:5 DL:22MiB ETA:34s]
+[#8b93a8 1.1GiB/1.8GiB(61%) CN:5 DL:25MiB ETA:29s]
+[#8b93a8 1.1GiB/1.8GiB(62%) CN:5 DL:27MiB ETA:26s]
+[#8b93a8 1.2GiB/1.8GiB(64%) CN:5 DL:28MiB ETA:23s]
+[#8b93a8 1.2GiB/1.8GiB(66%) CN:5 DL:27MiB ETA:23s]
+[#8b93a8 1.2GiB/1.8GiB(67%) CN:5 DL:26MiB ETA:23s]
+[#8b93a8 1.2GiB/1.8GiB(69%) CN:5 DL:25MiB ETA:23s]
+[#8b93a8 1.3GiB/1.8GiB(70%) CN:5 DL:28MiB ETA:19s]
+[#8b93a8 1.3GiB/1.8GiB(71%) CN:5 DL:27MiB ETA:19s]
+[#8b93a8 1.3GiB/1.8GiB(72%) CN:5 DL:27MiB ETA:19s]
+[#8b93a8 1.3GiB/1.8GiB(73%) CN:5 DL:25MiB ETA:19s]
+[#8b93a8 1.3GiB/1.8GiB(74%) CN:5 DL:25MiB ETA:18s]
+[#8b93a8 1.4GiB/1.8GiB(76%) CN:5 DL:25MiB ETA:17s]
+[#8b93a8 1.4GiB/1.8GiB(77%) CN:5 DL:25MiB ETA:16s]
+[#8b93a8 1.4GiB/1.8GiB(79%) CN:5 DL:24MiB ETA:16s]
+[#8b93a8 1.4GiB/1.8GiB(80%) CN:5 DL:24MiB ETA:15s]
+[#8b93a8 1.5GiB/1.8GiB(81%) CN:5 DL:24MiB ETA:14s]
+[#8b93a8 1.5GiB/1.8GiB(83%) CN:5 DL:23MiB ETA:13s]
+[#8b93a8 1.5GiB/1.8GiB(84%) CN:5 DL:24MiB ETA:12s]
+[#8b93a8 1.5GiB/1.8GiB(84%) CN:5 DL:24MiB ETA:11s]
+ *** Download Progress Summary as of Sun Nov  1 02:25:34 2026 *** 
+===============================================================================
+[#8b93a8 1.5GiB/1.8GiB(85%) CN:5 DL:23MiB ETA:12s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852415_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#8b93a8 1.5GiB/1.8GiB(85%) CN:5 DL:23MiB ETA:12s]
+[#8b93a8 1.6GiB/1.8GiB(86%) CN:5 DL:21MiB ETA:12s]
+[#8b93a8 1.6GiB/1.8GiB(87%) CN:5 DL:20MiB ETA:11s]
+[#8b93a8 1.6GiB/1.8GiB(88%) CN:5 DL:19MiB ETA:11s]
+[#8b93a8 1.6GiB/1.8GiB(89%) CN:5 DL:19MiB ETA:10s]
+[#8b93a8 1.6GiB/1.8GiB(89%) CN:5 DL:17MiB ETA:10s]
+[#8b93a8 1.6GiB/1.8GiB(90%) CN:5 DL:15MiB ETA:12s]
+[#8b93a8 1.6GiB/1.8GiB(90%) CN:5 DL:12MiB ETA:14s]
+[#8b93a8 1.6GiB/1.8GiB(90%) CN:5 DL:11MiB ETA:16s]
+[#8b93a8 1.6GiB/1.8GiB(90%) CN:5 DL:10MiB ETA:16s]
+[#8b93a8 1.6GiB/1.8GiB(91%) CN:5 DL:10MiB ETA:15s]
+[#8b93a8 1.7GiB/1.8GiB(91%) CN:5 DL:10MiB ETA:15s]
+[#8b93a8 1.7GiB/1.8GiB(91%) CN:5 DL:7.9MiB ETA:19s]
+[#8b93a8 1.7GiB/1.8GiB(91%) CN:5 DL:6.3MiB ETA:24s]
+[#8b93a8 1.7GiB/1.8GiB(92%) CN:5 DL:5.7MiB ETA:24s]
+[#8b93a8 1.7GiB/1.8GiB(93%) CN:5 DL:6.0MiB ETA:21s]
+[#8b93a8 1.7GiB/1.8GiB(93%) CN:5 DL:7.3MiB ETA:15s]
+[#8b93a8 1.7GiB/1.8GiB(94%) CN:4 DL:7.7MiB ETA:14s]
+[#8b93a8 1.7GiB/1.8GiB(94%) CN:4 DL:7.8MiB ETA:13s]
+[#8b93a8 1.7GiB/1.8GiB(94%) CN:4 DL:7.1MiB ETA:15s]
+[#8b93a8 1.7GiB/1.8GiB(95%) CN:4 DL:7.4MiB ETA:12s]
+[#8b93a8 1.7GiB/1.8GiB(95%) CN:3 DL:8.4MiB ETA:9s]
+[#8b93a8 1.7GiB/1.8GiB(96%) CN:3 DL:8.5MiB ETA:8s]
+[#8b93a8 1.7GiB/1.8GiB(96%) CN:3 DL:8.3MiB ETA:8s]
+[#8b93a8 1.7GiB/1.8GiB(96%) CN:3 DL:6.0MiB ETA:11s]
+[#8b93a8 1.7GiB/1.8GiB(96%) CN:3 DL:4.9MiB ETA:13s]
+[#8b93a8 1.7GiB/1.8GiB(96%) CN:3 DL:4.9MiB ETA:13s]
+[#8b93a8 1.7GiB/1.8GiB(96%) CN:3 DL:4.9MiB ETA:13s]
+[#8b93a8 1.8GiB/1.8GiB(96%) CN:3 DL:4.5MiB ETA:13s]
+[#8b93a8 1.8GiB/1.8GiB(97%) CN:3 DL:3.1MiB ETA:17s]
+[#8b93a8 1.8GiB/1.8GiB(97%) CN:3 DL:3.1MiB ETA:15s]
+[#8b93a8 1.8GiB/1.8GiB(97%) CN:3 DL:3.4MiB ETA:11s]
+[#8b93a8 1.8GiB/1.8GiB(98%) CN:3 DL:3.6MiB ETA:9s]
+[#8b93a8 1.8GiB/1.8GiB(98%) CN:2 DL:4.6MiB ETA:5s]
+[#8b93a8 1.8GiB/1.8GiB(98%) CN:2 DL:4.6MiB ETA:4s]
+[#8b93a8 1.8GiB/1.8GiB(99%) CN:2 DL:6.1MiB ETA:1s]
+
+11/01 02:26:10 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852415_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+8b93a8|OK  |    20MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852415_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:26:14 AM INFO: MD5sum OK for SRR15852415_2.fastq.gz
+2026/11/01 02:26:14 AM INFO: Verifying gzip file ./SRR15852415_1.fastq.gz ..
+2026/11/01 02:26:37 AM INFO: Verifying gzip file ./SRR15852415_2.fastq.gz ..
+2026/11/01 02:27:02 AM INFO: Method ena-ftp worked.
+2026/11/01 02:27:02 AM INFO: Output files: ./SRR15852415_1.fastq.gz, ./SRR15852415_2.fastq.gz
+2026/11/01 02:27:02 AM INFO: Attempting download method ena-ftp for run SRR15852425 ..
+2026/11/01 02:27:02 AM INFO: Querying ENA for FTP paths for SRR15852425..
+2026/11/01 02:27:03 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/025/SRR15852425/SRR15852425_1.fastq.gz ..
+
+11/01 02:27:03 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#1d9297 0B/0B CN:1 DL:0B]
+[#1d9297 0B/1.7GiB(0%) CN:5 DL:0B]
+[#1d9297 0B/1.7GiB(0%) CN:5 DL:0B]
+[#1d9297 0B/1.7GiB(0%) CN:5 DL:0B]
+[#1d9297 1.2MiB/1.7GiB(0%) CN:5 DL:1.8MiB ETA:16m14s]
+[#1d9297 37MiB/1.7GiB(2%) CN:5 DL:22MiB ETA:1m18s]
+[#1d9297 93MiB/1.7GiB(5%) CN:5 DL:35MiB ETA:48s]
+[#1d9297 154MiB/1.7GiB(8%) CN:5 DL:42MiB ETA:39s]
+[#1d9297 212MiB/1.7GiB(11%) CN:5 DL:45MiB ETA:34s]
+[#1d9297 272MiB/1.7GiB(15%) CN:5 DL:48MiB ETA:31s]
+[#1d9297 330MiB/1.7GiB(18%) CN:5 DL:49MiB ETA:29s]
+[#1d9297 389MiB/1.7GiB(21%) CN:5 DL:50MiB ETA:27s]
+[#1d9297 449MiB/1.7GiB(24%) CN:5 DL:51MiB ETA:25s]
+[#1d9297 506MiB/1.7GiB(28%) CN:5 DL:52MiB ETA:24s]
+[#1d9297 534MiB/1.7GiB(29%) CN:5 DL:54MiB ETA:23s]
+[#1d9297 571MiB/1.7GiB(31%) CN:5 DL:53MiB ETA:22s]
+[#1d9297 607MiB/1.7GiB(33%) CN:5 DL:51MiB ETA:23s]
+[#1d9297 646MiB/1.7GiB(35%) CN:5 DL:48MiB ETA:23s]
+[#1d9297 697MiB/1.7GiB(38%) CN:5 DL:48MiB ETA:22s]
+[#1d9297 749MiB/1.7GiB(41%) CN:5 DL:47MiB ETA:22s]
+[#1d9297 791MiB/1.7GiB(44%) CN:5 DL:45MiB ETA:22s]
+[#1d9297 838MiB/1.7GiB(46%) CN:5 DL:44MiB ETA:21s]
+[#1d9297 893MiB/1.7GiB(49%) CN:5 DL:43MiB ETA:20s]
+[#1d9297 0.9GiB/1.7GiB(52%) CN:5 DL:44MiB ETA:18s]
+[#1d9297 0.9GiB/1.7GiB(55%) CN:5 DL:46MiB ETA:17s]
+[#1d9297 1.0GiB/1.7GiB(58%) CN:5 DL:48MiB ETA:15s]
+[#1d9297 1.0GiB/1.7GiB(60%) CN:5 DL:48MiB ETA:14s]
+[#1d9297 1.0GiB/1.7GiB(62%) CN:5 DL:46MiB ETA:14s]
+[#1d9297 1.1GiB/1.7GiB(63%) CN:5 DL:44MiB ETA:14s]
+[#1d9297 1.1GiB/1.7GiB(65%) CN:5 DL:42MiB ETA:14s]
+[#1d9297 1.1GiB/1.7GiB(66%) CN:5 DL:41MiB ETA:14s]
+[#1d9297 1.1GiB/1.7GiB(68%) CN:5 DL:37MiB ETA:14s]
+[#1d9297 1.2GiB/1.7GiB(69%) CN:5 DL:34MiB ETA:15s]
+[#1d9297 1.2GiB/1.7GiB(71%) CN:5 DL:31MiB ETA:16s]
+[#1d9297 1.2GiB/1.7GiB(72%) CN:5 DL:29MiB ETA:16s]
+[#1d9297 1.2GiB/1.7GiB(72%) CN:5 DL:24MiB ETA:19s]
+[#1d9297 1.2GiB/1.7GiB(73%) CN:5 DL:22MiB ETA:20s]
+[#1d9297 1.3GiB/1.7GiB(74%) CN:5 DL:21MiB ETA:21s]
+[#1d9297 1.3GiB/1.7GiB(76%) CN:5 DL:21MiB ETA:19s]
+[#1d9297 1.3GiB/1.7GiB(77%) CN:5 DL:22MiB ETA:17s]
+[#1d9297 1.3GiB/1.7GiB(79%) CN:5 DL:22MiB ETA:16s]
+[#1d9297 1.4GiB/1.7GiB(80%) CN:5 DL:21MiB ETA:15s]
+[#1d9297 1.4GiB/1.7GiB(81%) CN:5 DL:20MiB ETA:15s]
+[#1d9297 1.4GiB/1.7GiB(82%) CN:5 DL:20MiB ETA:15s]
+[#1d9297 1.4GiB/1.7GiB(83%) CN:5 DL:20MiB ETA:14s]
+[#1d9297 1.4GiB/1.7GiB(84%) CN:5 DL:20MiB ETA:13s]
+[#1d9297 1.4GiB/1.7GiB(85%) CN:5 DL:21MiB ETA:12s]
+[#1d9297 1.5GiB/1.7GiB(87%) CN:5 DL:22MiB ETA:10s]
+[#1d9297 1.5GiB/1.7GiB(88%) CN:5 DL:22MiB ETA:9s]
+[#1d9297 1.5GiB/1.7GiB(90%) CN:5 DL:22MiB ETA:7s]
+[#1d9297 1.6GiB/1.7GiB(92%) CN:5 DL:23MiB ETA:5s]
+[#1d9297 1.6GiB/1.7GiB(93%) CN:5 DL:24MiB ETA:4s]
+[#1d9297 1.6GiB/1.7GiB(94%) CN:4 DL:22MiB ETA:4s]
+[#1d9297 1.6GiB/1.7GiB(94%) CN:4 DL:22MiB ETA:4s]
+[#1d9297 1.6GiB/1.7GiB(95%) CN:5 DL:22MiB ETA:3s]
+[#1d9297 1.7GiB/1.7GiB(96%) CN:4 DL:23MiB ETA:2s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:3 DL:24MiB]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:19MiB]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:15MiB]
+ *** Download Progress Summary as of Sun Nov  1 02:28:03 2026 *** 
+===============================================================================
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:13MiB]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852425_1.fastq.gz
+-------------------------------------------------------------------------------
+
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:13MiB]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:10MiB ETA:1s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:9.6MiB ETA:1s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:8.3MiB ETA:1s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:6.6MiB ETA:1s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:4.3MiB]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:900KiB ETA:4s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:1.8MiB ETA:2s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:1.5MiB ETA:2s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:1.2MiB ETA:2s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:1.3MiB ETA:1s]
+[#1d9297 1.7GiB/1.7GiB(99%) CN:1 DL:1.3MiB]
+
+11/01 02:28:16 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852425_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+1d9297|OK  |    25MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852425_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:28:19 AM INFO: MD5sum OK for SRR15852425_1.fastq.gz
+2026/11/01 02:28:19 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/025/SRR15852425/SRR15852425_2.fastq.gz ..
+
+11/01 02:28:19 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#89751f 0B/0B CN:1 DL:0B]
+[#89751f 0B/1.7GiB(0%) CN:5 DL:0B]
+[#89751f 0B/1.7GiB(0%) CN:5 DL:0B]
+[#89751f 0B/1.7GiB(0%) CN:5 DL:0B]
+[#89751f 3.4MiB/1.7GiB(0%) CN:5 DL:3.0MiB ETA:9m54s]
+[#89751f 9.6MiB/1.7GiB(0%) CN:5 DL:4.5MiB ETA:6m40s]
+[#89751f 23MiB/1.7GiB(1%) CN:5 DL:7.5MiB ETA:3m58s]
+[#89751f 50MiB/1.7GiB(2%) CN:5 DL:12MiB ETA:2m24s]
+[#89751f 93MiB/1.7GiB(5%) CN:5 DL:18MiB ETA:1m34s]
+[#89751f 157MiB/1.7GiB(8%) CN:5 DL:25MiB ETA:1m4s]
+[#89751f 236MiB/1.7GiB(12%) CN:5 DL:33MiB ETA:47s]
+[#89751f 306MiB/1.7GiB(16%) CN:5 DL:37MiB ETA:40s]
+[#89751f 377MiB/1.7GiB(20%) CN:5 DL:41MiB ETA:35s]
+[#89751f 442MiB/1.7GiB(24%) CN:5 DL:48MiB ETA:28s]
+[#89751f 508MiB/1.7GiB(27%) CN:5 DL:50MiB ETA:26s]
+[#89751f 579MiB/1.7GiB(31%) CN:5 DL:57MiB ETA:21s]
+[#89751f 646MiB/1.7GiB(35%) CN:5 DL:62MiB ETA:18s]
+[#89751f 702MiB/1.7GiB(38%) CN:5 DL:65MiB ETA:17s]
+[#89751f 768MiB/1.7GiB(41%) CN:5 DL:67MiB ETA:15s]
+[#89751f 822MiB/1.7GiB(44%) CN:5 DL:66MiB ETA:15s]
+[#89751f 876MiB/1.7GiB(47%) CN:5 DL:64MiB ETA:14s]
+[#89751f 0.9GiB/1.7GiB(50%) CN:5 DL:62MiB ETA:14s]
+[#89751f 0.9GiB/1.7GiB(53%) CN:5 DL:60MiB ETA:14s]
+[#89751f 1.0GiB/1.7GiB(56%) CN:5 DL:59MiB ETA:13s]
+[#89751f 1.0GiB/1.7GiB(59%) CN:5 DL:57MiB ETA:12s]
+[#89751f 1.1GiB/1.7GiB(61%) CN:5 DL:55MiB ETA:12s]
+[#89751f 1.1GiB/1.7GiB(64%) CN:5 DL:53MiB ETA:12s]
+[#89751f 1.1GiB/1.7GiB(66%) CN:5 DL:50MiB ETA:12s]
+[#89751f 1.1GiB/1.7GiB(66%) CN:5 DL:44MiB ETA:13s]
+[#89751f 1.1GiB/1.7GiB(66%) CN:5 DL:39MiB ETA:15s]
+[#89751f 1.2GiB/1.7GiB(67%) CN:5 DL:35MiB ETA:16s]
+[#89751f 1.2GiB/1.7GiB(69%) CN:5 DL:33MiB ETA:16s]
+[#89751f 1.2GiB/1.7GiB(71%) CN:5 DL:32MiB ETA:16s]
+[#89751f 1.3GiB/1.7GiB(73%) CN:5 DL:30MiB ETA:15s]
+[#89751f 1.3GiB/1.7GiB(76%) CN:5 DL:30MiB ETA:13s]
+[#89751f 1.4GiB/1.7GiB(79%) CN:5 DL:30MiB ETA:12s]
+[#89751f 1.4GiB/1.7GiB(81%) CN:5 DL:31MiB ETA:10s]
+[#89751f 1.4GiB/1.7GiB(83%) CN:5 DL:33MiB ETA:9s]
+[#89751f 1.5GiB/1.7GiB(84%) CN:5 DL:34MiB ETA:8s]
+[#89751f 1.5GiB/1.7GiB(85%) CN:5 DL:36MiB ETA:7s]
+[#89751f 1.5GiB/1.7GiB(86%) CN:5 DL:35MiB ETA:6s]
+[#89751f 1.5GiB/1.7GiB(87%) CN:5 DL:33MiB ETA:6s]
+[#89751f 1.5GiB/1.7GiB(89%) CN:5 DL:31MiB ETA:6s]
+[#89751f 1.6GiB/1.7GiB(90%) CN:5 DL:28MiB ETA:6s]
+[#89751f 1.6GiB/1.7GiB(91%) CN:5 DL:25MiB ETA:6s]
+[#89751f 1.6GiB/1.7GiB(91%) CN:5 DL:20MiB ETA:7s]
+[#89751f 1.6GiB/1.7GiB(91%) CN:5 DL:16MiB ETA:8s]
+[#89751f 1.6GiB/1.7GiB(92%) CN:5 DL:16MiB ETA:8s]
+[#89751f 1.6GiB/1.7GiB(94%) CN:5 DL:18MiB ETA:5s]
+[#89751f 1.7GiB/1.7GiB(95%) CN:3 DL:19MiB ETA:3s]
+[#89751f 1.7GiB/1.7GiB(96%) CN:3 DL:17MiB ETA:3s]
+[#89751f 1.7GiB/1.7GiB(96%) CN:3 DL:16MiB ETA:3s]
+[#89751f 1.7GiB/1.7GiB(97%) CN:2 DL:15MiB ETA:2s]
+[#89751f 1.7GiB/1.7GiB(97%) CN:2 DL:13MiB ETA:2s]
+[#89751f 1.7GiB/1.7GiB(97%) CN:2 DL:13MiB ETA:2s]
+[#89751f 1.7GiB/1.7GiB(97%) CN:2 DL:12MiB ETA:2s]
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:12MiB ETA:2s]
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:8.9MiB ETA:3s]
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:5.6MiB ETA:4s]
+ *** Download Progress Summary as of Sun Nov  1 02:29:20 2026 *** 
+===============================================================================
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:4.4MiB ETA:5s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852425_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:4.4MiB ETA:5s]
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:4.1MiB ETA:5s]
+[#89751f 1.7GiB/1.7GiB(98%) CN:1 DL:2.6MiB ETA:7s]
+[#89751f 1.7GiB/1.7GiB(99%) CN:1 DL:2.5MiB ETA:6s]
+[#89751f 1.7GiB/1.7GiB(99%) CN:1 DL:2.6MiB ETA:5s]
+[#89751f 1.7GiB/1.7GiB(99%) CN:1 DL:2.4MiB ETA:6s]
+[#89751f 1.7GiB/1.7GiB(99%) CN:1 DL:1.5MiB ETA:9s]
+[#89751f 1.7GiB/1.7GiB(99%) CN:1 DL:1.7MiB ETA:6s]
+
+11/01 02:29:28 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852425_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+89751f|OK  |    27MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852425_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:29:31 AM INFO: MD5sum OK for SRR15852425_2.fastq.gz
+2026/11/01 02:29:31 AM INFO: Verifying gzip file ./SRR15852425_1.fastq.gz ..
+2026/11/01 02:29:54 AM INFO: Verifying gzip file ./SRR15852425_2.fastq.gz ..
+2026/11/01 02:30:17 AM INFO: Method ena-ftp worked.
+2026/11/01 02:30:17 AM INFO: Output files: ./SRR15852425_1.fastq.gz, ./SRR15852425_2.fastq.gz
+2026/11/01 02:30:17 AM INFO: Attempting download method ena-ftp for run SRR15852430 ..
+2026/11/01 02:30:17 AM INFO: Querying ENA for FTP paths for SRR15852430..
+2026/11/01 02:30:17 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/030/SRR15852430/SRR15852430_1.fastq.gz ..
+
+11/01 02:30:17 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#af5195 0B/0B CN:1 DL:0B]
+[#af5195 0B/0B CN:1 DL:0B]
+[#af5195 0B/1.8GiB(0%) CN:5 DL:0B]
+[#af5195 96KiB/1.8GiB(0%) CN:5 DL:236KiB ETA:2h15m48s]
+[#af5195 10MiB/1.8GiB(0%) CN:5 DL:7.3MiB ETA:4m13s]
+[#af5195 51MiB/1.8GiB(2%) CN:5 DL:20MiB ETA:1m27s]
+[#af5195 124MiB/1.8GiB(6%) CN:5 DL:35MiB ETA:49s]
+[#af5195 193MiB/1.8GiB(10%) CN:5 DL:43MiB ETA:38s]
+[#af5195 241MiB/1.8GiB(12%) CN:5 DL:44MiB ETA:37s]
+[#af5195 297MiB/1.8GiB(15%) CN:5 DL:45MiB ETA:34s]
+[#af5195 348MiB/1.8GiB(18%) CN:5 DL:46MiB ETA:32s]
+[#af5195 396MiB/1.8GiB(21%) CN:5 DL:46MiB ETA:31s]
+[#af5195 457MiB/1.8GiB(24%) CN:5 DL:48MiB ETA:29s]
+[#af5195 516MiB/1.8GiB(27%) CN:5 DL:54MiB ETA:24s]
+[#af5195 577MiB/1.8GiB(30%) CN:5 DL:58MiB ETA:22s]
+[#af5195 638MiB/1.8GiB(33%) CN:5 DL:57MiB ETA:21s]
+[#af5195 700MiB/1.8GiB(37%) CN:5 DL:56MiB ETA:20s]
+[#af5195 759MiB/1.8GiB(40%) CN:5 DL:56MiB ETA:19s]
+[#af5195 823MiB/1.8GiB(43%) CN:5 DL:58MiB ETA:17s]
+[#af5195 892MiB/1.8GiB(47%) CN:5 DL:60MiB ETA:16s]
+[#af5195 0.9GiB/1.8GiB(51%) CN:5 DL:62MiB ETA:14s]
+[#af5195 0.9GiB/1.8GiB(52%) CN:5 DL:58MiB ETA:15s]
+[#af5195 1.0GiB/1.8GiB(54%) CN:5 DL:56MiB ETA:14s]
+[#af5195 1.0GiB/1.8GiB(57%) CN:5 DL:55MiB ETA:14s]
+[#af5195 1.0GiB/1.8GiB(59%) CN:5 DL:53MiB ETA:14s]
+[#af5195 1.1GiB/1.8GiB(62%) CN:5 DL:52MiB ETA:13s]
+[#af5195 1.1GiB/1.8GiB(63%) CN:5 DL:47MiB ETA:14s]
+[#af5195 1.1GiB/1.8GiB(64%) CN:5 DL:42MiB ETA:15s]
+[#af5195 1.1GiB/1.8GiB(65%) CN:5 DL:37MiB ETA:17s]
+[#af5195 1.2GiB/1.8GiB(66%) CN:5 DL:33MiB ETA:18s]
+[#af5195 1.2GiB/1.8GiB(68%) CN:5 DL:32MiB ETA:18s]
+[#af5195 1.2GiB/1.8GiB(69%) CN:5 DL:31MiB ETA:18s]
+[#af5195 1.3GiB/1.8GiB(70%) CN:5 DL:28MiB ETA:18s]
+[#af5195 1.3GiB/1.8GiB(72%) CN:5 DL:26MiB ETA:20s]
+[#af5195 1.3GiB/1.8GiB(73%) CN:5 DL:23MiB ETA:21s]
+[#af5195 1.3GiB/1.8GiB(75%) CN:5 DL:25MiB ETA:18s]
+[#af5195 1.4GiB/1.8GiB(77%) CN:5 DL:27MiB ETA:15s]
+[#af5195 1.4GiB/1.8GiB(79%) CN:5 DL:30MiB ETA:12s]
+[#af5195 1.5GiB/1.8GiB(81%) CN:5 DL:31MiB ETA:10s]
+[#af5195 1.5GiB/1.8GiB(83%) CN:5 DL:32MiB ETA:9s]
+[#af5195 1.5GiB/1.8GiB(85%) CN:5 DL:31MiB ETA:8s]
+[#af5195 1.5GiB/1.8GiB(85%) CN:5 DL:30MiB ETA:9s]
+[#af5195 1.5GiB/1.8GiB(87%) CN:5 DL:31MiB ETA:7s]
+[#af5195 1.6GiB/1.8GiB(89%) CN:5 DL:32MiB ETA:6s]
+[#af5195 1.6GiB/1.8GiB(90%) CN:5 DL:32MiB ETA:5s]
+[#af5195 1.7GiB/1.8GiB(92%) CN:5 DL:33MiB ETA:4s]
+[#af5195 1.7GiB/1.8GiB(94%) CN:5 DL:32MiB ETA:3s]
+[#af5195 1.7GiB/1.8GiB(95%) CN:5 DL:30MiB ETA:2s]
+[#af5195 1.7GiB/1.8GiB(96%) CN:4 DL:27MiB ETA:2s]
+[#af5195 1.7GiB/1.8GiB(97%) CN:4 DL:25MiB ETA:2s]
+[#af5195 1.7GiB/1.8GiB(97%) CN:3 DL:24MiB ETA:1s]
+[#af5195 1.8GiB/1.8GiB(98%) CN:4 DL:24MiB ETA:1s]
+[#af5195 1.8GiB/1.8GiB(98%) CN:4 DL:21MiB ETA:1s]
+[#af5195 1.8GiB/1.8GiB(98%) CN:3 DL:15MiB ETA:1s]
+[#af5195 1.8GiB/1.8GiB(98%) CN:2 DL:12MiB ETA:1s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:8.7MiB ETA:1s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:6.0MiB ETA:2s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:4.8MiB ETA:2s]
+ *** Download Progress Summary as of Sun Nov  1 02:31:18 2026 *** 
+===============================================================================
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:3.6MiB ETA:3s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_1.fastq.gz
+-------------------------------------------------------------------------------
+
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:3.6MiB ETA:3s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:2.2MiB ETA:6s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:1.0MiB ETA:13s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0.9MiB ETA:14s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:615KiB ETA:22s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:235KiB ETA:58s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:89KiB ETA:2m32s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:52KiB ETA:4m19s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:37KiB ETA:6m6s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:28KiB ETA:7m53s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:23KiB ETA:9m40s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:19KiB ETA:11m27s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:17KiB ETA:13m14s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:15KiB ETA:15m2s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:13KiB ETA:16m49s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:128KiB ETA:1m46s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:119KiB ETA:1m52s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:81KiB ETA:2m44s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:61KiB ETA:3m37s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:49KiB ETA:4m29s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:41KiB ETA:5m25s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:34KiB ETA:6m32s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:30KiB ETA:7m25s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:27KiB ETA:8m17s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:13KiB ETA:16m35s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+ *** Download Progress Summary as of Sun Nov  1 02:32:19 2026 *** 
+===============================================================================
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_1.fastq.gz
+-------------------------------------------------------------------------------
+
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:0B]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:152KiB ETA:1m27s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:51KiB ETA:4m19s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:163KiB ETA:1m19s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:201KiB ETA:1m3s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:206KiB ETA:1m]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:219KiB ETA:55s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:232KiB ETA:51s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:242KiB ETA:47s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:253KiB ETA:44s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:265KiB ETA:41s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:300KiB ETA:35s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:308KiB ETA:33s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:325KiB ETA:30s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:341KiB ETA:27s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:361KiB ETA:24s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:385KiB ETA:21s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:413KiB ETA:18s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:458KiB ETA:15s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:545KiB ETA:10s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:676KiB ETA:6s]
+[#af5195 1.8GiB/1.8GiB(99%) CN:1 DL:868KiB ETA:2s]
+
+11/01 02:32:58 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_1.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+af5195|OK  |    11MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_1.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:33:02 AM INFO: MD5sum OK for SRR15852430_1.fastq.gz
+2026/11/01 02:33:02 AM INFO: Downloading ftp.sra.ebi.ac.uk/vol1/fastq/SRR158/030/SRR15852430/SRR15852430_2.fastq.gz ..
+
+11/01 02:33:02 [[1;32mNOTICE[0m] Downloading 1 item(s)
+[#457c88 0B/0B CN:1 DL:0B]
+[#457c88 0B/1.9GiB(0%) CN:5 DL:0B]
+[#457c88 32KiB/1.9GiB(0%) CN:5 DL:219KiB ETA:2h32m8s]
+[#457c88 1.6MiB/1.9GiB(0%) CN:5 DL:1.3MiB ETA:23m57s]
+[#457c88 1.7MiB/1.9GiB(0%) CN:5 DL:793KiB ETA:42m6s]
+[#457c88 13MiB/1.9GiB(0%) CN:5 DL:4.1MiB ETA:7m44s]
+[#457c88 52MiB/1.9GiB(2%) CN:5 DL:12MiB ETA:2m35s]
+[#457c88 102MiB/1.9GiB(5%) CN:5 DL:19MiB ETA:1m36s]
+[#457c88 162MiB/1.9GiB(8%) CN:5 DL:25MiB ETA:1m10s]
+[#457c88 225MiB/1.9GiB(11%) CN:5 DL:30MiB ETA:56s]
+[#457c88 284MiB/1.9GiB(14%) CN:5 DL:34MiB ETA:48s]
+[#457c88 317MiB/1.9GiB(16%) CN:5 DL:33MiB ETA:48s]
+[#457c88 342MiB/1.9GiB(17%) CN:5 DL:41MiB ETA:39s]
+[#457c88 379MiB/1.9GiB(19%) CN:5 DL:40MiB ETA:38s]
+[#457c88 423MiB/1.9GiB(21%) CN:5 DL:44MiB ETA:34s]
+[#457c88 465MiB/1.9GiB(23%) CN:5 DL:45MiB ETA:32s]
+[#457c88 511MiB/1.9GiB(26%) CN:5 DL:45MiB ETA:31s]
+[#457c88 559MiB/1.9GiB(28%) CN:5 DL:44MiB ETA:31s]
+[#457c88 612MiB/1.9GiB(31%) CN:5 DL:43MiB ETA:31s]
+[#457c88 630MiB/1.9GiB(32%) CN:5 DL:38MiB ETA:34s]
+[#457c88 658MiB/1.9GiB(33%) CN:5 DL:37MiB ETA:34s]
+[#457c88 705MiB/1.9GiB(36%) CN:5 DL:40MiB ETA:31s]
+[#457c88 759MiB/1.9GiB(38%) CN:5 DL:41MiB ETA:28s]
+[#457c88 815MiB/1.9GiB(41%) CN:5 DL:43MiB ETA:26s]
+[#457c88 867MiB/1.9GiB(44%) CN:5 DL:44MiB ETA:24s]
+[#457c88 911MiB/1.9GiB(46%) CN:5 DL:44MiB ETA:23s]
+[#457c88 0.9GiB/1.9GiB(48%) CN:5 DL:44MiB ETA:22s]
+[#457c88 0.9GiB/1.9GiB(50%) CN:5 DL:43MiB ETA:22s]
+[#457c88 1.0GiB/1.9GiB(52%) CN:5 DL:41MiB ETA:22s]
+[#457c88 1.0GiB/1.9GiB(54%) CN:5 DL:43MiB ETA:20s]
+[#457c88 1.0GiB/1.9GiB(56%) CN:5 DL:44MiB ETA:19s]
+[#457c88 1.1GiB/1.9GiB(57%) CN:5 DL:43MiB ETA:19s]
+[#457c88 1.1GiB/1.9GiB(59%) CN:5 DL:41MiB ETA:18s]
+[#457c88 1.1GiB/1.9GiB(61%) CN:5 DL:39MiB ETA:19s]
+[#457c88 1.2GiB/1.9GiB(63%) CN:5 DL:37MiB ETA:19s]
+[#457c88 1.2GiB/1.9GiB(64%) CN:5 DL:35MiB ETA:19s]
+[#457c88 1.2GiB/1.9GiB(65%) CN:5 DL:32MiB ETA:20s]
+[#457c88 1.2GiB/1.9GiB(66%) CN:5 DL:30MiB ETA:21s]
+[#457c88 1.2GiB/1.9GiB(66%) CN:5 DL:27MiB ETA:23s]
+[#457c88 1.2GiB/1.9GiB(67%) CN:5 DL:25MiB ETA:24s]
+[#457c88 1.3GiB/1.9GiB(68%) CN:5 DL:23MiB ETA:25s]
+[#457c88 1.3GiB/1.9GiB(69%) CN:5 DL:22MiB ETA:26s]
+[#457c88 1.3GiB/1.9GiB(70%) CN:5 DL:21MiB ETA:27s]
+[#457c88 1.3GiB/1.9GiB(72%) CN:5 DL:20MiB ETA:27s]
+[#457c88 1.4GiB/1.9GiB(73%) CN:5 DL:19MiB ETA:27s]
+[#457c88 1.4GiB/1.9GiB(74%) CN:5 DL:19MiB ETA:25s]
+[#457c88 1.4GiB/1.9GiB(75%) CN:5 DL:19MiB ETA:24s]
+[#457c88 1.4GiB/1.9GiB(76%) CN:5 DL:20MiB ETA:22s]
+[#457c88 1.4GiB/1.9GiB(77%) CN:5 DL:21MiB ETA:20s]
+[#457c88 1.5GiB/1.9GiB(78%) CN:5 DL:22MiB ETA:18s]
+[#457c88 1.5GiB/1.9GiB(79%) CN:5 DL:21MiB ETA:18s]
+[#457c88 1.5GiB/1.9GiB(80%) CN:5 DL:21MiB ETA:17s]
+[#457c88 1.5GiB/1.9GiB(81%) CN:5 DL:20MiB ETA:18s]
+[#457c88 1.5GiB/1.9GiB(81%) CN:5 DL:18MiB ETA:19s]
+[#457c88 1.5GiB/1.9GiB(81%) CN:5 DL:15MiB ETA:23s]
+[#457c88 1.5GiB/1.9GiB(82%) CN:5 DL:13MiB ETA:25s]
+[#457c88 1.5GiB/1.9GiB(82%) CN:5 DL:13MiB ETA:25s]
+[#457c88 1.5GiB/1.9GiB(83%) CN:5 DL:10MiB ETA:29s]
+ *** Download Progress Summary as of Sun Nov  1 02:34:02 2026 *** 
+===============================================================================
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:10MiB ETA:29s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:10MiB ETA:29s]
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:8.9MiB ETA:33s]
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:7.5MiB ETA:39s]
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:7.4MiB ETA:39s]
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:6.6MiB ETA:44s]
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:6.3MiB ETA:47s]
+[#457c88 1.6GiB/1.9GiB(84%) CN:5 DL:4.9MiB ETA:1m]
+[#457c88 1.6GiB/1.9GiB(85%) CN:5 DL:4.8MiB ETA:59s]
+[#457c88 1.6GiB/1.9GiB(86%) CN:5 DL:4.0MiB ETA:1m7s]
+[#457c88 1.6GiB/1.9GiB(86%) CN:5 DL:8.6MiB ETA:30s]
+[#457c88 1.6GiB/1.9GiB(86%) CN:5 DL:6.6MiB ETA:39s]
+[#457c88 1.6GiB/1.9GiB(86%) CN:5 DL:5.5MiB ETA:48s]
+[#457c88 1.6GiB/1.9GiB(86%) CN:5 DL:4.6MiB ETA:57s]
+[#457c88 1.6GiB/1.9GiB(86%) CN:5 DL:5.2MiB ETA:49s]
+[#457c88 1.6GiB/1.9GiB(87%) CN:5 DL:6.5MiB ETA:36s]
+[#457c88 1.6GiB/1.9GiB(88%) CN:5 DL:7.6MiB ETA:29s]
+[#457c88 1.7GiB/1.9GiB(89%) CN:5 DL:7.7MiB ETA:27s]
+[#457c88 1.7GiB/1.9GiB(89%) CN:5 DL:12MiB ETA:16s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:10MiB ETA:17s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:9.2MiB ETA:20s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:8.2MiB ETA:22s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:8.2MiB ETA:22s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:7.2MiB ETA:24s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:5.2MiB ETA:33s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:3.3MiB ETA:53s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:2.0MiB ETA:1m27s]
+[#457c88 1.7GiB/1.9GiB(90%) CN:5 DL:1.1MiB ETA:2m35s]
+[#457c88 1.7GiB/1.9GiB(91%) CN:5 DL:2.5MiB ETA:1m4s]
+[#457c88 1.7GiB/1.9GiB(92%) CN:5 DL:4.6MiB ETA:30s]
+[#457c88 1.7GiB/1.9GiB(93%) CN:5 DL:6.1MiB ETA:20s]
+[#457c88 1.8GiB/1.9GiB(94%) CN:5 DL:7.8MiB ETA:13s]
+[#457c88 1.8GiB/1.9GiB(95%) CN:5 DL:16MiB ETA:5s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:4 DL:15MiB ETA:4s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:3 DL:12MiB ETA:5s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:3 DL:11MiB ETA:6s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:3 DL:9.7MiB ETA:7s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:3 DL:6.9MiB ETA:10s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:3 DL:4.9MiB ETA:14s]
+[#457c88 1.8GiB/1.9GiB(96%) CN:3 DL:3.3MiB ETA:18s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:2.7MiB ETA:17s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:4.5MiB ETA:10s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:3.7MiB ETA:12s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:3.2MiB ETA:14s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:2.8MiB ETA:16s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:2.5MiB ETA:18s]
+[#457c88 1.8GiB/1.9GiB(97%) CN:2 DL:2.6MiB ETA:17s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:2 DL:3.5MiB ETA:9s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:2.5MiB ETA:9s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:5.0MiB ETA:4s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:3.5MiB ETA:6s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:3.0MiB ETA:7s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:2.7MiB ETA:8s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:2.4MiB ETA:9s]
+ *** Download Progress Summary as of Sun Nov  1 02:35:03 2026 *** 
+===============================================================================
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:2.0MiB ETA:11s]
+FILE: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_2.fastq.gz
+-------------------------------------------------------------------------------
+
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:2.0MiB ETA:11s]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:0B]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:0B]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:0B]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:0B]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:0B]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:0B]
+[#457c88 1.8GiB/1.9GiB(98%) CN:1 DL:145KiB ETA:2m42s]
+[#457c88 1.8GiB/1.9GiB(99%) CN:1 DL:1.3MiB ETA:14s]
+[#457c88 1.9GiB/1.9GiB(99%) CN:1 DL:4.0MiB ETA:2s]
+
+11/01 02:35:14 [[1;32mNOTICE[0m] Download complete: /scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_2.fastq.gz
+
+Download Results:
+gid   |stat|avg speed  |path/URI
+======+====+===========+=======================================================
+457c88|OK  |    15MiB/s|/scratch/rswargo/job_55290254/e3_payload/3b_D2_subset_PRJNA762469_kingfisher_rep5/SRR15852430_2.fastq.gz
+
+Status Legend:
+(OK):download completed.
+2026/11/01 02:35:18 AM INFO: MD5sum OK for SRR15852430_2.fastq.gz
+2026/11/01 02:35:18 AM INFO: Verifying gzip file ./SRR15852430_1.fastq.gz ..
+2026/11/01 02:35:42 AM INFO: Verifying gzip file ./SRR15852430_2.fastq.gz ..
+2026/11/01 02:36:07 AM INFO: Method ena-ftp worked.
+2026/11/01 02:36:07 AM INFO: Output files: ./SRR15852430_1.fastq.gz, ./SRR15852430_2.fastq.gz
+2026/11/01 02:36:07 AM INFO: Kingfisher done.
