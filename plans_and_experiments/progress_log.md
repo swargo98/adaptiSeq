@@ -22,6 +22,13 @@ Sections, newest first:
 
 ## 1. 0.1.12 and controller round 3 (2026-10-22 onward)
 
+**Paper framing and the Fabric half (user, 2026-11-01).** After the Expanse chain: "Let's sell the whole system
+instead of the adaptive engine": the paper highlights speed against the other tools, verified completeness, batch
+download and the Python interface, with the adaptive controller as an included option, and does not claim that
+adaptation is the fastest setting (fixed `-j 20` beat the default in 9 of 10 Expanse panel-reps). The analysis
+starts after a Fabric half on the same protocol. Plan: `analysis_plan.md`; Fabric run: `remaining_tasks.md`
+section 1, item 3.
+
 **Default chosen (user, 2026-10-26): topdown.** The recommendation: among the adaptive controllers, topdown is
 first on criterion 2 (best worst case) and criterion 4 (mean ratio), and the only arm qualifying with
 `--timeout-censored`, so its case does not depend on which criterion a reviewer prefers. It is already the default

@@ -1,6 +1,6 @@
 # Remaining tasks (open items only)
 
-Updated 2026-10-26. What has been done, with every job, result row and decision, is in
+Updated 2026-11-01. What has been done, with every job, result row and decision, is in
 `progress_log.md` (sections newest first). This file lists only what is still open. When an item is
 done, add a dated note to `progress_log.md` and delete it here.
 
@@ -22,31 +22,41 @@ user's choice of default.
    rename it; in the paper's discussion, present it as the fewest-connections option (round 3 mean
    connections 13.1, second only to knee 12.8; mean ratio 1.84). Its description in `options.py`, `cli.py`
    and the README still says "candidate under evaluation"; reword it when the user takes up the discussion.
-2. **In progress: the paper's 5-rep chain on 0.1.12** (wheel `0c5e6a82`, env `adaptiseq_e3_sub`, results
-   `e3_submission_0.1.12_expanse/`), submitted 10-26: rep 1 `55290250`, rep 2 `55290251`, rep 3 `55290252`,
-   rep 4 `55290253`, rep 5 `55290254` (each `afterany` the previous). One rep per 48 h job, chained so no two
-   overlap (about 24.5 h each, about 120 h in all). Submitted with:
-   ```bash
-   cd plans_and_experiments
-   export ENV_NAME=adaptiseq_e3_sub E3_ASEQ_WHEEL=$PWD/wheels/adaptiseq-0.1.12-py3-none-any.whl
-   export ARM_SET=submission PANELS="3r 3b" E3_TIMEOUT_3R=10800 E3_TIMEOUT_3B=30000
-   export RESULTS_ROOT=$PWD/e3_submission_0.1.12_expanse
-   prev=""
-   for r in 1 2 3 4 5; do
-       dep=${prev:+--dependency=afterany:$prev}
-       prev=$(E3_REP_FIRST=$r REPS=1 sbatch --parsable --export=ALL --exclude=exp-10-14,exp-3-51 $dep bench/e3/e3_expanse.sbatch)
-   done
-   ```
-   Record rows per rep as for the tournament; check `check_run.txt` after each rep.
-   **Done 11-01 02:54 PST.** All five reps finished (30.6, 29.2, 30.9, 28.3, 9.2 h); rows and result dirs committed.
-   CHECK FAIL on reps 1-4 (TIMEOUTs, all in other tools), PASS on rep 5. Rep 5 was held 10 h after a launch failure
-   on `exp-4-49` (excluded, released 18:40 10-31). Delete this item once items 3-4 are under way.
-3. **Numbers and figure** once the chain is done:
-   `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
-   (Expanse only unless the user decides on a Fabric half, item 3.3).
-4. **Fill the manuscript placeholders** (`[[...]]` in `paper/manuscript_draft.md`) from `paper/numbers/`;
-   the table at the end of the draft maps each to a file and field. Mark anything that depends on an
-   open decision in section 3.
+2. **Done 11-01: the paper's 5-rep chain on Expanse** (0.1.12, wheel `0c5e6a82`, env `adaptiseq_e3_sub`, jobs
+   `55290250`-`55290254`, results `e3_submission_0.1.12_expanse/`). Reps took 30.6, 29.2, 30.9, 28.3 and 9.2 h;
+   CHECK FAIL on reps 1-4 (TIMEOUTs, all in other tools), PASS on rep 5. Rows in `progress_log.md` section 1.
+   Submission commands are in `progress_log.md` section 1 and in this file's history. Delete this item when
+   item 4 starts.
+3. **Next: the Fabric half, five reps on one Fabric node** (user, 11-01: start the analysis after the Fabric
+   results). Same protocol as Expanse, so the two machines can be compared row for row:
+   - **Build:** the same wheel, `wheels/adaptiseq-0.1.12-py3-none-any.whl`, sha256 `0c5e6a82...` (check it
+     before installing). Env from `bench/e3/env_adaptiseq_e3_sub.yml`:
+     `ENV_NAME=adaptiseq_e3_sub ENV_FILE=bench/e3/env_adaptiseq_e3_sub.yml E3_ASEQ_WHEEL=<wheel> bash bench/e3/setup_env.sh`.
+     The versions must match Expanse: iSeq 1.9.9, Kingfisher 0.5.0, fastq-dl 4.0.1, Python 3.11.17.
+   - **Settings:** `ARM_SET=submission PANELS="3r 3b" E3_TIMEOUT_3R=10800 E3_TIMEOUT_3B=30000`, default seed
+     (20261013, so rep k runs the arms in Expanse's order). Payload on a local disk with 40 GB free (`E3_WORK`).
+   - **Driver:** `bench/e3/run_submission.sh` (no Slurm). Before the first rep, bring it in line with
+     `e3_expanse.sbatch`, as a separate commit: activate `${ENV_NAME:-adaptiseq_e3}` instead of the fixed
+     `adaptiseq_e3`; add the ENA link probe (1/8/20 connections, `link_probe.txt`); pass `--rep-first` to
+     `check_run.py`. Results go to `e3_submission_0.1.12_fabric/<rep dir>`.
+   - **One rep per invocation**, run in sequence inside `tmux` or `nohup`
+     (`E3_REP_FIRST=$r REPS=1 bash bench/e3/run_submission.sh full`), so a crash or reboot costs one rep.
+     A gate rep first is optional: rep 1 runs the same gates.
+   - **Before rep 1:** the link probe by hand. Expanse saw 0.5-2.1 MB/s per ENA connection at P=1 and
+     `Node-MICH` saw 1.0-1.2 (`progress_log.md` section 9), so a node in that range is comparable. Below
+     0.5 MB/s, or if more than about 25 connections are refused, stop and report to the user. On `Node-MICH`,
+     re-add the IPv4 default route and the NAT64 block after any reboot (section 9).
+   - **Expect** 10-31 h per rep (Expanse's range), five to six days in all.
+   - **Record** each arm as on Expanse: a row in a "Fabric chain rows" table in `progress_log.md` section 1
+     (same columns, ratio to the fastest arm with every run verified, connections from `tools/check_panel.sh`),
+     commit, push. Package each finished rep: gzip logs over 20 MB, commit the `.log.gz` only.
+   - **Push** to a separate branch, `fabric-app-notes`, not `expanse-app-notes`, so the two machines'
+     sessions never push the same branch; merge into `expanse-app-notes` once both are done.
+   - **Don't** change adaptiSeq or the wheel, or the timeouts, mid-run.
+4. **Then the analysis and the manuscript, per `analysis_plan.md`:** checks, the script changes
+   (`--reference`, completeness and connection tables, the stacked completion panel), numbers for both
+   machines into `paper/numbers/`, a report to the user, then the placeholders and the rewording to the
+   "whole system" framing (user, 11-01).
 5. **Concurrency benchmark: more connections do not always help** (user, 2026-10-23; not done before). A
    medium workload, preferably: a new ENA list between 4r and 4b, e.g. 40-60 runs of 0.2-1 GB (20-30 GB in
    all), with an md5 manifest in `datasets/`. Arms: fixed `-j` 1, 2, 4, 8, 16, 32, 64, 128, plus the chosen
@@ -101,13 +111,14 @@ user's choice of default.
 
 1. **Decision A: the completion claim.** Whether the paper may say adaptiSeq downloads lists
    "completely" depends on the 0.1.12 chain's results (`progress_log.md` section 10, A).
+   On Expanse both adaptiSeq arms exited 1 and named the run every time a 3r run was missing (one run, in reps
+   2, 3 and 5); no adaptiSeq row was incomplete with exit 0. Recommended wording: "every file is md5-verified
+   or reported as failed" (`analysis_plan.md` section 1).
 2. **Decision B: runs other tools fetched from SRA** (unverifiable against ENA's md5). Recommended:
    count only md5 matches and report the unverified count separately, with the cause (transient ENA
    metadata errors that Kingfisher and fastq-dl do not retry). Section 10, B.
-3. **The Fabric half.** `Node-MICH` cannot produce a valid run (about 1 MB/s per connection from EBI);
-   the plan allows Expanse only, but the manuscript still describes two machines (abstract, methods,
-   Figure 1 legend, limitations). If Fabric stays: find a node with a usable ENA path, re-add the IPv4
-   routes on `Node-MICH` after any reboot (section 9), and use the same wheel and timeouts as Expanse.
+3. **The Fabric half: decided 11-01, run it** (section 1, item 3). Still yours: the node, if `Node-MICH`
+   is not the one; the manuscript's Fabric machine description (cores, network) once the node is known.
 4. **Release:** PyPI has only 0.1.3; 0.1.4 to 0.1.12 are local wheels. Order: merge to `main`, enable
    Zenodo's GitHub integration, `python -m build && twine check dist/* && twine upload dist/*`, tag and
    release on GitHub, then put the DOI and date into `CITATION.cff`, README and manuscript.
