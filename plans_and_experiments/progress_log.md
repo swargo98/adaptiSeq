@@ -123,7 +123,8 @@ fastq-dl and kingfisher verified every run for the first time):
 Rep 5 `55290254`: launched 08:49 10-31 on `exp-4-49` and failed within a second (`launch_failed_requeued_held`); Slurm
 requeued it held, so it sat for ~10 h unnoticed (the watcher only returns on rows, the gate line or job end). The node
 was drained at 15:30 ("Bright: memory usage 246 GB is high on idle node"). At 18:40 I added `exp-4-49` to its
-`ExcNodeList` and released it (`scontrol release`); it is pending again.
+`ExcNodeList` and released it (`scontrol release`). It started at 18:42 on `exp-7-50` (probe 2.1/16.9/38.7 MB/s, the
+best of the chain; GATE PASS).
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
