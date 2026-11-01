@@ -138,6 +138,7 @@ best of the chain; GATE PASS).
 | 5 | 3b ENA large | iseq | 5625 | 16.77 | 8/8 | 4.60 | 1.0 / 1 | 1 md5 mismatch (SRR15852411_1), recovered; its fastest 3b of the chain (reps 1-4: 25890-30000 s); log 40 MB, committed as `.log.gz` |
 | 5 | 3b ENA large | fastq-dl | 5154 | 15.36 | 7/8 | 4.24 | 1.0 / 26 | exit 0 but SRR15852430 present and not byte-identical: its ENA wget failed 3 times in the last minute, so fastq-dl fetched it from SRA (decision B); the 26-connection max is that SRA fetch (~13 s); its fastest 3b of the chain (rep 4: 22446 s) |
 | 5 | 3b ENA large | adaptiseq-fixed-j20 | **335** | **1.00** | 8/8 | **77.13** | 20.3 / 25 | ran 4th on 3b, 2 h after the default; HTTPS for all 16 files (the probe the default failed passed here); no md5 mismatch; 39 cut-short responses |
+| 5 | 3b ENA large | kingfisher | 1715 | 5.11 | 8/8 | 15.08 | 2.8 / 5 | ran 5th on 3b; all 16 files from ENA, no SRA fallback, no md5 mismatch; its fastest 3b with every run verified (rep 4: 4759 s) |
 
 **Rep 5 default on 3r: 20 workers, about 3 connections.** For the first ~610 s the arm held 0-3 archive connections, all
 to one ENA HTTPS address (193.62.193.80), and finished 65 runs that way; 20 single-connection attempts got 403 in this
