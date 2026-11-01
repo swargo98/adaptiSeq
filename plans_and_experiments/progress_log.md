@@ -128,11 +128,12 @@ best of the chain; GATE PASS).
 
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
-| 5 | 3r ENA small | fastq-dl | 5117 | (panel running) | 241/241 | 1.48 | 0.9 / 1 | ran 1st; its fastest 3r of the chain (rep 1: 8742 s) |
-| 5 | 3r ENA small | iseq-p8 | 2738 | (panel running) | 241/241 | 2.77 | 3.3 / 8 | first iseq-p8 3r with every run verified in the chain (rep 1: TIMEOUT, 37/241) |
-| 5 | 3r ENA small | adaptiseq-fixed-j20 | **242** | (panel running) | 241/241 | **31.29** | 15.2 / 25 | ran 3rd; HTTPS; no md5 mismatch; fastest 3r of the chain (rep 1-4: 596-1317 s) |
-| 5 | 3r ENA small | kingfisher | 3386 | (panel running) | 146/241 | 2.09 | 1.7 / 5 | exit 0 but 95 runs present and not byte-identical: ena-ftp failed on 95 runs (93 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5"), which came from aws-http (SRA) instead (decision B; rep 4: 34) |
-| 5 | 3r ENA small | adaptiseq-default | 844 | (panel running) | 240/241 | 8.98 | **5.9 / 25** | rc=1: SRR22904420 md5 mismatch 3 times (fixed-j20 got it 1.5 h earlier); 14 mismatches in all (also SRR22904318_2, SRR22904421, 3 each, recovered); HTTPS; below |
+| 5 | 3r ENA small | fastq-dl | 5117 | 21.11 | 241/241 | 1.48 | 0.9 / 1 | ran 1st; its fastest 3r of the chain (rep 1: 8742 s) |
+| 5 | 3r ENA small | iseq-p8 | 2738 | 11.30 | 241/241 | 2.77 | 3.3 / 8 | first iseq-p8 3r with every run verified in the chain (rep 1: TIMEOUT, 37/241) |
+| 5 | 3r ENA small | adaptiseq-fixed-j20 | **242** | **1.00** | 241/241 | **31.29** | 15.2 / 25 | ran 3rd; HTTPS; no md5 mismatch; fastest 3r of the chain (rep 1-4: 596-1317 s) |
+| 5 | 3r ENA small | kingfisher | 3386 | 13.97 | 146/241 | 2.09 | 1.7 / 5 | exit 0 but 95 runs present and not byte-identical: ena-ftp failed on 95 runs (93 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5"), which came from aws-http (SRA) instead (decision B; rep 4: 34) |
+| 5 | 3r ENA small | adaptiseq-default | 844 | 3.48 | 240/241 | 8.98 | **5.9 / 25** | rc=1: SRR22904420 md5 mismatch 3 times (fixed-j20 got it 1.5 h earlier); 14 mismatches in all (also SRR22904318_2, SRR22904421, 3 each, recovered); HTTPS; below |
+| 5 | 3r ENA small | iseq | 3608 | 14.89 | 197/241 | 1.16 | 0.8 / 1 | exit 0 but 44 runs present and not byte-identical: ENA metadata came back empty ("No metadata information found") on 44, which iSeq fetched from SRA (decision B); 5 md5 mismatches on ENA FTP; log 22 MB, committed as `.log.gz` |
 
 **Rep 5 default on 3r: 20 workers, about 3 connections.** For the first ~610 s the arm held 0-3 archive connections, all
 to one ENA HTTPS address (193.62.193.80), and finished 65 runs that way; 20 single-connection attempts got 403 in this
