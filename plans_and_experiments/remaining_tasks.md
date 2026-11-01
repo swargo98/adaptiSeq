@@ -39,7 +39,8 @@ user's choice of default.
    ```
    Record rows per rep as for the tournament; check `check_run.txt` after each rep.
    **Status 10-31 08:50:** reps 1-4 done (30.6, 29.2, 30.9, 28.3 h; rows and result dirs committed); rep 5 `55290254`
-   queued, the last one. At about 30 h, the chain ends around 11-01 15:00 to 11-02, depending on the queue.
+   failed to launch on a bad node (`exp-4-49`) at 08:49 10-31 and sat held until 18:40, when I excluded the node and
+   released it. At 28-31 h a rep plus the queue wait, the chain ends around 11-02 morning.
 3. **Numbers and figure** once the chain is done:
    `python bench/e3/analyze_submission.py --tsv Expanse=<rep dir>/e3_results.tsv ... --outdir paper/numbers`
    (Expanse only unless the user decides on a Fabric half, item 3.3).
