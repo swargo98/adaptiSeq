@@ -89,7 +89,7 @@ user's choice of default.
   refusals, `HostGuard` waits) to see which layer held it. Same 0.1.12 build, so it can run after the chain.
 - **One failed HTTPS probe sends a whole list to FTP under `-r auto`** (paper chain rep 2, 3r, default arm: all
   353 files on segmented FTP, 2927 s at 3.1 mean connections against fixed-j20's 1132 s on HTTPS;
-  `progress_log.md` section 1, "Rep 2 default on segmented FTP"). `Seam._select_transport` caches the per-host
+  `progress_log.md` section 1, "Rep 2 default on segmented FTP"). Again on rep 5 3b: all 16 files on FTP, 3129 s at 1.7 mean connections, 62 segments reset by peer. `Seam._select_transport` caches the per-host
   verdict for the whole run after one probe. Candidates: retry the HTTPS range probe before choosing FTP, re-probe
   after N files or on FTP errors, and log why the probe failed. A code change means a new version, so not during the
   0.1.12 chain; the user decides whether it goes into the paper's build.

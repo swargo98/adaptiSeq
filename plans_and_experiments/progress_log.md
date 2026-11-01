@@ -134,6 +134,7 @@ best of the chain; GATE PASS).
 | 5 | 3r ENA small | kingfisher | 3386 | 13.97 | 146/241 | 2.09 | 1.7 / 5 | exit 0 but 95 runs present and not byte-identical: ena-ftp failed on 95 runs (93 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5"), which came from aws-http (SRA) instead (decision B; rep 4: 34) |
 | 5 | 3r ENA small | adaptiseq-default | 844 | 3.48 | 240/241 | 8.98 | **5.9 / 25** | rc=1: SRR22904420 md5 mismatch 3 times (fixed-j20 got it 1.5 h earlier); 14 mismatches in all (also SRR22904318_2, SRR22904421, 3 each, recovered); HTTPS; below |
 | 5 | 3r ENA small | iseq | 3608 | 14.89 | 197/241 | 1.16 | 0.8 / 1 | exit 0 but 44 runs present and not byte-identical: ENA metadata came back empty ("No metadata information found") on 44, which iSeq fetched from SRA (decision B); 5 md5 mismatches on ENA FTP; log 22 MB, committed as `.log.gz` |
+| 5 | 3b ENA large | adaptiseq-default | 3129 | (panel running) | 8/8 | 8.27 | **1.7 / 26** | ran 1st on 3b; **segmented FTP for all 16 files** (the HTTPS probe failed, as on rep 2 3r; the default log level doesn't say why); 62 FTP segments reset by peer, 71 retries; SRR15852425_1 md5 mismatch 3 times in the batch, then fetched clean on the per-run retry; topdown 100 probes, best 565 Mbps at 16 workers, ended at 2 workers |
 
 **Rep 5 default on 3r: 20 workers, about 3 connections.** For the first ~610 s the arm held 0-3 archive connections, all
 to one ENA HTTPS address (193.62.193.80), and finished 65 runs that way; 20 single-connection attempts got 403 in this
