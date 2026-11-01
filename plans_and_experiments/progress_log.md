@@ -136,6 +136,7 @@ best of the chain; GATE PASS).
 | 5 | 3r ENA small | iseq | 3608 | 14.89 | 197/241 | 1.16 | 0.8 / 1 | exit 0 but 44 runs present and not byte-identical: ENA metadata came back empty ("No metadata information found") on 44, which iSeq fetched from SRA (decision B); 5 md5 mismatches on ENA FTP; log 22 MB, committed as `.log.gz` |
 | 5 | 3b ENA large | adaptiseq-default | 3129 | (panel running) | 8/8 | 8.27 | **1.7 / 26** | ran 1st on 3b; **segmented FTP for all 16 files** (the HTTPS probe failed, as on rep 2 3r; the default log level doesn't say why); 62 FTP segments reset by peer, 71 retries; SRR15852425_1 md5 mismatch 3 times in the batch, then fetched clean on the per-run retry; topdown 100 probes, best 565 Mbps at 16 workers, ended at 2 workers |
 | 5 | 3b ENA large | iseq | 5625 | (panel running) | 8/8 | 4.60 | 1.0 / 1 | 1 md5 mismatch (SRR15852411_1), recovered; its fastest 3b of the chain (reps 1-4: 25890-30000 s); log 40 MB, committed as `.log.gz` |
+| 5 | 3b ENA large | fastq-dl | 5154 | (panel running) | 7/8 | 4.24 | 1.0 / 26 | exit 0 but SRR15852430 present and not byte-identical: its ENA wget failed 3 times in the last minute, so fastq-dl fetched it from SRA (decision B); the 26-connection max is that SRA fetch (~13 s); its fastest 3b of the chain (rep 4: 22446 s) |
 
 **Rep 5 default on 3r: 20 workers, about 3 connections.** For the first ~610 s the arm held 0-3 archive connections, all
 to one ENA HTTPS address (193.62.193.80), and finished 65 runs that way; 20 single-connection attempts got 403 in this
