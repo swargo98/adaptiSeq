@@ -131,6 +131,7 @@ best of the chain; GATE PASS).
 | 5 | 3r ENA small | fastq-dl | 5117 | (panel running) | 241/241 | 1.48 | 0.9 / 1 | ran 1st; its fastest 3r of the chain (rep 1: 8742 s) |
 | 5 | 3r ENA small | iseq-p8 | 2738 | (panel running) | 241/241 | 2.77 | 3.3 / 8 | first iseq-p8 3r with every run verified in the chain (rep 1: TIMEOUT, 37/241) |
 | 5 | 3r ENA small | adaptiseq-fixed-j20 | **242** | (panel running) | 241/241 | **31.29** | 15.2 / 25 | ran 3rd; HTTPS; no md5 mismatch; fastest 3r of the chain (rep 1-4: 596-1317 s) |
+| 5 | 3r ENA small | kingfisher | 3386 | (panel running) | 146/241 | 2.09 | 1.7 / 5 | exit 0 but 95 runs present and not byte-identical: ena-ftp failed on 95 runs (93 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5"), which came from aws-http (SRA) instead (decision B; rep 4: 34) |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
