@@ -132,6 +132,14 @@ best of the chain; GATE PASS).
 | 5 | 3r ENA small | iseq-p8 | 2738 | (panel running) | 241/241 | 2.77 | 3.3 / 8 | first iseq-p8 3r with every run verified in the chain (rep 1: TIMEOUT, 37/241) |
 | 5 | 3r ENA small | adaptiseq-fixed-j20 | **242** | (panel running) | 241/241 | **31.29** | 15.2 / 25 | ran 3rd; HTTPS; no md5 mismatch; fastest 3r of the chain (rep 1-4: 596-1317 s) |
 | 5 | 3r ENA small | kingfisher | 3386 | (panel running) | 146/241 | 2.09 | 1.7 / 5 | exit 0 but 95 runs present and not byte-identical: ena-ftp failed on 95 runs (93 "Unexpected ENA API response ... missing fastq_ftp, fastq_md5"), which came from aws-http (SRA) instead (decision B; rep 4: 34) |
+| 5 | 3r ENA small | adaptiseq-default | 844 | (panel running) | 240/241 | 8.98 | **5.9 / 25** | rc=1: SRR22904420 md5 mismatch 3 times (fixed-j20 got it 1.5 h earlier); 14 mismatches in all (also SRR22904318_2, SRR22904421, 3 each, recovered); HTTPS; below |
+
+**Rep 5 default on 3r: 20 workers, about 3 connections.** For the first ~610 s the arm held 0-3 archive connections, all
+to one ENA HTTPS address (193.62.193.80), and finished 65 runs that way; 20 single-connection attempts got 403 in this
+phase. At ~614 s it jumped to 19-25 connections for ~150 s, then tailed at 1-2. Topdown logged only 4 probes, all at
+20 workers (337, 352, 259 Mbps, then 0 Mbps at 4 workers), so the low connection count was not the controller's step
+down; something below it (the per-host cap after the 403s, or segments waiting in `HostGuard.acquire`) held the pool
+to ~3. The default log level does not show which. Follow-up added to `remaining_tasks.md` section 2.
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq

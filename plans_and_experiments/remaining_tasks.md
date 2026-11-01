@@ -83,6 +83,10 @@ user's choice of default.
   cut streams): the one pattern that held across round 2 (`progress_log.md` section 2, "Routing"). A
   candidate for a later round with more reps, not a router over today's controllers.
 - **`-r ftp` stalls at ENA**: add a docs note, or fall back to HTTPS.
+- **20 workers on ~3 connections for 10 min** (paper chain rep 5, 3r, default arm; `progress_log.md` section 1,
+  "Rep 5 default on 3r"): 403s on single-connection attempts, then the pool stayed at ~3 to one ENA address while
+  topdown still read 20 workers. Re-run 3r once with `ASEQ_CLI=$PWD/bench/e3/aseq_info.sh` (INFO logs: host cap,
+  refusals, `HostGuard` waits) to see which layer held it. Same 0.1.12 build, so it can run after the chain.
 - **One failed HTTPS probe sends a whole list to FTP under `-r auto`** (paper chain rep 2, 3r, default arm: all
   353 files on segmented FTP, 2927 s at 3.1 mean connections against fixed-j20's 1132 s on HTTPS;
   `progress_log.md` section 1, "Rep 2 default on segmented FTP"). `Seam._select_transport` caches the per-host
