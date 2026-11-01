@@ -126,6 +126,10 @@ was drained at 15:30 ("Bright: memory usage 246 GB is high on idle node"). At 18
 `ExcNodeList` and released it (`scontrol release`). It started at 18:42 on `exp-7-50` (probe 2.1/16.9/38.7 MB/s, the
 best of the chain; GATE PASS).
 
+| rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
+|---|---|---|---|---|---|---|---|---|
+| 5 | 3r ENA small | fastq-dl | 5117 | (panel running) | 241/241 | 1.48 | 0.9 / 1 | ran 1st; its fastest 3r of the chain (rep 1: 8742 s) |
+
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
 re-fetched each one and verified all 8 runs; both iseq arms gave up on one run after 3 tries.
