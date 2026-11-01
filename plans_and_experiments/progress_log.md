@@ -129,6 +129,7 @@ best of the chain; GATE PASS).
 | rep | panel | arm | wall_s | ratio | runs | MB/s | connections mean / max | notes |
 |---|---|---|---|---|---|---|---|---|
 | 5 | 3r ENA small | fastq-dl | 5117 | (panel running) | 241/241 | 1.48 | 0.9 / 1 | ran 1st; its fastest 3r of the chain (rep 1: 8742 s) |
+| 5 | 3r ENA small | iseq-p8 | 2738 | (panel running) | 241/241 | 2.77 | 3.3 / 8 | first iseq-p8 3r with every run verified in the chain (rep 1: TIMEOUT, 37/241) |
 
 **md5 mismatches on 3b, 10-28:** fixed-j20, iseq-p8 and iseq hit mismatches on 7 different files of the 8 runs, a
 different set in each arm, so these were bad transfers or copies from ENA at the time, not fixed bad files. adaptiSeq
