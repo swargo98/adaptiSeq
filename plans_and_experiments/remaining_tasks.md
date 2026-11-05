@@ -27,7 +27,7 @@ user's choice of default.
    CHECK FAIL on reps 1-4 (TIMEOUTs, all in other tools), PASS on rep 5. Rows in `progress_log.md` section 1.
    Submission commands are in `progress_log.md` section 1 and in this file's history. Delete this item when
    item 4 starts.
-3. **Next: the Fabric half, five reps on one Fabric node** (user, 11-01: start the analysis after the Fabric
+3. **In progress: the Fabric half, five reps on one Fabric node** (user, 11-01: start the analysis after the Fabric
    results). Same protocol as Expanse, so the two machines can be compared row for row:
    - **Build:** the same wheel, `wheels/adaptiseq-0.1.12-py3-none-any.whl`, sha256 `0c5e6a82...` (check it
      before installing). Env from `bench/e3/env_adaptiseq_e3_sub.yml`:
@@ -53,6 +53,26 @@ user's choice of default.
    - **Push** to a separate branch, `fabric-app-notes`, not `expanse-app-notes`, so the two machines'
      sessions never push the same branch; merge into `expanse-app-notes` once both are done.
    - **Don't** change adaptiSeq or the wheel, or the timeouts, mid-run.
+   - **Status 2026-11-05 20:54: running.** Node `node1` (8 cores, 62 GB, payload on `/home/ubuntu/work/payload`, 965 GB
+     free). IPv4 by hand (not persistent; redo after a reboot): `ip addr add 23.134.233.210/28 dev enp7s0`,
+     `ip route add default via 23.134.233.209 dev enp7s0`, `ip -6 route add unreachable 2600:2701:5000:5001::/96`
+     (FABNetv4Ext `net1`, CERN, assigned by the user). Env `adaptiseq_e3_sub` in `/home/ubuntu/work/envs`
+     (Miniforge at `/home/ubuntu/work/miniforge3`; the pinned yml's pip section was installed by hand from
+     `/home/ubuntu/work/pip_pins.txt`): iSeq 1.9.9, Kingfisher 0.5.0, fastq-dl 4.0.1, Python 3.11.17, wheel `0c5e6a82`.
+   - **Decision (user, 11-05): scaled panels.** ENA gave 0.2-0.5 MB/s per connection from this node (P=1 0.22-0.47,
+     P=8 0.35-0.46, P=20 about 0.3; 3.5-6 MB/s total), so full 3r/3b would time out for the single-stream tools.
+     Panels **3rs** (`D1_scaled_PRJNA916347`: 50 one-file + 10 three-file runs of D1_full, 1.84 GB) and **3bs**
+     (`D2_scaled_PRJNA762469`: 2 of the 8 D2 runs, 6.46 GB), seed 20261105 set before any rep
+     (`make_datasets.py`, `run_e3.sh`). Same arms, wheel, tool versions, `E3_SEED`; timeouts 10800 s and 30000 s.
+     The user does not compare Fabric with Expanse (the paper compares tools and settings), so no Expanse rerun.
+     Paper wording: Fabric used scaled panels because ENA's per-connection rate from that site was low.
+   - **Running:** `tmux` session `fabric`, `/home/ubuntu/work/run_fabric_reps.sh` (reps 1-5, one driver invocation each,
+     status lines in `/home/ubuntu/work/fabric_reps.status`). Results `plans_and_experiments/e3_submission_0.1.12_fabric/e3_rep<r>/`
+     (driver log `driver_rep<r>.log`). Restart one rep with `REP_LIST="3 4 5" tmux new -d -s fabric /home/ubuntu/work/run_fabric_reps.sh`.
+     Per finished panel: `bash tools/check_panel.sh <rep dir> 3rs`, add rows to a "Fabric chain rows" table in
+     `progress_log.md` section 1, commit. Not pushed yet (no GitHub credentials on this node checked; branch
+     `fabric-app-notes`, local commits `7ca0dae` driver, `808fa47` scaled panels).
+
 4. **Then the analysis and the manuscript, per `analysis_plan.md`:** checks, the script changes
    (`--reference`, completeness and connection tables, the stacked completion panel), numbers for both
    machines into `paper/numbers/`, a report to the user, then the placeholders and the rewording to the
