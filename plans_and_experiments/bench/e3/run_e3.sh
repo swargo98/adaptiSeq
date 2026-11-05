@@ -11,6 +11,7 @@
 #   3a  overhead-dominated  (D1_fair, 201 runs / 4.4 GB)   -- fair timing, all tools complete
 #   3r  robustness          (D1_full, 241 runs / 7.6 GB)   -- runs-completed; iseq drops the 3-file runs
 #   3b  byte-dominated      (D2_subset, 8 runs / 25.9 GB)  -- honesty panel
+#   3rs / 3bs  scaled 3r / 3b for a slow ENA path (D1_scaled 60 runs / 1.8 GB; D2_scaled 2 runs / 6.5 GB)
 #   3c  cross-database      (D4_mixed, 20 accessions)      -- ENA + SRA-only + GSA routing
 #   3d  worker sweep        (D0_sweep, 8 files / 11.9 GB)  -- -j {4,8,16} only (feeds E9)
 #   3s  segment sweep       (D3_seg, 2 files / 23 GB)      -- --max-segments {4,8,16}
@@ -101,7 +102,7 @@ if ! _fp="$(e3_aseq_fingerprint)"; then
     exit 1
 fi
 case "$PANEL" in
-  3r|3b|3jr|3jb|4r|4b|4s|4g|4h|4m)
+  3r|3b|3rs|3bs|3jr|3jb|4r|4b|4s|4g|4h|4m)
     if [[ "$ARM_SET" != "legacy" && -z "$E3_ASEQ_WHEEL" && "${E3_ALLOW_UNPINNED:-0}" != "1" ]]; then
         echo "[ERROR] E3_ASEQ_WHEEL is not set. The paper panels must run the released wheel:" >&2
         echo "          pip download adaptiseq==0.1.4 --no-deps -d wheels/" >&2
@@ -316,6 +317,10 @@ case "$PANEL" in
   3a)  build_arms;       run_panel 3a "D1_fair_PRJNA916347"   "${REPS_ARG:-5}"  "${E3_TIMEOUT_3A:-3600}" ;;
   3r)  build_arms;       run_panel 3r "D1_full_PRJNA916347"   "${REPS_ARG:-5}"  "${E3_TIMEOUT_3R:-5400}" ;;
   3b)  build_arms;       run_panel 3b "D2_subset_PRJNA762469" "${REPS_ARG:-5}"  "${E3_TIMEOUT_3B:-7200}" ;;
+  # Scaled copies of 3r and 3b for a slow ENA path (Fabric): same arms, same shapes,
+  # smaller lists (make_datasets.py, "Scaled panels"). Timeouts as for 3r and 3b.
+  3rs) build_arms;       run_panel 3rs "D1_scaled_PRJNA916347"  "${REPS_ARG:-5}" "${E3_TIMEOUT_3RS:-10800}" ;;
+  3bs) build_arms;       run_panel 3bs "D2_scaled_PRJNA762469"  "${REPS_ARG:-5}" "${E3_TIMEOUT_3BS:-30000}" ;;
   3c)  build_arms;       run_panel 3c "D4_mixed"              "${REPS_ARG:-5}"  "${E3_TIMEOUT_3C:-3600}" ;;
   3d)  build_sweep_arms; run_panel 3d "D0_sweep_PRJNA762469"  "${REPS_ARG:-3}"  "${E3_TIMEOUT_3D:-5400}" ;;
   3s)  build_seg_arms;   run_panel 3s "D3_seg_PRJNA540705"    "${REPS_ARG:-3}"  "${E3_TIMEOUT_3S:-5400}" ;;
@@ -336,7 +341,7 @@ case "$PANEL" in
           bash "$E3_DIR/run_e3.sh" "$p" "$REPS_ARG"
       done
       ;;
-  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3c|3d|3s|3jr|3jb|4r|4b|4s|4g|4h|4m|4x|all)" >&2; exit 2 ;;
+  *) echo "unknown panel: $PANEL (want smoke|3a|3r|3b|3rs|3bs|3c|3d|3s|3jr|3jb|4r|4b|4s|4g|4h|4m|4x|all)" >&2; exit 2 ;;
 esac
 
 echo >&2

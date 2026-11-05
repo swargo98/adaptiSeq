@@ -98,6 +98,8 @@ def main() -> int:
                     help="Seed for the D2/D3 subset draws; committed lists used 20260717.")
     ap.add_argument("--d2-runs", type=int, default=8,
                     help="Runs sampled from PRJNA762469 for the byte-dominated panel.")
+    ap.add_argument("--scaled-seed", type=int, default=20261105,
+                    help="Seed for the Fabric scaled panels (3rs/3bs); fixed before any rep ran.")
     args = ap.parse_args()
 
     outdir = Path(args.outdir)
@@ -135,6 +137,25 @@ def main() -> int:
     d2 = sorted(rng.sample(d2_all, min(args.d2_runs, len(d2_all))), key=lambda r: r.acc)
     write(outdir, "D2_subset_PRJNA762469", d2,
           f"byte-dominated panel (3b), seed={args.seed}")
+
+    # ---- Scaled panels for a slow ENA path (Fabric, 2026-11-05) ---------------
+    # From Fabric, ENA gave 0.2-0.4 MB/s per connection, so the full panels would
+    # take days for the single-stream tools and time out. Same two shapes at about
+    # a quarter of the size, drawn once with a fixed seed from the lists above (own
+    # Random, so the lists above are unchanged):
+    #   D1_scaled: 50 one-file + 10 three-file runs of D1_full (the full list is
+    #              201 + 40, so the 17% share of three-file runs is kept);
+    #   D2_scaled: 2 of the 8 runs of D2_subset (about 1.3-2.0 GB per file).
+    print("Scaled panels (seed=%d)" % args.scaled_seed)
+    srng = random.Random(args.scaled_seed)
+    one = sorted(r for r in d1 if r.nfiles == 1)
+    three = sorted(r for r in d1 if r.nfiles >= 3)
+    d1s = sorted(srng.sample(one, 50) + srng.sample(three, 10), key=lambda r: r.acc)
+    write(outdir, "D1_scaled_PRJNA916347", d1s,
+          "scaled 3r for a slow ENA path (3rs): 50 one-file + 10 three-file runs")
+    d2s = sorted(srng.sample(d2, 2), key=lambda r: r.acc)
+    write(outdir, "D2_scaled_PRJNA762469", d2s,
+          "scaled 3b for a slow ENA path (3bs): 2 of the 8 runs")
 
     # ---- D3: large per-file (PRJNA540705) -----------------------------------
     print("D3  PRJNA540705 (large per-file)")
