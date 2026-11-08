@@ -244,7 +244,10 @@ def test_per_host_cap_enforced_end_to_end(tmp_path):
         ok = eng.fetch(srv.url(), "file.bin")
         assert ok is True
         assert md5((tmp_path / "file.bin").read_bytes()) == md5(data)
-        assert srv.max_concurrent <= 2
+        # The server counts a request until its handler returns, so a connection the
+        # client has already released can overlap the next one by one request: allow
+        # cap + 1. Without the cap this file would use up to max_segments (8).
+        assert srv.max_concurrent <= 3
 
 
 def test_circuit_breaker_completes_despite_429s(tmp_path):
