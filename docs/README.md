@@ -32,6 +32,7 @@ concurrently, from a script, notebook, or the shell.
   - [Aspera](usage/aspera.md) — `-a`
   - [Python API](usage/python-api.md) — `fetch`, `resolve`, `get_metadata`
 - [Method details](methods.md) — the transports and engines, and how one is chosen
+- [Comparison with other tools](comparison.md) — what each downloader does and does not do
 - [Adaptive controller](ADAPTIVE_CONTROLLER.md) — the five controllers and what the benchmark showed
 - [Examples](examples.md) — worked, copy-pasteable commands
 - [FAQ](faq.md) — common errors and how to solve them

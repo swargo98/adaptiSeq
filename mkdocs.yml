@@ -87,6 +87,7 @@ nav:
       - Python API: usage/python-api.md
   - Method details: methods.md
   - Adaptive controller: ADAPTIVE_CONTROLLER.md
+  - Comparison: comparison.md
   - Examples: examples.md
   - FAQ: faq.md
 
