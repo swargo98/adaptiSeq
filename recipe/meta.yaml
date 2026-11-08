@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/adaptiseq-{{ version }}.tar.gz
-  sha256: c524540127c0c9bd67772a38a8adb8ff9aef89680b41006be6c9440094afa409
+  sha256: 78131ac146694bc39172cfb63180f8d2a3da59ec169fe9048bfde16ecfbf4878
 
 build:
   number: 0

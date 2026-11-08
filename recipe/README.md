@@ -16,8 +16,8 @@ conda create -n adaptiseq -c local -c conda-forge -c bioconda adaptiseq
 
 `meta.yaml` builds the sdist uploaded to PyPI, so `version` and `sha256` must be those of that
 exact file. For 0.1.12 the sdist is `adaptiseq-0.1.12.tar.gz`, sha256
-`c524540127c0c9bd67772a38a8adb8ff9aef89680b41006be6c9440094afa409`, uploaded together with the wheel
-`adaptiseq-0.1.12-py3-none-any.whl`, sha256 `9d69e42036ad64dedd665e3c5246c2933795754251a5ebc3f760101ee659e75b`
+`78131ac146694bc39172cfb63180f8d2a3da59ec169fe9048bfde16ecfbf4878`, uploaded together with the wheel
+`adaptiseq-0.1.12-py3-none-any.whl`, sha256 `0b867f6716ab8838d59aa90326d3aecd429591ca760f06a210294ba22d334c84`
 (the wheel rebuilds bit for bit with `SOURCE_DATE_EPOCH=1794169746 python -m build` from this source, since it
 contains no tests; an sdist does not, so pin the uploaded file). If a different sdist is uploaded, copy the sha256 from the PyPI
 "Download files" page, or from `sha256sum dist/adaptiseq-*.tar.gz`, into `meta.yaml` before the bioconda
