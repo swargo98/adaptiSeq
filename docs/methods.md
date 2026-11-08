@@ -43,18 +43,37 @@ URL cache made every file on a host download the first file's bytes).
 ## Concurrency & etiquette
 
 - **Per-file:** up to `--max-segments` byte-range connections.
-- **Per-host:** a global cap (`--max-conns-per-host`) plus a reactive circuit
-  breaker (429/503/refused → exponential global backoff + temporarily lowered
-  cap, slow recovery).
-- **Per-batch:** a worker pool (`-j`) whose active size the adaptive controller
-  tunes (`--adaptive`; `topdown` knee search by default, `bottomup` gradient via
-  `ASEQ_ADAPTIVE_MODE`); workers are gated at file-pickup boundaries.
+- **Per-file:** idle connections take over the remainder of the largest outstanding
+  range of their file (work stealing); a file that starts near the end of a list, or is
+  fetched again after a bad checksum, may use the spare per-host budget.
+- **Per-host:** one guard for all connections to a host. Its cap defaults to
+  `-j` × `--max-segments` (`--max-conns-per-host` lowers it). A refused connect while
+  other connections are open is read as the host's **connection ceiling** (wait for a
+  slot, do not back off); HTTP 429/503, or a refusal with nothing open, is pushback
+  (halve the cap, exponential backoff); the cap climbs back by one connection every 5 s
+  without a new refusal. Responses cut short are recorded but not acted on (GSA cuts
+  streams at any load).
+- **Per-batch:** a worker pool (`-j`) whose active size an adaptive controller tunes
+  (`--adaptive`; `--controller topdown|bottomup|budget|greedy|knee`, `topdown` by
+  default; see [Adaptive controller](ADAPTIVE_CONTROLLER.md)); workers are gated at
+  file-pickup boundaries.
 - **Resolution:** parallel (`--meta-jobs`) under per-endpoint rate limiters
-  (ENA / NCBI / GSA; NCBI 3 rps, 10 with `NCBI_API_KEY`).
+  (ENA 8 rps, GSA 5, NCBI 3, or 10 with `NCBI_API_KEY`). A failed or empty ENA answer
+  is retried with backoff and is not read as "not in ENA" until about three minutes
+  of continuous failure, shared by the whole list.
 - **Speed:** `-s/--speed` token-bucket cap in MB/s.
 
 ## Integrity
 
 Every Run is md5-checked against the public database (SRA uses md5 +
-`vdb-validate`). On mismatch adaptiSeq retries up to **three rounds**, then records
-the outcome in `success.log` / `fail.log`. `-k/--skip-md5` disables the checks.
+`vdb-validate`). In a batch, each file is hashed in the worker pool as soon as it lands;
+a mismatching file is deleted and put back on the queue, so the bad copy is fetched
+again in parallel with the rest of the list. After the batch a per-Run check confirms
+every file and retries a Run for up to **three rounds**, then records the outcome in
+`success.log` / `fail.log`. The exit status is `1` if any Run could not be delivered and
+verified. `-k/--skip-md5` disables the checks.
+
+**SRA fallback.** When ENA has no usable metadata or file for a Run, adaptiSeq can fetch
+it from NCBI SRA and convert it. That FASTQ is validated but cannot be compared with
+ENA's md5, so the fallback is announced and counted as unverified against ENA;
+`--no-sra-fallback` makes such a Run fail instead.

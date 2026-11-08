@@ -48,6 +48,13 @@ CRR311377
 GSM7417667
 ```
 
+Pick a controller, or require ENA's md5 for every kept file:
+
+```bash
+adaptiseq -i accessions.txt -g --controller budget      # fewest connections
+adaptiseq -i accessions.txt -g --no-sra-fallback        # a Run ENA cannot serve fails
+```
+
 ## 6. Merge an Experiment's Runs
 
 ```bash
@@ -73,7 +80,8 @@ adaptiseq -i SRR7706354 -g -r https
 from adaptiseq import fetch, get_metadata
 
 rows   = get_metadata("SRR7706354")
-result = fetch("accessions.txt", outdir="data/", gzip=True, jobs=20, adaptive=True)
+result = fetch("accessions.txt", outdir="data/", gzip=True, jobs=20, adaptive=True,
+               controller="topdown")
 print(result.success_ids, result.fail_ids, result.failed)
 ```
 

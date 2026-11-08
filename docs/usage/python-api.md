@@ -38,7 +38,7 @@ result = fetch("SRR1553469", outdir="data/", gzip=True)
 
 # a whole batch (same -i semantics as the CLI: a file of accessions)
 result = fetch("accessions.txt", outdir="data/", gzip=True,
-               jobs=20, adaptive=True)
+               jobs=20, adaptive=True, controller="topdown")
 
 print(result.accession, result.outdir, result.failed)
 print(result.success_ids, result.fail_ids)
@@ -55,11 +55,17 @@ print(result.success_ids, result.fail_ids)
 | `success_ids` | `list[str]` | Runs in `success.log` |
 | `fail_ids` | `list[str]` | Runs in `fail.log` |
 
-`fetch` accepts keyword equivalents of every CLI flag (`metadata`, `gzip`,
-`fastq`, `threads`, `merge`, `database`, `aspera`, `speed`, `skip_md5`, `protocol`,
-`quiet`, `engine`, `segment_size_mb`, `max_segments`, `max_conns_per_host`, `jobs`,
-`adaptive`, `probe_window`, `cc_penalty`, `meta_jobs`, `aspera_efficiency`), plus
-an optional `reporter` to capture progress.
+`fetch` accepts keyword equivalents of the CLI flags: `metadata`, `gzip`, `fastq`,
+`threads`, `merge`, `database`, `parallel`, `aspera`, `speed`, `skip_md5`, `protocol`,
+`quiet`, `engine`, `segment_size_mb`, `max_segments`, `max_conns_per_host` (`0` = auto,
+`jobs` × `max_segments`), `jobs`, `adaptive`, `controller` (`"topdown"`, `"bottomup"`,
+`"budget"`, `"greedy"` or `"knee"`; `None` = the default), `probe_window`, `cc_penalty`,
+`meta_jobs` and `aspera_efficiency`, plus an optional `reporter` to capture progress.
+`--no-sra-fallback` is a CLI flag only in 0.1.12; `fetch` always allows the fallback to
+NCBI SRA, which is announced through the `reporter`.
+
+`result.failed` is `True` when any Run could not be delivered and verified (the CLI exits
+1 in the same case), and `result.fail_ids` names them.
 
 ## Typed exceptions
 

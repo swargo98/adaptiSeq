@@ -55,6 +55,26 @@ adaptiSeq retries up to **three rounds**, then records the Run in `fail.log` and
 deletes the corrupt partial. Re-run the command to retry. To skip checks entirely
 use `-k/--skip-md5` (then re-run without `-k` to verify later).
 
+## A Run came from SRA, not ENA. Why?
+
+ENA's portal API sometimes fails or returns nothing for a Run, and some Runs are only in NCBI SRA.
+adaptiSeq retries a failed ENA query for up to about three minutes before it falls back, announces
+the fallback (`N accession(s) had no usable ENA metadata and will be downloaded from SRA`), and counts
+the Run as delivered: its converted FASTQ is validated, but it cannot be compared with ENA's md5. If every
+kept file must match ENA's md5, add `--no-sra-fallback`: such a Run then fails, goes to `fail.log`, and
+the exit status is 1; re-run later.
+
+## What does the exit status mean?
+
+`0` when every requested Run was delivered; `1` when any Run failed (named in `fail.log`) or the
+command could not run. In a list, one failing accession does not stop the rest.
+
+## Which `--controller` should I use?
+
+Leave the default (`topdown`) unless you have a reason. `greedy` runs every worker and backs off on
+HTTP 429/503; `budget` and `knee` hold the fewest connections that give good speed, to load an archive
+less; `bottomup` is the original gradient optimizer. See [Adaptive controller](ADAPTIVE_CONTROLLER.md).
+
 ## How do I re-download something already in `success.log`?
 
 Remove its line and re-run:
@@ -79,5 +99,5 @@ Yes — `from adaptiseq import fetch, resolve, get_metadata`. See the
 Resolution, metadata, integrity, logs, and merge are covered by a differential
 test suite that checks adaptiSeq's output against stored reference fixtures. The
 engine changes only *how* bytes are transferred, never *which* bytes are written.
-One deliberate improvement over `iseq`: 3-file runs (orphan/barcode + `_1` + `_2`)
-that it mishandles are downloaded correctly.
+3-file runs (orphan/barcode + `_1` + `_2`) are downloaded correctly (iSeq 1.9.8 did not
+download them; later iSeq releases do).

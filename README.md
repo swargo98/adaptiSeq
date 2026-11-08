@@ -47,7 +47,26 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 
 ## Update Notes
 
-### 0.1.12 (in development)
+### 0.1.12: first release since 0.1.3
+0.1.12 contains every change of the internal builds 0.1.4 to 0.1.11 (never published; each is
+listed below under its own number) and is the build the benchmarks in the accompanying manuscripts
+ran. In short:
+- **Delivered means verified, and the exit status says so.** Each file is checked against the
+  archive's md5 as it lands, and a bad copy is deleted and fetched again inside the pool. A Run that
+  cannot be verified is written to `fail.log` and the exit status is 1. A Run that ENA cannot serve
+  is fetched from NCBI SRA only if you allow it: the fallback is announced, and `--no-sra-fallback`
+  refuses it (SRA copies cannot be checked against ENA's md5).
+- **Metadata failures are not read as answers.** A failed or empty ENA query is retried (up to three
+  minutes of failure, shared by a list) before a Run is declared absent.
+- **Connections stay busy.** Files are split into ranges that idle connections take over, the
+  per-host guard reads a refused connect as a ceiling to wait at, and spare connections are used in
+  the tail of a list. GSA runs join the same parallel pool.
+- **Five adaptive controllers** (`--controller topdown|bottomup|budget|greedy|knee`, or
+  `fetch(controller=...)`); `topdown` stays the default. See
+  [docs/ADAPTIVE_CONTROLLER.md](docs/ADAPTIVE_CONTROLLER.md).
+- **GSA and GEO work again** after both archives put browser checks on their pages.
+
+Details of the 0.1.12 build itself:
 - A GSA Run that GSA's run-info table leaves out is no longer skipped with exit 0.
   The table for a project sometimes comes back without one of its Runs; the
   Run's metadata CSV then held only a header, nothing was downloaded, and the
@@ -82,7 +101,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   attempts used to stop its file from splitting for the rest of the pass, and the
   last minutes of a GSA download ran on a few connections.
 
-### 0.1.11 (in development)
+### 0.1.11 (internal build)
 - A connect that times out is now handled like a refused connect: while other
   connections to the host are open it marks the host's connection ceiling and
   the segment waits for a free slot; with nothing open it is pushback, as
@@ -91,7 +110,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   now and then at any load, so each timeout cut the `knee` and `budget`
   controllers' connection budget by 30 %.
 
-### 0.1.10 (in development)
+### 0.1.10 (internal build)
 - **New controller candidate** `--controller knee`: keeps every worker active and
   finds the fewest connections that give near-full speed. It starts at 4,
   doubles while each doubling still earns at least half its proportional gain,
@@ -103,7 +122,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 - A raised connection budget is filled at once: in-flight files split onto all
   the spare connections in one step instead of one per poll.
 
-### 0.1.9 (in development)
+### 0.1.9 (internal build)
 - **Batch mode**: a download that fails but moves its resume point on (the
   bytes are kept) no longer uses up one of the file's three retries (capped
   at 20 such passes). Under a storm of cut-short responses, as GSA served at
@@ -116,7 +135,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   adjusting when every file started at once (the queue empty from the start);
   it only stops in the tail, when its budget is not filled.
 
-### 0.1.8 (in development, superseded by 0.1.9)
+### 0.1.8 (internal build, superseded by 0.1.9)
 - **New** `--controller NAME` (and `fetch(controller=...)`) picks the adaptive
   controller: `topdown` (the default, unchanged), `bottomup` (the original
   gradient optimizer), and two candidates under evaluation: `budget`, which
@@ -144,7 +163,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 - **Fix (GSA)**: after an md5 mismatch the bad file is deleted before the first
   retry, so the retry downloads again instead of re-checking the same bytes.
 
-### 0.1.7 (built for the benchmark; not yet on PyPI)
+### 0.1.7 (internal build, used for the benchmark)
 - **Fix**: a range probe that gets no answer (refused, reset, timed out) is
   retried, and waits at the host's connection limit like a segment does.
   Previously it was read as "the server has no ranges" and the whole file
@@ -153,7 +172,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   answer now fails the file (the batch retries it); transport selection still
   falls back to FTP when HTTPS never answers.
 
-### 0.1.6 (built for the benchmark; not yet on PyPI)
+### 0.1.6 (internal build, used for the benchmark)
 - **Segmented HTTPS** keeps a file's connections busy to the end: when a
   segment finishes, its connection takes over half of the largest remaining
   piece of the same file, and once the batch queue is empty, unused per-host
@@ -161,7 +180,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   Previously the last bytes of each file arrived on one connection; on a
   16-file, 26 GB list that tail took 15 of 26 minutes.
 
-### 0.1.5 (built for the benchmark; not yet on PyPI)
+### 0.1.5 (internal build, used for the benchmark)
 - **Fix**: an ENA metadata query that fails (HTTP 500, timeout, network error)
   or comes back with no rows is no longer read as "not in ENA". Previously such
   a Run went to the SRA fallback, and the converted FASTQ could not be checked
@@ -196,7 +215,7 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   a 1.6 GB file), and the last files of a batch ran on one to three
   connections. A resumed download keeps the split it started with.
 
-### 0.1.4
+### 0.1.4 (internal build)
 - **Fix**: `-g` on a Run with no ENA FASTQ mirror (SRA-only, e.g. `SRR1031066`)
   no longer exits with code 1 and a `fail.log` entry after producing complete
   FASTQ. The `.sra` is now validated with `vdb-validate`, recorded in
@@ -258,13 +277,17 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
   resume — interrupt and re-run to continue, not restart.
 - **Batch-parallel download** of accession lists through an asyncio worker pool.
 - **Adaptive concurrency**: an adaptive controller (top-down knee search by
-  default) tunes how many downloads run at once from measured throughput.
+  default; `bottomup`, `budget`, `greedy` and `knee` selectable with `--controller`)
+  tunes how many downloads run at once from measured throughput.
+- **Verified delivery**: every file is md5-checked in the worker pool as it lands, a
+  bad copy is fetched again in parallel, and the exit status is non-zero when a Run
+  could not be delivered and verified (`fail.log` names it).
 - **Parallel metadata resolution** under polite per-endpoint rate limits.
 - **Adaptive parallel Aspera** via an efficiency-hysteresis controller.
 - **Python API** (`fetch`, `resolve`, `get_metadata`) that returns values and
   raises typed exceptions.
-- Correctly downloads **3-file runs** (orphan/barcode + `_1` + `_2`) that iSeq
-  mishandles.
+- Correctly downloads **3-file runs** (orphan/barcode + `_1` + `_2`); older iSeq
+  releases (1.9.8) did not.
 
 </details>
 
@@ -280,7 +303,10 @@ reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
 - **Multi-threaded conversion/compression** (`-t`).
 - **File merging** per Experiment/Sample/Study (`-e`).
 - **Batch-parallel download** of accession lists (`-j`), with **adaptive**
-  concurrency (`--adaptive`) and **parallel metadata resolution** (`--meta-jobs`).
+  concurrency (`--adaptive`, `--controller`) and **parallel metadata resolution**
+  (`--meta-jobs`).
+- **ENA or nothing** when you need it: `--no-sra-fallback` fails a Run instead of
+  fetching an unverifiable copy from SRA.
 - **Segmented, resumable transfers** with HTTPS-first transport selection.
 - **Aspera high-speed download** for GSA/ENA (`-a`), adaptive for ENA.
 - **Automatic retry** (up to three rounds) and **md5 / `vdb-validate` verification**.
@@ -349,7 +375,8 @@ Optional options:
   -t, --threads   int           Threads for SRA->FASTQ / compression (default: 8).
   -e, --merge     [ex|sa|st]    Merge fastq files per Experiment, Sample, or Study.
   -d, --database  [ena|sra]     Force database for SRA data (default: auto-detect).
-      --no-sra-fallback         Fail a Run that ENA cannot serve instead of fetching it from SRA.
+      --no-sra-fallback         Fail a Run that ENA cannot serve instead of fetching it from SRA,
+                                so every kept file can be checked against ENA's md5.
   -p, --parallel  int           axel connection count (classic engine only), e.g. -p 10.
   -a, --aspera                  Use Aspera (ascp); GSA/ENA only.
   -s, --speed     int           Download speed limit (MB/s) (default: 1000).
@@ -357,16 +384,21 @@ Optional options:
   -r, --protocol  [ftp|https]   ENA transport (default: auto, HTTPS-first).
   -Q, --quiet                   Suppress download progress bars.
   -o, --output    text          Output directory (created if missing; default: cwd).
+
+Engine / batch / adaptive:
   --engine        [segmented|classic]   Download engine (default: segmented).
   --segment-size  int           Target segment size in MB (default: 512).
   --max-segments  int           Max connections per file (default: 8).
-  --max-conns-per-host int      Global cap on connections to one host (default: 8).
+  --max-conns-per-host int      Cap on connections to one host (default: auto = -j x --max-segments;
+                                the circuit breaker still lowers it on 429/503).
   -j, --jobs      int           Max worker-pool size for batch download (default: 20).
-  --adaptive / --no-adaptive    Gradient adaptive-concurrency controller (default: on).
+  --adaptive / --no-adaptive    Adaptive concurrency (default: on); --no-adaptive runs all -j workers.
+  --controller    name          Adaptive controller: topdown (default), bottomup, budget, greedy, knee.
   --probe-window  int           Adaptive probe window in seconds (default: 5).
-  --cc-penalty    float         Worker-cost penalty K (default: 1.01).
+  --cc-penalty    float         Worker-cost penalty K in score=throughput/K**workers (default: 1.01).
   --meta-jobs     int           Parallelism for metadata/URL resolution (default: 3).
-  --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (0.70).
+  --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (default: 0.70).
+
   -h, --help                    Show the help information.
   -v, --version                 Show the program version.
 ```
@@ -446,12 +478,14 @@ speed cap (`-s` MB/s), skip md5 (`-k`), and quiet (`-Q`). See
 
 For accession lists, adaptiSeq resolves in parallel (`--meta-jobs`) then downloads
 through an asyncio worker pool (`-j`) whose active size the adaptive controller
-tunes (`--adaptive`; `topdown` by default, `ASEQ_ADAPTIVE_MODE=bottomup` for the
-gradient controller — see `docs/ADAPTIVE_CONTROLLER.md`).
+tunes (`--adaptive`; `topdown` by default, others with `--controller NAME` — see
+`docs/ADAPTIVE_CONTROLLER.md`).
 
 ```bash
 adaptiseq -i accessions.txt -g -j 8
-adaptiseq -i accessions.txt -g --no-adaptive
+adaptiseq -i accessions.txt -g --no-adaptive              # all -j workers, no probing
+adaptiseq -i accessions.txt -g --controller budget        # fewest connections
+adaptiseq -i accessions.txt -g --no-sra-fallback          # ENA only, every file md5-checked
 ```
 
 Full detail: **[docs/usage/batch.md](docs/usage/batch.md)**.
@@ -474,7 +508,8 @@ from adaptiseq import fetch, resolve, get_metadata
 
 rows   = get_metadata("SRR7706354")               # parsed metadata rows
 urls   = resolve("SRR7706354", database="ena")    # resolved URLs (no download)
-result = fetch("accessions.txt", outdir="data/", gzip=True, jobs=20, adaptive=True)
+result = fetch("accessions.txt", outdir="data/", gzip=True, jobs=20, adaptive=True,
+               controller="topdown")
 print(result.success_ids, result.fail_ids, result.failed)
 ```
 
@@ -492,6 +527,13 @@ exceptions in `adaptiseq.errors`. Full reference:
 | `.metadata.tsv` | Metadata for the query accession |
 | `success.log` | Runs downloaded successfully |
 | `fail.log`    | Runs that failed |
+
+**Exit status.** `0` when every requested Run was delivered; `1` when any Run failed
+(it is named in `fail.log`) or the command could not run. A file that fails its md5
+check is deleted and fetched again, up to three rounds. A Run that ENA cannot serve is
+downloaded from NCBI SRA unless `--no-sra-fallback` is given; the fallback is announced
+and counts as delivered (its converted FASTQ is validated, but cannot be compared with
+ENA's md5).
 
 - **GSA** accessions:
 

@@ -1,5 +1,5 @@
 {% set name = "adaptiseq" %}
-{% set version = "0.1.3" %}
+{% set version = "0.1.12" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/adaptiseq-{{ version }}.tar.gz
-  sha256: f8a20c08fe86d08c38fc5635752edb00b5363a5273ae8752a387015cefe4584d
+  sha256: 25b115078df805c89292038e434c0d112958b25d35db893bd5e8058f928bd464
 
 build:
   number: 0
@@ -62,8 +62,9 @@ about:
     adaptiSeq downloads sequencing data and metadata from GSA, SRA, ENA, DDBJ
     and GEO. It is a tested Python reimplementation of iSeq, extended with
     batch-parallel download of accession lists, a segmented and resumable
-    HTTP(S)/FTP engine, adaptive concurrency, adaptive parallel Aspera, and an
-    importable Python API.
+    HTTP(S)/FTP engine, md5 verification of every file inside the worker pool
+    with an exit status that reflects what was delivered, adaptive concurrency
+    (several controllers), adaptive parallel Aspera, and an importable Python API.
   license: MIT
   license_family: MIT
   license_file: LICENSE

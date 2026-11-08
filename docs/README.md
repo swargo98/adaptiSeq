@@ -28,10 +28,11 @@ concurrently, from a script, notebook, or the shell.
   - [Downloading sequence data](usage/download.md) — `-g`, `-q`, `-d`, `-r`, `-p`
   - [Fetching metadata](usage/metadata.md) — `-m`
   - [Merging FASTQ](usage/merge.md) — `-e`
-  - [Batch & adaptive download](usage/batch.md) — `-j`, `--adaptive`, `--meta-jobs`
+  - [Batch & adaptive download](usage/batch.md) — `-j`, `--adaptive`, `--controller`, `--meta-jobs`
   - [Aspera](usage/aspera.md) — `-a`
   - [Python API](usage/python-api.md) — `fetch`, `resolve`, `get_metadata`
 - [Method details](methods.md) — the transports and engines, and how one is chosen
+- [Adaptive controller](ADAPTIVE_CONTROLLER.md) — the five controllers and what the benchmark showed
 - [Examples](examples.md) — worked, copy-pasteable commands
 - [FAQ](faq.md) — common errors and how to solve them
 
@@ -45,7 +46,7 @@ concurrently, from a script, notebook, or the shell.
 
 Every Run is **md5-checked** against the public database; on mismatch adaptiSeq
 retries up to **three rounds**, recording successes in `success.log` and failures
-in `fail.log`.
+in `fail.log`. The exit status is `1` if any Run could not be delivered and verified.
 
 ## Quick links
 

@@ -31,6 +31,7 @@ conda activate adaptiseq
 
 ```bash
 pip install adaptiseq
+adaptiseq --version
 ```
 
 pip installs only the Python package. Install the external tools (below)
