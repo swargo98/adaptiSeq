@@ -57,8 +57,10 @@ in `fail.log`. The exit status is `1` if any Run could not be delivered and veri
 
 ## Citation and acknowledgements
 
-A manuscript is in preparation; until it appears, cite the software with the metadata in
-[`CITATION.cff`](https://github.com/swargo98/adaptiSeq/blob/main/CITATION.cff).
+A manuscript is in preparation; until it appears, cite the software. Version 0.1.12 is archived on
+Zenodo as [doi:10.5281/zenodo.24062785](https://doi.org/10.5281/zenodo.24062785); the DOI
+[10.5281/zenodo.24062784](https://doi.org/10.5281/zenodo.24062784) always resolves to the latest version.
+The metadata are in [`CITATION.cff`](https://github.com/swargo98/adaptiSeq/blob/main/CITATION.cff).
 
 adaptiSeq descends from two earlier tools: [iSeq](https://github.com/BioOmics/iSeq)
 (Chao *et al.*, *Bioinformatics*, 2024,

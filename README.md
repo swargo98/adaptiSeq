@@ -408,7 +408,11 @@ branch, and submit a pull request. The offline test suite runs with
 ## Cite us
 
 A manuscript describing adaptiSeq is in preparation; until it appears, cite the
-software with the metadata in [`CITATION.cff`](https://github.com/swargo98/adaptiSeq/blob/main/CITATION.cff).
+software. Version 0.1.12 is archived on Zenodo as
+[doi:10.5281/zenodo.24062785](https://doi.org/10.5281/zenodo.24062785); the DOI
+[10.5281/zenodo.24062784](https://doi.org/10.5281/zenodo.24062784) always resolves to
+the latest version. The metadata are in
+[`CITATION.cff`](https://github.com/swargo98/adaptiSeq/blob/main/CITATION.cff).
 
 ## Acknowledgements
 

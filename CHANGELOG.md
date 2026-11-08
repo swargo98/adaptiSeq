@@ -18,7 +18,7 @@ This is the build the benchmarks in the accompanying manuscripts ran. In short:
   the tail of a list. GSA runs join the same parallel pool.
 - **Five adaptive controllers** (`--controller topdown|bottomup|budget|greedy|knee`, or
   `fetch(controller=...)`); `topdown` stays the default. See
-  [docs/ADAPTIVE_CONTROLLER.md](docs/ADAPTIVE_CONTROLLER.md).
+  [docs/ADAPTIVE_CONTROLLER.md](https://swargo98.github.io/adaptiSeq/ADAPTIVE_CONTROLLER/).
 - **GSA and GEO work again** after both archives put browser checks on their pages.
 
 ### Details of the 0.1.12 build
