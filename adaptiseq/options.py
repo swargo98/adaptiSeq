@@ -62,7 +62,7 @@ class Options:
     probe_window: int = 5           # --probe-window (seconds)
     cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
     # --controller: which adaptive controller runs. None -> ASEQ_ADAPTIVE_MODE, then
-    # "topdown". "budget" and "greedy" are candidates under evaluation.
+    # "topdown". See CONTROLLERS below.
     controller: Optional[str] = None
     meta_jobs: int = 3              # --meta-jobs (parallel resolution)
     aspera_efficiency: float = 0.70 # --aspera-efficiency (keep-worker threshold)
@@ -113,7 +113,9 @@ class Options:
 
 
 # Adaptive controllers (--controller). topdown is the default; bottomup is the
-# original gradient optimizer; budget and greedy are candidates under evaluation.
+# original gradient optimizer; greedy runs every worker and backs off on pushback;
+# budget and knee steer a per-host connection budget (the fewest connections that
+# give good speed).
 CONTROLLERS = ("topdown", "bottomup", "budget", "greedy", "knee")
 
 # The pool the knee controller may use when -j was not set: on ENA's many small

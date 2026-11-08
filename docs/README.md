@@ -53,20 +53,13 @@ in `fail.log`. The exit status is `1` if any Run could not be delivered and veri
 - Repository: <https://github.com/swargo98/adaptiSeq>
 - Citation: see [Citation](#citation)
 
-## Citation
+## Citation and acknowledgements
 
-A manuscript is in preparation. adaptiSeq builds on two earlier tools; if you use
-it, please also cite:
+A manuscript is in preparation; until it appears, cite the software with the metadata in
+[`CITATION.cff`](https://github.com/swargo98/adaptiSeq/blob/main/CITATION.cff).
 
-- **iSeq**, whose accession resolution, metadata, integrity, and merge behaviour
-  adaptiSeq reimplements in Python: Chao H, Li Z, Chen D, Chen M. *iSeq: An
-  integrated tool to fetch public sequencing data.* **Bioinformatics**, 2024,
-  btae641, [doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641).
-- **FastBioDL**, from which the segmented, resumable transfer engine is ported:
-  Swargo RM, Arslan E, Arifuzzaman M. *Adaptive Parallel Downloader for Large
-  Genomic Datasets.* [arXiv:2508.05511](https://arxiv.org/abs/2508.05511).
-
-## License
-
-adaptiSeq is released under the [MIT License](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE),
-which also reproduces iSeq's MIT notice (Copyright (c) 2024 BioOmics).
+adaptiSeq descends from two earlier tools: [iSeq](https://github.com/BioOmics/iSeq)
+(Chao *et al.*, *Bioinformatics*, 2024,
+[doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641)) and FastBioDL
+(Swargo *et al.*, [arXiv:2508.05511](https://arxiv.org/abs/2508.05511)). Both are MIT-licensed and their
+notices are in the repository's `LICENSE`, under which adaptiSeq is also released.

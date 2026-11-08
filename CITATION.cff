@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use adaptiSeq in your research, please cite it using these metadata, and cite iSeq (see references)."
+message: "If you use adaptiSeq in your research, please cite it using these metadata."
 title: "adaptiSeq: a self-tuning batch downloader for public sequencing data"
 abstract: >-
   adaptiSeq is an importable Python tool for fetching public sequencing data and
@@ -40,7 +40,7 @@ references:
     journal: "Bioinformatics"
     year: 2024
     doi: "10.1093/bioinformatics/btae641"
-    notes: "adaptiSeq reimplements iSeq's accession resolution, metadata, integrity, and merge behaviour in Python."
+    notes: "Earlier tool from which adaptiSeq descends."
   - type: article
     title: "Adaptive Parallel Downloader for Large Genomic Datasets"
     authors:
@@ -52,4 +52,4 @@ references:
         given-names: "Md"
     year: 2025
     url: "https://arxiv.org/abs/2508.05511"
-    notes: "FastBioDL; adaptiSeq's segmented, resumable transfer engine is ported from it."
+    notes: "FastBioDL, the earlier work from which adaptiSeq's transfer engine descends."

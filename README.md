@@ -34,13 +34,6 @@ metadata from **[GSA](https://ngdc.cncb.ac.cn/gsa/)**,
 pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 **segmented, resumable, self-tuning** engine and a **real Python API**.
 
-adaptiSeq builds on **[iSeq](https://github.com/BioOmics/iSeq)** (Chao *et al.*,
-*Bioinformatics*, 2024,
-[doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641)):
-its accession resolution, metadata, integrity, and merge behaviour are a Python
-reimplementation of iSeq's. If you use adaptiSeq, **please cite iSeq** as well
-(see [Cite us](#cite-us)).
-
 > **Important**
 > To use adaptiSeq your system must be **connected to the network** and able to
 > reach the databases over **HTTP, HTTPS, and (optionally) FTP / Aspera**.
@@ -231,7 +224,7 @@ Details of the 0.1.12 build itself:
   then the SRA fallback) and a cached error body is fetched again.
 - **Fix**: in an accession list, one accession that cannot be resolved or
   downloaded no longer stops the rest. It is reported, written to `fail.log`,
-  and the run continues (exit status 1 at the end), as iSeq does. Previously
+  and the run continues (exit status 1 at the end). Previously
   the verification pass after a batch download stopped at that accession, so
   later Runs were neither md5-checked nor retried. A single accession still
   raises as before.
@@ -241,10 +234,10 @@ Details of the 0.1.12 build itself:
   leave the rest of the file as zeros; segmented FTP could also report success
   with no file written. A single-connection download now also clears the resume
   state of an earlier segmented attempt.
-- **Docs**: iSeq's and FastBioDL's MIT notices added to `LICENSE`; iSeq and
-  FastBioDL credited in the README and `CITATION.cff`. Comparison table updated
-  for Kingfisher 0.5.0 (Python API, experimental GSA) and pysradb 2.5.1
-  (`--threads`).
+- **Docs**: the `LICENSE` file reproduces the MIT notices of the two earlier tools
+  this code descends from (see [Acknowledgements](#acknowledgements)). Comparison
+  table updated for Kingfisher 0.5.0 (Python API, experimental GSA) and pysradb
+  2.5.1 (`--threads`).
 
 ### 0.1.3
 - **Fix**: a segmented download whose `.part` file is missing at finalize (e.g.
@@ -286,8 +279,7 @@ Details of the 0.1.12 build itself:
 - **Adaptive parallel Aspera** via an efficiency-hysteresis controller.
 - **Python API** (`fetch`, `resolve`, `get_metadata`) that returns values and
   raises typed exceptions.
-- Correctly downloads **3-file runs** (orphan/barcode + `_1` + `_2`); older iSeq
-  releases (1.9.8) did not.
+- Correctly downloads **3-file runs** (orphan/barcode + `_1` + `_2`).
 
 </details>
 
@@ -602,23 +594,21 @@ branch, and submit a pull request. The offline test suite runs with
 
 ## Cite us
 
-A manuscript describing adaptiSeq is in preparation; citation metadata for the
-software itself is in [`CITATION.cff`](CITATION.cff).
+A manuscript describing adaptiSeq is in preparation; until it appears, cite the
+software with the metadata in [`CITATION.cff`](CITATION.cff).
 
-adaptiSeq builds on two earlier tools. If you use it, please also cite:
+## Acknowledgements
 
-- **iSeq**, whose accession resolution, metadata, integrity, and merge behaviour
-  adaptiSeq reimplements in Python:
-  Chao H, Li Z, Chen D, Chen M. *iSeq: An integrated tool to fetch public sequencing
-  data.* **Bioinformatics**, 2024, btae641,
-  [doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641).
-- **FastBioDL**, from which the segmented, resumable transfer engine
-  (`adaptiseq/engine/segmented.py`) is ported:
-  Swargo RM, Arslan E, Arifuzzaman M. *Adaptive Parallel Downloader for Large
-  Genomic Datasets.* [arXiv:2508.05511](https://arxiv.org/abs/2508.05511).
+adaptiSeq descends from two earlier tools:
+**[iSeq](https://github.com/BioOmics/iSeq)** (Chao H, Li Z, Chen D, Chen M.
+*Bioinformatics*, 2024,
+[doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641)),
+whose command-line options and accession handling it started from, and
+**FastBioDL** (Swargo RM, Arslan E, Arifuzzaman M.
+[arXiv:2508.05511](https://arxiv.org/abs/2508.05511)), the origin of its segmented
+transfer engine. Both are MIT-licensed and their notices are in [`LICENSE`](LICENSE).
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). The `LICENSE` file also
-reproduces the MIT notice of [iSeq](https://github.com/BioOmics/iSeq)
-(Copyright (c) 2024 BioOmics), from which adaptiSeq is derived.
+This project is licensed under the [MIT License](LICENSE), which also reproduces the
+notices of the two tools in [Acknowledgements](#acknowledgements).

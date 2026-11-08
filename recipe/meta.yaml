@@ -60,8 +60,7 @@ about:
   summary: "Fast, resumable, adaptive batch downloader for public sequencing data (GSA/SRA/ENA/DDBJ/GEO)."
   description: |
     adaptiSeq downloads sequencing data and metadata from GSA, SRA, ENA, DDBJ
-    and GEO. It is a tested Python reimplementation of iSeq, extended with
-    batch-parallel download of accession lists, a segmented and resumable
+    and GEO. It offers batch-parallel download of accession lists, a segmented and resumable
     HTTP(S)/FTP engine, md5 verification of every file inside the worker pool
     with an exit status that reflects what was delivered, adaptive concurrency
     (several controllers), adaptive parallel Aspera, and an importable Python API.

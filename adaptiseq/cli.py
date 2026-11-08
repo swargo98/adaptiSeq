@@ -107,20 +107,21 @@ def build_parser() -> argparse.ArgumentParser:
                         "gentler on a host.")
     g.add_argument("-j", "--jobs", metavar="int", default=None,
                    help="Max worker-pool size for batch download (default: 20). "
-                        "With --adaptive, the gradient optimizer chooses how many "
-                        "of these are active at once.")
+                        "With --adaptive, the controller chooses how many of "
+                        "these are active at once.")
     g.add_argument("--adaptive", dest="adaptive", action="store_true", default=True,
-                   help="Enable the gradient adaptive concurrency controller "
-                        "(default: on).")
+                   help="Enable adaptive concurrency (default: on; see "
+                        "--controller).")
     g.add_argument("--no-adaptive", dest="adaptive", action="store_false",
                    help="Disable adaptivity: run all -j workers with no probing.")
     g.add_argument("--controller", metavar="name", default=None, dest="controller",
                    choices=list(CONTROLLERS),
                    help="Which adaptive controller runs with --adaptive: topdown "
-                        "(default), bottomup, or the candidates under evaluation: "
-                        "budget (steers a per-host connection budget), greedy "
-                        "(all workers, backs off on 429/503) and knee (finds the "
-                        "fewest connections that give near-full speed).")
+                        "(default), bottomup (gradient optimizer), greedy (all "
+                        "workers, backs off on 429/503), budget (all workers; "
+                        "steers a per-host connection budget to use few "
+                        "connections) or knee (all workers; finds the fewest "
+                        "connections that give near-full speed).")
     g.add_argument("--probe-window", metavar="int", default="5", dest="probe_window",
                    help="Adaptive optimizer probe window in seconds (default: 5).")
     g.add_argument("--cc-penalty", metavar="float", default="1.01", dest="cc_penalty",
