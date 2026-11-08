@@ -1,5 +1,6 @@
 include LICENSE
 include README.md
+include CHANGELOG.md
 include pyproject.toml
 
 # Ship the full test tree (fixtures, conftest, local servers) so the sdist is

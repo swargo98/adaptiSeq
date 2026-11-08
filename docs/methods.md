@@ -5,6 +5,13 @@ the scheduler and engines change only *how* bytes arrive and *when* files are
 scheduled — never *which* bytes. Resolution, metadata, integrity, logs, and merge
 are independent of the transport in use.
 
+![The path of an accession list through adaptiSeq](img/adaptiSeq-architecture.png)
+
+An accession list is resolved in parallel under per-archive request limits. Each file becomes a task; workers
+take tasks, the segmented engine splits each file into byte ranges on several connections, a per-host guard bounds
+the connections and reacts to refusals, and each finished file is md5-checked inside the pool, with a bad copy going
+back to the queue. A controller (adaptive or fixed) sets how many files are in flight.
+
 ## Engines
 
 | Engine | Flag | What it is |

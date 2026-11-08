@@ -36,6 +36,7 @@ concurrently, from a script, notebook, or the shell.
 - [Adaptive controller](ADAPTIVE_CONTROLLER.md) — the five controllers and what the benchmark showed
 - [Examples](examples.md) — worked, copy-pasteable commands
 - [FAQ](faq.md) — common errors and how to solve them
+- [Changelog](changelog.md) — what changed in each release
 
 ## The three things adaptiSeq does
 

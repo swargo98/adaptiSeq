@@ -73,6 +73,7 @@ plugins:
 
 exclude_docs: |
   img/README.md
+  img/*.tex
 
 nav:
   - Home: README.md
@@ -90,6 +91,7 @@ nav:
   - Comparison: comparison.md
   - Examples: examples.md
   - FAQ: faq.md
+  - Changelog: changelog.md
 
 extra:
   social:
