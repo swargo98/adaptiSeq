@@ -59,7 +59,7 @@ The full list of changes is in the [changelog](https://github.com/swargo98/adapt
 ## How it works
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swargo98/adaptiSeq/main/docs/img/adaptiSeq-architecture.png" alt="The path of an accession list through adaptiSeq" width="900">
+  <img src="https://raw.githubusercontent.com/swargo98/adaptiSeq/15ceebb72bf6a7bd116bf6dd6e11bc5f9141f055/docs/img/adaptiSeq-architecture.png" alt="The path of an accession list through adaptiSeq" width="900">
 </p>
 
 An accession list is resolved in parallel under per-archive request limits. Each file becomes a task; workers
