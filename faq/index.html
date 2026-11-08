@@ -18,12 +18,14 @@
         <link rel="prev" href="../examples/">
       
       
+        <link rel="next" href="../changelog/">
+      
       
         
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -625,6 +627,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/" class="md-nav__link">
         
   
@@ -789,6 +818,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#a-run-came-from-sra-not-ena-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Run came from SRA, not ENA. Why?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-the-exit-status-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What does the exit status mean?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-controller-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which --controller should I use?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-re-download-something-already-in-successlog" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -836,6 +898,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -937,6 +1026,39 @@
     <span class="md-ellipsis">
       
         A file failed its md5 check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-run-came-from-sra-not-ena-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Run came from SRA, not ENA. Why?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-the-exit-status-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What does the exit status mean?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-controller-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which --controller should I use?
       
     </span>
   </a>
@@ -1048,6 +1170,20 @@ falling back to SRA). Install <code>sra-tools</code> (as above).</p>
 <p>adaptiSeq retries up to <strong>three rounds</strong>, then records the Run in <code>fail.log</code> and
 deletes the corrupt partial. Re-run the command to retry. To skip checks entirely
 use <code>-k/--skip-md5</code> (then re-run without <code>-k</code> to verify later).</p>
+<h2 id="a-run-came-from-sra-not-ena-why">A Run came from SRA, not ENA. Why?<a class="headerlink" href="#a-run-came-from-sra-not-ena-why" title="Permanent link">&para;</a></h2>
+<p>ENA's portal API sometimes fails or returns nothing for a Run, and some Runs are only in NCBI SRA.
+adaptiSeq retries a failed ENA query for up to about three minutes before it falls back, announces
+the fallback (<code>N accession(s) had no usable ENA metadata and will be downloaded from SRA</code>), and counts
+the Run as delivered: its converted FASTQ is validated, but it cannot be compared with ENA's md5. If every
+kept file must match ENA's md5, add <code>--no-sra-fallback</code>: such a Run then fails, goes to <code>fail.log</code>, and
+the exit status is 1; re-run later.</p>
+<h2 id="what-does-the-exit-status-mean">What does the exit status mean?<a class="headerlink" href="#what-does-the-exit-status-mean" title="Permanent link">&para;</a></h2>
+<p><code>0</code> when every requested Run was delivered; <code>1</code> when any Run failed (named in <code>fail.log</code>) or the
+command could not run. In a list, one failing accession does not stop the rest.</p>
+<h2 id="which-controller-should-i-use">Which <code>--controller</code> should I use?<a class="headerlink" href="#which-controller-should-i-use" title="Permanent link">&para;</a></h2>
+<p>Leave the default (<code>topdown</code>) unless you have a reason. <code>greedy</code> runs every worker and backs off on
+HTTP 429/503; <code>budget</code> and <code>knee</code> hold the fewest connections that give good speed, to load an archive
+less; <code>bottomup</code> is the original gradient optimizer. See <a href="../ADAPTIVE_CONTROLLER/">Adaptive controller</a>.</p>
 <h2 id="how-do-i-re-download-something-already-in-successlog">How do I re-download something already in <code>success.log</code>?<a class="headerlink" href="#how-do-i-re-download-something-already-in-successlog" title="Permanent link">&para;</a></h2>
 <p>Remove its line and re-run:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/SRR7706354/d'</span><span class="w"> </span>success.log
@@ -1063,8 +1199,8 @@ instead.</p>
 <p>Resolution, metadata, integrity, logs, and merge are covered by a differential
 test suite that checks adaptiSeq's output against stored reference fixtures. The
 engine changes only <em>how</em> bytes are transferred, never <em>which</em> bytes are written.
-One deliberate improvement over <code>iseq</code>: 3-file runs (orphan/barcode + <code>_1</code> + <code>_2</code>)
-that it mishandles are downloaded correctly.</p>
+3-file runs (orphan/barcode + <code>_1</code> + <code>_2</code>) are downloaded correctly (iSeq 1.9.8 did not
+download them; later iSeq releases do).</p>
 
 
 
@@ -1118,6 +1254,22 @@ that it mishandles are downloaded correctly.</p>
           </a>
         
         
+          
+          <a href="../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Changelog
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
       </nav>
     
   
@@ -1166,7 +1318,7 @@ that it mishandles are downloaded correctly.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

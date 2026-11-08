@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -355,21 +355,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#citation" class="md-nav__link">
+  <a href="#citation-and-acknowledgements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Citation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        License
+        Citation and acknowledgements
       
     </span>
   </a>
@@ -727,6 +716,33 @@
   
   
     <li class="md-nav__item">
+      <a href="comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="examples/" class="md-nav__link">
         
   
@@ -762,6 +778,33 @@
     
   
     FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
   
 
     
@@ -834,21 +877,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#citation" class="md-nav__link">
+  <a href="#citation-and-acknowledgements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Citation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        License
+        Citation and acknowledgements
       
     </span>
   </a>
@@ -902,12 +934,15 @@ reach the databases over <strong>HTTP, HTTPS, and (optionally) FTP / Aspera</str
 <li><a href="usage/download/">Downloading sequence data</a> — <code>-g</code>, <code>-q</code>, <code>-d</code>, <code>-r</code>, <code>-p</code></li>
 <li><a href="usage/metadata/">Fetching metadata</a> — <code>-m</code></li>
 <li><a href="usage/merge/">Merging FASTQ</a> — <code>-e</code></li>
-<li><a href="usage/batch/">Batch &amp; adaptive download</a> — <code>-j</code>, <code>--adaptive</code>, <code>--meta-jobs</code></li>
+<li><a href="usage/batch/">Batch &amp; adaptive download</a> — <code>-j</code>, <code>--adaptive</code>, <code>--controller</code>, <code>--meta-jobs</code></li>
 <li><a href="usage/aspera/">Aspera</a> — <code>-a</code></li>
 <li><a href="usage/python-api/">Python API</a> — <code>fetch</code>, <code>resolve</code>, <code>get_metadata</code></li>
 <li><a href="methods/">Method details</a> — the transports and engines, and how one is chosen</li>
+<li><a href="comparison/">Comparison with other tools</a> — what each downloader does and does not do</li>
+<li><a href="ADAPTIVE_CONTROLLER/">Adaptive controller</a> — the five controllers and what the benchmark showed</li>
 <li><a href="examples/">Examples</a> — worked, copy-pasteable commands</li>
 <li><a href="faq/">FAQ</a> — common errors and how to solve them</li>
+<li><a href="changelog/">Changelog</a> — what changed in each release</li>
 </ul>
 <h2 id="the-three-things-adaptiseq-does">The three things adaptiSeq does<a class="headerlink" href="#the-three-things-adaptiseq-does" title="Permanent link">&para;</a></h2>
 <table>
@@ -938,16 +973,22 @@ reach the databases over <strong>HTTP, HTTPS, and (optionally) FTP / Aspera</str
 </table>
 <p>Every Run is <strong>md5-checked</strong> against the public database; on mismatch adaptiSeq
 retries up to <strong>three rounds</strong>, recording successes in <code>success.log</code> and failures
-in <code>fail.log</code>.</p>
+in <code>fail.log</code>. The exit status is <code>1</code> if any Run could not be delivered and verified.</p>
 <h2 id="quick-links">Quick links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Repository: <a href="https://github.com/swargo98/adaptiSeq">https://github.com/swargo98/adaptiSeq</a></li>
-<li>Citation: TBD (see <a href="#citation">Citation</a> once published)</li>
+<li>Citation: see <a href="#citation">Citation</a></li>
 </ul>
-<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
-<p>TBD — a manuscript is in preparation. For now, please cite the repository.</p>
-<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
-<p>adaptiSeq is released under the <a href="https://github.com/swargo98/adaptiSeq/blob/main/LICENSE">MIT License</a>.</p>
+<h2 id="citation-and-acknowledgements">Citation and acknowledgements<a class="headerlink" href="#citation-and-acknowledgements" title="Permanent link">&para;</a></h2>
+<p>A manuscript is in preparation; until it appears, cite the software. Version 0.1.12 is archived on
+Zenodo as <a href="https://doi.org/10.5281/zenodo.24062785">doi:10.5281/zenodo.24062785</a>; the DOI
+<a href="https://doi.org/10.5281/zenodo.24062784">10.5281/zenodo.24062784</a> always resolves to the latest version.
+The metadata are in <a href="https://github.com/swargo98/adaptiSeq/blob/main/CITATION.cff"><code>CITATION.cff</code></a>.</p>
+<p>adaptiSeq descends from two earlier tools: <a href="https://github.com/BioOmics/iSeq">iSeq</a>
+(Chao <em>et al.</em>, <em>Bioinformatics</em>, 2024,
+<a href="https://doi.org/10.1093/bioinformatics/btae641">doi:10.1093/bioinformatics/btae641</a>) and FastBioDL
+(Swargo <em>et al.</em>, <a href="https://arxiv.org/abs/2508.05511">arXiv:2508.05511</a>). Both are MIT-licensed and their
+notices are in the repository's <code>LICENSE</code>, under which adaptiSeq is also released.</p>
 
 
 
@@ -1049,7 +1090,7 @@ in <code>fail.log</code>.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

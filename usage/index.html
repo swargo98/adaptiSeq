@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -709,6 +709,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/" class="md-nav__link">
         
   
@@ -744,6 +771,33 @@
     
   
     FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
   
 
     
@@ -846,37 +900,42 @@ it contains, verifies md5, and (optionally) converts/merges.</p>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  adaptiseq -i accession [options]
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Required:
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  -i, --input     [text|file]   Single accession or a file of accessions (one per line).
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Optional:
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  -m, --metadata                Skip downloads; only fetch metadata.
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  -g, --gzip                    Download FASTQ files in gzip format directly (*.fastq.gz).
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  -q, --fastq                   Convert SRA files to FASTQ format.
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  -t, --threads   int           Threads for SRA-&gt;FASTQ / compression (default: 8).
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  -e, --merge     [ex|sa|st]    Merge fastq files per Experiment / Sample / Study.
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  -d, --database  [ena|sra]     Force database for SRA data (default: auto-detect).
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  -p, --parallel  int           axel connection count (classic engine only), e.g. -p 10.
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>  -a, --aspera                  Use Aspera (ascp); GSA/ENA only.
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  -s, --speed     int           Download speed limit in MB/s (default: 1000).
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  -k, --skip-md5                Skip the md5 check for downloaded files.
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>  -r, --protocol  [ftp|https]   ENA transport (default: auto, HTTPS-first).
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>  -Q, --quiet                   Suppress download progress bars.
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>  -o, --output    text          Output directory (created if missing; default: cwd).
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>Engine / batch / adaptive:
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>  --engine        [segmented|classic]   Download engine (default: segmented).
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>  --segment-size  int           Target segment size in MB (default: 512).
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>  --max-segments  int           Max connections per file (default: 8).
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>  --max-conns-per-host int      Global cap on connections to one host (default: 8).
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>  -j, --jobs      int           Max worker-pool size for batch download (default: 20).
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>  --adaptive / --no-adaptive    Gradient adaptive-concurrency controller (default: on).
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>  --probe-window  int           Adaptive probe window, seconds (default: 5).
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>  --cc-penalty    float         Worker-cost penalty K in score=throughput/K**workers (1.01).
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>  --meta-jobs     int           Parallelism for metadata/URL resolution (default: 3).
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>  --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (0.70).
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>  -h, --help                    Show help.
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>  -v, --version                 Show version.
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  -i, --input     [text|file]   Single accession or a file containing multiple accessions.
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                                Note: only one accession per line in the file.
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Optional:
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  -m, --metadata                Skip the sequencing data downloads and only fetch metadata.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  -g, --gzip                    Download FASTQ files in gzip format directly (*.fastq.gz).
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  -q, --fastq                   Convert SRA files to FASTQ format.
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  -t, --threads   int           Threads for SRA-&gt;FASTQ / compression (default: 8).
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  -e, --merge     [ex|sa|st]    Merge fastq files per Experiment, Sample, or Study.
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  -d, --database  [ena|sra]     Force database for SRA data (default: auto-detect).
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>      --no-sra-fallback         Fail a Run that ENA cannot serve instead of fetching it from SRA,
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>                                so every kept file can be checked against ENA's md5.
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  -p, --parallel  int           axel connection count (classic engine only), e.g. -p 10.
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>  -a, --aspera                  Use Aspera (ascp); GSA/ENA only.
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>  -s, --speed     int           Download speed limit (MB/s) (default: 1000).
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>  -k, --skip-md5                Skip the md5 check for downloaded files.
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>  -r, --protocol  [ftp|https]   ENA transport (default: auto, HTTPS-first).
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>  -Q, --quiet                   Suppress download progress bars.
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>  -o, --output    text          Output directory (created if missing; default: cwd).
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>Engine / batch / adaptive:
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>  --engine        [segmented|classic]   Download engine (default: segmented).
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>  --segment-size  int           Target segment size in MB (default: 512).
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>  --max-segments  int           Max connections per file (default: 8).
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>  --max-conns-per-host int      Cap on connections to one host (default: auto = -j x --max-segments;
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>                                the circuit breaker still lowers it on 429/503).
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>  -j, --jobs      int           Max worker-pool size for batch download (default: 20).
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>  --adaptive / --no-adaptive    Adaptive concurrency (default: on); --no-adaptive runs all -j workers.
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>  --controller    name          Adaptive controller: topdown (default), bottomup, budget, greedy, knee.
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>  --probe-window  int           Adaptive probe window in seconds (default: 5).
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>  --cc-penalty    float         Worker-cost penalty K in score=throughput/K**workers (default: 1.01).
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>  --meta-jobs     int           Parallelism for metadata/URL resolution (default: 3).
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>  --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (default: 0.70).
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>  -h, --help                    Show help.
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>  -v, --version                 Show version.
 </code></pre></div>
 <h2 id="where-to-go-next">Where to go next<a class="headerlink" href="#where-to-go-next" title="Permanent link">&para;</a></h2>
 <ul>
@@ -906,6 +965,10 @@ it contains, verifies md5, and (optionally) converts/merges.</p>
 </tr>
 </tbody>
 </table>
+<p><strong>Exit status:</strong> <code>0</code> when every requested Run was delivered, <code>1</code> when any Run failed
+(named in <code>fail.log</code>) or the command could not run. A Run fetched from NCBI SRA because
+ENA could not serve it is announced and counts as delivered, unless <code>--no-sra-fallback</code>
+is given, in which case it fails.</p>
 <p>A Run already in <code>success.log</code> is <strong>skipped</strong> on re-run; remove its line (e.g.
 <code>sed -i '/SRR7706354/d' success.log</code>) to force a re-download. Partial files left
 by the segmented engine (<code>*.part</code>, <code>*.part.meta</code>) are <strong>resumed</strong>, not restarted.</p>
@@ -1026,7 +1089,7 @@ by the segmented engine (<code>*.part</code>, <code>*.part.meta</code>) are <str
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

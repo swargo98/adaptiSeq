@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -729,6 +729,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/" class="md-nav__link">
         
   
@@ -764,6 +791,33 @@
     
   
     FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
   
 
     
@@ -882,6 +936,11 @@
 the scheduler and engines change only <em>how</em> bytes arrive and <em>when</em> files are
 scheduled — never <em>which</em> bytes. Resolution, metadata, integrity, logs, and merge
 are independent of the transport in use.</p>
+<p><img alt="The path of an accession list through adaptiSeq" src="../img/adaptiSeq-architecture.png" /></p>
+<p>An accession list is resolved in parallel under per-archive request limits. Each file becomes a task; workers
+take tasks, the segmented engine splits each file into byte ranges on several connections, a per-host guard bounds
+the connections and reacts to refusals, and each finished file is md5-checked inside the pool, with a bad copy going
+back to the queue. A controller (adaptive or fixed) sets how many files are in flight.</p>
 <h2 id="engines">Engines<a class="headerlink" href="#engines" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -969,20 +1028,38 @@ URL cache made every file on a host download the first file's bytes).</p>
 <h2 id="concurrency-etiquette">Concurrency &amp; etiquette<a class="headerlink" href="#concurrency-etiquette" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Per-file:</strong> up to <code>--max-segments</code> byte-range connections.</li>
-<li><strong>Per-host:</strong> a global cap (<code>--max-conns-per-host</code>) plus a reactive circuit
-  breaker (429/503/refused → exponential global backoff + temporarily lowered
-  cap, slow recovery).</li>
-<li><strong>Per-batch:</strong> a worker pool (<code>-j</code>) whose active size the adaptive controller
-  tunes (<code>--adaptive</code>; <code>topdown</code> knee search by default, <code>bottomup</code> gradient via
-  <code>ASEQ_ADAPTIVE_MODE</code>); workers are gated at file-pickup boundaries.</li>
+<li><strong>Per-file:</strong> idle connections take over the remainder of the largest outstanding
+  range of their file (work stealing); a file that starts near the end of a list, or is
+  fetched again after a bad checksum, may use the spare per-host budget.</li>
+<li><strong>Per-host:</strong> one guard for all connections to a host. Its cap defaults to
+  <code>-j</code> × <code>--max-segments</code> (<code>--max-conns-per-host</code> lowers it). A refused connect while
+  other connections are open is read as the host's <strong>connection ceiling</strong> (wait for a
+  slot, do not back off); HTTP 429/503, or a refusal with nothing open, is pushback
+  (halve the cap, exponential backoff); the cap climbs back by one connection every 5 s
+  without a new refusal. Responses cut short are recorded but not acted on (GSA cuts
+  streams at any load).</li>
+<li><strong>Per-batch:</strong> a worker pool (<code>-j</code>) whose active size an adaptive controller tunes
+  (<code>--adaptive</code>; <code>--controller topdown|bottomup|budget|greedy|knee</code>, <code>topdown</code> by
+  default; see <a href="../ADAPTIVE_CONTROLLER/">Adaptive controller</a>); workers are gated at
+  file-pickup boundaries.</li>
 <li><strong>Resolution:</strong> parallel (<code>--meta-jobs</code>) under per-endpoint rate limiters
-  (ENA / NCBI / GSA; NCBI 3 rps, 10 with <code>NCBI_API_KEY</code>).</li>
+  (ENA 8 rps, GSA 5, NCBI 3, or 10 with <code>NCBI_API_KEY</code>). A failed or empty ENA answer
+  is retried with backoff and is not read as "not in ENA" until about three minutes
+  of continuous failure, shared by the whole list.</li>
 <li><strong>Speed:</strong> <code>-s/--speed</code> token-bucket cap in MB/s.</li>
 </ul>
 <h2 id="integrity">Integrity<a class="headerlink" href="#integrity" title="Permanent link">&para;</a></h2>
 <p>Every Run is md5-checked against the public database (SRA uses md5 +
-<code>vdb-validate</code>). On mismatch adaptiSeq retries up to <strong>three rounds</strong>, then records
-the outcome in <code>success.log</code> / <code>fail.log</code>. <code>-k/--skip-md5</code> disables the checks.</p>
+<code>vdb-validate</code>). In a batch, each file is hashed in the worker pool as soon as it lands;
+a mismatching file is deleted and put back on the queue, so the bad copy is fetched
+again in parallel with the rest of the list. After the batch a per-Run check confirms
+every file and retries a Run for up to <strong>three rounds</strong>, then records the outcome in
+<code>success.log</code> / <code>fail.log</code>. The exit status is <code>1</code> if any Run could not be delivered and
+verified. <code>-k/--skip-md5</code> disables the checks.</p>
+<p><strong>SRA fallback.</strong> When ENA has no usable metadata or file for a Run, adaptiSeq can fetch
+it from NCBI SRA and convert it. That FASTQ is validated but cannot be compared with
+ENA's md5, so the fallback is announced and counted as unverified against ENA;
+<code>--no-sra-fallback</code> makes such a Run fail instead.</p>
 
 
 
@@ -1100,7 +1177,7 @@ the outcome in <code>success.log</code> / <code>fail.log</code>. <code>-k/--skip
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

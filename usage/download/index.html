@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -504,6 +504,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#-no-sra-fallback-ena-or-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        --no-sra-fallback — ENA or nothing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#-r-protocol-ena-transport" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -775,6 +786,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/" class="md-nav__link">
         
   
@@ -810,6 +848,33 @@
     
   
     FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
   
 
     
@@ -886,6 +951,17 @@
     <span class="md-ellipsis">
       
         -d, --database — force ENA or SRA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-no-sra-fallback-ena-or-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        --no-sra-fallback — ENA or nothing
       
     </span>
   </a>
@@ -1020,22 +1096,31 @@ unnecessary. Force <code>-d sra</code> when ENA is slow for a given file.</p>
 If a file is not in <strong>ENA</strong>, adaptiSeq switches to <strong>SRA</strong> automatically even
 with <code>-d ena</code>.</p>
 </blockquote>
+<h2 id="-no-sra-fallback-ena-or-nothing"><code>--no-sra-fallback</code> — ENA or nothing<a class="headerlink" href="#-no-sra-fallback-ena-or-nothing" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>accessions.txt<span class="w"> </span>-g<span class="w"> </span>--no-sra-fallback
+</code></pre></div>
+<p>Fail a Run instead of fetching it from SRA when ENA has no usable metadata or
+file for it (after the usual retries). FASTQ converted from an SRA file cannot
+be checked against ENA's md5, so use this when every kept file must be
+md5-verified, e.g. in a pipeline or a benchmark. adaptiSeq exits 1; in a list,
+the failed accessions go to <code>fail.log</code> and the rest continue. Re-run them later, or without the flag to accept SRA. Cannot be
+combined with <code>-d sra</code>.</p>
 <h2 id="-r-protocol-ena-transport"><code>-r</code>, <code>--protocol</code> — ENA transport<a class="headerlink" href="#-r-protocol-ena-transport" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-g<span class="w"> </span>-r<span class="w"> </span>https
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-g<span class="w"> </span>-r<span class="w"> </span>https
 </code></pre></div>
 <p>For the segmented engine, ENA transport defaults to <strong>auto (HTTPS-first)</strong>: it
 prefers the HTTPS mirror (confirmed by a cheap per-host range probe), then native
 segmented FTP, then a single stream <strong>inside</strong> the segmented engine. Pass
 <code>-r https</code> or <code>-r ftp</code> to force one.</p>
 <h2 id="-p-parallel-classic-engine-parallelism"><code>-p</code>, <code>--parallel</code> — classic-engine parallelism<a class="headerlink" href="#-p-parallel-classic-engine-parallelism" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>PRJNA211801<span class="w"> </span>--engine<span class="w"> </span>classic<span class="w"> </span>-p<span class="w"> </span><span class="m">10</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>PRJNA211801<span class="w"> </span>--engine<span class="w"> </span>classic<span class="w"> </span>-p<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p><code>-p</code> sets the <strong>axel</strong> connection count and applies only to the <strong>opt-in classic
 engine</strong> (<code>--engine classic</code>). The default segmented engine already fetches each
 file in multiple byte-range connections (<code>--max-segments</code>) and runs a batch
 worker pool (<code>-j</code>), so <code>-p</code> is not needed there. See <a href="../../methods/">Method details</a>.</p>
 <h2 id="-s-speed-speed-cap"><code>-s</code>, <code>--speed</code> — speed cap<a class="headerlink" href="#-s-speed-speed-cap" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-g<span class="w"> </span>-s<span class="w"> </span><span class="m">50</span><span class="w">      </span><span class="c1"># cap at 50 MB/s</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-g<span class="w"> </span>-s<span class="w"> </span><span class="m">50</span><span class="w">      </span><span class="c1"># cap at 50 MB/s</span>
 </code></pre></div>
 <p>Token-bucket rate limit in MB/s (default <strong>1000</strong>), applied by the engine.</p>
 <h2 id="-k-skip-md5"><code>-k</code>, <code>--skip-md5</code><a class="headerlink" href="#-k-skip-md5" title="Permanent link">&para;</a></h2>
@@ -1160,7 +1245,7 @@ batch/CI use.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
