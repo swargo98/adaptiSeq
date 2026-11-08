@@ -36,13 +36,14 @@ from . import metadata as _meta
 # `adaptiseq.resolve` is the public API *function*, which shadows the submodule.
 from .resolve import resolve_gsa_urls, resolve_sra_urls
 from .accession import is_gsa
-from .console import NullReporter, Reporter, green
+from .console import NullReporter, Reporter, bright_yellow, green
 from .engine.gate import WorkerGate
 from .engine.optimize import EXIT_SIGNAL, gradient_opt_fast
-from .engine.ratelimit import HostGuard, TokenBucket
+from .engine.ratelimit import HostGuard, TokenBucket, host_of
 from .engine.throughput import ThroughputMeter
+from .integrity import fastq_md5s, md5sum
 from .logs import in_success
-from .options import Options, RunContext
+from .options import KNEE_POOL, Options, RunContext, controller_mode
 from .ratelimits import EndpointLimiters, set_active
 
 log = logging.getLogger("adaptiseq.batch")
@@ -55,6 +56,32 @@ class DownloadTask:
     accession: str
     retries: int = 0
     aspera_db: Optional[str] = None   # "ENA"/"GSA" when this task is an ascp link
+    md5: Optional[str] = None         # ENA's fastq_md5, checked as soon as the file lands
+    progress_passes: int = 0          # failed passes that still moved the resume point
+
+
+MAX_PROGRESS_PASSES = 20
+
+
+def _resume_progress(path: Path) -> int:
+    """Bytes a ``.part.meta`` records as done (finished segments plus partial
+    offsets); 0 without one."""
+    from .engine.segmented import read_part_meta
+
+    meta = read_part_meta(str(path) + ".part.meta")
+    if not meta:
+        return 0
+    try:
+        segs = [(int(a), int(b)) for a, b in meta.get("segments", [])]
+        done = set(int(i) for i in meta.get("completed_indices", []))
+        total = sum(b - a + 1 for i, (a, b) in enumerate(segs) if i in done)
+        for k, off in (meta.get("partial_offsets") or {}).items():
+            i = int(k)
+            if 0 <= i < len(segs) and i not in done:
+                total += max(0, int(off) - segs[i][0])
+        return total
+    except (TypeError, ValueError):
+        return 0
 
 
 # ============================== adaptive controller ===========================
@@ -65,9 +92,23 @@ class AdaptiveController:
     def __init__(self, gate: WorkerGate, meter: ThroughputMeter, *,
                  probe_window: int = 5, cc_penalty: float = 1.01,
                  max_workers: Optional[Callable[[], int]] = None,
-                 history_limit: int = 12):
+                 history_limit: int = 12,
+                 mode: Optional[str] = None,
+                 guard: Optional[HostGuard] = None,
+                 pending: Optional[Callable[[], int]] = None,
+                 in_flight: Optional[Callable[[], int]] = None):
         self.gate = gate
         self.meter = meter
+        # Which controller runs (see run()); None -> ASEQ_ADAPTIVE_MODE or topdown.
+        self.mode = mode
+        # The batch's per-host guard and queue length, for the controllers that
+        # steer connections (budget) or react to pushback (greedy).
+        self.guard = guard
+        self.pending = pending
+        # Files being fetched right now (topdown waits for the pool to reach a
+        # new worker count before it measures that count).
+        self.in_flight = in_flight
+        self.unit = "worker"
         self.probe_window = max(2, int(probe_window))
         self.cc_penalty = float(cc_penalty)
         # Live cap (files still outstanding); probing above it just measures idle
@@ -130,11 +171,12 @@ class AdaptiveController:
             return ""
         best_w, best_t = self.best_probe or (0, 0.0)
         last_w, last_t = self.last_probe or (0, 0.0)
-        recent = ", ".join(f"{w}w@{t:.0f}Mbps" for w, t in self.trajectory)
+        tag = "c" if self.unit == "connection" else "w"
+        recent = ", ".join(f"{w}{tag}@{t:.0f}Mbps" for w, t in self.trajectory)
         return (
             f"{self.probe_count} probe(s); "
-            f"best {best_t:.0f} Mbps at {best_w} worker(s); "
-            f"last {last_t:.0f} Mbps at {last_w} worker(s); "
+            f"best {best_t:.0f} Mbps at {best_w} {self.unit}(s); "
+            f"last {last_t:.0f} Mbps at {last_w} {self.unit}(s); "
             f"recent: {recent}"
         )
 
@@ -143,9 +185,15 @@ class AdaptiveController:
         # worker cap; `bottomup` is the gradient controller that crawls *up* from
         # a low worker count. Legacy aliases: climb/ladder/ee -> topdown,
         # legacy/gradient -> bottomup.
-        mode = os.environ.get("ASEQ_ADAPTIVE_MODE", "topdown").lower()
+        mode = (self.mode or os.environ.get("ASEQ_ADAPTIVE_MODE") or "topdown").lower()
         if mode in ("bottomup", "legacy", "gradient"):
             await self._run_bottomup()
+        elif mode == "budget" and self.guard is not None:
+            await self._run_budget()
+        elif mode == "greedy":
+            await self._run_greedy()
+        elif mode == "knee" and self.guard is not None:
+            await self._run_knee()
         else:
             await self._run_topdown()
 
@@ -185,12 +233,48 @@ class AdaptiveController:
         except (TypeError, ValueError):
             return float(default)
 
-    async def _measure(self, w: int, window: float, settle: float) -> float:
-        """Set the pool to ``w`` workers, let it settle, return smoothed Mbps."""
+    async def _await_pool(self, w: int, prev: int, limit: float) -> bool:
+        """Wait until the files in flight match ``w`` workers; False on timeout.
+
+        The gate acts only at file pickup, so after a step down the files the
+        higher count started keep running: measured at once, the lower count
+        reads the higher count's throughput (and the first probe at the cap
+        reads the ramp-up). Round 2, panel 4r: 20w@27, 10w@73, 5w@122 Mbps, and
+        topdown committed at 2-5 workers while 20-50 connections won.
+        """
+        if self.in_flight is None or w == prev:
+            return True
+        deadline = asyncio.get_event_loop().time() + limit
+        while not self.done:
+            n = self.in_flight()
+            if w < prev and n <= w:
+                return True
+            if w > prev and (n >= min(w, self._worker_cap())
+                             or (self.pending is not None and self.pending() == 0)):
+                return True
+            if asyncio.get_event_loop().time() >= deadline:
+                return False
+            await asyncio.sleep(0.5)
+        return False
+
+    async def _measure(self, w: int, window: float, settle: float,
+                       drain: float = 0.0, settle_up: float = 0.0) -> float:
+        """Set the pool to ``w`` workers, let it settle, return smoothed Mbps.
+
+        With ``drain`` > 0, first wait up to that long for the pool to reach
+        ``w``; if it does not, return -1 (no clean reading at ``w``). After a
+        step up, wait ``settle_up`` more: the new files are still opening
+        connections, and a reading taken then is low.
+        """
         if self.done:
             return -1.0
         w = self._cap_workers(w)
+        prev = self.gate.active
         self.gate.set_active(w)
+        if drain > 0 and not await self._await_pool(w, prev, drain):
+            return -1.0
+        if w > prev and settle_up > 0:
+            await asyncio.sleep(settle_up)
         await asyncio.sleep(settle)
         if self.done:
             return -1.0
@@ -214,6 +298,8 @@ class AdaptiveController:
                            self._cfg("ASEQ_CLIMB_THRESHOLD", 0.10))
         reprobe_s = self._cfg("ASEQ_EXPLOIT_REPROBE_S", 20.0)
         redo = self._cfg("ASEQ_EXPLOIT_REDO", 0.35)        # sustained frac drop => re-explore
+        drain = self._cfg("ASEQ_TOPDOWN_DRAIN_S", 60.0)    # wait for the pool to reach a count
+        settle_up = self._cfg("ASEQ_TOPDOWN_SETTLE_UP", 5.0)  # ramp-up after a step up
 
         await asyncio.sleep(window)  # let the meter fill
 
@@ -228,17 +314,32 @@ class AdaptiveController:
             """
             cap = self._worker_cap()
             best_w = cap
-            best_t = await self._measure(cap, window, settle)
+            best_t = await self._measure(cap, window, settle, drain, settle_up)
+            if best_t < 0 and not self.done:
+                best_t = await self._measure(cap, window, settle)  # read it anyway
             w = cap
             while w > 1 and not self.done:
                 lower = max(1, w // 2)
                 if lower == w:
                     break
-                t = await self._measure(lower, window, settle)
+                t = await self._measure(lower, window, settle, drain)
+                if t < 0:
+                    # The files started at the higher count did not finish in
+                    # time (large files): there is no clean reading at the lower
+                    # count, so keep the higher one.
+                    break
                 if t > best_t * (1.0 + thresh):
-                    # Fewer workers is clearly better -> the knee is below here.
-                    best_w, best_t, w = lower, t, lower
-                    continue
+                    # Fewer workers looks clearly better: confirm over a second
+                    # window before stepping down (GSA's cut streams make one
+                    # window noisy).
+                    await asyncio.sleep(window)
+                    t2 = self.meter.recent_average(max(1, int(round(window))))
+                    self._record_probe(self._cap_workers(lower), t2)
+                    t = (t + t2) / 2
+                    if t > best_t * (1.0 + thresh):
+                        best_w, best_t, w = lower, t, lower
+                        continue
+                    break
                 if t > best_t:
                     best_w, best_t = lower, t   # mild improvement, record but stop
                 break
@@ -293,6 +394,291 @@ class AdaptiveController:
                     # baseline and turn normal steady throughput into a "drop".
                     committed = 0.8 * committed + 0.2 * t
 
+    # ------------------------------------------------------------------
+    # Connection-budget controller (--controller budget).
+    #
+    # topdown and bottomup choose how many FILES download at once. What limits a
+    # download from ENA is how many CONNECTIONS are open (about 2 MB/s each), and
+    # connections per file run from 1 (small files) to max_segments (large ones),
+    # so one worker more or less is 1 or 8 connections. The worker count also
+    # only changes at file pickup, so a probe at a lower count still measures the
+    # files already in flight. This controller instead keeps every worker active
+    # and steers a per-host connection budget (HostGuard's cap): start at a
+    # moderate budget, raise it by a quarter while the gain is at least half of
+    # proportional; when a raise does not pay, revert, hold, and try cutting by
+    # a quarter instead (kept while it costs under a quarter of proportional),
+    # so it settles near the knee from either side; and cut it by 30 % on
+    # distress (HTTP 429/503, refused connects with nothing open, dropped
+    # streams, or, within one window, 3+ connection-ceiling refusals or 3+
+    # responses cut short of their length). Windows in which the
+    # open-connection count did not reach the budget are not used to judge a
+    # raise. With nothing waiting to start the budget is still judged while it
+    # is filled (in-flight files split to use it), and left alone in the tail.
+    # ------------------------------------------------------------------
+    DISTRESS_KINDS = ("429", "503", "refused", "pushback", "ftp-error")
+
+    async def _run_budget(self) -> None:
+        guard = self.guard
+        window = self._cfg("ASEQ_BUDGET_WINDOW", max(10.0, 2.0 * self.probe_window))
+        window = window if window > 0 else 10.0
+        settle = max(0.0, self._cfg("ASEQ_BUDGET_SETTLE", 2.0))
+        top = max(1, int(guard.default_cap))           # jobs x max_segments
+        budget = int(self._cfg("ASEQ_BUDGET_START", min(top, max(16, 2 * self.gate.jobs))))
+        budget = max(1, min(top, budget))
+        floor = max(1, min(budget, int(self._cfg("ASEQ_BUDGET_FLOOR", 2))))
+        self.unit = "connection"
+        guard.set_budget(budget)
+        seen = len(guard.trips)
+        probe: Optional[Tuple[int, float, int]] = None  # (base budget, base rate, direction)
+        direction, hold = 1, 0
+        while not self.done:
+            self.gate.set_active(self._worker_cap())
+            conns = []
+            ticks = max(1, int(round(window)))
+            for _ in range(ticks):
+                await asyncio.sleep(window / ticks)
+                if self.done:
+                    return
+                conns.append(guard.total_in_flight())
+            t = self.meter.recent_average(ticks)
+            new = guard.trips[seen:]
+            seen = len(guard.trips)
+            hard = sum(1 for _h, k, _d in new if k in self.DISTRESS_KINDS)
+            ceiling = sum(1 for _h, k, _d in new if k == "ceiling")
+            cut = sum(1 for _h, k, _d in new if k == "truncated")
+            self._record_probe(budget, t)
+            used = sorted(conns)[len(conns) // 2]
+            log.info("adaptive budget: budget=%d conns=%d throughput=%.1fMbps "
+                     "pushback=%d ceiling=%d truncated=%d", budget, used, t, hard,
+                     ceiling, cut)
+            queue_empty = self.pending is not None and self.pending() == 0
+            if queue_empty and used < 0.8 * budget:
+                # the tail: nothing waits to start and the budget is not filled,
+                # so throughput falls as files finish; nothing to judge. With
+                # the queue empty but the budget filled (a few large files, all
+                # started at once), splitting keeps using it, so it is judged.
+                probe = None
+                continue
+            if hard or ceiling >= 3 or cut >= 3:
+                budget = max(floor, int(budget * 0.7))
+                guard.set_budget(budget)
+                log.info("adaptive budget: distress, down to %d", budget)
+                probe, direction, hold = None, 1, 2
+                continue
+            if probe is not None:
+                base_budget, base_t, d = probe
+                probe = None
+                rel = abs(budget - base_budget) / base_budget
+                if d > 0:
+                    # a raise must earn at least half its proportional gain
+                    keep = used >= 0.8 * budget and t >= base_t * (1.0 + 0.5 * rel)
+                else:
+                    # a cut is kept if it costs under a quarter of proportional
+                    keep = t >= base_t * (1.0 - 0.25 * rel)
+                if not keep:
+                    budget = base_budget
+                    guard.set_budget(budget)
+                    log.info("adaptive budget: %s to %d not kept, back to %d",
+                             "raise" if d > 0 else "cut", budget, base_budget)
+                    direction, hold = -d, 3
+                    continue
+            if hold > 0:
+                hold -= 1
+                continue
+            if direction > 0 and (budget >= top or used < 0.8 * budget):
+                direction = -1       # at the cap, or the budget is not being filled
+            if direction < 0 and budget <= floor:
+                direction = 1
+            step = max(2, budget // 4)
+            nb = min(top, budget + step) if direction > 0 else max(floor, budget - step)
+            if nb == budget:
+                continue
+            probe = (budget, t, direction)
+            budget = nb
+            guard.set_budget(budget)
+            log.info("adaptive budget: trying %d", budget)
+            if settle:
+                await asyncio.sleep(settle)
+
+    # ------------------------------------------------------------------
+    # Greedy controller (--controller greedy): what fixed -j does, plus a
+    # reaction. Every worker is active from the start; the active count drops by
+    # a quarter when the server pushes back (HTTP 429/503) and climbs back by a
+    # tenth of the cap per quiet window. It never probes downward on throughput
+    # alone, so noise cannot walk it down.
+    # ------------------------------------------------------------------
+    async def _run_greedy(self) -> None:
+        window = self._cfg("ASEQ_GREEDY_WINDOW", 10.0)
+        window = window if window > 0 else 10.0
+        active = self._worker_cap()
+        self.gate.set_active(active)
+        seen = len(self.guard.trips) if self.guard is not None else 0
+        while not self.done:
+            await asyncio.sleep(window)
+            if self.done:
+                return
+            hard = 0
+            if self.guard is not None:
+                new = self.guard.trips[seen:]
+                seen = len(self.guard.trips)
+                hard = sum(1 for _h, k, _d in new if k in ("429", "503"))
+            cap = self._worker_cap()
+            t = self.meter.recent_average(max(1, int(window)))
+            self._record_probe(min(active, cap), t)
+            if hard:
+                active = max(1, (min(active, cap) * 3) // 4)
+                log.info("adaptive greedy: pushback x%d, down to %d workers", hard, active)
+            elif active < cap:
+                active = min(cap, active + max(1, cap // 10))
+            self.gate.set_active(min(active, cap))
+
+    # ------------------------------------------------------------------
+    # Knee controller (--controller knee): the fewest connections that give
+    # near-full speed.
+    #
+    # The tournament's first round showed each archive's knee in a different
+    # place: NCBI's AWS copy tops out near 16 connections (the link), GSA gains
+    # little past about 12 and cuts streams short at any load, and ENA gives
+    # about 2 MB/s per connection, so its knee is far higher. Like `budget` it
+    # steers the per-host connection budget with every worker active, but it
+    # finds the knee from below: start at 4 connections and double while each
+    # doubling earns at least half its proportional gain (3 s windows); when one
+    # does not, try the midpoint, settle on the smaller budget that paid, and
+    # from then on hold, re-testing a quarter up or down every third 8 s window
+    # (a raise is kept if it earns half its share, a cut if it costs under a
+    # quarter). Cut-short responses are not treated as distress (GSA cuts them at
+    # every load); 429/503, refused connects with nothing open and dropped
+    # connections are, and cut the budget by 30 %. A budget that is not filled
+    # with the queue empty is the tail: nothing to judge.
+    # ------------------------------------------------------------------
+    KNEE_DISTRESS = ("429", "503", "refused", "pushback", "ftp-error")
+
+    async def _run_knee(self) -> None:
+        guard = self.guard
+        top = max(1, int(guard.default_cap))
+        fast = max(0.01, self._cfg("ASEQ_KNEE_FAST", 3.0))
+        hold_w = max(0.01, self._cfg("ASEQ_KNEE_WINDOW", 8.0))
+        settle = max(0.0, self._cfg("ASEQ_KNEE_SETTLE", 1.0))
+        budget = max(1, min(top, int(self._cfg("ASEQ_KNEE_START", 4))))
+        floor = max(1, min(budget, int(self._cfg("ASEQ_KNEE_FLOOR", 2))))
+        self.unit = "connection"
+        guard.set_budget(budget)
+        state = {"seen": len(guard.trips)}
+
+        async def window(w: float):
+            self.gate.set_active(self._worker_cap())
+            conns = []
+            ticks = max(1, int(round(w)))
+            for _ in range(ticks):
+                await asyncio.sleep(w / ticks)
+                if self.done:
+                    return None
+                conns.append(guard.total_in_flight())
+            new = guard.trips[state["seen"]:]
+            state["seen"] = len(guard.trips)
+            hard = sum(1 for _h, k, _d in new if k in self.KNEE_DISTRESS)
+            t = self.meter.recent_average(ticks)
+            self._record_probe(budget, t)
+            return t, sorted(conns)[len(conns) // 2], hard
+
+        def tail(used: int, b: int) -> bool:
+            return self.pending is not None and self.pending() == 0 and used < 0.8 * b
+
+        def set_budget(n: int) -> None:
+            guard.set_budget(n)
+            log.info("adaptive knee: budget %d", n)
+
+        # --- phase 1: double from below until a doubling stops paying -------
+        if settle:
+            await asyncio.sleep(settle)
+        got = await window(fast)
+        if got is None:
+            return
+        t, used, hard = got
+        while not self.done and budget < top and not hard:
+            if used < 0.8 * budget:
+                got = await window(fast)          # pickup/splitting lag: one more look
+                if got is None:
+                    return
+                t, used, hard = got
+                if hard or used < 0.8 * budget:
+                    break                          # not filled: no more work to spread
+            nb = min(top, budget * 2)
+            set_budget(nb)
+            if settle:
+                await asyncio.sleep(settle)
+            got = await window(fast)
+            if got is None:
+                return
+            t2, used2, hard = got
+            if hard:
+                budget = max(floor, int(nb * 0.7))
+                set_budget(budget)
+                break
+            if used2 >= 0.8 * budget and t2 >= t * (1.0 + 0.5 * (nb - budget) / budget):
+                budget, t, used = nb, t2, used2
+                continue
+            mid = budget + (nb - budget) // 2
+            if budget < mid < nb:
+                set_budget(mid)
+                if settle:
+                    await asyncio.sleep(settle)
+                got = await window(fast)
+                if got is None:
+                    return
+                t3, _u, hard = got
+                if not hard and t3 >= t * (1.0 + 0.5 * (mid - budget) / budget):
+                    budget, t = mid, t3
+            set_budget(budget)
+            break
+        log.info("adaptive knee: settled at %d connection(s)", budget)
+
+        # --- phase 2: hold, re-test a quarter up or down every third window ---
+        probe: Optional[Tuple[int, float, int]] = None
+        direction, wait = 1, 2
+        while not self.done:
+            got = await window(hold_w)
+            if got is None:
+                return
+            t, used, hard = got
+            if tail(used, budget):
+                probe = None
+                continue
+            if hard:
+                budget = max(floor, int(budget * 0.7))
+                set_budget(budget)
+                probe, direction, wait = None, 1, 2
+                continue
+            if probe is not None:
+                base_b, base_t, d = probe
+                probe = None
+                rel = abs(budget - base_b) / base_b
+                keep = (used >= 0.8 * budget and t >= base_t * (1.0 + 0.5 * rel)) if d > 0 \
+                    else t >= base_t * (1.0 - 0.25 * rel)
+                if not keep:
+                    budget = base_b
+                    set_budget(budget)
+                    direction = -d
+                wait = 2
+                continue
+            if wait > 0:
+                wait -= 1
+                continue
+            if direction > 0 and (budget >= top or used < 0.8 * budget):
+                direction = -1
+            if direction < 0 and budget <= floor:
+                direction = 1
+            step = max(1, budget // 4)
+            nb = min(top, budget + step) if direction > 0 else max(floor, budget - step)
+            if nb == budget:
+                wait = 2
+                continue
+            probe = (budget, t, direction)
+            budget = nb
+            set_budget(budget)
+            if settle:
+                await asyncio.sleep(settle)
+
     def stop(self) -> None:
         self.done = True
 
@@ -311,6 +697,16 @@ class BatchDownloader:
         self.reporter = reporter or NullReporter()
         self.jobs = max(1, int(options.jobs))
         self.adaptive = bool(options.adaptive)
+        if (self.adaptive and not options.jobs_explicit
+                and controller_mode(options) == "knee"):
+            # knee steers connections, not workers; let it reach ENA's knee on
+            # many small files (one connection each) when -j was not set
+            self.jobs = max(self.jobs, KNEE_POOL)
+        # save_path -> md5 of every file this batch verified against ENA's md5;
+        # the per-Run check reuses these instead of hashing the files again.
+        self.verified: dict = {}
+        self.md5_mismatches = 0
+        self._in_flight = 0   # files being fetched right now
 
     async def run(self, tasks: List[DownloadTask]) -> Set[str]:
         """Download all ``tasks``; return the set of save_paths that ultimately
@@ -349,6 +745,10 @@ class BatchDownloader:
                 probe_window=self.options.probe_window,
                 cc_penalty=self.options.cc_penalty,
                 max_workers=lambda: self._remaining_files(progress),
+                mode=self.options.controller,
+                guard=guard,
+                pending=queue.qsize,
+                in_flight=lambda: self._in_flight,
             )
             ctrl_task = asyncio.ensure_future(controller.run())
         repaint_task = asyncio.ensure_future(self._repaint(progress, meter, gate))
@@ -440,24 +840,41 @@ class BatchDownloader:
                         progress.inc()
                         self._cap_gate_to_remaining(progress, gate)
                     continue
+                self._in_flight += 1
+                before = _resume_progress(self.workdir / task.save_path)
                 try:
                     ok = await self.engine.fetch_async(
                         task.url, task.save_path, session=session,
                         host_guard=guard, rate=rate, on_bytes=meter.on_bytes,
+                        target_segments=self._tail_segments(queue, guard, task),
+                        spare_slots=self._spare_slots(queue, guard, task, gate),
                     )
                 except asyncio.CancelledError:
                     raise
                 except Exception as e:
                     log.warning("download error for %s: %s", task.save_path, e)
                     ok = False
+                finally:
+                    self._in_flight -= 1
 
+                if ok and task.md5:
+                    ok = await self._verify(task)
                 if ok:
                     if progress is not None:
                         progress.inc()
                         self._cap_gate_to_remaining(progress, gate)
                     log.info("downloaded %s", task.save_path)
                 else:
-                    task.retries += 1
+                    # A download that failed but moved its resume point on (the
+                    # bytes are kept in .part) is not a failed attempt: under a
+                    # storm of cut streams (GSA) a large file can need many
+                    # passes, and three used to send it to the slow per-Run
+                    # retry after the batch. Capped so a file cannot loop.
+                    after = _resume_progress(self.workdir / task.save_path)
+                    if after > before and task.progress_passes < MAX_PROGRESS_PASSES:
+                        task.progress_passes += 1
+                    else:
+                        task.retries += 1
                     if task.retries < 3:
                         queue.put_nowait(task)
                     else:
@@ -465,6 +882,76 @@ class BatchDownloader:
                         failed.add(task.save_path)
             finally:
                 queue.task_done()
+
+
+    def _tail_segments(self, queue, guard, task: DownloadTask) -> int:
+        """How many segments the file now starting may use.
+
+        Each file's split is fixed when it starts, at ``size // segment_size``
+        (three for a 1.6 GB file). That suits a full pool, but at the end of a
+        batch, and for a file fetched again after an md5 mismatch, a few files
+        on three connections each leave most of the connection budget idle.
+        Share the per-host budget among the files still to do instead: the
+        file gets ``budget // files_left`` segments, never more than
+        ``max_segments`` and never smaller than ``MIN_SPLIT`` each.
+        """
+        files_left = queue.qsize() + self._in_flight   # this one is in flight
+        budget = min(guard.cap_of(host_of(task.url)), self.jobs * self.options.max_segments)
+        return max(1, budget // max(1, files_left))
+
+    def _spare_slots(self, queue, guard, task: DownloadTask, gate=None):
+        """Unused per-host connection budget, offered to in-flight files when no
+        other file can start: the queue is empty, or a controller holds the pool
+        below its size and every active worker is busy. They split their largest
+        remainders onto new connections instead of finishing on one or two.
+
+        The second case is new in 0.1.12: topdown at 1 worker left the second
+        GSA file of panel 4m waiting, and the running one, offered nothing while
+        the queue was not empty, ran on one connection for half the run."""
+        host = host_of(task.url)
+
+        def spare() -> int:
+            held = (gate is not None and gate.active < gate.jobs
+                    and self._in_flight >= gate.active)
+            if not queue.empty() and not held:
+                return 0
+            return max(0, guard.cap_of(host) - guard.in_flight_of(host))
+        return spare
+
+    async def _verify(self, task: DownloadTask) -> bool:
+        """Check a finished file against ENA's md5 while the pool is still running.
+
+        A corrupt transfer is common enough on ENA (several per 26 GB panel on a
+        bad day) that leaving it to the per-Run check costs a serial re-download
+        after the batch, one file at a time on a few connections. Here the bad
+        file is deleted and put back on the queue, so it is fetched again in
+        parallel with everything else, at the pool's full concurrency.
+        """
+        path = self.workdir / task.save_path
+        loop = asyncio.get_event_loop()
+        try:
+            digest = await loop.run_in_executor(None, md5sum, path)
+        except OSError as e:
+            log.warning("could not hash %s: %s", task.save_path, e)
+            return False
+        if digest == task.md5.lower():
+            try:
+                st = path.stat()
+                self.verified[str(path)] = ((st.st_size, st.st_mtime_ns), digest)
+            except OSError:
+                pass
+            return True
+        self.md5_mismatches += 1
+        self.reporter.info(
+            f"{bright_yellow('Note')}: MD5 mismatch for {task.save_path} "
+            f"(attempt {task.retries + 1}); removed, it will be downloaded again"
+        )
+        for p in (path, Path(str(path) + ".part"), Path(str(path) + ".part.meta")):
+            try:
+                p.unlink()
+            except FileNotFoundError:
+                pass
+        return False
 
 
 # ============================== parallel resolution ===========================
@@ -476,6 +963,24 @@ def _save_name_for(url: str, run: str) -> str:
     if ".fastq.gz" in url or url.endswith(".gz") or "." in base and not base.isalnum():
         return base
     return run
+
+
+def _gsa_md5_map(ctx: RunContext, csv_text: str) -> dict:
+    """ENA-style md5 map for a GSA project, from its ``md5sum.txt`` (fetched into
+    the work dir, where the per-Run check would fetch it anyway). Empty on any
+    failure: the per-Run check still verifies."""
+    from .integrity import ensure_gsa_md5, gsa_md5s
+    import re as _re
+
+    out: dict = {}
+    for cra in sorted(set(_re.findall(r"CRA[0-9]+", csv_text))):
+        try:
+            p = ensure_gsa_md5(ctx, cra)
+            if p.is_file():
+                out.update(gsa_md5s(p.read_text(errors="replace")))
+        except Exception as e:
+            log.warning("no md5 list for %s: %s", cra, e)
+    return out
 
 
 def _resolve_one(accession: str, options: Options, workdir: Path) -> List[DownloadTask]:
@@ -490,24 +995,30 @@ def _resolve_one(accession: str, options: Options, workdir: Path) -> List[Downlo
     try:
         if is_gsa(accession):
             csv = ctx.metadata_csv(accession)
-            if not (csv.exists() and csv.stat().st_size > 0):
+            if not (csv.exists() and _meta.gsa_csv_has_rows(csv)):
                 csv = _meta.get_gsa_metadata(ctx, accession)
-            lines = csv.read_text(errors="replace").splitlines()
+            csv_text = csv.read_text(errors="replace")
+            lines = csv_text.splitlines()
             crrs = sorted({ln.split(",")[0] for ln in lines[1:] if ln.split(",")[0]})
+            md5s = {} if options.skip_md5 else _gsa_md5_map(ctx, csv_text)
             for crr in crrs:
                 for url in resolve_gsa_urls(ctx, crr):
-                    tasks.append(DownloadTask(url, url.rsplit("/", 1)[-1], accession))
+                    name = url.rsplit("/", 1)[-1]
+                    tasks.append(DownloadTask(url, name, accession, md5=md5s.get(name)))
         else:
             tsv = ctx.metadata_tsv(accession)
-            if not (tsv.exists() and tsv.stat().st_size > 0):
+            if (not (tsv.exists() and tsv.stat().st_size > 0) or _meta.has_ena_error(tsv)
+                    or (options.no_sra_fallback and not _meta.is_ena_tsv(tsv))):
                 tsv = _meta.get_sra_metadata(ctx, accession)
-            lines = tsv.read_text(errors="replace").splitlines()
-            for ln in lines[1:]:
+            tsv_text = tsv.read_text(errors="replace")
+            md5s = {} if options.skip_md5 else fastq_md5s(tsv_text)
+            for ln in tsv_text.splitlines()[1:]:
                 run = ln.split("\t")[0]
                 if not run:
                     continue
                 for url in resolve_sra_urls(ctx, run):
-                    tasks.append(DownloadTask(url, _save_name_for(url, run), accession))
+                    name = _save_name_for(url, run)
+                    tasks.append(DownloadTask(url, name, accession, md5=md5s.get(name)))
     except Exception as e:
         log.error("resolution failed for %s: %s", accession, e)
         raise

@@ -12,15 +12,16 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 from typing import List
+from urllib.parse import urlsplit
 
 from . import metadata as meta
 from . import resolve, integrity, convert, merge
 from ._async import run_sync
 from .accession import is_gsa
-from .console import green
-from .errors import AdaptiSeqError
+from .console import bright_yellow, green, green_bold, red_bold
+from .errors import AdaptiSeqError, MetadataError
 from .engine import get_engine
-from .logs import ensure_success_log, in_success
+from .logs import ensure_success_log, in_success, mark_fail
 from .net import file_nonempty
 from .options import Options, RunContext
 
@@ -55,7 +56,7 @@ def _process_gsa(ctx: RunContext, accession: str) -> None:
     opts = ctx.options
     csv = ctx.metadata_csv(accession)
 
-    if file_nonempty(csv):
+    if file_nonempty(csv) and meta.gsa_csv_has_rows(csv):
         reporter.info(
             f"{green('Note')}: {csv.name} exists, skip downloading metadata "
             f"for {accession}"
@@ -81,6 +82,13 @@ def _process_gsa(ctx: RunContext, accession: str) -> None:
     csv_lines = csv_text.splitlines()
     crrs = sorted({_csv_field(ln, 1) for ln in csv_lines[1:] if _csv_field(ln, 1)})
     cra_list = resolve._uniq_adjacent(resolve._RE_CRA.findall(csv_text))
+    if not crrs:
+        # Never report "download finished" for an accession that resolved to
+        # nothing (iSeq 1.9.9's GSA failure mode: exit 0 with no data).
+        raise MetadataError(
+            f"No GSA Run found for {accession} in {csv.name}",
+            f"Remove {csv.name} and retry; GSA may have answered with a partial table",
+        )
 
     for crr in crrs:
         ensure_success_log(ctx.workdir)
@@ -126,7 +134,9 @@ def _run_files_present(ctx: RunContext, srr: str) -> bool:
     gzip_mode = opts.gzip and not opts.fastq and ctx.database != "sra"
     if gzip_mode:
         files = integrity._gzip_fastq_files(ctx, srr)
-        return bool(files) and all(ctx.path(f).is_file() for f in files)
+        if files:
+            return all(ctx.path(f).is_file() for f in files)
+        # No ENA fastq.gz mirror: the Run was fetched as a .sra (see check_sra).
     return ctx.path(srr).is_file()
 
 
@@ -135,7 +145,8 @@ def _process_sra(ctx: RunContext, accession: str) -> None:
     opts = ctx.options
     tsv = ctx.metadata_tsv(accession)
 
-    if file_nonempty(tsv):
+    if (file_nonempty(tsv) and not meta.has_ena_error(tsv)
+            and (meta.is_ena_tsv(tsv) or not opts.no_sra_fallback)):
         reporter.info(
             f"{green('Note')}: {tsv.name} exists, skip downloading metadata "
             f"for {accession}"
@@ -302,13 +313,31 @@ def run(
         if sra_accs:
             _aspera_download_phase(ctx, sra_accs)
     elif options.engine == "segmented" and not options.metadata:
-        sra_accs = [a for a in accessions if not is_gsa(a)]
-        if sra_accs:
-            _batch_download_phase(ctx, sra_accs)
+        # GSA runs join the same pool (their links come from the run-info
+        # table); the per-accession loop below then verifies them in place.
+        if accessions:
+            _batch_download_phase(ctx, list(accessions))
 
     for accession in accessions:
         ctx.retry_count = 1
-        process_accession(ctx, accession)
+        if len(accessions) == 1:
+            process_accession(ctx, accession)
+            continue
+        # In a list, one accession that cannot be resolved or downloaded must not
+        # stop the rest (iSeq runs each accession in a subshell for the same
+        # reason). It is reported, recorded in fail.log, and the run exits 1.
+        try:
+            process_accession(ctx, accession)
+        except AdaptiSeqError as exc:
+            ctx.reporter.error(f"{red_bold('Error')}: {exc.message}")
+            if exc.solution:
+                ctx.reporter.error(f"{green_bold('How to solve?')} {exc.solution}")
+            ctx.reporter.info(
+                f"{bright_yellow('Note')}: {accession} failed, save it in fail.log "
+                "and continue with the next accession"
+            )
+            mark_fail(ctx.workdir, accession)
+            ctx.failed = True
     return ctx
 
 
@@ -367,6 +396,20 @@ def _aspera_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         reporter.info(f"{green('Note')}: aspera worker trajectory: {traj}")
 
 
+def _non_ena_accessions(tasks) -> List[str]:
+    """Accessions with a file resolved to a host outside ENA, i.e. the SRA
+    fallback. Their converted FASTQ cannot be checked against ENA's md5."""
+    out: List[str] = []
+    for t in tasks:
+        if is_gsa(t.accession):
+            continue          # GSA is its own archive, not an SRA fallback
+        url = t.url if "://" in t.url else "//" + t.url
+        host = urlsplit(url).hostname or ""
+        if not host.endswith("ebi.ac.uk") and t.accession not in out:
+            out.append(t.accession)
+    return out
+
+
 def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
     """Phase A: parallel-resolve SRA/ENA accessions and adaptively batch-download
     their files. Phase B (integrity/convert/merge/logs) is the normal per-accession
@@ -387,6 +430,16 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
         )
     if not tasks:
         return
+    # The resolver runs on a NullReporter, so say here which accessions left ENA
+    # (an explicit -d sra asks for that and needs no note).
+    if opts.database != "sra":
+        non_ena = _non_ena_accessions(tasks)
+        if non_ena:
+            shown = ", ".join(non_ena[:10]) + (" ..." if len(non_ena) > 10 else "")
+            reporter.info(
+                f"{bright_yellow('Note')}: {len(non_ena)} accession(s) had no usable "
+                f"ENA metadata and will be downloaded from SRA: {shown}"
+            )
     reporter.info(
         f"{green('Note')}: batch downloading {len(tasks)} file(s) across "
         f"{len(sra_accs)} accession(s) with up to "
@@ -395,6 +448,7 @@ def _batch_download_phase(ctx: RunContext, sra_accs: List[str]) -> None:
     )
     bd = BatchDownloader(ctx.engine, opts, ctx.workdir, reporter)
     run_sync(bd.run(tasks))
+    ctx.verified_md5.update(getattr(bd, "verified", {}))
     controller = getattr(bd, "_controller", None)
     if controller is not None:
         summary = controller.summary()

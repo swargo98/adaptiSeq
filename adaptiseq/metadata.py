@@ -13,6 +13,8 @@ Files produced:
 from __future__ import annotations
 
 import re
+import threading
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -64,6 +66,103 @@ _RE_WEBENV = re.compile(r"<WebEnv>([^<]+)")
 _RE_QUERYKEY = re.compile(r"<QueryKey>([^<]+)")
 
 
+# ENA's portal sometimes answers with HTTP 200 and, in place of (or after) the
+# rows, a line "ERROR occurred. Not all results may have been written.Query:
+# {...}". Taken at face value that line becomes a Run called "ERROR occurred..."
+# and the accession is lost; seen on 2026-10-13 for about 1 query in 60, by every
+# tool in the benchmark. The answer is transient: the same query succeeds later.
+ENA_ERROR_MARKER = "ERROR occurred"
+ENA_RETRY_BASE_S = 2.0    # sleep 2, 4, 8, 16, 30, 30 ... s between tries
+# During the ENA portal outage of 2026-10-15 the portal also answered with HTTP
+# 500 (wget exits non-zero and leaves an empty file), timed out, or returned
+# HTTP 200 with the header line and no rows for a Run that is in ENA. Each of
+# these used to read as "not in ENA" and sent the Run to SRA, whose converted
+# FASTQ cannot match ENA's md5. A failed request is retried like an error body;
+# an empty answer is retried once, so a Run that is really SRA-only costs one
+# extra query.
+ENA_EMPTY_ATTEMPTS = 2
+# Round 2 rep 3 (2026-10-21): the portal answered in 24-45 s with an HTTP 500 now
+# and then for three hours, and two runs went to SRA (unverifiable) after about
+# 15 s of retries. Retries are now bounded by time, and the time is shared by
+# every accession: the portal may keep failing for ENA_PATIENCE_S, counted from
+# the first failure of the current streak, before runs fall back to SRA. So one
+# long outage costs a 241-run list about that long once, not once per run. Each
+# accession still tries ENA_MIN_ATTEMPTS times. An empty answer counts as "not
+# in ENA" only when it came back quickly (a healthy portal answers in about a
+# second) and nothing else is failing; a slow one is the portal under strain.
+ENA_ATTEMPTS = 12         # hard cap per accession
+ENA_RETRY_MAX_S = 30.0
+ENA_PATIENCE_S = 180.0
+ENA_MIN_ATTEMPTS = 2
+ENA_SLOW_S = 5.0
+ENA_STREAK_GAP_S = 60.0   # a streak ends after this long without a failure
+_sleep = time.sleep       # patched in tests
+_now = time.monotonic     # patched in tests
+_ena_lock = threading.Lock()
+_ena_streak = {"since": None, "last": None}
+
+
+def _ena_failing(now: float) -> Optional[float]:
+    """Start of the current ENA failure streak, or None if ENA is healthy."""
+    with _ena_lock:
+        last = _ena_streak["last"]
+        if last is None or now - last > ENA_STREAK_GAP_S:
+            _ena_streak["since"] = _ena_streak["last"] = None
+        return _ena_streak["since"]
+
+
+def _ena_note(ok: bool, now: float) -> None:
+    with _ena_lock:
+        if ok:
+            _ena_streak["since"] = _ena_streak["last"] = None
+        else:
+            if _ena_streak["since"] is None:
+                _ena_streak["since"] = now
+            _ena_streak["last"] = now
+
+
+def reset_ena_streak() -> None:
+    """Forget past ENA failures (tests; a new process starts clean anyway)."""
+    _ena_note(True, 0.0)
+# GSA's getRunInfoByCra can answer with a table that lacks a Run (round 2 rep 1,
+# 2026-10-20: CRR120307's table had only the header). Filtered to that Run, the
+# CSV then held no rows and the Run was skipped with exit 0. Retry, then fail.
+GSA_ATTEMPTS = 4
+GSA_RETRY_BASE_S = 2.0
+
+
+def gsa_csv_has_rows(path: Path) -> bool:
+    """True if a GSA metadata CSV has at least one Run row under its header."""
+    return bool(_row2_field1(path, ","))
+
+
+def has_ena_error(path: Path) -> bool:
+    """True if a saved metadata TSV contains ENA's in-band error line."""
+    try:
+        with open(path, "r", errors="replace") as fh:
+            return any(ln.lstrip().startswith(ENA_ERROR_MARKER) for ln in fh)
+    except FileNotFoundError:
+        return False
+
+
+def _unlink(path: Path) -> None:
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        pass
+
+
+def _ena_problem(rc: int, tsv: Path) -> str:
+    """Why an ENA filereport answer can't be used ("" if it can)."""
+    if rc != 0:
+        return f"request failed, wget exit {rc}"
+    if has_ena_error(tsv):
+        return "error body"
+    if not _row2_field1(tsv, "\t"):
+        return "empty answer"
+    return ""
+
+
 # --- small awk-equivalents ------------------------------------------------------
 
 def _row2_field1(path: Path, sep: str) -> str:
@@ -81,6 +180,15 @@ def _row2_field1(path: Path, sep: str) -> str:
 
 # ================================ ENA / SRA =====================================
 
+def is_ena_tsv(path: Path) -> bool:
+    """True if ``path`` holds an ENA filereport (not the SRA runinfo fallback)."""
+    try:
+        with open(path, errors="replace") as fh:
+            return fh.readline().startswith("study_accession\t")
+    except OSError:
+        return False
+
+
 def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
     """Fetch SRA/ENA run metadata.
 
@@ -92,14 +200,55 @@ def get_sra_metadata(ctx: RunContext, accession: str) -> Path:
     query = validate_query(accession, reporter)
 
     tsv = ctx.metadata_tsv(accession)
-    wget_to_file(
-        ENA_URL.format(query=query, fields=ENA_FIELDS),
-        tsv,
-        cont=True,
-        quiet=True,
-    )
+    empty = 0
+    for attempt in range(1, ENA_ATTEMPTS + 1):
+        if has_ena_error(tsv):
+            _unlink(tsv)  # never resume (-c) onto an error body
+        t0 = _now()
+        rc = wget_to_file(
+            ENA_URL.format(query=query, fields=ENA_FIELDS),
+            tsv,
+            cont=True,
+            quiet=True,
+        )
+        now = _now()
+        problem = _ena_problem(rc, tsv)
+        if not problem:
+            _ena_note(True, now)
+            break
+        # Drop whatever came back (error page, partial or header-only file):
+        # never resume onto it, and let the SRA path below start clean.
+        _unlink(tsv)
+        if (problem == "empty answer" and now - t0 < ENA_SLOW_S
+                and _ena_failing(now) is None):
+            empty += 1
+            if empty >= ENA_EMPTY_ATTEMPTS:
+                break  # ENA keeps answering with no rows: not in ENA
+        else:
+            if problem == "empty answer":
+                problem = f"empty answer after {now - t0:.0f} s"
+            _ena_note(False, now)
+            since = _ena_failing(now)
+            if (attempt >= ENA_MIN_ATTEMPTS and since is not None
+                    and now - since >= ENA_PATIENCE_S):
+                break  # ENA has been failing for minutes: fall back
+        if attempt < ENA_ATTEMPTS:
+            delay = min(ENA_RETRY_MAX_S, ENA_RETRY_BASE_S * 2 ** (attempt - 1))
+            reporter.info(
+                f"{bright_yellow('Note')}: ENA query for {accession} failed "
+                f"({problem}, attempt {attempt}/{ENA_ATTEMPTS}), retrying in {delay:.0f} s"
+            )
+            _sleep(delay)
 
     if not _row2_field1(tsv, "\t"):
+        if ctx.options.no_sra_fallback:
+            raise MetadataError(
+                f"No usable ENA metadata for {accession}, and SRA fallback is "
+                "disabled (--no-sra-fallback)",
+                "ENA may be down or the run may exist only in SRA: retry later, "
+                "or drop --no-sra-fallback to accept files that cannot be checked "
+                "against ENA's md5",
+            )
         reporter.info(
             f"{bright_yellow('Note')}: No metadata information found for "
             f"{accession} in the ENA database, try to download from the SRA database"
@@ -186,18 +335,34 @@ def get_gsa_metadata(ctx: RunContext, accession: str) -> Path:
                 f"2. Check the format of {accession}.",
             )
         tmp = ctx.path(f"{accession}.tmp")
-        wget_to_file(
-            GSA_RUNINFO_BY_CRA,
-            tmp,
-            post_data=f"searchTerm={cra}&totalDatas=9999&downLoadCount=9999",
-            user_agent=USER_AGENT_MOZILLA,
-            quiet=True,
-        )
-        _filter_rows_containing(tmp, csv, accession)
-        try:
-            tmp.unlink()
-        except FileNotFoundError:
-            pass
+        for attempt in range(1, GSA_ATTEMPTS + 1):
+            wget_to_file(
+                GSA_RUNINFO_BY_CRA,
+                tmp,
+                post_data=f"searchTerm={cra}&totalDatas=9999&downLoadCount=9999",
+                user_agent=USER_AGENT_MOZILLA,
+                quiet=True,
+            )
+            _filter_rows_containing(tmp, csv, accession)
+            _unlink(tmp)
+            if gsa_csv_has_rows(csv):
+                break
+            if attempt < GSA_ATTEMPTS:
+                delay = GSA_RETRY_BASE_S * 2 ** (attempt - 1)
+                reporter.info(
+                    f"{bright_yellow('Note')}: GSA run-info for {cra} has no row "
+                    f"for {accession} (attempt {attempt}/{GSA_ATTEMPTS}), "
+                    f"retrying in {delay:.0f} s"
+                )
+                _sleep(delay)
+        if not gsa_csv_has_rows(csv):
+            _unlink(csv)
+            raise MetadataError(
+                f"GSA's run-info table for {cra} has no row for {accession} "
+                f"after {GSA_ATTEMPTS} tries",
+                "GSA may be answering with a partial table: retry later, or "
+                f"check that {accession} is public in {cra}",
+            )
 
         if not ctx.path(f"{cra}.metadata.xlsx").is_file():
             reporter.info(

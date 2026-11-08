@@ -31,6 +31,10 @@ class Options:
     threads: int = 8               # -t
     merge: Optional[str] = None     # -e ex|sa|st  (None == off)
     database: str = "auto"         # -d ena|sra (auto-detect default)
+    # --no-sra-fallback: fail an accession instead of fetching it from NCBI SRA
+    # when ENA has no usable metadata or file for it (SRA-converted files cannot
+    # be checked against ENA's md5).
+    no_sra_fallback: bool = False
     parallel: int = 0              # -p (0 == use wget, >0 == axel -n parallel)
     aspera: bool = False            # -a
     speed: int = 1000              # -s MB/s
@@ -51,9 +55,15 @@ class Options:
 
     # Part 3 adaptive/batch knobs.
     jobs: int = 20                  # -j/--jobs (worker-pool size)
+    # False when -j was not given (CLI) or jobs=None (API): the knee controller
+    # may then grow the pool past 20 (it steers connections, not workers).
+    jobs_explicit: bool = True
     adaptive: bool = True           # --adaptive/--no-adaptive
     probe_window: int = 5           # --probe-window (seconds)
     cc_penalty: float = 1.01        # --cc-penalty (K in throughput / K**workers)
+    # --controller: which adaptive controller runs. None -> ASEQ_ADAPTIVE_MODE, then
+    # "topdown". "budget" and "greedy" are candidates under evaluation.
+    controller: Optional[str] = None
     meta_jobs: int = 3              # --meta-jobs (parallel resolution)
     aspera_efficiency: float = 0.70 # --aspera-efficiency (keep-worker threshold)
 
@@ -64,6 +74,8 @@ class Options:
             raise ValueError(f"Invalid merge: {self.merge}")
         if self.database not in ("auto", "ena", "sra"):
             raise ValueError(f"Invalid database: {self.database}")
+        if self.no_sra_fallback and self.database == "sra":
+            raise ValueError("no_sra_fallback conflicts with database='sra'")
         if self.protocol not in ("auto", "ftp", "https"):
             raise ValueError(f"Invalid protocol: {self.protocol}")
         if self.engine not in ("classic", "segmented"):
@@ -92,10 +104,28 @@ class Options:
             raise ValueError(f"Invalid probe_window: {self.probe_window}")
         if self.cc_penalty < 1.0:
             raise ValueError(f"Invalid cc_penalty: {self.cc_penalty}")
+        if self.controller is not None and self.controller not in CONTROLLERS:
+            raise ValueError(f"Invalid controller: {self.controller}")
         if self.meta_jobs < 1:
             raise ValueError(f"Invalid meta_jobs: {self.meta_jobs}")
         if not (0.0 < self.aspera_efficiency <= 1.0):
             raise ValueError(f"Invalid aspera_efficiency: {self.aspera_efficiency}")
+
+
+# Adaptive controllers (--controller). topdown is the default; bottomup is the
+# original gradient optimizer; budget and greedy are candidates under evaluation.
+CONTROLLERS = ("topdown", "bottomup", "budget", "greedy", "knee")
+
+# The pool the knee controller may use when -j was not set: on ENA's many small
+# files the sweep's best fixed -j was 32 to 64, above the default 20 workers.
+KNEE_POOL = 64
+
+
+def controller_mode(options: "Options") -> str:
+    """The controller that runs: --controller, else ASEQ_ADAPTIVE_MODE, else topdown."""
+    import os
+
+    return (options.controller or os.environ.get("ASEQ_ADAPTIVE_MODE") or "topdown").lower()
 
 
 @dataclass
@@ -121,6 +151,10 @@ class RunContext:
     failed: bool = False
 
     engine: object = None  # set to a ClassicEngine; typed loosely to avoid cycles
+
+    # md5 digests the batch phase already computed: path -> ((size, mtime_ns), md5).
+    # The per-Run check reuses a digest only while the file is unchanged.
+    verified_md5: dict = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         self.database = self.options.database

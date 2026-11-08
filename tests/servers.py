@@ -75,6 +75,9 @@ class _MultiHandler(http.server.BaseHTTPRequestHandler):
             if srv.delay:
                 time.sleep(srv.delay)
             name = self.path.lstrip("/")
+            if srv.maybe_drop(name):
+                self.close_connection = True   # no response at all
+                return
             data = srv.files.get(name)
             if data is None:
                 self.send_response(404)
@@ -86,17 +89,33 @@ class _MultiHandler(http.server.BaseHTTPRequestHandler):
                 a = int(a)
                 b = int(b) if b else len(data) - 1
                 b = min(b, len(data) - 1)
-                body = data[a:b + 1]
+                body = srv.maybe_corrupt(name, data[a:b + 1])
+                with srv.lock:
+                    srv.range_starts.append((name, a))
                 self.send_response(206)
                 self.send_header("Content-Range", f"bytes {a}-{b}/{len(data)}")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
-                self.wfile.write(body)
+                rate = srv.rate_for(name, a, len(body))
+                if srv.maybe_short(name, len(body)):
+                    # promise the whole range, deliver half, hang up
+                    self.wfile.write(body[: len(body) // 2])
+                    self.wfile.flush()
+                    self.close_connection = True
+                    return
+                if rate:
+                    piece = 64 * 1024
+                    for k in range(0, len(body), piece):
+                        self.wfile.write(body[k:k + piece])
+                        time.sleep(len(body[k:k + piece]) / rate)
+                else:
+                    self.wfile.write(body)
             else:
+                body = srv.maybe_corrupt(name, data)
                 self.send_response(200)
-                self.send_header("Content-Length", str(len(data)))
+                self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
-                self.wfile.write(data)
+                self.wfile.write(body)
         finally:
             with srv.lock:
                 srv.concurrent -= 1
@@ -107,6 +126,10 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
 
     daemon_threads = True
     allow_reuse_address = True
+    # socketserver's default listen backlog is 5: on a loaded node the single
+    # accept thread falls behind, the kernel drops further SYNs and the client
+    # retries ~1 s later, so concurrent connections never overlap as intended.
+    request_queue_size = 128
 
     def handle_error(self, request, client_address):
         return
@@ -118,6 +141,53 @@ class MultiFileRangeServer(socketserver.ThreadingTCPServer):
         self.lock = threading.Lock()
         self.concurrent = 0
         self.max_concurrent = 0
+        # {name: n}: the next n data responses for that file (not 1-byte range
+        # probes) have one byte flipped -- a transfer that arrives intact in
+        # length but fails the md5 check, as ENA's sometimes do.
+        self.corrupt = {}
+        # {name: (bytes_per_s, start or None)}: stream that file's range responses
+        # at this rate -- all of them, or only the one starting at ``start`` (a
+        # straggler connection). range_starts records every data request.
+        self.throttle = {}
+        self.range_starts = []
+        self.drop = {}
+        self.short = {}
+
+    def maybe_short(self, name: str, length: int) -> bool:
+        """``short[name] = n``: cut the next n data responses for that file short."""
+        if length <= 1:
+            return False
+        with self.lock:
+            left = self.short.get(name, 0)
+            if left <= 0:
+                return False
+            self.short[name] = left - 1
+            return True
+
+    def maybe_drop(self, name: str) -> bool:
+        """``drop[name] = n``: hang up on the next n requests for that file."""
+        with self.lock:
+            left = self.drop.get(name, 0)
+            if left <= 0:
+                return False
+            self.drop[name] = left - 1
+            return True
+
+    def rate_for(self, name: str, start: int, length: int):
+        if length <= 1 or name not in self.throttle:
+            return None
+        rate, only = self.throttle[name]
+        return rate if only is None or only == start else None
+
+    def maybe_corrupt(self, name: str, body: bytes) -> bytes:
+        if len(body) <= 1:
+            return body
+        with self.lock:
+            left = self.corrupt.get(name, 0)
+            if left <= 0:
+                return body
+            self.corrupt[name] = left - 1
+        return bytes([body[0] ^ 0xFF]) + body[1:]
 
     @property
     def port(self) -> int:
@@ -140,6 +210,10 @@ class RangeServer(socketserver.ThreadingTCPServer):
 
     daemon_threads = True
     allow_reuse_address = True
+    # socketserver's default listen backlog is 5: on a loaded node the single
+    # accept thread falls behind, the kernel drops further SYNs and the client
+    # retries ~1 s later, so concurrent connections never overlap as intended.
+    request_queue_size = 128
 
     def handle_error(self, request, client_address):
         # Clients legitimately close early (probe reads 1 byte; segments close on

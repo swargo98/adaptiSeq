@@ -24,6 +24,7 @@ Optional:
   -t, --threads   int           Threads for SRA->FASTQ / compression (default: 8).
   -e, --merge     [ex|sa|st]    Merge fastq files per Experiment / Sample / Study.
   -d, --database  [ena|sra]     Force database for SRA data (default: auto-detect).
+      --no-sra-fallback         Fail a Run that ENA cannot serve instead of fetching it from SRA.
   -p, --parallel  int           axel connection count (classic engine only), e.g. -p 10.
   -a, --aspera                  Use Aspera (ascp); GSA/ENA only.
   -s, --speed     int           Download speed limit in MB/s (default: 1000).

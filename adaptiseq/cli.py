@@ -22,7 +22,7 @@ from .console import (
     yellow_bold,
 )
 from .errors import AdaptiSeqError, PreflightError
-from .options import Options, load_accessions, resolve_output_dir
+from .options import CONTROLLERS, Options, load_accessions, resolve_output_dir
 from .preflight import check_software, render_preflight_error
 from .routing import check_merge_guard
 
@@ -70,6 +70,10 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Merge fastq files per Experiment/Sample/Study.")
     g.add_argument("-d", "--database", metavar="[ena|sra]",
                    help="Force database for SRA data (default: auto-detect).")
+    g.add_argument("--no-sra-fallback", action="store_true", dest="no_sra_fallback",
+                   help="Fail an accession instead of downloading it from NCBI SRA "
+                        "when ENA has no usable metadata or file for it, so every "
+                        "file can be checked against ENA's md5.")
     g.add_argument("-p", "--parallel", metavar="int",
                    help="axel connection count for parallel download, e.g. -p 10.")
     g.add_argument("-a", "--aspera", action="store_true",
@@ -101,7 +105,7 @@ def build_parser() -> argparse.ArgumentParser:
                         "truncate the requested concurrency; the circuit breaker "
                         "still lowers it on 429/503). Set a lower value to be "
                         "gentler on a host.")
-    g.add_argument("-j", "--jobs", metavar="int", default="20",
+    g.add_argument("-j", "--jobs", metavar="int", default=None,
                    help="Max worker-pool size for batch download (default: 20). "
                         "With --adaptive, the gradient optimizer chooses how many "
                         "of these are active at once.")
@@ -110,6 +114,13 @@ def build_parser() -> argparse.ArgumentParser:
                         "(default: on).")
     g.add_argument("--no-adaptive", dest="adaptive", action="store_false",
                    help="Disable adaptivity: run all -j workers with no probing.")
+    g.add_argument("--controller", metavar="name", default=None, dest="controller",
+                   choices=list(CONTROLLERS),
+                   help="Which adaptive controller runs with --adaptive: topdown "
+                        "(default), bottomup, or the candidates under evaluation: "
+                        "budget (steers a per-host connection budget), greedy "
+                        "(all workers, backs off on 429/503) and knee (finds the "
+                        "fewest connections that give near-full speed).")
     g.add_argument("--probe-window", metavar="int", default="5", dest="probe_window",
                    help="Adaptive optimizer probe window in seconds (default: 5).")
     g.add_argument("--cc-penalty", metavar="float", default="1.01", dest="cc_penalty",
@@ -247,7 +258,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         )
 
     # Part 3 adaptive/batch knobs.
-    jobs = _posint("jobs", "-j", args.jobs, 20,
+    jobs_explicit = args.jobs is not None
+    jobs = _posint("jobs", "-j", args.jobs if jobs_explicit else "20", 20,
                    'Please use a positive integer for the "-j" option')
     probe_window = _posint("probe-window", "--probe-window", args.probe_window, 5,
                            'Please use an integer >= 2 for the "--probe-window" option')
@@ -292,6 +304,10 @@ def main(argv: Optional[List[str]] = None) -> int:
         _emit_error(reporter, "SRA database does not support Aspera download",
                     'Please remove -a option or switch to the ENA database by "-d ena"')
         return 1
+    if args.no_sra_fallback and database == "sra":
+        _emit_error(reporter, "--no-sra-fallback cannot be used with -d sra",
+                    'Please remove one of them: "-d sra" downloads from SRA on purpose')
+        return 1
 
     # --- preflight (needs-based; see NOTES.md divergence #4 / #P2.3) ---
     try:
@@ -312,6 +328,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             threads=threads,
             merge=merge,
             database=database,
+            no_sra_fallback=args.no_sra_fallback,
             parallel=parallel,
             aspera=args.aspera,
             speed=speed,
@@ -324,9 +341,11 @@ def main(argv: Optional[List[str]] = None) -> int:
             max_segments=max_segments,
             max_conns_per_host=max_conns_per_host,
             jobs=jobs,
+            jobs_explicit=jobs_explicit,
             adaptive=args.adaptive,
             probe_window=probe_window,
             cc_penalty=cc_penalty,
+            controller=args.controller,
             meta_jobs=meta_jobs,
             aspera_efficiency=aspera_efficiency,
         )

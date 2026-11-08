@@ -50,12 +50,22 @@ in `fail.log`.
 ## Quick links
 
 - Repository: <https://github.com/swargo98/adaptiSeq>
-- Citation: TBD (see [Citation](#citation) once published)
+- Citation: see [Citation](#citation)
 
 ## Citation
 
-TBD — a manuscript is in preparation. For now, please cite the repository.
+A manuscript is in preparation. adaptiSeq builds on two earlier tools; if you use
+it, please also cite:
+
+- **iSeq**, whose accession resolution, metadata, integrity, and merge behaviour
+  adaptiSeq reimplements in Python: Chao H, Li Z, Chen D, Chen M. *iSeq: An
+  integrated tool to fetch public sequencing data.* **Bioinformatics**, 2024,
+  btae641, [doi:10.1093/bioinformatics/btae641](https://doi.org/10.1093/bioinformatics/btae641).
+- **FastBioDL**, from which the segmented, resumable transfer engine is ported:
+  Swargo RM, Arslan E, Arifuzzaman M. *Adaptive Parallel Downloader for Large
+  Genomic Datasets.* [arXiv:2508.05511](https://arxiv.org/abs/2508.05511).
 
 ## License
 
-adaptiSeq is released under the [MIT License](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE).
+adaptiSeq is released under the [MIT License](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE),
+which also reproduces iSeq's MIT notice (Copyright (c) 2024 BioOmics).

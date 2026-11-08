@@ -75,3 +75,88 @@ def test_gzip_md5_failure_after_retries(tmp_path):
     assert ok is False
     assert ctx.failed is True
     assert "SRR0000002" in (tmp_path / "fail.log").read_text()
+
+
+def test_gzip_md5_mismatch_first_retry_is_a_fresh_download(tmp_path):
+    # Regression: the first retry used to call the download with the bad file
+    # still in place; the engine skips a full-size file, so only the second
+    # retry actually re-downloaded.
+    good = b"good payload"
+    f = tmp_path / "SRR0000006.fastq.gz"
+    f.write_bytes(b"same size, wrong bytes")
+    (tmp_path / "SRR0000006.metadata.tsv").write_text(
+        "run_accession\tfastq_md5\tlibrary_layout\tfastq_ftp\n"
+        f"SRR0000006\t{_md5(good)}\tSINGLE\t"
+        "ftp.sra.ebi.ac.uk/vol1/fastq/SRR000/SRR0000006/SRR0000006.fastq.gz\n"
+    )
+    ctx = _ctx(tmp_path, gzip=True, database="ena")
+    ctx.accession = "SRR0000006"
+    ctx.database = "ena"
+
+    calls = []
+
+    def redownload():
+        # Behaves like the engine: an existing file is left alone.
+        calls.append(f.exists())
+        if not f.exists():
+            f.write_bytes(good)
+
+    ok = integrity.check_sra(ctx, "SRR0000006", redownload)
+    assert ok is True
+    assert calls == [False]  # bad file was gone before the first retry
+    assert logs.in_success(tmp_path, "SRR0000006")
+
+
+# ------------------------- checkSRA (-g, SRA-only Run) -------------------------
+
+def _sra_only_ctx(tmp_path, srr):
+    """-g on a Run whose metadata lists no ENA fastq.gz: the .sra was fetched."""
+    (tmp_path / f"{srr}.metadata.tsv").write_text(
+        "run_accession\tfastq_md5\tlibrary_layout\tfastq_ftp\n"
+        f"{srr}\t\tPAIRED\t\n"
+    )
+    (tmp_path / srr).write_bytes(b"fake sra payload")
+    ctx = _ctx(tmp_path, gzip=True, database="ena")
+    ctx.accession = srr
+    ctx.database = "ena"
+    return ctx
+
+
+def test_gzip_sra_only_run_validates_sra_file(tmp_path, monkeypatch):
+    # Regression: this used to look for fastq.gz md5s, find none, write the Run
+    # to fail.log and exit 1 -- although the .sra was then converted correctly.
+    ctx = _sra_only_ctx(tmp_path, "SRR0000003")
+    validated = []
+    monkeypatch.setattr(
+        integrity, "vdb_validate", lambda c, s: validated.append(s) or True
+    )
+
+    calls = []
+    ok = integrity.check_sra(ctx, "SRR0000003", lambda: calls.append(1))
+    assert ok is True
+    assert validated == ["SRR0000003"]
+    assert calls == []  # no needless re-download
+    assert ctx.failed is False
+    assert logs.in_success(tmp_path, "SRR0000003")
+    assert not (tmp_path / "fail.log").exists()
+
+
+def test_gzip_sra_only_run_still_fails_on_bad_sra(tmp_path, monkeypatch):
+    ctx = _sra_only_ctx(tmp_path, "SRR0000004")
+    monkeypatch.setattr(integrity, "vdb_validate", lambda c, s: False)
+
+    calls = []
+    ok = integrity.check_sra(ctx, "SRR0000004", lambda: calls.append(1))
+    assert ok is False
+    assert len(calls) == 2  # same retry budget as any other .sra
+    assert ctx.failed is True
+    assert "SRR0000004" in (tmp_path / "fail.log").read_text()
+
+
+def test_gzip_sra_only_run_counts_as_present(tmp_path):
+    from adaptiseq import core
+
+    ctx = _sra_only_ctx(tmp_path, "SRR0000005")
+    assert core._run_files_present(ctx, "SRR0000005") is True
+    (tmp_path / "SRR0000005").unlink()
+    assert core._run_files_present(ctx, "SRR0000005") is False

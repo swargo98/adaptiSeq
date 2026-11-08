@@ -42,3 +42,14 @@ def seeded_workdir(tmp_path):
         return tmp_path
 
     return _seed
+
+
+@pytest.fixture(autouse=True)
+def _fresh_ena_streak():
+    """ENA's failure streak is process-wide (shared by every accession of a
+    list); start each test without one."""
+    from adaptiseq import metadata
+
+    metadata.reset_ena_streak()
+    yield
+    metadata.reset_ena_streak()

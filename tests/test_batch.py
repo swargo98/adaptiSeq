@@ -296,9 +296,12 @@ def test_auto_cap_does_not_truncate_intended_concurrency(tmp_path):
     Files are 8 MB (above the engine's 5 MB min_file_size_for_segmentation) so
     segmentation actually engages: 8 MB / 1 MB segments -> capped at
     max_segments=4 -> 4 files x 4 segments = 16 intended connections.
+
+    Each request is held for 0.3 s: on a loaded node the server accepts about one
+    connection per 13 ms, so 16 of them need ~0.2 s to all be open at once.
     """
     files = {f"g{i}.bin": os.urandom(8 * 1024 * 1024) for i in range(4)}
-    with MultiFileRangeServer(files, delay=0.05) as srv:
+    with MultiFileRangeServer(files, delay=0.3) as srv:
         opts = Options(engine="segmented", segment_size=1024 * 1024, max_segments=4,
                        quiet=True, adaptive=False, jobs=4)  # max_conns_per_host: auto
         assert opts.max_conns_per_host == 16, "auto cap should be jobs * max_segments"
