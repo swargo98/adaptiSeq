@@ -985,37 +985,34 @@ plus its ENA key), so all modes work without further setup:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>adaptiseq<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>adaptiseq
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>adaptiseq
 </code></pre></div>
+<p>The package is on <a href="https://anaconda.org/bioconda/adaptiseq">Bioconda</a> (version 0.1.12
+and later).</p>
 <blockquote>
 <p><strong>Note</strong>
-The bioconda submission is pending. Until it is accepted, build the package
-locally from the recipe in this repository:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>conda-build
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>conda<span class="w"> </span>build<span class="w"> </span>recipe<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>adaptiseq<span class="w"> </span>-c<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>adaptiseq
-</code></pre></div>
-<p><code>aspera-cli</code> ships a Linux x86_64 <code>ascp</code>; on other platforms <code>-a</code> is
+<code>aspera-cli</code> ships a Linux x86_64 <code>ascp</code>; on other platforms <code>-a</code> is
 unavailable and the remaining modes work as usual.</p>
 </blockquote>
 <h2 id="2-install-with-pip">2. Install with pip<a class="headerlink" href="#2-install-with-pip" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>adaptiseq
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>adaptiseq<span class="w"> </span>--version
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>adaptiseq
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>adaptiseq<span class="w"> </span>--version
 </code></pre></div>
 <p>pip installs only the Python package. Install the external tools (below)
 yourself, or use conda.</p>
 <h2 id="3-install-from-source-development">3. Install from source (development)<a class="headerlink" href="#3-install-from-source-development" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/swargo98/adaptiSeq.git
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>adaptiSeq
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w">   </span><span class="c1"># external tools + editable install + pytest</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>conda<span class="w"> </span>activate<span class="w"> </span>adaptiseq
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-q
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/swargo98/adaptiSeq.git
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>adaptiSeq
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w">   </span><span class="c1"># external tools + editable install + pytest</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>conda<span class="w"> </span>activate<span class="w"> </span>adaptiseq
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-q
 </code></pre></div>
 <p>Without conda, <code>pip install -e '.[test]'</code> gives the editable install and pytest;
 the external tools must then come from elsewhere.</p>
 <h2 id="packaging-notes">Packaging notes<a class="headerlink" href="#packaging-notes" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/swargo98/adaptiSeq/blob/main/recipe/meta.yaml"><code>recipe/meta.yaml</code></a>
-  is the bioconda recipe. It builds the released PyPI sdist, and its test step
-  runs the offline test suite shipped in that sdist.</li>
+  is the recipe that was submitted to bioconda. It builds the released PyPI sdist;
+  its test step runs <code>--version</code>, <code>--help</code> and <code>pip check</code>. CI also builds it
+  and runs the offline test suite shipped in the sdist.</li>
 <li><a href="https://github.com/swargo98/adaptiSeq/blob/main/environment.yml"><code>environment.yml</code></a>
   is the development environment for a checkout.</li>
 <li>CI builds the recipe and creates the development environment on every push.</li>
@@ -1086,8 +1083,8 @@ only <code>wget</code> — <code>sra-tools</code> and the rest are required (wit
 when a run actually takes a path that uses them. See the <a href="../faq/">FAQ</a> for the
 exact messages and how to resolve them.</p>
 <h2 id="verifying-the-install">Verifying the install<a class="headerlink" href="#verifying-the-install" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>adaptiseq<span class="w"> </span>--version
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-m<span class="w">          </span><span class="c1"># metadata-only smoke test</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>adaptiseq<span class="w"> </span>--version
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-m<span class="w">          </span><span class="c1"># metadata-only smoke test</span>
 </code></pre></div>
 
 
