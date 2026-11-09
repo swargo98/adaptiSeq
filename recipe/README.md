@@ -21,8 +21,10 @@ exact file. For 0.1.12 the sdist is `adaptiseq-0.1.12.tar.gz`, sha256
 (the wheel rebuilds bit for bit with `SOURCE_DATE_EPOCH=1794169746 python -m build` from this source, since it
 contains no tests; an sdist does not, so pin the uploaded file). If a different sdist is uploaded, copy the sha256 from the PyPI
 "Download files" page, or from `sha256sum dist/adaptiseq-*.tar.gz`, into `meta.yaml` before the bioconda
-pull request. The recipe's test step runs the offline test suite shipped in the sdist
-(280 tests, 7 live tests skipped) and `pip check`.
+pull request. The recipe's test step runs `adaptiseq --version`, `adaptiseq --help` and `pip check`. It does not run
+pytest: bioconda repeats the test commands in a bare container that has neither pytest nor the `tests/` folder (the
+first pull request failed there although conda-build had passed the 273-test suite). To run the suite against a built
+package, add `source_files: [tests]`, the pytest command and `requires: pytest` to a local copy of the recipe.
 
 ## Submitting to bioconda (one time)
 
