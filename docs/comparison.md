@@ -20,7 +20,7 @@ tool's help output, source and documentation):
 | Python API | **✔** | – | ✔ | – | – | ✔ |
 | GSA | ✔ | ✔† | experimental | – | – | – |
 | GEO | ✔ | ✔† | – | – | ✔ | ✔ |
-| Installation | pip (conda: pending) | conda | pip, conda | pip, conda | Nextflow | pip, conda |
+| Installation | pip, conda | conda | pip, conda | pip, conda | Nextflow | pip, conda |
 
 † iSeq 1.9.9 lists GSA and GEO, but in our tests on 2026-10-19 its GSA run ended with exit status 0 and no data
 file, and its GEO accession was rejected, after both archives added browser checks to the pages iSeq reads.

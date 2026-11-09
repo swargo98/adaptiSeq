@@ -14,16 +14,10 @@ conda create -n adaptiseq -c conda-forge -c bioconda adaptiseq
 conda activate adaptiseq
 ```
 
+The package is on [Bioconda](https://anaconda.org/bioconda/adaptiseq) (version 0.1.12
+and later).
+
 > **Note**
-> The bioconda submission is pending. Until it is accepted, build the package
-> locally from the recipe in this repository:
->
-> ```bash
-> conda install -n base conda-build
-> conda build recipe -c conda-forge -c bioconda
-> conda create -n adaptiseq -c local -c conda-forge -c bioconda adaptiseq
-> ```
->
 > `aspera-cli` ships a Linux x86_64 `ascp`; on other platforms `-a` is
 > unavailable and the remaining modes work as usual.
 
@@ -53,8 +47,9 @@ the external tools must then come from elsewhere.
 ## Packaging notes
 
 - [`recipe/meta.yaml`](https://github.com/swargo98/adaptiSeq/blob/main/recipe/meta.yaml)
-  is the bioconda recipe. It builds the released PyPI sdist, and its test step
-  runs the offline test suite shipped in that sdist.
+  is the recipe that was submitted to bioconda. It builds the released PyPI sdist;
+  its test step runs `--version`, `--help` and `pip check`. CI also builds it
+  and runs the offline test suite shipped in the sdist.
 - [`environment.yml`](https://github.com/swargo98/adaptiSeq/blob/main/environment.yml)
   is the development environment for a checkout.
 - CI builds the recipe and creates the development environment on every push.

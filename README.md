@@ -103,14 +103,16 @@ pip install adaptiseq
 adaptiseq --version
 ```
 pip installs only the Python package; the external tools below come from your system or from conda
-(`conda install -c conda-forge -c bioconda wget axel pigz coreutils sra-tools`).
+(`conda install -c conda-forge -c bioconda wget axel pigz coreutils sra-tools`), or use the Bioconda
+package below, which installs them all.
 
 ### 2. Conda (installs every external tool too)
 ```bash
-conda install -c conda-forge -c bioconda adaptiseq     # once accepted into bioconda
+conda create -n adaptiseq -c conda-forge -c bioconda adaptiseq
+conda activate adaptiseq
 ```
-Until the bioconda package is live, build it from the in-repo recipe
-([`recipe/meta.yaml`](https://github.com/swargo98/adaptiSeq/blob/main/recipe/meta.yaml)); see
+The package is on [Bioconda](https://anaconda.org/bioconda/adaptiseq); its recipe is
+[`recipe/meta.yaml`](https://github.com/swargo98/adaptiSeq/blob/main/recipe/meta.yaml). See
 [the installation guide](https://swargo98.github.io/adaptiSeq/installation/).
 
 ### 3. From source (development)
@@ -370,7 +372,7 @@ tool's help output, source and documentation):
 | Python API | **✔** | – | ✔ | – | – | ✔ |
 | GSA | ✔ | ✔† | experimental | – | – | – |
 | GEO | ✔ | ✔† | – | – | ✔ | ✔ |
-| Installation | pip (conda: pending) | conda | pip, conda | pip, conda | Nextflow | pip, conda |
+| Installation | pip, conda | conda | pip, conda | pip, conda | Nextflow | pip, conda |
 
 † iSeq 1.9.9 lists GSA and GEO, but in our tests on 2026-10-19 its GSA run ended with exit status 0 and no data
 file, and its GEO accession was rejected, after both archives added browser checks to the pages iSeq reads.

@@ -1,8 +1,9 @@
 # Conda recipe
 
-`meta.yaml` is the bioconda recipe for adaptiSeq. It builds the released PyPI
-sdist (not this checkout), installs the external tools the CLI shells out to,
-and runs the offline test suite shipped in the sdist as its test step.
+`meta.yaml` is the bioconda recipe for adaptiSeq, as accepted into
+[bioconda-recipes](https://github.com/bioconda/bioconda-recipes/tree/master/recipes/adaptiseq)
+(pull request #71375). It builds the released PyPI sdist (not this checkout), installs the
+external tools the CLI shells out to, and runs `--version`, `--help` and `pip check` as its test step.
 
 ## Build and test locally
 
