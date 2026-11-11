@@ -427,6 +427,9 @@ whose command-line options and accession handling it started from, and
 [arXiv:2508.05511](https://arxiv.org/abs/2508.05511)), the origin of its segmented
 transfer engine. Both are MIT-licensed and their notices are in [`LICENSE`](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE).
 
+This work was supported in part by the U.S. National Science Foundation (NSF) under
+grants 2451376 and 2427408, the same grants that supported FastBioDL.
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/swargo98/adaptiSeq/blob/main/LICENSE), which also reproduces the
