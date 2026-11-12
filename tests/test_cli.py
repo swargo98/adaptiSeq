@@ -1,9 +1,12 @@
 """CLI surface parity (Section 7 acceptance criteria 1 & 2), via subprocess."""
 
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 ANSI = re.compile(r"\033\[[0-9;]*m")
@@ -63,6 +66,7 @@ def test_merge_guard_rejects_run():
     assert "is a Run ID" in (out + err)
 
 
+@pytest.mark.skipif(shutil.which("wget") is None, reason="the metadata step checks for wget first")
 def test_segmented_engine_is_accepted(tmp_path):
     # Part 2: segmented is the default and a real engine — the flag is accepted
     # (a bad accession yields the normal accession error, proving no engine error
@@ -108,6 +112,7 @@ def test_invalid_cc_penalty_message():
     assert "Invalid cc-penalty" in (out + err)
 
 
+@pytest.mark.skipif(shutil.which("wget") is None, reason="the metadata step checks for wget first")
 def test_no_adaptive_accepted(tmp_path):
     rc, out, err = _run("-i", "BADACCESSION", "--no-adaptive", "-m",
                         "-o", str(tmp_path))

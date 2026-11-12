@@ -12,8 +12,10 @@ the advice in 0.1.14 to run `ascli config ascp install` did not work for a conda
   (`ascp` 4.4.8, the version tested against ENA) and the public bypass key into `~/.aspera/sdk`. It asks first
   (`--yes` confirms; with no terminal and no `--yes` it refuses), shows the source URLs, size, checksums and
   IBM's terms, checks both downloads against pinned sha256 values before writing anything, writes only named
-  files, and keeps an older `~/.aspera/sdk` as `sdk.old.<time>`. Linux x86_64 only. Nothing is installed
-  automatically.
+  files, and keeps an older `~/.aspera/sdk` as `sdk.old.<time>`. It supports Linux x86_64 and macOS Apple silicon
+  (arm64), the two platforms where the pinned build was run against ENA; on the arm64 Mac (macOS 26.2) the
+  build ran without a Gatekeeper prompt and transferred with a matching md5. Intel Macs are not offered (the
+  x86_64 build could not be run). Nothing is installed automatically.
 - A failed ENA Aspera transfer and the missing-`ascp` message now point to it.
 
 ## 0.1.14: Aspera works with ENA again, and a repeated accession is processed once

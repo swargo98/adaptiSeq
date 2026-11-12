@@ -18,10 +18,11 @@ The package is on [Bioconda](https://anaconda.org/bioconda/adaptiseq) (version 0
 and later).
 
 > **Note**
-> `aspera-cli` ships a Linux x86_64 `ascp`; on other platforms `-a` is
-> unavailable and the remaining modes work as usual. The `ascp` in that package (4.4.2)
-> is refused by ENA's Aspera server as of 2026-11-12; run `adaptiseq --install-ascp` to
-> get a current one, which adaptiSeq then prefers ([Aspera](usage/aspera.md), Note 3).
+> The conda package `aspera-cli` ships a Linux x86_64 `ascp`; elsewhere the package has none. The `ascp` in
+> it (4.4.2) is refused by ENA's Aspera server as of 2026-11-12. Run `adaptiseq --install-ascp` to get a current
+> one on Linux x86_64 or an Apple-silicon Mac; adaptiSeq then prefers it ([Aspera](usage/aspera.md), Note 3).
+> On other platforms (Intel Mac, Windows) install IBM Aspera Connect and put its `ascp` on `PATH`; the
+> remaining modes work as usual without Aspera.
 
 ## 2. Install with pip
 

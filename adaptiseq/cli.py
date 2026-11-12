@@ -137,7 +137,8 @@ def build_parser() -> argparse.ArgumentParser:
                         "baseline (default: 0.70).")
     g.add_argument("--install-ascp", action="store_true", dest="install_ascp",
                    help="Install a current IBM Aspera ascp (SDK 1.1.9, ascp 4.4.8) into ~/.aspera/sdk, "
-                        "after asking; ENA's Aspera server refuses older ones. Linux x86_64 only.")
+                        "after asking; ENA's Aspera server refuses older ones. Linux x86_64 and macOS "
+                        "Apple silicon.")
     g.add_argument("--yes", action="store_true",
                    help="Answer yes to the question --install-ascp asks.")
     g.add_argument("-h", "--help", action="store_true",

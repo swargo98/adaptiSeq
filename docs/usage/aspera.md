@@ -70,9 +70,17 @@ against the live endpoint here.
 > checks both against pinned sha256 values before writing anything, and installs them in `~/.aspera/sdk`
 > (an older `~/.aspera/sdk` is kept as `sdk.old.<time>`). adaptiSeq then uses that `ascp` whenever it is
 > newer than the one on `PATH`. From Python: `adaptiseq.install_ascp(assume_yes=True)`. The SDK is IBM
-> software under IBM's terms, which the command reminds you of; adaptiSeq does not redistribute it. The
-> installer supports Linux x86_64 only, the platform it was tested on; elsewhere, install IBM Aspera
-> Connect and put its `ascp` on `PATH`. A failed ENA transfer prints which `ascp` ran and this advice.
+> software under IBM's terms, which the command reminds you of; adaptiSeq does not redistribute it.
+>
+> **Platforms.** The installer supports the two where the pinned SDK build was run against ENA: Linux
+> x86_64, and macOS on Apple silicon (arm64; tested on macOS 26.2: `ascp` 4.4.8.2592 ran with no Gatekeeper
+> prompt and transferred with the IBM bypass key). Intel Macs are not offered because the macOS x86_64 build
+> could not be run on the machine available; on an Intel Mac, or on Windows or any other platform, install
+> IBM Aspera Connect and put its `ascp` on `PATH`. On macOS `ascp` writes its logs, which include IP
+> addresses, to `~/Library/Logs/Aspera`. On a macOS Python from python.org that cannot verify HTTPS
+> certificates, run its `Install Certificates.command` (or `pip install certifi`) first.
+>
+> A failed ENA transfer prints which `ascp` ran and this advice.
 >
 > The `ascli` that conda's `aspera-cli` 4.14.0 provides (the tool ENA's
 > [download page](https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html)
