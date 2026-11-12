@@ -75,5 +75,5 @@ ENA could not serve it is announced and counts as delivered, unless `--no-sra-fa
 is given, in which case it fails.
 
 A Run already in `success.log` is **skipped** on re-run; remove its line (e.g.
-`sed -i '/SRR7706354/d' success.log`) to force a re-download. Partial files left
+`sed -i -E '/[[:space:]]SRR7706354([^A-Za-z0-9]|$)/d' success.log`) to force a re-download. Partial files left
 by the segmented engine (`*.part`, `*.part.meta`) are **resumed**, not restarted.

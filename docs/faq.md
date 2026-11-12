@@ -80,7 +80,7 @@ less; `bottomup` is the original gradient optimizer. See [Adaptive controller](A
 Remove its line and re-run:
 
 ```bash
-sed -i '/SRR7706354/d' success.log
+sed -i -E '/[[:space:]]SRR7706354([^A-Za-z0-9]|$)/d' success.log
 ```
 
 ## Does `-p` work with the default engine?

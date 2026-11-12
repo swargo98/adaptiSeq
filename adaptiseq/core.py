@@ -103,7 +103,7 @@ def _process_gsa(ctx: RunContext, accession: str) -> None:
             reporter.info(
                 f"{green('Note')}: {crr} has been downloaded successfully, please "
                 "check success.log for details. If you want to download it again, "
-                f"please remove it from success.log (sed -i '/{crr}/d' success.log)"
+                f"please remove it from success.log (sed -i -E '/[[:space:]]{crr}([^A-Za-z0-9]|$)/d' success.log)"
             )
         else:
             resolve.download_gsa(ctx, crr)
@@ -177,7 +177,7 @@ def _process_sra(ctx: RunContext, accession: str) -> None:
             reporter.info(
                 f"{green('Note')}: {srr} has been downloaded successfully, please "
                 "check success.log for details. If you want to download it again, "
-                f"please remove it from success.log (sed -i '/{srr}/d' success.log)"
+                f"please remove it from success.log (sed -i -E '/[[:space:]]{srr}([^A-Za-z0-9]|$)/d' success.log)"
             )
         elif _run_files_present(ctx, srr):
             # Files already on disk — e.g. pre-fetched by the parallel batch phase,
