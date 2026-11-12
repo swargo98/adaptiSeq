@@ -1186,7 +1186,7 @@ HTTP 429/503; <code>budget</code> and <code>knee</code> hold the fewest connecti
 less; <code>bottomup</code> is the original gradient optimizer. See <a href="../ADAPTIVE_CONTROLLER/">Adaptive controller</a>.</p>
 <h2 id="how-do-i-re-download-something-already-in-successlog">How do I re-download something already in <code>success.log</code>?<a class="headerlink" href="#how-do-i-re-download-something-already-in-successlog" title="Permanent link">&para;</a></h2>
 <p>Remove its line and re-run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/SRR7706354/d'</span><span class="w"> </span>success.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sed<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">'/[[:space:]]SRR7706354([^A-Za-z0-9]|$)/d'</span><span class="w"> </span>success.log
 </code></pre></div>
 <h2 id="does-p-work-with-the-default-engine">Does <code>-p</code> work with the default engine?<a class="headerlink" href="#does-p-work-with-the-default-engine" title="Permanent link">&para;</a></h2>
 <p>No. <code>-p</code> (axel connection count) applies only to <code>--engine classic</code>. The default

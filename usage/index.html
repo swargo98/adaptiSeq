@@ -970,7 +970,7 @@ it contains, verifies md5, and (optionally) converts/merges.</p>
 ENA could not serve it is announced and counts as delivered, unless <code>--no-sra-fallback</code>
 is given, in which case it fails.</p>
 <p>A Run already in <code>success.log</code> is <strong>skipped</strong> on re-run; remove its line (e.g.
-<code>sed -i '/SRR7706354/d' success.log</code>) to force a re-download. Partial files left
+<code>sed -i -E '/[[:space:]]SRR7706354([^A-Za-z0-9]|$)/d' success.log</code>) to force a re-download. Partial files left
 by the segmented engine (<code>*.part</code>, <code>*.part.meta</code>) are <strong>resumed</strong>, not restarted.</p>
 
 

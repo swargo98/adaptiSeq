@@ -766,6 +766,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0113-a-run-whose-id-starts-another-id-is-no-longer-skipped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.13: a Run whose ID starts another ID is no longer skipped
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0112-first-release-since-013" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -977,6 +988,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0113-a-run-whose-id-starts-another-id-is-no-longer-skipped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.13: a Run whose ID starts another ID is no longer skipped
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0112-first-release-since-013" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1177,6 +1199,20 @@
 <p>Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1.11 were internal
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.</p>
+<h2 id="0113-a-run-whose-id-starts-another-id-is-no-longer-skipped">0.1.13: a Run whose ID starts another ID is no longer skipped<a class="headerlink" href="#0113-a-run-whose-id-starts-another-id-is-no-longer-skipped" title="Permanent link">&para;</a></h2>
+<p>Fixes <a href="https://github.com/swargo98/adaptiSeq/issues/2">issue #2</a>, reported by skhakim. <code>success.log</code> and
+<code>fail.log</code> matched IDs by substring (a port of iSeq's <code>grep -c $ID</code> and <code>sed -i "/$ID/d"</code>), so an ID that is
+the beginning of another one collided with it:
+- <strong>A Run was skipped as already downloaded.</strong> After <code>SRR1234</code> succeeded, <code>SRR123</code> was reported as
+  downloaded and never fetched, with exit status 0.
+- <strong>A failure was erased.</strong> When <code>SRR123</code> succeeded, the line of <code>SRR1234</code> was removed from <code>fail.log</code>.
+- <strong>The <code>sed</code> hint</strong> printed for forcing a re-download would also delete the longer ID's line.</p>
+<p>An ID now matches an entry only when the entry is that ID or a file name that starts with it and continues
+with <code>_</code> or <code>.</code> (<code>SRR123_1.fastq.gz</code>, <code>SRR123.sra</code>), so <code>SRR123</code> no longer finds <code>SRR1234</code>. The hint, and the
+examples in the documentation, use <code>sed -i -E '/[[:space:]]ID([^A-Za-z0-9]|$)/d' success.log</code>, which removes
+the ID and its files and nothing else. <code>success.log</code> is also read once per run and refreshed when the file
+changes, instead of being read again for every Run (10,000 lookups over a 10,000-line log took 12 s). Nothing
+in the transfer engine changed; benchmarks of 0.1.12 apply.</p>
 <h2 id="0112-first-release-since-013">0.1.12: first release since 0.1.3<a class="headerlink" href="#0112-first-release-since-013" title="Permanent link">&para;</a></h2>
 <p>This is the build the benchmarks in the accompanying manuscripts ran. In short:
 - <strong>Delivered means verified, and the exit status says so.</strong> Each file is checked against the

@@ -1095,7 +1095,7 @@ and md5-verifies it.</p>
 <p>Just re-run the same command. Completed Runs in <code>success.log</code> are skipped, and
 partially downloaded files (<code>*.part</code>/<code>*.part.meta</code>) are resumed, not restarted. To
 force a re-download of one Run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/SRR7706354/d'</span><span class="w"> </span>success.log
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sed<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">'/[[:space:]]SRR7706354([^A-Za-z0-9]|$)/d'</span><span class="w"> </span>success.log
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>adaptiseq<span class="w"> </span>-i<span class="w"> </span>SRR7706354<span class="w"> </span>-g
 </code></pre></div>
 
