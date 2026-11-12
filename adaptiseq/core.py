@@ -306,6 +306,18 @@ def run(
     )
     ctx.engine = get_engine(options, workdir, ctx.reporter)
 
+    # A repeated accession (lists concatenated from several projects overlap) is processed once.
+    # Resolved in parallel, two copies of the same accession wrote the same metadata file at the
+    # same time; the loser read a half-written table and the Run was recorded in fail.log
+    # although it had downloaded and verified.
+    unique = list(dict.fromkeys(accessions))
+    if len(unique) != len(accessions):
+        ctx.reporter.info(
+            f"{green('Note')}: {len(accessions) - len(unique)} repeated accession(s) in the "
+            "list will be processed once"
+        )
+        accessions = unique
+
     if options.aspera and not options.metadata:
         # Part 5: parallel adaptive Aspera for ENA/SRA (GSA aspera, with its
         # Huawei-wins rule, stays on the sequential path).

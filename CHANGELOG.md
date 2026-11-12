@@ -4,7 +4,19 @@ Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.
 
-## Unreleased: a current `ascp` for ENA Aspera
+## Unreleased
+Checked against the recent issues of iSeq (BioOmics/iSeq #56 to #70): three applied to adaptiSeq and are fixed
+below; the others did not reproduce (GSA metadata for the reported accessions, metadata beyond 5,000 records, runs with
+more than two FASTQ links, the sample-ID pattern of the merge step, the input file's timestamp, CRLF lists).
+
+### A repeated accession is processed once (iSeq #65)
+A list that names the same accession twice (lists from several projects overlap) printed `The sequencing
+file of run_accession is not available in all databases`, wrote the Run to `fail.log` and exited 1, although the
+Run had downloaded and verified: both copies were resolved at the same time and wrote the same
+`SRR….metadata.tsv`, and one read it half written. Each accession is now processed once, in order, with a note
+that says how many repeats were ignored.
+
+### A current `ascp` for ENA Aspera (iSeq #66 and #70)
 ENA's Aspera server (OpenSSH 9.9) refuses the `ascp` 4.4.2 that the conda package `aspera-cli` 4.14.0
 ships (`ascp: failed to authenticate`; original iSeq 2.0.0 fails the same way), so `-a` against ENA
 did not work from a standard conda install. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9, installed by
