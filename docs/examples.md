@@ -92,6 +92,6 @@ partially downloaded files (`*.part`/`*.part.meta`) are resumed, not restarted. 
 force a re-download of one Run:
 
 ```bash
-sed -i '/SRR7706354/d' success.log
+sed -i -E '/[[:space:]]SRR7706354([^A-Za-z0-9]|$)/d' success.log
 adaptiseq -i SRR7706354 -g
 ```

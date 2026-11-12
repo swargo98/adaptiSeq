@@ -38,6 +38,13 @@ pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 > To use adaptiSeq your system must be **connected to the network** and able to
 > reach the databases over **HTTP, HTTPS, and (optionally) FTP / Aspera**.
 
+## What's new in 0.1.13
+
+A Run whose ID is the beginning of another ID (for example `SRR123456` and `SRR1234567`) was skipped as
+"already downloaded", and could erase the other Run's line in `fail.log`, because `success.log` and `fail.log`
+matched IDs as substrings ([#2](https://github.com/swargo98/adaptiSeq/issues/2)). IDs are now matched as whole
+IDs, and `success.log` is read once per run. The transfer engine is unchanged.
+
 ## What's new in 0.1.12
 
 The first release since 0.1.3, and the build behind the benchmarks in the accompanying manuscripts:

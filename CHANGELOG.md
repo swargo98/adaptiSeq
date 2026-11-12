@@ -4,6 +4,22 @@ Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.
 
+## 0.1.13: a Run whose ID starts another ID is no longer skipped
+Fixes [issue #2](https://github.com/swargo98/adaptiSeq/issues/2), reported by skhakim. `success.log` and
+`fail.log` matched IDs by substring (a port of iSeq's `grep -c $ID` and `sed -i "/$ID/d"`), so an ID that is
+the beginning of another one collided with it:
+- **A Run was skipped as already downloaded.** After `SRR1234` succeeded, `SRR123` was reported as
+  downloaded and never fetched, with exit status 0.
+- **A failure was erased.** When `SRR123` succeeded, the line of `SRR1234` was removed from `fail.log`.
+- **The `sed` hint** printed for forcing a re-download would also delete the longer ID's line.
+
+An ID now matches an entry only when the entry is that ID or a file name that starts with it and continues
+with `_` or `.` (`SRR123_1.fastq.gz`, `SRR123.sra`), so `SRR123` no longer finds `SRR1234`. The hint, and the
+examples in the documentation, use `sed -i -E '/[[:space:]]ID([^A-Za-z0-9]|$)/d' success.log`, which removes
+the ID and its files and nothing else. `success.log` is also read once per run and refreshed when the file
+changes, instead of being read again for every Run (10,000 lookups over a 10,000-line log took 12 s). Nothing
+in the transfer engine changed; benchmarks of 0.1.12 apply.
+
 ## 0.1.12: first release since 0.1.3
 This is the build the benchmarks in the accompanying manuscripts ran. In short:
 - **Delivered means verified, and the exit status says so.** Each file is checked against the

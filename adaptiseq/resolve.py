@@ -387,7 +387,7 @@ def _gsa_one(ctx, link, crr, cra, *, mode, ftp, aspera):
         reporter.info(
             f"{_g('Note')}: {save_name} has been downloaded successfully, please "
             "check success.log for details. If you want to download it again, "
-            f"please remove it from success.log (sed -i '/{save_name}/d' success.log)"
+            f"please remove it from success.log (sed -i -E '/[[:space:]]{save_name}([^A-Za-z0-9]|$)/d' success.log)"
         )
         return
 
