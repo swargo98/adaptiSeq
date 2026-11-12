@@ -50,6 +50,7 @@ Engine / batch / adaptive:
   --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (default: 0.70).
   --install-ascp                Install a current IBM Aspera ascp into ~/.aspera/sdk (asks first; Linux x86_64, macOS Apple silicon).
   --yes                         Answer yes to the question --install-ascp asks.
+  --force                       With --install-ascp: reinstall even if a current ascp is already installed.
 
   -h, --help                    Show help.
   -v, --version                 Show version.

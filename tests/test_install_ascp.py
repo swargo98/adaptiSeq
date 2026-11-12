@@ -268,7 +268,9 @@ def test_a_certificate_failure_says_how_to_fix_it_and_never_falls_back_to_unveri
     monkeypatch.setitem(__import__("sys").modules, "certifi", None)          # certifi not installed
     with pytest.raises(ai.AscpInstallError) as exc:
         ai._download("https://example.invalid/x", "0" * 64, 100, "SDK archive")
-    assert "Install Certificates.command" in str(exc.value) and "certifi" in str(exc.value)
+    assert "cannot verify" in exc.value.message and "<urlopen error" not in exc.value.message
+    sol = exc.value.solution
+    assert "Install Certificates.command" in sol and "pip install certifi" in sol and "network connection" not in sol
 
 
 def test_certifi_is_used_when_the_default_certificates_fail(monkeypatch):
@@ -296,8 +298,10 @@ def test_other_network_errors_are_reported_without_retrying(monkeypatch):
     def boom(req, timeout=None, context=None):
         raise urllib.error.URLError("Name or service not known")
     monkeypatch.setattr(ai.urllib.request, "urlopen", boom)
-    with pytest.raises(ai.AscpInstallError, match="Could not download"):
+    with pytest.raises(ai.AscpInstallError, match="Could not download") as exc:
         ai._download("https://example.invalid/x", "0" * 64, 100, "SDK archive")
+    assert "Name or service not known" in exc.value.message and "<urlopen error" not in exc.value.message
+    assert "network connection" in exc.value.solution
 
 
 # ------------------------------------ CLI ---------------------------------------
@@ -307,6 +311,38 @@ def test_cli_install_ascp_yes(env, monkeypatch, capsys):
     monkeypatch.setattr(ai, "install_ascp", lambda **kw: calls.append(kw) or env["sdk"] / "ascp")
     assert cli.main(["--install-ascp", "--yes"]) == 0
     assert calls and calls[0]["assume_yes"] is True
+
+
+def test_cli_force_reaches_the_installer(env, monkeypatch):
+    calls = []
+    monkeypatch.setattr(ai, "install_ascp", lambda **kw: calls.append(kw) or env["sdk"] / "ascp")
+    assert cli.main(["--install-ascp", "--yes", "--force"]) == 0
+    assert calls[0]["force"] is True and calls[0]["assume_yes"] is True
+    calls.clear()
+    assert cli.main(["--install-ascp", "--yes"]) == 0 and calls[0]["force"] is False
+
+
+def test_cli_force_reinstalls_end_to_end_and_keeps_the_old_directory(env, monkeypatch, capsys):
+    """The path the Mac run found broken: --force on the command line, through the real installer."""
+    real = ai.install_ascp
+    monkeypatch.setattr(ai, "install_ascp", lambda **kw: real(sdk_dir=env["sdk"], sdk_bytes=env["archive"],
+                                                              key_bytes=FAKE_DER, **kw))
+    assert cli.main(["--install-ascp", "--yes"]) == 0
+    (env["sdk"] / "marker").write_text("x")
+    assert cli.main(["--install-ascp", "--yes"]) == 0 and (env["sdk"] / "marker").exists()   # nothing to do
+    assert cli.main(["--install-ascp", "--yes", "--force"]) == 0
+    olds = [p for p in env["sdk"].parent.iterdir() if ".old." in p.name]
+    assert len(olds) == 1 and (olds[0] / "marker").exists() and not (env["sdk"] / "marker").exists()
+
+
+def test_cli_notice_is_flushed_before_the_error(env, monkeypatch, capfd):
+    monkeypatch.setattr("sys.stdin", io.StringIO(""))
+    real = ai.install_ascp
+    monkeypatch.setattr(ai, "install_ascp", lambda **kw: real(sdk_dir=env["sdk"], sdk_bytes=env["archive"],
+                                                              key_bytes=FAKE_DER, **kw))
+    assert cli.main(["--install-ascp"]) == 1
+    out = capfd.readouterr()
+    assert "adaptiseq will install" in out.out and "Not a terminal" in out.err
 
 
 def test_cli_install_ascp_reports_a_refusal_with_exit_1(env, monkeypatch, capsys):

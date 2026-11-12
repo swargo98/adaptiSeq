@@ -141,6 +141,9 @@ def build_parser() -> argparse.ArgumentParser:
                         "Apple silicon.")
     g.add_argument("--yes", action="store_true",
                    help="Answer yes to the question --install-ascp asks.")
+    g.add_argument("--force", action="store_true",
+                   help="With --install-ascp: reinstall even if a current ascp is already in ~/.aspera/sdk "
+                        "(the old directory is kept as sdk.old.<time>).")
     g.add_argument("-h", "--help", action="store_true",
                    help="Show the help information.")
     g.add_argument("-v", "--version", action="store_true",
@@ -158,9 +161,13 @@ def _install_ascp(args, reporter) -> int:
     """``--install-ascp``: fetch the pinned IBM Aspera SDK, after confirmation (``--yes`` confirms)."""
     from .ascp_install import install_ascp
     from .errors import AdaptiSeqError
+    def say(message: str) -> None:
+        reporter.info(message)
+        sys.stdout.flush()        # keep the notice ahead of an error when both go to one redirected file
     try:
-        install_ascp(assume_yes=args.yes, say=reporter.info)
+        install_ascp(assume_yes=args.yes, force=args.force, say=say)
     except AdaptiSeqError as exc:
+        sys.stdout.flush()
         _emit_error(reporter, exc.message, exc.solution)
         return 1
     return 0

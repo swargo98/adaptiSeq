@@ -78,6 +78,10 @@ class AscpInstallError(PreflightError):
     """The install was refused or failed; nothing was left half installed."""
 
 
+class _CertificateError(OSError):
+    """This Python cannot verify the server's HTTPS certificate and certifi is not installed."""
+
+
 def platform_key() -> Optional[str]:
     """The key of this machine in ``PLATFORMS`` (``linux-x86_64``, ``osx-arm64``); ``None`` elsewhere."""
     machine = platform.machine().lower()
@@ -132,9 +136,7 @@ def _open(url: str, limit: int) -> bytes:
     try:
         import certifi
     except ImportError:
-        raise urllib.error.URLError(
-            "this Python cannot verify HTTPS certificates (on macOS with a python.org Python, run "
-            "'Install Certificates.command' from the Python folder in Applications, or `pip install certifi`)")
+        raise _CertificateError("this Python cannot verify the server's HTTPS certificate") from None
     ctx = ssl.create_default_context(cafile=certifi.where())
     with urllib.request.urlopen(req, timeout=60, context=ctx) as resp:
         return resp.read(limit + 1)
@@ -144,6 +146,15 @@ def _download(url: str, expected_sha256: str, limit: int, what: str) -> bytes:
     """Fetch ``url`` (at most ``limit`` bytes) and refuse it unless its sha256 is the pinned one."""
     try:
         data = _open(url, limit)
+    except _CertificateError as exc:
+        raise AscpInstallError(
+            f"Could not download the {what} from {url}: {exc}",
+            "Install certificates for this Python: on macOS with a python.org Python, run 'Install Certificates.command' "
+            "from its folder in Applications; otherwise run `pip install certifi` (the installer uses it automatically). "
+            "Certificate checking is never turned off") from exc
+    except urllib.error.URLError as exc:
+        raise AscpInstallError(f"Could not download the {what} from {url}: {exc.reason}",
+                               "Check the network connection and try again") from exc
     except OSError as exc:
         raise AscpInstallError(f"Could not download the {what} from {url}: {exc}",
                                "Check the network connection and try again") from exc
