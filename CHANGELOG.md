@@ -4,7 +4,7 @@ Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.
 
-## Unreleased
+## 0.1.14: Aspera works with ENA again, and a repeated accession is processed once
 Checked against the recent issues of iSeq (BioOmics/iSeq #56 to #70): three applied to adaptiSeq and are fixed
 below; the others did not reproduce (GSA metadata for the reported accessions, metadata beyond 5,000 records, runs with
 more than two FASTQ links, the sample-ID pattern of the merge step, the input file's timestamp, CRLF lists).
