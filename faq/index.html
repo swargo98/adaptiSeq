@@ -1164,7 +1164,7 @@ falling back to SRA). Install <code>sra-tools</code> (as above).</p>
   but transfers nothing).</li>
 <li><code>ascp: failed to authenticate</code> with the <code>ascp</code> from the conda package <code>aspera-cli</code>
   4.14.0 (version 4.4.2) means that <code>ascp</code> is too old for ENA's Aspera server today.
-  Run <code>ascli config ascp install</code>; adaptiSeq then uses <code>~/.aspera/sdk/ascp</code> (see
+  Run <code>adaptiseq --install-ascp</code>; adaptiSeq then uses <code>~/.aspera/sdk/ascp</code> (see
   <a href="../usage/aspera/">Aspera</a>, Note 3).</li>
 <li>Ensure a key file exists (adaptiSeq searches the conda env and <code>~/.aspera</code>).</li>
 <li>ENA migrated DSA→RSA Aspera keys; the legacy <code>asperaweb_id_dsa.openssh</code> is

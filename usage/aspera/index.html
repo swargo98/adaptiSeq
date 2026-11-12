@@ -957,15 +957,27 @@ fallback covers it.</p>
 <p><strong>Note 3: the <code>ascp</code> must be recent</strong>
 On 2026-11-12 ENA's Aspera server refused <code>ascp</code> 4.4.2, the one inside the conda
 package <code>aspera-cli</code> 4.14.0: it printed <code>ascp: failed to authenticate</code>, and its log
-said <code>SSH connection startup encountered invalid protocol</code>. Original iSeq 2.0.0's <code>-a</code>
-failed the same way. <code>ascp</code> 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
-adaptiSeq batch over it passed md5. Other versions were not tested. To get a current
-<code>ascp</code>, run <code>ascli config ascp install</code> (the client ENA's
+said <code>SSH connection startup encountered invalid protocol</code>. <code>ascp</code> 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
+adaptiSeq batch over it passed md5. Other versions were not tested. To get a current <code>ascp</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>adaptiseq<span class="w"> </span>--install-ascp<span class="w">        </span><span class="c1"># asks first; add --yes to confirm in a script</span>
+</code></pre></div>
+<p>It downloads the SDK from IBM's server and the public bypass key from IBM's <code>aspera-cli</code> repository,
+checks both against pinned sha256 values before writing anything, and installs them in <code>~/.aspera/sdk</code>
+(an older <code>~/.aspera/sdk</code> is kept as <code>sdk.old.&lt;time&gt;</code>). adaptiSeq then uses that <code>ascp</code> whenever it is
+newer than the one on <code>PATH</code>. From Python: <code>adaptiseq.install_ascp(assume_yes=True)</code>. The SDK is IBM
+software under IBM's terms, which the command reminds you of; adaptiSeq does not redistribute it.</p>
+<p><strong>Platforms.</strong> The installer supports the two where the pinned SDK build was run against ENA: Linux
+x86_64, and macOS on Apple silicon (arm64; tested on macOS 26.2: <code>ascp</code> 4.4.8.2592 ran with no Gatekeeper
+prompt and transferred with the IBM bypass key). Intel Macs are not offered because the macOS x86_64 build
+could not be run on the machine available; on an Intel Mac, or on Windows or any other platform, install
+IBM Aspera Connect and put its <code>ascp</code> on <code>PATH</code>. On macOS <code>ascp</code> writes its logs, which include IP
+addresses, to <code>~/Library/Logs/Aspera</code>. On a macOS Python from python.org that cannot verify HTTPS
+certificates, run its <code>Install Certificates.command</code> (or <code>pip install certifi</code>) first.</p>
+<p>A failed ENA transfer prints which <code>ascp</code> ran and this advice.</p>
+<p>The <code>ascli</code> that conda's <code>aspera-cli</code> 4.14.0 provides (the tool ENA's
 <a href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">download page</a>
-recommends; Bioconda's <code>aspera-cli</code> 4.19 and later include <code>ascli</code> but no <code>ascp</code>). It installs
-the SDK, with its keys, in <code>~/.aspera/sdk</code>, and adaptiSeq uses that <code>ascp</code> whenever it is
-newer than the one on <code>PATH</code>. IBM Aspera Connect also works if its <code>ascp</code> is on <code>PATH</code>.
-A failed ENA transfer prints which <code>ascp</code> ran and this advice.</p>
+recommends for fetching <code>ascp</code>) did not start in a fresh conda environment on 2026-11-12
+(<code>cannot load such file -- webrick</code>), so <code>--install-ascp</code> does not use it.</p>
 </blockquote>
 <h2 id="speed-cap">Speed cap<a class="headerlink" href="#speed-cap" title="Permanent link">&para;</a></h2>
 <p><code>-s/--speed</code> (MB/s) applies to Aspera as well as the HTTP(S)/FTP engines.</p>

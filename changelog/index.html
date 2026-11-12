@@ -766,6 +766,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0115-adaptiseq-install-ascp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.15: adaptiseq --install-ascp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1027,6 +1038,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0115-adaptiseq-install-ascp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.15: adaptiseq --install-ascp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1277,6 +1299,19 @@
 <p>Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1.11 were internal
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.</p>
+<h2 id="0115-adaptiseq-install-ascp">0.1.15: <code>adaptiseq --install-ascp</code><a class="headerlink" href="#0115-adaptiseq-install-ascp" title="Permanent link">&para;</a></h2>
+<p>ENA's Aspera server refuses the <code>ascp</code> 4.4.2 in conda's <code>aspera-cli</code> 4.14.0, and the <code>ascli</code> in that package does not
+start in a fresh conda environment today (<code>cannot load such file -- webrick</code>; Ruby no longer bundles it), so
+the advice in 0.1.14 to run <code>ascli config ascp install</code> did not work for a conda install.
+- <strong><code>adaptiseq --install-ascp</code></strong> (and <code>adaptiseq.install_ascp()</code>) installs the IBM Aspera Transfer SDK 1.1.9
+  (<code>ascp</code> 4.4.8, the version tested against ENA) and the public bypass key into <code>~/.aspera/sdk</code>. It asks first
+  (<code>--yes</code> confirms; with no terminal and no <code>--yes</code> it refuses), shows the source URLs, size, checksums and
+  IBM's terms, checks both downloads against pinned sha256 values before writing anything, writes only named
+  files, and keeps an older <code>~/.aspera/sdk</code> as <code>sdk.old.&lt;time&gt;</code>. It supports Linux x86_64 and macOS Apple silicon
+  (arm64), the two platforms where the pinned build was run against ENA; on the arm64 Mac (macOS 26.2) the
+  build ran without a Gatekeeper prompt and transferred with a matching md5. Intel Macs are not offered (the
+  x86_64 build could not be run). Nothing is installed automatically.
+- A failed ENA Aspera transfer and the missing-<code>ascp</code> message now point to it.</p>
 <h2 id="0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once">0.1.14: Aspera works with ENA again, and a repeated accession is processed once<a class="headerlink" href="#0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once" title="Permanent link">&para;</a></h2>
 <p>Checked against the recent issues of iSeq (BioOmics/iSeq #56 to #70): three applied to adaptiSeq and are fixed
 below; the others did not reproduce (GSA metadata for the reported accessions, metadata beyond 5,000 records, runs with
@@ -1289,7 +1324,7 @@ Run had downloaded and verified: both copies were resolved at the same time and 
 that says how many repeats were ignored.</p>
 <h3 id="a-current-ascp-for-ena-aspera-iseq-66-and-70">A current <code>ascp</code> for ENA Aspera (iSeq #66 and #70)<a class="headerlink" href="#a-current-ascp-for-ena-aspera-iseq-66-and-70" title="Permanent link">&para;</a></h3>
 <p>ENA's Aspera server (OpenSSH 9.9) refuses the <code>ascp</code> 4.4.2 that the conda package <code>aspera-cli</code> 4.14.0
-ships (<code>ascp: failed to authenticate</code>; original iSeq 2.0.0 fails the same way), so <code>-a</code> against ENA
+ships (<code>ascp: failed to authenticate</code>), so <code>-a</code> against ENA
 did not work from a standard conda install. <code>ascp</code> 4.4.8 (IBM Aspera Transfer SDK 1.1.9, installed by
 <code>ascli config ascp install</code>) works, and the live Aspera test passes with it.
 - adaptiSeq runs the newer of the <code>ascp</code> on <code>PATH</code> and the one in <code>~/.aspera/sdk</code>, and looks for the
