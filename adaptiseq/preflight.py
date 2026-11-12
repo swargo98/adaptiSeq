@@ -40,10 +40,11 @@ def check_software(software1: str, software2: str) -> None:
         from .engine.classic import ascp_path   # also finds the Transfer SDK in ~/.aspera/sdk
         if ascp_path() is not None:
             return
+    tail = " (for ascp, `adaptiseq --install-ascp` installs a current one).\n" if software1 == "ascp" else ".\n"
     solution = (
         f"Please install {green_bold(software2)} by conda (e.g. "
         f"{green_bold('conda install -c conda-forge -c bioconda ' + software2 + ' -y')}) "
-        "or other ways and add it to the PATH environment variable.\n"
+        f"or other ways and add it to the PATH environment variable{tail}"
         f"All required software:{green_bold(' wget, sra-tools, axel, aspera, pigz ')}"
     )
     raise PreflightError(

@@ -135,6 +135,11 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Adaptive Aspera: keep an added worker only if achieved "
                         "throughput >= this fraction of workers x single-worker "
                         "baseline (default: 0.70).")
+    g.add_argument("--install-ascp", action="store_true", dest="install_ascp",
+                   help="Install a current IBM Aspera ascp (SDK 1.1.9, ascp 4.4.8) into ~/.aspera/sdk, "
+                        "after asking; ENA's Aspera server refuses older ones. Linux x86_64 only.")
+    g.add_argument("--yes", action="store_true",
+                   help="Answer yes to the question --install-ascp asks.")
     g.add_argument("-h", "--help", action="store_true",
                    help="Show the help information.")
     g.add_argument("-v", "--version", action="store_true",
@@ -146,6 +151,18 @@ def _emit_error(reporter: AnsiReporter, message: str, solution: Optional[str]) -
     reporter.error(f"{red_bold('Error')}: {message}")
     if solution:
         reporter.error(f"{green_bold('How to solve?')} {solution}")
+
+
+def _install_ascp(args, reporter) -> int:
+    """``--install-ascp``: fetch the pinned IBM Aspera SDK, after confirmation (``--yes`` confirms)."""
+    from .ascp_install import install_ascp
+    from .errors import AdaptiSeqError
+    try:
+        install_ascp(assume_yes=args.yes, say=reporter.info)
+    except AdaptiSeqError as exc:
+        _emit_error(reporter, exc.message, exc.solution)
+        return 1
+    return 0
 
 
 def _read_input(value: str) -> List[str]:
@@ -184,6 +201,9 @@ def main(argv: Optional[List[str]] = None) -> int:
             f"Please remove {unknown[0]} option",
         )
         return 1
+
+    if args.install_ascp:
+        return _install_ascp(args, reporter)
 
     # --- -i required ---
     if not args.input:

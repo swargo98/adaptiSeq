@@ -20,7 +20,7 @@ and later).
 > **Note**
 > `aspera-cli` ships a Linux x86_64 `ascp`; on other platforms `-a` is
 > unavailable and the remaining modes work as usual. The `ascp` in that package (4.4.2)
-> is refused by ENA's Aspera server as of 2026-11-12; run `ascli config ascp install` to
+> is refused by ENA's Aspera server as of 2026-11-12; run `adaptiseq --install-ascp` to
 > get a current one, which adaptiSeq then prefers ([Aspera](usage/aspera.md), Note 3).
 
 ## 2. Install with pip

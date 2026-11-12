@@ -25,6 +25,7 @@ from . import core
 from . import metadata as _meta
 from . import resolve as _resolve
 from .accession import is_gsa
+from .ascp_install import install_ascp
 from .console import NullReporter, Reporter
 from .engine import get_engine
 from .errors import (
@@ -45,6 +46,7 @@ __all__ = [
     "fetch",
     "resolve",
     "get_metadata",
+    "install_ascp",
     "FetchResult",
     "Options",
     "AdaptiSeqError",
