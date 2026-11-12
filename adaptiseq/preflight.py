@@ -36,6 +36,10 @@ def check_software(software1: str, software2: str) -> None:
     """
     if shutil.which(software1) is not None:
         return
+    if software1 == "ascp":
+        from .engine.classic import ascp_path   # also finds the Transfer SDK in ~/.aspera/sdk
+        if ascp_path() is not None:
+            return
     solution = (
         f"Please install {green_bold(software2)} by conda (e.g. "
         f"{green_bold('conda install -c conda-forge -c bioconda ' + software2 + ' -y')}) "

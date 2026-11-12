@@ -14,12 +14,13 @@ ultimately decided by the integrity check, not by this return value.
 
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 from pathlib import Path
-from typing import Optional
+from typing import Dict, Optional, Tuple
 
-from ..console import green_bold, red_bold, Reporter, NullReporter
+from ..console import bright_yellow, green_bold, red_bold, Reporter, NullReporter
 from ..errors import PreflightError
 from ..net import USER_AGENT_MOZILLA, wget_to_file
 
@@ -71,9 +72,49 @@ def _ena_aspera_key_candidates(ascp: str) -> tuple:
     return tuple(unique)
 
 
+# ``ascli config ascp install`` (the client ENA's documentation recommends) puts the current IBM
+# Aspera Transfer SDK here, with ``ascp`` and the ``aspera_bypass_*.pem`` keys side by side.
+SDK_DIR = Path.home() / ".aspera" / "sdk"
+# ascp 4.4.2 (the one inside the conda package aspera-cli 4.14.0) is refused by ENA's Aspera
+# server ("failed to authenticate"); 4.4.8 (Transfer SDK 1.1.9) transfers. No other version was tested.
+_ascp_versions: Dict[str, Tuple[int, ...]] = {}
+
+
+def ascp_version(path: str) -> Tuple[int, ...]:
+    """``ascp --version`` as a tuple, e.g. ``(4, 4, 8, 2592)``; ``()`` when it cannot be read
+    (a no-op stub, or a binary that does not run)."""
+    key = str(path)
+    if key not in _ascp_versions:
+        version: Tuple[int, ...] = ()
+        try:
+            out = subprocess.run([key, "--version"], capture_output=True, text=True, timeout=10).stdout
+            m = re.search(r"ascp version (\d+(?:\.\d+)*)", out)
+            if m:
+                version = tuple(int(x) for x in m.group(1).split("."))
+        except (OSError, subprocess.SubprocessError):
+            pass
+        _ascp_versions[key] = version
+    return _ascp_versions[key]
+
+
+def ascp_path() -> Optional[str]:
+    """The ``ascp`` to run: the one on PATH, unless the Transfer SDK in ``~/.aspera/sdk`` is a
+    newer version (both versions must be readable). ``None`` when there is neither."""
+    on_path = _which("ascp")
+    sdk = SDK_DIR / "ascp"
+    sdk_ok = sdk.is_file() and os.access(sdk, os.X_OK)
+    if on_path is None:
+        return str(sdk) if sdk_ok else None
+    if sdk_ok and Path(on_path).resolve() != sdk.resolve():
+        a, b = ascp_version(on_path), ascp_version(str(sdk))
+        if a and b and b > a:
+            return str(sdk)
+    return on_path
+
+
 def find_ena_aspera_key() -> Optional[Path]:
     """Locate the ENA ascp key relative to the ``ascp`` binary (executeAspera)."""
-    ascp = _which("ascp")
+    ascp = ascp_path()
     if ascp is None:
         return None
     for candidate in _ena_aspera_key_candidates(ascp):
@@ -84,7 +125,7 @@ def find_ena_aspera_key() -> Optional[Path]:
 
 def ena_aspera_key_candidates() -> tuple:
     """Every path :func:`find_ena_aspera_key` tries; ``()`` when ascp is absent."""
-    ascp = _which("ascp")
+    ascp = ascp_path()
     if ascp is None:
         return ()
     return _ena_aspera_key_candidates(ascp)
@@ -170,7 +211,8 @@ class ClassicEngine:
         else:  # pragma: no cover
             raise ValueError(f"Unknown aspera db: {db}")
 
-        cmd = ["ascp"]
+        ascp = ascp_path() or "ascp"
+        cmd = [ascp]
         if opts.quiet:
             cmd.append("-q")
         cmd += [
@@ -182,7 +224,18 @@ class ClassicEngine:
             "-d", aspera_link,
             ".",
         ]
-        return self._run(cmd) == 0
+        ok = self._run(cmd) == 0
+        if not ok and db == "ENA" and not getattr(self, "_ascp_hint_shown", False):
+            self._ascp_hint_shown = True
+            version = ".".join(str(x) for x in ascp_version(ascp)) or "unknown version"
+            self.reporter.info(
+                f"{bright_yellow('Note')}: ascp ({ascp}, {version}) failed. If it printed 'failed to "
+                "authenticate', that ascp may be too old for ENA's Aspera server (4.4.2, from the conda "
+                "package aspera-cli 4.14.0, is refused; 4.4.8 works). Install a current one with "
+                "'ascli config ascp install'; adaptiSeq uses ~/.aspera/sdk/ascp when it is newer than "
+                "the ascp on PATH."
+            )
+        return ok
 
     def _ensure_gsa_key(self) -> str:
         key = self.workdir / GSA_ASPERA_KEY

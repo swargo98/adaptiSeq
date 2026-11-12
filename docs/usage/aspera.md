@@ -55,6 +55,19 @@ against the live endpoint here.
 > the legacy `asperaweb_id_dsa.openssh` is now rejected, but adaptiSeq's RSA
 > fallback covers it.
 
+> **Note 3: the `ascp` must be recent**
+> On 2026-11-12 ENA's Aspera server refused `ascp` 4.4.2, the one inside the conda
+> package `aspera-cli` 4.14.0: it printed `ascp: failed to authenticate`, and its log
+> said `SSH connection startup encountered invalid protocol`. Original iSeq 2.0.0's `-a`
+> failed the same way. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
+> adaptiSeq batch over it passed md5. Other versions were not tested. To get a current
+> `ascp`, run `ascli config ascp install` (the client ENA's
+> [download page](https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html)
+> recommends; Bioconda's `aspera-cli` 4.19 and later include `ascli` but no `ascp`). It installs
+> the SDK, with its keys, in `~/.aspera/sdk`, and adaptiSeq uses that `ascp` whenever it is
+> newer than the one on `PATH`. IBM Aspera Connect also works if its `ascp` is on `PATH`.
+> A failed ENA transfer prints which `ascp` ran and this advice.
+
 ## Speed cap
 
 `-s/--speed` (MB/s) applies to Aspera as well as the HTTP(S)/FTP engines.

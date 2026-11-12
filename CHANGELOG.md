@@ -4,6 +4,16 @@ Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.
 
+## Unreleased: a current `ascp` for ENA Aspera
+ENA's Aspera server (OpenSSH 9.9) refuses the `ascp` 4.4.2 that the conda package `aspera-cli` 4.14.0
+ships (`ascp: failed to authenticate`; original iSeq 2.0.0 fails the same way), so `-a` against ENA
+did not work from a standard conda install. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9, installed by
+`ascli config ascp install`) works, and the live Aspera test passes with it.
+- adaptiSeq runs the newer of the `ascp` on `PATH` and the one in `~/.aspera/sdk`, and looks for the
+  ENA key next to it, so no `PATH` editing is needed after `ascli config ascp install`.
+- A failed ENA Aspera transfer prints which `ascp` ran and how to get a current one.
+- The documentation says which `ascp` versions were tested.
+
 ## 0.1.13: a Run whose ID starts another ID is no longer skipped
 Fixes [issue #2](https://github.com/swargo98/adaptiSeq/issues/2), reported by skhakim. `success.log` and
 `fail.log` matched IDs by substring (a port of iSeq's `grep -c $ID` and `sed -i "/$ID/d"`), so an ID that is
