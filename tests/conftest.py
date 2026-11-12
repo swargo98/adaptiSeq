@@ -53,3 +53,11 @@ def _fresh_ena_streak():
     metadata.reset_ena_streak()
     yield
     metadata.reset_ena_streak()
+
+
+@pytest.fixture(autouse=True)
+def _no_user_aspera_sdk(monkeypatch, tmp_path_factory):
+    """A developer's ~/.aspera/sdk must not change which ascp the offline tests see
+    (unless the live Aspera test is opted in, which wants the real one)."""
+    if os.environ.get("ADAPTISEQ_LIVE_ASPERA") != "1":
+        monkeypatch.setattr("adaptiseq.engine.classic.SDK_DIR", tmp_path_factory.mktemp("no_sdk") / "sdk")

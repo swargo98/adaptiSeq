@@ -15,7 +15,7 @@ authors:
 repository-code: "https://github.com/swargo98/adaptiSeq"
 url: "https://swargo98.github.io/adaptiSeq/"
 license: MIT
-version: "0.1.13"
+version: "0.1.14"
 date-released: "2026-11-12"
 doi: "10.5281/zenodo.24062784"
 keywords:

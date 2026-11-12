@@ -4,6 +4,28 @@ Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.
 
+## 0.1.14: Aspera works with ENA again, and a repeated accession is processed once
+Checked against the recent issues of iSeq (BioOmics/iSeq #56 to #70): three applied to adaptiSeq and are fixed
+below; the others did not reproduce (GSA metadata for the reported accessions, metadata beyond 5,000 records, runs with
+more than two FASTQ links, the sample-ID pattern of the merge step, the input file's timestamp, CRLF lists).
+
+### A repeated accession is processed once (iSeq #65)
+A list that names the same accession twice (lists from several projects overlap) printed `The sequencing
+file of run_accession is not available in all databases`, wrote the Run to `fail.log` and exited 1, although the
+Run had downloaded and verified: both copies were resolved at the same time and wrote the same
+`SRR….metadata.tsv`, and one read it half written. Each accession is now processed once, in order, with a note
+that says how many repeats were ignored.
+
+### A current `ascp` for ENA Aspera (iSeq #66 and #70)
+ENA's Aspera server (OpenSSH 9.9) refuses the `ascp` 4.4.2 that the conda package `aspera-cli` 4.14.0
+ships (`ascp: failed to authenticate`; original iSeq 2.0.0 fails the same way), so `-a` against ENA
+did not work from a standard conda install. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9, installed by
+`ascli config ascp install`) works, and the live Aspera test passes with it.
+- adaptiSeq runs the newer of the `ascp` on `PATH` and the one in `~/.aspera/sdk`, and looks for the
+  ENA key next to it, so no `PATH` editing is needed after `ascli config ascp install`.
+- A failed ENA Aspera transfer prints which `ascp` ran and how to get a current one.
+- The documentation says which `ascp` versions were tested.
+
 ## 0.1.13: a Run whose ID starts another ID is no longer skipped
 Fixes [issue #2](https://github.com/swargo98/adaptiSeq/issues/2), reported by skhakim. `success.log` and
 `fail.log` matched IDs by substring (a port of iSeq's `grep -c $ID` and `sed -i "/$ID/d"`), so an ID that is

@@ -38,6 +38,15 @@ pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 > To use adaptiSeq your system must be **connected to the network** and able to
 > reach the databases over **HTTP, HTTPS, and (optionally) FTP / Aspera**.
 
+## What's new in 0.1.14
+
+- **Aspera (`-a`) works against ENA again.** ENA's Aspera server refuses the `ascp` 4.4.2 that the conda package
+  `aspera-cli` 4.14.0 ships (`ascp: failed to authenticate`; iSeq fails the same way). adaptiSeq now runs the newer of
+  the `ascp` on `PATH` and the one `ascli config ascp install` puts in `~/.aspera/sdk`, and a failed ENA transfer says
+  which `ascp` ran and how to get a current one. See the [Aspera page](https://swargo98.github.io/adaptiSeq/usage/aspera/).
+- **A repeated accession is processed once.** A list that names a Run twice (lists from several projects overlap) used to
+  end with an error, a `fail.log` entry and exit status 1 although the Run had downloaded and verified.
+
 ## What's new in 0.1.13
 
 A Run whose ID is the beginning of another ID (for example `SRR123456` and `SRR1234567`) was skipped as

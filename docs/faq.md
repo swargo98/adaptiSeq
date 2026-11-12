@@ -45,6 +45,10 @@ export NCBI_EMAIL=you@example.com    # optional
 
 - Ensure a **real IBM `ascp`** is on `PATH` (a no-op stub passes startup checks
   but transfers nothing).
+- `ascp: failed to authenticate` with the `ascp` from the conda package `aspera-cli`
+  4.14.0 (version 4.4.2) means that `ascp` is too old for ENA's Aspera server today.
+  Run `ascli config ascp install`; adaptiSeq then uses `~/.aspera/sdk/ascp` (see
+  [Aspera](usage/aspera.md), Note 3).
 - Ensure a key file exists (adaptiSeq searches the conda env and `~/.aspera`).
 - ENA migrated DSA→RSA Aspera keys; the legacy `asperaweb_id_dsa.openssh` is
   rejected. adaptiSeq's RSA fallback covers this automatically.
