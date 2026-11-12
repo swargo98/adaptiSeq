@@ -766,6 +766,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.14: Aspera works with ENA again, and a repeated accession is processed once
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.14: Aspera works with ENA again, and a repeated accession is processed once">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-repeated-accession-is-processed-once-iseq-65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A repeated accession is processed once (iSeq #65)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-current-ascp-for-ena-aspera-iseq-66-and-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A current ascp for ENA Aspera (iSeq #66 and #70)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0113-a-run-whose-id-starts-another-id-is-no-longer-skipped" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -988,6 +1027,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.14: Aspera works with ENA again, and a repeated accession is processed once
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.1.14: Aspera works with ENA again, and a repeated accession is processed once">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-repeated-accession-is-processed-once-iseq-65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A repeated accession is processed once (iSeq #65)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-current-ascp-for-ena-aspera-iseq-66-and-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A current ascp for ENA Aspera (iSeq #66 and #70)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0113-a-run-whose-id-starts-another-id-is-no-longer-skipped" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1199,6 +1277,25 @@
 <p>Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1.11 were internal
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.</p>
+<h2 id="0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once">0.1.14: Aspera works with ENA again, and a repeated accession is processed once<a class="headerlink" href="#0114-aspera-works-with-ena-again-and-a-repeated-accession-is-processed-once" title="Permanent link">&para;</a></h2>
+<p>Checked against the recent issues of iSeq (BioOmics/iSeq #56 to #70): three applied to adaptiSeq and are fixed
+below; the others did not reproduce (GSA metadata for the reported accessions, metadata beyond 5,000 records, runs with
+more than two FASTQ links, the sample-ID pattern of the merge step, the input file's timestamp, CRLF lists).</p>
+<h3 id="a-repeated-accession-is-processed-once-iseq-65">A repeated accession is processed once (iSeq #65)<a class="headerlink" href="#a-repeated-accession-is-processed-once-iseq-65" title="Permanent link">&para;</a></h3>
+<p>A list that names the same accession twice (lists from several projects overlap) printed <code>The sequencing
+file of run_accession is not available in all databases</code>, wrote the Run to <code>fail.log</code> and exited 1, although the
+Run had downloaded and verified: both copies were resolved at the same time and wrote the same
+<code>SRR….metadata.tsv</code>, and one read it half written. Each accession is now processed once, in order, with a note
+that says how many repeats were ignored.</p>
+<h3 id="a-current-ascp-for-ena-aspera-iseq-66-and-70">A current <code>ascp</code> for ENA Aspera (iSeq #66 and #70)<a class="headerlink" href="#a-current-ascp-for-ena-aspera-iseq-66-and-70" title="Permanent link">&para;</a></h3>
+<p>ENA's Aspera server (OpenSSH 9.9) refuses the <code>ascp</code> 4.4.2 that the conda package <code>aspera-cli</code> 4.14.0
+ships (<code>ascp: failed to authenticate</code>; original iSeq 2.0.0 fails the same way), so <code>-a</code> against ENA
+did not work from a standard conda install. <code>ascp</code> 4.4.8 (IBM Aspera Transfer SDK 1.1.9, installed by
+<code>ascli config ascp install</code>) works, and the live Aspera test passes with it.
+- adaptiSeq runs the newer of the <code>ascp</code> on <code>PATH</code> and the one in <code>~/.aspera/sdk</code>, and looks for the
+  ENA key next to it, so no <code>PATH</code> editing is needed after <code>ascli config ascp install</code>.
+- A failed ENA Aspera transfer prints which <code>ascp</code> ran and how to get a current one.
+- The documentation says which <code>ascp</code> versions were tested.</p>
 <h2 id="0113-a-run-whose-id-starts-another-id-is-no-longer-skipped">0.1.13: a Run whose ID starts another ID is no longer skipped<a class="headerlink" href="#0113-a-run-whose-id-starts-another-id-is-no-longer-skipped" title="Permanent link">&para;</a></h2>
 <p>Fixes <a href="https://github.com/swargo98/adaptiSeq/issues/2">issue #2</a>, reported by skhakim. <code>success.log</code> and
 <code>fail.log</code> matched IDs by substring (a port of iSeq's <code>grep -c $ID</code> and <code>sed -i "/$ID/d"</code>), so an ID that is

@@ -954,6 +954,18 @@ Aspera needs a key file. adaptiSeq searches the conda environment and
 <code>~/.aspera</code> automatically. ENA migrated its Aspera auth from DSA to RSA keys;
 the legacy <code>asperaweb_id_dsa.openssh</code> is now rejected, but adaptiSeq's RSA
 fallback covers it.</p>
+<p><strong>Note 3: the <code>ascp</code> must be recent</strong>
+On 2026-11-12 ENA's Aspera server refused <code>ascp</code> 4.4.2, the one inside the conda
+package <code>aspera-cli</code> 4.14.0: it printed <code>ascp: failed to authenticate</code>, and its log
+said <code>SSH connection startup encountered invalid protocol</code>. Original iSeq 2.0.0's <code>-a</code>
+failed the same way. <code>ascp</code> 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
+adaptiSeq batch over it passed md5. Other versions were not tested. To get a current
+<code>ascp</code>, run <code>ascli config ascp install</code> (the client ENA's
+<a href="https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html">download page</a>
+recommends; Bioconda's <code>aspera-cli</code> 4.19 and later include <code>ascli</code> but no <code>ascp</code>). It installs
+the SDK, with its keys, in <code>~/.aspera/sdk</code>, and adaptiSeq uses that <code>ascp</code> whenever it is
+newer than the one on <code>PATH</code>. IBM Aspera Connect also works if its <code>ascp</code> is on <code>PATH</code>.
+A failed ENA transfer prints which <code>ascp</code> ran and this advice.</p>
 </blockquote>
 <h2 id="speed-cap">Speed cap<a class="headerlink" href="#speed-cap" title="Permanent link">&para;</a></h2>
 <p><code>-s/--speed</code> (MB/s) applies to Aspera as well as the HTTP(S)/FTP engines.</p>

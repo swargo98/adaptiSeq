@@ -990,7 +990,9 @@ and later).</p>
 <blockquote>
 <p><strong>Note</strong>
 <code>aspera-cli</code> ships a Linux x86_64 <code>ascp</code>; on other platforms <code>-a</code> is
-unavailable and the remaining modes work as usual.</p>
+unavailable and the remaining modes work as usual. The <code>ascp</code> in that package (4.4.2)
+is refused by ENA's Aspera server as of 2026-11-12; run <code>ascli config ascp install</code> to
+get a current one, which adaptiSeq then prefers (<a href="../usage/aspera/">Aspera</a>, Note 3).</p>
 </blockquote>
 <h2 id="2-install-with-pip">2. Install with pip<a class="headerlink" href="#2-install-with-pip" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>adaptiseq
