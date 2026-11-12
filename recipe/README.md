@@ -16,10 +16,10 @@ conda create -n adaptiseq -c local -c conda-forge -c bioconda adaptiseq
 ## What the recipe pins
 
 `meta.yaml` builds the sdist uploaded to PyPI, so `version` and `sha256` must be those of that
-exact file. For 0.1.13 the sdist is `adaptiseq-0.1.13.tar.gz`, sha256
-`e1a2dc691f6c077c1bea2ca725eb8797557ac2ed2c14bc32b46f55252a92c86e`, uploaded together with the wheel
-`adaptiseq-0.1.13-py3-none-any.whl`, sha256 `476b28125b7bd44c7cc8d2e23475c3e374472f5e3018c52ca22e6e250b545b92`
-(the wheel rebuilds bit for bit with `SOURCE_DATE_EPOCH=1794477457 python -m build` from this source, since it
+exact file. For 0.1.14 the sdist is `adaptiseq-0.1.14.tar.gz`, sha256
+`2b0c20a39180a3951a9b16054473311d48587cc2182e966c6083659dca6e7ffb`, uploaded together with the wheel
+`adaptiseq-0.1.14-py3-none-any.whl`, sha256 `11b950fb0833fac8b460711a1c1e6bafa9766f1026989d96aa2734d8c6256789`
+(the wheel rebuilds bit for bit with `SOURCE_DATE_EPOCH=1794514963 python -m build` from this source, since it
 contains no tests; an sdist does not, so pin the uploaded file). If a different sdist is uploaded, copy the sha256 from the PyPI
 "Download files" page, or from `sha256sum dist/adaptiseq-*.tar.gz`, into `meta.yaml` before the bioconda
 pull request. The recipe's test step runs `adaptiseq --version`, `adaptiseq --help` and `pip check`. It does not run
