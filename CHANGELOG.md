@@ -4,7 +4,7 @@ Notable changes to adaptiSeq. The newest release is first. Versions 0.1.4 to 0.1
 builds that were never published; their changes are all in 0.1.12 and are listed below under the build that
 made them.
 
-## Unreleased: `adaptiseq --install-ascp`
+## 0.1.15: `adaptiseq --install-ascp`
 ENA's Aspera server refuses the `ascp` 4.4.2 in conda's `aspera-cli` 4.14.0, and the `ascli` in that package does not
 start in a fresh conda environment today (`cannot load such file -- webrick`; Ruby no longer bundles it), so
 the advice in 0.1.14 to run `ascli config ascp install` did not work for a conda install.
@@ -32,7 +32,7 @@ that says how many repeats were ignored.
 
 ### A current `ascp` for ENA Aspera (iSeq #66 and #70)
 ENA's Aspera server (OpenSSH 9.9) refuses the `ascp` 4.4.2 that the conda package `aspera-cli` 4.14.0
-ships (`ascp: failed to authenticate`; original iSeq 2.0.0 fails the same way), so `-a` against ENA
+ships (`ascp: failed to authenticate`), so `-a` against ENA
 did not work from a standard conda install. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9, installed by
 `ascli config ascp install`) works, and the live Aspera test passes with it.
 - adaptiSeq runs the newer of the `ascp` on `PATH` and the one in `~/.aspera/sdk`, and looks for the

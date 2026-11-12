@@ -58,8 +58,7 @@ against the live endpoint here.
 > **Note 3: the `ascp` must be recent**
 > On 2026-11-12 ENA's Aspera server refused `ascp` 4.4.2, the one inside the conda
 > package `aspera-cli` 4.14.0: it printed `ascp: failed to authenticate`, and its log
-> said `SSH connection startup encountered invalid protocol`. Original iSeq 2.0.0's `-a`
-> failed the same way. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
+> said `SSH connection startup encountered invalid protocol`. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
 > adaptiSeq batch over it passed md5. Other versions were not tested. To get a current `ascp`:
 >
 > ```bash

@@ -41,7 +41,7 @@ from .errors import (
 from .logs import FAIL_LOG, SUCCESS_LOG
 from .options import Options, RunContext, load_accessions, resolve_output_dir
 
-__version__ = "0.1.14"
+__version__ = "0.1.15"
 __all__ = [
     "fetch",
     "resolve",
