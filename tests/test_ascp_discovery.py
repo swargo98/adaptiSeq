@@ -91,7 +91,7 @@ def test_failed_ena_transfer_explains_old_ascp_once(dirs, monkeypatch, tmp_path)
     engine = ClassicEngine(Options(aspera=True, speed=100, quiet=True), tmp_path, rec)
     assert engine.fetch_aspera("ftp.sra.ebi.ac.uk/vol1/fastq/a.fastq.gz", "ENA") is False
     assert engine.fetch_aspera("ftp.sra.ebi.ac.uk/vol1/fastq/b.fastq.gz", "ENA") is False
-    hints = [m for m in rec.lines if "ascli config ascp install" in m]
+    hints = [m for m in rec.lines if "adaptiseq --install-ascp" in m]
     assert len(hints) == 1 and "4.4.2.550" in hints[0] and exe in hints[0]
 
 

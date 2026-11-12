@@ -232,7 +232,7 @@ class ClassicEngine:
                 f"{bright_yellow('Note')}: ascp ({ascp}, {version}) failed. If it printed 'failed to "
                 "authenticate', that ascp may be too old for ENA's Aspera server (4.4.2, from the conda "
                 "package aspera-cli 4.14.0, is refused; 4.4.8 works). Install a current one with "
-                "'ascli config ascp install'; adaptiSeq uses ~/.aspera/sdk/ascp when it is newer than "
+                "'adaptiseq --install-ascp'; adaptiSeq uses ~/.aspera/sdk/ascp when it is newer than "
                 "the ascp on PATH."
             )
         return ok

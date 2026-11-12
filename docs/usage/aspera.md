@@ -58,15 +58,33 @@ against the live endpoint here.
 > **Note 3: the `ascp` must be recent**
 > On 2026-11-12 ENA's Aspera server refused `ascp` 4.4.2, the one inside the conda
 > package `aspera-cli` 4.14.0: it printed `ascp: failed to authenticate`, and its log
-> said `SSH connection startup encountered invalid protocol`. Original iSeq 2.0.0's `-a`
-> failed the same way. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
-> adaptiSeq batch over it passed md5. Other versions were not tested. To get a current
-> `ascp`, run `ascli config ascp install` (the client ENA's
-> [download page](https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html)
-> recommends; Bioconda's `aspera-cli` 4.19 and later include `ascli` but no `ascp`). It installs
-> the SDK, with its keys, in `~/.aspera/sdk`, and adaptiSeq uses that `ascp` whenever it is
-> newer than the one on `PATH`. IBM Aspera Connect also works if its `ascp` is on `PATH`.
+> said `SSH connection startup encountered invalid protocol`. `ascp` 4.4.8 (IBM Aspera Transfer SDK 1.1.9) transferred, and an
+> adaptiSeq batch over it passed md5. Other versions were not tested. To get a current `ascp`:
+>
+> ```bash
+> adaptiseq --install-ascp        # asks first; add --yes to confirm in a script
+> ```
+>
+> It downloads the SDK from IBM's server and the public bypass key from IBM's `aspera-cli` repository,
+> checks both against pinned sha256 values before writing anything, and installs them in `~/.aspera/sdk`
+> (an older `~/.aspera/sdk` is kept as `sdk.old.<time>`). adaptiSeq then uses that `ascp` whenever it is
+> newer than the one on `PATH`. From Python: `adaptiseq.install_ascp(assume_yes=True)`. The SDK is IBM
+> software under IBM's terms, which the command reminds you of; adaptiSeq does not redistribute it.
+>
+> **Platforms.** The installer supports the two where the pinned SDK build was run against ENA: Linux
+> x86_64, and macOS on Apple silicon (arm64; tested on macOS 26.2: `ascp` 4.4.8.2592 ran with no Gatekeeper
+> prompt and transferred with the IBM bypass key). Intel Macs are not offered because the macOS x86_64 build
+> could not be run on the machine available; on an Intel Mac, or on Windows or any other platform, install
+> IBM Aspera Connect and put its `ascp` on `PATH`. On macOS `ascp` writes its logs, which include IP
+> addresses, to `~/Library/Logs/Aspera`. On a macOS Python from python.org that cannot verify HTTPS
+> certificates, run its `Install Certificates.command` (or `pip install certifi`) first.
+>
 > A failed ENA transfer prints which `ascp` ran and this advice.
+>
+> The `ascli` that conda's `aspera-cli` 4.14.0 provides (the tool ENA's
+> [download page](https://ena-docs.readthedocs.io/en/latest/retrieval/file-download.html)
+> recommends for fetching `ascp`) did not start in a fresh conda environment on 2026-11-12
+> (`cannot load such file -- webrick`), so `--install-ascp` does not use it.
 
 ## Speed cap
 

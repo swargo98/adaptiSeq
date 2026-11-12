@@ -22,7 +22,7 @@ import subprocess
 
 import pytest
 
-from adaptiseq.engine.classic import ClassicEngine, find_ena_aspera_key
+from adaptiseq.engine.classic import ClassicEngine, ascp_path, find_ena_aspera_key
 from adaptiseq.options import Options
 
 
@@ -32,10 +32,11 @@ EXPECTED_MD5 = "bfa437e8a76bd5aab426eb3e5bef4cb6"
 
 
 def _real_ascp() -> bool:
-    if shutil.which("ascp") is None:
+    exe = ascp_path()          # the one on PATH, or the SDK in ~/.aspera/sdk when that is newer
+    if exe is None:
         return False
     try:
-        out = subprocess.run(["ascp", "--version"], capture_output=True, text=True,
+        out = subprocess.run([exe, "--version"], capture_output=True, text=True,
                              timeout=15).stdout.lower()
     except Exception:
         return False

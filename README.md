@@ -38,12 +38,21 @@ pipelines actually have: **lists of accessions**, downloaded in parallel, with a
 > To use adaptiSeq your system must be **connected to the network** and able to
 > reach the databases over **HTTP, HTTPS, and (optionally) FTP / Aspera**.
 
+## What's new in 0.1.15
+
+- **`adaptiseq --install-ascp` installs a current Aspera client for you.** ENA's Aspera server refuses the `ascp` 4.4.2 that
+  conda's `aspera-cli` ships, so `-a` could fail with `failed to authenticate`. The new command (also
+  `adaptiseq.install_ascp()`) downloads IBM's Aspera Transfer SDK 1.1.9 and the public bypass key, checks both against
+  pinned checksums, asks before it installs anything (`--yes` confirms; `--force` reinstalls) and puts them in `~/.aspera/sdk`,
+  which adaptiSeq already prefers. It supports Linux x86_64 and macOS on Apple silicon; elsewhere, install IBM Aspera Connect
+  and put its `ascp` on `PATH`. See the [Aspera page](https://swargo98.github.io/adaptiSeq/usage/aspera/).
+
 ## What's new in 0.1.14
 
 - **Aspera (`-a`) works against ENA again.** ENA's Aspera server refuses the `ascp` 4.4.2 that the conda package
-  `aspera-cli` 4.14.0 ships (`ascp: failed to authenticate`; iSeq fails the same way). adaptiSeq now runs the newer of
-  the `ascp` on `PATH` and the one `ascli config ascp install` puts in `~/.aspera/sdk`, and a failed ENA transfer says
-  which `ascp` ran and how to get a current one. See the [Aspera page](https://swargo98.github.io/adaptiSeq/usage/aspera/).
+  `aspera-cli` 4.14.0 ships (`ascp: failed to authenticate`). adaptiSeq now runs the newer of
+  the `ascp` on `PATH` and the one in `~/.aspera/sdk`, and a failed ENA transfer says
+  which `ascp` ran and how to get a current one (0.1.15 adds `adaptiseq --install-ascp`). See the [Aspera page](https://swargo98.github.io/adaptiSeq/usage/aspera/).
 - **A repeated accession is processed once.** A list that names a Run twice (lists from several projects overlap) used to
   end with an error, a `fail.log` entry and exit status 1 although the Run had downloaded and verified.
 
@@ -200,6 +209,9 @@ Engine / batch / adaptive:
   --cc-penalty    float         Worker-cost penalty K in score=throughput/K**workers (default: 1.01).
   --meta-jobs     int           Parallelism for metadata/URL resolution (default: 3).
   --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (default: 0.70).
+  --install-ascp                Install a current IBM Aspera ascp into ~/.aspera/sdk (asks first; Linux x86_64, macOS Apple silicon).
+  --yes                         Answer yes to the question --install-ascp asks.
+  --force                       With --install-ascp: reinstall even if a current ascp is already installed.
 
   -h, --help                    Show the help information.
   -v, --version                 Show the program version.

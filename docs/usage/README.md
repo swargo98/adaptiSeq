@@ -48,6 +48,9 @@ Engine / batch / adaptive:
   --cc-penalty    float         Worker-cost penalty K in score=throughput/K**workers (default: 1.01).
   --meta-jobs     int           Parallelism for metadata/URL resolution (default: 3).
   --aspera-efficiency float     Keep an extra ascp worker only above this efficiency (default: 0.70).
+  --install-ascp                Install a current IBM Aspera ascp into ~/.aspera/sdk (asks first; Linux x86_64, macOS Apple silicon).
+  --yes                         Answer yes to the question --install-ascp asks.
+  --force                       With --install-ascp: reinstall even if a current ascp is already installed.
 
   -h, --help                    Show help.
   -v, --version                 Show version.

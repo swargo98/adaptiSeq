@@ -25,6 +25,7 @@ from . import core
 from . import metadata as _meta
 from . import resolve as _resolve
 from .accession import is_gsa
+from .ascp_install import install_ascp
 from .console import NullReporter, Reporter
 from .engine import get_engine
 from .errors import (
@@ -40,11 +41,12 @@ from .errors import (
 from .logs import FAIL_LOG, SUCCESS_LOG
 from .options import Options, RunContext, load_accessions, resolve_output_dir
 
-__version__ = "0.1.14"
+__version__ = "0.1.15"
 __all__ = [
     "fetch",
     "resolve",
     "get_metadata",
+    "install_ascp",
     "FetchResult",
     "Options",
     "AdaptiSeqError",
